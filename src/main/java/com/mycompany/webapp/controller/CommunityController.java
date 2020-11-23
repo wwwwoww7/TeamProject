@@ -1,9 +1,11 @@
 package com.mycompany.webapp.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -13,6 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mycompany.webapp.dto.CommunityDto;
+import com.mycompany.webapp.dto.CommunityPagerDto;
+import com.mycompany.webapp.service.CommunityService;
 
 
 /**
@@ -23,12 +30,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/community")
 public class CommunityController {
 	private static final Logger logger = LoggerFactory.getLogger(CommunityController.class);
-
-	@GetMapping("/boardAll")
-	public String boardAll(Model model) {
+	
+	@Resource
+	private CommunityService service;
+	
+	/*@GetMapping("/boardAll")
+	public String boardAll(@RequestParam(defaultValue="1")int pageNo, Model model) {
 		model.addAttribute("cate", "all");
+		
+		int totalRows= service.getTotalRows();
+		//전체게시물수, 내가 보고싶은
+		CommunityPagerDto pager = new CommunityPagerDto(5, 5, totalRows, pageNo);
+		List<CommunityDto> list = service.getBoardList(pager);
+		model.addAttribute("list", list);
+		model.addAttribute("pager", pager);
+	
+		
+		return "community/community_list";
+	}*/
+	
+	@GetMapping("/boardAll")
+	public String boardAll(CommunityDto communtiy,Model model) {
+		model.addAttribute("cate", "all");
+		
+		List<CommunityDto> list = service.getCommunityList();
+		model.addAttribute("list", list);
+
+		
 		return "community/community_list";
 	}
+	
+	
+	
+	
+	
 	@GetMapping("/boardHealth")
 	public String boardHealth(Model model) {
 		model.addAttribute("cate", "health");

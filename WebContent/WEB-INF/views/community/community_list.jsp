@@ -24,51 +24,80 @@
 			</div>	
 	<div id="fun1_result"></div>
 	
+	
+	<table style="width:auto" class="table table-hover">
+			<thead>
+			<tr>
+				<th>번호</th>
+				<th>날짜</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>조회</th>
+				<th>아이디</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="communityDto" items="${list}">
+				<tr>
+					<td>${communityDto.comm_no}</td>
+					<td><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
+					<td>${communityDto.comm_title}</td>
+					<td>${communityDto.comm_content}</td>
+					<td>${communityDto.comm_hitno}</td>
+					<td>${communityDto.user_id}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
+	
+	
+	
 	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>분류</th>
-				<th>제목</th>
 				<th>날짜</th>
+				<th>제목</th>
+				<th>내용</th>
 				<th>조회</th>
-				<th>추천</th>
+				<th>아이디</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>전체공지</td>
-				<td>건강</td>
+				<td>1</td>
+				<td>2020.11.23</td>
 				<td><a href="javascript:boardDetail()">야구방공지</a></td>
-				<td>2020.8.7</td>
+				<td>룰루랄라</td>
 				<td>1254</td>
-				<td>354</td>
+				<td>fall</td>
 			</tr>
 			<tr>
 				<td>1</td>
-				<td>건강</td>
-				<td>나는 건강해지고싶어</td>
-				<td>2020.18:00</td>
-				<td>1</td>
-				<td>0</td>
+				<td>2020.11.23</td>
+				<td>축구방공지</td>
+				<td>메롱</td>
+				<td>3</td>
+				<td>angel</td>
 
 			</tr>
 			<tr>
 				<td>2</td>
-				<td>커리어</td>
+				<td>2020.11.23</td>
 				<td>나는 커리어우먼</td>
-				<td>2020.19:00</td>
+				<td>이 될거얀</td>
 				<td>2</td>
-				<td>1</td>
+				<td>winter</td>
 			</tr>
 
 			<tr>
 				<td>3</td>
-				<td>머니</td>
+				<td>2020.11.23</td>
 				<td>나는 머니가 좋아</td>
-				<td>2020.20:00</td>
+				<td>돈이 최고지?</td>
 				<td>3</td>
-				<td>2</td>
+				<td>summer</td>
 			</tr>
 		</tbody>
 		
@@ -92,7 +121,7 @@
 		
 	</table>
 	<script type="text/javascript">
-			function boardDetail() {
+			function CommunityDetail() {
 				$.ajax({
 					url:"<%=request.getContextPath()%>/community/boardDetail",
 					success:function(data) {

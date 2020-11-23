@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.community">
+
+	<select id="selectAll" resultType="communityDto">
+		select comm_no, comm_date, comm_title, comm_content, comm_hitno,user_id, class_cate_no 
+		from community 
+		order by comm_date desc
+	</select>
+	
+	
+	<!-- <select id="selectByPage" parameterType="communityPager" resultType="communityDto">
+	select rnum, bno, btitle, bdate, mid, mphoto
+	from (
+    select rownum as rnum, bno, btitle, bdate, mid , mphoto
+    from (
+    	select bno, btitle, bdate, b.mid, mphoto 
+    	from board b, member m
+    	where b.mid=m.mid
+    	order by bno desc
+    )
+	where rownum &lt;= #{endRowNo}
+	)
+	where rnum &gt;= #{startRowNo}
+	
+	</select>
+ -->
+</mapper>
