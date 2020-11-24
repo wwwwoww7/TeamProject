@@ -7,7 +7,7 @@
 	<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 	
 	
-	
+	 
 	
 	강의선택 : <select id="mcity" name="mcity">
  				<c:forEach var="city" items="${cityList}">
