@@ -29,131 +29,67 @@
 	
 		<div class="container">
 		<jsp:include page="/WEB-INF/views/include/header.jsp"/>
-			<div>
-				<form class="login-form" action="join">
-					<div class="login-wrap">
-						<p class="login-img">
-							<i class="icon-pen"></i>
-						</p>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="icon_profile"></i> 아 이 디 </span>
-							<input type="text" class="form-control" placeholder="ID"autofocus>
-						</div>
-					
-						<div class="input-group">
-							<span class="input-group-addon"><i class="icon_key_alt"></i>비 밀 번 호</span>
-							<input type="password" class="form-control" placeholder="Password">
-						</div>
-						
-						
-						<div class="input-group">
-							<span class="input-group-addon"><i class="icon_profile"></i> 이 름 </span>
-							<input type="text" class="form-control" placeholder="Username"autofocus>
-						</div>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="icon_profile"></i> 닉 네 임</span>
-							<input type="text" class="form-control" placeholder="Nickname"autofocus>
-						</div>
-					
-					
-						<div class="input-group">
-							<span class="input-group-addon"><i class="icon_profile"></i>핸드폰번호</span>
-							<input type="text" class="form-control" placeholder="010-xxxx-xxxx" autofocus>
-						</div>
-						
-						<div class="input-group">
-							<span class="input-group-addon"><i class="icon-envelope-l"></i>이 메 일</span>
-							<input type="text" class="form-control" placeholder="xxx@xxxx.xxx">
-						</div>
-					
-					
-						<select id="mtypeuser" name="mtypeuser" style="width:100%">
-							<option>----가입 유형을 입력하세요----</option>
-							<option value="수강생">수강생</option>
-							<option value="강사">강사</option>						
-						</select>
-						
-					</div>
-					
-					<div class="sector">
-					
-					<div> 
-						<div>
-				
+			<div class="sector">	
+				<form class="login-form" method="post" action="join" enctype="multipart/form-data">
+							<div class="login-wrap">
+								<p class="login-img">
+									<i class="icon-pen"></i>
+								</p>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="icon_profile"></i> 아 이 디 </span>
+									<input type="text" name="user_id" class="form-control" placeholder="ID"autofocus>
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="icon_key_alt"></i>비 밀 번 호</span>
+									<input type="password" name="user_pw" class="form-control" placeholder="Password">
+								</div>	
+								<div class="input-group">
+									<span class="input-group-addon"><i class="icon_profile"></i> 이 름 </span>
+									<input type="text" name="user_nm" class="form-control" placeholder="Username"autofocus>
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="icon_profile"></i> 닉 네 임</span>
+									<input type="text" name="user_nick" class="form-control" placeholder="Nickname"autofocus>
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="icon_profile"></i>핸드폰번호</span>
+									<input type="text" name="user_tel" class="form-control" placeholder="010-xxxx-xxxx" autofocus>
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="icon-envelope-l"></i>이 메 일</span>
+									<input type="text" name="user_email" class="form-control" placeholder="xxx@xxxx.xxx">
+								</div>
+								
+								
+								
+								<div class="input-group">
+									<div class="input-group-prepend"><span class="input-group-text">가입 유형</span></div>
+									<select name="user_type" class="form-control">
+										<!-- <option value="ROLE_ADMIN">관리자</option> -->
+										<option value="ROLE_MANAGER">강사</option>
+										<option value="ROLE_USER" selected>수강생</option>
+									</select>
+								</div>
 								<div class="input-group">
 									<div class="input-group-prepend"><span class="input-group-text">프로필 사진</span></div>
-									<input type="file" id="attach" name="attach" class="form-control" >
+									<input type="file" name="mphotoAttach" class="form-control">
 								</div>
-					
-								<script>
-									function boardUploadAjax() {
-										
-										
-										
-										var file = document.querySelector("#attach"); 
-										
-										var multipart = new FormData();
-										
-										
-										if(file.files.length != 0) {
-											
-											multipart.append("attach", file.files[0]); 
-										}
-										
-										//AJAX통신
-										$.ajax({ 
-											url: "boardUploadAjax",
-											method: "post",
-											data: multipart, 
-											cache: false,
-											processData: false, 
-											contentType: false,
-											success: function(data){ 
-												
-												$("#fileListDiv").html(data); 
-											}
-										});
-											
-									}
-								</script>
 								
 							</div>
-						</div>
-				</div>		
-				<p>
-					<a class="btn btn-info" href="javascript:boardUploadAjax()">프로필 사진 변경하기</a>	
-				</p>
-				<div class="sector">
-					<h5>프로필 사진</h5>
-					<div id="fileListDiv" style="margin-top:30px"> </div>
-					<script>
-						$(function() {							
-							getFileList();
-						});
-						
-						function getFileList() {
-							$.ajax({
-								url: "getFileList",
-								success: function(data) {
-									$("#fileListDiv").html(data);
-								}
-							});
-						}
-					</script>
-					
-				</div>
-				
-					<button class="btn btn-info btn-lg btn-block " type="submit" autofocus >Sign up</button>
-				</form>
-				<div class="text-right">
-					<div class="credits">
-						copyright 2020 TEAM1 All right reserved. &nbsp;
-					</div>
+							
+							
+							<a class="btn btn-danger btn-lg btn-block" href=<%=request.getContextPath()%> autofocus>Sign up</a>
+					</form>
+			</div>
+			<div class="text-right">
+				<div class="credits">
+					copyright 2020 TEAM1 All right reserved. &nbsp;
 				</div>
 			</div>
 		</div>
-	
-	
 	</body>
 
 </html>
+
+
+

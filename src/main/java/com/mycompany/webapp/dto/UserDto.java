@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserDto {
 	private String user_id;
 	private String user_pw;
@@ -10,6 +12,21 @@ public class UserDto {
 	private String user_pro_img;
 	private String user_type;
 	
+	private MultipartFile mphotoAttach;
+	private boolean menabled;
+	
+	public boolean isMenabled() {
+		return menabled;
+	}
+	public void setMenabled(boolean menabled) {
+		this.menabled = menabled;
+	}
+	public MultipartFile getMphotoAttach() {
+		return mphotoAttach;
+	}
+	public void setMphotoAttach(MultipartFile mphotoAttach) {
+		this.mphotoAttach = mphotoAttach;
+	}
 	public String getUser_id() {
 		return user_id;
 	}
@@ -58,7 +75,6 @@ public class UserDto {
 	public void setUser_type(String user_type) {
 		this.user_type = user_type;
 	}
-	
-	
-	
 }
+	
+	

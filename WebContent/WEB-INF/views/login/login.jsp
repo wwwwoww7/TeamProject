@@ -46,10 +46,7 @@
 						<span class="input-group-addon"><i class="icon_key_alt"></i>비밀번호</span>
 						<input type="password" class="form-control" placeholder="Password">
 					</div>
-					
-					
-					
-					
+
 					<label class="checkbox"> 
 						<input type="checkbox" value="remember-me"> 
 							Remember me 
@@ -60,7 +57,7 @@
 						
 					</label>
 					<a class="btn btn-primary btn-lg btn-block" href="<%=request.getContextPath()%>/" type="submit">Sign in</a>
-					
+			
 					
 					<a class="btn btn-info btn-lg btn-block"  href="<%=request.getContextPath()%>/login/join">Join</a>
 				</div>

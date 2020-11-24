@@ -6,13 +6,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
+import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -21,7 +25,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.mycompany.webapp.dao.UserDao;
+import com.mycompany.webapp.dto.UserDto;
+import com.mycompany.webapp.service.UserService;
 /**
  * 2020. 11. 17 
  *
@@ -31,18 +37,49 @@ import org.springframework.web.multipart.MultipartFile;
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
+	
+	@Resource
+	private UserDao userDao;
+	
+	
+	
+	
 	@RequestMapping("/login")
 	public String Login() {
+		
 		return "login/login";
 	}
 	
-	@RequestMapping("/join")
-	public String Join() {
-		//List<String> typeList = Arrays.asList("학생", "강사");
-		//model.addAttribute("typeList", typeList);
-		//member.setMtype("기업회원"); //이미 선택해둔 값. selected'
-		logger.info("실행");
-		return "login/join";
+	@Resource
+	private UserService service;//서비스 주입
+	
+	@PostMapping("/join")
+	public String Join(UserDto user) throws IllegalStateException, IOException {
+		
+		  if(!user.getMphotoAttach().isEmpty()) { 
+			  String originalFileName = user.getMphotoAttach().getOriginalFilename(); 
+			  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+			  String saveName = user.getUser_id()+extName;
+			  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
+			  user.getMphotoAttach().transferTo(dest);
+			  user.setUser_pro_img(saveName); //database에 넣을 거.
+		  
+		  } else { 
+			  user.setUser_pro_img("unnamed.jpg"); } 
+			  PasswordEncoder
+			  passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			  String encodedPassword = passwordEncoder.encode(user.getUser_pw());
+			  user.setUser_pw(encodedPassword); 
+			  user.setMenabled(true);
+			  service.join(user);//controller가 만든 데이터를 service쪽으로 넘겨준다. logger.info("실행");
+			 
+			  return "login/join";
+	}
+	
+	@GetMapping("/join")
+	public String Joinmove() {
+		
+		return"login/join";
 	}
 	
 	@GetMapping("/findpw")

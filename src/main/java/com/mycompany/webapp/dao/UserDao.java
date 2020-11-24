@@ -2,25 +2,25 @@ package com.mycompany.webapp.dao;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 
 import com.mycompany.webapp.dto.UserDto;
 
-@Repository //root에서 관리객체가 되어야 하기 때문에, 
+@Repository 
 public class UserDao {
 	
-	@Resource
+	@Autowired
 	private SqlSessionTemplate sst; //injection. 
 	
-	  public int insert(UserDto user) { //객체 이것저것 insert해서 myBatis로 보내주려고 
-		  int row = sst.insert("mybatis.mapper.user.insert", user); 
-		  return row; 
-	  }
-	  
-			 
-
+	public int insert(UserDto user) { 
+	  int row = sst.insert("mybatis.mapper.user.insert", user); 
+	  return row; 
+	 }
+	
+	public List<UserDto> selectAll() {
+		List<UserDto> list = sst.selectList("mybatis.mapper.user.selectAll");
+		return list;
+	}
 }
