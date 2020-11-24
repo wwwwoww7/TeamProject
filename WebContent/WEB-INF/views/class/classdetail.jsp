@@ -126,11 +126,24 @@
 									</div>
 									<div class="col-lg-2 col-sm-6 follow-info weather-category">
 										<ul>
-											<li class="active"><i class="fa fa-tachometer fa-2x">
-											</i><br> Contrary to popular belief, Lorem Ipsum  </li>
-	
+											<li class="active">
+												<a href="javascript:putt()">
+													<i class="fa fa-shopping-cart fa-2x"> </i><br>
+													Contrary to popular belief, 장바구니 담기
+												</a>
+											</li>
 										</ul>
 									</div>
+									<script type="text/javascript">
+										function putt(user_id,class_No ){
+											var result = confirm("장바구니에 담으시겠습니까?");
+											if(result==true){
+												window.location.href="<%=application.getContextPath()%>/cart";
+											}
+																					
+										}
+									</script>
+										
 								</div>
 							</div>
 						</div>

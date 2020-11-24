@@ -160,7 +160,7 @@
 							<h3>주문상품확인</h3>
 						
 						<div id="sm_title">
-							<span style="color:black; font-weight: bold">01 장바구니 > </span><span id="2">02 주문서작성/결제 > </span><span>03 주문완료</span>
+							<span style="color: #690700; font-weight: bold">01 장바구니 > </span><span id="2">02 주문서작성/결제 > </span><span>03 주문완료</span>
 						</div>
 						</div>
 					</div>	
@@ -171,26 +171,48 @@
 							<thead>
 								<tr>
 									<th width="50"  class="notice_title">체크</th>
-									<th width="450" class="notice_title">상품/옵션 정보</th>
-									<th width="160" class="notice">수량</th>
-									<th width="200" class="notice">상품금액</th>
-									<th width="150" class="notice">합계금액</th>
+									<th width="600" class="notice_title">상품/옵션 정보</th>
+									<th width="350" class="notice">상품금액</th>
 								</tr>
 							</thead>
 							<tbody>
-						        <tr>
+								<c:if test="${list}==null">
+									<tr>
+										<td colspan="3"><b>담긴 상품이 없습니다.</b></td>
+									</tr>
+								</c:if>
+								<c:forEach var="cart" items="${list}">
+									<tr>
+										<td>
+										<label>
+											<input type="checkbox" name="cartnum" id="cartnum"/> ${cart.class_no}
+										</label>
+										</td>
+										<td>
+											<a href="<%=application.getContextPath() %>/class/classdetail?classNo=${cart.class_no}" target="_blank">
+											${cart.class_nm}<br>
+											<img src="<%=application.getContextPath() %>/resources/profile/${cart.class_thum}" class="img-thumbnail"
+											alt="${cart.class_nm}" style="width:140px">
+											</a>
+										</td>
+									
+										<td>
+											<fmt:formatNumber value="${cart.class_price}" pattern="###,###"/>원</fmt>
+											
+										</td>
+										
+									</tr>
+									</c:forEach>
+									
 						          <td width="50">
 						          	<input type="checkbox" name="" value="">
 						          </td>
 						          <td width="450">
 						          	<div class="bak_item">
-										<div class="pro_img"><img width=70% src="<%=application.getContextPath()%>/resources/images/photo1.jpg" alt="propic" title="propic" ></div>
-										
+										<div class="pro_img"></div>
 									</div>
 						          </td>
-						          <td width="160">수량</td>
 						          <td width="200">상품금액</td>
-						          <td width="150">합계금액</td>
 						        </tr>
 								<tr>
 									<td colspan="5" style="text-align: center;">
@@ -205,28 +227,23 @@
 					   		</tbody>
 					   		<tfoot>
 								<tr>
-					   				<td colspan="2" id="cnum">선택한 상품의 개수</td>
-					   				<td colspan="3" id="csum">최종 결제금액</td>
+					   				<td colspan="1" id="cnum">선택한 상품의 개수</td>
+					   				<td colspan="2" id="csum">최종 결제금액</td>
 					   			</tr>
 					   			<tr class="pay_start">
 					   				<td colspan="5">
+					   				
 										<a class="btn btn-info" href="javascript:payment()">결제하기</a>
-					   					<script type="text/javascript">
-						   					function payment(mid){
-						   						if(mid!=null){
-						   							location.href="<%=application.getContextPath()%>/cart/payment";
-						   						}else{
-						   							var result = confirm("로그인 후 결제 하실 수 있습니다.");
-						   							
-						   							if(result==true){
+										<script type="text/javascript">
+											function payment(){
+						   							var result = confirm("로그인 후 결제 하실 수 있습니다."); 
+													if(result==true){
 						   								location.href="<%=application.getContextPath()%>/login/login";
 						   							}else{
 						   								return;
-						   							}
 						   						}
-						   					}
-					   						
-					   					</script>
+											}
+										</script>
 					   				</td>
 					   			</tr>
 					   		</tfoot>

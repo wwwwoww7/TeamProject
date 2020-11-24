@@ -51,7 +51,7 @@
 			margin:0px;
 		}
 		.complate_table {
-			margin: auto;
+			margin:auto;
 			position: relative;
 		}
 		.complate_table tr{
@@ -125,12 +125,11 @@
 							<h3>주문완료</h3>
 						
 						<div id="sm_title">
-							<span>01 장바구니 > </span><span id="2">02 주문서작성/결제 > </span><span style="color:black; font-weight: bold">03 주문완료</span>
+							<span>01 장바구니 > </span><span id="2">02 주문서작성/결제 > </span><span style="color:#690700; font-weight: bold">03 주문완료</span>
 						</div>
 						</div>
 					</div>	
-					<br/>
-					<br/>
+					
 					<div class="col-lg-12">
 						<table class="complate_table">
 							<thead>
@@ -145,25 +144,27 @@
 							</thead>
 							<tbody>
 						        <tr>
-						         	<td class="ico2">
-						         		고객님! <span>BAN</span><span>숙 에듀</span>를 이용해 주셔서 감사합니다.
+						         	<td>
+						         		고객님! <span>BAN숙 에듀</span>를 이용해 주셔서 감사합니다.
 						         	</td>
 						        </tr>
 						        <tr>
-						         	<td class="ico3">
+						         	<td>
 						         		고객님, <span>주문이 완료</span> 되었습니다.
 						         	</td>
 						        </tr>
 						        <tr>
 						         	<td class="ico4">
-						         		주문내역 확인은 마이페이지에서 조회 하실 수 있습니다. 
+						         		주문내역 확인은 [마이페이지]에서 조회 하실 수 있습니다. 
 						         	</td>
 						        </tr>
 						        
 					   		</tbody>
 					   		<tfoot>
 					   			<tr>
-					   				<td class="btnf"><a class="btn btn-info" href="<%=application.getContextPath()%>">홈으로 가기</a></td>
+					   				<td class="btnf">
+					   				<a class="btn btn-info" href="<%=application.getContextPath()%>">홈으로 가기</a>
+					   				</td>
 					   			</tr>
 					   		</tfoot>
 					   			
