@@ -19,10 +19,6 @@ public class CommunityService {
 	@Resource
 	private CommunityDao communityDao;
 	
-	public List<CommunityDto> getCommunityList(){
-		List<CommunityDto> list = communityDao.selectAll();
-		return list;
-	}
 
 	public List<CommunityDto> getBoardList(CommunityPagerDto pager) {
 		List<CommunityDto> list = communityDao.selectByPage(pager);
@@ -32,6 +28,17 @@ public class CommunityService {
 	public int getTotalRows() {
 		int totalRows = communityDao.countAll();
 		return totalRows;
+	}
+
+	public List<CommunityDto> getCommunityAll(){
+		List<CommunityDto> all = communityDao.selectAll();
+		return all;
+	}
+	
+
+	public CommunityDto getCommunityHealth(int class_cate_no) {
+		List<CommunityDto> commDto = communityDao.selectHealth(class_cate_no);
+		return (CommunityDto) commDto;
 	}
 	
 }
