@@ -23,5 +23,14 @@
 			where rnum &lt;=4
 	              and star.class_no =class.class_no
 	</select>
+	
+	
+	<select id="selectClassesOrderByNew" resultType="class">
+		select class_no,CLASS_NM, CLASS_THUM
+		from (select rownum as rnum, class_no,CLASS_NM, CLASS_THUM
+		        from class
+		    order by CLASS_NO desc)
+		where rnum &lt;=4;
+	</select>
 
 </mapper>
