@@ -11,15 +11,14 @@ public class UserDto {
 	private String user_email;
 	private String user_pro_img;
 	private String user_type;
-	
 	private MultipartFile mphotoAttach;
-	private boolean menabled;
-	
-	public boolean isMenabled() {
-		return menabled;
+	private boolean user_enabled;
+
+	public boolean isUser_enabled() {
+		return user_enabled;
 	}
-	public void setMenabled(boolean menabled) {
-		this.menabled = menabled;
+	public void setUser_enabled(boolean user_enabled) {
+		this.user_enabled = user_enabled;
 	}
 	public MultipartFile getMphotoAttach() {
 		return mphotoAttach;

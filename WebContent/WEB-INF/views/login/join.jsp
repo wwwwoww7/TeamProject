@@ -4,7 +4,7 @@
 <html>	
 	<head>
 		<meta charset="utf-8">
-		<title>TEAM1 Login</title>
+		<title>TEAM1 JOIN</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
 		<meta name="author" content="GeeksLabs">
@@ -30,56 +30,54 @@
 		<div class="container">
 		<jsp:include page="/WEB-INF/views/include/header.jsp"/>
 			<div class="sector">	
-				<form class="login-form" method="post" action="join" enctype="multipart/form-data">
-							<div class="login-wrap">
-								<p class="login-img">
-									<i class="icon-pen"></i>
-								</p>
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_profile"></i> 아 이 디 </span>
-									<input type="text" name="user_id" class="form-control" placeholder="ID"autofocus>
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_key_alt"></i>비 밀 번 호</span>
-									<input type="password" name="user_pw" class="form-control" placeholder="Password">
-								</div>	
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_profile"></i> 이 름 </span>
-									<input type="text" name="user_nm" class="form-control" placeholder="Username"autofocus>
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_profile"></i> 닉 네 임</span>
-									<input type="text" name="user_nick" class="form-control" placeholder="Nickname"autofocus>
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_profile"></i>핸드폰번호</span>
-									<input type="text" name="user_tel" class="form-control" placeholder="010-xxxx-xxxx" autofocus>
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon-envelope-l"></i>이 메 일</span>
-									<input type="text" name="user_email" class="form-control" placeholder="xxx@xxxx.xxx">
-								</div>
-								
-								
-								
-								<div class="input-group">
-									<div class="input-group-prepend"><span class="input-group-text">가입 유형</span></div>
-									<select name="user_type" class="form-control">
-										<!-- <option value="ROLE_ADMIN">관리자</option> -->
-										<option value="ROLE_TUTOR">강사</option>
-										<option value="ROLE_USER" selected>수강생</option>
-									</select>
-								</div>
-								<div class="input-group">
-									<div class="input-group-prepend"><span class="input-group-text">프로필 사진</span></div>
-									<input type="file" name="mphotoAttach" class="form-control">
-								</div>
-								
-							</div>
-							
-							
-							<a class="btn btn-danger btn-lg btn-block" href=<%=request.getContextPath()%> autofocus>Sign up</a>
-					</form>
+				<form class="login-form" method="post" action="<%=request.getContextPath() %>/login/join" enctype="multipart/form-data">
+					<div class="login-wrap">
+						<p class="login-img">
+							<i class="icon-pen"></i>
+						</p>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="icon_profile"></i> 아 이 디 </span>
+							<input type="text" name="user_id" class="form-control" placeholder="ID"autofocus>
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="icon_key_alt"></i>비 밀 번 호</span>
+							<input type="password" name="user_pw" class="form-control" placeholder="Password">
+						</div>	
+						<div class="input-group">
+							<span class="input-group-addon"><i class="icon_profile"></i> 이 름 </span>
+							<input type="text" name="user_nm" class="form-control" placeholder="Username"autofocus>
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="icon_profile"></i> 닉 네 임</span>
+							<input type="text" name="user_nick" class="form-control" placeholder="Nickname"autofocus>
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="icon_profile"></i>핸드폰번호</span>
+							<input type="text" name="user_tel" class="form-control" placeholder="010-xxxx-xxxx" autofocus>
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="icon-envelope-l"></i>이 메 일</span>
+							<input type="text" name="user_email" class="form-control" placeholder="xxx@xxxx.xxx">
+						</div>
+					
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text">가입 유형</span></div>
+							<select name="user_type" class="form-control">
+								<!-- <option value="ROLE_ADMIN">관리자</option> -->
+								<option value="ROLE_TUTOR">강사</option>
+								<option value="ROLE_USER" selected>수강생</option>
+							</select>
+						</div>
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text">프로필 사진</span></div>
+							<input type="file" name="mphotoAttach" class="form-control">
+						</div>
+						
+					</div>
+					
+					<button type="submit" class="btn btn-danger btn-lg btn-block">Sign up</button>
+
+				</form>
 			</div>
 			<div class="text-right">
 				<div class="credits">
