@@ -1,12 +1,27 @@
 package com.mycompany.webapp.controller;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.CommunityPagerDto;
+import com.mycompany.webapp.dto.MyPagerDto;
+import com.mycompany.webapp.service.ClassNoticeService;
 
 
 /**
@@ -18,10 +33,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MyPageController {
 	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	
+	
+	
 	//*----------- 수강생 페이지------------------- *//
 	@RequestMapping("/mypage_user")
 	public String mypage_user() {
 		//로그인한 사람의 역할 구분하고 해당 페이지로 리턴해 놔야함!!
+		
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		Authentication authentication = securityContext.getAuthentication();
+		
+		//로그인 여부
+		if(authentication.isAuthenticated()) {
+			String userid = authentication.getName();//로그인한 아이디 얻기
+			
+			//해당 아이디의 권한 확인
+			for(GrantedAuthority authority: authentication.getAuthorities()) {
+				String role = authority.getAuthority();
+				logger.info("아이디의 권한: "+role);
+			}
+			
+		}
+		
 		return "mypage/mypage_user";
 	}
 	
@@ -53,6 +86,10 @@ public class MyPageController {
 	}
 	
 	
+	@Resource
+	private ClassNoticeService classNoticeService;
+	
+	
 	//*----------- 강사 페이지------------------- *//		
 	
 	//강사의 강의 목록
@@ -64,7 +101,13 @@ public class MyPageController {
 	
 	//강사의 공지사항 목록
 	@PostMapping("/tutorClassNotice")
-	public String tutorClassNotice() {
+	public String tutorClassNotice(@RequestParam(defaultValue = "1")int pageNo, String tutor_id, Model model) {
+		int totalRows = classNoticeService.getTotalRow();
+		
+		MyPagerDto pager = new MyPagerDto(5,3,totalRows, pageNo,tutor_id);
+		List<ClassNoticeDto> list = classNoticeService.getNotice(pager);
+		model.addAttribute("list",list);
+		model.addAttribute("pager",pager);
 		
 		return "mypage/tutorclassnotice";
 	}

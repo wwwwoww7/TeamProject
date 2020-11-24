@@ -3,21 +3,29 @@
 <mapper namespace="mybatis.mapper.class_notice">
 
 	<select id="selectNotice" parameterType="String" resultType="classNotice">
-		SELECT  CLASS_NOTICE_NO, CLASS_NOTICE_DATE, CLASS_NOTICE_TITLE, CLASS_NOTICE_CONTENT
-		FROM class_notice
-		where  CLASS_NOTICE_NO=#{class_notice_no}
+	select rnum, class_notice_no, class_nm,  class_cate_no, class_notice_title, user_id
+	from (select rownum as rnum, new_t.class_notice_no,new_t.class_nm, new_t.class_cate_no,new_t.class_notice_title, new_t.user_id, new_t.class_notice_date
+        	from (select rownum as rnum, n.class_notice_no,class.CLASS_NM, class.CLASS_CATE_NO,n.class_notice_title, u.user_id, n.class_notice_date 
+                from class_notice n, class, "USER" u
+                where class.class_no = n.class_no and u.user_id = class.tutor_id
+                order  by n.class_notice_no desc) new_t
+        where rownum &lt;= #{endRowNo}
+        )   
+		where rnum &gt;=#{startRowNo} 
 	</select>
 	
 	<insert id="insertNotice" parameterType="classNotice">
-	
+		insert into CLASS_NOTICE (CLASS_NOTICE_TITLE,CLASS_NOTICE_CONTENT)
+		values (#{class_notice_title},#{class_notice_content})
 	</insert>
 	
 	<delete id="deleteNotice" parameterType="int">
-	
+		delete from CLASS_NOTICE where class_notice_no =#{class_notice_no}
 	</delete>
 	
 	<update id="updateNotice" parameterType="classNotice">
-	
+		update CLASS_NOTICE set CLASS_NOTICE_TITLE=#{class_notice_title}, CLASS_NOTICE_CONTENT=#{class_notice_content}
+		where class_notice_no =#{class_notice_no}
 	</update>	
 
 

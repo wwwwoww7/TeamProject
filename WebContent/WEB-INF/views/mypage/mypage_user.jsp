@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -46,14 +47,18 @@
 		  		 	</a>
 		  		 	
 		  		 	<!---------------------- 사용자가 수강생일때---------------------------------->
+		  		 	<%-- <sec:authorize access="hasRole('ROLE_USER')"> --%>
                    	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#classlist">수강목록</a></li>
                    	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#picklist">찜목록</a></li>
                    	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#myQa">나의 문의</a></li>
+                 <%--   </sec:authorize>
                    
+                   <sec:authorize access="hasRole('ROLE_TUTOR')"> --%>
                   	<!---------------------- 사용자가 강사일때-----------------------------------> 
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#tutorlist">나의강의</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#notice">공지사항</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#classQA">강의문의</a></li>
+                    <%-- </sec:authorize> --%>
                </ul>
            </div>
        </nav>
@@ -63,6 +68,7 @@
        <div class="container-fluid p-0">
      
        <!---------------------- 사용자가 수강생일때---------------------------------->
+       <%-- <sec:authorize access="hasRole('ROLE_USER')"> --%>
            <!-- 수강목록-->
            <section class="resume-section" id="classlist">
                <div class="resume-section-content">
@@ -118,7 +124,6 @@
 	                   }); 
                    </script> 
                    <div id="mypagePickList" ></div>
-                   
                </div>
            </section>  
            
@@ -143,12 +148,15 @@
 						});
 
                    </script> 
-                   <div id="myqa"></div>
-                   
+                   <div id="myqa"></div> 
                </div>
            </section>      
-           
+          <%-- </sec:authorize> --%>
+          
+          
+          
           <!---------------------- 사용자가 강사일때---------------------------------->  
+         <%--  <sec:authorize access="hasRole('ROLE_TUTOR')"> --%>
             <!-- 나의 강의-->
            <section class="resume-section" id="tutorlist">
 	            <div class="resume-section-content">
@@ -191,15 +199,14 @@
 	                   function tutorClassNotice(){
 	   					$.ajax({
 	   						url:"tutorClassNotice",
-	   						type: "POST",
+	   						method: "post",
+	   						data:{tutor_id:tutor_id},
 	   						success: function(data){
 	   								$("#tutorClassNotice").html(data);
 	   							}
 	
 	   						});
-	   					
 	   					}
-
 	                   jQuery(document).ready(function(){
 	                	   tutorClassNotice();
 	                   }); 
@@ -210,35 +217,36 @@
 	        <hr class="m-0" />
 	
 	         <!-- 강의문의-->
-	         <section class="resume-section" id="classQA">
-	            <div class="resume-section-content">
-	                <h1 class="mb-0 text-primary">
-	                    	강의문의
-	                </h1>
-	                <br/>
-	                <script type="text/javascript">
-                   
-	                   function tutorClassQA(){
-	   					$.ajax({
-	   						url:"tutorClassQA",
-	   						type: "POST",
-	   						success: function(data){
-	   								$("#tutorClassQA").html(data);
-	   							}
-	
-	   						});
-	   					
-	   					}
-
-	                   jQuery(document).ready(function(){
-	                	   tutorClassQA();
-	                   }); 
-
-                   </script> 
-                   <div id="tutorClassQA"></div>
-	            </div>
-	        </section>
-           <hr class="m-0" />
+		         <section class="resume-section" id="classQA">
+		            <div class="resume-section-content">
+		                <h1 class="mb-0 text-primary">
+		                    	강의문의
+		                </h1>
+		                <br/>
+		                <script type="text/javascript">
+		                  
+		                   function tutorClassQA(){
+		   					$.ajax({
+		   						url:"tutorClassQA",
+		   						type: "POST",
+		   						success: function(data){
+		   								$("#tutorClassQA").html(data);
+		   							}
+		
+		   						});
+		   					
+		   					}
+		
+		                   jQuery(document).ready(function(){
+		                	   tutorClassQA();
+		                   }); 
+		
+		                  </script> 
+		                  <div id="tutorClassQA"></div>
+		            </div>
+		        </section>
+		        <hr class="m-0" />
+            <%-- </sec:authorize> --%>
          </div>
 		
 		<!-- Bootstrap core JS-->

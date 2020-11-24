@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.CommunityPagerDto;
+import com.mycompany.webapp.dto.MyPagerDto;
 
 
 @Repository
@@ -15,8 +17,8 @@ public class ClassNoticeDao {
 	private SqlSessionTemplate sst;
 	
 	//강사가 등록한 공지사항 가져오기
-	public List<ClassNoticeDao> selectNotice(String tutorId){
-		List<ClassNoticeDao> noticeList = sst.selectList("mybatis.mapper.class_notice.selectNotice", tutorId);
+	public List<ClassNoticeDto> selectNotice(MyPagerDto pager){
+		List<ClassNoticeDto> noticeList = sst.selectList("mybatis.mapper.class_notice.selectNotice",pager);
 		return noticeList;
 	}
 	
@@ -37,5 +39,6 @@ public class ClassNoticeDao {
 		int rows = sst.update("mybatis.mapper.class_notice.updateNotice",noticeDto);
 		return rows;
 	}
+
 	
 }
