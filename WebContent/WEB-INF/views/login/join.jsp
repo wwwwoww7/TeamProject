@@ -66,7 +66,7 @@
 									<div class="input-group-prepend"><span class="input-group-text">가입 유형</span></div>
 									<select name="user_type" class="form-control">
 										<!-- <option value="ROLE_ADMIN">관리자</option> -->
-										<option value="ROLE_MANAGER">강사</option>
+										<option value="ROLE_TUTOR">강사</option>
 										<option value="ROLE_USER" selected>수강생</option>
 									</select>
 								</div>
