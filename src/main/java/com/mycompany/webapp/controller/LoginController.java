@@ -15,8 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -36,36 +41,73 @@ import com.mycompany.webapp.service.UserService;
 @RequestMapping("/login")
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-	@RequestMapping("/login")
-	public String Login() {
 	
-		return "login/login";
-	}
 	
-	@Resource
-	private UserService service;
-	
-	@PostMapping("/join")
-	public String Join(UserDto user) throws IllegalStateException, IOException {
-	
-		  if(!user.getMphotoAttach().isEmpty()) { 
-			  String originalFileName = user.getMphotoAttach().getOriginalFilename(); 
-			  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
-			  String saveName = user.getUser_id()+extName;
-			  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
-			  user.getMphotoAttach().transferTo(dest);
-			  user.setUser_pro_img(saveName); 
-		  
-		  } else { 
-			  user.setUser_pro_img("unnamed.jpg"); } 
-			  PasswordEncoder
-			  passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-			  String encodedPassword = passwordEncoder.encode(user.getUser_pw());
-			  user.setUser_pw(encodedPassword); 
-			  user.setUser_enabled(true);
-			  service.join(user);
-			  return "home";
-	}
+	  @RequestMapping("/login")
+	  public String Login() {
+	  	  return "login/login";
+	  }
+		///////////// 
+		/*
+		 * @GetMapping("/loginForm") public String loginForm() { return
+		 * "ch17/loginForm"; //forward. }
+		 */
+		
+		@RequestMapping("/loginInfo")
+		public String loginInfo() {
+			SecurityContext securityContext = SecurityContextHolder.getContext();
+			Authentication authentication = securityContext.getAuthentication();
+			
+			//로그인 여부
+			if(authentication.isAuthenticated()) {
+				String user_id = authentication.getName();
+				logger.info("로그인한 아이디:"+user_id);
+				
+				for(GrantedAuthority authority : authentication.getAuthorities()) {
+					String user_type = authority.getAuthority();
+					logger.info("로그인한 아이디의 권한" + user_type);
+				}
+				
+				WebAuthenticationDetails details = (WebAuthenticationDetails) authentication.getDetails();
+				String clientIp = details.getRemoteAddress();
+				logger.info("로그인한PC IP:" + clientIp);
+			}
+			return "home";
+		}
+		///////////////////
+		
+		@RequestMapping("/encodePassword")
+		public String encodePassword(String mpassword) {
+			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			String encodedPassword = passwordEncoder.encode(mpassword);//비밀번호가 암호화 된다.
+			logger.info("암호화된 비밀번호"+encodedPassword);
+			return "home";
+		}
+		
+		@Resource
+		private UserService service;
+		
+		@PostMapping("/join")
+		public String Join(UserDto user) throws IllegalStateException, IOException {
+		
+			  if(!user.getMphotoAttach().isEmpty()) { 
+				  String originalFileName = user.getMphotoAttach().getOriginalFilename(); 
+				  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+				  String saveName = user.getUser_id()+extName;
+				  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
+				  user.getMphotoAttach().transferTo(dest);
+				  user.setUser_pro_img(saveName); 
+			  
+			  } else { 
+				  user.setUser_pro_img("unnamed.jpg"); } 
+				  PasswordEncoder
+				  passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+				  String encodedPassword = passwordEncoder.encode(user.getUser_pw());
+				  user.setUser_pw(encodedPassword); 
+				  user.setUser_enabled(true);
+				  service.join(user);
+				  return "home";
+		}
 	
 	@GetMapping("/join")
 	public String Joinmove() {

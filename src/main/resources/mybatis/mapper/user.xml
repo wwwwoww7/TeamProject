@@ -7,8 +7,9 @@
 		values(#{user_id},#{user_pw},#{user_nm},#{user_nick},#{user_tel},#{user_email}, #{user_pro_img}, #{user_type}, #{user_enabled})
 	</insert>
 	
-	<select id="selectAll" resultType="user">
-		select user_id, user_nm
-		from  "USER"
+	<select id="selectByUser_id" parameterType="string" resultType="user"> <!-- parameterType은 꼭 안 넣어도 됨. result type은 반드시 명시해야 함. 이 밑으로는 sql문 작성 -->
+		select user_id, user_pw
+		from "USER"
+		where user_id=#{user_id} 
 	</select>
 </mapper> 

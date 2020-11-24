@@ -103,10 +103,11 @@
 	</bean>
 	
 	<!-- 사용자 정보 설정 -->
+	<!-- USER로 해줘야하는지 확신이 안듬.11.24 -->
 	<security:jdbc-user-service id="jdbcUserService"
 		data-source-ref="dataSource"
-		users-by-username-query="select mid, mpassword, menabled from member where mid=?"
-		authorities-by-username-query="select mid, mrole from member where mid=?"/>
+		users-by-username-query="select user_id, user_pw, user_enabled from user where user_id=?"
+		authorities-by-username-query="select user_id, user_type from user where user_id=?"/>
 		
 	<!-- 권한 계층 설정 -->
 	<bean id="roleHierarchyAuthoritiesMapper" 
