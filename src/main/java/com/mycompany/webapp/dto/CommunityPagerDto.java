@@ -18,7 +18,7 @@ public class CommunityPagerDto {
 		this.rowsPerPage = rowsPerPage;
 		this.pagesPerGroup = pagesPerGroup;
 		this.totalRows = totalRows;
-		this.pageNo = pageNo;
+		this.pageNo = pageNo; 
 
 		totalPageNo = totalRows / rowsPerPage;
 		if(totalRows % rowsPerPage != 0) totalPageNo++;
