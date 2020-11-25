@@ -55,8 +55,6 @@
              </div>
 	        
 	        
-	        
-	        
 	        <div class="row justify-content-center mt-4">
 	            <div class="col-12 col-md-12">
 	                <ul class="nav nav-tabs mb-4" role="tablist">
@@ -157,98 +155,53 @@
 	                                
 	                                
 	                                <div class="container">
-								        <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-5"><strong>
-								            curr</strong></h2>
+								        <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-5">
+								        <strong>Curriculum</strong></h2>
 								        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-5">
-								            Lorem ipsum dolor sit amet, consectetur adipisicing elit
+								           	클래스를 신청하신 분들이 배우고 있는 커리큘럼입니다. <br/> 콘텐츠는 배우기 쉽게 영상, 수업노트, 첨부파일로 구성되어있습니다.
 								        </h3>
 								        <div class="media-container-row">
-								            <div class="media-block" style="width: 49%;">
-								                <div class="mbr-figure">
-								                    <img src="assets/images/background6.jpg">
-								                </div>
-								            </div>
-								            <div class="step-container">
-								                <div class="card separline pb-4">
-								                    <div class="step-element d-flex">
-								                        <div class="step-wrapper pr-3">
-								                            <div class="step d-flex align-items-center justify-content-center">
-								                                1
-								                            </div>
-								                        </div>          
-								                        <div class="step-text-content">
-								                            <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5">
-								                            	Specification
-								                            </h4>
-								                            <p class="mbr-step-text mbr-fonts-style display-7">
-<%-- 								                                ${ classOne.class_curr } --%>
-								                            </p>
-								                        </div>
-								                    </div>
-								                </div>
-								
-								                <div class="card separline pb-4">
-								                    <div class="step-element d-flex">
-								                        <div class="step-wrapper pr-3">
-								                            <div class="step d-flex align-items-center justify-content-center">
-								                                2
-								                            </div>
-								                        </div>          
-								                        <div class="step-text-content">
-								                            <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5">Project Planning</h4>
-								                            <p class="mbr-step-text mbr-fonts-style display-7">
-								                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat libero, bibendum in libero tempor, luctus volutpat ligula. Integer fringilla porttitor pretium.</p>
-								                        </div>
-								                    </div>
-								                </div>
-								
-								                <div class="card">
-								                    <div class="step-element d-flex">
-								                        <div class="step-wrapper pr-3">
-								                            <div class="step d-flex align-items-center justify-content-center">
-								                                3
-								                            </div>
-								                        </div>          
-								                        <div class="step-text-content">
-								                            <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5">Deployment
-								                            </h4>
-								                            <p class="mbr-step-text mbr-fonts-style display-7">
-								                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat libero, bibendum in libero tempor, luctus volutpat ligula. Integer fringilla porttitor pretium.</p>
-								                        </div>
-								                    </div>
-								                </div>
-								
-								                
-								
-								                
-								
-								                
-								
-								                
-								
-								                
-								
-								                
-								            </div>
+								        	<div class="container-fluid">
+								        	
+								        	
+								        		<div class="row">
+								        		
+								        			<div class="col-md-6">
+								        				<div class="media-block" >
+											                <div class="mbr-figure">
+											                    <img src="<%=application.getContextPath()%>/resources/assets/images/background6.jpg">
+											                </div>
+											            </div>
+								        				
+								        			</div>
+								        			<div class="col-md-6">
+								        			
+								        				 <div class="step-container">
+									            
+											            <!-- 커리큘럼 시작 -->
+											            
+												            ${ classOne.class_curr}
+												                
+												            ${ classOne.class_curr2}
+												                
+												            ${ classOne.class_curr3}
+			
+											            </div>
+								        			</div>
+								        		
+								        		</div>
+								        	
+								        	
+								        	</div>
+								        
+								        
+								        
+								            
+								            
+								            
+								           
 								        </div>
 								    </div>
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
 	                                
 	                                
 	                            </div>
@@ -285,7 +238,7 @@
 								                <div class="panel-item p-3">
 								                    <div class="card-block">
 								                        <div class="testimonial-photo">
-								                            <img src="assets/images/face1.jpg">
+								                            <img src="<%=application.getContextPath()%>/resources/assets/images/face1.jpg">
 								                        </div>
 								                        <p class="mbr-text mbr-fonts-style display-7">
 								                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
@@ -301,15 +254,7 @@
 								                    </div>
 								                </div>
 								            </div>
-								
-								            
-								
-								            
-								
-								            
-								
-								            
-								
+								 
 								            
 								        </div>
 								    </div>   
@@ -342,13 +287,13 @@
 									
 									<div class="container">
 								        <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
-								            <strong>reviews</strong></h3>
+								            <strong>Reviews</strong></h3>
 								        <div class="row justify-content-center">
 								            <div class="card col-12 col-md-6">
 								                <p class="mbr-text mbr-fonts-style mb-4 display-7">Themes in the Mobirise website builder offer multiple blocks: intros, sliders, galleries, forms, articles, and so on. Start a project and click on the red plus buttons to see the blocks available for your theme.</p>
 								                <div class="d-flex mb-md-0 mb-4">
 								                    <div class="image-wrapper">
-								                        <img src="assets/images/team1.jpg" alt="Mobirise">
+								                        <img width="50px" height="50px" class="rounded-circle mr-2" src="<%=application.getContextPath()%>/resources/assets/images/team1.jpg" alt="Mobirise">
 								                    </div>
 								                    <div class="text-wrapper">
 								                        <p class="name mbr-fonts-style mb-1 display-4">
@@ -364,7 +309,7 @@
 								                <p class="mbr-text mbr-fonts-style mb-4 display-7">You can have multiple pages in each project in Mobirise website builder software. Don't forget to set links to your pages after creating them. You can use menu blocks to create navigation for your site visitors.</p>
 								                <div class="d-flex mb-md-0 mb-4">
 								                    <div class="image-wrapper">
-								                        <img src="assets/images/team2.jpg" alt="Mobirise">
+								                        <img width="50px" height="50px"  class="rounded-circle mr-2" src="<%=application.getContextPath()%>/resources/assets/images/team2.jpg"/> <%-- alt="${}" --%>
 								                    </div>
 								                    <div class="text-wrapper">
 								                        <p class="name mbr-fonts-style mb-1 display-4">
@@ -472,7 +417,11 @@
 	  
 	  	img {
 	  	  width: 100%;
-	  	 
+	  	}
+	  	
+	  	.rounded-circle{
+	  		width: 50px;
+	  		height : 50px;
 	  	}
   
   	</style>
