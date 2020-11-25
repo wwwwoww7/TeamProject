@@ -37,6 +37,17 @@ public class ClassService {
 		
 		return classList;
 	}
+
+	
+	//강의 1개 조회
+	public ClassDto getClass(int classNo) {
+		ClassDto classOne = classDao.selectbyClassNo(classNo);
+		return classOne;
+	}
+	
+	
+	
+	
 	
 	
 	

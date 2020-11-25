@@ -42,6 +42,13 @@ public class ClassDao {
 		return classList;
 	}
 
+
+
+	//강의 번호로 강의 1개 상세 조회
+	public ClassDto selectbyClassNo(int class_no) {
+		ClassDto classOne = sst.selectOne("mybatis.mapper.class.selectbyClassNo", class_no);
+		return classOne;
+	}
 	
 	
 	

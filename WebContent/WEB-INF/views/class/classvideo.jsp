@@ -23,8 +23,7 @@
   
   <script type="text/javascript">
 		
-		function popupClose(){
-			//window.close();
+		function popupClose(){ 
 			close();				
 		}
 	
@@ -39,7 +38,8 @@
             <div class="col-12 col-md">
                 <div class="text-wrapper">
                     <h2 class="mbr-section-title mb-3 mbr-fonts-style display-2">
-                        <strong>class name</strong></h2>
+                        <strong>class name</strong>
+                    </h2>
                     <p class="mbr-text mb-3 mbr-fonts-style display-7">
                         Intro with Color, paddings and a video on the right. Mobirise helps you cut down
                         development time by providing you with a flexible website editor with a drag and drop interface.
@@ -47,11 +47,19 @@
                     <div class="mbr-section-btn"><a class="btn btn-success display-4" href="javascript:popupClose()">class end</a></div>
                 </div>
             </div>
-            <div class="mbr-figure col-12 col-md-7"><iframe class="mbr-embedded-video" src="https://www.youtube.com/embed/HujDEPAWboE?rel=0&amp;amp;showinfo=0&amp;autoplay=0&amp;loop=0" width="1280" height="720" frameborder="0" allowfullscreen></iframe></div>
+            <div class="mbr-figure col-12 col-md-7">
+	            <iframe class="mbr-embedded-video" src="https://www.youtube.com/embed/HujDEPAWboE?rel=0&amp;amp;showinfo=0&amp;autoplay=0&amp;loop=0" width="1280" height="500" frameborder="0" allowfullscreen>
+	            </iframe>
+            </div>
         </div>
     </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/t" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Made with <a href="https://mobirise.site/b" style="color:#aaa;">Mobirise</a> website template</p></section><script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/popper/popper.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
+</section>
+<section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
+	<a href="https://mobirise.site/u" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a>
+	<p style="flex: 0 0 auto; margin:0; padding-right:1rem;">
+	 Go  <a href="/" style="color:#aaa;">Team1</a>
+ 	</p>
+</section>
   
 </body>
 </html>
