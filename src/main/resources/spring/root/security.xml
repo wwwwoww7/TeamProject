@@ -44,16 +44,17 @@
 		
 		
 		<security:intercept-url pattern="/login/admin*" access="hasRole('ROLE_ADMIN')"/> <!-- admin*: 경로, admin:이름 -->
-		<!-- 곽혜빈이 지운 부분
-		<security:intercept-url pattern="/ch17/manager*" access="hasRole('ROLE_MANAGER')"/>
-		<security:intercept-url pattern="/ch17/user*" access="isAuthenticated()"/>	
+		
+		<security:intercept-url pattern="/login/tutor*" access="hasRole('ROLE_TUTOR')"/>
+		<security:intercept-url pattern="/login/user*" access="isAuthenticated()"/>	
 		
 		<security:intercept-url pattern="/**" access="permitAll"/>
 		
-	
-		<security:access-denied-handler error-page="/login/error403"/>
+	<!-- 
+		<security:access-denied-handler error-page="/login/error403"/> -->
 		
-		 -->
+		
+		 
 		<!-- ### 권한 없음(403) 에러일 경우 포워드 페이지 ### -->
 		
 		
@@ -132,7 +133,7 @@
 		alwaysUseDefaultTargetUrl:true, defaultTargetUrl로 강제 리다이렉트
 		 -->
 		<property name="alwaysUseDefaultTargetUrl" value="false"/>
-		<property name="defaultTargetUrl" value="/login/join"/>
+		<property name="defaultTargetUrl" value="/"/>
 	</bean>
 	
 	<bean id="authenticationFailureHandler" 
@@ -161,7 +162,7 @@
 		defaultTargetUrl:생략, 컨텍스트 루트 경로(/index.jsp)로 리다이렉트 (홈페이지로)
 		defaultTargetUrl:지정, defaultTargetUrl로 강제 리다이렉트
 		 -->
-	<!-- 	<property name="defaultTargetUrl" value="/ch17/content"/> -->
+		<property name="defaultTargetUrl" value="/"/>
 	</bean>	
 </beans> 
 

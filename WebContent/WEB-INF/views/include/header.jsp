@@ -52,9 +52,10 @@
 	                		<span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>
 	                        UserName
 	                    </a>
+	                     <%-- <sec:authentication property="mnick"/>님 환영합니다. --%>
 	                    <div class="dropdown-menu">
 	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user">My Page</a>
-	                  		<a class="text-white dropdown-item display-4" href="https://mobiri.se">Logout</a>
+	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/logout">Logout</a>
 	                  	</div>
                 </li>
                  

@@ -1,80 +1,132 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>TEAM1 Login</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-		<meta name="author" content="GeeksLabs">
-		<meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-		<link rel="shortcut icon" href="img/favicon.png"> 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<link href="<%=application.getContextPath()%>/resources/css/bootstrap-theme.css" rel="stylesheet">
-		<!--external css-->
-		<!-- font icon -->
-		<link href="<%=application.getContextPath()%>/resources/css/elegant-icons-style.css" rel="stylesheet" />
-		<link href="<%=application.getContextPath()%>/resources/css/font-awesome.min.css" rel="stylesheet" /> 
-		<!-- Custom styles -->
-		<link href="<%=application.getContextPath()%>/resources/css/style.css" rel="stylesheet"> 
-		<link href="<%=application.getContextPath()%>/resources/css/style-responsive.css" rel="stylesheet"> 
 
-	</head>
-	<body class="login-img3-body">
-		<div class="container">
-			<jsp:include page="/WEB-INF/views/include/header.jsp"/>
-				<form class="login-form" action="login">
-				<div class="login-wrap">
-					<p class="login-img">
-						<i class="icon_lock_alt"></i>
-					</p>
+
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="<%=application.getContextPath()%>/resources/assets/images/mbr-96x48.png" type="image/x-icon">
+  <meta name="description" content="Web Site Maker Description">
+  
+  
+  <title>login</title>
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
+  <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+  
+</head>
+<body>
+  <jsp:include page="/WEB-INF/views/include/header.jsp"/>
+  
+<section class="form4 cid-shauVUIa9i mbr-fullscreen" id="form4-27">
+
+    
+
+    
+
+    <div class="container">
+        <div class="row content-wrapper justify-content-center">
+            <div class="col-lg-3 offset-lg-1 mbr-form" data-form-type="formoid">
+                <form action="<%=application.getContextPath()%>/login" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="EB7nNREyluGKYeDqevnuu2h5FTwZboD4x2ICWXo5wDyEgpMFh/il6tVf662DO52SGxOgH/s5yov004lHZcFKoU8fh5PNOq6M08zzx1RXu6TmAyQR+NnAK5+7oO3IDMV8">
+                    
+                    <!-- <div class="">
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling
+                            out the form!</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
+                            problem!</div>
+                    </div> -->
+                    <div class="dragArea row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h1 class="mbr-section-title mb-4 display-2">
+                                <strong>Login</strong></h1>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12"></div>
+                        
+                    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <div class="col-lg-12 col-md col-12 form-group" data-for="mid">
+                            <input type="text" name="mid" placeholder="ID" data-form-field="mid" class="form-control" value="" id="name-form4-27">
+                        </div>
+                        <div class="col-lg-12 col-md col-12 form-group" data-for="memail">
+                            <input type="password" name="mpw" placeholder="Password" data-form-field="mpw" class="form-control" value="" id="password-form4-27">
+                        </div>
+                    
+
+                    </div>
+                    
+                    <label class="checkbox">
+						<span class="pull-right">
+							<a href="<%=request.getContextPath()%>/login/findpw"> Forgot Password?</a>
+						</span>
+					</label>
+					<div class="col-12 col-md-auto mbr-section-btn">
+						<button type="submit" class="btn btn-success display-4">Login</button>
+					</div>
+					<div class="col-12 col-md-auto mbr-section-btn">
+						<button type="button" class="btn btn-success display-4" onclick="join()">Join</button>
+					</div>
 					
-					<sec:authorize access="isAnonymous()">
-						<div>
-							<form method="post" action="<%=application.getContextPath()%>/login/login">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_profile"></i> 아 이 디 </span>
-									<input type="text" class="form-control" placeholder="ID" value="${user_id}" name="user_id" autofocus>
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_key_alt"></i>비밀번호</span>
-									<input type="password" class="form-control" placeholder="Password" name="user_pw">
-								</div>
-								<label class="checkbox">
-									<span class="pull-right">
-										<a href="<%=request.getContextPath()%>/login/findpw"> Forgot Password?</a>
-									</span>
-								</label>
-								<input class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Login"/>
-								<input class="btn btn-info btn-lg btn-block" name="submit" type="button" value="Join" onclick="join()"/>
-								<script>
-									function join() {
-										location.href = "<%=application.getContextPath()%>/login/join";
-									}
-								</script>
-							</form>
-							<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">		
-								<div class="alert alert-danger" style="margin-top:10px" role="alert" style="width:auto;">
-									아이디 또는 비밀번호가 잘못되었습니다. 
-								</div>
-							</c:if>
-						</div>
-					</sec:authorize>			
-					<sec:authorize access="isAuthenticated()">
-							<sec:authentication property="user_id"/>님 환영합니다.
-							<form method="post" action="${pageContext.request.contextPath}/logout" style="display:inline-block;">
-								<input class="btn btn-info" type="submit" value='Logout'/><!-- 로그아웃 할 때도 POST 방식으로 선언해야 한다. -->
-							</form>
-							
-							<a class="btn btn-info" href="<%=application.getContextPath()%>/login/loginInfo">Login Info</a>
-					</sec:authorize>	
+					<script>
+						function join() {
+							location.href = "<%=application.getContextPath()%>/login/join";
+						}
+					</script>
+                    
+                </form>
+                <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">		
+				<div class="alert alert-danger" style="margin-top:10px" role="alert" style="width:auto;">
+					아이디 또는 비밀번호가 잘못되었습니다. 
 				</div>
-			</form>
-		</div>	
-	</body>
+			</c:if>
+            </div>
+            
+			
+            <div class="col-lg-7 offset-lg-1 col-12">
+                <div class="image-wrapper">
+                    <img class="w-100" src="assets/images/mbr-1060x718.jpg" alt="Mobirise">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+
+	
+	 <script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/popper/popper.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/tether/tether.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/smoothscroll/smooth-scroll.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/nav-dropdown.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/navbar-dropdown.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/touchswipe/jquery.touch-swipe.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/parallax/jarallax.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/masonry/masonry.pkgd.min.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/imagesloaded/imagesloaded.pkgd.min.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+  
+</body>
 </html>

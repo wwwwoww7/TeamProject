@@ -41,14 +41,18 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@RequestMapping("/login")
-	public String content() {	
-		return "login/login";
-	}
+	public String login(Model model) {	
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		Authentication authentication = securityContext.getAuthentication();
+		
+		if(authentication.isAuthenticated()) {
+			String mid = authentication.getName();
+			logger.info("로그인한 아이디:"+mid);
+			//model.addAttribute("sessionMid", mid);
 	
-	@GetMapping("/loginForm")
-	public String loginForm() {
-		logger.info("실행");
-		return "login/loginForm"; //forward.
+		}
+		
+		return "login/login";
 	}
 	
 	@RequestMapping("/loginInfo")
@@ -79,7 +83,7 @@ public class LoginController {
 		  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder(); 
 		  String encodedPassword = passwordEncoder.encode(mpassword);//비밀번호가 암호화 된다.
 		  logger.info("암호화된 비밀번호"+encodedPassword);
-		  return "home"; 
+		  return "login/login"; 
 	}
 	 
 	

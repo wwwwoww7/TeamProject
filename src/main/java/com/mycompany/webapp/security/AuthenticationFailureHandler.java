@@ -22,7 +22,7 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
 		 
 		//이렇게 세션에 mid를 set 해주면, 로그인실패했을 때 아이디가 남아있는다.
 		HttpSession session = request.getSession();
-		session.setAttribute("user_id", request.getParameter("user_id")); 
+		session.setAttribute("sessionMid", request.getParameter("mid")); 
 	}
 }
 
