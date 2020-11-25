@@ -16,39 +16,7 @@
 		</div>
 		
 	</div>
-	<div class="row">
-		<div class="col-sm-12">
-			<div id="demo" ><!--  data-ride="carousel"> -->
-				
-				<!-- Indicators -->
-<!-- 				<ul class="carousel-indicators"> -->
-<!-- 					<li data-target="#demo" data-slide-to="0" class="active"></li> -->
-<!-- 					<li data-target="#demo" data-slide-to="1"></li> -->
-<!-- 					<li data-target="#demo" data-slide-to="2"></li> -->
-<!-- 				</ul> -->
-				
-				<!-- The slideshow -->
-				<div> <!--  class="carousel-inner"> -->
-					<div> <!--  class="carousel-item active"> -->
-						<img src="<%=request.getContextPath()%>/resources/images/eventban1.png" alt="Los Angeles" width="100%" height="300px"/>
-					</div>
-<!-- 					<div class="carousel-item"> -->
-<%-- 						<img src="<%=request.getContextPath()%>/resources/images/eventban2.jpg" alt="Chicago" height="400px"> --%>
-<!-- 					</div> -->
-<!-- 					<div class="carousel-item"> -->
-<%-- 						<img src="<%=request.getContextPath()%>/resources/images/eventban2.jpg" alt="New York" height="400px"> --%>
-<!-- 					</div> -->
-				</div>
-				
-				<!-- Left and right controls -->
-				<!-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</a> <a class="carousel-control-next" href="#demo" data-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</a> -->
-			</div>
-		</div>
-	</div>
+	
 	<div class="row">
 		
 		<div class="col-sm-12">
@@ -77,28 +45,7 @@
 						</div>
 					</div>
 				</div>
-				<script type="text/javascript">
 				
-					function classCardListGet(){
-						$.ajax({
-							url:"classCardList",
-							success: function(data){
-								
-								$("#classCardList").html(data);
-							}
-							
-							
-						});
-						
-					}
-					
-					$(function(){ 
-						classCardListGet();
-						
-					});
-						
-	
-				</script>
 			
 			</div>
 			

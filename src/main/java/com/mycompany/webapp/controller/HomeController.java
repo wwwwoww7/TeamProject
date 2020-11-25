@@ -36,25 +36,31 @@ public class HomeController {
 
 	@GetMapping("/allCategory")
 	public String allCategory(Model model) {
+
+		logger.info("allCategory 실행");
+		
+		
+		List<ClassDto> classList = classService.getClassList(2);
+		model.addAttribute("HotclassList", classList);
+		
+		
 		model.addAttribute("category" ,"allCategory");
 		
-		
-		
-		return "learn/maincategory";
+		return "class/classcard";
 	}
 	
 	@GetMapping("/health")
 	public String healthCategory(Model model) {
 		model.addAttribute("category" ,"Health");
 		
-		return "learn/maincategory";
+		return "class/classcard";
 	}
 	
 	@GetMapping("/career")
 	public String careerCategory(Model model) {
 		model.addAttribute("category" ,"Career");
 		
-		return "learn/maincategory";
+		return "class/classcard";
 	}
 	
 	
@@ -86,8 +92,7 @@ public class HomeController {
 	public String classCardList(Model model) {
 
 		
-		List<ClassDto> classList = classService.getClassList(2);
-		model.addAttribute("HotclassList", classList);
+		
 		
 		
 		

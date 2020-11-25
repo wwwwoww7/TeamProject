@@ -54,71 +54,13 @@
 	</section>
 	
 	<section class="features3 cid-sh7HNKMuDe" id="features3-g">
-	    
-	    
+	     
 	    <div class="container">
 	        <div class="mbr-section-head">
 	            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>지금, 인기 TOP 00</strong></h4>
 	            
 	        </div>
-	        <div class="row mt-4">
-	            <div class="item features-image Ñol-12 col-md-6 col-lg-3">
-	                <div class="item-wrapper">
-	                    <div class="item-img">
-	                        <img src="<%=request.getContextPath() %>/resources/assets/images/mbr-579x386.jpg" alt="" data-slide-to="3">
-	                    </div>
-	                    <div class="item-content">
-	                        <h5 class="item-title mbr-fonts-style display-7"><strong>No Coding</strong></h5>
-	                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
-	                            <em>Card Subtitle</em>
-	                        </h6>
-	                        
-	                    </div>
-	                    <div class="mbr-section-btn item-footer mt-2"><a href="" class="btn item-btn btn-success display-7" target="_blank">Try &gt;</a></div>
-	                </div>
-	            </div><div class="item features-image Ñol-12 col-md-6 col-lg-3">
-	                <div class="item-wrapper">
-	                    <div class="item-img">
-	                        <img src="assets/images/mbr-1-579x772.jpeg" alt="" data-slide-to="0">
-	                    </div>
-	                    <div class="item-content">
-	                        <h5 class="item-title mbr-fonts-style display-7"><strong>Unique Styles</strong></h5>
-	                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
-	                            <em>Card Subtitle</em>
-	                        </h6>
-	                        
-	                    </div>
-	                    <div class="mbr-section-btn item-footer mt-2"><a href="" class="btn item-btn btn-warning display-7" target="_blank">Try &gt;</a></div>
-	                </div>
-	            </div><div class="item features-image Ñol-12 col-md-6 col-lg-3">
-	                <div class="item-wrapper">
-	                    <div class="item-img">
-	                        <img src="assets/images/mbr-1-579x386.jpg" alt="" data-slide-to="1">
-	                    </div>
-	                    <div class="item-content">
-	                        <h5 class="item-title mbr-fonts-style display-7"><strong>Mobile Friendly</strong></h5>
-	                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
-	                            <em>Card Subtitle</em>
-	                        </h6>
-	                        
-	                    </div>
-	                    <div class="mbr-section-btn item-footer mt-2"><a href="" class="btn item-btn btn-warning display-7" target="_blank">Try &gt;</a></div>
-	                </div>
-	            </div><div class="item features-image Ñol-12 col-md-6 col-lg-3">
-	                <div class="item-wrapper">
-	                    <div class="item-img">
-	                        <img src="assets/images/mbr-2-1920x1280.jpg" alt="" data-slide-to="3">
-	                    </div>
-	                    <div class="item-content">
-	                        <h5 class="item-title mbr-fonts-style display-7"><strong>Mobile Friendly</strong></h5>
-	                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
-	                            <em>Card Subtitle</em>
-	                        </h6>
-	                        
-	                    </div>
-	                    <div class="mbr-section-btn item-footer mt-2"><a href="" class="btn item-btn btn-warning display-7" target="_blank">Try &gt;</a></div>
-	                </div>
-	            </div>
+	        <div id="main-content" class="row mt-4">
 	            
 	            
 	        </div>
@@ -126,8 +68,6 @@
 	</section>
 	
 	<section class="gallery5 mbr-gallery cid-sh7IU3CgJD" id="gallery5-j">
-	    
-	
 	    
 	
 	    <div class="container">
@@ -360,6 +300,22 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
 	  
-  
+  	<script type="text/javascript">
+		
+		function allCategory(){
+			$.ajax({
+				url: "<%=request.getContextPath()%>/allCategory",
+				success: function(data){
+					$("#main-content").html(data);
+				}
+				
+			});
+		}
+		
+		$(function(){ 
+			allCategory(); 
+		});
+		
+	</script>
 	</body>
 </html>

@@ -1,509 +1,387 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%-- 2020. 10. 29. --%>
+
+
 
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>TEAM1</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-		<meta name="author" content="GeeksLabs">
-		<meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-		<link rel="shortcut icon" href="img/favicon.png"> 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<script src="<%=application.getContextPath()%>/resources/js/jquery.nicescroll.js" type="text/javascript"></script>
-		<script src="<%=application.getContextPath()%>/resources/js/jquery.slimscroll.min.js"></script>
-    	<script src="<%=application.getContextPath()%>/resources/js/jquery.autosize.min.js"></script> 
-		<script src="<%=application.getContextPath()%>/resources/js/scripts.js"></script>
-		<!-- bootstrap theme -->
-		<link href="<%=application.getContextPath()%>/resources/css/bootstrap-theme.css" rel="stylesheet">
-		<!--external css-->
-		<!-- font icon -->
-		<link href="<%=application.getContextPath()%>/resources/css/elegant-icons-style.css" rel="stylesheet" />
-		<link href="<%=application.getContextPath()%>/resources/css/font-awesome.min.css" rel="stylesheet" /> 
-		<link href="<%=application.getContextPath()%>/resources/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-		<!-- Custom styles -->
-		<link href="<%=application.getContextPath()%>/resources/css/style.css" rel="stylesheet"> 
-		<link href="<%=application.getContextPath()%>/resources/css/style-responsive.css" rel="stylesheet"> 
-	</head> 
-	<script type="text/javascript">
-		$(function(){
-			$('#sidebar > ul').hide();
-            $('#main-content').css({
-                'margin-left': '0px'
-            });
-            $('#sidebar').css({
-                'margin-left': '-180px'
-            });
-            $('#sidebar > ul').hide();
-            $("#container").addClass("sidebar-closed");
-		});
-	
-	</script>
-	<body>
-		<!-- container section start -->
-  		<section id="container" class="">
-			
-			<jsp:include page="/WEB-INF/views/include/header.jsp"/>
-			
-			<jsp:include page="/WEB-INF/views/include/menu.jsp"/>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/mbr-96x48.png" type="image/x-icon">
+  <meta name="description" content="Site Creator Description">
+  
+  
+  <title>classDetail</title>
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/formstyler/jquery.formstyler.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/formstyler/jquery.formstyler.theme.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/datepicker/jquery.datetimepicker.min.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
+  <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+  
+</head>
+<body>
+  <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
-			<!--main content start-->
-			<section id="main-content">
-			
-			
-			
-				<section class="wrapper">
-					<!--overview start-->
-					<div class="row">
-						<div class="col-lg-12">
-							<h3 class="page-header">
-								<i class="fa fa-shopping-cart fa-lg"></i>
-								Class Detail
-							</h3>
-							<ol class="breadcrumb">
-								<li><i class="fa fa-home"></i><a href="<%=application.getContextPath()%>">Home</a></li>
-								<li><i class="fa fa-lg"></i>Class Detail</li>
-							</ol>
-						</div>
-					</div>
-					<div class="row">
-						<!-- profile-widget -->
-						<div class="col-lg-12">
-							<div class="profile-widget profile-widget-info">
-								<div class="panel-body">
-									<div class="col-lg-2 col-sm-2">
-										<h4>Jenifer Smith</h4>
-										<div class="follow-ava">
-											<img src="<%=application.getContextPath()%>/resources/img/profile-widget-avatar.jpg" alt="">
-										</div>
-										<h6>Administrator</h6>
-									</div>
-									<div class="col-lg-4 col-sm-4 follow-info">
-										<p>Hello I’m Jenifer Smith, a leading expert in interactive
-											and creative design.</p>
-										<p>@jenifersmith</p>
-										<p>
-											<i class="fa fa-twitter">jenifertweet</i>
-										</p>
-										<h6>
-											<span><i class="icon_clock_alt"></i>11:05 AM</span> <span><i
-												class="icon_calendar"></i>25.10.13</span> <span><i
-												class="icon_pin_alt"></i>NY</span>
-										</h6>
-									</div>
-									<div class="col-lg-2 col-sm-6 follow-info weather-category">
-										<ul>
-											<li class="active">
-												<a href="javascript:openpop()">
-													<i class="fa fa-comments fa-2x"> </i><br>
-													Contrary to popular belief, 강의 보기
-												</a>
-											</li>
-												
-									
-										</ul>
-									</div>
-									<script type="text/javascript">
-										function openpop(){
-											open("classvideo","popup", "width=800, height=400, top=200, left=300");
-										}
-									</script>
-									<div class="col-lg-2 col-sm-6 follow-info weather-category">
-										<ul>
-											<li class="active">
-												<a href="classQA">
-													<i class="fa fa-bell fa-2x"> </i><br>
-													Contrary to popular belief, 강의 문의
-												</a>
-											</li>
-	
-										</ul>
-									</div>
-									<div class="col-lg-2 col-sm-6 follow-info weather-category">
-										<ul>
-											<li class="active">
-												<a href="javascript:putt()">
-													<i class="fa fa-shopping-cart fa-2x"> </i><br>
-													Contrary to popular belief, 장바구니 담기
-												</a>
-											</li>
-										</ul>
-									</div>
-									<script type="text/javascript">
-										function putt(user_id,class_No ){
-											var result = confirm("장바구니에 담으시겠습니까?");
-											if(result==true){
-												window.location.href="<%=application.getContextPath()%>/cart";
-											}
-																					
-										}
-									</script>
-										
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- page start-->
-					<div class="row">
-						<div class="col-lg-12">
-							<section class="panel">
-								<header class="panel-heading tab-bg-info">
-									<ul class="nav nav-tabs">
-										<li class="active">
-											<a data-toggle="tab" href="#profile"> 
-												<i class="icon-home"></i> 
-												강의 소개
-											</a>
-										</li>
-										<li>
-											<a data-toggle="tab" href="#profile"> 
-												<i class="icon-user"></i> 
-												커리큘럼
-											</a>
-										</li>
-										<li class="">
-											<a data-toggle="tab" href="#edit-profile">
-												<i class="icon-envelope"></i> 
-												강사 설명
-											</a>
-										</li>
-										<li class="">
-											<a data-toggle="tab" href="#recent-activity">
-												<i class="icon-envelope"></i> 
-												후기
-											</a>
-										</li>
-									</ul>
-								</header>
-								<div class="panel-body">
-									<div class="tab-content">
-										<!-- profile -->
-										<div id="profile" class="tab-pane">
-											<section class="panel">
-												<div class="bio-graph-heading">
-													Hello I’m Jenifer Smith,
-													a leading expert in interactive and creative design
-													specializing in the mobile medium. My graduation from Massey
-													University with a Bachelor of Design majoring in visual
-													communication.</div>
-												<div class="panel-body bio-graph-info">
-													<h1>Bio Graph</h1>
-													<div class="row">
-														<div class="bio-row">
-															<p>
-																<span>First Name </span>: Jenifer
-															</p>
-														</div>
-														<div class="bio-row">
-															<p>
-																<span>Last Name </span>: Smith
-															</p>
-														</div>
-														<div class="bio-row">
-															<p>
-																<span>Birthday</span>: 27 August 1987
-															</p>
-														</div>
-														<div class="bio-row">
-															<p>
-																<span>Country </span>: United
-															</p>
-														</div>
-														<div class="bio-row">
-															<p>
-																<span>Occupation </span>: UI Designer
-															</p>
-														</div>
-														<div class="bio-row">
-															<p>
-																<span>Email </span>:jenifer@mailname.com
-															</p>
-														</div>
-														<div class="bio-row">
-															<p>
-																<span>Mobile </span>: (+6283) 456 789
-															</p>
-														</div>
-														<div class="bio-row">
-															<p>
-																<span>Phone </span>: (+021) 956 789123
-															</p>
-														</div>
-													</div>
-												</div>
-											</section>
-											<section>
-												<div class="row"></div>
-											</section>
-										</div>
-										<div id="recent-activity" class="tab-pane active">
-											<div class="profile-activity">
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Jonatanh Doe</a> at 4:25pm, 30th Octmber 2014
-															</p>
-															<p>It is a long established fact that a reader will be
-																distracted layout</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Jhon Loves </a> at 5:25am, 30th Octmber 2014
-															</p>
-															<p>Knowledge speaks, but wisdom listens.</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Rose Crack</a> at 5:25am, 30th Octmber 2014
-															</p>
-															<p>Pellentesque habitant morbi tristique senectus et
-																netus et malesuada fames ac turpis egestas.</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Jimy Smith</a> at 5:25am, 30th Octmber 2014
-															</p>
-															<p>Pellentesque habitant morbi tristique senectus et
-																netus et malesuada fames ac turpis egestas. Vestibulum
-																tortor quam, feugiat vitae, ultricies eget, tempor sit
-																amet, ante. Donec eu libero sit amet quam egestas semper.
-																Aenean ultricies mi vitae est. Mauris placerat eleifend
-																leo.</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Maria Willyam</a> at 5:25am, 30th Octmber
-																2014
-															</p>
-															<p>Pellentesque habitant morbi tristique senectus et
-																netus et malesuada fames ac turpis egestas. Vestibulum
-																tortor quam, feugiat vitae, ultricies eget, tempor sit
-																amet, ante. Donec eu libero sit amet quam egestas semper.
-																Aenean ultricies mi vitae est. Mauris placerat eleifend
-																leo. Quisque sit amet est et sapien ullamcorper pharetra.
-																Vestibulum erat wisi, condimentum sed, commodo vitae,
-																ornare sit amet, wisi. Aenean fermentum, elit eget
-																tincidunt condimentum, eros ipsum rutrum orci, sagittis
-																tempus lacus enim ac dui. Donec non enim in turpis
-																pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-																cursus faucibus, tortor neque egestas augue, eu vulputate
-																magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-																tincidunt quis, accumsan porttitor, facilisis luctus,
-																metus</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Sarah saw</a> at 5:25am, 30th Octmber 2014
-															</p>
-															<p>Knowledge speaks, but wisdom listens.</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Layla night</a> at 5:25am, 30th Octmber 2014
-															</p>
-															<p>Pellentesque habitant morbi tristique senectus et
-																netus et malesuada fames ac turpis egestas.</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Andriana lee</a> at 5:25am, 30th Octmber 2014
-															</p>
-															<p>Pellentesque habitant morbi tristique senectus et
-																netus et malesuada fames ac turpis egestas. Vestibulum
-																tortor quam, feugiat vitae, ultricies eget, tempor sit
-																amet, ante. Donec eu libero sit amet quam egestas semper.
-																Aenean ultricies mi vitae est. Mauris placerat eleifend
-																leo.</p>
-														</div>
-													</div>
-												</div>
-												<div class="act-time">
-													<div class="activity-body act-in">
-														<span class="arrow"></span>
-														<div class="text">
-															<a href="#" class="activity-img"><img class="avatar"
-																src="<%=application.getContextPath()%>/resources/img/chat-avatar.jpg" alt=""></a>
-															<p class="attribution">
-																<a href="#">Maria Willyam</a> at 5:25am, 30th Octmber
-																2014
-															</p>
-															<p>Pellentesque habitant morbi tristique senectus et
-																netus et malesuada fames ac turpis egestas. Vestibulum
-																tortor quam, feugiat vitae, ultricies eget, tempor sit
-																amet, ante. Donec eu libero sit amet quam egestas semper.
-																Aenean ultricies mi vitae est. Mauris placerat eleifend
-																leo. Quisque sit amet est et sapien ullamcorper pharetra.
-																Vestibulum erat wisi, condimentum sed, commodo vitae,
-																ornare sit amet, wisi. Aenean fermentum, elit eget
-																tincidunt condimentum, eros ipsum rutrum orci, sagittis
-																tempus lacus enim ac dui. Donec non enim in turpis
-																pulvinar facilisis. Ut felis. Praesent dapibus, neque id
-																cursus faucibus, tortor neque egestas augue, eu vulputate
-																magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-																tincidunt quis, accumsan porttitor, facilisis luctus,
-																metus</p>
-														</div>
-													</div>
-												</div>
-	
-											</div>
-										</div>
-										
-										<!-- edit-profile -->
-										<div id="edit-profile" class="tab-pane">
-											<section class="panel">
-												<div class="panel-body bio-graph-info">
-													<h1>Profile Info</h1>
-													<form class="form-horizontal" role="form">
-														<div class="form-group">
-															<label class="col-lg-2 control-label">First Name</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="f-name"
-																	placeholder=" ">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">Last Name</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="l-name"
-																	placeholder=" ">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">About Me</label>
-															<div class="col-lg-10">
-																<textarea name="" id="" class="form-control" cols="30"
-																	rows="5"></textarea>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">Country</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="c-name"
-																	placeholder=" ">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">Birthday</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="b-day"
-																	placeholder=" ">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">Occupation</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="occupation"
-																	placeholder=" ">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">Email</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="email"
-																	placeholder=" ">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">Mobile</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="mobile"
-																	placeholder=" ">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-lg-2 control-label">Website URL</label>
-															<div class="col-lg-6">
-																<input type="text" class="form-control" id="url"
-																	placeholder="http://www.demowebsite.com ">
-															</div>
-														</div>
-	
-														<div class="form-group">
-															<div class="col-lg-offset-2 col-lg-10">
-																<button type="submit" class="btn btn-primary">Save</button>
-																<button type="button" class="btn btn-danger">Cancel</button>
-															</div>
-														</div>
-													</form>
-												</div>
-											</section>
-										</div>
-									</div>
-								</div>
-							</section>
-						</div>
-					</div>
-	
-				</section>
-				
-				
-				
-				
-			</section>
-			
-			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+	<section class="tabs content18 cid-shfqnnLy7B" id="tabs1-3u">
 
+    
 
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2"><strong>Class Detail</strong></h3>
+                
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 col-md-8">
+                <ul class="nav nav-tabs mb-4" role="tablist">
+                    <li class="nav-item first mbr-fonts-style"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3u_tab0" aria-selected="true"><strong>This class is...</strong></a></li>
+                    <li class="nav-item"><a class="nav-link mbr-fonts-style active display-7" role="tab" data-toggle="tab" href="#tabs1-3u_tab1" aria-selected="true">
+                            <strong>Research</strong>
+                        </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link mbr-fonts-style display-7" role="tab" data-toggle="tab" href="#tab3" aria-selected="true">
+                            <strong>Development</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mbr-fonts-style display-7" role="tab" data-toggle="tab" href="#tab4" aria-selected="true">
+                            <strong>Phases</strong>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <div class="tab-content">
+                    <div id="tab1" class="tab-pane in active" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="mbr-text mbr-fonts-style display-7">
+                                    Mobirise is a free offline app for Windows and Mac to easily create small/medium
+                                    websites, landing pages, online resumes and portfolios. 3100+ beautiful website
+                                    blocks, templates and themes help you to start easily.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab-pane" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="mbr-text mbr-fonts-style display-7">
+                                    Mobile web traffic overtook desktop one in 2016 and will only grow, and that's why
+                                    it's important to create websites that look good on all devices. No special actions
+                                    required, all sites you make with the Builder are mobile-friendly. You don't have to
+                                    create a special mobile version of your website, it will adapt automagically. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab3" class="tab-pane" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="mbr-text mbr-fonts-style display-7">
+                                    Mobirise is an easy and simple free website builder - just drop site elements to
+                                    your page, add content and style it to look the way you like.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab4" class="tab-pane" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="mbr-text mbr-fonts-style display-7">
+                                    Free Website Builder offers a huge collection of 2500+ website blocks, templates and
+                                    themes with thousands flexible options. Combine blocks from different themes to
+                                    create a unique mix.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-		</section>
-	</body>
+<section class="features18 cid-shfrsDVBPy" id="features19-3w">
+
+    
+
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card col-12 col-lg">
+                <div class="card-wrapper">
+                    <h6 class="card-title mbr-fonts-style mb-4 display-5">
+                        <strong>Detail</strong></h6>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        All sites you create with the Mobirise web builder are mobile-friendly natively. No special actions required. You can preview your site inside the app. Check the icons on the top.</p>
+                    <div class="mbr-section-btn"><a class="btn btn-success display-4" href="javascript:openpop()" target="_blank">Show Class</a></div>
+                </div>
+            </div>
+            <script type="text/javascript">
+				function openpop(){
+					open("classvideo","popup", "width=800, height=400, top=200, left=300");
+				}
+			</script>
+            
+            
+            
+            <div class="col-12 col-lg-6">
+                <div class="image-wrapper">
+                    <img src="assets/images/mbr-1080x720.jpg" alt="Mobirise">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="step3 cid-shfrGnGtTq" id="step3-3x">
+
+    
+
+    
+    
+    <div class="container">
+        <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-5"><strong>
+            curr</strong></h2>
+        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-5">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit
+        </h3>
+        <div class="media-container-row">
+            <div class="media-block" style="width: 49%;">
+                <div class="mbr-figure">
+                    <img src="assets/images/background6.jpg">
+                </div>
+            </div>
+            <div class="step-container">
+                <div class="card separline pb-4">
+                    <div class="step-element d-flex">
+                        <div class="step-wrapper pr-3">
+                            <div class="step d-flex align-items-center justify-content-center">
+                                1
+                            </div>
+                        </div>          
+                        <div class="step-text-content">
+                            <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5">Specification
+                            </h4>
+                            <p class="mbr-step-text mbr-fonts-style display-7">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat libero, bibendum in libero tempor, luctus volutpat ligula. Integer fringilla porttitor pretium.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card separline pb-4">
+                    <div class="step-element d-flex">
+                        <div class="step-wrapper pr-3">
+                            <div class="step d-flex align-items-center justify-content-center">
+                                2
+                            </div>
+                        </div>          
+                        <div class="step-text-content">
+                            <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5">Project Planning</h4>
+                            <p class="mbr-step-text mbr-fonts-style display-7">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat libero, bibendum in libero tempor, luctus volutpat ligula. Integer fringilla porttitor pretium.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="step-element d-flex">
+                        <div class="step-wrapper pr-3">
+                            <div class="step d-flex align-items-center justify-content-center">
+                                3
+                            </div>
+                        </div>          
+                        <div class="step-text-content">
+                            <h4 class="mbr-step-title pb-3 mbr-fonts-style display-5">Deployment
+                            </h4>
+                            <p class="mbr-step-text mbr-fonts-style display-7">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat libero, bibendum in libero tempor, luctus volutpat ligula. Integer fringilla porttitor pretium.</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials1 cid-shfrSWLxat" id="testimonials1-3y">
+
+    
+
+    
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 align-center">
+                <h2 class="pb-3 mbr-fonts-style display-5"><strong>
+                    Tutor Detail</strong></h2>
+                <h3 class="mbr-section-subtitle mbr-light pb-3 mbr-fonts-style display-5">
+                    This theme is based on Bootstrap 4 - most powerful mobile first framework
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-3 mt-2">
+        <div class="media-container-row">
+            <div class="mbr-testimonial p-3 align-center col-12 col-md-6">
+                <div class="panel-item p-3">
+                    <div class="card-block">
+                        <div class="testimonial-photo">
+                            <img src="assets/images/face1.jpg">
+                        </div>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
+                             John Smith
+                        </div>
+                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
+                               Developer
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            
+
+            
+
+            
+
+            
+        </div>
+    </div>   
+</section>
+
+<section class="testimonials2 cid-shfsCW41kr" id="testimonials2-3z">
+    
+    
+    <div class="container">
+        <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
+            <strong>reviews</strong></h3>
+        <div class="row justify-content-center">
+            <div class="card col-12 col-md-6">
+                <p class="mbr-text mbr-fonts-style mb-4 display-7">Themes in the Mobirise website builder offer multiple blocks: intros, sliders, galleries, forms, articles, and so on. Start a project and click on the red plus buttons to see the blocks available for your theme.</p>
+                <div class="d-flex mb-md-0 mb-4">
+                    <div class="image-wrapper">
+                        <img src="assets/images/team1.jpg" alt="Mobirise">
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="name mbr-fonts-style mb-1 display-4">
+                            <strong>Martin Smith</strong>
+                        </p>
+                        <p class="position mbr-fonts-style display-4">
+                            <strong>Client</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-12 col-md-6">
+                <p class="mbr-text mbr-fonts-style mb-4 display-7">You can have multiple pages in each project in Mobirise website builder software. Don't forget to set links to your pages after creating them. You can use menu blocks to create navigation for your site visitors.</p>
+                <div class="d-flex mb-md-0 mb-4">
+                    <div class="image-wrapper">
+                        <img src="assets/images/team2.jpg" alt="Mobirise">
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="name mbr-fonts-style mb-1 display-4">
+                            <strong>Jessica Brown</strong>
+                        </p>
+                        <p class="position mbr-fonts-style display-4">
+                            <strong>Client</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="form8 cid-shfsJcwEtz" id="form8-40">
+    
+    
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>class QA</strong></h3>
+            
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <form action="" method="POST" class="mbr-form form-with-styler mx-auto" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="JARFjkw3m2gJpaVnqU3mmcOaQJeIHQdqYdtpb0ASm3L6laY9m5jF82+gKIWQUX0i5P5qBWvFL5h4L9TkGHqYzi/D8+VqYXuw+4RTLTdW1Pla+f6u06XFWQBPCRGdxgO/">
+                    <div class="">
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>
+                    </div>
+                    <div class="dragArea row">
+                        <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="name">
+                            <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form8-40">
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="email">
+                            <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email-form8-40">
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"><button type="submit" class="btn btn-success display-4">Submit</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+
+	
+	 <script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/popper/popper.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/tether/tether.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/smoothscroll/smooth-scroll.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/nav-dropdown.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/navbar-dropdown.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/touchswipe/jquery.touch-swipe.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/parallax/jarallax.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/masonry/masonry.pkgd.min.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/imagesloaded/imagesloaded.pkgd.min.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
+	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+  
+</body>
 </html>
