@@ -32,7 +32,6 @@
   
   
   
-  
 </head>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
@@ -48,6 +47,16 @@
 	                </h3>
 	            </div>
 	        </div>
+	        
+	        
+	        
+	         <div class="mbr-section-btn">
+               	<a class="btn btn-success display-4" href="#">장바구니 담기</a>
+             </div>
+	        
+	        
+	        
+	        
 	        <div class="row justify-content-center mt-4">
 	            <div class="col-12 col-md-12">
 	                <ul class="nav nav-tabs mb-4" role="tablist">
@@ -118,7 +127,7 @@
 								            
 								            <div class="col-12 col-lg-6">
 								                <div class="image-wrapper">
-								                    <img style="width: 500px;" src="<%=application.getContextPath()%>/resources/images/class/${ classOne.class_thum}" alt="Mobirise">
+								                    <img src="<%=application.getContextPath()%>/resources/images/class/${ classOne.class_thum}" alt="Mobirise">
 								                </div>
 								            </div>
 								        </div>
@@ -459,6 +468,13 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+	  <style type="text/css">
+	  
+	  	img {
+	  	  width: 100%;
+	  	 
+	  	}
   
+  	</style>
 </body>
 </html>
