@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%-- 2020. 11. 24. --%>
 
-  <section class="menu cid-shfSqL1oQ1" once="menu" id="menu1-4a">
+  <section class="menu cid-shfokUU9e4" once="menu" id="menu1-4a">
     <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="hamburger">
@@ -18,7 +18,7 @@
                          <img src="<%=request.getContextPath()%>/resources/assets/images/mbr-96x48.png" alt="Mobirise" style="height: 3.8rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-5" href="https://mobiri.se">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-5" href="<%=request.getContextPath()%>">
                         BAN숙</a></span>
             </div>
         </div>
