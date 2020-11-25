@@ -51,7 +51,6 @@
 	                	<a class="nav-link link text-white dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">
 	                 		<img src="<%=application.getContextPath()%>/resources/profile/tester7.png" class=" mx-2 rounded-circle" width="30px" height="30px"/>
 	                        <sec:authentication property="name"/>
-							
 	                    </a>
 	                    <div class="dropdown-menu">
 	                    	<sec:authorize access="hasRole('ROLE_USER')">

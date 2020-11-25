@@ -81,6 +81,7 @@
                         </div>
                         <div class="col-md-12 input-group" data-for="mtype">
                         	 <span class="input-group-addon" style="width:80px;">가입유형</span>  
+                        	 
                         	<%--            	
 							<select id="mtype" name="mtype" >
 								<!-- <option value="ROLE_ADMIN">관리자</option> -->
