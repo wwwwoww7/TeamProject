@@ -4,7 +4,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="cart" type="com.mycompany.webapp.dto.CartDto" />
-		<typeAlias alias="user" type="com.mycompany.webapp.dto.UserDto" />
+		<typeAlias alias="member" type="com.mycompany.webapp.dto.MemberDto" />
 		<typeAlias alias="class" type="com.mycompany.webapp.dto.ClassDto" />
 		<typeAlias alias="classQa" type="com.mycompany.webapp.dto.ClassQADto" />
 		<typeAlias alias="classNotice" type="com.mycompany.webapp.dto.ClassNoticeDto" />

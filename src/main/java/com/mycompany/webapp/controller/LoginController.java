@@ -30,9 +30,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mycompany.webapp.dao.UserDao;
-import com.mycompany.webapp.dto.UserDto;
-import com.mycompany.webapp.service.UserService;
+import com.mycompany.webapp.dao.MemberDao;
+import com.mycompany.webapp.dto.MemberDto;
+import com.mycompany.webapp.service.MemberService;
 /**
  * 2020. 11. 17 
  *
@@ -42,72 +42,73 @@ import com.mycompany.webapp.service.UserService;
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
+	@RequestMapping("/login")
+	public String content() {	
+		return "login/login";
+	}
 	
-	  @RequestMapping("/login")
-	  public String Login() {
-	  	  return "login/login";
-	  }
-		///////////// 
-		/*
-		 * @GetMapping("/loginForm") public String loginForm() { return
-		 * "ch17/loginForm"; //forward. }
-		 */
-		
-		@RequestMapping("/loginInfo")
-		public String loginInfo() {
-			SecurityContext securityContext = SecurityContextHolder.getContext();
-			Authentication authentication = securityContext.getAuthentication();
+	@GetMapping("/loginForm")
+	public String loginForm() {
+		logger.info("실행");
+		return "login/loginForm"; //forward.
+	}
+	
+	@RequestMapping("/loginInfo")
+	public String loginInfo() {
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		Authentication authentication = securityContext.getAuthentication();
+		logger.info("실행");
+		//로그인 여부
+		if(authentication.isAuthenticated()) {
+			String mid = authentication.getName();
+			logger.info("로그인한 아이디:"+mid);
 			
-			//로그인 여부
-			if(authentication.isAuthenticated()) {
-				String user_id = authentication.getName();
-				logger.info("로그인한 아이디:"+user_id);
-				
-				for(GrantedAuthority authority : authentication.getAuthorities()) {
-					String user_type = authority.getAuthority();
-					logger.info("로그인한 아이디의 권한" + user_type);
-				}
-				
-				WebAuthenticationDetails details = (WebAuthenticationDetails) authentication.getDetails();
-				String clientIp = details.getRemoteAddress();
-				logger.info("로그인한PC IP:" + clientIp);
+			for(GrantedAuthority authority : authentication.getAuthorities()) {
+				String mtype = authority.getAuthority();
+				logger.info("로그인한 아이디의 권한" + mtype);
 			}
-			return "home";
+			
+			WebAuthenticationDetails details = (WebAuthenticationDetails) authentication.getDetails();
+			String clientIp = details.getRemoteAddress();
+			logger.info("로그인한PC IP:" + clientIp);
 		}
-		///////////////////
-		
-		@RequestMapping("/encodePassword")
-		public String encodePassword(String mpassword) {
-			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-			String encodedPassword = passwordEncoder.encode(mpassword);//비밀번호가 암호화 된다.
-			logger.info("암호화된 비밀번호"+encodedPassword);
-			return "home";
-		}
-		
-		@Resource
-		private UserService service;
-		
-		@PostMapping("/join")
-		public String Join(UserDto user) throws IllegalStateException, IOException {
-		
-			  if(!user.getMphotoAttach().isEmpty()) { 
-				  String originalFileName = user.getMphotoAttach().getOriginalFilename(); 
-				  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
-				  String saveName = user.getUser_id()+extName;
-				  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
-				  user.getMphotoAttach().transferTo(dest);
-				  user.setUser_pro_img(saveName); 
-			  
-			  } else { 
-				  user.setUser_pro_img("unnamed.jpg"); } 
-				  PasswordEncoder
-				  passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-				  String encodedPassword = passwordEncoder.encode(user.getUser_pw());
-				  user.setUser_pw(encodedPassword); 
-				  user.setUser_enabled(true);
-				  service.join(user);
-				  return "home";
-		}
+		return "home";
+	}
+	
+	
+	  @RequestMapping("/encodePassword")
+	  public String encodePassword(String mpassword) {
+		  logger.info("실행");
+		  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder(); 
+		  String encodedPassword = passwordEncoder.encode(mpassword);//비밀번호가 암호화 된다.
+		  logger.info("암호화된 비밀번호"+encodedPassword);
+		  return "home"; 
+	}
+	 
+	
+	@Resource
+	private MemberService service;
+	
+	@PostMapping("/join")
+	public String Join(MemberDto member) throws IllegalStateException, IOException {
+	
+		  if(!member.getMphotoAttach().isEmpty()) { 
+			  String originalFileName = member.getMphotoAttach().getOriginalFilename(); 
+			  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+			  String saveName = member.getMid()+extName;
+			  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
+			  member.getMphotoAttach().transferTo(dest);
+			  member.setMpro_img(saveName); 
+		  
+		  } else { 
+			  member.setMpro_img("unnamed.jpg"); } 
+			  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			  String encodedPassword = passwordEncoder.encode(member.getMpw());
+			  member.setMpw(encodedPassword); 
+			  member.setMenabled(true);
+			  service.join(member);
+			  return "home";
+	}
 	
 	@GetMapping("/join")
 	public String Joinmove() {

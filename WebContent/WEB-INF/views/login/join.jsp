@@ -37,32 +37,32 @@
 						</p>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="icon_profile"></i> 아 이 디 </span>
-							<input type="text" name="user_id" class="form-control" placeholder="ID"autofocus>
+							<input type="text" name="mid" class="form-control" placeholder="ID"autofocus>
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="icon_key_alt"></i>비 밀 번 호</span>
-							<input type="password" name="user_pw" class="form-control" placeholder="Password">
+							<input type="password" name="mpw" class="form-control" placeholder="Password">
 						</div>	
 						<div class="input-group">
 							<span class="input-group-addon"><i class="icon_profile"></i> 이 름 </span>
-							<input type="text" name="user_nm" class="form-control" placeholder="Username"autofocus>
+							<input type="text" name="mname" class="form-control" placeholder="Username"autofocus>
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="icon_profile"></i> 닉 네 임</span>
-							<input type="text" name="user_nick" class="form-control" placeholder="Nickname"autofocus>
+							<input type="text" name="mnick" class="form-control" placeholder="Nickname"autofocus>
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="icon_profile"></i>핸드폰번호</span>
-							<input type="text" name="user_tel" class="form-control" placeholder="010-xxxx-xxxx" autofocus>
+							<input type="text" name="mtel" class="form-control" placeholder="010-xxxx-xxxx" autofocus>
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="icon-envelope-l"></i>이 메 일</span>
-							<input type="text" name="user_email" class="form-control" placeholder="xxx@xxxx.xxx">
+							<input type="text" name="memail" class="form-control" placeholder="xxx@xxxx.xxx">
 						</div>
 					
 						<div class="input-group">
 							<div class="input-group-prepend"><span class="input-group-text">가입 유형</span></div>
-							<select name="user_type" class="form-control">
+							<select name="mtype" class="form-control">
 								<!-- <option value="ROLE_ADMIN">관리자</option> -->
 								<option value="ROLE_TUTOR">강사</option>
 								<option value="ROLE_USER" selected>수강생</option>

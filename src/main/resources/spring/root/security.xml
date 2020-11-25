@@ -28,8 +28,8 @@
 		<!--  이 앞에 contextroot까지 생략되어 있는 것 -->
 		<security:form-login login-page="/login/login"
 					 login-processing-url="/login"	
-					 username-parameter="user_id"
-					 password-parameter="user_pw"
+					 username-parameter="mid"
+					 password-parameter="mpw"
 					 authentication-success-handler-ref="authenticationSuccessHandler"
 					 authentication-failure-handler-ref="authenticationFailureHandler"/>			 
 						 
@@ -43,7 +43,7 @@
 		<!-- /path/path/**, /path/method* -->
 		
 		
-		<security:intercept-url pattern="/ch17/admin*" access="hasRole('ROLE_ADMIN')"/> <!-- admin*: 경로, admin:이름 -->
+		<security:intercept-url pattern="/login/admin*" access="hasRole('ROLE_ADMIN')"/> <!-- admin*: 경로, admin:이름 -->
 		<!-- 곽혜빈이 지운 부분
 		<security:intercept-url pattern="/ch17/manager*" access="hasRole('ROLE_MANAGER')"/>
 		<security:intercept-url pattern="/ch17/user*" access="isAuthenticated()"/>	
@@ -106,8 +106,8 @@
 	<!-- USER로 해줘야하는지 확신이 안듬.11.24 -->
 	<security:jdbc-user-service id="jdbcUserService"
 		data-source-ref="dataSource"
-		users-by-username-query="select user_id, user_pw, user_enabled from user where user_id=?"
-		authorities-by-username-query="select user_id, user_type from user where user_id=?"/>
+		users-by-username-query="select mid, mpw, menabled from member where mid=?"
+		authorities-by-username-query="select mid, mtype from member where mid=?"/>
 		
 	<!-- 권한 계층 설정 -->
 	<bean id="roleHierarchyAuthoritiesMapper" 

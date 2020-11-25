@@ -28,51 +28,24 @@
 	<body class="login-img3-body">
 		<div class="container">
 			<jsp:include page="/WEB-INF/views/include/header.jsp"/>
-				<form class="login-form" action="login">
+			<form class="login-form" action="login">
 				<div class="login-wrap">
 					<p class="login-img">
 						<i class="icon_lock_alt"></i>
 					</p>
 					
 					<sec:authorize access="isAnonymous()">
-						<div>
-							<form method="post" action="<%=application.getContextPath()%>/login/login">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_profile"></i> 아 이 디 </span>
-									<input type="text" class="form-control" placeholder="ID" value="${user_id}" name="user_id" autofocus>
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon"><i class="icon_key_alt"></i>비밀번호</span>
-									<input type="password" class="form-control" placeholder="Password" name="user_pw">
-								</div>
-								<label class="checkbox">
-									<span class="pull-right">
-										<a href="<%=request.getContextPath()%>/login/findpw"> Forgot Password?</a>
-									</span>
-								</label>
-								<input class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Login"/>
-								<input class="btn btn-info btn-lg btn-block" name="submit" type="button" value="Join" onclick="join()"/>
-								<script>
-									function join() {
-										location.href = "<%=application.getContextPath()%>/login/join";
-									}
-								</script>
-							</form>
-							<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">		
-								<div class="alert alert-danger" style="margin-top:10px" role="alert" style="width:auto;">
-									아이디 또는 비밀번호가 잘못되었습니다. 
-								</div>
-							</c:if>
-						</div>
-					</sec:authorize>			
+							<a class="btn btn-info" href="loginForm">Login Form</a>
+					</sec:authorize>
+						
 					<sec:authorize access="isAuthenticated()">
-							<sec:authentication property="user_id"/>님 환영합니다.
-							<form method="post" action="${pageContext.request.contextPath}/logout" style="display:inline-block;">
-								<input class="btn btn-info" type="submit" value='Logout'/><!-- 로그아웃 할 때도 POST 방식으로 선언해야 한다. -->
-							</form>
-							
-							<a class="btn btn-info" href="<%=application.getContextPath()%>/login/loginInfo">Login Info</a>
-					</sec:authorize>	
+						<sec:authentication property="name"/>님 환영합니다.
+						<form method="post" action="${pageContext.request.contextPath}/logout" style="display:inline-block;">
+						    <input class="btn btn-info" type="submit" value='Logout'/>
+						</form>
+						
+						<a class="btn btn-info" href="<%=application.getContextPath()%>/login/loginInfo">Login Info</a>
+				</sec:authorize>			
 				</div>
 			</form>
 		</div>	
