@@ -1,32 +1,36 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%-- 2020. 10. 29. --%>
 
 <!DOCTYPE html>
-<html  >
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  
-  <title>cart</title>
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/tether/tether.min.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/datatables/data-tables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
-  <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additionalcart.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
-  
-</head>
-<style>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>TEAM1</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+		<meta name="author" content="GeeksLabs">
+		<meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+		<link rel="shortcut icon" href="img/favicon.png"> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="<%=application.getContextPath()%>/resources/js/jquery.nicescroll.js" type="text/javascript"></script>
+		<script src="<%=application.getContextPath()%>/resources/js/jquery.slimscroll.min.js"></script>
+    	<script src="<%=application.getContextPath()%>/resources/js/jquery.autosize.min.js"></script> 
+		<script src="<%=application.getContextPath()%>/resources/js/scripts.js"></script>
+		<!-- bootstrap theme -->
+		<link href="<%=application.getContextPath()%>/resources/css/bootstrap-theme.css" rel="stylesheet">
+		<!--external css-->
+		<!-- font icon -->
+		<link href="<%=application.getContextPath()%>/resources/css/elegant-icons-style.css" rel="stylesheet" />
+		<link href="<%=application.getContextPath()%>/resources/css/font-awesome.min.css" rel="stylesheet" /> 
+		<link href="<%=application.getContextPath()%>/resources/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+		<!-- Custom styles -->
+		<link href="<%=application.getContextPath()%>/resources/css/style.css" rel="stylesheet"> 
+		<link href="<%=application.getContextPath()%>/resources/css/style-responsive.css" rel="stylesheet"> 
+	</head>
+	<style>
 		#basket {
 			border-bottom: 1px solid #CCC; 
 			-webkit-border-radius: 0px;
@@ -70,11 +74,13 @@
 		.pay_table tr{
 			text-align:center;
 			height:30px;
+			/* border : 1px solid #000;
+			/* border-top:2px solid #945b00; */
+			/* border-bottom:1px solid #CCC;  */ 
 			font-weight: bold;
 			font-size: 15px;
 		}
 		.pay_table td{
-			
 			text-align:center;
 			padding: 20px 0 ;
 			margin : 10px; 
@@ -85,14 +91,14 @@
 			text-align:center;
 			width:100px;
 			height:30px;
-			border-right:1px solid #c1c1c1;
-			border-top: 1px solid #c1c1c1;  
+			border-right:1px solid #CCC;  
+			border-bottom:1px solid #CCC; 
 			font-weight: bold;
 			font-size: 15px;
 			color: #690700;
 		}
 		.pay_table td.cont{
-			border-top: 1px solid #c1c1c1;  
+			border-bottom:1px solid	#CCC;
 			text-align:center;
 			width:200px;
 			height:30px;
@@ -105,25 +111,53 @@
 			font-size: 15px;
 		}
 		.pay_table tr.warr{ 
-			border-top:2px solid #945b00;
 			font-size: 5px;
+			border-top:2px solid #945b00;
 			color:red; 
 			margin:10px;
 		}
 	</style>
-<body>
-  <jsp:include page="/WEB-INF/views/include/header.jsp"/>
+	<script type="text/javascript">
+		$(function(){
+			$('#sidebar > ul').hide();
+            $('#main-content').css({
+                'margin-left': '0px'
+            });
+            $('#sidebar').css({
+                'margin-left': '-180px'
+            });
+            $('#sidebar > ul').hide();
+            $("#container").addClass("sidebar-closed");
+		});
+	</script>
+	<body>
+		<!-- container section start -->
+  		<section id="container" class="">
+			
+			<jsp:include page="/WEB-INF/views/include/header.jsp"/>
+			
+			<jsp:include page="/WEB-INF/views/include/menu.jsp"/>
+
+			<!--main content start-->
+			<section id="main-content">
+			
+			
+			
+				<section class="wrapper">
+					<!--overview start-->
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="page-header">
+								<i class="fa fa-shopping-cart fa-lg"></i> Cart
+							</h3>
+							<ol class="breadcrumb">
+								<li><i class="fa fa-home"></i><a href="<%=application.getContextPath()%>">Home</a></li>
+								<li><i class="fa fa-shopping-cart fa-lg"></i>Cart</li>
+							</ol>
+						</div>
+					</div>
 	
-	
-	<section class="section-table cid-shasoJbvYr" id="table1-23">
-	
-	  
-	  
-	  <div class="container container-table">
-	      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><strong>
-	         CART</strong></h2>
-	      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5">Get your Classes!</h3>
-	     
+				<div class="h-50">
 					<div class="col-lg-12">
 						<div id="basket">
 							<h3>주문상품확인</h3>
@@ -135,7 +169,6 @@
 					</div>	
 					<br/>
 					<br/>
-	        <div class="container">
 					<div class="col-lg-12">
 						<div id="blah">
 							<div id="blah2">
@@ -147,7 +180,7 @@
 									</ol>
 							</div>
 						</div>
-						<table class="pay_table" style="width:600px">
+						<table class="pay_table">
 							<thead>
 								<tr>
 									<td class="name" >상점명</td>
@@ -176,10 +209,11 @@
 							   				<input type="checkbox" name="checkAll" class="chk" id="checkAll" />전체동의
 							   				<input type="checkbox" name="chk" class="chk" id="chk"/>이용약관동의
 							   				<input type="checkbox" name="chk" class="chk" id="chk"/>개인정보 처리방침 동의
+							   			</div>
 						 	  		<script type="text/javascript">
 							 	  		
 							 	  		// 체크박스 전체 선택
-									   			$("#checkAll").click(function() {
+									   			$("#checkAll").click(function () {
 									   				if($("#checkAll").is(":checked")){
 									   					$(".chk").prop("checked", true);
 									   				}else{
@@ -187,64 +221,45 @@
 									   				}
 									   			});
 									   			 
-									   		// 체크박스 개별 선택
+									   		 // 체크박스 개별 선택
 									   			$(".chk").click(function(){
 													if($("input[name='chk']:checked").length==2){
 														$("#checkAll").prop("checked",true);
 													}else{
 														$("#checkAll").prop("checked",false);
 													}
-												});  
+												}); 
 							 	  		
 						   			</script>
-						   			</div>
 						   			</td>
 						        </tr>
 					   		</tbody>
 					   		<tfoot>
-									<tr>
-										<td colspan="2">
-											<div class="mbr-section-btn item-footer mt-2">
-	   								       	<a class="btn item-btn btn-warning display-7" href="javascript:paycomplate()">결제하기</a>
-												<script type="text/javascript">
-								   					function paycomplate(){
-								   						if($("input[name='checkAll']:checked").length>0){
-								   							location.href="<%=application.getContextPath()%>/cart/pay_complete";
-								   						}else{
-								   							var result = alert("이용약관동의 모두 체크 부탁드립니다."); 
-								   						}
-								   					}
-							   						
-							   					</script>
-							   					</div>
-					   					</td>
-					   				</tr>
+								<tr>
+									<td colspan="2">
+										<a class="btn btn-info" href="javascript:paycomplate()">결제하기</a>	
+										<script type="text/javascript">
+						   					function paycomplate(){
+						   						if($("input[name='checkAll']:checked").length>0){
+						   							location.href="<%=application.getContextPath()%>/cart/pay_complate";
+						   						}else{
+						   							var result = alert("이용약관동의 모두 체크 부탁드립니다."); 
+						   						}
+						   					}
+					   						
+					   					</script>
+					   				</td>
+					   			</tr>
 					   		</tfoot>
 						</table>
 					</div>
 				</div>
-			</div>
 			</section>
-<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+		</section>
+		<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 
-	
-	 <script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/popper/popper.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/tether/tether.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/smoothscroll/smooth-scroll.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/nav-dropdown.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/navbar-dropdown.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/touchswipe/jquery.touch-swipe.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/parallax/jarallax.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/masonry/masonry.pkgd.min.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/imagesloaded/imagesloaded.pkgd.min.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
-  
-</body>
+
+
+		</section>
+	</body>
 </html>

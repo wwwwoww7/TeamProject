@@ -1,13 +1,8 @@
 package com.mycompany.webapp.dto;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.multipart.MultipartFile; 
+import org.springframework.web.multipart.MultipartFile;
 
 public class MemberDto {
-	
-	private static final Logger logger = LoggerFactory.getLogger(MemberDto.class);
-	
 	private String mid;
 	private String mpw;
 	private String mname;
@@ -18,7 +13,6 @@ public class MemberDto {
 	private String mtype;
 	private MultipartFile mphotoAttach;
 	private boolean menabled;
-	
 	public String getMid() {
 		return mid;
 	}
@@ -67,20 +61,17 @@ public class MemberDto {
 	public void setMtype(String mtype) {
 		this.mtype = mtype;
 	}
-	 
+	public MultipartFile getMphotoAttach() {
+		return mphotoAttach;
+	}
+	public void setMphotoAttach(MultipartFile mphotoAttach) {
+		this.mphotoAttach = mphotoAttach;
+	}
 	public boolean isMenabled() {
 		return menabled;
 	}
 	public void setMenabled(boolean menabled) {
 		this.menabled = menabled;
-	}
-	public MultipartFile getMphotoAttach() {
-		return mphotoAttach;
-	}
-	public void setMphotoAttach(MultipartFile mphotoAttach) {
-		
-		logger.info("사진생성!!!!!!!!!!");
-		this.mphotoAttach = mphotoAttach;
 	}
 
 	

@@ -1,83 +1,31 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
- <div class="table-wrapper">
-       <div class="container scroll">
-	          <table class="table" cellspacing="0" data-empty="No matching records found">
-	            <thead>
-	              <tr class="table-heads ">
-	               <th class="head-item mbr-fonts-style display-7">선택</th>
-	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
-	               <th class="head-item mbr-fonts-style display-7">수량</th>
-	               <th class="head-item mbr-fonts-style display-7">상품금액</th>
-	               <th class="head-item mbr-fonts-style display-7">합계금액</th>
-	              </tr>
-	            </thead>
-	
-	            <tbody>
-	              
-	            <tr> 
-	                
-	              <td class="body-item mbr-fonts-style display-7">ㅁ</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              <td class="body-item mbr-fonts-style display-7">1</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	             </tr>
-	             <tr> 
-	                
-	              <td class="body-item mbr-fonts-style display-7">ㅁ</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              <td class="body-item mbr-fonts-style display-7">2</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	             </tr>
-	             <tr> 
-	              <td class="body-item mbr-fonts-style display-7">ㅁ</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              <td class="body-item mbr-fonts-style display-7">1</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	             </tr>
-	             <tr> 
-	               <td class="body-item mbr-fonts-style display-7">ㅁ</td>
-	               <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	               <td class="body-item mbr-fonts-style display-7">1</td>
-	               <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	               <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              </tr>
-	              <tr>   
-	              	<td class="body-item mbr-fonts-style display-7">ㅁ</td>
-	              	<td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              	<td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              	<td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              	<td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              </tr>
-	              <tr> 
-	                 <td class="body-item mbr-fonts-style display-7">ㅁ</td>
-	                 <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	                 <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	                 <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	                 <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td>
-	              </tr>
-	             </tbody>
-	          </table>
-	        </div>
-	        
-	          	<div class="mbr-section-btn item-footer mt-2" style="text-align: center;">
-	          	<a class="btn item-btn btn-success display-7" href="javascript:payment()">결제하기</a>
-					 <script type="text/javascript">
-						function payment(sessionId){
-							<%-- if(sessionId==null){
-								var result = confirm("로그인 후 결제 하실 수 있습니다."); 
-								if(result==true){
-									location.href="<%=application.getContextPath()%>/login/login";
-								}	
-							}else{ --%>
-								location.href="<%=application.getContextPath()%>/cart/payment";
-								
-						}
-					</script>
-				</div>
-	        </div>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+ 		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/css/main1.css"/>
+	</head>
+<body>
+	<div class ="wrap">
+		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		
+		<div class="mainCenter">
+			<jsp:include page="/WEB-INF/views/include/menu.jsp"></jsp:include>
+		
+		
+		<div class="content">
+			<div class="sector">
+				<h5>제목</h5>
+				<div></div>
+			</div>
+		</div>
+	</div>		
+</div>
+</body>
 </html>
