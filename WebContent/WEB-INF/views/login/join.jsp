@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-12 input-group" data-for="mnick">
                     		<span class="input-group-addon" style="width:80px;">닉 네 임 </span>
-                          	<input type="password" name="mpw" placeholder="NICKNAME" data-form-field="mnick" class="form-control" value="" id="nickname-form5-29">
+                          	<input type="password" name="mnick" placeholder="NICKNAME" data-form-field="mnick" class="form-control" value="" id="nickname-form5-29">
                         </div>
                         <div class="col-md-12 input-group" data-for="mtel">
                     		<span class="input-group-addon" style="width:80px;">핸드폰번호</span>
