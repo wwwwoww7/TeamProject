@@ -34,4 +34,10 @@ public class MemberService {
 		}
 		return "wrongPassword";
 	}
+	
+	//마이페이지에서 사용하려고 가져오는 멤버의 정보
+	public MemberDto getId(MemberDto member) {
+		MemberDto dbMember = userDao.selectByMid(member.getMid());
+		return dbMember;
+	}
 }

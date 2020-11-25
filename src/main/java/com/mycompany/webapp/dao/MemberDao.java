@@ -22,4 +22,6 @@ public class MemberDao {
 		MemberDto dbMember = sst.selectOne("mybatis.mapper.member.selectByMid",mid); 
 		return dbMember;
 	}
+
+
 }
