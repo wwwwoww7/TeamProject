@@ -26,7 +26,7 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
 		  String user_id = authentication.getName();
 		  //session객체 얻어내기
 		  HttpSession session = request.getSession();
-		  session.setAttribute("sessionuser_id", user_id);
+		  session.setAttribute("sessionMid", user_id);
 	}
 	 
 }
