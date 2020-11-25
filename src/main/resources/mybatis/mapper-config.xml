@@ -14,5 +14,6 @@
 		<typeAlias alias="review" type="com.mycompany.webapp.dto.ReviewDto" />
 		<typeAlias alias="communityPager" type="com.mycompany.webapp.dto.CommunityPagerDto" />
 		<typeAlias alias="myPager" type="com.mycompany.webapp.dto.MyPagerDto" />
+		<typeAlias alias="event" type="com.mycompany.webapp.dto.EventDto" />
 	</typeAliases>
 </configuration>
