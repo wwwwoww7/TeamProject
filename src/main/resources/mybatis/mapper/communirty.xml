@@ -5,7 +5,7 @@
 	<select id="selectAll" resultType="communityDto">
 		select comm_no, comm_date, comm_title, comm_content, comm_hitno, user_id, class_cate_no 
 		from community 
-		order by comm_date desc 
+		order by comm_date desc  
 	</select>
 
 <!-- 	<select id="selectHealth" parameterType="int" resultType="communityDto">
