@@ -47,8 +47,9 @@
 					<div class="carousel-item">
 						<div class="user col-md-8">
 							<div class="user_image">
-								<img
-									src="<%=application.getContextPath()%>/resources/assets/images/team3.jpg">
+								<a href="userEdit">
+									<img src="<%=application.getContextPath()%>/resources/assets/images/team3.jpg">
+								</a>
 							</div>
 							<div class="user_text mb-4">
 								<p class="mbr-fonts-style display-5">닉네임</p>
@@ -166,53 +167,8 @@
 			<div class="table-wrapper">
 				<div class="container"></div>
 
-				<div class="container scroll">
-					<table class="table" cellspacing="0"
-						data-empty="No matching records found">
-						<thead>
-							<tr class="table-heads ">
-								<th class="head-item mbr-fonts-style display-7">NAME</th>
-								<th class="head-item mbr-fonts-style display-7">AGE</th>
-								<th class="head-item mbr-fonts-style display-7">DATE</th>
-								<th class="head-item mbr-fonts-style display-7">SALARY</th>
-								<th class="head-item mbr-fonts-style display-7">SALARY</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<tr>
-								<td class="body-item mbr-fonts-style display-7">Jeanna
-									Schmal</td>
-								<td class="body-item mbr-fonts-style display-7">44</td>
-								<td class="body-item mbr-fonts-style display-7">2025-10-17</td>
-								<td class="body-item mbr-fonts-style display-7">$317.000</td>
-								<td class="body-item mbr-fonts-style display-7">$317.000</td>
-							</tr>
-							<tr>
-								<td class="body-item mbr-fonts-style display-7">Caren Rials</td>
-								<td class="body-item mbr-fonts-style display-7">35</td>
-								<td class="body-item mbr-fonts-style display-7">2024-04-12</td>
-								<td class="body-item mbr-fonts-style display-7">$445.500</td>
-								<td class="body-item mbr-fonts-style display-7">$445.500</td>
-							</tr>
-							<tr>
-								<td class="body-item mbr-fonts-style display-7">Leon Rogol</td>
-								<td class="body-item mbr-fonts-style display-7">66</td>
-								<td class="body-item mbr-fonts-style display-7">2025-05-22</td>
-								<td class="body-item mbr-fonts-style display-7">$152.558</td>
-								<td class="body-item mbr-fonts-style display-7">$152.558</td>
-							</tr>
-							<tr>
-								<td class="body-item mbr-fonts-style display-7">Shala
-									Barrera</td>
-								<td class="body-item mbr-fonts-style display-7">70</td>
-								<td class="body-item mbr-fonts-style display-7">2025-05-15</td>
-								<td class="body-item mbr-fonts-style display-7">$459.146</td>
-								<td class="body-item mbr-fonts-style display-7">$459.146</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<div id="tutorClassQA" class="container scroll"></div>
+				
 				<div class="container table-info-container"></div>
 			</div>
 		</div>
@@ -270,6 +226,24 @@
 	     jQuery(document).ready(function(){
 	  	   	tutorClassNotice();
 	     }); 
+	</script>
+	<script type="text/javascript">
+		/*강의문의*/
+		   function tutorClassQA(){
+				$.ajax({
+					url:"tutorClassQA",
+					type: "POST",
+					success: function(data){
+							$("#tutorClassQA").html(data);
+						}
+		
+					});
+				
+				}
+		
+		      jQuery(document).ready(function(){
+		   	   tutorClassQA();
+		      }); 
 	</script>
 </body>
 </html>

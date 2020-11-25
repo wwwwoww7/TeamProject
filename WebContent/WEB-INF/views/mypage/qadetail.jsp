@@ -55,7 +55,7 @@
 			} 
 	</script>
 	<br/>
-	<a class="btn btn-warning" href="javascript:tutorClassQA()">확인</a>
+	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:tutorClassQA()">확인</a>
 	<script type="text/javascript">
 	function tutorClassQA(){
 			$.ajax({
