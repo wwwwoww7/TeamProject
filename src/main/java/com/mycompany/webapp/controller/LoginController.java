@@ -91,24 +91,35 @@ public class LoginController {
 	private MemberService service;
 	
 	@PostMapping("/join")
-	public String Join(MemberDto member) throws IllegalStateException, IOException {
+	public String Join(MemberDto member)  {
 	
-		  if(!member.getMphotoAttach().isEmpty()) { 
-			  String originalFileName = member.getMphotoAttach().getOriginalFilename(); 
-			  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
-			  String saveName = member.getMid()+extName;
-			  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
-			  member.getMphotoAttach().transferTo(dest);
-			  member.setMpro_img(saveName); 
-		  
-		  } else { 
-			  member.setMpro_img("unnamed.jpg"); } 
+		
+		logger.info("!!!!!!!!!!!!!!!!!!!!!!!실행" );
+		
+		try {
+
+			  if(!member.getMphotoAttach().isEmpty()) { 
+				  String originalFileName = member.getMphotoAttach().getOriginalFilename(); 
+				  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+				  String saveName = member.getMid()+extName;
+				  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
+				  member.getMphotoAttach().transferTo(dest);
+				  member.setMpro_img(saveName); 
+			  
+			  } else { 
+				  member.setMpro_img("unnamed.jpg"); 
+			  } 
+			  
 			  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 			  String encodedPassword = passwordEncoder.encode(member.getMpw());
 			  member.setMpw(encodedPassword); 
 			  member.setMenabled(true);
 			  service.join(member);
-			  return "home";
+		} catch (Exception e) {
+			logger.info("!!!!!!!!!!!!!!!!!!!!!!!실패" );
+		}
+		
+		 return "home";
 	}
 	
 	@GetMapping("/join")

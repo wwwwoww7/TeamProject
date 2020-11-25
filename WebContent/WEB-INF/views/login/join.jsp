@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
   <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
+ 
   
   
   
@@ -39,57 +39,148 @@
 <section class="form5 cid-shav80V8Zk" id="form5-29">
     
     
-    <div class="container">
+    <div class="container-fluid">
         <div class="mbr-section-head">
             <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>JOIN</strong></h3>
             
         </div>
         <div class="row justify-content-center mt-4">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="YRLmS4KZ0lm+LGcWpuQxcNhFGHeSKkKc9ZhO4WBjl2aHqN64gamoCJiP4CGbZwZQuGVoS64mN03L7afuau3fpLE5TrAgTCYwLjHR3mHg4eWPPiHA+XM1HRhhv7MbytXn">
-                    <div class="">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out
-                            the form!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
-                            problem!</div>
-                    </div>
+            <div class="col-md-10 mx-auto mbr-form" data-form-type="formoid">
+                <form action="<%=request.getContextPath() %>/login/join" method="POST" enctype="multipart/form-data" class="mbr-form form-with-styler" data-form-title="joinForm">
+                <input type="hidden" name="email" data-form-email="true" value="">
                     <div class="dragArea row">
                     	
-                        <div class="col-md-12 input-group" data-for="mid">
-                    		<span class="input-group-addon" style="width:80px;">아 이 디</span>
-                          	<input type="text" name="mid" placeholder="ID" data-form-field="mid" class="form-control" value="" id="id-form5-29">
+                        <div class="col-md-8 input-group" data-for="mid">
+                        
+                        	<div class="container-fluid">
+                        		<div class="row">
+                        			<div class="col-3">
+	                        			<span class="input-group-addon" >
+											<i class="icon_key_alt"></i>아 이 디
+										</span> 
+                        			</div>
+                        			<div class="col-9">
+                       					<input type="text" name="mid" placeholder="ID" class="form-control" value="" id="mid" data-form-field="mid">
+                        			</div>
+                        		</div>
+                        	
+                        	</div>
+                        	<div class="container-fluid">
+                        		<div class="row">
+                        			<div class="col-3">
+			                    		<span class="input-group-addon">비 밀 번 호 </span>
+                        			</div>
+                        			<div class="col-9">
+                        				<input type="password" name="mpw" placeholder="PASSWORD" class="form-control" value="" id="mpw">
+                        			</div>
+                        		</div>
+                        	</div>
+                          	<div class="container-fluid">
+                        		<div class="row">
+                        			<div class="col-3">
+                    					<span class="input-group-addon" style="width:80px;">이 름</span>
+                        			</div>
+                        			<div class="col-9">
+                        				<input type="text" name="mname" placeholder="NAME"class="form-control" value="" id="mname">
+                        			</div>
+                        		</div>
+                        	</div>
+                        	
+                        	
+                        	<div class="container-fluid">
+                        		<div class="row">
+                        			<div class="col-3">
+                    					<span class="input-group-addon">닉 네 임 </span>
+                        			</div>
+                        			<div class="col-9">
+                       					<input type="text" name="mnick" placeholder="NICKNAME" class="form-control" value="" id="mnick">
+                        			</div>
+                        		</div>
+                        	</div>
+                        	<div class="container-fluid">
+                        		<div class="row">
+                        			<div class="col-3">
+                    					<label class="form-control-label" style="width:80px;">핸드폰번호</label>
+                        			</div>
+                        			<div class="col-9">
+                          				<input type="text" name="mtel" placeholder="010-xxxx-xxxx" data-form-field="mtel" class="form-control" value="" id="tel-form5-29">
+                        			</div>
+                        		</div>
+                        	</div>
+                        	<div class="container-fluid">
+                        		<div class="row">
+                        			<div class="col-3">
+                        			    <span class="form-control-label" style="width:80px;">이 메 일</span>
+                        			</div>
+                        			<div class="col-9">
+     				                	<input type="text" name="memail" placeholder="xxx@xxxx.xxx" data-form-field="memail" class="form-control" value="" id="email-form5-29">
+                        			</div>
+                        		</div>
+                        	</div>
+                        	<div class="container-fluid">
+                        		<div class="row" style="height: 56px;">
+                        			<div class="col-3">
+                        				<span class="input-group-addon" style="width:80px;">가입유형</span>   
+                        			</div>
+                        			<div class="col-9">
+									    <label class="radio-inline">
+									      <input type="radio" name="mtype" id="mtype" value="ROLE_USER"  > 일반 회원 
+									    </label>
+                        				<label class="radio-inline">
+									      <input type="radio" name="mtype" id="mtype" value="ROLE_TUTOR" checked> 강사
+									    </label>
+                        			</div>
+                        		</div>
+                        	</div>
+                        	<div class="container-fluid">
+                        		<div class="row">
+                        			<div class="col-3">
+										<span class="input-group-addon" style="width:80px;">프로필사진</span>     
+                        			</div>
+                        			<div class="col-9">
+										<input type="file" name="mphotoAttach" class="form-control">
+                        			</div>
+                        		</div>
+                        	</div>
+                        	
+                        	<div class="container-fluid">
+                        		<div class="col-12 align-center mbr-section-btn">
+                        			<button type="submit" class="btn btn-success display-4">JOIN</button>
+                        		</div>
+                        	
+                        	</div>
+                        	
                         </div>
-                        <div class="col-md-12 input-group" data-for="mpw">
-                    		<span class="input-group-addon" style="width:80px;">비 밀 번 호 </span>
-                          	<input type="password" name="mpw" placeholder="PASSWORD" data-form-field="mpw" class="form-control" value="" id="password-form5-29">
+                        
+                     
+                        <div class="col-md-4">
+	                        <div class="text-right">
+								<div class="credits">
+									copyright 2020 TEAM1 All right reserved. &nbsp;
+								</div>
+							</div>
+                        
                         </div>
-                        <div class="col-md-12 input-group" data-for="mname">
-                    		<span class="input-group-addon" style="width:80px;">이 름</span>
-                          	<input type="text" name="mname" placeholder="NAME" data-form-field="mname" class="form-control" value="" id="name-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="mnick">
-                    		<span class="input-group-addon" style="width:80px;">닉 네 임 </span>
-                          	<input type="password" name="mnick" placeholder="NICKNAME" data-form-field="mnick" class="form-control" value="" id="nickname-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="mtel">
-                    		<span class="input-group-addon" style="width:80px;">핸드폰번호</span>
-                          	<input type="text" name="mtel" placeholder="010-xxxx-xxxx" data-form-field="mtel" class="form-control" value="" id="tel-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="memail">
-                    		<span class="input-group-addon" style="width:80px;">이 메 일</span>
-                          	<input type="text" name="mtel" placeholder="xxx@xxxx.xxx" data-form-field="memail" class="form-control" value="" id="email-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="mtype">
-                        	 <span class="input-group-addon" style="width:80px;">가입유형</span>  
-                        	 
-                        	<%--            	
-							<select id="mtype" name="mtype" >
-								<!-- <option value="ROLE_ADMIN">관리자</option> -->
-								<option value="ROLE_TUTOR">강사</option>
-								<option value="ROLE_USER" selected>수강생</option>
-							</select>
-							
-							<a class="btn btn-info" href="javascript:fun2()">폼요청</a>
+                        
+                        
+                        
+                       
+                        
+                     
+                   
+              <%--           <div class="col-md-12 " data-for="mtype">
+                        
+                        
+                        
+                        	 <span class="input-group-addon" style="width:80px;">가입유형</span>
+
+								<a type="button" class="class="btn item-btn btn-success display-7" href=""></a>
+
+
+								<input type="button" class="btn btn-primary-outline display-7" href=""/>
+
+
+										<a class="btn btn-info" href="javascript:fun2()">폼요청</a>
 							<script>
 									function fun2() {
 										$.ajax({
@@ -105,25 +196,18 @@
 								<form:form modelAttribute="MemberDto">	  <!-- 기본전송방식: post -->
 									회원종류: <form:select path="mtype" items="${typeList}"/>
 									 <br/>
-	 							</form:form> --%>
+	 							</form:form> 
 	 						
                         </div>
-              
-                        <div class="col-md-12 input-group" data-for="mphotoAttach">
-							<span class="input-group-addon" style="width:80px;">프로필사진</span>     
-							<input type="file" name="mphotoAttach" class="form-control">
-						</div>
+               --%>
+                      
 						
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-success display-4">JOIN</button></div>
+                        
                     </div>
                 </form>
             </div>
             
-            <div class="text-right">
-				<div class="credits">
-					copyright 2020 TEAM1 All right reserved. &nbsp;
-				</div>
-			</div>
+           
             
             
         </div>
@@ -150,5 +234,20 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+	 
+	 
+	 
+	 
+	 <style type="text/css">
+  
+	  	select {
+	  		display:inline;
+	  	}
+	  	
+	  	.col-9, .col-3 {
+	  		line-height: 56px;
+	  	}
+	  
+	  </style>
 </body>
 </html>
