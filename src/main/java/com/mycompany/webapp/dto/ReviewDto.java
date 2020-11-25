@@ -10,7 +10,7 @@ public class ReviewDto {
 	private int review_hitno;
 	private String user_id;
 	private String class_no;
-	private String review_star;
+	private int review_star;
 	public int getReview_no() {
 		return review_no;
 	}
@@ -53,10 +53,10 @@ public class ReviewDto {
 	public void setClass_no(String class_no) {
 		this.class_no = class_no;
 	}
-	public String getReview_star() {
+	public int getReview_star() {
 		return review_star;
 	}
-	public void setReview_star(String review_star) {
+	public void setReview_star(int review_star) {
 		this.review_star = review_star;
 	}
 	

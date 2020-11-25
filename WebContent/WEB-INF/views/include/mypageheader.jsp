@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%-- 2020. 11. 24. --%>
 
   <section class="menu cid-shfokUU9e4" once="menu" id="menu1-4a">
@@ -35,17 +37,17 @@
                         </a>
                         <div class="dropdown-menu">
 	                        <a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>">Home</a>
-	                        <%-- <sec:authorize access="hasRole('ROLE_USER')"> --%>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2f">나의 수강 목록</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2h">찜 목록</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2i">나의 문의</a>
-	                        <%--   </sec:authorize>
+	                        <sec:authorize access="hasRole('ROLE_USER')">
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2f">나의 수강 목록</a>
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2h">찜 목록</a>
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2i">나의 문의</a>
+	                       </sec:authorize>
                    
-                  			<sec:authorize access="hasRole('ROLE_TUTOR')"> --%>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2k">나의 강의</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">공지사항</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">강의 문의</a>
-	                         <%-- </sec:authorize> --%>
+                  			<sec:authorize access="hasRole('ROLE_TUTOR')">
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2k">나의 강의</a>
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">공지사항</a>
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">강의 문의</a>
+	                        </sec:authorize>
                        </div>
                 </li>
              </ul>

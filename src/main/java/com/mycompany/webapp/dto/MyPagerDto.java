@@ -1,7 +1,7 @@
 package com.mycompany.webapp.dto;
 
 public class MyPagerDto {
-	private String user_id;
+	private String mid;
 	private int totalRows;		//전체 행수 100
 	private int totalPageNo;	//전체 페이지 수 10개 
 	private int totalGroupNo;	//전체 그룹 수 
@@ -15,11 +15,12 @@ public class MyPagerDto {
 	private int endRowNo;		//페이지의 마지막행 번호
 	
 															//전체행수
-	public MyPagerDto(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo,String tutor_id) {
+	public MyPagerDto(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo, String mid) {
 		this.rowsPerPage = rowsPerPage;
 		this.pagesPerGroup = pagesPerGroup;
 		this.totalRows = totalRows;
 		this.pageNo = pageNo; 
+		this.mid = mid;
 
 		totalPageNo = totalRows / rowsPerPage;
 		if(totalRows % rowsPerPage != 0) totalPageNo++;
@@ -39,12 +40,13 @@ public class MyPagerDto {
 	}
 
 	
-	public String getUser_id() {
-		return user_id;
+
+	public String getMid() {
+		return mid;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
 	public int getTotalRows() {

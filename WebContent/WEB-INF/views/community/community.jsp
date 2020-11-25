@@ -78,8 +78,9 @@
 								<script>
 									function fun2(){
 										$.ajax({
-											url : "community/communityHealth" , 
+											url  : "community/communityHealth" , 
 											success : function(data) {
+												
 												$("#fun1_result").html(data);
 											}
 										});

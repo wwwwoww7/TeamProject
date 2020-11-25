@@ -37,56 +37,38 @@
 			</div>	
 	<div id="fun1_result"></div>
 	
+	
+	 <table class="table table-hover">
+		<thead>
+				<tr>
+					<th style="width:70px">번호</th>
+					<th style="width:70px">날짜</th>
+					<th style="width:150px">제목</th>
+					<th style="width:300px">내용</th>
+					<th style="width:250px">조회수</th>
+					<th style="width:70px">아이디</th>
+					<th style="width:100px">별점</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="ReviewDto" items="${review}">
+					<tr>
+						<td>${ReviewDto.review_no}</td>
+						<td><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></td>
+						<td>${ReviewDto.review_title}</td>
+						<td>${ReviewDto.review_content}</td>
+						<td>${ReviewDto.review_hitno}</td>
+						<td>${ReviewDto.user_id}</td>
+						<td>${ReviewDto.review_star}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table> 
+	
+	
+	
+	
 	<table class="table table-hover">
-				<thead>
-			<tr>
-				<th>번호</th>
-				<th>날짜</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>조회</th>
-				<th>아이디</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>2020.11.23</td>
-				<td><a href="javascript:communityDetail()">야구방공지</a></td>
-				<td>룰루랄라</td>
-				<td>1254</td>
-				<td>fall</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>2020.11.23</td>
-				<td>축구방공지</td>
-				<td>메롱</td>
-				<td>3</td>
-				<td>angel</td>
-
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>2020.11.23</td>
-				<td>나는 커리어우먼</td>
-				<td>이 될거얀</td>
-				<td>2</td>
-				<td>winter</td>
-			</tr>
-
-			<tr>
-				<td>3</td>
-				<td>2020.11.23</td>
-				<td>나는 머니가 좋아</td>
-				<td>돈이 최고지?</td>
-				<td>3</td>
-				<td>summer</td>
-			</tr>
-		</tbody>
-		
-		
-		
 			<tr>	
 				<td colspan="4" style="text-align: center;">
 					<a class="btn btn-outline-primary btn-sm" href="#">처음</a>
@@ -100,9 +82,6 @@
 					<a class="btn btn-outline-primary btn-sm" href="#)">맨끝</a>
 				</td>
 			</tr>
-		
-		
-		
 	</table>
 	<script type="text/javascript">
 			function communityDetailReview() {

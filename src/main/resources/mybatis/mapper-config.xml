@@ -10,8 +10,9 @@
 		<typeAlias alias="classNotice" type="com.mycompany.webapp.dto.ClassNoticeDto" />
 		<typeAlias alias="pick" type="com.mycompany.webapp.dto.PickDto" />
 		<typeAlias alias="classAppl" type="com.mycompany.webapp.dto.ClassApplDto" />
-		<typeAlias alias="communityDto" type="com.mycompany.webapp.dto.CommunityDto" />
+		<typeAlias alias="community" type="com.mycompany.webapp.dto.CommunityDto" />
 		<typeAlias alias="review" type="com.mycompany.webapp.dto.ReviewDto" />
 		<typeAlias alias="communityPager" type="com.mycompany.webapp.dto.CommunityPagerDto" />
+		<typeAlias alias="myPager" type="com.mycompany.webapp.dto.MyPagerDto" />
 	</typeAliases>
 </configuration>
