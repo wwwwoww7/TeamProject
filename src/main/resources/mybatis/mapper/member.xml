@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.member">
+
+	<insert id="insert" parameterType="member">
+		insert into member(mid,mpw,mname,mnick,mtel,memail, mpro_img, mtype, menabled)
+		values(#{mid},#{mpw},#{mname}, #{mnick},#{mtel},#{memail}, #{mpro_img}, #{mtype}, #{menabled})
+	</insert>
+
+	<select id="selectByMid" parameterType="string" resultType="member"> 
+		select mid, mpw
+		from member
+		where mid=#{mid}
+	</select>
+</mapper> 
