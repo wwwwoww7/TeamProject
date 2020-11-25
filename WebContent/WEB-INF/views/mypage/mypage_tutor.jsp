@@ -131,6 +131,7 @@
 									data-slide="next" href="#lb-shfud90w44"> <span
 									class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
 									<span class="sr-only">Next</span>
+									<span class="sr-only">${sessionMid}</span>
 								</a>
 							</div>
 						</div>
@@ -175,7 +176,7 @@
 	</section>
 
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-
+	<input type="hidden" id="mid" name="mid" value="${sessionMid}"/>
 
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script>
@@ -211,23 +212,36 @@
 		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
-	<script type="text/javascript"> /* 공지사항 */
-		function tutorClassNotice(){
+	<script type="text/javascript">
+	/* 공지사항 */
+		
+		function tutorClassNotice(pageNo,mid){
+			if(!pageNo){ //페이지수가 0이면 기본값으로 1로 줌
+				pageNo =1;
+			}
+			 
+			
 			$.ajax({
 				url:"tutorClassNotice",
 				method: "post",
-				/* data:{tutor_id:tutor_id}, */
+				data:{pageNo:pageNo, mid:mid},
 				success: function(data){
 						$("#tutorNotice").html(data);
 					}
 		
 				});
 			}
-	     jQuery(document).ready(function(){
-	  	   	tutorClassNotice();
-	     }); 
-	</script>
-	<script type="text/javascript">
+	
+
+
+	     $(function(){
+	    	 
+	    	 var mid = $("#mid").val();
+	    	 
+	    	 tutorClassNotice(1,mid);
+	     });
+
+	     
 		/*강의문의*/
 		   function tutorClassQA(){
 				$.ajax({

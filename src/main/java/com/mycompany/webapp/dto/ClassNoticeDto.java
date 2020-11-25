@@ -8,7 +8,21 @@ public class ClassNoticeDto {
 	private Date class_notice_date;
 	private String class_notice_title;
 	private String class_notice_content;
+	private String class_nm;
+	private String mid;
 	
+	public String getClass_nm() {
+		return class_nm;
+	}
+	public void setClass_nm(String class_nm) {
+		this.class_nm = class_nm;
+	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 	public int getClass_notice_no() {
 		return class_notice_no;
 	}

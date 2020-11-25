@@ -64,7 +64,7 @@
             
         </div>
         <div class="row mbr-gallery mt-4">
-        <%-- <c:forEach var="${class}" items="${classlist}"> --%>
+      <%--   <c:forEach var="notice" items="${list}"> --%>
             <div class="col-12 col-md-6 col-lg-3 item gallery-image">
                 <div class="item-wrapper" data-toggle="modal" data-target="#shfud7joQF-modal">
                 	<a href="<%=request.getContextPath()%>/class/classdetail?classNo=${i}">
@@ -270,9 +270,9 @@
 			
 			$(function() {
 				myQa();
-				$('html, body').animate({
+				/* $('html, body').animate({
 					scrollTop: $('#gallery5-2h').offset().top
-				}, 'slow');
+				}, 'slow'); */
 			});
 	</script> 
 </body>

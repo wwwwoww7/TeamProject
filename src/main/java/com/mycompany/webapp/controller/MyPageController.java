@@ -18,6 +18,7 @@ import com.mycompany.webapp.dto.ClassNoticeDto;
 import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 import com.mycompany.webapp.service.ClassNoticeService;
+import com.mycompany.webapp.service.MemberService;
 
 
 /**
@@ -29,30 +30,12 @@ import com.mycompany.webapp.service.ClassNoticeService;
 public class MyPageController {
 	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	
-	
+	@Resource
+	private MemberService mService;
 	
 	//*----------- 수강생 페이지------------------- *//
 	@RequestMapping("/mypage_user")
-	public String mypage_user(MemberDto memberdto,HttpSession session,Model model) {
-		//로그인한 사람의 역할 구분하고 해당 페이지로 리턴해 놔야함!!
-		
-		/*SecurityContext securityContext = SecurityContextHolder.getContext();
-		Authentication authentication = securityContext.getAuthentication();
-		
-		//로그인 여부
-		if(authentication.isAuthenticated()) {
-			String mid = authentication.getName();//로그인한 아이디 얻기
-			
-			
-			//해당 아이디의 권한 확인
-			for(GrantedAuthority authority: authentication.getAuthorities()) {
-				String role = authority.getAuthority();
-				logger.info("아이디의 권한: "+role);
-			}
-			
-		}*/	
-		
-		model.addAttribute("sessionMid",memberdto.getMid());
+	public String mypage_user() {
 		
 		return "mypage/mypage_user";
 	}
@@ -66,7 +49,6 @@ public class MyPageController {
 	//수강생의 찜목록
 	@GetMapping("/userpicklist")
 	public String userpicklist() {
-		
 		return "mypage/userpicklist";
 	}
 	
@@ -91,27 +73,7 @@ public class MyPageController {
 	
 	//*----------- 강사 페이지------------------- *//		
 	@RequestMapping("/mypage_tutor")
-	public String mypage_tutor(MemberDto memberdto,HttpSession session,Model model) {
-		//로그인한 사람의 역할 구분하고 해당 페이지로 리턴해 놔야함!!
-		
-		/*SecurityContext securityContext = SecurityContextHolder.getContext();
-		Authentication authentication = securityContext.getAuthentication();
-		
-		//로그인 여부
-		if(authentication.isAuthenticated()) {
-			String mid = authentication.getName();//로그인한 아이디 얻기
-			
-			
-			//해당 아이디의 권한 확인
-			for(GrantedAuthority authority: authentication.getAuthorities()) {
-				String role = authority.getAuthority();
-				logger.info("아이디의 권한: "+role);
-			}
-			
-		}*/	
-		
-		model.addAttribute("sessionMid",memberdto.getMid());
-		
+	public String mypage_tutor() {
 		return "mypage/mypage_tutor";
 	}
 	
@@ -124,13 +86,14 @@ public class MyPageController {
 	
 	//강사의 공지사항 목록
 	@PostMapping("/tutorClassNotice")
-	public String tutorClassNotice(@RequestParam(defaultValue = "1")int pageNo, String tutor_id, Model model) {
-		/*int totalRows = classNoticeService.getTotalRow();
+	public String tutorClassNotice(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
 		
-		MyPagerDto pager = new MyPagerDto(5,3,totalRows, pageNo,tutor_id);
+		int totalRows = classNoticeService.getTotalRow();
+		
+		MyPagerDto pager = new MyPagerDto(5,3,totalRows, pageNo, mid);
 		List<ClassNoticeDto> list = classNoticeService.getNotice(pager);
 		model.addAttribute("list",list);
-		model.addAttribute("pager",pager);*/
+		model.addAttribute("pager",pager); 
 		
 		return "mypage/tutorclassnotice";
 	}
