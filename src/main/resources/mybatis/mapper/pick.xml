@@ -4,8 +4,8 @@
 
 	<select id="selectPick">
 		SELECT  class.class_nm, class.class_thum, class.class_no
-		FROM pick, "USER" u, class 
-		where pick.user_id = u.user_id and pick.class_no = class.class_no
+		FROM pick, member m, class 
+		where pick.user_id = m.mid and pick.class_no = class.class_no
 	</select>
 
 </mapper>

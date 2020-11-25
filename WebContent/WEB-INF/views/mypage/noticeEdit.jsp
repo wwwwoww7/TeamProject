@@ -37,7 +37,7 @@
 	</div>
 		
 	<div style="margin-top: 10px">
-		<a class="btn btn-warning" href="javascript:tutorClassNotice()">공지사항등록</a>
+		<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:tutorClassNotice()">공지사항등록</a>
 		<script type="text/javascript">
 		//
 			/* function boardWrite() {
@@ -73,21 +73,21 @@
 						url:"tutorClassNotice",
 						type: "POST",
 						success: function(data){
-								$("#tutorClassNotice").html(data);
+								$("#tutorNotice").html(data);
 							}
 						});
 					} 
 			
 		</script>		
 		
-		<a class="btn btn-warning" href="javascript:tutorClassNotice()">취소</a>
+		<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:tutorNoticeCancel()">취소</a>
 			<script type="text/javascript">
-				function tutorClassNotice(){
+				function tutorNoticeCancel(){
 						$.ajax({
 							url:"tutorClassNotice",
 							type: "POST",
 							success: function(data){
-									$("#tutorClassNotice").html(data);
+									$("#tutorNotice").html(data);
 								}
 							});
 						} 

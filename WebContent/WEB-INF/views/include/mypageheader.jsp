@@ -35,12 +35,17 @@
                         </a>
                         <div class="dropdown-menu">
 	                        <a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>">Home</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2f">suganmokrok</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2h">pick</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2i">myqa</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2k">myclass(tutor)</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">notice</a>
-	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">myqa(tutor)</a>
+	                        <%-- <sec:authorize access="hasRole('ROLE_USER')"> --%>
+	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2f">나의 수강 목록</a>
+	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2h">찜 목록</a>
+	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2i">나의 문의</a>
+	                        <%--   </sec:authorize>
+                   
+                  			<sec:authorize access="hasRole('ROLE_TUTOR')"> --%>
+	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2k">나의 강의</a>
+	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">공지사항</a>
+	                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">강의 문의</a>
+	                         <%-- </sec:authorize> --%>
                        </div>
                 </li>
              </ul>

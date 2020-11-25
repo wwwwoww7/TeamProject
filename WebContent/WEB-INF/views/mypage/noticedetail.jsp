@@ -33,20 +33,20 @@
 		    </tr>
 		</tbody>
 	</table>
-    <a class="btn" href="javascript:tutorClassNotice()">목록으로</a>
+    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:tutorClassNotice()">목록으로</a>
 	<script type="text/javascript">
 		function tutorClassNotice(){
 				$.ajax({
 					url:"tutorClassNotice",
 					type: "POST",
 					success: function(data){
-							$("#tutorClassNotice").html(data);
+							$("#tutorNotice").html(data);
 						}
 					});
 				} 
 	</script>
 			
-    <a class="btn" href="#">수정</a>
+    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="#">수정</a>
 	<script type="text/javascript">
 		function boardDelete(bno) {
 			$.ajax({
@@ -62,7 +62,7 @@
 			});
 		}
 	</script>	
-	<a class="btn" href="returnTutor">삭제</a>
+	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="#">삭제</a>
 	<script type="text/javascript">
 		function boardDelete(bno) {
 			$.ajax({
