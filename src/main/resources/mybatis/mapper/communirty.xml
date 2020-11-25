@@ -3,10 +3,19 @@
 <mapper namespace="mybatis.mapper.community">
 
 	<select id="selectAll" resultType="communityDto">
+		select comm_no, comm_date, comm_title, comm_content, comm_hitno, user_id, class_cate_no 
+		from community 
+		order by comm_date desc  
+	</select>
+
+<!-- 	<select id="selectHealth" parameterType="int" resultType="communityDto">
 		select comm_no, comm_date, comm_title, comm_content, comm_hitno,user_id, class_cate_no 
 		from community 
+		where class_cate_no=#{class_cate_no}
 		order by comm_date desc
-	</select>
+	</select> -->
+	
+	
 	
 	
 	<!-- <select id="selectByPage" parameterType="communityPager" resultType="communityDto">

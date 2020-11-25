@@ -21,11 +21,11 @@
 					</div>			 
 				
 				<c:if test="${sessionMid==null}">
-					<a class="btn btn-outline-primary" style="border:1px solid #007BFF; float:right; " href="javascript:boardWriteReview()">글쓰기</a>
+					<a class="btn btn-outline-primary" style="border:1px solid #007BFF; float:right; " href="javascript:communityWriteReview()">글쓰기</a>
 						<script type="text/javascript">
-							function boardWriteReview() {
+							function communityWriteReview() {
 								$.ajax({
-										url:"community/boardWriteReview",
+										url:"community/communityWriteReview",
 										success:function(data) {
 										$("#fun1_result").html(data);
 										}
@@ -52,7 +52,7 @@
 			<tr>
 				<td>1</td>
 				<td>2020.11.23</td>
-				<td><a href="javascript:boardDetail()">야구방공지</a></td>
+				<td><a href="javascript:communityDetail()">야구방공지</a></td>
 				<td>룰루랄라</td>
 				<td>1254</td>
 				<td>fall</td>
@@ -105,9 +105,9 @@
 		
 	</table>
 	<script type="text/javascript">
-			function boardDetailReview() {
+			function communityDetailReview() {
 				$.ajax({
-					url:"<%=request.getContextPath()%>/community/boardDetailReview",
+					url:"<%=request.getContextPath()%>/community/communityDetailReview",
 					success:function(data) {
 						$("#fun1_result").html(data);
 					}

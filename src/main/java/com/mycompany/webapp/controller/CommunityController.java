@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.print.attribute.standard.PageRanges;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
@@ -49,71 +50,72 @@ public class CommunityController {
 		return "community/community_list";
 	}*/
 	
-	@GetMapping("/boardAll")
-	public String boardAll(CommunityDto communtiy,Model model) {
-		model.addAttribute("cate", "all");
+	@GetMapping("/communityAll")
+	public String communityAll(CommunityDto communtiy,Model model) {
+		model.addAttribute("cate", "total");
 		
-		List<CommunityDto> list = service.getCommunityList();
-		model.addAttribute("list", list);
+		List<CommunityDto> list = service.getCommunityAll();
+		model.addAttribute("all", "all");
 
 		
 		return "community/community_list";
 	}
 	
-	
-	
-	
-	
-	@GetMapping("/boardHealth")
-	public String boardHealth(Model model) {
+	@GetMapping("/communityHealth")
+	public String communityHealth(int class_cate_no, Model model) {
 		model.addAttribute("cate", "health");
+		
+		CommunityDto commDto = service.getCommunityHealth(class_cate_no);
+		
+		model.addAttribute("health", "health");
+		
 		return "community/community_list";
 	}
 	
-	@GetMapping("/boardCareer")
-	public String boardCareer(Model model) {
+	@GetMapping("/communityCareer")
+	public String communityCareer(Model model) {
 		model.addAttribute("cate", "career");
 		return "community/community_list";
 	}
 	
-	@GetMapping("/boardMoney")
-	public String boardMoeny(Model model) {
+	@GetMapping("/communityMoney")
+	public String communityMoeny(Model model) {
 		model.addAttribute("cate", "money");
 		return "community/community_list";
 	}
 	
-	@GetMapping("/boardReview")
-	public String boardReview(Model model) {
+	@GetMapping("/communityReview")
+	public String communityReview(Model model) {
 		model.addAttribute("cate", "review");
 		return "community/community_list_review";
 	}
 	
-	@GetMapping("/boardDetail")
-	public String boardDetail() {
+	@GetMapping("/communityDetail")
+	public String communityDetail() {
 		
 		return "community/community_detail";
 	}
 	
-	@GetMapping("/boardDetailReview")
-	public String boardDetailReview() {
+	@GetMapping("/communityDetailReview")
+	public String communityDetailReview() {
 		
 		return "community/community_detail_review";
 	}
 	
-	@GetMapping("/boardWrite")
-	public String boardWrite() {
+	@GetMapping("/communityWrite")
+	public String communityWrite() {
 		
 		return "community/community_writeform";
 	}
 	
-	@GetMapping("/boardWriteReview")
-	public String boardWriteReviewform() {
+	@GetMapping("/communityWriteReview")
+	public String communityWriteReviewform() {
 		
 		return "community/community_reviewform";
 	}
 	
-	@PostMapping("/boardWriteReview")
-	public void boardWriteReview (/*Dto*/ HttpServletResponse response) throws Exception {
+	@PostMapping("/communityWriteReview")
+	public void communityWriteReview (HttpServletResponse response) throws Exception {
 		logger.info("실행");
 		JSONObject object  = new JSONObject();
 		object.put("result", "success");
@@ -129,20 +131,20 @@ public class CommunityController {
 		out.close();
 	}
 	
-	@PostMapping("/boardUpdate")
-	public String boardUpdate() {
+	@PostMapping("/communityUpdate")
+	public String communityUpdate() {
 		
 		return "community/community_updateform";
 	}
 	
-	@PostMapping("/boardUpdateReview")
-	public String boardUpdateReview() {
+	@PostMapping("/communityUpdateReview")
+	public String communityUpdateReview() {
 		
 		return "community/community_updateform_review";
 	}
 	
-	@PostMapping("/boardDelete")
-	public String boardDelete() {
+	@PostMapping("/communityDelete")
+	public String communityDelete() {
 		
 		return "community/community";
 	}

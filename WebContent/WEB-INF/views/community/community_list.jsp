@@ -12,7 +12,7 @@
 						<script type="text/javascript">
 							function boardWrite() {
 								$.ajax({
-										url:"community/boardWrite",
+										url:"community/communityWrite",
 										success:function(data) {
 										$("#fun1_result").html(data);
 										}
@@ -21,23 +21,24 @@
 						</script>
 					</c:if>
 				</div>
-			</div>	
+			</div>
 	<div id="fun1_result"></div>
 	
 	
-	<table style="width:auto" class="table table-hover">
+	<table class="table table-hover">
 			<thead>
 			<tr>
-				<th>번호</th>
-				<th>날짜</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>조회</th>
-				<th>아이디</th>
+				<th style="width:100px">번호</th>
+				<th style="width:200px">날짜</th>
+				<th style="width:250px">제목</th>
+				<th style="width:250px">내용</th>
+				<th style="width:200px">조회</th>
+				<th style="width:200px">아이디</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="communityDto" items="${list}">
+		
+			<c:forEach var="communityDto" items="${all}">
 				<tr>
 					<td>${communityDto.comm_no}</td>
 					<td><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
@@ -54,52 +55,7 @@
 	
 	
 	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>날짜</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>조회</th>
-				<th>아이디</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>2020.11.23</td>
-				<td><a href="javascript:boardDetail()">야구방공지</a></td>
-				<td>룰루랄라</td>
-				<td>1254</td>
-				<td>fall</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>2020.11.23</td>
-				<td>축구방공지</td>
-				<td>메롱</td>
-				<td>3</td>
-				<td>angel</td>
 
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>2020.11.23</td>
-				<td>나는 커리어우먼</td>
-				<td>이 될거얀</td>
-				<td>2</td>
-				<td>winter</td>
-			</tr>
-
-			<tr>
-				<td>3</td>
-				<td>2020.11.23</td>
-				<td>나는 머니가 좋아</td>
-				<td>돈이 최고지?</td>
-				<td>3</td>
-				<td>summer</td>
-			</tr>
-		</tbody>
 		
 		
 		
@@ -121,9 +77,9 @@
 		
 	</table>
 	<script type="text/javascript">
-			function CommunityDetail() {
+			function communityDetail() {
 				$.ajax({
-					url:"<%=request.getContextPath()%>/community/boardDetail",
+					url:"<%=request.getContextPath()%>/community/communityDetail",
 					success:function(data) {
 						$("#fun1_result").html(data);
 					}

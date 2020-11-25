@@ -67,7 +67,7 @@
 								<script>
 									function fun1(){
 										$.ajax({
-											url : "community/boardAll" , 
+											url : "community/communityAll" , 
 											success : function(data) {
 												$("#fun1_result").html(data);
 											}
@@ -78,7 +78,7 @@
 								<script>
 									function fun2(){
 										$.ajax({
-											url : "community/boardHealth" , 
+											url : "community/communityHealth" , 
 											success : function(data) {
 												$("#fun1_result").html(data);
 											}
@@ -89,7 +89,7 @@
 								<script>
 									function fun3(){
 										$.ajax({
-											url : "community/boardCareer" , 
+											url : "community/communityCareer" , 
 											success : function(data) {
 												$("#fun1_result").html(data);
 											}
@@ -100,7 +100,7 @@
 								<script>
 									function fun4(){
 										$.ajax({
-											url : "community/boardMoney" , 
+											url : "community/communityMoney" , 
 											success : function(data) {
 												$("#fun1_result").html(data);
 											}
@@ -111,7 +111,7 @@
 								<script>
 									function fun5(){
 										$.ajax({
-											url : "community/boardReview" , 
+											url : "community/communityReview" , 
 											success : function(data) {
 												$("#fun1_result").html(data);
 											}
