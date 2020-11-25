@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%-- 2020. 10. 29. --%>
 
 <!DOCTYPE html>
-<html  >
+<html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,90 +26,138 @@
   
   
 </head>
+	<style>
+		#basket {
+			border-bottom: 1px solid #CCC; 
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+			position: relative;
+			overflow: hidden;
+			opacity: 0.8;
+		}
+		#basket h3{
+		  	color:#000;
+			font-size: 35px;
+		}
+		#sm_title {
+			float: right;
+			Font-size: 15px;
+			position: relative;
+			margin:0px;
+		}
+		.complete_table {
+			margin:auto;
+			padding:20px;
+			position: relative;
+		}
+		.complete_table tr{
+			text-align:center;
+			
+		}
+		.complete_table td.ico{
+			font-weight: bold;
+			font-size: 35px;
+		}
+		.complete_table tbody{
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.complete_table td.ico5{
+			height:60px;
+			font-weight: bold;
+			font-size: 35px;
+		}
+		.complete_table tfoot td{
+			height:100px;
+			margin:20px;
+		}
+	</style>
+	<script type="text/javascript">
+			$(function(){
+				$('#sidebar > ul').hide();
+	            $('#main-content').css({
+	                'margin-left': '0px'
+	            });
+	            $('#sidebar').css({
+	                'margin-left': '-180px'
+	            });
+	            $('#sidebar > ul').hide();
+	            $("#container").addClass("sidebar-closed");
+			});
+			
+	</script>
+	
+	<body>
+			
+			<jsp:include page="/WEB-INF/views/include/header.jsp"/>
+			
+			<%-- <jsp:include page="/WEB-INF/views/include/menu.jsp"/> --%>
 
-<body>
-  <jsp:include page="/WEB-INF/views/include/header.jsp"/>
-	
-	
-	<section class="section-table cid-shasoJbvYr" id="table1-23">
+			<section class="section-table cid-shasoJbvYr" id="table1-23">
 	
 	  
 	  
 	  <div class="container container-table">
 	      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><strong>
-	         <span class="mbri-shopping-basket"></span> CART</strong></h2>
+	         CART</strong></h2>
 	      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5">Get your Classes!</h3>
-	     
-	      <div class="table-wrapper">
+			
+					<div class="col-lg-12">
+						<div id="basket">
+							<h3>주문완료</h3>
+						
+						<div id="sm_title">
+							<span>01 장바구니 > </span><span id="2">02 주문서작성/결제 > </span><span style="color:#690700; font-weight: bold">03 주문완료</span>
+						</div>
+						</div>
+					</div>	
+					
+					<div class="col-lg-12">
+						<table class="complete_table">
+							<thead>
+								<tr>
+									<td class="ico">
+										<div style="font-size:250px; color:#ccc">
+										<span class="mbri-gift"></span>
+										</div>
+										<p style="color:#470000">주문이 완료되었습니다!</p>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+						        <tr>
+						         	<td>
+						         		고객님! <span>BAN숙 에듀</span>를 이용해 주셔서 감사합니다.
+						         	</td>
+						        </tr>
+						        <tr>
+						         	<td class="ico4">
+						         		주문내역 확인은 [마이페이지]에서 조회 하실 수 있습니다. 
+						         	</td>
+						        </tr>
+						        
+					   		</tbody>
+					   		<tfoot>
+					   			<tr>
+					   				<td class="btnf">
+					   					<div class="mbr-section-btn item-footer mt-2">
+	   								       	<a class="btn item-btn btn-success display-7" href="<%=application.getContextPath()%>">홈으로 가기</a>
+	   									</div>
+					   				</td>
+					   			</tr>
+					   		</tfoot>
+					   			
+					   			
+						</table>
+						
+					</div>
+					</div>
+		
+				</section>
+			
 	
-	
-	        <div class="container scroll">
-	          <table class="table" cellspacing="0" data-empty="No matching records found">
-	            <thead>
-	              <tr class="table-heads">
-	               <th class="head-item mbr-fonts-style display-7">선택
-	              	 <input type="checkbox" class="chkALll" id="chkAll"/>
-	               </th>
-	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
-	               <th class="head-item mbr-fonts-style display-7">수량</th>
-	               <th class="head-item mbr-fonts-style display-7">상품금액</th>
-	               <th class="head-item mbr-fonts-style display-7">합계금액</th>
-	              </tr>
-	            </thead>
-	
-	            <tbody>
-	              
-	            <tr> 
-		           <td class="body-item mbr-fonts-style display-7">
-		           	<input type="checkbox" name="" id=""/>
-		           </td>
-		           <td class="body-item mbr-fonts-style display-7">
-		            <div>
-		           	 	<a href="#" style="color:black">${classOne.class_nm}</a>
-		            </div>
-		            <div>
-		           		<img src="#" class=""/>강의사진
-		            </div>
-		           </td>
-		           <td class="body-item mbr-fonts-style display-7">
-		           	1
-		           </td>
-		           <td class="body-item mbr-fonts-style display-7">
-		           	${classOne.class_price}
-		           </td>
-		           <td class="body-item mbr-fonts-style display-7">
-		           	${classOne.class_price}
-		           </td>
-	            </tr>
-	             
-	             
-	             </tbody>
-	          </table>
-	        </div>
-	        
-	          	<div class="mbr-section-btn item-footer mt-2" style="text-align: center;">
-	          	<a class="btn item-btn btn-success display-7" href="javascript:payment()">결제하기</a>
-					 <script type="text/javascript">
-						function payment(){
-							if(${sessionMid!=null}){
-								var result = confirm("로그인 후 결제 하실 수 있습니다."); 
-								if(result==true){
-									location.href="<%=application.getContextPath()%>/login/login";
-								}	
-							}else {
-								location.href="<%=application.getContextPath()%>/cart/cartlist";
-								
-							}
-						}
-					</script>
-				</div>
-	        </div>
-	      </div>
-	
-	</section>
-	
-	
- 	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 
 	
 	 <script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 

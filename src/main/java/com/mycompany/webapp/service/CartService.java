@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.CartDao;
+import com.mycompany.webapp.dao.ClassDao;
 import com.mycompany.webapp.dto.CartDto;
 import com.mycompany.webapp.dto.CartPager;
+import com.mycompany.webapp.dto.ClassDto;
 
 @Service
 public class CartService {
@@ -16,19 +18,20 @@ public class CartService {
 	@Resource
 	private CartDao cartDao;
 	
-	public int gettotalRows() {
-		int totalRows = cartDao.countAll();
-		return totalRows;
+	//강의번호 하나로 강의 조회
+	public ClassDto getClass(int classNo) {
+		ClassDto classOne = cartDao.selectbyClassNo(classNo);
+		return classOne;
 	}
 
-	public List<CartDto> getCartlist() {
-		List<CartDto> list = cartDao.selectAll();
-		return list;
-	}
+	/*public List<CartDto> getcartList(int classNo) {
+		List<CartDto> cartList = cartDao.selectClasses(classNo);
+		return cartList;
+	}*/
 
-	public List<CartDto> getCartlist(CartPager pager) {
-		List<CartDto> list = cartDao.selectByPage(pager);
-		return list;
+	public void cartInsert(int classNo) {
+		cartDao.insert(classNo);
+		
 	}
 
 }

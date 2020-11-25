@@ -1,3 +1,4 @@
+<%@page import="java.util.*"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 
@@ -51,11 +52,16 @@
 	        
 	        
 	         <div class="mbr-section-btn">
-               	<a class="btn btn-success display-4" href="#">장바구니 담기</a>
+               	<a class="btn item-btn btn-success display-4" href="javascript:putt()">장바구니 담기</a>
              </div>
-	        
-	        
-	        
+	         <script type="text/javascript">
+				function putt(){
+					var result = confirm("장바구니에 담으시겠습니까?");
+					if(result==true){
+							location.href="<%=application.getContextPath()%>/cart/pick_cl";
+					}
+				}
+			</script>
 	        
 	        <div class="row justify-content-center mt-4">
 	            <div class="col-12 col-md-12">

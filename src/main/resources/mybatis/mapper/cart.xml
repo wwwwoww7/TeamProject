@@ -2,19 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.cart">
 
+	<!-- <insert id="insert" parameterType="cart">
+		insert into CART(member_id, class_no, class_nm, class_thum, class_price)
+		values(#{member_id}, #{class_no}, #{class_nm}, #{class_thum}, #{class_price})
+	</insert> -->
 	<insert id="insert" parameterType="cart">
-		insert into CART(user_id, class_no, class_nm, class_thum, class_price)
-		values(#{user_id}, #{class_no}, #{class_nm}, #{class_thum}, #{class_price})
+		insert into 
 	</insert>
 	
 	<select id="selectAll" resultType="cart">
-		 select u.user_id, cs.class_no, class_nm, class_thum, class_price
-		 from USER u, CART c, CLASS cs
-		 where u.user_id = c.user_id and c.class_no=cs.class_no;
+		 select m.member_id, cs.class_no, class_nm, class_thum, class_price
+		 from MEMBER m, CART c, CLASS cs
+		 where m.member_id = c.member_id and c.class_no=cs.class_no;
 	</select>
 	
-	<select id="countAll" resultType="cart">
-		select count(*) from CART
+	<select id="selectbyClassNo" resultType="class" parameterType="int">
+		select * from class where class_no = #{class_no}
 	</select>
+
+	
 	
 </mapper>
