@@ -6,6 +6,8 @@ public class ClassDto {
 	private String class_nm;
 	private String class_sub;
 	private String class_curr;
+	private String class_curr2;
+	private String class_curr3;
 	private String class_thum;
 	private String tutor_id;
 	private int class_cate_no;
@@ -80,6 +82,18 @@ public class ClassDto {
 	}
 	public void setReview_star(double review_star) {
 		this.review_star = review_star;
+	}
+	public String getClass_curr2() {
+		return class_curr2;
+	}
+	public void setClass_curr2(String class_curr2) {
+		this.class_curr2 = class_curr2;
+	}
+	public String getClass_curr3() {
+		return class_curr3;
+	}
+	public void setClass_curr3(String class_curr3) {
+		this.class_curr3 = class_curr3;
 	}
 
 	
