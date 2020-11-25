@@ -23,7 +23,6 @@
 		<!-- Custom styles -->
 		<link href="<%=application.getContextPath()%>/resources/css/style.css" rel="stylesheet"> 
 		<link href="<%=application.getContextPath()%>/resources/css/style-responsive.css" rel="stylesheet"> 
-
 	</head>
 	<body class="login-img3-body">
 		<div class="container">

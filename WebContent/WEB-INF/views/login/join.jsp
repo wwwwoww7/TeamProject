@@ -59,7 +59,7 @@
 							<span class="input-group-addon"><i class="icon-envelope-l"></i>이 메 일</span>
 							<input type="text" name="memail" class="form-control" placeholder="xxx@xxxx.xxx">
 						</div>
-					
+				
 						<div class="input-group">
 							<div class="input-group-prepend"><span class="input-group-text">가입 유형</span></div>
 							<select name="mtype" class="form-control">

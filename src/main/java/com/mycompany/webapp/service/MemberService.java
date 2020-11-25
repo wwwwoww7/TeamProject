@@ -14,7 +14,7 @@ import com.mycompany.webapp.dto.MemberDto;
 @Service 
 public class MemberService {
 	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
-	
+
 	@Resource
 	private MemberDao userDao;
 	

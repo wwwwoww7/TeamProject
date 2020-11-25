@@ -75,7 +75,6 @@ public class LoginController {
 		return "home";
 	}
 	
-	
 	  @RequestMapping("/encodePassword")
 	  public String encodePassword(String mpassword) {
 		  logger.info("실행");

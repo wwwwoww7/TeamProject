@@ -13,7 +13,6 @@ public class MemberDto {
 	private String mtype;
 	private MultipartFile mphotoAttach;
 	private boolean menabled;
-	
 	public String getMid() {
 		return mid;
 	}

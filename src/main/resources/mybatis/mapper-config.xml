@@ -15,4 +15,3 @@
 		<typeAlias alias="communityPager" type="com.mycompany.webapp.dto.CommunityPagerDto" />
 	</typeAliases>
 </configuration>
-
