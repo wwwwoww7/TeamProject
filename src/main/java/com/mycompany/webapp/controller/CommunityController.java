@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
+import com.mycompany.webapp.dto.ReviewDto;
 import com.mycompany.webapp.service.CommunityService;
 
 
@@ -51,42 +52,49 @@ public class CommunityController {
 	}*/
 	
 	@GetMapping("/communityAll")
-	public String communityAll(CommunityDto communtiy,Model model) {
-		model.addAttribute("cate", "total");
+	public String communityAll(Model model) {
+		logger.info("실행");
 		
 		List<CommunityDto> list = service.getCommunityAll();
-		model.addAttribute("all", "all");
+		
+		model.addAttribute("list", list);
 
 		
 		return "community/community_list";
 	}
 	
+	
 	@GetMapping("/communityHealth")
-	public String communityHealth(int class_cate_no, Model model) {
-		model.addAttribute("cate", "health");
+	public String communityHealth(Model model) {
 		
-		CommunityDto commDto = service.getCommunityHealth(class_cate_no);
+	List<CommunityDto> health = service.getCommunityHealth();
+		model.addAttribute("health", health);
+		logger.info("health야 오고있니");
 		
-		model.addAttribute("health", "health");
 		
 		return "community/community_list";
 	}
 	
 	@GetMapping("/communityCareer")
 	public String communityCareer(Model model) {
-		model.addAttribute("cate", "career");
+		List<CommunityDto> career = service.getCommunityCareer();
+		model.addAttribute("career", career);
 		return "community/community_list";
 	}
 	
 	@GetMapping("/communityMoney")
-	public String communityMoeny(Model model) {
-		model.addAttribute("cate", "money");
+	public String communityMoney(Model model) {
+		List<CommunityDto> money = service.getCommunityMoney();
+		model.addAttribute("money", money);
 		return "community/community_list";
 	}
 	
 	@GetMapping("/communityReview")
 	public String communityReview(Model model) {
-		model.addAttribute("cate", "review");
+		logger.info("리뷰가 오고있는지 모르겠다.");
+		List<ReviewDto> review = service.getCommunityReview();
+		model.addAttribute("review", review);
+		
 		return "community/community_list_review";
 	}
 	
@@ -109,7 +117,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/communityWriteReview")
-	public String communityWriteReviewform() {
+	public String communityWriteReview() {
 		
 		return "community/community_reviewform";
 	}
@@ -131,20 +139,20 @@ public class CommunityController {
 		out.close();
 	}
 	
-	@PostMapping("/communityUpdate")
-	public String communityUpdate() {
+	@PostMapping("/boardUpdate")
+	public String boardUpdate() {
 		
 		return "community/community_updateform";
 	}
 	
-	@PostMapping("/communityUpdateReview")
-	public String communityUpdateReview() {
+	@PostMapping("/boardUpdateReview")
+	public String boardUpdateReview() {
 		
 		return "community/community_updateform_review";
 	}
 	
-	@PostMapping("/communityDelete")
-	public String communityDelete() {
+	@PostMapping("/boardDelete")
+	public String boardDelete() {
 		
 		return "community/community";
 	}

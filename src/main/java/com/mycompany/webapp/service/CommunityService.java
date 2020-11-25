@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.webapp.dao.CommunityDao;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
+import com.mycompany.webapp.dto.ReviewDto;
 
 @Service
 public class CommunityService {
@@ -19,26 +20,30 @@ public class CommunityService {
 	@Resource
 	private CommunityDao communityDao;
 	
-
-	public List<CommunityDto> getBoardList(CommunityPagerDto pager) {
-		List<CommunityDto> list = communityDao.selectByPage(pager);
+	public List<CommunityDto> getCommunityAll(){
+		List<CommunityDto> list = communityDao.selectAll();
 		return list;
 	}
 
-	public int getTotalRows() {
-		int totalRows = communityDao.countAll();
-		return totalRows;
-	}
-
-	public List<CommunityDto> getCommunityAll(){
-		List<CommunityDto> all = communityDao.selectAll();
-		return all;
+	public List<CommunityDto> getCommunityHealth(){
+		List<CommunityDto> health = communityDao.selectHealth();
+		return health;
 	}
 	
-
-	public CommunityDto getCommunityHealth(int class_cate_no) {
-		List<CommunityDto> commDto = communityDao.selectHealth(class_cate_no);
-		return (CommunityDto) commDto;
+	public List<CommunityDto> getCommunityCareer(){
+		List<CommunityDto> career = communityDao.selectCareer();
+		return career;
 	}
+	
+	public List<CommunityDto> getCommunityMoney(){
+		List<CommunityDto> money = communityDao.selectMoney();
+		return money;
+	}
+
+	public List<ReviewDto> getCommunityReview() {
+		List<ReviewDto> review = communityDao.selectReview();
+		return review;
+	}
+
 	
 }

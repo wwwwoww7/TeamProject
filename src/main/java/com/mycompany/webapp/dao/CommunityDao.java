@@ -9,33 +9,36 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
+import com.mycompany.webapp.dto.ReviewDto;
 @Repository
 public class CommunityDao {
 
 	@Resource
 	private SqlSessionTemplate sst;
-	
-	
-
-	public List<CommunityDto> selectByPage(CommunityPagerDto pager) {
-		List<CommunityDto> list = sst.selectList("mybatis.mapper.community.selectByPage", pager);
-		return list;
-	}
-
-	public int countAll() {
-		Integer totalRows = sst.selectOne("mybatis.mapper.community.countAll");
-		return totalRows;
-	}
 
 	public List<CommunityDto> selectAll(){
-		List<CommunityDto> all = sst.selectList("mybatis.mapper.community.selectAll");
-		return all;
-	}
-
-	public List<CommunityDto> selectHealth(int class_cate_no) {
-		List<CommunityDto> list = sst.selectList("mybatis.mapper.community.selectHealth");
+		List<CommunityDto> list = sst.selectList("mybatis.mapper.community.selectAll");
 		return list;
 	}
-	
-	
+
+	public List<CommunityDto> selectHealth(){
+		List<CommunityDto> health = sst.selectList("mybatis.mapper.community.selectHealth");
+		return health;
+	}
+
+	public List<CommunityDto> selectCareer() {
+		List<CommunityDto> career = sst.selectList("mybatis.mapper.community.selectCareer");
+		return career;
+	}
+
+	public List<CommunityDto> selectMoney() {
+		List<CommunityDto> moeny = sst.selectList("mybatis.mapper.community.selectMoney");
+		return moeny;
+	}
+
+	public List<ReviewDto> selectReview() {
+		List<ReviewDto> review = sst.selectList("mybatis.mapper.community.selectReview");
+		return review;
+	}
+
 }

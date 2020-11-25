@@ -43,15 +43,33 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2">
-                    <strong>Community</strong></h3>
+                    <strong>Community@!@@!@</strong></h3>
                 
             </div>
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-12 col-md-8">
                 <ul class="nav nav-tabs mb-4" role="tablist">
-                    <li class="nav-item first mbr-fonts-style"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-1k_tab0" aria-selected="true"><strong>all</strong></a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style active display-7" role="tab" data-toggle="tab" href="#tabs1-1k_tab1" aria-selected="true"><strong>health</strong></a></li>
+                    <li class="nav-item first mbr-fonts-style">
+                    	<a  class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" aria-selected="true" href="javascript:fun1()">
+                    		<strong>all</strong>
+                    	</a>
+               			<script>
+							function fun1(){
+								$.ajax({
+									url : "community/communityAll" , 
+									success : function(data) {
+										$("#fun1_result").html(data);
+									}
+								});
+							}
+						</script>
+                    </li>
+                    <li class="nav-item">
+                    	<a href="javascript:fun2()"  class="nav-link mbr-fonts-style active display-7" role="tab" data-toggle="tab" aria-selected="true">
+                    		<strong>health</strong>
+                    	</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link mbr-fonts-style active display-7" role="tab" data-toggle="tab" href="#tabs1-1k_tab2" aria-selected="true"><strong>career</strong></a></li>
                     <li class="nav-item"><a class="nav-link mbr-fonts-style active display-7" role="tab" data-toggle="tab" href="#tabs1-1k_tab3" aria-selected="true"><strong>money</strong></a></li>
                     <li class="nav-item"><a class="nav-link mbr-fonts-style active display-7" role="tab" data-toggle="tab" href="#tabs1-1k_tab4" aria-selected="true"><strong>review</strong></a></li>
@@ -60,8 +78,8 @@
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane in active" role="tabpanel">
                         <div class="row">
-                            <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-7">table1 ìì¹&nbsp;</p>
+                            <div class="col-md-12" id="fun1_result">
+                                 
                             </div>
                         </div>
                     </div>
@@ -111,87 +129,6 @@
     </div>
 </section>
 
-<section class="section-table cid-shajIi4vc3" id="table1-1l">
-
-  
-  
-  <div class="container container-table">
-      
-      
-      <div class="table-wrapper">
-        <div class="container">
-          <div class="row search">
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <div class="dataTables_filter">
-                  <label class="searchInfo mbr-fonts-style display-7">button space</label>
-                  <input class="form-control input-sm" disabled="">
-                </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container scroll">
-          <table class="table isSearch" cellspacing="0" data-empty="No matching records found">
-            <thead>
-              <tr class="table-heads ">
-                  
-                  
-                  
-                  
-              <th class="head-item mbr-fonts-style display-7">
-                      NAME</th><th class="head-item mbr-fonts-style display-7">
-                      AGE</th><th class="head-item mbr-fonts-style display-7">
-                      DATE</th><th class="head-item mbr-fonts-style display-7">
-                      SALARY</th></tr>
-            </thead>
-
-            <tbody>
-              
-              
-              
-              
-            <tr> 
-                
-                
-                
-                
-              <td class="body-item mbr-fonts-style display-7">Jeanna Schmal</td><td class="body-item mbr-fonts-style display-7">44</td><td class="body-item mbr-fonts-style display-7">2025-10-17</td><td class="body-item mbr-fonts-style display-7">$317.000</td></tr><tr>
-                
-                
-                
-                
-              <td class="body-item mbr-fonts-style display-7">Caren Rials</td><td class="body-item mbr-fonts-style display-7">35</td><td class="body-item mbr-fonts-style display-7">2024-04-12</td><td class="body-item mbr-fonts-style display-7">$445.500</td></tr><tr>
-                
-                
-                
-                
-              <td class="body-item mbr-fonts-style display-7">Leon Rogol</td><td class="body-item mbr-fonts-style display-7">66</td><td class="body-item mbr-fonts-style display-7">2025-05-22</td><td class="body-item mbr-fonts-style display-7">$152.558</td></tr><tr>
-                
-                
-                
-                
-              <td class="body-item mbr-fonts-style display-7">Shala Barrera</td><td class="body-item mbr-fonts-style display-7">70</td><td class="body-item mbr-fonts-style display-7">2025-05-15</td><td class="body-item mbr-fonts-style display-7">$459.146</td></tr></tbody>
-          </table>
-        </div>
-        <div class="container table-info-container">
-          <div class="row info">
-            <div class="col-md-6">
-              <div class="dataTables_info mbr-fonts-style display-7">
-                <span class="infoBefore">Showing</span>
-                <span class="inactive infoRows"></span>
-                <span class="infoAfter">entries</span>
-                <span class="infoFilteredBefore">(filtered from</span>
-                <span class="inactive infoRows"></span>
-                <span class="infoFilteredAfter"> total entries)</span>
-              </div>
-            </div>
-            <div class="col-md-6"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-</section>
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 
