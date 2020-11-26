@@ -7,10 +7,9 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
- 
+
 import com.mycompany.webapp.dao.ClassNoticeDao;
 import com.mycompany.webapp.dto.ClassNoticeDto;
-import com.mycompany.webapp.dto.CommunityPagerDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 
 @Repository
@@ -31,9 +30,7 @@ public class ClassNoticeService {
 	}
 
 	public ClassNoticeDto getNoticeDetail(int class_notice_no) {
-		ClassNoticeDto notice = classNoticeDao.selectNoticeDetail(class_notice_no);
-		
-		
+		ClassNoticeDto notice = classNoticeDao.selectNoticeDetail(class_notice_no);		
 		return notice;
 	}
 
@@ -44,6 +41,20 @@ public class ClassNoticeService {
 
 	public void noticeUpdate(ClassNoticeDto classNoticeDto) {
 		int rows = classNoticeDao.updateNotice(classNoticeDto);
+	}
+
+	public void noticeDelete(int class_notice_no) {
+		int rows = classNoticeDao.deleteNotice(class_notice_no);
+		
+	}
+
+	public void noticeWrite(ClassNoticeDto classNoticeDto) {
+		classNoticeDao.insertNotice(classNoticeDto);
+	}
+
+	public List<ClassNoticeDto> selectClassNo(List<ClassNoticeDto> list) {
+		List<ClassNoticeDto> classNamelist = classNoticeDao.selectClassName(list);
+		return classNamelist;
 	}
 
 	

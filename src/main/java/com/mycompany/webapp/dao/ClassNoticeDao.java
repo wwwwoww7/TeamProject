@@ -42,16 +42,6 @@ public class ClassNoticeDao {
 	//강사가 공지사항 수정하기
 	public int updateNotice(ClassNoticeDto classNoticeDto) {
 		
-		
-		logger.info("============> " + classNoticeDto.getClass_notice_no());
-		logger.info("============> " + classNoticeDto.getClass_notice_title());
-		logger.info("============> " + classNoticeDto.getClass_notice_content());
-		
-		
-		
-		
-		
-		
 		int rows = sst.update("mybatis.mapper.class_notice.updateNotice",classNoticeDto);
 		return rows;
 	}
@@ -64,6 +54,11 @@ public class ClassNoticeDao {
 	public ClassNoticeDto selectByNoticeNo(int class_notice_no) {
 		ClassNoticeDto notice = sst.selectOne("mybatis.mapper.class_notice.selectByNoticeNo",class_notice_no);
 		return notice;
+	}
+
+	public List<ClassNoticeDto> selectClassName(List<ClassNoticeDto> list) {
+		List<ClassNoticeDto> classNamelist = sst.selectList("mybatis.mapper.class_notice.selectClassName",list);
+		return classNamelist;
 	}
 
 	

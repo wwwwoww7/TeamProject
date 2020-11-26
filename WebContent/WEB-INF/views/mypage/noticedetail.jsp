@@ -34,6 +34,7 @@
 		</tbody>
 	</table>
 	<br/>
+	<input type="hidden" id="mid" name="mid" value="${notice.mid}"/>
     <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:tutorClassNotice()">목록으로</a>
 	<script type="text/javascript">
 		function tutorClassNotice(){
@@ -52,7 +53,6 @@
 		function noticeUpdate(class_notice_no) {
 			console.log(class_notice_no);
 			
-			
 			$.ajax({
 				url:"noticeUpdateForm",
 				data:{class_notice_no:class_notice_no},
@@ -63,18 +63,20 @@
 			});
 		}
 	</script>	
-	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="#">삭제</a>
+	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:noticeDelete(${notice.class_notice_no})">삭제</a>
 	<script type="text/javascript">
-		function boardDelete(bno) {
+		function noticeDelete(class_notice_no) {
+
+			var mid = $("#mid").val();
+			
 			$.ajax({
-				url:"boardDelete",
-				data:{bno:bno},
+				url:"noticeDelete",
+				data:{class_notice_no:class_notice_no},
 				method:"post",
 				success:function(data) {
 					if(data.result == "success") {
-						boardList();
+						tutorClassNotice(1,mid);
 					}
-					console.log(data);
 				}
 			});
 		}

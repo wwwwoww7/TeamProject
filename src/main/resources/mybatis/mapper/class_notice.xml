@@ -3,9 +3,9 @@
 <mapper namespace="mybatis.mapper.class_notice">
 
 	<select id="selectNotice" parameterType="myPager" resultType="classNotice">
-	select rnum, class_notice_no, class_nm_s,  class_cate_no, class_notice_title, mid, class_notice_date
-	from (select rownum as rnum, new_t.class_notice_no,new_t.class_nm_s, new_t.class_cate_no,new_t.class_notice_title, new_t.mid, new_t.class_notice_date
-        	from (select rownum as rnum, n.class_notice_no, class.CLASS_NM_S, class.CLASS_CATE_NO,n.class_notice_title, m.mid, n.class_notice_date 
+	select rnum, class_notice_no, class_no,class_nm_s,  class_cate_no, class_notice_title, mid, class_notice_date
+	from (select rownum as rnum, new_t.class_notice_no,new_t.class_no,new_t.class_nm_s, new_t.class_cate_no,new_t.class_notice_title, new_t.mid, new_t.class_notice_date
+        	from (select rownum as rnum, class.class_no,n.class_notice_no, class.CLASS_NM_S, class.CLASS_CATE_NO,n.class_notice_title, m.mid, n.class_notice_date 
                 from class_notice n, class, member m
                 where class.class_no = n.class_no and m.mid = class.tutor_id
                 order  by n.class_notice_no desc) new_t
@@ -16,27 +16,36 @@
 	
 	
 	<select id="selectNoticeDetail" parameterType="int" resultType="classNotice">
-		select ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
-		from (	SELECT c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
+		select ta.class_no, ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
+		from (	SELECT c.class_no, c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
         		FROM class c, class_notice n, class_hw h 
         		where c.class_no = n.class_no and n.class_notice_no = h.class_hw_no) ta
 		where ta.class_notice_no=#{class_notice_no}
 	</select>
 	
 	<select id="selectByNoticeNo" parameterType="int" resultType="classNotice">
-		select ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
-		from (	SELECT c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
+		select ta.class_no,ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
+		from (	SELECT c.class_no,c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
         		FROM class c, class_notice n, class_hw h 
         		where c.class_no = n.class_no and n.class_notice_no = h.class_hw_no) ta
 		where ta.class_notice_no=#{class_notice_no}
 	</select>
+	<!-- 강의공지에서 사용할 강의명 가져오기 -->
+	<select id="selectClassName" parameterType="classNotice" resultType="classNotice">
+		select ta.class_no, ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
+		from (	SELECT c.class_no, c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
+        		FROM class c, class_notice n, class_hw h 
+        		where c.class_no = n.class_no and n.class_notice_no = h.class_hw_no) ta
+		where ta.class_no=#{class_no}
+	</select>
 	
 	<insert id="insertNotice" parameterType="classNotice">
-		insert into CLASS_NOTICE (CLASS_NOTICE_TITLE,CLASS_NOTICE_CONTENT)
-		values (#{class_notice_title},#{class_notice_content})
+		insert into CLASS_NOTICE (CLASS_NOTICE_NO,CLASS_NOTICE_DATE,CLASS_NOTICE_TITLE,CLASS_NOTICE_CONTENT,CLASS_NO)
+		values (SEQ_NOTICE_NO.nextval,sysdate,#{class_notice_title},#{class_notice_content},#{class_no})
 	</insert>
 	
 	<delete id="deleteNotice" parameterType="int">
+		delete from class_hw where class_
 		delete from CLASS_NOTICE where class_notice_no =#{class_notice_no}
 	</delete>
 	

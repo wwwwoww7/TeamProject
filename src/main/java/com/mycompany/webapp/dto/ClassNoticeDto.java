@@ -12,25 +12,9 @@ public class ClassNoticeDto {
 	private String mid;
 	private int class_hw_no;
 	private String class_hw_file;
+	private int class_no;
 	
-	public int getClass_hw_no() {
-		return class_hw_no;
-	}
-	public void setClass_hw_no(int class_hw_no) {
-		this.class_hw_no = class_hw_no;
-	}
-	public String getClass_hw_file() {
-		return class_hw_file;
-	}
-	public void setClass_hw_file(String class_hw_file) {
-		this.class_hw_file = class_hw_file;
-	}
-	public String getClass_nm_s() {
-		return class_nm_s;
-	}
-	public void setClass_nm_s(String class_nm_s) {
-		this.class_nm_s = class_nm_s;
-	}
+	
 	public String getMid() {
 		return mid;
 	}
@@ -60,6 +44,30 @@ public class ClassNoticeDto {
 	}
 	public void setClass_notice_content(String class_notice_content) {
 		this.class_notice_content = class_notice_content;
+	}
+	public int getClass_no() {
+		return class_no;
+	}
+	public void setClass_no(int class_no) {
+		this.class_no = class_no;
+	}
+	public int getClass_hw_no() {
+		return class_hw_no;
+	}
+	public void setClass_hw_no(int class_hw_no) {
+		this.class_hw_no = class_hw_no;
+	}
+	public String getClass_hw_file() {
+		return class_hw_file;
+	}
+	public void setClass_hw_file(String class_hw_file) {
+		this.class_hw_file = class_hw_file;
+	}
+	public String getClass_nm_s() {
+		return class_nm_s;
+	}
+	public void setClass_nm_s(String class_nm_s) {
+		this.class_nm_s = class_nm_s;
 	}
 	
 }

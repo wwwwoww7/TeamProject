@@ -256,7 +256,7 @@
 				}
 		
 		      jQuery(document).ready(function(){
-		   	   tutorClassQA();
+		   	   		tutorClassQA();
 		      }); 
 	</script>
 </body>
