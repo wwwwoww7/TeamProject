@@ -25,8 +25,28 @@
 										});
 									}
 								</script>
-							<a class="dropdown-item" href="#">커리어</a>
-							<a class="dropdown-item" href="#">머니</a>
+							<a class="dropdown-item" href="javascript:catereview2()">커리어</a>
+							<script>
+									function catereview2(){
+										$.ajax({
+											url : "community/catereview2" , 
+											success : function(data) {
+												$("#fun1_result").html(data);
+											}
+										});
+									}
+								</script>
+							<a class="dropdown-item" href="javascript:catereview3()">머니</a>
+							<script>
+									function catereview3(){
+										$.ajax({
+											url : "community/catereview3" , 
+											success : function(data) {
+												$("#fun1_result").html(data);
+											}
+										});
+									}
+								</script>
 						</div>
 					</div>			 
 				
@@ -78,6 +98,38 @@
 			</tbody>
 			<tbody>
 				<c:forEach var="ReviewDto" items="${catereview1}">
+					<tr>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_no}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.class_cate_nm}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
+						<td><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						
+					</tr>
+				</c:forEach>
+			</tbody>
+			
+			<tbody>
+				<c:forEach var="ReviewDto" items="${catereview2}">
+					<tr>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_no}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.class_cate_nm}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
+						<td><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						
+					</tr>
+				</c:forEach>
+			</tbody>
+			
+			<tbody>
+				<c:forEach var="ReviewDto" items="${catereview3}">
 					<tr>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_no}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.class_cate_nm}</a></td>
