@@ -61,4 +61,10 @@ public class CommunityDao {
 		return catereview3;
 	}
 
+	/* 20.11.26 지은 추가, class_no 가장 최근 리뷰 두개 조회 */
+	public List<ReviewDto> selectByClassNo(int class_no) {
+		List<ReviewDto> reviewList = sst.selectList("mybatis.mapper.community.selectByClassNo",class_no);
+		return reviewList;
+	}
+
 }

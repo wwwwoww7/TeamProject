@@ -14,6 +14,10 @@ public class ReviewDto {
 	private String class_cate_no;
 	private String class_cate_nm;
 	private String class_cate;
+	private String mnick;
+	private String mpro_img;
+	
+	
 	public int getReview_no() {
 		return review_no;
 	}
@@ -79,6 +83,18 @@ public class ReviewDto {
 	}
 	public void setClass_cate(String class_cate) {
 		this.class_cate = class_cate;
+	}
+	public String getMnick() {
+		return mnick;
+	}
+	public void setMnick(String mnick) {
+		this.mnick = mnick;
+	}
+	public String getMpro_img() {
+		return mpro_img;
+	}
+	public void setMpro_img(String mpro_img) {
+		this.mpro_img = mpro_img;
 	}
 	
 	

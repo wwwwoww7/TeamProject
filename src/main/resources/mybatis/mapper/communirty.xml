@@ -70,6 +70,22 @@
 		order by review_date desc
 	</select>
 
+
+
+	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
+	<select id="selectByClassNo" parameterType="int" resultType="review">
+		select mnick,mpro_img,review_title,review_content from (
+		    select rownum as rnum,mnick,mpro_img,review_title, review_content from (
+		        select member.mnick, member.mpro_img, review_title, review_content
+		        from review, member
+		        where review.class_no = #{class_no}
+		              and member.mid = review.mid
+		        order by review_date desc) 
+		    )
+		where rnum &lt;= 2
+	</select>
+
+
 	
 	
 	

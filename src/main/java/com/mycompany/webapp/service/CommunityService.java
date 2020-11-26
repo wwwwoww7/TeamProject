@@ -64,6 +64,17 @@ public class CommunityService {
 		List<ReviewDto> catereview3 = communityDao.selectCatereview3();
 		return catereview3;
 	}
+
+	
+	/* 20.11.26 지은 추가, class_no 가장 최근 리뷰 두개 조회 */
+	public List<ReviewDto> getReviewList(int classNo) {
+		List<ReviewDto> reviewList = communityDao.selectByClassNo(classNo);
+		return reviewList;
 	}
+	
+	
+	
+	
+}
 
 
