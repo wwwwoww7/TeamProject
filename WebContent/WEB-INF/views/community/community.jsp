@@ -123,7 +123,7 @@
 								<script>
 									function fun6(){
 										$.ajax({
-											url : "community/communityReview" , 
+											url : "community/reviewAll" , 
 											success : function(data) {
 												$("#fun1_result").html(data);
 											}

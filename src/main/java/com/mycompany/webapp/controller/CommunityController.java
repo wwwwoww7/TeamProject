@@ -83,10 +83,10 @@ public class CommunityController {
 		return "community/community_list";
 	}
 		
-	@GetMapping("/communityReview")
-	public String communityReview(Model model) {
+	@GetMapping("/reviewAll")
+	public String reviewAll(Model model) {
 		logger.info("리뷰가 오고있는지 모르겠다.");
-		List<ReviewDto> review = service.getCommunityReview();
+		List<ReviewDto> review = service.getReviewAll();
 		model.addAttribute("review", review);
 		
 		return "community/community_list_review";
@@ -135,11 +135,25 @@ public class CommunityController {
 	
 	@GetMapping("/catereview1")
 	public String catereview1(Model model) {
-		logger.info("리뷰가 오고있는지 모르겠다.");
-		List<ReviewDto> review = service.getCommunityReview();
-		model.addAttribute("review", review);
+		List<ReviewDto> catereview1 = service.getReviewCatereview1();
+		model.addAttribute("catereview1", catereview1);
 		return "community/community_list_review";
 	}
+	
+	@GetMapping("/catereview2")
+	public String catereview2(Model model) {
+		List<ReviewDto> catereview2 = service.getReviewCatereview2();
+		model.addAttribute("catereview2", catereview2);
+		return "community/community_list_review";
+	}
+	
+	@GetMapping("/catereview3")
+	public String catereview3(Model model) {
+		List<ReviewDto> catereview3 = service.getReviewCatereview3();
+		model.addAttribute("catereview3", catereview3);
+		return "community/community_list_review";
+	}
+	
 	
 }
 	 

@@ -36,12 +36,40 @@
 		order by comm_date desc 
 	</select>
  
-	<select id="selectReview" resultType="review">
-		select review_no, review_date, review_title, review_content, review_hitno, mid, class_no, review_star 
-		from review 
-		order by review_date desc  
+	<select id="selectReviewAll" resultType="review">
+		SELECT  review.review_no, class_cate.class_cate_nm, class.class_cate_no, review_star, review.review_date, review.review_title, review.review_content, review.review_hitno, review.mid
+		FROM REVIEW, CLASS , class_cate
+		WHERE CLASS.CLASS_NO= review.class_no and class.class_cate_no=class_cate.class_cate_no 
+		order by review_date desc
+		
 	</select>
 	
+	<select id="selectCatereview1" resultType="review">
+		select review_no,class_cate_nm,class_cate_no,review_star,review_date,review_title,review_content,review_hitno,mid
+		from(   SELECT  r.review_no, ca.class_cate_nm, c.class_cate_no, r.review_star, r.review_date, r.review_title, r.review_content, r.review_hitno, r.mid
+		        FROM REVIEW r, CLASS c, class_cate ca
+		        WHERE c.CLASS_NO= r.class_no and c.class_cate_no=ca.class_cate_no)
+		where class_cate_no=1
+		order by review_date desc
+	</select>
+	
+	<select id="selectCatereview2" resultType="review">
+		select review_no,class_cate_nm,class_cate_no,review_star,review_date,review_title,review_content,review_hitno,mid
+		from(   SELECT  r.review_no, ca.class_cate_nm, c.class_cate_no, r.review_star, r.review_date, r.review_title, r.review_content, r.review_hitno, r.mid
+		        FROM REVIEW r, CLASS c, class_cate ca
+		        WHERE c.CLASS_NO= r.class_no and c.class_cate_no=ca.class_cate_no)
+		where class_cate_no=2
+		order by review_date desc
+	</select>
+		<select id="selectCatereview3" resultType="review">
+		select review_no,class_cate_nm,class_cate_no,review_star,review_date,review_title,review_content,review_hitno,mid
+		from(   SELECT  r.review_no, ca.class_cate_nm, c.class_cate_no, r.review_star, r.review_date, r.review_title, r.review_content, r.review_hitno, r.mid
+		        FROM REVIEW r, CLASS c, class_cate ca
+		        WHERE c.CLASS_NO= r.class_no and c.class_cate_no=ca.class_cate_no)
+		where class_cate_no=3
+		order by review_date desc
+	</select>
+
 	
 	
 	
