@@ -26,4 +26,14 @@ public class ClassNoticeService {
 		List<ClassNoticeDto> list = classNoticeDao.selectNotice(pager);
 		return list;
 	}
+
+	public ClassNoticeDto getNoticeDetail(int class_notice_no) {
+		ClassNoticeDto notice = classNoticeDao.selectNoticeDetail(class_notice_no);
+		return notice;
+	}
+
+	public ClassNoticeDto getUpdateForm(int class_notice_no) {
+		ClassNoticeDto notice = classNoticeDao.selectByNoticeNo(class_notice_no);
+		return notice;
+	}
 }

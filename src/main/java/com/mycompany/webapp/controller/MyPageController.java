@@ -100,9 +100,20 @@ public class MyPageController {
 	
 	//강사의 공지사항 목록의 상세내용
 	@GetMapping("/noticeDetail")
-	public String noticeDetail() {
+	public String noticeDetail(int class_notice_no, Model model) {
+		
+		ClassNoticeDto notice = classNoticeService.getNoticeDetail(class_notice_no);
+		model.addAttribute("notice",notice);
 		
 		return "mypage/noticedetail";
+	}
+	
+	//강사 공지사항 수정폼 요청하기
+	@PostMapping("/noticeUpdate")
+	public String noticeUpdate(int class_notice_no,Model model) {
+		ClassNoticeDto notice = classNoticeService.getUpdateForm(class_notice_no);
+		model.addAttribute("notice",notice);
+		return "mypage/noticeUpdateForm";
 	}
 	
 	//강사의 강의문의 목록
