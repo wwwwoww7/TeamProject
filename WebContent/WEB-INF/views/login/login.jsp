@@ -45,7 +45,9 @@
     <div class="container">
         <div class="row content-wrapper justify-content-center">
             <div class="col-lg-3 offset-lg-1 mbr-form" data-form-type="formoid">
-                <form action="<%=application.getContextPath()%>/login" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="EB7nNREyluGKYeDqevnuu2h5FTwZboD4x2ICWXo5wDyEgpMFh/il6tVf662DO52SGxOgH/s5yov004lHZcFKoU8fh5PNOq6M08zzx1RXu6TmAyQR+NnAK5+7oO3IDMV8">
+                <form action="<%=application.getContextPath()%>/login" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+               <!--  <input type="hidden" name="email" data-form-email="true"
+                 value="EB7nNREyluGKYeDqevnuu2h5FTwZboD4x2ICWXo5wDyEgpMFh/il6tVf662DO52SGxOgH/s5yov004lHZcFKoU8fh5PNOq6M08zzx1RXu6TmAyQR+NnAK5+7oO3IDMV8"> -->
                     
                     <!-- <div class="">
                         <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling
@@ -71,11 +73,12 @@
 
                     </div>
                     
-                    <label class="checkbox">
+                  	<div class="col-lg-12 col-md-12 col-sm-12">
 						<span class="pull-right">
-							<a href="<%=request.getContextPath()%>/login/findpw"> Forgot Password?</a>
+							<a href="<%=request.getContextPath()%>/login/findpw" style="color:black "> Forgot Password?</a>
 						</span>
-					</label>
+					</div>
+					
 					<div class="col-12 col-md-auto mbr-section-btn">
 						<button type="submit" class="btn btn-success display-4">Login</button>
 					</div>

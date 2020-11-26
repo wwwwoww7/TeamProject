@@ -35,7 +35,7 @@
                     Links
                 </h5>
                 <p class="mbr-text">
-                    <a class="text-success" href="/">New Clas 신청</a>
+                    <a class="text-success" href="<%=request.getContextPath()%>/apply/apply_class">New Class 신청</a>
                     <br><a class="text-success" href="/">Download for Windows</a>
                     <br><a class="text-success" href="/">Download for Mac</a>
                 </p>

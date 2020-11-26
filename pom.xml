@@ -170,5 +170,21 @@
 		    <version>5.3.4.RELEASE</version>
 		</dependency>
 		
+		<!--mail을 위한 lib -->
+
+
+		 <!-- java mail -->
+        <dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+
+  		<dependency>
+		    <groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>5.3.1</version>
+		</dependency>
+		
 	</dependencies>
 </project>
