@@ -21,7 +21,8 @@
                 </span>
                 <span class="navbar-caption-wrap">
                		<a class="navbar-caption text-white text-primary display-5" href="<%=application.getContextPath()%>">
-                    BAN숙</a>
+                    	BAN숙
+                    </a>
                 </span>
             </div>
         </div>
@@ -75,6 +76,7 @@
                     </a>
                     <div class="dropdown-menu">
                     	<a class="dropdown-item text-white text-primary display-4" href="<%=application.getContextPath()%>">Home</a>
+                    	<a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>/allClass">All Class</a>
                     	<a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>/community">Community</a>
                     	<a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>/event">Event</a>
                     </div>
