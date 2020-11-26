@@ -60,7 +60,7 @@
 						function putt(){
 							var result = confirm("장바구니에 담으시겠습니까?");
 							if(result){
-								location.href="<%=application.getContextPath()%>/cart/pick_cl";
+								location.href="<%=application.getContextPath()%>/cart/pick_cl?classNo=${classOne.class_no}";
 							}
 						}
 					</script>
