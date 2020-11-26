@@ -12,4 +12,17 @@
 		from member
 		where mid=#{mid}
 	</select>
+	
+	<select id="selectAll" resultType="member"> 
+		select mid,mpw,mname,mnick,mtel,memail, mpro_img, mtype
+		from member
+	</select>
+	
+	<!-- 비밀번호 재설정을 위한 select -->
+	<select id="selectByPw" parameterType="member" resultType="member"> 
+		select mid,mpw,memail
+		from member
+		where mid=#{mid}
+	</select>
+	
 </mapper> 

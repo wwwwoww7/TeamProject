@@ -1,5 +1,7 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.MemberDao;
+import com.mycompany.webapp.dto.CartDto;
 import com.mycompany.webapp.dto.MemberDto;
 
 @Service 
@@ -16,14 +19,14 @@ public class MemberService {
 	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
 
 	@Resource
-	private MemberDao userDao;
+	private MemberDao memberDao;
 	
 	public void join(MemberDto member) {
-		userDao.insert(member);
+		memberDao.insert(member);
 	}
 	
 	public String login(MemberDto member) {
-		MemberDto dbMember = userDao.selectByMid(member.getMid()); //앞의 행이 디비에 있는 정보, 뒤의 행은 mid를 멤버객체에서 가져와서 dao에서 검색을 했다.
+		MemberDto dbMember = memberDao.selectByMid(member.getMid()); //앞의 행이 디비에 있는 정보, 뒤의 행은 mid를 멤버객체에서 가져와서 dao에서 검색을 했다.
 		if(dbMember == null) {
 			return "wrongid";
 		}
@@ -37,7 +40,23 @@ public class MemberService {
 	
 	//마이페이지에서 사용하려고 가져오는 멤버의 정보
 	public MemberDto getId(MemberDto member) {
-		MemberDto dbMember = userDao.selectByMid(member.getMid());
+		MemberDto dbMember = memberDao.selectByMid(member.getMid());
 		return dbMember;
 	}
+	
+	public List<MemberDto> getMemberlist() {
+		List<MemberDto> list = memberDao.selectAll();
+		return list;
+	}
+
+	
+	public String sendpw(MemberDto member) {
+		MemberDto memberPW = memberDao.selectPW(member.getMid());
+		if(memberPW.getMemail().equals(member.getMemail())) {
+			return memberPW.getMpw();
+		}
+			
+		return "error";
+	}
+	
 }

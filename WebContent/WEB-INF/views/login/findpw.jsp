@@ -48,27 +48,20 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="/email/pw_email" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+                <form action="<%=request.getContextPath() %>/email/sendpw" method="POST" class="mbr-form form-with-styler" data-form-title="pwsearch">
               
-                    <div class="">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out
-                            the form!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
-                            problem!</div>
-                    </div>
+                
                     <div class="dragArea row">
                         <h3>가입 당시 계정 이메일을 입력하세요</h3><br/>
                         
                          <div class="col-lg-12 col-md col-12 form-group" data-for="mid">
-                         
-                         <span class="input-group-addon" style="width:80px;">아이디 입력 </span>
+                            <span class="input-group-addon" style="width:80px;">아이디 입력 </span>
                             <input type="text" name="mid" placeholder="ID" data-form-field="mid" class="form-control" value="" id="id-form4-27">
                         </div>
                         <div class="col-md col-sm-12 form-group" data-for="email">
                         	<span class="input-group-addon" style="width:80px;">이메일 입력 </span>
-                            <input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form5-30">
+                            <input type="email" name="memail" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form5-30">
                         </div>
-                        
                         
                         <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-dark display-4">비밀번호 재설정 메일 전송하기</button></div>
                        
@@ -98,6 +91,9 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+	 <script type="text/javascript">
+
+	 </script>
 </body>
 </html>
 <%-- <%@ page contentType="text/html;charset=UTF-8"%>
