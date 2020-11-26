@@ -32,7 +32,7 @@
 		from (select rownum as rnum, class_no,CLASS_NM, CLASS_THUM
 		        from class
 		    order by CLASS_NO desc)
-		where rnum &lt;=4;
+		where rnum &lt;=4
 	</select>
 	
 	
