@@ -36,21 +36,6 @@ public class CommunityController {
 	@Resource
 	private CommunityService service;
 	
-	/*@GetMapping("/boardAll")
-	public String boardAll(@RequestParam(defaultValue="1")int pageNo, Model model) {
-		model.addAttribute("cate", "all");
-		
-		int totalRows= service.getTotalRows();
-		//전체게시물수, 내가 보고싶은
-		CommunityPagerDto pager = new CommunityPagerDto(5, 5, totalRows, pageNo);
-		List<CommunityDto> list = service.getBoardList(pager);
-		model.addAttribute("list", list);
-		model.addAttribute("pager", pager);
-	
-		
-		return "community/community_list";
-	}*/
-	
 	@GetMapping("/communityAll")
 	public String communityAll(Model model) {
 		logger.info("실행");
@@ -63,32 +48,41 @@ public class CommunityController {
 		return "community/community_list";
 	}
 	
-	
-	@GetMapping("/communityHealth")
-	public String communityHealth(Model model) {
 		
-	List<CommunityDto> health = service.getCommunityHealth();
-		model.addAttribute("health", health);
-		logger.info("health야 오고있니");
+	@GetMapping("/communityChat")
+	public String communityChat(Model model) {
+		
+	List<CommunityDto> chat = service.getCommunityChat();
+	
+		model.addAttribute("chat", chat);
+	
+		logger.info("Chat야 오고있니");
 		
 		
 		return "community/community_list";
 	}
 	
-	@GetMapping("/communityCareer")
+	@GetMapping("/communityTips")
 	public String communityCareer(Model model) {
-		List<CommunityDto> career = service.getCommunityCareer();
-		model.addAttribute("career", career);
+		List<CommunityDto> tips = service.getCommunityTips();
+		model.addAttribute("tips", tips);
 		return "community/community_list";
 	}
 	
-	@GetMapping("/communityMoney")
-	public String communityMoney(Model model) {
-		List<CommunityDto> money = service.getCommunityMoney();
-		model.addAttribute("money", money);
+	@GetMapping("/communityBoast")
+	public String communityBoast(Model model) {
+		List<CommunityDto> boast = service.getCommunityBoast();
+		model.addAttribute("boast", boast);
 		return "community/community_list";
 	}
 	
+	@GetMapping("/communityAssign")
+	public String communityAssign(Model model) {
+		List<CommunityDto> assign = service.getCommunityAssign();
+		model.addAttribute("assign", assign);
+		return "community/community_list";
+	}
+		
 	@GetMapping("/communityReview")
 	public String communityReview(Model model) {
 		logger.info("리뷰가 오고있는지 모르겠다.");
@@ -139,22 +133,12 @@ public class CommunityController {
 		out.close();
 	}
 	
-	@PostMapping("/boardUpdate")
-	public String boardUpdate() {
-		
-		return "community/community_updateform";
-	}
-	
-	@PostMapping("/boardUpdateReview")
-	public String boardUpdateReview() {
-		
-		return "community/community_updateform_review";
-	}
-	
-	@PostMapping("/boardDelete")
-	public String boardDelete() {
-		
-		return "community/community";
+	@GetMapping("/catereview1")
+	public String catereview1(Model model) {
+		logger.info("리뷰가 오고있는지 모르겠다.");
+		List<ReviewDto> review = service.getCommunityReview();
+		model.addAttribute("review", review);
+		return "community/community_list_review";
 	}
 	
 }

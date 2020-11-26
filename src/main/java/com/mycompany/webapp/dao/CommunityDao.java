@@ -21,21 +21,26 @@ public class CommunityDao {
 		return list;
 	}
 
-	public List<CommunityDto> selectHealth(){
-		List<CommunityDto> health = sst.selectList("mybatis.mapper.community.selectHealth");
-		return health;
+	public List<CommunityDto> selectChat(){
+		List<CommunityDto> chat = sst.selectList("mybatis.mapper.community.selectChat");
+		return chat;
 	}
-
-	public List<CommunityDto> selectCareer() {
-		List<CommunityDto> career = sst.selectList("mybatis.mapper.community.selectCareer");
-		return career;
+	
+	public List<CommunityDto> selectTips() {
+		List<CommunityDto> tips = sst.selectList("mybatis.mapper.community.selectTips");
+		return tips;
 	}
-
-	public List<CommunityDto> selectMoney() {
-		List<CommunityDto> moeny = sst.selectList("mybatis.mapper.community.selectMoney");
-		return moeny;
+	
+	public List<CommunityDto> selectBoast() {
+		List<CommunityDto> boast = sst.selectList("mybatis.mapper.community.selectBoast");
+		return boast;
 	}
-
+	
+	public List<CommunityDto> selectAssign() {
+		List<CommunityDto> assign = sst.selectList("mybatis.mapper.community.selectAssign");
+		return assign;
+	}
+	
 	public List<ReviewDto> selectReview() {
 		List<ReviewDto> review = sst.selectList("mybatis.mapper.community.selectReview");
 		return review;

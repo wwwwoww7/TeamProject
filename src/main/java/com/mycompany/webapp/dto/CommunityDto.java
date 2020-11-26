@@ -8,8 +8,10 @@ public class CommunityDto {
 	private String comm_title;
 	private String comm_content;
 	private int comm_hitno;
-	private String user_id;
-	private String class_cate_no;
+	private String mid;
+	private int comm_cate_no;
+	private String comm_cate_nm;
+	
 	
 	
 	public int getComm_no() {
@@ -42,18 +44,24 @@ public class CommunityDto {
 	public void setComm_hitno(int comm_hitno) {
 		this.comm_hitno = comm_hitno;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getMid() {
+		return mid;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
-	public String getClass_cate_no() {
-		return class_cate_no;
+	public int getComm_cate_no() {
+		return comm_cate_no;
 	}
-	public void setClass_cate_no(String class_cate_no) {
-		this.class_cate_no = class_cate_no;
+	public void setComm_cate_no(int comm_cate_no) {
+		this.comm_cate_no = comm_cate_no;
+	}
+	public String getComm_cate_nm() {
+		return comm_cate_nm;
+	}
+	public void setComm_cate_nm(String comm_cate_nm) {
+		this.comm_cate_nm = comm_cate_nm;
 	}
 	
-	
+		
 }
