@@ -44,25 +44,28 @@
 	        <div class="row justify-content-center">
 	            <div class="col-12 col-md-8">
 	                <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2">
-	               	 <strong>Class Detail</strong>
+	               	 <strong>${ classOne.class_nm_s }</strong>
 	                </h3>
 	            </div>
 	        </div>
 	        
 	        
-	        
-	         <div class="mbr-section-btn">
-               	<a class="btn item-btn btn-success display-4" href="javascript:putt()">장바구니 담기</a>
-             </div>
-	         <script type="text/javascript">
-				function putt(){
-					var result = confirm("장바구니에 담으시겠습니까?");
-					if(result==true){
-							location.href="<%=application.getContextPath()%>/cart/pick_cl";
-					}
-				}
-			</script>
-	        
+	        <div class="row">
+	        	<div class="col-sm-9"></div>
+	        	<div class="col-sm-3">
+	        		 <div class="mbr-section-btn">
+		               	<a class="btn item-btn btn-warning display-4" href="javascript:putt()">장바구니 담기</a>
+		             </div>
+			         <script type="text/javascript">
+						function putt(){
+							var result = confirm("장바구니에 담으시겠습니까?");
+							if(result){
+								location.href="<%=application.getContextPath()%>/cart/pick_cl";
+							}
+						}
+					</script>
+	        	</div>
+	        </div>
 	        
 	        <div class="row justify-content-center mt-4">
 	            <div class="col-12 col-md-12">
@@ -166,7 +169,7 @@
 	                                <div class="container">
 								        <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-5">
 								        <strong>Curriculum</strong></h2>
-								        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-5">
+								        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-7">
 								           	클래스를 신청하신 분들이 배우고 있는 커리큘럼입니다. <br/> 콘텐츠는 배우기 쉽게 영상, 수업노트, 첨부파일로 구성되어있습니다.
 								        </h3>
 								        <div class="media-container-row">

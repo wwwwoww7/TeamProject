@@ -41,24 +41,25 @@ public class HomeController {
 		
 		
 		List<ClassDto> classList = classService.getClassList(2);
-		model.addAttribute("HotclassList", classList);
-		
-		
-		model.addAttribute("category" ,"allCategory");
+		model.addAttribute("hotclassList", classList); 
 		
 		return "class/classcard";
 	}
 	
-	@GetMapping("/health")
-	public String healthCategory(Model model) {
-		model.addAttribute("category" ,"Health");
+	@GetMapping("/newClasses")
+	public String newClasses(Model model) { 
 		
-		return "class/classcard";
+		
+		logger.info("newClasses 실행");
+		
+		List<ClassDto> classList = classService.getClassList(1);
+		model.addAttribute("newclassList", classList);
+		
+		return "class/classcard_sm";
 	}
 	
-	@GetMapping("/career")
-	public String careerCategory(Model model) {
-		model.addAttribute("category" ,"Career");
+	@GetMapping("/onClasses")
+	public String careerCategory(Model model) { 
 		
 		return "class/classcard";
 	}

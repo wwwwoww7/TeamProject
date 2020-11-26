@@ -15,6 +15,8 @@ public class ClassDto {
 	private int class_price;
 	private int class_tot_time;
 	private double review_star;
+	private String class_nm_s;
+	private String class_cate_nm;
 	
 	
 	public int getClass_no() {
@@ -94,6 +96,18 @@ public class ClassDto {
 	}
 	public void setClass_curr3(String class_curr3) {
 		this.class_curr3 = class_curr3;
+	}
+	public String getClass_nm_s() {
+		return class_nm_s;
+	}
+	public void setClass_nm_s(String class_nm_s) {
+		this.class_nm_s = class_nm_s;
+	}
+	public String getClass_cate_nm() {
+		return class_cate_nm;
+	}
+	public void setClass_cate_nm(String class_cate_nm) {
+		this.class_cate_nm = class_cate_nm;
 	}
 
 	
