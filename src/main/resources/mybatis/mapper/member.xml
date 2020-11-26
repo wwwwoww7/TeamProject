@@ -8,7 +8,7 @@
 	</insert>
 
 	<select id="selectByMid" parameterType="string" resultType="member"> 
-		select mid, mpw, mname, MPRO_IMG, mnick, memail
+		select mid, mpw, mname, MPRO_IMG, mnick, memail, minfo
 		from member
 		where mid=#{mid}
 	</select>
