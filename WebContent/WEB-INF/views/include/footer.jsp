@@ -26,8 +26,8 @@
                     Contacts
                 </h5>
                 <p class="mbr-text">
-                    Jiyeon, Jieun&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>Phone: +1 (0) 000 0000 001
-                    <br>Fax: +1 (0) 000 0000 002
+                    Hyebin/ Jiyeong/ Jiyeon/ Juhyeon/ Jieun/ Ar! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <br>Phone: +1 (0) 000 8282 001 
                 </p>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
@@ -36,8 +36,8 @@
                 </h5>
                 <p class="mbr-text">
                     <a class="text-success" href="<%=request.getContextPath()%>/apply/apply_class">New Class 신청</a>
-                    <br><a class="text-success" href="/">Download for Windows</a>
-                    <br><a class="text-success" href="/">Download for Mac</a>
+                    <br><a class="text-success" href="#">이용약관</a>
+                    <br><a class="text-success" href="#">Download for Mac</a>
                 </p>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="media-container-row mbr-white">
                 <div class="col-sm-6 copyright">
                     <p class="mbr-text mbr-fonts-style display-7">
-                        Â© Copyright 2020 BANSOOK - All Rights Reserved
+                       	A© Copyright 2020 Sook-E, Ban - All Rights Reserved
                     </p>
                 </div>
                 <div class="col-md-6">
