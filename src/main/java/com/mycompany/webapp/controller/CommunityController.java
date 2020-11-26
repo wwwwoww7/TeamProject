@@ -142,6 +142,7 @@ public class CommunityController {
 	
 	@GetMapping("/catereview2")
 	public String catereview2(Model model) {
+		logger.info("cate2야 오고있니");
 		List<ReviewDto> catereview2 = service.getReviewCatereview2();
 		model.addAttribute("catereview2", catereview2);
 		return "community/community_list_review";
@@ -149,6 +150,7 @@ public class CommunityController {
 	
 	@GetMapping("/catereview3")
 	public String catereview3(Model model) {
+		
 		List<ReviewDto> catereview3 = service.getReviewCatereview3();
 		model.addAttribute("catereview3", catereview3);
 		return "community/community_list_review";
