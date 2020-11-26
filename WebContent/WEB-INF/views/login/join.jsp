@@ -138,7 +138,15 @@
 										<span class="input-group-addon" style="width:80px;">프로필사진</span>     
                         			</div>
                         			<div class="col-9">
-										<input type="file" name="mphotoAttach" class="form-control">
+										<input type="file" name="mphotoAttach" class="form-control" onchange="loadFile(event)"/>
+                        				<img id="id_viewimg" class="max-small" border="0" />
+                        				
+                        				<script>
+											var loadFile = function(event) {
+												var output = document.getElementById('id_viewimg');
+												output.src = URL.createObjectURL(event.target.files[0]);
+												};
+                        				</script>
                         			</div>
                         		</div>
                         	</div>
@@ -243,11 +251,16 @@
 	  	select {
 	  		display:inline;
 	  	}
-	  	
 	  	.col-9, .col-3 {
 	  		line-height: 56px;
 	  	}
-	  
+	  	
+		.max-small {
+		    width: auto; height: auto;
+		    max-width: 100px;
+		    max-height: 100px;
+		}
+
 	  </style>
 </body>
 </html>
