@@ -58,5 +58,10 @@ public class MemberService {
 			
 		return "error";
 	}
+
+	public MemberDto getMemberInfo(String tutor_id) {
+		MemberDto memberInfo = memberDao.selectByMid(tutor_id);
+		return memberInfo;
+	}
 	
 }

@@ -16,7 +16,7 @@ public class ClassDto {
 	private int class_tot_time;
 	private double review_star;
 	private String class_nm_s;
-	private String class_cate_nm;
+	private String class_cate_nm; 
 	
 	
 	public int getClass_no() {
@@ -109,7 +109,6 @@ public class ClassDto {
 	public void setClass_cate_nm(String class_cate_nm) {
 		this.class_cate_nm = class_cate_nm;
 	}
-
-	
+	 
 	
 }

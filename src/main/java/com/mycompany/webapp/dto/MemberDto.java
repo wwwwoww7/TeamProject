@@ -13,6 +13,10 @@ public class MemberDto {
 	private String mtype;
 	private MultipartFile mphotoAttach;
 	private boolean menabled;
+	private String minfo;
+	
+	
+	
 	public String getMid() {
 		return mid;
 	}
@@ -72,6 +76,12 @@ public class MemberDto {
 	}
 	public void setMenabled(boolean menabled) {
 		this.menabled = menabled;
+	}
+	public String getMinfo() {
+		return minfo;
+	}
+	public void setMinfo(String minfo) {
+		this.minfo = minfo;
 	}
 
 	
