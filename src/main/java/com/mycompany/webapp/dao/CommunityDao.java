@@ -41,9 +41,24 @@ public class CommunityDao {
 		return assign;
 	}
 	
-	public List<ReviewDto> selectReview() {
-		List<ReviewDto> review = sst.selectList("mybatis.mapper.community.selectReview");
+	public List<ReviewDto> selectReviewAll() {
+		List<ReviewDto> review = sst.selectList("mybatis.mapper.community.selectReviewAll");
 		return review;
+	}
+
+	public List<ReviewDto> selectCatereview1() {
+		List<ReviewDto> catereview1 = sst.selectList("mybatis.mapper.community.selectCatereview1");
+		return catereview1;
+	}
+
+	public List<ReviewDto> selectCatereview2() {
+		List<ReviewDto> catereview2 = sst.selectList("mybatis.mapper.community.selectCatereview2");
+		return catereview2;
+	}
+
+	public List<ReviewDto> selectCatereview3() {
+		List<ReviewDto> catereview3 = sst.selectList("mybatis.mapper.community.selectCatereview3");
+		return catereview3;
 	}
 
 }

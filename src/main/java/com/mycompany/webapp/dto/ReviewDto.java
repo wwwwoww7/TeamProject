@@ -11,7 +11,9 @@ public class ReviewDto {
 	private String mid;
 	private String class_no;
 	private int review_star;
-	
+	private String class_cate_no;
+	private String class_cate_nm;
+	private String class_cate;
 	public int getReview_no() {
 		return review_no;
 	}
@@ -60,7 +62,24 @@ public class ReviewDto {
 	public void setReview_star(int review_star) {
 		this.review_star = review_star;
 	}
-
+	public String getClass_cate_no() {
+		return class_cate_no;
+	}
+	public void setClass_cate_no(String class_cate_no) {
+		this.class_cate_no = class_cate_no;
+	}
+	public String getClass_cate_nm() {
+		return class_cate_nm;
+	}
+	public void setClass_cate_nm(String class_cate_nm) {
+		this.class_cate_nm = class_cate_nm;
+	}
+	public String getClass_cate() {
+		return class_cate;
+	}
+	public void setClass_cate(String class_cate) {
+		this.class_cate = class_cate;
+	}
 	
 	
 }

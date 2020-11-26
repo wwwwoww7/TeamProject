@@ -16,7 +16,7 @@
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="javascript:catereview1()">건강</a>
 							<script>
-									function review1(){
+									function catereview1(){
 										$.ajax({
 											url : "community/catereview1" , 
 											success : function(data) {
@@ -52,24 +52,42 @@
 		<thead>
 				<tr>
 					<th style="width:70px">번호</th>
-					<th style="width:70px">날짜</th>
-					<th style="width:150px">제목</th>
-					<th style="width:300px">내용</th>
-					<th style="width:100px">조회수</th>
-					<th style="width:100px">아이디</th>
-					<th style="width:100px">별점</th>
+					<th style="width:70px">강의분야</th>
+					<th style="width:70px">별점</th>
+					<th style="width:100px">날짜</th>
+					<th style="width:100px">제목</th>
+					<th style="width:200px">내용</th>
+					<th style="width:70px">조회수</th>
+					<th style="width:80px">아이디</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="ReviewDto" items="${review}">
 					<tr>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_no}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.class_cate_nm}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
 						<td><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						
+					</tr>
+				</c:forEach>
+			</tbody>
+			<tbody>
+				<c:forEach var="ReviewDto" items="${catereview1}">
+					<tr>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_no}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.class_cate_nm}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
+						<td><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						
 					</tr>
 				</c:forEach>
 			</tbody>
