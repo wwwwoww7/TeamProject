@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.MemberDto;
+import com.mycompany.webapp.dto.ReviewDto;
 import com.mycompany.webapp.service.ClassService;
+import com.mycompany.webapp.service.CommunityService;
 import com.mycompany.webapp.service.MemberService;
 
 @Controller
@@ -27,6 +29,8 @@ public class ClassController {
 	ClassService classService;
 	@Resource
 	MemberService memberService;
+	@Resource
+	CommunityService communityService;
 
 	@GetMapping("/classdetail")
 	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model) {
@@ -42,6 +46,11 @@ public class ClassController {
 		//진행중 강의 list
 		List<ClassDto> classList = classService.getTutoringClasses(classOne.getTutor_id());
 		model.addAttribute("classList", classList);
+		
+		
+		//후기 두개
+		List<ReviewDto> reviewList = communityService.getReviewList(classNo);
+		model.addAttribute("reviewList", reviewList);
 		
 		
 		return "/class/classdetail";

@@ -65,10 +65,14 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("/money")
+	@GetMapping("/allClass")
 	public String moneyCategory(Model model) {
-		model.addAttribute("category" ,"Money");
-		return "learn/maincategory";
+
+		
+		
+		
+		
+		return "class/allclass";
 	}
 	
 	

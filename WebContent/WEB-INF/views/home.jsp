@@ -13,7 +13,7 @@
   <meta name="description" content="">
   
   
-  <title>Home</title>
+  <title>BanSook</title>
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/assets/bootstrap/css/bootstrap.min.css">

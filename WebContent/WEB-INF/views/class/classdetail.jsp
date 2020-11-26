@@ -2,6 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
   <meta name="description" content="Site Creator Description">
   
   
-  <title>classDetail</title>
+  <title>BanSook</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
@@ -123,9 +124,12 @@
 								                        ${ classOne.class_sub }
 
 													</p>
+													
+													
 								                    <div class="mbr-section-btn">
 								                    	<a class="btn btn-success display-4" href="javascript:openpop()">Show Class</a>
 								                    </div>
+								                 	   버튼 강의 구매자에게만 보여야 함..
 								                </div>
 								            </div>
 								            <script type="text/javascript">
@@ -240,7 +244,7 @@
 								                <div class="panel-item p-3">
 								                    <div class="card-block">
 								                        <div class="testimonial-photo">
-								                            <img src="<%=application.getContextPath()%>/resources/profile/${tutorInfo.mpro_img}">
+								                            <img src="<%=application.getContextPath()%>/resources/profile/${tutorInfo.mpro_img}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
 								                        </div>
 								                        <p class="mbr-text mbr-fonts-style display-7">
 								                        	${tutorInfo.minfo}
@@ -318,38 +322,40 @@
 								        <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
 								            <strong>Reviews</strong></h3>
 								        <div class="row justify-content-center">
-								            <div class="card col-12 col-md-6">
-								                <p class="mbr-text mbr-fonts-style mb-4 display-7">Themes in the Mobirise website builder offer multiple blocks: intros, sliders, galleries, forms, articles, and so on. Start a project and click on the red plus buttons to see the blocks available for your theme.</p>
-								                <div class="d-flex mb-md-0 mb-4">
-								                    <div class="image-wrapper">
-								                        <img width="50px" height="50px" class="rounded-circle mr-2" src="<%=application.getContextPath()%>/resources/assets/images/team1.jpg" alt="Mobirise">
-								                    </div>
-								                    <div class="text-wrapper">
-								                        <p class="name mbr-fonts-style mb-1 display-4">
-								                            <strong>Martin Smith</strong>
-								                        </p>
-								                        <p class="position mbr-fonts-style display-4">
-								                            <strong>Client</strong>
-								                        </p>
-								                    </div>
-								                </div>
-								            </div>
-								            <div class="card col-12 col-md-6">
-								                <p class="mbr-text mbr-fonts-style mb-4 display-7">You can have multiple pages in each project in Mobirise website builder software. Don't forget to set links to your pages after creating them. You can use menu blocks to create navigation for your site visitors.</p>
-								                <div class="d-flex mb-md-0 mb-4">
-								                    <div class="image-wrapper">
-								                        <img width="50px" height="50px"  class="rounded-circle mr-2" src="<%=application.getContextPath()%>/resources/assets/images/team2.jpg"/> <%-- alt="${}" --%>
-								                    </div>
-								                    <div class="text-wrapper">
-								                        <p class="name mbr-fonts-style mb-1 display-4">
-								                            <strong>Jessica Brown</strong>
-								                        </p>
-								                        <p class="position mbr-fonts-style display-4">
-								                            <strong>Client</strong>
-								                        </p>
-								                    </div>
-								                </div>
-								            </div>
+								            
+								            
+								            <c:forEach var="review" items="${reviewList}">
+								            	<div class="card col-12 col-md-6">
+									                <p class="mbr-text mbr-fonts-style mb-4 display-7">
+									                	<strong>${review.review_title }</strong>
+									                	<br/>
+									                	${review.review_content }
+									                </p>
+									                <div class="d-flex mb-md-0 mb-4">
+									                    <div class="image-wrapper">
+									                        <img id="" width="50px" height="50px" class="rounded-circle mr-2 prof_img" 
+									                        	src="<%=application.getContextPath()%>/resources/profile/${review.mpro_img }" >
+									                    </div>
+									                    <div class="text-wrapper">
+									                        <p class="name mbr-fonts-style mb-1 display-4">
+									                            <strong>${review.mnick }</strong>
+									                        </p>
+									                        <p class="position mbr-fonts-style display-4">
+									                            <strong><fmt:formatDate value="${review.review_date }" pattern="yyyy-MM-dd"/></strong>
+									                        </p>
+									                    </div>
+									                </div>
+									            </div>
+								            
+								            
+								            </c:forEach>
+								            
+								            
+								            
+								            
+								            
+								            
+								            
 								        </div>
 								    </div>
 									
@@ -392,7 +398,9 @@
 								                        <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="email">
 								                            <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email-form8-40">
 								                        </div>
-								                        <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center"><button type="submit" class="btn btn-success display-4">Submit</button></div>
+								                        <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center">
+								                      	  <button type="submit" class="btn btn-success display-4">Submit</button>
+								                        </div>
 								                    </div>
 								                </form>
 								            </div>
@@ -448,7 +456,7 @@
 	  	  width: 100%;
 	  	}
 	  	
-	  	.rounded-circle{
+	  	.prof_img{
 	  		width: 50px;
 	  		height : 50px;
 	  	}
@@ -464,6 +472,7 @@
 	  	  font-family : 'NanumSquareRoundEB', sans-serif; 
 		  font-display: swap;
 	  	}
+	  	
   
   	</style>
 </body>
