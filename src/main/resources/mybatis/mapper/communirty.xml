@@ -3,37 +3,46 @@
 <mapper namespace="mybatis.mapper.community">
 
 	<select id="selectAll" resultType="community">
-		select comm_no, comm_date, comm_title, comm_content, comm_hitno, user_id, class_cate_no 
+		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid
 		from community 
-		order by comm_date desc  
+		order by comm_date desc 
 	</select>
  
- 	<select id="selectHealth" resultType="community">
-		select comm_no, comm_date, comm_title, comm_content, comm_hitno, user_id, class_cate_no 
+ 	<select id="selectChat" resultType="community">
+		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
 		from community 
-		where class_cate_no = 1
-		order by comm_date desc  
+		where comm_cate_no = '1'
+		order by comm_date desc 
 	</select>
+ 	
+ 	<select id="selectTips" resultType="community">
+		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
+		from community 
+		where comm_cate_no = '2'
+		order by comm_date desc 
+	</select>
+ 
+	<select id="selectBoast" resultType="community">
+		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
+		from community 
+		where comm_cate_no = '3'
+		order by comm_date desc 
+	</select> 
 	
-	<select id="selectCareer" resultType="community">
-		select comm_no, comm_date, comm_title, comm_content, comm_hitno, user_id, class_cate_no 
+	<select id="selectAssign" resultType="community">
+		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
 		from community 
-		where class_cate_no = 2
-		order by comm_date desc  
+		where comm_cate_no = '4'
+		order by comm_date desc 
 	</select>
-
-	<select id="selectMoney" resultType="community">
-		select comm_no, comm_date, comm_title, comm_content, comm_hitno, user_id, class_cate_no 
-		from community 
-		where class_cate_no = 3
-		order by comm_date desc  
-	</select>
-	
+ 
 	<select id="selectReview" resultType="review">
-		select review_no, review_date, review_title, review_content, review_hitno, user_id, class_no, review_star 
+		select review_no, review_date, review_title, review_content, review_hitno, mid, class_no, review_star 
 		from review 
 		order by review_date desc  
 	</select>
+	
+	
 	
 	
 </mapper>

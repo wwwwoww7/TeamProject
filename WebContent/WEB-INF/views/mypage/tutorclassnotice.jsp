@@ -18,9 +18,9 @@
 		<c:forEach var="notice" items="${list}">
 			<tr>
 				<td class="body-item mbr-fonts-style display-7">${notice.class_notice_no}</td>
-				<td class="body-item mbr-fonts-style display-7">${notice.class_nm}</td>
+				<td class="body-item mbr-fonts-style display-7">${notice.class_nm_s}</td>
 				<td class="body-item mbr-fonts-style display-7">
-				<a href="javascript:noticeDetail()">${notice.class_notice_title}</a></td>
+				<a href="javascript:noticeDetail(${notice.class_notice_no})">${notice.class_notice_title}</a></td>
 				<td class="body-item mbr-fonts-style display-7">${notice.mid}</td>
 				<td class="body-item mbr-fonts-style display-7"><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></td>
 			</tr>
@@ -65,9 +65,10 @@
 	</script>
 	<!-- 공지사항 상세보기 -->
 	<script type="text/javascript">
-		function noticeDetail() {
+		function noticeDetail(class_notice_no) {
 			$.ajax({
 				url:"noticeDetail",
+				data:{class_notice_no:class_notice_no},
 				success:function(data) {
 					$("#tutorNotice").html(data);
 				}

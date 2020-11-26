@@ -40,5 +40,15 @@ public class ClassNoticeDao {
 		return rows;
 	}
 
+	public ClassNoticeDto selectNoticeDetail(int class_notice_no) {
+		ClassNoticeDto notice = sst.selectOne("mybatis.mapper.class_notice.selectNoticeDetail",class_notice_no);
+		return notice;
+	}
+	
+	public ClassNoticeDto selectByNoticeNo(int class_notice_no) {
+		ClassNoticeDto notice = sst.selectOne("mybatis.mapper.class_notice.selectByNoticeNo",class_notice_no);
+		return notice;
+	}
+
 	
 }

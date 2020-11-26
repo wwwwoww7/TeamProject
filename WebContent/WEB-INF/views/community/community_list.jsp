@@ -34,6 +34,7 @@
 			<thead>
 			<tr>
 				<th style="width:100px">번호</th>
+				<th style="width:100px">분야</th>
 				<th style="width:200px">날짜</th>
 				<th style="width:250px">제목</th>
 				<th style="width:250px">내용</th>
@@ -45,47 +46,65 @@
 			<c:forEach var="communityDto" items="${list}">
 				<tr>
 					<td><a href="javascript:communityDetail()">${communityDto.comm_no}</a></td>
+					<td><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td><a href="javascript:communityDetail()"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
 					<td><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
 					<td><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
 					<td><a href="javascript:communityDetail()">${communityDto.comm_hitno}</a></td>
-					<td><a href="javascript:communityDetail()">${communityDto.user_id}</a></td>
+					<td><a href="javascript:communityDetail()">${communityDto.mid}</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		<tbody>
-			<c:forEach var="communityDto" items="${health}">
+			<c:forEach var="communityDto" items="${chat}">
 				<tr>
 					<td>${communityDto.comm_no}</td>
+					<td><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td>${communityDto.comm_title}</td>
 					<td>${communityDto.comm_content}</td>
 					<td>${communityDto.comm_hitno}</td>
-					<td>${communityDto.user_id}</td>
+					<td>${communityDto.mid}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		<tbody>
-			<c:forEach var="communityDto" items="${career}">
+			<c:forEach var="communityDto" items="${tips}">
 				<tr>
 					<td>${communityDto.comm_no}</td>
+					<td><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td>${communityDto.comm_title}</td>
 					<td>${communityDto.comm_content}</td>
 					<td>${communityDto.comm_hitno}</td>
-					<td>${communityDto.user_id}</td>
+					<td>${communityDto.mid}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		<tbody>
-			<c:forEach var="communityDto" items="${money}">
+			<c:forEach var="communityDto" items="${boast}">
 				<tr>
 					<td>${communityDto.comm_no}</td>
+						<td><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td>${communityDto.comm_title}</td>
 					<td>${communityDto.comm_content}</td>
 					<td>${communityDto.comm_hitno}</td>
-					<td>${communityDto.user_id}</td>
+					<td>${communityDto.mid}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+		
+		<tbody>
+			<c:forEach var="communityDto" items="${assign}">
+				<tr>
+					<td>${communityDto.comm_no}</td>
+						<td><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
+					<td><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
+					<td>${communityDto.comm_title}</td>
+					<td>${communityDto.comm_content}</td>
+					<td>${communityDto.comm_hitno}</td>
+					<td>${communityDto.mid}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

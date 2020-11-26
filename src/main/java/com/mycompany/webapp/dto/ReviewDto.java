@@ -8,9 +8,10 @@ public class ReviewDto {
 	private String review_title;
 	private String review_content;
 	private int review_hitno;
-	private String user_id;
+	private String mid;
 	private String class_no;
 	private int review_star;
+	
 	public int getReview_no() {
 		return review_no;
 	}
@@ -41,11 +42,11 @@ public class ReviewDto {
 	public void setReview_hitno(int review_hitno) {
 		this.review_hitno = review_hitno;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getMid() {
+		return mid;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 	public String getClass_no() {
 		return class_no;
@@ -59,6 +60,7 @@ public class ReviewDto {
 	public void setReview_star(int review_star) {
 		this.review_star = review_star;
 	}
+
 	
 	
 }

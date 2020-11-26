@@ -25,19 +25,24 @@ public class CommunityService {
 		return list;
 	}
 
-	public List<CommunityDto> getCommunityHealth(){
-		List<CommunityDto> health = communityDao.selectHealth();
-		return health;
+	public List<CommunityDto> getCommunityChat(){
+		List<CommunityDto> chat = communityDao.selectChat();
+		return chat;
 	}
 	
-	public List<CommunityDto> getCommunityCareer(){
-		List<CommunityDto> career = communityDao.selectCareer();
-		return career;
+	public List<CommunityDto> getCommunityTips(){
+		List<CommunityDto> tips = communityDao.selectTips();
+		return tips;
 	}
 	
-	public List<CommunityDto> getCommunityMoney(){
-		List<CommunityDto> money = communityDao.selectMoney();
-		return money;
+	public List<CommunityDto> getCommunityBoast(){
+		List<CommunityDto> boast = communityDao.selectBoast();
+		return boast;
+	}
+	
+	public List<CommunityDto> getCommunityAssign(){
+		List<CommunityDto> assign = communityDao.selectAssign();
+		return assign;
 	}
 
 	public List<ReviewDto> getCommunityReview() {
