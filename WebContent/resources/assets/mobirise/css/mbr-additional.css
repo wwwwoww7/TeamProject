@@ -1,23 +1,34 @@
 @import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700,800,900,300i,400i,500i,600i,700i,800i,900i&display=swap);
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i&display=swap);
 
 
+@font-face {
+	font-family: 'NanumSquareRoundB';
+	src: url('NanumSquareRoundB.ttf') format('truetype');
+}
 
-
+@font-face {
+	font-family: 'NanumSquareRoundEB';
+	src: url('NanumSquareRoundEB.ttf') format('truetype');
+}
 
 body {
-  font-family: Rubik;
+  font-family: Rubik, 'NanumSquareRoundB' ;
 }
 .display-1 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', 'NanumSquareRoundEB', sans-serif;
   font-size: 4.25rem;
-  font-display: swap;
+  font-display: swap; 
 }
+ 
+
 .display-1 > .mbr-iconfont {
   font-size: 6.8rem;
 }
 .display-2 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik', 'NanumSquareRoundEB', sans-serif;
   font-size: 3rem;
   font-display: swap;
 }
@@ -33,7 +44,7 @@ body {
   font-size: 1.6rem;
 }
 .display-5 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik','NanumSquareRoundB', sans-serif;
   font-size: 1.5rem;
   font-display: swap;
 }
@@ -41,7 +52,7 @@ body {
   font-size: 2.4rem;
 }
 .display-7 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik','NanumSquareRoundB', sans-serif;
   font-size: 1rem;
   font-display: swap;
 }
