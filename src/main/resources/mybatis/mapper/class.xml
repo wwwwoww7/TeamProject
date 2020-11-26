@@ -41,14 +41,22 @@
 	
 	<!-- 20.11.25 -->
 	<select id="selectbyClassNo" resultType="class" parameterType="int">
-		select * from class where class_no = #{class_no}
+		select CLASS_NO, CLASS_NM, CLASS_SUB, CLASS_CURR, CLASS_THUM, TUTOR_ID, CLASS_CATE_NO, CLASS_VIDEO_NO, CLASS_PRICE, 
+			   CLASS_TOT_TIME, CLASS_CURR2, CLASS_CURR3, CLASS_NM_S, member.mname, member.minfo
+		from class, member
+		where class_no = #{class_no}
+		      and member.mid = class.TUTOR_ID
 	</select>
 	
 	
 	
-	
-	
-	
+	<!-- 20.11.26  -->
+	<!-- tutor_id(mid)가 진행중인 강의 리스트 -->
+	<select id="selectbyTutorId" parameterType="String" resultType="class">
+		select class_no, class_nm, class_thum, class_nm_s
+		from class 
+		where tutor_id=#{tutor_id} 
+	</select>
 	
 
 </mapper>

@@ -40,13 +40,15 @@
 	            <div class="mbr-white col-md-10">
 	                <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">To be 완숙란</h1>
 	                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
-	                    Beautiful mobile websites
+	                    Time to Learn! Learn everything you need to know about getting started and how BanSook can help.
 	                </h3>
 	                <p class="mbr-text align-center pb-3 mbr-fonts-style display-7">
-	                    Full width intro with adjustable height, background image and a color overlay. Click any text to edit or style it.
+	                	완숙을 바라는  .......... 왈랄
 	                </p>
-	                <div class="mbr-section-btn align-center"><a class="btn btn-md btn-white-outline display-4" href="https://mobiri.se">
-	                        <span class="mbr-iconfont mbri-file"></span>LEARN MORE</a></div>
+	                <div class="mbr-section-btn align-center">
+	                	<a class="btn btn-md btn-white-outline display-4" href="#사이트정보페이지">
+	                        <span class="mbr-iconfont mbri-file"></span>LEARN MORE</a>
+	                </div>
 	            </div>
 	        </div>
 	    </div>
@@ -57,7 +59,7 @@
 	     
 	    <div class="container">
 	        <div class="mbr-section-head">
-	            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>지금, 인기 TOP 00</strong></h4>
+	            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>지금, 인기 TOP 04</strong></h4>
 	            
 	        </div>
 	        <div id="main-content-hot" class="row mt-4">
@@ -75,53 +77,14 @@
 	            <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-5"><strong>신규 강의</strong></h3>
 	            <h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-7">Enjoy the new classes!</h4>
 	        </div>
-	        <div id="main-content-new" class="row mbr-gallery mt-4">
+	        <div id="main-content-new" class="row">
 	           
 	           
 	           
 	            
 	        </div>
 	
-	        <div class="modal mbr-slider" tabindex="-1" role="dialog" aria-hidden="true" id="shfucWI0Kp-modal">
-	            <div class="modal-dialog" role="document">
-	                <div class="modal-content">
-	                    <div class="modal-body">
-	                        <div class="carousel slide" id="lb-shfucWI0Kp" data-interval="5000">
-	                            <div class="carousel-inner">
-	                                <div class="carousel-item active">
-	                                    <img class="d-block w-100" src="<%=request.getContextPath() %>/resources/assets/images/features1.jpg" alt="">
-	                                </div>
-	                                <div class="carousel-item">
-	                                    <img class="d-block w-100" src="<%=request.getContextPath() %>/resources/assets/images/features2.jpg" alt="">
-	                                </div>
-	                                
-	                                <div class="carousel-item">
-	                                    <img class="d-block w-100" src="<%=request.getContextPath() %>/resources/assets/images/features4.jpg" alt="">
-	                                </div><div class="carousel-item">
-	                                    <img class="d-block w-100" src="<%=request.getContextPath() %>/resources/assets/images/features3.jpg" alt="">
-	                                </div>
-	                            </div>
-	                            <ol class="carousel-indicators">
-	                                <li data-slide-to="0" class="active" data-target="#lb-shfucWI0Kp"></li>
-	                                <li data-slide-to="1" data-target="#lb-shfucWI0Kp"></li>
-	                                <li data-slide-to="2" data-target="#lb-shfucWI0Kp"></li>
-	                                <li data-slide-to="3" data-target="#lb-shfucWI0Kp"></li>
-	                            </ol>
-	                            <a role="button" href="" class="close" data-dismiss="modal" aria-label="Close">
-	                            </a>
-	                            <a class="carousel-control-prev carousel-control" role="button" data-slide="prev" href="#lb-shfucWI0Kp">
-	                                <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
-	                                <span class="sr-only">Previous</span>
-	                            </a>
-	                            <a class="carousel-control-next carousel-control" role="button" data-slide="next" href="#lb-shfucWI0Kp">
-	                                <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
-	                                <span class="sr-only">Next</span>
-	                            </a>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
+	       
 	    </div>
 	</section>
 	
@@ -188,8 +151,8 @@
 	                    <div class="modal-body">
 	                        <div class="carousel slide" id="lb-shfucXiINK" data-interval="5000">
 	                            <div class="carousel-inner">
-	                                <div class="carousel-item active">
-	                                    <img class="d-block w-100" src="assets/images/features1.jpg" alt="">
+	                                <div class="carousel-item active"> 
+	                               
 	                                </div>
 	                                <div class="carousel-item">
 	                                    <img class="d-block w-100" src="assets/images/features2.jpg" alt="">
@@ -209,14 +172,19 @@
 	                            </ol>
 	                            <a role="button" href="" class="close" data-dismiss="modal" aria-label="Close">
 	                            </a>
-	                            <a class="carousel-control-prev carousel-control" role="button" data-slide="prev" href="#lb-shfucXiINK">
+	                            
+	                            <a class="btn" role="button" href="#lb-shfucXiINK">
 	                                <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
-	                                <span class="sr-only">Previous</span>
+	                                <span class="sr-only">과제</span>
 	                            </a>
-	                            <a class="carousel-control-next carousel-control" role="button" data-slide="next" href="#lb-shfucXiINK">
+	                            <a class="btn" role="button" data-slide="next" href="#lb-shfucXiINK">
 	                                <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
-	                                <span class="sr-only">Next</span>
+	                                <span class="sr-only">공지</span>
 	                            </a>
+	                            
+	                            
+	                            
+	                            
 	                        </div>
 	                    </div>
 	                </div>
@@ -401,8 +369,8 @@
 	</script>
 	
  	<style type="text/css"> 
-		.cid-sh7IU3CgJD H6 a {
-			color : #ffc800;
+		.w-100 {
+			height: 170px;
 		}
 	</style>
     

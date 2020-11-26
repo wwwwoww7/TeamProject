@@ -44,6 +44,12 @@ public class ClassService {
 		ClassDto classOne = classDao.selectbyClassNo(classNo);
 		return classOne;
 	}
+
+
+	public List<ClassDto> getTutoringClasses(String tutor_id) {
+		List<ClassDto> classList = classDao.selectbyTutorId(tutor_id);
+		return classList;
+	}
 	
 	
 	

@@ -1,5 +1,7 @@
 package com.mycompany.webapp.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.ClassDto;
+import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.service.ClassService;
+import com.mycompany.webapp.service.MemberService;
 
 @Controller
 @RequestMapping("/class")
@@ -21,6 +25,8 @@ public class ClassController {
 	
 	@Resource
 	ClassService classService;
+	@Resource
+	MemberService memberService;
 
 	@GetMapping("/classdetail")
 	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model) {
@@ -28,9 +34,14 @@ public class ClassController {
 		
 		
 		ClassDto classOne = classService.getClass(classNo);
-		
 		model.addAttribute("classOne", classOne);
 		
+		MemberDto tutorInfo = memberService.getMemberInfo(classOne.getTutor_id());
+		model.addAttribute("tutorInfo", tutorInfo);
+		
+		//진행중 강의 list
+		List<ClassDto> classList = classService.getTutoringClasses(classOne.getTutor_id());
+		model.addAttribute("classList", classList);
 		
 		
 		return "/class/classdetail";

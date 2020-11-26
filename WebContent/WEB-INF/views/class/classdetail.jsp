@@ -1,6 +1,7 @@
-<%@page import="java.util.*"%>
+<%@ page import="java.util.*"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
  
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/mbr-96x48.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<%=application.getContextPath()%>/resources/assets/images/mbr-96x48.png" type="image/x-icon">
   <meta name="description" content="Site Creator Description">
   
   
@@ -146,12 +147,7 @@
 	                                
 	                                
 	                                
-	                                
-	                                
-	                                
-	                                
-	                                
-	                                
+	                                 
 	                                
 	                                
 	                            </div>
@@ -200,16 +196,10 @@
 			
 											            </div>
 								        			</div>
-								        		
 								        		</div>
-								        	
 								        	
 								        	</div>
 								        
-								        
-								        
-								            
-								            
 								            
 								           
 								        </div>
@@ -226,7 +216,6 @@
 	                                   
 	                                   <!-- 강사설명 -->
 	                                   
-	                                    
 	                                   
 	                                </p>
 	                                
@@ -235,10 +224,11 @@
 	                                <div class="container">
 								        <div class="media-container-row">
 								            <div class="title col-12 align-center">
-								                <h2 class="pb-3 mbr-fonts-style display-5"><strong>
-								                    Tutor Detail</strong></h2>
+								                <h2 class="pb-3 mbr-fonts-style display-5">
+								                	<strong> Tutor Detail</strong>
+								                </h2>
 								                <h3 class="mbr-section-subtitle mbr-light pb-3 mbr-fonts-style display-5">
-								                    This theme is based on Bootstrap 4 - most powerful mobile first framework
+								                    	크리에이터  ${ tutorInfo.mnick } 입니다.
 								                </h3>
 								            </div>
 								        </div>
@@ -246,28 +236,55 @@
 								
 								    <div class="container pt-3 mt-2">
 								        <div class="media-container-row">
-								            <div class="mbr-testimonial p-3 align-center col-12 col-md-6">
+								            <div class="mbr-testimonial p-3 align-center col-12 col-md-7">
 								                <div class="panel-item p-3">
 								                    <div class="card-block">
 								                        <div class="testimonial-photo">
-								                            <img src="<%=application.getContextPath()%>/resources/assets/images/face1.jpg">
+								                            <img src="<%=application.getContextPath()%>/resources/profile/${tutorInfo.mpro_img}">
 								                        </div>
 								                        <p class="mbr-text mbr-fonts-style display-7">
-								                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
+								                        	${tutorInfo.minfo}
 								                        </p>
+								                        <br/>
+								                        <c:if test="${fn:length(classList) > 1 }">
+								                        	<div>
+							                           			 <h5 class="pb-3 mbr-fonts-style display-7" id="tutoring_title">진행중 다른 강의</h5>
+																<ul>
+																	<c:forEach var="classItem" items="${classList}">
+																		
+																		<c:if test="${classItem.class_no != classOne.class_no }">
+																			<li class="text-left">
+																				<a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classItem.class_no }" class="test-black">
+																					${classItem.class_nm_s}
+																				</a>
+																			</li>
+																		
+																		</c:if>
+																	
+																	</c:forEach>
+																	
+																</ul>
+
+								                        	</div>
+								                        
+								                        
+								                        </c:if>
+							                          
+								                        
+								                        
 								                    </div>
 								                    <div class="card-footer">
 								                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-								                             John Smith
+								                             ${ tutorInfo.mnick }
 								                        </div>
+								                        
 								                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-								                               Developer
+								                              ${ tutorInfo.memail }
 								                        </small>
+								                        
 								                    </div>
 								                </div>
 								            </div>
-								 
-								            
 								        </div>
 								    </div>   
 	                                
@@ -434,6 +451,18 @@
 	  	.rounded-circle{
 	  		width: 50px;
 	  		height : 50px;
+	  	}
+	  	
+	  	.test-black {
+	  		color:black;
+	  	}	
+	  	.test-black:hover {
+	  		color: #FFC800;
+	  	}
+	  	
+	  	#tutoring_title {
+	  	  font-family : 'NanumSquareRoundEB', sans-serif; 
+		  font-display: swap;
 	  	}
   
   	</style>
