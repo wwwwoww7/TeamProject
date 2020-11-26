@@ -36,7 +36,7 @@ body {
   font-size: 4.8rem;
 }
 .display-4 {
-  font-family: 'Arvo', serif;
+  font-family: 'Arvo',  'NanumSquareRoundEB', serif;
   font-size: 1rem;
   font-display: swap;
 }
