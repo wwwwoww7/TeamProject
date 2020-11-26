@@ -1,18 +1,23 @@
 package com.mycompany.webapp.dao;
 
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.ClassNoticeDto;
-import com.mycompany.webapp.dto.CommunityPagerDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 
 
 @Repository
 public class ClassNoticeDao {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(ClassNoticeDao.class);
+	
 	@Resource
 	private SqlSessionTemplate sst;
 	
@@ -35,8 +40,19 @@ public class ClassNoticeDao {
 	}
 	
 	//강사가 공지사항 수정하기
-	public int updateNotice(ClassNoticeDto noticeDto) {
-		int rows = sst.update("mybatis.mapper.class_notice.updateNotice",noticeDto);
+	public int updateNotice(ClassNoticeDto classNoticeDto) {
+		
+		
+		logger.info("============> " + classNoticeDto.getClass_notice_no());
+		logger.info("============> " + classNoticeDto.getClass_notice_title());
+		logger.info("============> " + classNoticeDto.getClass_notice_content());
+		
+		
+		
+		
+		
+		
+		int rows = sst.update("mybatis.mapper.class_notice.updateNotice",classNoticeDto);
 		return rows;
 	}
 

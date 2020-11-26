@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<input type="hidden" id="notice" name="notice" value="${notice}"/>
+<%-- <input type="hidden" id="notice" name="notice" value="${notice}"/> --%>
 <div>
 	<table class="table table-bordered">
 		<colgroup>
@@ -39,7 +39,7 @@
 		function tutorClassNotice(){
 				$.ajax({
 					url:"tutorClassNotice",
-					type: "POST",
+					method:"post",
 					success: function(data){
 							$("#tutorNotice").html(data);
 						}
@@ -50,14 +50,15 @@
     <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:noticeUpdate(${notice.class_notice_no})">수정</a>
 	<script type="text/javascript">
 		function noticeUpdate(class_notice_no) {
+			console.log(class_notice_no);
+			
+			
 			$.ajax({
-				url:"noticeUpdate",
+				url:"noticeUpdateForm",
 				data:{class_notice_no:class_notice_no},
 				method:"post",
 				success:function(data) {
-					if(data.result == "success") {
-						tutorClassNotice();
-					}
+					$("#tutorNotice").html(data);
 				}
 			});
 		}

@@ -1,55 +1,83 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<input type="hidden" id="class_notice_no" name="class_notice_no" value="${notice.class_notice_no}"/>
 <div class="row justify-content-center mt-4">
 	<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-		<form action="https://mobirise.eu/" method="POST"
-			class="mbr-form form-with-styler" data-form-title="Form Name">
-			<input type="hidden" name="email" data-form-email="true"
-				value="YRLmS4KZ0lm+LGcWpuQxcNhFGHeSKkKc9ZhO4WBjl2aHqN64gamoCJiP4CGbZwZQuGVoS64mN03L7afuau3fpLE5TrAgTCYwLjHR3mHg4eWPPiHA+XM1HRhhv7MbytXn">
+		<form action="/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+			<div class="dragArea row" style="margin: 5px">
+				<div class="col-md-6 input-group">
+					<span class="input-group-text" style="width: 80px; background-color: #ffff; ">강 의 명</span> 
+					<input type="text" id="class_nm_s" name="class_nm_s" class="form-control" value="${notice.class_nm_s}" readonly/>
+				</div>
+				<div class="col-md-6 input-group">
+					<span class="input-group-text" style="width: 80px; background-color: #ffff;">제	목</span> 
+					<input type="text" id="class_notice_title" name="class_notice_title" class="form-control" value="${notice.class_notice_title}"/>
+					<span id="ntitleError" class="error"></span>
+				</div>
+			</div>
+			<div class="dragArea row" style="margin: 5px;">
+				<div class="col-md-12 input-group">
+					<span class="input-group-text" style="width: 80px; background-color: #ffff;">작 성 자 </span> 
+					<input type="text" id="mid" name="mid" class="form-control" value="${notice.mid}"  readonly/>
+				</div>
+			</div>
+			<div class="dragArea row" style="margin: 5px">
+				<div class="col-md-12 input-group">
+					<span class="input-group-text" style="width: 80px; background-color: #ffff;">첨부파일</span> 
+					<input type="file" id="class_hw_file" name="class_hw_file" class="form-control" value="${notice.class_hw_file}"/>
+				</div>
+			</div>
+			<div class="dragArea row" style="margin: 5px">
+				<div class="col-md-12 input-group">
+					<span class="input-group-text" style="width: 80px; background-color: #ffff;">내	용 </span> 
+					<textarea id="class_notice_content" name="class_notice_content" class="form-control" 
+						style="height: 100px;">${notice.class_notice_content}</textarea>
+					<span id="ncontentError" class="error"></span>
+				</div>
+			</div>
 			<div class="dragArea row">
-				<div class="row">
-					<div class="col-md-12 input-group" data-for="mid">
-						<span class="input-group-addon" style="width: 80px;">강 의 명</span> <input
-							type="text" name="mid" placeholder="ID" data-form-field="mid"
-							class="form-control" value="${notice.class_nm_s}" id="id-form5-29">
-					</div>
-					<div class="col-md-12 input-group" data-for="mpw">
-						<span class="input-group-addon" style="width: 80px;">제 목
-						</span> <input type="password" name="mpw" placeholder="PASSWORD"
-							data-form-field="mpw" class="form-control" value="${notice.class_nm_s}"
-							id="password-form5-29">
-					</div>
+				<div class="col-md-3"></div>
+				<div class="col-md-3">
+					<a class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;" href="javascript:noticeUpdate()" >수정</a>
+					<script type="text/javascript">
+						function noticeUpdate() {
+							
+							var noticeNo = $("#class_notice_no").val();
+							
+							var ntitle = $("#class_notice_title").val().trim();
+							if(ntitle == "") { $("#ntitleError").text("필수입력"); }
+							else { $("#ntitleError").text(""); }
+							
+							var ncontent = $("#class_notice_content").val().trim();
+							if(ncontent == "") { $("#ncontentError").text("필수"); }
+							else { $("#ncontentError").text(""); }
+							
+							if(ntitle == "" || ncontent == "") {
+								return ;	
+							} 
+							
+							var nfile = $("#class_hw_file").val();
+							
+							var mid = $("#mid").val();
+							
+							$.ajax({
+								url:"noticeUpdate",
+								method:"post",
+								data: { class_notice_no : noticeNo, class_notice_title:ntitle, class_notice_content:ncontent},
+								success:function(data) { //{"result":"success"}형태의 json방식
+									if(data.result == "success") {
+										noticeDetail(data.notice_no); 
+									}
+								}
+							});
+						}
+					</script>		
 				</div>
-				
-				<div class="col-md-12 input-group" data-for="mname">
-					<span class="input-group-addon" style="width: 80px;">작성자</span> <input
-						type="text" name="mname" placeholder="NAME"
-						data-form-field="mname" class="form-control" value=""
-						id="name-form5-29">
+				<div class="col-md-3">
+					<a class="btn item-btn btn-success display-7 text-primary" href="javascript:boardList()">취소</a>
 				</div>
-				<div class="col-md-12 input-group" data-for="mnick">
-					<span class="input-group-addon" style="width: 80px;">닉 네 임 </span>
-					<input type="password" name="mpw" placeholder="NICKNAME"
-						data-form-field="mnick" class="form-control" value=""
-						id="nickname-form5-29">
-				</div>
-				<div class="col-md-12 input-group" data-for="mtel">
-					<span class="input-group-addon" style="width: 80px;">핸드폰번호</span> <input
-						type="text" name="mtel" placeholder="010-xxxx-xxxx"
-						data-form-field="mtel" class="form-control" value=""
-						id="tel-form5-29">
-				</div>
-				<div class="col-md-12 input-group" data-for="memail">
-					<span class="input-group-addon" style="width: 80px;">이 메 일</span> <input
-						type="text" name="mtel" placeholder="xxx@xxxx.xxx"
-						data-form-field="memail" class="form-control" value=""
-						id="email-form5-29">
-				</div>
-
-				<div class="col-md-12 input-group" data-for="mphotoAttach">
-					<span class="input-group-addon" style="width: 80px;">프로필사진</span> <input
-						type="file" name="mphotoAttach" class="form-control">
-				</div>
+				<div class="col-md-3"></div>
 			</div>
 		</form>
 	</div>

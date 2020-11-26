@@ -1,10 +1,14 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -102,19 +106,55 @@ public class MyPageController {
 	@GetMapping("/noticeDetail")
 	public String noticeDetail(int class_notice_no, Model model) {
 		
+		
+		
+		logger.info("=========" + class_notice_no);
+		
 		ClassNoticeDto notice = classNoticeService.getNoticeDetail(class_notice_no);
 		model.addAttribute("notice",notice);
+		
+		logger.info("=========" + notice.getClass_notice_no());
+		
 		
 		return "mypage/noticedetail";
 	}
 	
 	//강사 공지사항 수정폼 요청하기
-	@PostMapping("/noticeUpdate")
-	public String noticeUpdate(int class_notice_no,Model model) {
+	@PostMapping("/noticeUpdateForm")
+	public String noticeUpdateForm(int class_notice_no,Model model) {
 		ClassNoticeDto notice = classNoticeService.getUpdateForm(class_notice_no);
 		model.addAttribute("notice",notice);
+		
+		
+		logger.info("왜!!!!!!!!!!!!!!!!!!" + notice.getClass_notice_no() );
+		
 		return "mypage/noticeUpdateForm";
 	}
+	
+	//강사 공지사항 수정하기
+	@PostMapping("/noticeUpdate")
+	public void noticeUpdate(ClassNoticeDto classNoticeDto,HttpServletResponse response) throws Exception {
+		
+		
+		//게시물 수정
+		classNoticeService.noticeUpdate(classNoticeDto);
+
+		//json응답만들기
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		jsonObject.put("notice_no", classNoticeDto.getClass_notice_no());
+		
+		
+		String json = jsonObject.toString(); 
+		
+		//json보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+	}
+		
 	
 	//강사의 강의문의 목록
 	@PostMapping("/tutorClassQA")
