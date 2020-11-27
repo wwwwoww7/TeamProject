@@ -24,9 +24,9 @@
 				) star, class, class_cate
 		where rnum &lt;=4
 			  and star.class_no =class.class_no
-			  and class.class_cate_no = class_cate.class_cate_no
+			  and class.class_cate_no = class_cate.class_cate_no 
 	</select>
-	
+	 
 	
 	<select id="selectClassesOrderByNew" resultType="class">
 		select class_no, class_cate_nm, class_nm, class_nm_s, class_thum
@@ -38,13 +38,13 @@
 	</select>
 	
 	<select id="selectClasses" resultType="class">
-		select nvl(star.review_star,0)as review_star , star.class_no, class.class_nm_s, class.CLASS_THUM, class.class_thum2 class_cate.class_cate_nm
+		select nvl(star.review_star,0)as review_star , star.class_no, class.class_nm_s, class.CLASS_THUM, class.class_thum2, class_cate.class_cate_nm
 		  from (  select avg(review.REVIEW_STAR) as review_star, class.class_no as class_no 
-		          from class, review
-		         where class.CLASS_NO = review.CLASS_NO(+)
-		         group by class.class_no
-		         order by avg(review.REVIEW_STAR) desc    
-		       ) star, class, class_cate
+		            from class, review
+		           where class.CLASS_NO = review.CLASS_NO(+)
+		           group by class.class_no
+		           order by avg(review.REVIEW_STAR) desc    
+		        ) star, class, class_cate
 		  where star.class_no = class.class_no
 		        and class.class_cate_no = class_cate.class_cate_no
 		  order by review_star desc
