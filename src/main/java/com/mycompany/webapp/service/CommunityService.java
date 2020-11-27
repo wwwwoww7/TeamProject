@@ -12,6 +12,7 @@ import com.mycompany.webapp.dao.CommunityDao;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
 import com.mycompany.webapp.dto.ReviewDto;
+import com.mycompany.webapp.dto.ReviewPagerDto;
 
 @Service
 public class CommunityService {
@@ -67,9 +68,30 @@ public class CommunityService {
 
 	
 	/* 20.11.26 지은 추가, class_no 가장 최근 리뷰 두개 조회 */
+	public int getTotalRows() {
+		int totalRows = communityDao.countAll();
+		return totalRows;
+	}
+	
 	public List<ReviewDto> getReviewList(int classNo) {
 		List<ReviewDto> reviewList = communityDao.selectByClassNo(classNo);
 		return reviewList;
+	}
+
+
+	public List<CommunityDto> getCommunityAll(CommunityPagerDto pager) {
+		List<CommunityDto> list = communityDao.selectByPage(pager);
+		return list;
+	}
+
+	public int getTotalReviewRows() {
+		int totalRows = communityDao.countReviewAll();
+		return totalRows;
+	}
+
+	public List<ReviewDto> getReviewAll(ReviewPagerDto pager) {
+		List<ReviewDto> list = communityDao.selectByReviewPage(pager);
+		return list;
 	}
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
 import com.mycompany.webapp.dto.ReviewDto;
+import com.mycompany.webapp.dto.ReviewPagerDto;
 @Repository
 public class CommunityDao {
 
@@ -65,6 +66,25 @@ public class CommunityDao {
 	public List<ReviewDto> selectByClassNo(int class_no) {
 		List<ReviewDto> reviewList = sst.selectList("mybatis.mapper.community.selectByClassNo",class_no);
 		return reviewList;
+	}
+	//community pager
+	public int countAll() {
+		Integer totalRows = sst.selectOne("mybatis.mapper.community.countAll");
+		return totalRows;
+	}
+
+	public List<CommunityDto> selectByPage(CommunityPagerDto pager) {
+		List<CommunityDto> list = sst.selectList("mybatis.mapper.community.selectByPage", pager);
+		return list;
+	}
+	//review pager
+	public int countReviewAll() {
+		Integer totalRows = sst.selectOne("mybatis.mapper.community.countReviewAll");
+		return totalRows;
+	}
+	public List<ReviewDto> selectByReviewPage(ReviewPagerDto pager) {
+		List<ReviewDto> review = sst.selectList("mybatis.mapper.community.selectByReviewPage", pager);
+		return review;
 	}
 
 }
