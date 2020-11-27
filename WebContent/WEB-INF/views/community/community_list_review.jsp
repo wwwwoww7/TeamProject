@@ -11,7 +11,7 @@
 				 <!-- selectbox --> 
 					<div class="dropdown">
 						<button align="right" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" style="float:right;">
-							 전체
+							 
 						</button>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="javascript:catereview1()">건강</a>
@@ -78,7 +78,7 @@
 					<th style="width:100px">제목</th>
 					<th style="width:200px">내용</th>
 					<th style="width:70px">조회수</th>
-					<th style="width:80px">아이디</th>
+					<th style="width:80px">닉네임</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -91,7 +91,7 @@
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
-						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
 						
 					</tr>
 				</c:forEach>
@@ -106,7 +106,7 @@
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
-						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
 						
 					</tr>
 				</c:forEach>
@@ -122,7 +122,7 @@
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
-						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
 						
 					</tr>
 				</c:forEach>
@@ -138,7 +138,8 @@
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
 						<td><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
-						<td><a href="javascript:communityDetail()">${ReviewDto.mid}</a></td>
+						<td><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
+						
 						
 					</tr>
 				</c:forEach>

@@ -35,11 +35,11 @@
 		where comm_cate_no = '4'
 		order by comm_date desc 
 	</select>
- 
+ 	<!-- 후기 게시판 내용 가져오기 -->
 	<select id="selectReviewAll" resultType="review">
-		SELECT  review.review_no, class_cate.class_cate_nm, class.class_cate_no, review_star, review.review_date, review.review_title, review.review_content, review.review_hitno, review.mid
-		FROM REVIEW, CLASS , class_cate
-		WHERE CLASS.CLASS_NO= review.class_no and class.class_cate_no=class_cate.class_cate_no 
+		SELECT  review.review_no, class_cate.class_cate_nm, class.class_cate_no, review_star, review.review_date, review.review_title, review.review_content, review.review_hitno, member.mnick
+		FROM REVIEW, CLASS , class_cate , member
+		WHERE CLASS.CLASS_NO= review.class_no and class.class_cate_no=class_cate.class_cate_no and review.mid = member.mid
 		order by review_date desc
 		
 	</select>
@@ -95,14 +95,15 @@
 	</select>
 	
 	<select id="selectByReviewPage" parameterType="reviewPager" resultType="review">
-    select rnum, review_no, review_date, review_title, review_content, review_hitno, mid,class_no,review_star,class_cate_no,class_cate_nm
+    select rnum, review_no, review_date, review_title, review_content, review_hitno, mnick , class_no,review_star,class_cate_no,class_cate_nm
 	from (
-		select rownum as rnum, review_no, review_date, review_title, review_content, review_hitno, mid ,class_no,review_star,class_cate_no,class_cate_nm
+		select rownum as rnum, review_no, review_date, review_title, review_content, review_hitno, mnick ,class_no,review_star,class_cate_no,class_cate_nm
 	  	from (
-   			select review_no, review_date, review_title, review_content, review_hitno, mid ,  class.class_no, review_star, class.class_cate_no, class_cate_nm
-   			from review,class,class_cate
+   			select review_no, review_date, review_title, review_content, review_hitno,member.mnick ,  class.class_no, review_star, class.class_cate_no, class_cate_nm
+   			from review,class,class_cate,member
             where review.class_no= class.class_no 
                   and class_cate.class_cate_no= class.class_cate_no
+                  and review.mid = member.mid
    		)
 		where rownum &lt;= #{endRowNo} 
 	)

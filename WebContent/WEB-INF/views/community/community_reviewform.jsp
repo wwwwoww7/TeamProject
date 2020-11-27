@@ -6,6 +6,41 @@
 <form id="boardReviewForm">
 	<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 	
+	<!-- 새로운테이블입니다 -->
+		<table class="table table-bordered">
+	<colgroup>
+	    <col width="15%">
+	    <col width="35%">
+	    <col width="15%">
+	    <col width="*">
+	</colgroup>
+	<tbody>
+	    <tr>
+	        <th>강의명</th>
+	        <td>강의명이 들어옴</td>
+	        <th>문의 분류</th>
+	        <td>과제제출/환불문의</td>
+	    </tr>
+	    <tr>
+	        <th>작성자</th>
+	        <td>사용자ID</td>
+	        <th>작성일</th>
+	        <td><span><fmt:formatDate value="" pattern="yyyy-MM-dd HH.mm.ss"/></span>2020-11-20</td>
+		</tr>
+		<tr>
+			<th>답변완료여부</th>
+	        <td colspan="10">답변완료/미완료</td>
+		</tr>
+		<tr>
+			<th>제목</th>
+	        <td colspan="10">문의 제목이 들어오네요</td>
+		</tr>
+	    <tr>
+	        <th>내용</th>
+	        <td colspan="10">강의문의 내용이 들어옴</td>
+	    </tr>
+		</tbody>
+	</table>
 	
 	 
 	
