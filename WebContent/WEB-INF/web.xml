@@ -50,10 +50,10 @@
 	</filter-mapping>
 	
 	
-	<!-- <error-page>
+	<error-page>
 		<error-code>404</error-code>
-		<location>/WEB-INF/views/ch10/error404.jsp</location>
-	</error-page> -->
+		<location>/WEB-INF/views/error/404.jsp</location>
+	</error-page>
 	
 		<!-- Spring Security -->
 	<filter>
