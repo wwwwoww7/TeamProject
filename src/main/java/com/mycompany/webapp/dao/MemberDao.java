@@ -36,4 +36,9 @@ public class MemberDao {
 		return memberPW;
 	}
 
+	public int check(String mid) {
+		int result = sst.selectOne("mybatis.mapper.member.checkId", mid);
+		return result;
+	}
+
 }

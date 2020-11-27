@@ -3,8 +3,8 @@
 <mapper namespace="mybatis.mapper.member">
 
 	<insert id="insert" parameterType="member">
-		insert into member(mid,mpw,mname,mnick,mtel,memail, mpro_img, mtype, menabled)
-		values(#{mid},#{mpw},#{mname}, #{mnick},#{mtel},#{memail}, #{mpro_img}, #{mtype}, #{menabled})
+		insert into member(mid,mpw,mname,mnick,mtel,memail, mpro_img, mtype, menabled, minfo)
+		values(#{mid},#{mpw},#{mname}, #{mnick},#{mtel},#{memail}, #{mpro_img}, #{mtype}, #{menabled}, #{minfo})
 	</insert>
 
 	<select id="selectByMid" parameterType="string" resultType="member"> 
@@ -25,4 +25,10 @@
 		where mid=#{mid}
 	</select>
 	
+	<!-- 아이디 중복체크를 위한 select -->
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*)
+		from member
+		where mid=#{mid}
+	</select>
 </mapper> 

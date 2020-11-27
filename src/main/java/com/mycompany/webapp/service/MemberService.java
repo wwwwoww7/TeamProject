@@ -63,5 +63,10 @@ public class MemberService {
 		MemberDto memberInfo = memberDao.selectByMid(tutor_id);
 		return memberInfo;
 	}
+
+	public int check(String mid) {
+		int result = memberDao.check(mid);
+		return result;
+	}
 	
 }

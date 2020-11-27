@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-
 <!DOCTYPE html>
 <html  >
 <head>
@@ -11,8 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="<%=application.getContextPath()%>/resources/assets/images/mbr-96x48.png" type="image/x-icon">
   <meta name="description" content="Website Maker Description">
-  
-  
   <title>Join</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -28,27 +25,23 @@
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
   <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
 </head>
+
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
-
-	<section class="form5 cid-shav80V8Zk" id="form5-29">
-	    
-	    
-	    <div class="container-fluid">
+  <section class="form5 cid-shav80V8Zk" id="form5-29">  
+	<div class="container-fluid">
 	        <div class="mbr-section-head">
-	            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>JOIN</strong></h3>
-	            
+	            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>JOIN</strong></h3> 
 	        </div>
 	        <div class="row justify-content-center mt-4">
 	            <div class="col-md-10 mx-auto mbr-form" data-form-type="formoid">
-	                <form action="<%=request.getContextPath() %>/login/join" method="POST" enctype="multipart/form-data" class="mbr-form form-with-styler" data-form-title="joinForm">
+
+	                <form  onsubmit="return joinbt();"  method="POST" enctype="multipart/form-data" id="joinform" action="<%=request.getContextPath() %>/login/join" class="mbr-form form-with-styler" data-form-title="joinForm">
 	                <input type="hidden" name="email" data-form-email="true" value="">
 	                    <div class="dragArea row">
 	                    	
-	                        <div class="col-md-8 input-group" data-for="mid">
-	                        
+	                        <div class="col-md-8 input-group" data-for="mid">                      
 	                        	<div class="container-fluid">
 	                        		<div class="row">
 	                        			<div class="col-3">
@@ -58,12 +51,35 @@
 	                        			</div>
 	                        			
 	                        			<div class="col-6">
-	                       					<input type="text" name="mid" placeholder="ID" class="form-control" value="" id="mid" data-form-field="mid">
+	                       					<input type="text" name="mid" placeholder="ID" class="form-control" id="mid" data-form-field="mid" value="">
+	                       					<p id="chk_result"></p>
 	                        			</div>
 	                        			
 	                        			<div class="col-3">
 	                        				<span class="input-group-addon" >
-												<button type="submit">아이디 중복체크</button>
+	                        				<a class="btn btn-sm btn-info" id="chk" value="N" href="javascript:check()" >중복확인</a>
+	                        				<script>
+	                     						function check() {
+													$.ajax({
+														url : "<%=request.getContextPath()%>/login/check",
+														type : "post",
+														dataType : "json",
+														data : { "mid": $("#mid").val()},
+														success : function(data){
+															console.log(data.result);
+															if(data.result == 1){
+																document.getElementById("chk_result").innerHTML = "이미 있는 아이디입니다.";
+															}
+															else if(data.result == 0){
+																$("#chk").attr("value", "Y");
+																document.getElementById("chk_result").innerHTML = "가능한 아이디입니다.";
+															}
+														}
+													});
+												}
+	
+											</script>
+								
 											</span> 
 	                        			</div>
 	                        			
@@ -158,13 +174,14 @@
 	                        	
 	                        	<div class="container-fluid">
 	                        		<div class="col-12 align-center mbr-section-btn">
-	                        			<button type="submit" class="btn btn-success display-4">JOIN</button>
+	<!-- 	                        			<button type="submit"   class="btn btn-success display-4" >JOIN</button> -->
+	                        			  <input type="submit" value="JOIN" class="btn btn-success display-4"/>
+					      
 	                        		</div>
 	                        	
 	                        	</div>
 	                        	
 	                        </div>
-	                        
 	                     
 	                        <div class="col-md-4">
 		                        <div class="text-right">
@@ -172,12 +189,39 @@
 										copyright 2020 TEAM1 All right reserved. &nbsp;
 									</div>
 								</div>
-	                        
-	                        </div>
+	                         </div>
 	       	
-	                        
 	                    </div>
 	                </form>
+		                
+					<script>
+						function joinbt(){
+							if($("#mid").val()==""){
+								alert("아이디를 입력해주세요.");
+								$("#mid").focus();
+								return false;
+							}
+							if($("#mpw").val()==""){
+								alert("비밀번호를 입력해주세요.");
+								$("#mpw").focus();
+								return false;
+							}
+							if($("#mname").val()==""){
+								alert("이름을 입력해주세요.");
+								$("#mname").focus();
+								return false;
+							}
+							var chk_result = $("#chk").val();
+							if(chk_result == "N"){
+								alert("중복확인 버튼을 눌러주세요.");
+								return false;
+							}else {
+								joinbt();
+							}
+							return true;
+						}
+	     			</script>
+					           		
 	            </div>       
 	        </div>
 	    </div>

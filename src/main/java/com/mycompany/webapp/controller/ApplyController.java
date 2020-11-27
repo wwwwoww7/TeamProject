@@ -1,31 +1,51 @@
 package com.mycompany.webapp.controller;
 
-import java.util.Arrays;
-import java.util.List;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.webapp.email.Email;
+import com.mycompany.webapp.email.EmailSender;
+import com.mycompany.webapp.service.MemberService;
 
 @Controller
 @RequestMapping("/apply")
 public class ApplyController {
-	Logger logger = LoggerFactory.getLogger(ApplyController.class);
+
+	private static final Logger logger = LoggerFactory.getLogger(EmailController.class);
 	
-	@RequestMapping("/apply_class")  
-	public String content() {
-		logger.info("실행");
-		return "apply/apply_class";
-	} 
-	
+	@Autowired
+	private EmailSender emailSender;
+	@Autowired
+	private Email email;
+
+	@Resource
+	private MemberService mService;
 	/*
-	 * @PostMapping("/typeapply") public String typeapply() {
-	 * 
-	 * return "apply/apply_class"; }
+	 * @RequestMapping("/apply_class") public String applyClass() { return
+	 * "/apply/apply_class"; }
 	 */
+	
+//	@RequestMapping("/apply_class")
+//	public ModelAndView apply_class (HttpServletRequest request) throws Exception {
+//		ModelAndView mav;
+//		String applyname = request.getParameter("applyname");
+//		String applyemail = request.getParameter("applyemail");
+//		String applytitle = request.getParameter("applytitle");
+//		//System.out.println(applyemail);
+//    
+//      logger.info("실행 applyname"+applyname);
+//      email.setContent(applyname + "님의 강의 요청입니다."+"<br/>");
+//      email.setReceiver(applyemail);
+//      email.setSubject(applytitle+"에 대한 강의 요청입니다.");
+//      emailSender.SendEmail(email);
+//      mav = new ModelAndView("redirect:/");
+//      return mav;   
+//	}
 }

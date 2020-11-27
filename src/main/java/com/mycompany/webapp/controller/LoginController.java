@@ -5,13 +5,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -89,26 +92,73 @@ public class LoginController {
 	
 	@Resource
 	private MemberService service;
+
+	@PostMapping("/check")
+	public void check(String mid, HttpServletResponse response) throws Exception {
+	
+		
+		int result = service.check(mid);
+		logger.info("실행");	 
+		
+		JSONObject object  = new JSONObject();
+		object.put("result", result);
+		
+		
+		String json = object.toString(); //{"result" : "success"}
+		
+		//응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+		
+	}
 	
 	@PostMapping("/join")
-	public String Join(MemberDto member) throws IllegalStateException, IOException {
-	
-		  if(!member.getMphotoAttach().isEmpty()) { 
-			  String originalFileName = member.getMphotoAttach().getOriginalFilename(); 
-			  String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
-			  String saveName = member.getMid()+extName;
-			  File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
-			  member.getMphotoAttach().transferTo(dest);
-			  member.setMpro_img(saveName); 
-		  
-		  } else { 
-			  member.setMpro_img("unnamed.jpg"); } 
+	public String Join(MemberDto member, HttpServletRequest request) throws IllegalStateException, IOException {
+
+		/*
+		 * if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") ||
+		 * member.getMemail().trim().equals("")) { request.setAttribute("member",
+		 * member); return "/login/join"; }
+		 */
+		
+		int result = service.check(member.getMid());
+		try {
+			if(result == 1) { 
+				logger.info("result");
+				//JOptionPane.showMessageDialog(null, "이미 있는 아이디입니다.");
+				return "/login/join"; 
+			}else if(result == 0) {
+				service.join(member); 
+			
+				if(!member.getMphotoAttach().isEmpty()) { 
+					String originalFileName = member.getMphotoAttach().getOriginalFilename(); 
+					String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
+					String saveName = member.getMid()+extName;
+					File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
+					member.getMphotoAttach().transferTo(dest);
+					member.setMpro_img(saveName); 
+				
+				} else { 
+					  member.setMpro_img("unnamed.jpg"); 
+				}
+							
 			  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 			  String encodedPassword = passwordEncoder.encode(member.getMpw());
 			  member.setMpw(encodedPassword); 
 			  member.setMenabled(true);
-			  service.join(member);
-			  return "home";
+						  
+					  
+			}
+		
+		} catch (Exception e) { 
+			  throw new RuntimeException();
+		}
+		
+		return"home";
+	
 	}
 	
 	@GetMapping("/join")
@@ -128,55 +178,46 @@ public class LoginController {
 		
 		return "login/findpw";
 	}
-	@PostMapping("/boardUploadAjax")
-	public String boardUploadAjax( MultipartFile attach , Model model) { 
-
-		if(!attach.isEmpty()) {
-
-			String saveFileName = new Date().getTime() + "_" +attach.getOriginalFilename(); 
-			try {
-				attach.transferTo(new File("C:/Temp/upload/" + saveFileName));
-			} catch (Exception e) {
-							
-			}	
-		}
-		File uploadDir = new File("C:/Temp/upload");
-		String[] fileNames = uploadDir.list();
-		model.addAttribute("fileNames", fileNames);
-		return "login/getFileList";
-
-	}
-
-	@GetMapping("/getFileList")
-	public String getFileList(Model model) {
-		File uploadDir = new File("C:/Temp/upload");
-		String[] fileNames = uploadDir.list();
-		model.addAttribute("fileNames", fileNames);
-		return "login/getFileList";
-	}
-
-	@GetMapping("/download")
-	public void download(String fileName, HttpServletRequest request, HttpServletResponse response) throws IOException{
-		logger.info("fileName:" + fileName);
-		
-		//파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/" + fileName;
-		InputStream is = new FileInputStream(saveFilePath);
-		
-
-		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName);
-		response.setContentType(fileType);
-		String originalFileName = fileName.split("_")[1];
-		originalFileName = new String(originalFileName.getBytes("UTF-8"), "ISO-8859-1"); 
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + originalFileName + "\""); 
-		int fileSize = (int)new File(saveFilePath).length();
-		response.setContentLength(fileSize);
-		OutputStream os = response.getOutputStream();
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
-		
-	}
+	/*
+	 * @PostMapping("/boardUploadAjax") public String boardUploadAjax( MultipartFile
+	 * attach , Model model) {
+	 * 
+	 * if(!attach.isEmpty()) {
+	 * 
+	 * String saveFileName = new Date().getTime() + "_"
+	 * +attach.getOriginalFilename(); try { attach.transferTo(new
+	 * File("C:/Temp/upload/" + saveFileName)); } catch (Exception e) {
+	 * 
+	 * } } File uploadDir = new File("C:/Temp/upload"); String[] fileNames =
+	 * uploadDir.list(); model.addAttribute("fileNames", fileNames); return
+	 * "login/getFileList";
+	 * 
+	 * }
+	 * 
+	 * @GetMapping("/getFileList") public String getFileList(Model model) { File
+	 * uploadDir = new File("C:/Temp/upload"); String[] fileNames =
+	 * uploadDir.list(); model.addAttribute("fileNames", fileNames); return
+	 * "login/getFileList"; }
+	 * 
+	 * @GetMapping("/download") public void download(String fileName,
+	 * HttpServletRequest request, HttpServletResponse response) throws IOException{
+	 * logger.info("fileName:" + fileName);
+	 * 
+	 * //파일의 데이터를 읽기 위한 입력 스트림 얻기 String saveFilePath = "C:/Temp/upload/" +
+	 * fileName; InputStream is = new FileInputStream(saveFilePath);
+	 * 
+	 * 
+	 * ServletContext application = request.getServletContext(); String fileType =
+	 * application.getMimeType(fileName); response.setContentType(fileType); String
+	 * originalFileName = fileName.split("_")[1]; originalFileName = new
+	 * String(originalFileName.getBytes("UTF-8"), "ISO-8859-1");
+	 * response.setHeader("Content-Disposition", "attachment; filename=\"" +
+	 * originalFileName + "\""); int fileSize = (int)new
+	 * File(saveFilePath).length(); response.setContentLength(fileSize);
+	 * OutputStream os = response.getOutputStream(); FileCopyUtils.copy(is, os);
+	 * os.flush(); os.close(); is.close();
+	 * 
+	 * }
+	 */
+	
 }

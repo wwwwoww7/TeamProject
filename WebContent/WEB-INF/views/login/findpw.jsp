@@ -63,7 +63,8 @@
                             <input type="email" name="memail" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form5-30">
                         </div>
                         
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-dark display-4">비밀번호 재설정 메일 전송하기</button></div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                        <button type="submit" class="btn btn-dark display-4">비밀번호 재설정 메일 전송하기</button></div>
                        
                     </div>
                 </form>
