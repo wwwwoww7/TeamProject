@@ -102,11 +102,25 @@
 	        </div>
 	        
 	        <div class="row">
-	        	<div class="col-sm-9"></div>
+	        	<div class="col-sm-7"></div> 
+	        	<div class="col-sm-2">
+	        		 <div class="mbr-section-btn">
+		               	<a class="btn item-btn btn-warning display-4" href="javascript:pick()">🧡</a>
+		             </div>
+			         <script type="text/javascript">
+						function pick(){
+							alert("❤🧡💛💚💙💜");
+						}
+					</script>
+	        	
+	        	</div> 
 	        	<div class="col-sm-3">
+	        		 
+	        		
 	        		 <div class="mbr-section-btn">
 		               	<a class="btn item-btn btn-warning display-4" href="javascript:putt()">장바구니 담기</a>
 		             </div>
+		             
 			         <script type="text/javascript">
 						function putt(){
 							var result = confirm("장바구니에 담으시겠습니까?");
