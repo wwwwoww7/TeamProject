@@ -95,14 +95,11 @@ public class LoginController {
 
 	@PostMapping("/check")
 	public void check(String mid, HttpServletResponse response) throws Exception {
-	
-		
 		int result = service.check(mid);
 		logger.info("실행");	 
 		
 		JSONObject object  = new JSONObject();
 		object.put("result", result);
-		
 		
 		String json = object.toString(); //{"result" : "success"}
 		
@@ -118,11 +115,13 @@ public class LoginController {
 	@PostMapping("/join")
 	public String Join(MemberDto member, HttpServletRequest request) throws IllegalStateException, IOException {
 
-		/*
-		 * if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") ||
-		 * member.getMemail().trim().equals("")) { request.setAttribute("member",
-		 * member); return "/login/join"; }
-		 */
+		
+		  if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") ||
+		  member.getMemail().trim().equals("")) {
+			  request.setAttribute("member", member); 
+			  return "/login/join"; 
+		}
+		 
 		
 		int result = service.check(member.getMid());
 		try {
@@ -149,8 +148,6 @@ public class LoginController {
 			  String encodedPassword = passwordEncoder.encode(member.getMpw());
 			  member.setMpw(encodedPassword); 
 			  member.setMenabled(true);
-						  
-					  
 			}
 		
 		} catch (Exception e) { 

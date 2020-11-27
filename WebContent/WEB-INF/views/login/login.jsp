@@ -50,7 +50,6 @@
 	                            <input type="password" name="mpw" placeholder="Password" data-form-field="mpw" class="form-control" value="" id="password-form4-27">
 	                        </div>
 	                    
-	
 	                    </div>
 	                    
 	                  	<div class="col-lg-12 col-md-12 col-sm-12">
@@ -83,7 +82,7 @@
 				
 	            <div class="col-lg-7 offset-lg-1 col-12">
 	                <div class="image-wrapper">
-	                     <img src="<%=application.getContextPath()%>/resources/assets/images/eggtower.jpg" alt="Mobirise" style="height: 30rem;">
+	                     <img src="<%=application.getContextPath()%>/resources/assets/images/features4.jpg" alt="Mobirise" style="height: 30rem;">
 	                </div>
 	            </div>
 	        </div>

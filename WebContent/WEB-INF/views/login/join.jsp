@@ -57,7 +57,7 @@
 	                        			
 	                        			<div class="col-3">
 	                        				<span class="input-group-addon" >
-	                        				<a class="btn btn-sm btn-info" id="chk" value="N" href="javascript:check()" >중복확인</a>
+	                        				<button type="button" class="btn btn-sm btn-info" id="chk" value="N" onclick="check();">중복 확인</button>
 	                        				<script>
 	                     						function check() {
 													$.ajax({
@@ -68,6 +68,7 @@
 														success : function(data){
 															console.log(data.result);
 															if(data.result == 1){
+																$("#chk").attr("value", "N");
 																document.getElementById("chk_result").innerHTML = "이미 있는 아이디입니다.";
 															}
 															else if(data.result == 0){
@@ -159,7 +160,7 @@
 											<span class="input-group-addon" style="width:80px;">프로필사진</span>     
 	                        			</div>
 	                        			<div class="col-9">
-											<input type="file" name="mphotoAttach" class="form-control" onchange="loadFile(event)"/>
+											<input type="file" name="mphotoAttach" class="form-control" value="null" onchange="loadFile(event)"/>
 	                        				<img id="id_viewimg" class="max-small" border="0" />
 	                        				
 	                        				<script>
@@ -184,13 +185,10 @@
 	                        </div>
 	                     
 	                        <div class="col-md-4">
-		                        <div class="text-right">
-									<div class="credits">
-										copyright 2020 TEAM1 All right reserved. &nbsp;
-									</div>
-								</div>
-	                         </div>
-	       	
+		                    	<div class="image-wrapper">
+	                     			<img src="<%=application.getContextPath()%>/resources/assets/images/eggtower.jpg" alt="Mobirise" style="height: 30rem;">
+	                			</div>
+	                        </div>
 	                    </div>
 	                </form>
 		                
@@ -211,12 +209,22 @@
 								$("#mname").focus();
 								return false;
 							}
+							if($("#mtel").val()==""){
+								alert("전화번호를 입력해주세요.");
+								$("#mtel").focus();
+								return false;
+							}
+							if($("#memail").val()==""){
+								alert("이메일을 입력해주세요.");
+								$("#memail").focus();
+								return false;
+							}
 							var chk_result = $("#chk").val();
 							if(chk_result == "N"){
 								alert("중복확인 버튼을 눌러주세요.");
 								return false;
-							}else {
-								joinbt();
+							}else{
+								$("#joinform").joinbt();
 							}
 							return true;
 						}
