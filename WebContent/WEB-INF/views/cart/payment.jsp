@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>cart</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -173,17 +173,17 @@
 						        <tr>
 						   			<td colspan="2">
 							   			<div class="checkbox_group">
-							   				<input type="checkbox" name="checkAll" class="chk" id="checkAll" />전체동의
+							   				<input type="checkbox" name="checkAll" class="chkALl" id="checkAll" />전체동의
 							   				<input type="checkbox" name="chk" class="chk" id="chk"/>이용약관동의
 							   				<input type="checkbox" name="chk" class="chk" id="chk"/>개인정보 처리방침 동의
 						 	  		<script type="text/javascript">
 							 	  		
 							 	  		// 체크박스 전체 선택
 									   			$("#checkAll").click(function() {
-									   				if($("#checkAll").is(":checked")){
-									   					$(".chk").prop("checked", true);
+									   				if($("#checkAll").is(':checked')){
+									   					$("input[name='chk']").prop("checked", true);
 									   				}else{
-									   					$(".chk").prop("checked", false);
+									   					$("input[name='chk']").prop("checked", false);
 									   				}
 									   			});
 									   			 
