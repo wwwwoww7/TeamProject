@@ -77,7 +77,7 @@
 	            <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-5"><strong>신규 강의</strong></h3>
 	            <h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-7">Enjoy the new classes!</h4>
 	        </div>
-	        <div id="main-content-new mt-4" class="row">
+	        <div id="main-content-new" class="row mt-4">
 	           
 	           
 	           
