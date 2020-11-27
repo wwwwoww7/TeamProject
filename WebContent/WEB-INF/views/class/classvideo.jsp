@@ -43,8 +43,8 @@
                     <p class="mbr-text mb-3 mbr-fonts-style display-7">
                         Intro with Color, paddings and a video on the right. Mobirise helps you cut down
                         development time by providing you with a flexible website editor with a drag and drop interface.
-                    </p>
-                    <div class="mbr-section-btn"><a class="btn btn-success display-4" href="javascript:popupClose()">class end</a></div>
+                    </p><!--  href="javascript:popupClose()" -->
+                    <div class="mbr-section-btn"><a class="btn btn-success display-4" href="https://jp89p.channel.io">class end</a></div>
                 </div>
             </div>
             <div class="mbr-figure col-12 col-md-7">
@@ -52,8 +52,19 @@
 	            </iframe>
             </div>
         </div>
+        
+        <div class="row">
+        
+        	
+			<!-- End Channel Plugin -->
+        </div>
     </div>
 </section>
+
+
+
+
+
 <section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
 	<a href="https://mobirise.site/u" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a>
 	<p style="flex: 0 0 auto; margin:0; padding-right:1rem;">

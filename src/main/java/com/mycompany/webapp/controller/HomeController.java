@@ -53,7 +53,7 @@ public class HomeController {
 		logger.info("newClasses 실행");
 		
 		List<ClassDto> classList = classService.getClassList(1);
-		model.addAttribute("newclassList", classList);
+		model.addAttribute("classList", classList);
 		
 		return "class/classcard_sm";
 	}
@@ -68,10 +68,6 @@ public class HomeController {
 	@GetMapping("/allClass")
 	public String moneyCategory(Model model) {
 
-		
-		
-		
-		
 		return "class/allclass";
 	}
 	

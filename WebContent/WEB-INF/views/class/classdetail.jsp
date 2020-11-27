@@ -76,10 +76,7 @@
 	            <div class="col-12 col-md-8">
 	                <h4 class="mbr-section-title mb-0 mbr-fonts-style display-4">
 	                
-	                <script type="text/javascript">
-	                	var star =  Math.ceil(${classOne.review_star} *2 ) / 2;
-	                </script>
-	                
+	               
 	              	 	<strong id="star_avg"> Rating  </strong>
 	               		<div class="star-box">
 							  <span class="star star_left"></span>
@@ -222,7 +219,7 @@
 								        <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-5">
 								        <strong>Curriculum</strong></h2>
 								        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-7">
-								           	클래스를 신청하신 분들이 배우고 있는 커리큘럼입니다. <br/> 콘텐츠는 배우기 쉽게 영상, 수업노트, 첨부파일로 구성되어있습니다.
+								           	클래스를 신청하신 분들이 배우고 있는 커리큘럼입니다. 
 								        </h3>
 								        <div class="media-container-row">
 								        	<div class="container-fluid">
@@ -233,7 +230,7 @@
 								        			<div class="col-md-6">
 								        				<div class="media-block" >
 											                <div class="mbr-figure">
-											                    <img src="<%=application.getContextPath()%>/resources/assets/images/background6.jpg">
+											                    <img src="<%=application.getContextPath()%>/resources/images/class/${ classOne.class_thum2 }">
 											                </div>
 											            </div>
 								        				
@@ -374,6 +371,17 @@
 								        <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
 								            <strong>Reviews</strong></h3>
 								        <div class="row justify-content-center">
+								            
+								            <c:if test="${fn:length(reviewList) == 0 }">
+								            	<div class="card col-12 col-md-6">
+								            		<p class="mbr-text mbr-fonts-style mb-4 display-7 align-center">
+									                	<strong> 아직 작성된 후기가 없어요! </strong> 
+									                </p>
+								            	
+								            	
+								            	</div>
+								            </c:if>
+								            
 								            
 								            
 								            <c:forEach var="review" items="${reviewList}">

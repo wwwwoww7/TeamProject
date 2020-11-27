@@ -73,9 +73,14 @@ public class ClassController {
 	}
 	
 	
-	
-	
-	
+	@GetMapping("/allClassList")
+	public String allClassList(Model model) {
+		
+		List<ClassDto> classList = classService.getClassList(0);
+		model.addAttribute("classList", classList); 
+		
+		return "class/classcard_sm";
+	}
 	
 	
 }

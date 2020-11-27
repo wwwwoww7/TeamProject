@@ -43,7 +43,8 @@
 	                    Time to Learn! Learn everything you need to know about getting started and how BanSook can help.
 	                </h3>
 	                <p class="mbr-text align-center pb-3 mbr-fonts-style display-7">
-	                	완숙을 바라는  .......... 왈랄
+	                	완숙을 바라는 .. Getting started can be confusing and overwhelming, which is why having the right tools and resources can make all the difference.
+This is a frequently asked question among families just starting out. There are many ways to homeschool and homeschool laws vary by state, so it’s important to get all the facts.
 	                </p>
 	                <div class="mbr-section-btn align-center">
 	                	<a class="btn btn-md btn-white-outline display-4" href="#사이트정보페이지">
@@ -301,7 +302,9 @@
 							        <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
 							        <span class="sr-only">Next</span>
 			        			</a>
-			        			<a class="close" href="#" role="button" data-dismiss="modal"><span class="sr-only">Close</span></a>
+			        			<a class="close" href="#" role="button" data-dismiss="modal">
+			        				<span class="sr-only">Close</span>
+			        			</a>
 			        		</div>
 			        	</div>
 			        </div>

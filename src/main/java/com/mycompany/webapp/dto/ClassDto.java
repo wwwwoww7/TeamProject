@@ -9,6 +9,7 @@ public class ClassDto {
 	private String class_curr2;
 	private String class_curr3;
 	private String class_thum;
+	private String class_thum2;
 	private String tutor_id;
 	private int class_cate_no;
 	private int class_video_no;
@@ -108,6 +109,12 @@ public class ClassDto {
 	}
 	public void setClass_cate_nm(String class_cate_nm) {
 		this.class_cate_nm = class_cate_nm;
+	}
+	public String getClass_thum2() {
+		return class_thum2;
+	}
+	public void setClass_thum2(String class_thum2) {
+		this.class_thum2 = class_thum2;
 	}
 	 
 	

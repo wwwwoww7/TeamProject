@@ -40,12 +40,8 @@
  -->
 
 
-
-
-
-
  
-	<c:forEach var="classes" items="${newclassList}">
+	<c:forEach var="classes" items="${classList}">
 		<div class="col-12 col-md-6 col-lg-3 item gallery-image">
 	        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s }">
 	            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no }">
