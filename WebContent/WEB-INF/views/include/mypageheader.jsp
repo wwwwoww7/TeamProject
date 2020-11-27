@@ -45,7 +45,7 @@
                    
                   			<sec:authorize access="hasRole('ROLE_TUTOR')">
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2k">나의 강의</a>
-		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">공지사항</a>
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2l">공지사항</a>
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">강의 문의</a>
 	                        </sec:authorize>
                        </div>

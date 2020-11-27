@@ -39,8 +39,9 @@ public class ClassNoticeService {
 		return notice;
 	}
 
-	public void noticeUpdate(ClassNoticeDto classNoticeDto) {
+	public int noticeUpdate(ClassNoticeDto classNoticeDto) {
 		int rows = classNoticeDao.updateNotice(classNoticeDto);
+		return rows;
 	}
 
 	public void noticeDelete(int class_notice_no) {

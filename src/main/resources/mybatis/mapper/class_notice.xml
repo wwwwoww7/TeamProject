@@ -45,7 +45,6 @@
 	</insert>
 	
 	<delete id="deleteNotice" parameterType="int">
-		delete from class_hw where class_
 		delete from CLASS_NOTICE where class_notice_no =#{class_notice_no}
 	</delete>
 	

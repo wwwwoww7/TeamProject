@@ -20,7 +20,7 @@
 				<td class="body-item mbr-fonts-style display-7">${notice.class_notice_no}</td>
 				<td class="body-item mbr-fonts-style display-7">${notice.class_nm_s}</td>
 				<td class="body-item mbr-fonts-style display-7">
-				<a class="text-black" href="javascript:noticeDetail(${notice.class_notice_no})">${notice.class_notice_title}</a></td>
+				<a class="text-black" href="<%=request.getContextPath()%>/mypage/noticeDetail?class_notice_no=${notice.class_notice_no}">${notice.class_notice_title}</a></td>
 				<td class="body-item mbr-fonts-style display-7">${notice.mid}</td>
 				<td class="body-item mbr-fonts-style display-7"><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></td>
 			</tr>
@@ -51,29 +51,5 @@
 	</table>
 	<br />
 	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" 
-		href="javascript:noticeWriteForm()">글쓰기</a>
-	<script type="text/javascript"> 
-		function noticeWriteForm(){
-			$.ajax({
-				url:"noticeWriteForm",
-				method: "POST",
-				/* data:[{class_no:class_no}], */
-				success: function(data){
-					$("#tutorNotice").html(data);
-				}
-			});
-		}
-	</script>
-	<!-- 공지사항 상세보기 -->
-	<script type="text/javascript">
-		function noticeDetail(class_notice_no) {
-			$.ajax({
-				url:"noticeDetail",
-				data:{class_notice_no:class_notice_no},
-				success:function(data) {
-					$("#tutorNotice").html(data);
-				}
-			});
-		}
-	</script>
+		href="<%=request.getContextPath()%>/mypage/noticeWriteForm">글쓰기</a>
 </div>

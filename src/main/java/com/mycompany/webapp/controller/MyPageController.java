@@ -108,7 +108,7 @@ public class MyPageController {
 	}
 	
 	//강사 공지사항 수정폼 요청하기
-	@PostMapping("/noticeUpdateForm")
+	@GetMapping("/noticeUpdateForm")
 	public String noticeUpdateForm(int class_notice_no,Model model) {
 		ClassNoticeDto notice = classNoticeService.getUpdateForm(class_notice_no);
 		model.addAttribute("notice",notice);
@@ -119,49 +119,30 @@ public class MyPageController {
 	
 	//강사 공지사항 수정하기
 	@PostMapping("/noticeUpdate")
-	public void noticeUpdate(ClassNoticeDto classNoticeDto,HttpServletResponse response) throws Exception {
+	public String noticeUpdate(ClassNoticeDto classNoticeDto,Model model){
 		
 		//게시물 수정
 		classNoticeService.noticeUpdate(classNoticeDto);
-
-		//json응답만들기
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		jsonObject.put("notice_no", classNoticeDto.getClass_notice_no());
 		
+		//수정한 게시물을 다시 가져오기
+		ClassNoticeDto notice = classNoticeService.getNoticeDetail(classNoticeDto.getClass_notice_no());
+		model.addAttribute("notice",notice);
 		
-		String json = jsonObject.toString(); 
-		
-		//json보내기
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json;charset=utf-8");
-		out.println(json);
-		out.flush();
-		out.close();
+		return "mypage/noticedetail";
 	}
 	
 	//강사의 강의공지사항 삭제하기
-	@PostMapping("/noticeDelete")
-	public void noticeDelete(int class_notice_no, HttpServletResponse response) throws Exception {
+	@GetMapping("/noticeDelete")
+	public String noticeDelete(int class_notice_no, HttpServletResponse response) throws Exception {
 		//게시물 삭제 응답/요청
 		classNoticeService.noticeDelete(class_notice_no);
 				
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		String json = jsonObject.toString(); //{"result":"success"}
-		
-		//json보내기
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json;charset=utf-8");
-		out.println(json);
-		out.flush();
-		out.close();
-		
+		return "mypage/mypage_tutor";
 	}
 	
 	//강사의 강의공지사항 글쓰기 폼 요청
-	@PostMapping("/noticeWriteForm")
-	public String noticeWriteForm(List<ClassNoticeDto> list,Model model) {
+	@GetMapping("/noticeWriteForm")
+	public String noticeWriteForm() {
 		/*List<ClassNoticeDto> classNolist = classNoticeService.selectClassNo(list);
 		model.addAttribute("classNolist",classNolist);*/
 		return "mypage/noticeWriteForm";
