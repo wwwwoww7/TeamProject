@@ -48,11 +48,11 @@
 						<div class="user col-md-8">
 							<div class="user_image">
 								<a href="userEdit">
-									<img src="<%=application.getContextPath()%>/resources/assets/images/team3.jpg">
+									<img src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
 								</a>
 							</div>
 							<div class="user_text mb-4">
-								<p class="mbr-fonts-style display-5">닉네임</p>
+								<p class="mbr-fonts-style display-5">${memberInfo.mnick}</p>
 							</div>
 						</div>
 					</div>
@@ -64,80 +64,39 @@
 	<!--  나의 강의  -->
 	<section class="gallery5 mbr-gallery cid-shfdgokGZw" id="gallery5-2k">
 		<div class="container">
-			<div class="mbr-section-head">
-				<h3
-					class="mbr-section-title mbr-fonts-style align-center m-0 display-5">
+			<section class="features3 cid-sh7HNKMuDe" id="features3-g">
+				<h3 class="mbr-fonts-style align-center m-0 display-5">
 					<strong>나의 강의</strong>
 				</h3>
-			</div>
-			<div class="row mbr-gallery mt-4">
-				<div class="col-12 col-md-6 col-lg-3 item gallery-image">
-					<div class="item-wrapper" data-toggle="modal"
-						data-target="#shfud90w44-modal">
-						<img class="w-100" src="assets/images/features1.jpg" alt=""
-							data-slide-to="0" data-target="#lb-shfud90w44">
-						<div class="icon-wrapper">
-							<span
-								class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-						</div>
+				<div class="container">
+		        	<div class="row mt-4">
+						<c:forEach var="hotclass" items="${tutorclassList}">
+			
+							<div class="item features-image col-12 col-md-6 col-lg-3">
+								
+							     <div class="item-wrapper">
+							         <div class="item-img">
+							             <img src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum}" alt="" data-slide-to="3">
+							         </div>
+							         <div class="item-content">
+							             <h5 class="item-title mbr-fonts-style display-7"><strong>${hotclass.class_cate_nm}</strong></h5>
+							             <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
+							                 <em>${hotclass.class_nm_s}</em>
+							             </h6>
+							             
+							         </div>
+							         <div class="mbr-section-btn item-footer mt-2">
+								         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no}" 
+								            class="btn item-btn btn-success display-7">상세 &gt;
+								            <!-- 버튼 주황색 :  class="btn item-btn btn-warning display-7"  -->
+								         </a>
+							         </div>
+							     </div>
+							 </div>
+						</c:forEach>
 					</div>
-					<h6
-						class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-						Image Caption and <a href="#" class="text-primary">Link</a>
-					</h6>
-				</div>
-			</div>
-
-			<!-- 사진클릭했을 때 -->
-			<div class="modal mbr-slider" tabindex="-1" role="dialog"
-				aria-hidden="true" id="shfud90w44-modal">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-body">
-							<div class="carousel slide" id="lb-shfud90w44"
-								data-interval="5000">
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<img class="d-block w-100" src="assets/images/features1.jpg"
-											alt="">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="assets/images/features2.jpg"
-											alt="">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="assets/images/features3.jpg"
-											alt="">
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="assets/images/features4.jpg"
-											alt="">
-									</div>
-								</div>
-								<ol class="carousel-indicators">
-									<li data-slide-to="0" class="active"
-										data-target="#lb-shfud90w44"></li>
-									<li data-slide-to="1" data-target="#lb-shfud90w44"></li>
-									<li data-slide-to="2" data-target="#lb-shfud90w44"></li>
-									<li data-slide-to="3" data-target="#lb-shfud90w44"></li>
-								</ol>
-								<a role="button" href="" class="close" data-dismiss="modal"
-									aria-label="Close"> </a> <a
-									class="carousel-control-prev carousel-control" role="button"
-									data-slide="prev" href="#lb-shfud90w44"> <span
-									class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
-									<span class="sr-only">Previous</span>
-								</a> <a class="carousel-control-next carousel-control" role="button"
-									data-slide="next" href="#lb-shfud90w44"> <span
-									class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
-									<span class="sr-only">Next</span>
-									<span class="sr-only">${sessionMid}</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		   		</div>
+			</section>
 		</div>
 	</section>
 
@@ -243,21 +202,21 @@
 
 	     
 		/*강의문의*/
-		   function tutorClassQA(){
-				$.ajax({
-					url:"tutorClassQA",
-					type: "POST",
-					success: function(data){
-							$("#tutorClassQA").html(data);
-						}
-		
-					});
-				
-				}
-		
-		      jQuery(document).ready(function(){
-		   	   		tutorClassQA();
-		      }); 
+	   function tutorClassQA(){
+			$.ajax({
+				url:"tutorClassQA",
+				type: "POST",
+				success: function(data){
+						$("#tutorClassQA").html(data);
+					}
+	
+				});
+			
+			}
+	
+	      jQuery(document).ready(function(){
+	   	   		tutorClassQA();
+	      }); 
 	</script>
 </body>
 </html>

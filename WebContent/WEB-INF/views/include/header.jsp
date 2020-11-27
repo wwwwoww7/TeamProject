@@ -56,10 +56,10 @@
 	                     <%-- <sec:authentication property="mnick"/>님 환영합니다. --%>
 	                    <div class="dropdown-menu">
 	                    	<sec:authorize access="hasRole('ROLE_USER')">
-	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user">My Page</a>
+	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user?mid=${sessionMid}">My Page</a>
 	                  		</sec:authorize>
 	                  		<sec:authorize access="hasAnyRole('ROLE_TUTOR')">
-	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_tutor">강의 관리</a>
+	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">강의 관리</a>
 	                  		</sec:authorize>
 	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/logout">Logout</a>
 	                  	</div>

@@ -1,10 +1,11 @@
 package com.mycompany.webapp.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 import com.mycompany.webapp.service.ClassNoticeService;
+import com.mycompany.webapp.service.ClassService;
 import com.mycompany.webapp.service.MemberService;
 
 
@@ -69,16 +74,29 @@ public class MyPageController {
 	@Resource
 	private ClassNoticeService classNoticeService;
 	
+	@Resource
+	private ClassService classService;
+	
 	
 	//*----------- 강사 페이지------------------- *//		
 	@RequestMapping("/mypage_tutor")
-	public String mypage_tutor() {
+	public String mypage_tutor(MemberDto member, Model model) {
+		//강사의 강의 목록 가져오기
+		List<ClassDto> tutorclassList = classService.getTutoringClasses(member.getMid());
+		model.addAttribute("tutorclassList",tutorclassList);
+		
+		//강사의 회원정보 가져오기
+		MemberDto memberInfo = mService.getId(member);
+		model.addAttribute("memberInfo",memberInfo);
+		
 		return "mypage/mypage_tutor";
 	}
 	
 	//강사의 강의 목록
 	@PostMapping("/tutorClassList")
 	public String tutorClassList() {
+		
+	
 		
 		return "mypage/tutorclasslist";
 	}
