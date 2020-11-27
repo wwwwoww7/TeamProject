@@ -60,6 +60,11 @@ public class ClassNoticeDao {
 		List<ClassNoticeDto> classNamelist = sst.selectList("mybatis.mapper.class_notice.selectClassName",list);
 		return classNamelist;
 	}
+	/* 페이지수를 가져오기 위한 전체 행 수 가져오기*/
+	public int countAll() {
+		int totalRows = sst.selectOne("mybatis.mapper.class_notice.countAll");
+		return totalRows;
+	}
 
 	
 }

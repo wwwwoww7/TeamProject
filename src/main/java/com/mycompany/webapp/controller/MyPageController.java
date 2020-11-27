@@ -107,10 +107,11 @@ public class MyPageController {
 		
 		int totalRows = classNoticeService.getTotalRow();
 		
-		MyPagerDto pager = new MyPagerDto(8,3,totalRows, pageNo, mid);
+		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
 		List<ClassNoticeDto> list = classNoticeService.getNotice(pager);
 		model.addAttribute("list",list);
 		model.addAttribute("pager",pager); 
+		
 		
 		return "mypage/tutorclassnotice";
 	}
@@ -188,7 +189,14 @@ public class MyPageController {
 	
 	//강사의 강의문의 목록
 	@PostMapping("/tutorClassQA")
-	public String tutorClassQA() {
+	public String tutorClassQA(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
+		
+		int totalRows = classNoticeService.getTotalRow();
+		
+		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
+		/*List<ClassNoticeDto> list = classNoticeService.getQa(pager);
+		model.addAttribute("list",list);
+		model.addAttribute("pager",pager); */
 		
 		return "mypage/tutorclassqa";
 	}

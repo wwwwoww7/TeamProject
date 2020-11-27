@@ -20,8 +20,8 @@ public class ClassNoticeService {
 	private ClassNoticeDao classNoticeDao;
 
 	public int getTotalRow() {
-		// TODO Auto-generated method stub
-		return 0;
+		int totalRows = classNoticeDao.countAll();
+		return totalRows;
 	}
 	
 	public List<ClassNoticeDto> getNotice(MyPagerDto pager){

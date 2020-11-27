@@ -135,7 +135,7 @@
 	</section>
 
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-	<input type="hidden" id="mid" name="mid" value="${sessionMid}"/>
+	<input type="hidden" id="sessionMid" name="sessionMid" value="${sessionMid}"/>
 
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script>
@@ -172,14 +172,13 @@
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
 	<script type="text/javascript">
-	/* 공지사항 */
-		
+		/* 공지사항 */
+		var mid = $("#mid").val();
+	
 		function tutorClassNotice(pageNo,mid){
 			if(!pageNo){ //페이지수가 0이면 기본값으로 1로 줌
 				pageNo =1;
 			}
-			 
-			
 			$.ajax({
 				url:"tutorClassNotice",
 				method: "post",
@@ -190,22 +189,17 @@
 		
 				});
 			}
-	
-
-
 	     $(function(){
-	    	 
-	    	 var mid = $("#mid").val();
-	    	 
 	    	 tutorClassNotice(1,mid);
 	     });
 
 	     
 		/*강의문의*/
-	   function tutorClassQA(){
+	   function tutorClassQA(pageNo,mid){
 			$.ajax({
 				url:"tutorClassQA",
-				type: "POST",
+				method: "POST",
+				data:{pageNo:pageNo, mid:mid}
 				success: function(data){
 						$("#tutorClassQA").html(data);
 					}
@@ -215,7 +209,7 @@
 			}
 	
 	      jQuery(document).ready(function(){
-	   	   		tutorClassQA();
+	   	   		tutorClassQA(1,mid);
 	      }); 
 	</script>
 </body>

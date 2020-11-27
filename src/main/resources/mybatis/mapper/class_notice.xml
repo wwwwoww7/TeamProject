@@ -30,6 +30,7 @@
         		where c.class_no = n.class_no and n.class_notice_no = h.class_hw_no) ta
 		where ta.class_notice_no=#{class_notice_no}
 	</select>
+	
 	<!-- 강의공지에서 사용할 강의명 가져오기 -->
 	<select id="selectClassName" parameterType="classNotice" resultType="classNotice">
 		select ta.class_no, ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
@@ -37,6 +38,11 @@
         		FROM class c, class_notice n, class_hw h 
         		where c.class_no = n.class_no and n.class_notice_no = h.class_hw_no) ta
 		where ta.class_no=#{class_no}
+	</select>
+	
+	<!-- 공지사항 행 수 가져오기 -->
+	<select id="countAll" resultType="int">
+		select count(*) from class_notice
 	</select>
 	
 	<insert id="insertNotice" parameterType="classNotice">
