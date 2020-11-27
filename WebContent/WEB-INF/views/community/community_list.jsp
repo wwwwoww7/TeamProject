@@ -7,7 +7,7 @@
 		<!-- 글쓰기 -->
 		<div class="sector"> 
 			<div align="right">
-				<c:if test="${sessionMid==null}">
+				<%-- <c:if test="${sessionMid==null}"> --%>
 					<a class="btn btn-outline-primary" style="border:1px solid #007BFF; float:right; " href="javascript:boardWrite()">글쓰기</a>
 						<script type="text/javascript">
 							function boardWrite() {
@@ -19,7 +19,7 @@
 									});
 								}
 						</script>
-					</c:if>
+					<%-- </c:if> --%>
 				</div>
 			</div>
 	<div id="fun1_result"></div>
@@ -109,36 +109,46 @@
 			</c:forEach>
 		</tbody>
 	
-	
-	
-	
-	
-	
-	
-	
-	
+		<tr>
+			<td colspan="7" style="text-align: center; ">
+				<a class="btn btn-outline-primary btn-sm" href="javascript:boardList(1)">처음</a>
+				
+				<c:if test="${pager.groupNo > 1 }">
+				<a class="btn btn-outline-info btn-sm" href="javascript:boardList(${pager.startPageNo-1})">이전</a>
+				</c:if>
+				
+				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+					<c:if test="${pager.pageNo == i }">
+						<a class="btn btn-outline-danger btn-sm" href="javascript:boardList(${i})">${i}</a>
+					</c:if>
+					<c:if test="${pager.pageNo != i }">
+						<a class="btn btn-outline-success btn-sm" href="javascript:boardList(${i})">${i}</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${pager.groupNo <pager.totalGroupNo}">
+				<a class="btn btn-outline-info btn-sm" href="javascript:boardList(${pager.endPageNo+1})">다음</a>
+				</c:if>
+				<a class="btn btn-outline-primary btn-sm" href="javascript:boardList(${pager.totalPageNo})">맨끝</a>
+			</td>
+		</tr>
 	</table>
-	<table class="table table-hover">
-		
-		
-		
-			<tr>	
-				<td colspan="4" style="text-align: center;">
-					<a class="btn btn-outline-primary btn-sm" href="#">처음</a>
-					<a class="btn btn-outline-info btn-sm" href="#">이전</a>
-							<a class="btn btn-outline-danger btn-sm" href="#">1</a>
-							<a class="btn btn-outline-success btn-sm" href="#">2</a>
-							<a class="btn btn-outline-success btn-sm" href="#">3</a>
-							<a class="btn btn-outline-success btn-sm" href="#">4</a>
-							<a class="btn btn-outline-success btn-sm" href="#">5</a>
-					<a class="btn btn-outline-info btn-sm" href="#">다음</a>
-					<a class="btn btn-outline-primary btn-sm" href="#)">맨끝</a>
-				</td>
-			</tr>
-		
-		
-		
-	</table>
+	
+	<script type="text/javascript">
+		function boardList(pageNo) {
+			if(!pageNo){
+				pageNo=1;
+			}
+			$.ajax({
+				url:"community/communityAll",
+				data: {pageNo:pageNo}, 
+				success:function(data) {
+					$("#fun1_result").html(data);
+				}
+			});
+		}
+	</script>
+
+	
 	<script type="text/javascript">
 			function communityDetail() {
 				$.ajax({

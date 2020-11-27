@@ -69,9 +69,49 @@
 		where class_cate_no=3
 		order by review_date desc
 	</select>
-
-
-
+	
+	<!-- community pager -->
+	<select id="countAll" resultType="int">
+		select count(*) from community
+	</select>
+	
+	<select id="selectByPage" parameterType="communityPager" resultType="community">
+	select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid,comm_cate_no,comm_cate_nm
+	from (
+		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_no,comm_cate_nm
+	  	from (
+   			select comm_no, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_no,comm_cate_nm
+   			from community
+   
+   		)
+		where rownum &lt;= #{endRowNo}
+	)
+	where rnum &gt;= #{startRowNo}
+	</select>
+	
+	<!-- review pager -->
+	<select id="countReviewAll" resultType="int">
+		select count(*) from review
+	</select>
+	
+	<select id="selectByReviewPage" parameterType="reviewPager" resultType="review">
+    select rnum, review_no, review_date, review_title, review_content, review_hitno, mid,class_no,review_star,class_cate_no,class_cate_nm
+	from (
+		select rownum as rnum, review_no, review_date, review_title, review_content, review_hitno, mid ,class_no,review_star,class_cate_no,class_cate_nm
+	  	from (
+   			select review_no, review_date, review_title, review_content, review_hitno, mid ,  class.class_no, review_star, class.class_cate_no, class_cate_nm
+   			from review,class,class_cate
+            where review.class_no= class.class_no 
+                  and class_cate.class_cate_no= class.class_cate_no
+   		)
+		where rownum &lt;= #{endRowNo} 
+	)
+	where rnum &gt;= #{startRowNo}
+	</select>
+	
+	
+	
+	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
 	<select id="selectByClassNo" parameterType="int" resultType="review"> 
 		select mnick,mpro_img,review_title,review_content,review_date from (
@@ -85,8 +125,5 @@
 		where rnum &lt;= 2
 	</select>
 
-
-	
-	
 	
 </mapper>
