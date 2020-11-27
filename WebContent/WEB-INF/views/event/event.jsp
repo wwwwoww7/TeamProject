@@ -128,218 +128,121 @@
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
   
   
-  
-  
 </head>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
-<section class="section-table cid-shflacCz1o" id="table1-3f">
-
-  
-  
-  <div class="container container-table">
-      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><strong>
-          EVENT</strong></h2>
-      
-      <div class="table-wrapper">
-        <div class="container">
-          <div class="row search">
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <div class="dataTables_filter">
-                  <label class="searchInfo mbr-fonts-style display-7">이벤트 검색:</label>
-                  <input class="form-control input-sm" disabled="">
-                </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container scroll">
-          <table class="table isSearch" cellspacing="0" data-empty="No matching records found">
-            <thead>
-              <tr class="table-heads ">
-                  
-                  
-                  
-                  
-              <th class="head-item mbr-fonts-style display-7">
-              	<a href="/eventList" style="color: black;">진행중인 이벤트</a>
-              </th>
-              <th class="head-item mbr-fonts-style display-7">
-              	<a href="eventList2" style="color: black;">마감된 이벤트</a>
-              </th>
-            </thead>
-
-            <tbody>
-				<tr>
-					<!-- 다시돌아온다 -->
-				</tr>
-          </table>
-        </div>
-        <div class="container table-info-container">
-          <div class="row info">
-            <div class="col-md-6">
-              <div class="dataTables_info mbr-fonts-style display-7">
-                <!-- <span class="infoBefore">Showing</span>
-                <span class="inactive infoRows"></span>
-                <span class="infoAfter">entries</span>
-                <span class="infoFilteredBefore">(filtered from</span>
-                <span class="inactive infoRows"></span>
-                <span class="infoFilteredAfter"> total entries)</span> -->
-              </div>
-            </div>
-            <div class="col-md-6"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-</section>
-
-<section class="mbr-gallery mbr-slider-carousel cid-shfjVYmPGO" id="gallery2-3a">
-
-    
-
-<div class="container">
-	<div>
-	<!-- Filter -->
-		<div class="mbr-gallery-filter container gallery-filter-active">
-			<ul buttons="0">
-				<li class="mbr-gallery-filter-all active">
-				<a class="btn btn-md btn-primary-outline display-7" href="">전체이벤트</a>
-				</li>
-			</ul>
-		</div>
-		
-	<!-- Gallery -->
-	<div class="mbr-gallery-row">
-		<div class="mbr-gallery-layout-default">
+	<section class="section-table cid-shflacCz1o" id="table1-3f">
+	
+	  
+	  
+	  <div class="container container-table">
+	      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+	      	<strong>EVENT</strong></h2>
+	      
+	      <div class="table-wrapper">
+	        <div class="container">
+	          <div class="row search">
+	            <div class="col-md-6"></div>
+	            <div class="col-md-6">
+	                <div class="dataTables_filter">
+	                  <label class="searchInfo mbr-fonts-style display-7">이벤트 검색:</label>
+	                  <input class="form-control input-sm" type="text" name="q" value="" >
+	                  <input class="btn btn-sm btn-success btn-primary-outline display-7" type="submit" value="검색">
+	                </div>
+	            </div>
+	          </div>
+	        </div>
+	        
+	      </div>
+	    </div>
+	</section>
+	
+	<section class=" " id="gallery2-3a">
+		<div class="container">
 			<div>
-				<div>
-					<div class="mbr-gallery-item mbr-gallery-item--p4" data-video-url="false" data-tags="Awesome">
-						<div href="#lb-gallery2-3a" data-slide-to="0" data-toggle="modal">
-							<img src="assets/images/gallery00.jpg" alt="" title="">
-							<!-- <span class="icon-focus"></span> -->
-							<span class="mbr-gallery-title mbr-fonts-style display-7">이벤트 이름</span>
-						</div>
-						<a class="mbr-fonts-style display-7">시작일</a>
-						<a class="mbr-fonts-style display-7">마감일</a>
+				<div style="text-align:center;vertical-align:middle;"> <!-- mbr-gallery-filter container gallery-filter-active  -->
+							<a class="btn btn-md btn-success btn-primary-outline display-7" href="javascript:openCity(1,1)">진행중</a>
+							<a class="btn btn-md btn-success btn-primary-outline display-7" href="javascript:closeCity(0,1)">종료</a>
+				</div>
+				
+			<!-- Gallery -->
+			<div class="mbr-gallery-row">
+				<div class="mbr-gallery-layout-default">
+					<div>
+						<div id="ingendview" > </div>
 					</div>
-					<div class="mbr-gallery-item mbr-gallery-item--p4" data-video-url="false" data-tags="Responsive">
-						<div href="#lb-gallery2-3a" data-slide-to="1" data-toggle="modal">
-							<img src="assets/images/gallery01.jpg" alt="" title="">
-							<span class="icon-focus"></span>
-							<span class="mbr-gallery-title mbr-fonts-style display-7">Type caption here</span>
-						</div>
-					</div>
-					<div class="mbr-gallery-item mbr-gallery-item--p4" data-video-url="false" data-tags="Creative">
-						<div href="#lb-gallery2-3a" data-slide-to="2" data-toggle="modal">
-							<img src="assets/images/gallery02.jpg" alt="" title="">
-							<span class="icon-focus"></span>
-							<span class="mbr-gallery-title mbr-fonts-style display-7">Type caption here</span>
-						</div>
+					<div class="clearfix">
 					</div>
 				</div>
 			</div>
-			<div class="clearfix">
-			</div>
+			   
+		   </div>
 		</div>
-	</div>
 	
-<!-- Lightbox -->
-<!--     <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-3a">
-	    <div class="modal-dialog">
-		    <div class="modal-content">
-			    <div class="modal-body">
-				    <ol class="carousel-indicators">
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" class=" active" data-slide-to="0"></li>
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" data-slide-to="1"></li>
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" data-slide-to="2"></li>
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" data-slide-to="3"></li>
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" data-slide-to="4"></li>
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" data-slide-to="5"></li>
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" data-slide-to="6"></li>
-					    <li data-app-prevent-settings="" data-target="#lb-gallery2-3a" data-slide-to="7"></li>
-				    </ol>
-				    <div class="carousel-inner">
-					    <div class="carousel-item active">
-					   		<img src="assets/images/gallery00.jpg" alt="" title="">
-					    </div>
-					    <div class="carousel-item">
-					    	<img src="assets/images/gallery01.jpg" alt="" title="">
-					    </div>
-					    <div class="carousel-item"><img src="assets/images/gallery02.jpg" alt="" title=""></div>
-					    
-					    <div class="carousel-item">
-					    	<img src="assets/images/gallery03.jpg" alt="" title="">
-					    </div>
-					    <div class="carousel-item">
-					    	<img src="assets/images/gallery04.jpg" alt="" title="">
-					    </div>
-					    <div class="carousel-item">
-					    	<img src="assets/images/gallery05.jpg" alt="" title="">
-					    </div>
-					    <div class="carousel-item">
-					    	<img src="assets/images/gallery06.jpg" alt="" title="">
-					    </div>
-					    <div class="carousel-item">
-					    	<img src="assets/images/gallery07.jpg" alt="" title="">
-					    </div>
-				    </div>
-				    <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery2-3a">
-					    <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-				    </a>
-				    <a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#lb-gallery2-3a">
-					    <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-				    </a>
-				    <a class="close" href="#" role="button" data-dismiss="modal">
-				    	<span class="sr-only">Close</span>
-				    </a>
-			    </div>
-	    	</div>
-	    </div>
-    </div> -->
-   </div>
-</div>
-
-</section>
+	</section>
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 
 	
-	 <script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/popper/popper.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/tether/tether.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/smoothscroll/smooth-scroll.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/nav-dropdown.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/navbar-dropdown.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/touchswipe/jquery.touch-swipe.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/parallax/jarallax.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/masonry/masonry.pkgd.min.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/imagesloaded/imagesloaded.pkgd.min.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
-	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
-  		<script type="text/javascript">
-						$(function() { 
-							openCity("ing");
-						});
-						
-						function openCity( ingend ) {
-								$.ajax({
-									url:"event/eventList",
-									data:{ingend:ingend},
-									success:function(data) {
-										$("#ingendview").html(data);
-									}
-								});	
-						}
-					</script>
+	<script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
+	<script src="<%=application.getContextPath()%>/resources/assets/popper/popper.min.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/tether/tether.min.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/smoothscroll/smooth-scroll.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/nav-dropdown.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/navbar-dropdown.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/touchswipe/jquery.touch-swipe.min.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/parallax/jarallax.min.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/masonry/masonry.pkgd.min.js"></script> 
+	<script src="<%=application.getContextPath()%>/resources/assets/imagesloaded/imagesloaded.pkgd.min.js"></script> 
+	<script src="<%=application.getContextPath()%>/resources/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script> 
+	<script src="<%=application.getContextPath()%>/resources/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
+	<script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
+	<script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+  	<script type="text/javascript">
+			
+		$(function() { 
+			openCity(1,0);
+		});
+		
+		
+		function openCity(eenable, pageNo) {
+				if(!pageNo) {
+					pageNo = 1;
+				}
+				$.ajax({
+					url:"event/eventList",
+					data:{eenable:eenable, pageNo:pageNo},
+					success:function(data) {
+						$("#ingendview").html(data);
+					}
+				});	
+		}
+	
+		
+		function closeCity(eenable) {
+			$.ajax({
+				url:"event/eventList2",
+				data:{eenable:eenable},
+				success:function(data) {
+					$("#ingendview").html(data);
+				}
+			});
+		}
+			
+	 </script>
+	 <style type="text/css">
+	
+		#table1-3f  {
+			background-color: white; 
+		}
+		#table_list {
+			background-color: white;
+			padding-top: 0;
+		}
+	</style>
 </body>
 </html>

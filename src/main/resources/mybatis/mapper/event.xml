@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.event">
-	<select id="selectAll" resultType="event">
-		select EVENT_NO,EVENT_NM,EVENT_IMG,EVENT_START,EVENT_END,CLASS_NO
+	<select id="selectAll" parameterType="int" resultType="event">
+		select EVENT_NO,EVENT_NM,EVENT_IMG,EVENT_START,EVENT_END,CLASS_NO, EENABLE
 		from event
-        order by event_start desc
+		where EENABLE=#{eenable}
 
 	</select>
 
-
+	<select id="selectEndAll" parameterType="int" resultType="event">
+		select EVENT_NO,EVENT_NM,EVENT_IMG,EVENT_START,EVENT_END,CLASS_NO, EENABLE
+		from event
+		where EENABLE =#{eenable}
+		order by event_start desc
+	</select>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="count" resultType="int">
+		select count(*) from event
+	</select>
+	
+	<select id="selectByPage" parameterType="EventPager" resultType="event">
+	select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
+	from (
+	      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
+	      from event
+	      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
+	      order by event_start desc
+	      ) 
+	where rNum &gt;=#{startRowNo}
+	</select>
+	 
 </mapper>

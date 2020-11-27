@@ -9,9 +9,16 @@ public class EventDto {
 	private Date event_start;
 	private Date event_end;
 	private int class_no;
+	private int eenable; 
 	
 	
-	
+
+	public int getEenable() {
+		return eenable;
+	}
+	public void setEenable(int eenable) {
+		this.eenable = eenable;
+	}
 	public int getEvent_no() {
 		return event_no;
 	}
