@@ -48,11 +48,11 @@
 						<div class="user col-md-8">
 							<div class="user_image">
 								<a href="userEdit">
-									<img src="<%=application.getContextPath()%>/resources/assets/images/team3.jpg">
+									<img src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
 								</a>
 							</div>
 							<div class="user_text mb-4">
-								<p class="mbr-fonts-style display-5">닉네임</p>
+								<p class="mbr-fonts-style display-5">${memberInfo.mnick}</p>
 							</div>
 						</div>
 					</div>

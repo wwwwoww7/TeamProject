@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 import com.mycompany.webapp.service.ClassNoticeService;
 import com.mycompany.webapp.service.ClassService;
@@ -79,9 +80,15 @@ public class MyPageController {
 	
 	//*----------- 강사 페이지------------------- *//		
 	@RequestMapping("/mypage_tutor")
-	public String mypage_tutor(String tutor_id,Model model) {
-		List<ClassDto> tutorclassList = classService.getTutoringClasses(tutor_id);
+	public String mypage_tutor(MemberDto member, Model model) {
+		//강사의 강의 목록 가져오기
+		List<ClassDto> tutorclassList = classService.getTutoringClasses(member.getMid());
 		model.addAttribute("tutorclassList",tutorclassList);
+		
+		//강사의 회원정보 가져오기
+		MemberDto memberInfo = mService.getId(member);
+		model.addAttribute("memberInfo",memberInfo);
+		
 		return "mypage/mypage_tutor";
 	}
 	
