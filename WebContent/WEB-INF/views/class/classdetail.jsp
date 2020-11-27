@@ -39,7 +39,7 @@
  		.star-box, .star-box *{margin:0; padding:0;}
 		.star{
 		  display:inline-block;
-		  width: 30px; height: 30px;
+		  width: 15px; height: 30px;
 		  cursor: pointer;
 		}
 		.star_left{
@@ -48,7 +48,7 @@
 		  margin-right: -3px;
 		}
 		.star_right{
-		  background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat -30px 0; 
+		  background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat -12.5px 0; 
 		  background-size: 30px; 
 		  margin-left: -3px;
 		}
@@ -75,8 +75,13 @@
 	        <div class="row justify-content-center">
 	            <div class="col-12 col-md-8">
 	                <h4 class="mbr-section-title mb-0 mbr-fonts-style display-4">
-<%-- 	               	 <strong> STAR  ${classOne.review_star}... 에 빛나는 </strong> --%>
-	               		 <div class="star-box">
+	                
+	                <script type="text/javascript">
+	                	var star =  Math.ceil(${classOne.review_star} *2 ) / 2;
+	                </script>
+	                
+	              	 	<strong id="star_avg"> Rating  </strong>
+	               		<div class="star-box">
 							  <span class="star star_left"></span>
 							  <span class="star star_right"></span>
 							
@@ -92,8 +97,10 @@
 							 <span class="star star_left"></span>
 							 <span class="star star_right"></span>
 						</div>
-	                </h4>
+	                	
 	                
+	                </h4>
+	               		
 	            </div>
 	        </div>
 	        
@@ -518,13 +525,18 @@
 		  font-display: swap;
 	  	}
 	  	
-  
+  		#star_avg {
+  			font-style: italic;
+  		}
   	</style>
   	
-  	<script type="text/javascript">
-  		var star = Math.floor(${classOne.review_star}) *2;
+  	<script type="text/javascript"> 
+  	
+  		var star = Math.ceil(${classOne.review_star} *2 ) / 2; 
+  		
   		console.log(star);
-  		for(var i=0; i<star; i++){
+  		
+  		for(var i=0; i<star*2; i++){
 	        $(".star").eq(i).addClass("on");
 	     }
      </script>
