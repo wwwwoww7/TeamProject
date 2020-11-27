@@ -51,9 +51,9 @@
                 <li class="nav-item dropdown">
 	                	<a class="nav-link link text-white dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">
 	                		<span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>
-	                        UserName
+	                          <sec:authentication property="name"/>
 	                    </a>
-	                     <%-- <sec:authentication property="mnick"/>님 환영합니다. --%>
+	                  
 	                    <div class="dropdown-menu">
 	                    	<sec:authorize access="hasRole('ROLE_USER')">
 	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user?mid=${sessionMid}">My Page</a>
