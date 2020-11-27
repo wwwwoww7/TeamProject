@@ -40,12 +40,16 @@
 	
 	
 	<!-- 20.11.25 -->
+	<!-- 20.11.27 별점 추가 -->
 	<select id="selectbyClassNo" resultType="class" parameterType="int">
-		select CLASS_NO, CLASS_NM, CLASS_SUB, CLASS_CURR, CLASS_THUM, TUTOR_ID, CLASS_CATE_NO, CLASS_VIDEO_NO, CLASS_PRICE, 
-			   CLASS_TOT_TIME, CLASS_CURR2, CLASS_CURR3, CLASS_NM_S, member.mname, member.minfo
-		from class, member
-		where class_no = #{class_no}
+		select class.CLASS_NO, CLASS_NM, CLASS_SUB, CLASS_CURR, CLASS_THUM, TUTOR_ID, CLASS_CATE_NO, CLASS_VIDEO_NO, CLASS_PRICE, 
+			   CLASS_TOT_TIME, CLASS_CURR2, CLASS_CURR3, CLASS_NM_S, member.mname, member.minfo, classreview.review_star  
+		from class, member, (select avg(REVIEW_STAR) as review_star, review.class_no
+                             from review
+                             group by class_no) classreview
+		where class.class_no = #{class_no}
 		      and member.mid = class.TUTOR_ID
+              and class.class_no = classreview.class_no
 	</select>
 	
 	

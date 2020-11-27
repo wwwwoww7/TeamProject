@@ -34,7 +34,29 @@
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
   
   
+  <style type="text/css">
   
+ 		.star-box, .star-box *{margin:0; padding:0;}
+		.star{
+		  display:inline-block;
+		  width: 30px; height: 30px;
+		  cursor: pointer;
+		}
+		.star_left{
+		  background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat 0 0; 
+		  background-size: 30px; 
+		  margin-right: -3px;
+		}
+		.star_right{
+		  background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat -30px 0; 
+		  background-size: 30px; 
+		  margin-left: -3px;
+		}
+		.star.on{
+		  background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
+		}
+  
+  </style>
 </head>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
@@ -50,7 +72,30 @@
 	                </h3>
 	            </div>
 	        </div>
-	        
+	        <div class="row justify-content-center">
+	            <div class="col-12 col-md-8">
+	                <h4 class="mbr-section-title mb-0 mbr-fonts-style display-4">
+<%-- 	               	 <strong> STAR  ${classOne.review_star}... 에 빛나는 </strong> --%>
+	               		 <div class="star-box">
+							  <span class="star star_left"></span>
+							  <span class="star star_right"></span>
+							
+							  <span class="star star_left"></span>
+							  <span class="star star_right"></span>
+							
+							  <span class="star star_left"></span>
+							  <span class="star star_right"></span>
+							
+							 <span class="star star_left"></span>
+							 <span class="star star_right"></span>
+							
+							 <span class="star star_left"></span>
+							 <span class="star star_right"></span>
+						</div>
+	                </h4>
+	                
+	            </div>
+	        </div>
 	        
 	        <div class="row">
 	        	<div class="col-sm-9"></div>
@@ -475,5 +520,13 @@
 	  	
   
   	</style>
+  	
+  	<script type="text/javascript">
+  		var star = Math.floor(${classOne.review_star}) *2;
+  		console.log(star);
+  		for(var i=0; i<star; i++){
+	        $(".star").eq(i).addClass("on");
+	     }
+     </script>
 </body>
 </html>
