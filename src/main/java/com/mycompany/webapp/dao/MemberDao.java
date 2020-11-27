@@ -32,7 +32,7 @@ public class MemberDao {
 	}
 
 	public MemberDto selectPW(String mid) {
-		MemberDto memberPW = sst.selectOne("mybatis.mapper.member.selectByPw",mid);
+		MemberDto memberPW = sst.selectOne("mybatis.mapper.member.selectForPw",mid);
 		return memberPW;
 	}
 

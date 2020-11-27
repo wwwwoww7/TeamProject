@@ -39,11 +39,10 @@ import com.mycompany.webapp.service.MemberService;
  *
  */
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@RequestMapping("/login")
+	@RequestMapping("/login/login")
 	public String login(Model model) {	
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		Authentication authentication = securityContext.getAuthentication();
@@ -58,7 +57,7 @@ public class LoginController {
 		return "login/login";
 	}
 	
-	@RequestMapping("/loginInfo")
+	@RequestMapping("/login/loginInfo")
 	public String loginInfo() {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		Authentication authentication = securityContext.getAuthentication();
@@ -80,7 +79,7 @@ public class LoginController {
 		return "home";
 	}
 	
-	  @RequestMapping("/encodePassword")
+	  @RequestMapping("/login/encodePassword")
 	  public String encodePassword(String mpassword) {
 		  logger.info("실행");
 		  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder(); 
@@ -93,7 +92,7 @@ public class LoginController {
 	@Resource
 	private MemberService service;
 
-	@PostMapping("/check")
+	@PostMapping("/login/check")
 	public void check(String mid, HttpServletResponse response) throws Exception {
 		int result = service.check(mid);
 		logger.info("실행");	 
@@ -112,11 +111,11 @@ public class LoginController {
 		
 	}
 	
-	@PostMapping("/join")
-	public String Join(MemberDto member, HttpServletRequest request) throws IllegalStateException, IOException {
+	@PostMapping("/login/join")
+	public String Join(MemberDto member, HttpServletRequest request) throws Exception {
 
 		
-		  if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") ||
+		if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") ||
 		  member.getMemail().trim().equals("")) {
 			  request.setAttribute("member", member); 
 			  return "/login/join"; 
@@ -124,13 +123,14 @@ public class LoginController {
 		 
 		
 		int result = service.check(member.getMid());
-		try {
+		
 			if(result == 1) { 
 				logger.info("result");
 				//JOptionPane.showMessageDialog(null, "이미 있는 아이디입니다.");
 				return "/login/join"; 
-			}else if(result == 0) {
-				service.join(member); 
+				}
+			else if(result == 0) {
+				
 			
 				if(!member.getMphotoAttach().isEmpty()) { 
 					String originalFileName = member.getMphotoAttach().getOriginalFilename(); 
@@ -148,73 +148,31 @@ public class LoginController {
 			  String encodedPassword = passwordEncoder.encode(member.getMpw());
 			  member.setMpw(encodedPassword); 
 			  member.setMenabled(true);
-			}
-		
-		} catch (Exception e) { 
-			  throw new RuntimeException();
+			  //member.setMinfo("");(member.xml에 minfo(강사소개) insert부분 삭제함 - 혜빈)
 		}
+			service.join(member); 
+		
 		
 		return"home";
 	
 	}
 	
-	@GetMapping("/join")
+	@GetMapping("/login/join")
 	public String Joinmove() {
 		
 		return"login/join";
 	}
 	
-	@GetMapping("/findpw")
+	@GetMapping("/login/findpw")
 	public String getfindpw() {
 		
 		return "login/findpw";
 	}
 	
-	@PostMapping("/findpw")
+	@PostMapping("/login/findpw")
 	public String postfindpw() {
 		
 		return "login/findpw";
 	}
-	/*
-	 * @PostMapping("/boardUploadAjax") public String boardUploadAjax( MultipartFile
-	 * attach , Model model) {
-	 * 
-	 * if(!attach.isEmpty()) {
-	 * 
-	 * String saveFileName = new Date().getTime() + "_"
-	 * +attach.getOriginalFilename(); try { attach.transferTo(new
-	 * File("C:/Temp/upload/" + saveFileName)); } catch (Exception e) {
-	 * 
-	 * } } File uploadDir = new File("C:/Temp/upload"); String[] fileNames =
-	 * uploadDir.list(); model.addAttribute("fileNames", fileNames); return
-	 * "login/getFileList";
-	 * 
-	 * }
-	 * 
-	 * @GetMapping("/getFileList") public String getFileList(Model model) { File
-	 * uploadDir = new File("C:/Temp/upload"); String[] fileNames =
-	 * uploadDir.list(); model.addAttribute("fileNames", fileNames); return
-	 * "login/getFileList"; }
-	 * 
-	 * @GetMapping("/download") public void download(String fileName,
-	 * HttpServletRequest request, HttpServletResponse response) throws IOException{
-	 * logger.info("fileName:" + fileName);
-	 * 
-	 * //파일의 데이터를 읽기 위한 입력 스트림 얻기 String saveFilePath = "C:/Temp/upload/" +
-	 * fileName; InputStream is = new FileInputStream(saveFilePath);
-	 * 
-	 * 
-	 * ServletContext application = request.getServletContext(); String fileType =
-	 * application.getMimeType(fileName); response.setContentType(fileType); String
-	 * originalFileName = fileName.split("_")[1]; originalFileName = new
-	 * String(originalFileName.getBytes("UTF-8"), "ISO-8859-1");
-	 * response.setHeader("Content-Disposition", "attachment; filename=\"" +
-	 * originalFileName + "\""); int fileSize = (int)new
-	 * File(saveFilePath).length(); response.setContentLength(fileSize);
-	 * OutputStream os = response.getOutputStream(); FileCopyUtils.copy(is, os);
-	 * os.flush(); os.close(); is.close();
-	 * 
-	 * }
-	 */
-	
+
 }

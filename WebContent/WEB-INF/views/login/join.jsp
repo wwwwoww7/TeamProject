@@ -37,10 +37,9 @@
 	        <div class="row justify-content-center mt-4">
 	            <div class="col-md-10 mx-auto mbr-form" data-form-type="formoid">
 
-	                <form  onsubmit="return joinbt();"  method="POST" enctype="multipart/form-data" id="joinform" action="<%=request.getContextPath() %>/login/join" class="mbr-form form-with-styler" data-form-title="joinForm">
+	                <form  onsubmit="return joinbt();"  method="POST" enctype="multipart/form-data" id="joinform" action="<%=request.getContextPath()%>/login/join" class="mbr-form form-with-styler" data-form-title="joinForm">
 	                <input type="hidden" name="email" data-form-email="true" value="">
 	                    <div class="dragArea row">
-	                    	
 	                        <div class="col-md-8 input-group" data-for="mid">                      
 	                        	<div class="container-fluid">
 	                        		<div class="row">
@@ -73,7 +72,7 @@
 															}
 															else if(data.result == 0){
 																$("#chk").attr("value", "Y");
-																document.getElementById("chk_result").innerHTML = "가능한 아이디입니다.";
+																document.getElementById("chk_result").innerHTML = "사용 가능한 아이디입니다.";
 															}
 														}
 													});
@@ -160,15 +159,9 @@
 											<span class="input-group-addon" style="width:80px;">프로필사진</span>     
 	                        			</div>
 	                        			<div class="col-9">
-											<input type="file" name="mphotoAttach" class="form-control" value="null" onchange="loadFile(event)"/>
-	                        				<img id="id_viewimg" class="max-small" border="0" />
-	                        				
-	                        				<script>
-												var loadFile = function(event) {
-													var output = document.getElementById('id_viewimg');
-													output.src = URL.createObjectURL(event.target.files[0]);
-													};
-	                        				</script>
+											<input type="file" name="mphotoAttach" id="mphotoAttach" class="form-control" onchange="loadFile(event)"/>
+	                        				<img id="id_mphoto" src="<%=application.getContextPath()%>/resources/profile/id1.png" class="max-small" border="0" />
+	                     
 	                        			</div>
 	                        		</div>
 	                        	</div>
@@ -191,7 +184,14 @@
 	                        </div>
 	                    </div>
 	                </form>
-		                
+		               
+                 	<script>
+						var loadFile = function(event) {
+							var output = document.getElementById("id_mphoto");
+							output.src = URL.createObjectURL(event.target.files[0]);
+							
+						};
+            		</script> 
 					<script>
 						function joinbt(){
 							if($("#mid").val()==""){
@@ -255,12 +255,7 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
-	 
-	 
-	 
-	 
 	 <style type="text/css">
-  
 	  	select {
 	  		display:inline;
 	  	}

@@ -3,8 +3,8 @@
 <mapper namespace="mybatis.mapper.member">
 
 	<insert id="insert" parameterType="member">
-		insert into member(mid,mpw,mname,mnick,mtel,memail, mpro_img, mtype, menabled, minfo)
-		values(#{mid},#{mpw},#{mname}, #{mnick},#{mtel},#{memail}, #{mpro_img}, #{mtype}, #{menabled}, #{minfo})
+		insert into member(mid,mpw,mname,mnick,mtel,memail, mpro_img, mtype, menabled)
+		values(#{mid},#{mpw},#{mname}, #{mnick},#{mtel},#{memail}, #{mpro_img}, #{mtype}, #{menabled})
 	</insert>
 
 	<select id="selectByMid" parameterType="string" resultType="member"> 
@@ -19,7 +19,7 @@
 	</select>
 	
 	<!-- 비밀번호 재설정을 위한 select -->
-	<select id="selectByPw" parameterType="member" resultType="member"> 
+	<select id="selectForPw" parameterType="member" resultType="member"> 
 		select mid,mpw,memail
 		from member
 		where mid=#{mid}
