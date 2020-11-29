@@ -205,12 +205,29 @@ public class MyPageController {
 		
 		return "mypage/tutorclassqa";
 	}
+	
 	//강사의 강의문의 상세내용보기
 	@GetMapping("/qaDetail")
-	public String qaDetail() {
+	public String qaDetail(int class_qa_no, Model model) {
+		
+		ClassQADto qalist = classQAService.getQADetail(class_qa_no);
+		model.addAttribute("qalist",qalist);
 		
 		return "mypage/qadetail";
 	}
+	
+	@GetMapping("/qaAnswer")
+	public String qaAnswer(ClassQADto qaAnswer, Model model) {
+		//답변 삽입하러 감
+		classQAService.setQAAnswer(qaAnswer);
+		
+		//답변 다시 가져옴
+		ClassQADto qalist = classQAService.getQADetail(qaAnswer.getClass_qa_no());
+		model.addAttribute("qalist",qalist);
+		
+		return "redirect:/mypage/qadetail";
+	}
+	
 	
 	
 	

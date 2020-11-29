@@ -19,7 +19,7 @@
 			<td class="body-item mbr-fonts-style display-7">${qalist.class_nm_s}</td>
 			<td class="body-item mbr-fonts-style display-7">${qalist.class_qa_cate}</td>
 			<td class="body-item mbr-fonts-style display-7">
-				<a class="test-black" href="javascript:qaDetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
+				<a class="text-black" href="<%=request.getContextPath()%>/mypage/qaDetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
 			</td>
 			<td class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
 			<td class="body-item mbr-fonts-style display-7">
@@ -52,13 +52,3 @@
 			</td>
 		</tr>
 	</table>
- <!--  <script type="text/javascript">
-			function qaDetail() {
-				$.ajax({
-					url:"qaDetail",
-					success:function(data) {
-						$("#tutorClassQA").html(data);
-					}
-				});
-			}
-	</script> -->

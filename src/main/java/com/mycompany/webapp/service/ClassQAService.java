@@ -31,6 +31,17 @@ public class ClassQAService {
 		List<ClassQADto> list = classQADao.selectQa(pager);
 		return list;
 	}
+
+	//강의 문의 상세 내용 가져오기
+	public ClassQADto getQADetail(int class_qa_no) {
+		ClassQADto qa = classQADao.selectQADetail(class_qa_no);		
+		return qa;
+	
+	}
+	//강의 답변 달기
+	public void setQAAnswer(ClassQADto qaAnswer) {
+		int qa = classQADao.updateQAAnswer(qaAnswer);		
+	}
 	
 	
 }

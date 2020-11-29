@@ -7,27 +7,34 @@
 		select count(*) from class_qa
 	</select>
 
-	<!--  -->
-	<select id="selectMyQa" resultType="classQa">
-		SELECT c.class_nm, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,qa.tutor_id
-		FROM class_qa qa, class c
-		where qa.class_no = c.class_no 
-		ORDER by CLASS_QA_DATE DESC
-	</select>
 	
 	<!-- qa목록을 페이징별로 가져옴 -->
-	<select id="selectNotice" parameterType="myPager" resultType="classQa">
-		select  rnum, class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,tutor_id, mid
+	<select id="selectQa" parameterType="myPager" resultType="classQa">
+		select  rnum, class_qa_no,class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER,WRITER_ID ,tutor_id, mid
 		from( 
-		        select rownum as rnum, newQ.class_nm_s, newQ.CLASS_QA_CATE, newQ.CLASS_QA_TITLE, newQ.CLASS_QA_DATE, newQ.CLASS_QA_CONTENT, newQ.CLASS_QA_ANSWER, newQ.WRITER_ID, newQ.tutor_id, newQ.mid
-		        from (  SELECT rownum as rnum, class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,qa.tutor_id, mid
-	                    FROM class_qa qa, class c, member m
-	                    where qa.class_no = c.class_no and m.mid = qa.writer_id
-	                    ORDER by CLASS_QA_DATE DESC
+		        select rownum as rnum,newQ.class_qa_no,newQ.class_nm_s, newQ.CLASS_QA_CATE, newQ.CLASS_QA_TITLE, newQ.CLASS_QA_DATE, newQ.CLASS_QA_CONTENT, newQ.CLASS_QA_ANSWER,newQ.WRITER_ID, newQ.tutor_id, newQ.mid
+		        from (  SELECT rownum as rnum, class_qa_no,class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,qa.tutor_id, mid
+		                    FROM class_qa qa, class c, member m
+		                    where qa.class_no = c.class_no and m.mid = qa.writer_id
+		                    ORDER by CLASS_QA_DATE DESC
 		                ) newQ
 		        where rownum &lt;= #{endRowNo}
 		        )
 		where rownum &gt;=#{startRowNo}
 	</select>
+	
+	<!-- QA 세부 내용 가져오기 -->
+	<select id="selectQADetail" parameterType="int" resultType="classQa">
+		select newq.class_nm_s,newq.class_qa_no,newQ.class_qa_cate, newQ.writer_id, newQ.class_qa_date, newQ.class_qa_title,newQ.class_qa_content,newQ.class_qa_answer
+		from( SELECT class_nm_s,class_qa_no, class_qa_cate, writer_id, class_qa_date, class_qa_title,class_qa_content,qa.class_qa_answer
+		        FROM class_qa qa,class c, member m
+		        where qa.class_no = c.class_no and qa.writer_id = m.mid) newQ
+		where newQ.class_qa_no = #{class_qa_no}
+	</select>
+	
+	<!-- 답변 입력하기 -->
+	<update id="updateQAAnswer" parameterType="classQa">
+		UPDATE class_qa set class_qa_answer=#{class_qa_answer} where class_qa_no=#{class_qa_no}
+	</update>
 
 </mapper>

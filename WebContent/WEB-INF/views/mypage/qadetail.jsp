@@ -75,11 +75,16 @@
 						        <th>작성자</th>
 						        <td>${qalist.writer_id}</td>
 						        <th>작성일</th>
-						        <td><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd HH.mm.ss"/></span>2020-11-20</td>
+						        <td><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/></span></td>
 							</tr>
 							<tr>
 								<th>답변완료여부</th>
-						        <td colspan="10">답변완료/미완료</td>
+								<c:if test="${qalist.class_qa_answer != null}">
+						        	<td colspan="10">답변완료</td>
+						        </c:if>
+						        <c:if test="${qalist.class_qa_answer == null}">
+						        	<td colspan="10">미응답</td>
+						        </c:if>
 							</tr>
 							<tr>
 								<th>제목</th>
@@ -88,39 +93,38 @@
 						    <tr>
 						        <th>내용</th>
 						        <td colspan="10">${qalist.class_qa_content}</td>
+						        
 						    </tr>
 							</tbody>
 						</table>
-						<div class="input-group">
-							<textarea id="bcontent" name="bcontent" class="form-control">답변 내용 여기다 입력</textarea>
-							<div class="input-group-prepend"><span class="input-group-text"><a class="btn" href="javascript:tutorClassQA()">답변</a></span></div>
-							<span id="bcontentError" class="error"></span>
-						</div>
-						<!-- <a class="btn" href="javascript:tutorClassQA()">답변</a> -->
-						<script type="text/javascript">
-						function tutorClassQA(){
-								$.ajax({
-									url:"tutorClassQA",
-									type: "POST",
-									success: function(data){
-											$("#tutorClassQA").html(data);
-										}
-									});
-								} 
-						</script>
 						<br/>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:tutorClassQA()">확인</a>
-						<script type="text/javascript">
-						function tutorClassQA(){
-								$.ajax({
-									url:"tutorClassQA",
-									type: "POST",
-									success: function(data){
-											$("#tutorClassQA").html(data);
-										}
-									});
-								} 
-						</script>			
+						<table class="table table-bordered">
+							<colgroup>
+							    <col width="15%">
+							    <col width="35%">
+							    <col width="15%">
+							    <col width="*">
+							</colgroup>
+							<tbody>
+							    <c:if test="${qalist.class_qa_answer != null}">
+									<tr>
+								        <th>답변</th>
+								        <td colspan="10">${qalist.class_qa_answer}</td>
+								    </tr>    
+						 		</c:if>
+						    </tbody>
+					    </table>
+						<br/>
+						<div class="input-group">
+							<textarea id="qaAnswer" name="qaAnswer" class="form-control">답변 내용을 입력하세요</textarea>
+							<div class="input-group-prepend">
+								<span class="input-group-text">
+									<a class="btn" href="<%=request.getContextPath()%>/mypage/qaAnswer?class_qa_answer='#qaAnswer'&class_qa_no=${qalist.class_qa_no}">답변</a>
+								</span>
+							</div>
+						</div>
+						<br/>
+						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">확인</a>	
 					</div>
 				
 				</div>

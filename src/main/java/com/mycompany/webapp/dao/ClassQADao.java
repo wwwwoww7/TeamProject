@@ -17,11 +17,6 @@ public class ClassQADao {
 	@Resource
 	private SqlSessionTemplate sst;
 	
-	//사용자가 문의한 내역 가져오기
-	public List<ClassQADto> selectMyQa(String user_id){
-		List<ClassQADto> qaList = sst.selectList("mybatis.mapper.class_QA.selectMyQa", user_id);
-		return qaList;
-	}
 	//qa목록의 전체 행수 가져오기
 	public int countAll() {
 		int totalRows = sst.selectOne("mybatis.mapper.class_QA.countAll");
@@ -30,6 +25,14 @@ public class ClassQADao {
 	public List<ClassQADto> selectQa(MyPagerDto pager) {
 		List<ClassQADto> qaList = sst.selectList("mybatis.mapper.class_QA.selectQa",pager);
 		return qaList;
+	}
+	public ClassQADto selectQADetail(int class_qa_no) {
+		ClassQADto qa = sst.selectOne("mybatis.mapper.class_QA.selectQADetail",class_qa_no);
+		return qa;
+	}
+	public int updateQAAnswer(ClassQADto qaAnswer) {
+		int rows = sst.insert("mybatis.mapper.class_QA.updateQAAnswer", qaAnswer);
+		return rows;
 	}
 	
 }

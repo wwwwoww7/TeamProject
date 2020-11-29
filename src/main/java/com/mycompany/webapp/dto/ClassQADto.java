@@ -12,9 +12,10 @@ public class ClassQADto {
 	private String class_qa_answer;
 	private String writer_id;
 	private String tutor_id;
+	private String mid;
 	private int class_no ;
-	private String class_nm_s ;
-	
+	private String class_nm_s;
+	private int class_ans_check;
 	
 	
 	public int getClass_qa_no() {
@@ -65,6 +66,12 @@ public class ClassQADto {
 	public void setTutor_id(String tutor_id) {
 		this.tutor_id = tutor_id;
 	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 	public int getClass_no() {
 		return class_no;
 	}
@@ -76,6 +83,12 @@ public class ClassQADto {
 	}
 	public void setClass_nm_s(String class_nm_s) {
 		this.class_nm_s = class_nm_s;
+	}
+	public int getClass_ans_check() {
+		return class_ans_check;
+	}
+	public void setClass_ans_check(int class_ans_check) {
+		this.class_ans_check = class_ans_check;
 	}
 	
 }
