@@ -13,6 +13,9 @@ public class ClassQADto {
 	private String writer_id;
 	private String tutor_id;
 	private int class_no ;
+	private String class_nm_s ;
+	
+	
 	
 	public int getClass_qa_no() {
 		return class_qa_no;
@@ -67,6 +70,12 @@ public class ClassQADto {
 	}
 	public void setClass_no(int class_no) {
 		this.class_no = class_no;
+	}
+	public String getClass_nm_s() {
+		return class_nm_s;
+	}
+	public void setClass_nm_s(String class_nm_s) {
+		this.class_nm_s = class_nm_s;
 	}
 	
 }

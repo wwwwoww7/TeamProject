@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.ClassQADto;
 import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 import com.mycompany.webapp.service.ClassNoticeService;
+import com.mycompany.webapp.service.ClassQAService;
 import com.mycompany.webapp.service.ClassService;
 import com.mycompany.webapp.service.MemberService;
 
@@ -76,6 +78,9 @@ public class MyPageController {
 	
 	@Resource
 	private ClassService classService;
+	
+	@Resource
+	private ClassQAService classQAService;
 	
 	
 	//*----------- 강사 페이지------------------- *//		
@@ -187,16 +192,16 @@ public class MyPageController {
 				
 	}
 	
-	//강사의 강의문의 목록
+	//=============강사의 강의문의 목록===================================
 	@PostMapping("/tutorClassQA")
 	public String tutorClassQA(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
 		
 		int totalRows = classNoticeService.getTotalRow();
 		
 		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
-		/*List<ClassNoticeDto> list = classNoticeService.getQa(pager);
+		List<ClassQADto> list = classQAService.getQa(pager);
 		model.addAttribute("list",list);
-		model.addAttribute("pager",pager); */
+		model.addAttribute("pager",pager); 
 		
 		return "mypage/tutorclassqa";
 	}

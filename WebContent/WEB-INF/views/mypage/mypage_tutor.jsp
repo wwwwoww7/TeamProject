@@ -199,7 +199,7 @@
 			$.ajax({
 				url:"tutorClassQA",
 				method: "POST",
-				data:{pageNo:pageNo, mid:mid}
+				data:{pageNo:pageNo, mid:mid},
 				success: function(data){
 						$("#tutorClassQA").html(data);
 					}

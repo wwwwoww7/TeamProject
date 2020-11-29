@@ -2,11 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.class_QA">
 
+	<!-- 전체 목록 행수 가져오기 -->
+	<select id="countAll" resultType="int">
+		select count(*) from class_qa
+	</select>
+
+	<!--  -->
 	<select id="selectMyQa" resultType="classQa">
 		SELECT c.class_nm, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,qa.tutor_id
 		FROM class_qa qa, class c
 		where qa.class_no = c.class_no 
 		ORDER by CLASS_QA_DATE DESC
+	</select>
+	
+	<!-- qa목록을 페이징별로 가져옴 -->
+	<select id="selectNotice" parameterType="myPager" resultType="classQa">
+		select  rnum, class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,tutor_id, mid
+		from( 
+		        select rownum as rnum, newQ.class_nm_s, newQ.CLASS_QA_CATE, newQ.CLASS_QA_TITLE, newQ.CLASS_QA_DATE, newQ.CLASS_QA_CONTENT, newQ.CLASS_QA_ANSWER, newQ.WRITER_ID, newQ.tutor_id, newQ.mid
+		        from (  SELECT rownum as rnum, class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,qa.tutor_id, mid
+	                    FROM class_qa qa, class c, member m
+	                    where qa.class_no = c.class_no and m.mid = qa.writer_id
+	                    ORDER by CLASS_QA_DATE DESC
+		                ) newQ
+		        where rownum &lt;= #{endRowNo}
+		        )
+		where rownum &gt;=#{startRowNo}
 	</select>
 
 </mapper>

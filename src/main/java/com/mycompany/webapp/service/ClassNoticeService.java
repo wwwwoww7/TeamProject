@@ -19,6 +19,7 @@ public class ClassNoticeService {
 	@Resource
 	private ClassNoticeDao classNoticeDao;
 
+	//페이지 전체 행수 가져오기
 	public int getTotalRow() {
 		int totalRows = classNoticeDao.countAll();
 		return totalRows;
