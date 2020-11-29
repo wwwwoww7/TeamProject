@@ -115,14 +115,24 @@
 						    </tbody>
 					    </table>
 						<br/>
-						<div class="input-group">
+						<form action="qaAnswer" method="get"class="mbr-form form-with-styler">
+							<input type="hidden" id="class_qa_no" name="class_qa_no" value="${qalist.class_qa_no}"/>
+							
+							<div class="input-group-prepend">
+							<textarea id="qaAnswer" name="qaAnswer" class="form-control">답변 내용을 입력하세요</textarea>
+								<span class="input-group-text">
+									<input type="submit" value="답변" />
+								</span>
+							</div>
+						</form>
+						<%-- <div class="input-group">
 							<textarea id="qaAnswer" name="qaAnswer" class="form-control">답변 내용을 입력하세요</textarea>
 							<div class="input-group-prepend">
 								<span class="input-group-text">
 									<a class="btn" href="<%=request.getContextPath()%>/mypage/qaAnswer?class_qa_answer='#qaAnswer'&class_qa_no=${qalist.class_qa_no}">답변</a>
 								</span>
 							</div>
-						</div>
+						</div> --%>
 						<br/>
 						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">확인</a>	
 					</div>
