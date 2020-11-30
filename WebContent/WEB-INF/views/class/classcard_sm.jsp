@@ -73,15 +73,15 @@
     --%>
   
     
-    <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-        <div class="item-wrapper" data-toggle="modal" data-target="#shfucWI0Kp-modal">
-            <img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/class_02.png" alt="" data-slide-to="0" data-target="#lb-shfucWI0Kp">
-            <div class="icon-wrapper">
-                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-            </div>
-        </div>
-        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-           [ Category ] Class Name <a href="<%=request.getContextPath()%>/class/classdetail?classNo=2" class="text-success">Try</a>
-        </h6>
-    </div>
+<!--     <div class="col-12 col-md-6 col-lg-3 item gallery-image"> -->
+<!--         <div class="item-wrapper" data-toggle="modal" data-target="#shfucWI0Kp-modal"> -->
+<%--             <img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/class_02.png" alt="" data-slide-to="0" data-target="#lb-shfucWI0Kp"> --%>
+<!--             <div class="icon-wrapper"> -->
+<!--                 <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--         <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7"> -->
+<%--            [ Category ] Class Name <a href="<%=request.getContextPath()%>/class/classdetail?classNo=2" class="text-success">Try</a> --%>
+<!--         </h6> -->
+<!--     </div> -->
     

@@ -69,6 +69,7 @@
 	            <div class="col-12 col-md-8">
 	                <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2">
 	               	 <strong>${ classOne.class_nm_s }</strong>
+	               	 <input id="mid" type="hidden" value="${sessionMid}"/>
 	                </h3>
 	            </div>
 	        </div>
@@ -104,12 +105,40 @@
 	        <div class="row">
 	        	<div class="col-sm-7"></div> 
 	        	<div class="col-sm-2">
-	        		 <div class="mbr-section-btn">
-		               	<a class="btn item-btn btn-warning display-4" href="javascript:pick()">🧡</a>
+	        		 <div id="pickdiv" class="mbr-section-btn">
+		               	<a class="btn item-btn btn-warning display-4" href="javascript:pick(1)">🧡</a>
 		             </div>
 			         <script type="text/javascript">
-						function pick(){
-							alert("❤🧡💛💚💙💜");
+						function pick(clk){
+							if(clk == 1){
+								var mid = $("#mid").val();
+								
+								if( mid == null  || mid == ""){
+									alert("로그인 하세요");
+								}else{
+									
+									$.ajax({
+										url: "<%=request.getContextPath()%>/class/pickClass",
+										data : {mid : mid, classno : ${classOne.class_no} },
+										success : function(data){
+											$("#pickdiv").html(data);
+										}
+									});
+									alert("❤🧡💛💚💙💜");
+								}
+							}else {
+							
+								$.ajax({
+									url: "<%=request.getContextPath()%>/class/pickClass",
+									data : {classno : ${classOne.class_no} },
+									success : function(data){
+										$("#pickdiv").html(data);
+									}
+								});
+								
+							}
+							
+							
 						}
 					</script>
 	        	
@@ -190,7 +219,7 @@
 													
 													
 								                    <div class="mbr-section-btn">
-								                    	<a class="btn btn-success display-4" href="javascript:openpop()">Show Class</a>
+								                    	<a class="btn btn-success display-4" href="javascript:openpop()">강의 보기</a>
 								                    </div>
 								                 	   버튼 강의 구매자에게만 보여야 함..
 								                </div>
@@ -205,7 +234,7 @@
 								            
 								            <div class="col-12 col-lg-6">
 								                <div class="image-wrapper">
-								                    <img src="<%=application.getContextPath()%>/resources/images/class/${ classOne.class_thum}" alt="Mobirise">
+								                    <img class="w-100" src="<%=application.getContextPath()%>/resources/images/class/${ classOne.class_thum}" alt="Mobirise">
 								                </div>
 								            </div>
 								        </div>
@@ -244,7 +273,7 @@
 								        			<div class="col-md-6">
 								        				<div class="media-block" >
 											                <div class="mbr-figure">
-											                    <img src="<%=application.getContextPath()%>/resources/images/class/${ classOne.class_thum2 }">
+											                    <img class="w-100" src="<%=application.getContextPath()%>/resources/images/class/${ classOne.class_thum2 }">
 											                </div>
 											            </div>
 								        				
@@ -309,7 +338,7 @@
 								                        <div class="testimonial-photo">
 								                            <img src="<%=application.getContextPath()%>/resources/profile/${tutorInfo.mpro_img}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
 								                        </div>
-								                        <p class="mbr-text mbr-fonts-style display-7">
+								                        <p class="mbr-text mbr-fonts-style display-7 mt-3">
 								                        	${tutorInfo.minfo}
 								                        </p>
 								                        <br/>
@@ -526,9 +555,9 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
 	  <style type="text/css">
 	  
-	  	img {
-	  	  width: 100%;
-	  	}
+/* 	  	img { */
+/* 	  	  width: 100%; */
+/* 	  	} */
 	  	
 	  	.prof_img{
 	  		width: 50px;
@@ -553,6 +582,11 @@
   	</style>
   	
   	<script type="text/javascript"> 
+  		$(function(){
+  			pick();
+  		});
+  	
+  	
   	
   		var star = Math.ceil(${classOne.review_star} *2 ) / 2; 
   		

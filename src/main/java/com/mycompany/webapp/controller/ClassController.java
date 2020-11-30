@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.MemberDto;
+import com.mycompany.webapp.dto.PickDto;
 import com.mycompany.webapp.dto.ReviewDto;
 import com.mycompany.webapp.service.ClassService;
 import com.mycompany.webapp.service.CommunityService;
@@ -31,6 +32,7 @@ public class ClassController {
 	MemberService memberService;
 	@Resource
 	CommunityService communityService;
+	
 
 	@GetMapping("/classdetail")
 	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model) {
@@ -81,6 +83,25 @@ public class ClassController {
 		
 		return "class/classcard_sm";
 	}
+	
+	@GetMapping("/pickClass")
+	public String pickClass(PickDto pickinfo, Model model) {
+		if(pickinfo.getMid() == null) {
+			model.addAttribute("pickYN", 0);
+			return "/class/pickclass";
+		}
+		
+		
+		int pickYN = classService.getPickYN(pickinfo);
+		
+		
+		
+		model.addAttribute("pickYN", pickYN);
+		
+		
+		return "/class/pickclass"; //강의 상세 페이지 새로고침..? // ajax..?
+	}
+	
 	
 	
 }

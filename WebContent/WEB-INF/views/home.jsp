@@ -43,12 +43,15 @@
 	                    Time to Learn! Learn everything you need to know about getting started and how BanSook can help.
 	                </h3>
 	                <p class="mbr-text align-center pb-3 mbr-fonts-style display-7">
-	                	완숙을 바라는 .. Getting started can be confusing and overwhelming, which is why having the right tools and resources can make all the difference.
-This is a frequently asked question among families just starting out. There are many ways to homeschool and homeschool laws vary by state, so it’s important to get all the facts.
+	                	완숙을 바라는 .. Getting started can be confusing and overwhelming, 
+	                	which is why having the right tools and resources can make all the difference.
+						This is a frequently asked question among families just starting out. 
+						There are many ways to homeschool and homeschool laws vary by state, so it’s important to get all the facts.
 	                </p>
 	                <div class="mbr-section-btn align-center">
 	                	<a class="btn btn-md btn-white-outline display-4" href="#사이트정보페이지">
-	                        <span class="mbr-iconfont mbri-file"></span>LEARN MORE</a>
+	                        <span class="mbr-iconfont mbri-file"></span>LEARN MORE
+	                    </a>
 	                </div>
 	            </div>
 	        </div>
@@ -60,8 +63,9 @@ This is a frequently asked question among families just starting out. There are 
 	     
 	    <div class="container">
 	        <div class="mbr-section-head">
-	            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>지금, 인기 TOP 04</strong></h4>
-	            
+	            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
+	            	<strong>지금, 인기 TOP 04</strong>
+	            </h4>
 	        </div>
 	        <div id="main-content-hot" class="row mt-4">
 	            
@@ -75,11 +79,12 @@ This is a frequently asked question among families just starting out. There are 
 	
 	    <div class="container">
 	        <div class="mbr-section-head">
-	            <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-5"><strong>신규 강의</strong></h3>
+	            <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-5">
+	            	<strong>신규 강의</strong>
+	            </h3>
 	            <h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-7">Enjoy the new classes!</h4>
 	        </div>
 	        <div id="main-content-new" class="row mt-4">
-	           
 	           
 	           
 	            
@@ -89,10 +94,9 @@ This is a frequently asked question among families just starting out. There are 
 	    </div>
 	</section>
 	
-	<section class="gallery5 mbr-gallery cid-sh7IUo6clO" id="gallery5-k">
-	    
 	
-	    
+	<!-- 
+	<section class="gallery5 mbr-gallery cid-sh7IUo6clO" id="gallery5-k">
 	
 	    <div class="container">
 	        <div class="mbr-section-head">
@@ -193,9 +197,9 @@ This is a frequently asked question among families just starting out. There are 
 	        </div>
 	    </div>
 	</section>
-	
+	 -->
 	<section class="mbr-gallery mbr-slider-carousel cid-sh8TE0mwUk" id="gallery1-n">
-	
+		
 	    <div class="container">
 	        <div><!-- Filter --><!-- Gallery -->
 		        <div class="mbr-gallery-row">
