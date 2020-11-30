@@ -21,10 +21,25 @@
 				             	<strong>${hotclass.class_cate_nm }</strong>
 				            </h5>
 	         			</td>
-	         			<td rowspan="2">
+	         			<td id="tabletd" rowspan="2">
 	         				<h5 class="display-7">
 	         					<a class="mbr-iconfont" href="#">
-				                    <span class="btn-black-outline mbri-hearth"></span>
+	         						<c:if test="${sessionMid == '' || sessionMid == null }">
+         								<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+	         						</c:if>
+	         						<c:if test="${sessionMid != '' && sessionMid != null}">
+	         							<c:if test="${hotclass.pick_yn == sessionMid}">
+		         							<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
+		         							
+		         						</c:if>
+		         						<c:if test="${hotclass.pick_yn == 'N'}">
+		         							<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+	<!-- 				                    <span class="btn-black-outline mbri-hearth" ></span> -->
+					               		</c:if>
+	         						
+	         						</c:if>
+	         						
+				               
 				                </a>
 	         				
 	         				</h5>

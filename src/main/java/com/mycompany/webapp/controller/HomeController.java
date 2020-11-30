@@ -3,6 +3,7 @@ package com.mycompany.webapp.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,6 @@ public class HomeController {
 	public String content() {
 		logger.info("실행");
 		return "home";
-//		return "test";
 	} 
 	
 	
@@ -35,12 +35,28 @@ public class HomeController {
 	ClassService classService;
 
 	@GetMapping("/allCategory")
-	public String allCategory(Model model) {
+	public String allCategory(Model model, HttpSession session) {
 
 		logger.info("allCategory 실행");
 		
+		String mid = (String)session.getAttribute("sessionMid");
+		List<ClassDto> classList;
 		
-		List<ClassDto> classList = classService.getClassList(2);
+		if(mid != null) {
+			classList = classService.getClassList(2,mid);
+			
+			for(ClassDto clas : classList) {
+				logger.info( "YN : " + clas.getPick_yn());
+			}
+			
+			
+		}else {
+			classList = classService.getClassList(2);
+		}
+		
+		
+		
+		
 		model.addAttribute("hotclassList", classList); 
 		
 		return "class/classcard";

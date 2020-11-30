@@ -18,6 +18,8 @@ public class ClassDto {
 	private double review_star;
 	private String class_nm_s;
 	private String class_cate_nm; 
+	private String pick_yn;
+	
 	
 	
 	public int getClass_no() {
@@ -115,6 +117,12 @@ public class ClassDto {
 	}
 	public void setClass_thum2(String class_thum2) {
 		this.class_thum2 = class_thum2;
+	}
+	public String getPick_yn() {
+		return pick_yn;
+	}
+	public void setPick_yn(String pick_yn) {
+		this.pick_yn = pick_yn;
 	}
 	 
 	

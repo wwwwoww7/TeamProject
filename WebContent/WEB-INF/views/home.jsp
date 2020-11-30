@@ -419,6 +419,20 @@
 		.w-100 {
 			height: 170px;
 		}
+		
+		
+		
+		#pickimg {
+			width: 25px;
+			height: 25px;
+		}
+		
+		
+		#tabletd {
+			float: right;
+
+		}
+		
 	</style>
     
 	</body>

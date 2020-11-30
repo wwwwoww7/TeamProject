@@ -38,7 +38,6 @@ public class ClassController {
 	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model) {
 		
 		
-		
 		ClassDto classOne = classService.getClass(classNo);
 		model.addAttribute("classOne", classOne);
 		

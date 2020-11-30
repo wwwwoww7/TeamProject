@@ -38,6 +38,29 @@ public class ClassService {
 		
 		return classList;
 	}
+	
+	public List<ClassDto> getClassList(int orderby, String mid){
+		
+		List<ClassDto> classList = null;
+		
+		
+		switch(orderby) {
+		case 0:
+			classList = classDao.selectClasses();
+			break; 
+		case 1:
+			classList = classDao.selectClassesOrderByNew();
+			break;
+		
+		case 2:
+			classList = classDao.selectClassesOrderByHotPick(mid);
+			break;
+		}
+		
+		
+		return classList;
+	}
+
 
 	
 	//강의 1개 조회

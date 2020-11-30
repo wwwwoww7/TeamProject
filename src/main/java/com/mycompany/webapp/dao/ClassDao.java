@@ -5,8 +5,11 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.webapp.controller.HomeController;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.PickDto;
 
@@ -14,6 +17,8 @@ import com.mycompany.webapp.dto.PickDto;
 @Repository
 public class ClassDao {
 
+	private static final Logger logger = LoggerFactory.getLogger(ClassDao.class);
+	
 	@Resource
 	private SqlSessionTemplate sst;
 	
@@ -61,6 +66,17 @@ public class ClassDao {
 	public int selectPickByMidClassNo(PickDto pickDto) {
 		int pickYn =  sst.selectOne("mybatis.mapper.pick.selectPickByMidClassNo", pickDto);
 		return pickYn;
+	}
+
+
+
+	//로그인한 사용자, 찜 유무 포함 select
+	public List<ClassDto> selectClassesOrderByHotPick(String mid) {
+		logger.info("실행!============================================== ");
+		
+		
+		List<ClassDto> classList = sst.selectList("mybatis.mapper.class.selectClassesOrderByHotPick", mid);
+		return classList;
 	}
 	
 	
