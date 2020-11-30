@@ -42,20 +42,24 @@
     <div class="container align-center">
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">EVENT DETAIL</h1>
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1"> 101명 환급원정대</h1>
                 
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">
-                    Click any text to edit or style it. Select text to insert a link. Click blue "Gear" icon in the top right corner to hide/show buttons, text, title and change the block background. Click red "+" in the bottom right corner to add a new block. Use the top left menu to create new pages, sites and add themes.
+                   	클래스 런칭 기념 <br/>
+                   	101명을 위한 환급원정대<br/>
+                   	101명의 반숙이들을 추첨해서<br/>
+                   	101명의 반숙이들의 클래스 수강료를 환급해드립니다!<br/>
+                   	101명 반숙이들의 환급 원정 !!<br/>
                 </p>
-                <div class="mbr-section-btn"><a class="btn btn-md btn-success display-4" href="https://mobiri.se">LEARN MORE</a>
-                    <a class="btn btn-md btn-white-outline display-4" href="https://mobiri.se">LIVE DEMO</a></div>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-success display-4" href="http://localhost:8080/teamproject/allClass">클래스 구경하러가기</a>
+                  <!--   <a class="btn btn-md btn-white-outline display-4" href="https://mobiri.se">LIVE DEMO</a></div> -->
             </div>
         </div>
     </div>
-    <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+  <!--   <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
         <a href="#next">
             <i class="mbri-down mbr-iconfont"></i>
-        </a>
+        </a> -->
     </div>
 </section>
 

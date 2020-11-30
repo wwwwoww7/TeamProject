@@ -18,8 +18,8 @@
 				<c:forEach var="event" items="${all}">
 					<tr>
 						<td><input type="hidden" value="${event.event_no}"/></td>
-						<td><a class="text-black"  href="#">${event.event_nm}</a></td>
-						<td><div style="margin:15px"><a href="#"><img src="<%=application.getContextPath()%>/resources/img/ar/${event.event_img}" width="400" height="240"/></a></div>
+						<td><a class="text-black"  href="event/free">${event.event_nm}</a></td>
+						<td><div style="margin:15px"><a href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}"><img src="<%=application.getContextPath()%>/resources/img/ar/${event.event_img}" width="400" height="240"/></a></div>
 						</td>
 						<td><fmt:formatDate value="${event.event_start}" pattern="yyyy-MM-dd"/> </td>
 						<td><fmt:formatDate value="${event.event_end}" pattern="yyyy-MM-dd"/></td>

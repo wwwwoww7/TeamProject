@@ -45,18 +45,19 @@
                 <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">EVENT DETAIL</h1>
                 
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">
-                    Click any text to edit or style it. Select text to insert a link. Click blue "Gear" icon in the top right corner to hide/show buttons, text, title and change the block background. Click red "+" in the bottom right corner to add a new block. Use the top left menu to create new pages, sites and add themes.
+                   100%	완숙이 되기 위한 반숙이들을 위한 
+                   100명의 반숙이들 무료클래스 이벤트
+                   	
                 </p>
-                <div class="mbr-section-btn"><a class="btn btn-md btn-success display-4" href="https://mobiri.se">LEARN MORE</a>
-                    <a class="btn btn-md btn-white-outline display-4" href="https://mobiri.se">LIVE DEMO</a></div>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-success display-4" href="http://localhost:8080/teamproject/allClass">클래스 구경하러가기</a>
             </div>
         </div>
     </div>
-    <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+<!--     <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
         <a href="#next">
             <i class="mbri-down mbr-iconfont"></i>
-        </a>
-    </div>
+        </a> -->
+    </div> 
 </section>
 
 

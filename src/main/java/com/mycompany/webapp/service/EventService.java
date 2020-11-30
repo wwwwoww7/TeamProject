@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.EventDao;
@@ -34,5 +35,12 @@ public class EventService {
 		List<EventDto> all = eventDao.selectByPage(pager);
 		return all;
 	}
+
+	public EventDto getEventDetail(int event_no) {
+		EventDto ed = eventDao.selectEventDetail(event_no);
+		return ed;	
+	
+	}
+
 
 }
