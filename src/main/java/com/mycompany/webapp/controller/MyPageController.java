@@ -38,24 +38,32 @@ public class MyPageController {
 	
 	@Resource
 	private MemberService mService;
+	@Resource
+	private ClassNoticeService classNoticeService;
+	@Resource
+	private ClassService classService;
+	@Resource
+	private ClassQAService classQAService;
+	
+	
+	
 	
 	//*----------- 수강생 페이지------------------- *//
 	@RequestMapping("/mypage_user")
-	public String mypage_user() {
+	public String mypage_user(MemberDto member, Model model) {
+		//회원의 강의 목록 가져오기
+		List<ClassDto> userclassList = mService.getUserClasses(member.getMid());
+		model.addAttribute("userclassList",userclassList);
+		
+		//회원의 회원정보 가져오기
+		MemberDto memberInfo = mService.getId(member);
+		model.addAttribute("memberInfo",memberInfo);
+		
+		//회원의 찜 목록 가져오기
+		List<ClassDto> userPickList = mService.getUserPick(member.getMid());
+		model.addAttribute("userPickList",userPickList);
 		
 		return "mypage/mypage_user";
-	}
-	
-	//수강목록 불러오기
-	@GetMapping("/userclasslist")
-	public String user_classlist() {
-		return "mypage/userclasslist";
-	}
-	
-	//수강생의 찜목록
-	@GetMapping("/userpicklist")
-	public String userpicklist() {
-		return "mypage/userpicklist";
 	}
 	
 	//수강생 강의문의 목록 보기
@@ -73,14 +81,7 @@ public class MyPageController {
 	}
 	
 	
-	@Resource
-	private ClassNoticeService classNoticeService;
 	
-	@Resource
-	private ClassService classService;
-	
-	@Resource
-	private ClassQAService classQAService;
 	
 	
 	//*----------- 강사 페이지------------------- *//		
@@ -218,6 +219,11 @@ public class MyPageController {
 	
 	@GetMapping("/qaAnswer")
 	public String qaAnswer(ClassQADto qaAnswer, Model model) {
+		
+		logger.info("확인============================"+qaAnswer.getClass_qa_answer());
+		logger.info("확인============================"+qaAnswer.getClass_no());
+		
+		
 		//답변 삽입하러 감
 		classQAService.setQAAnswer(qaAnswer);
 		

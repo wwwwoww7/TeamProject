@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.CartDto;
+import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.MemberDto;
 
 @Repository 
@@ -39,6 +40,16 @@ public class MemberDao {
 	public int check(String mid) {
 		int result = sst.selectOne("mybatis.mapper.member.checkId", mid);
 		return result;
+	}
+
+	public List<ClassDto> selectClass(String mid) {
+		List<ClassDto> list = sst.selectList("mybatis.mapper.member.selectClass", mid);
+		return list;
+	}
+
+	public List<ClassDto> selectPick(String mid) {
+		List<ClassDto> list = sst.selectList("mybatis.mapper.member.selectPick", mid);
+		return list;
 	}
 
 }

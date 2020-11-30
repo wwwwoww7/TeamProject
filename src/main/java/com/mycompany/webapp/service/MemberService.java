@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.MemberDao;
 import com.mycompany.webapp.dto.CartDto;
+import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.MemberDto;
 
 @Service 
@@ -67,6 +68,16 @@ public class MemberService {
 	public int check(String mid) {
 		int result = memberDao.check(mid);
 		return result;
+	}
+
+	public List<ClassDto> getUserClasses(String mid) {
+		List<ClassDto> list = memberDao.selectClass(mid);
+		return list;
+	}
+
+	public List<ClassDto> getUserPick(String mid) {
+		List<ClassDto> list = memberDao.selectPick(mid);
+		return list;
 	}
 	
 }
