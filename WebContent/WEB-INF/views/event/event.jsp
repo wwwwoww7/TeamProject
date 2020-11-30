@@ -243,6 +243,10 @@
 			background-color: white;
 			padding-top: 0;
 		}
+		
+		#gallery2-3a {
+			background: #fff;
+		}
 	</style>
 </body>
 </html>

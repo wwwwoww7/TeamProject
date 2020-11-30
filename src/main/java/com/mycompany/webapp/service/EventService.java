@@ -21,13 +21,13 @@ public class EventService {
 		return all;
 	}
 
-	public List<EventDto> getEndEventList(int eenable){
-		List<EventDto> all2 = eventDao.selectEndAll(eenable);
+	public List<EventDto> getEndEventList(EventPagerDto pager){
+		List<EventDto> all2 = eventDao.selectByEndPage(pager);
 		return all2;
 	}
 
-	public int getTotalRows() {
-		int totalRows = eventDao.count();
+	public int getTotalRows(int eenable) {
+		int totalRows = eventDao.count(eenable);
 		return totalRows;
 	}
 
