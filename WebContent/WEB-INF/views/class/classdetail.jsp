@@ -78,7 +78,7 @@
 	                <h4 class="mbr-section-title mb-0 mbr-fonts-style display-4">
 	                
 	               
-	              	 	<strong id="star_avg"> Rating  </strong>
+	              	 	<strong id="star_avg"> Rating </strong>
 	               		<div class="star-box">
 							  <span class="star star_left"></span>
 							  <span class="star star_right"></span>
@@ -103,34 +103,35 @@
 	        </div>
 	        
 	        <div class="row">
-	        	<div class="col-sm-7"></div> 
-	        	<div class="col-sm-2">
-	        		 <div id="pickdiv" class="mbr-section-btn">
-		               	<a class="btn item-btn btn-warning display-4" href="javascript:pick(1)">🧡</a>
+	        	<div class="col-sm-8"></div>  
+	        	<div class="col-sm-4"  align="right" >
+	        		 
+	        		 <div id="pickdiv" class="mbr-section-btn" style="display:inline-block;">
+		             	
 		             </div>
 			         <script type="text/javascript">
 						function pick(clk){
-							if(clk == 1){
-								var mid = $("#mid").val();
-								
+							var mid = "${sessionMid}";
+							var class_no  = "${classOne.class_no}";
+							if(clk == 1 || clk == 2){
+								/* 1: insert, 2: delete */
 								if( mid == null  || mid == ""){
 									alert("로그인 하세요");
+									location.href="<%=request.getContextPath()%>/login/login"
 								}else{
-									
+// 									console.log("로그인한 경우 ");
 									$.ajax({
 										url: "<%=request.getContextPath()%>/class/pickClass",
-										data : {mid : mid, classno : ${classOne.class_no} },
+										data : {mid : mid, class_no : class_no, clk : clk },
 										success : function(data){
 											$("#pickdiv").html(data);
 										}
 									});
-									alert("❤🧡💛💚💙💜");
 								}
 							}else {
-							
 								$.ajax({
 									url: "<%=request.getContextPath()%>/class/pickClass",
-									data : {classno : ${classOne.class_no} },
+									data : {mid : mid, class_no : class_no },
 									success : function(data){
 										$("#pickdiv").html(data);
 									}
@@ -140,13 +141,8 @@
 							
 							
 						}
-					</script>
-	        	
-	        	</div> 
-	        	<div class="col-sm-3">
-	        		 
-	        		
-	        		 <div class="mbr-section-btn">
+					</script>	
+	        		 <div class="mbr-section-btn"  style="display:inline-block;">
 		               	<a class="btn item-btn btn-warning display-4" href="javascript:putt()">장바구니 담기</a>
 		             </div>
 		             
@@ -586,6 +582,12 @@
   			text-decoration: underline;
   			
   		}
+  		
+  		#pickimg{
+  			width: 45px;
+  			height: 45px;
+  		}
+  		
   	</style>
   	
   	<script type="text/javascript"> 
@@ -593,10 +595,8 @@
   			pick();
   		});
   	
-  	
-  	
-  		var star = Math.ceil(${classOne.review_star} *2 ) / 2; 
-  		
+  		var review_star = ${classOne.review_star};
+  		var star = Math.ceil(review_star *2 ) / 2; 
   		console.log(star);
   		
   		for(var i=0; i<star*2; i++){

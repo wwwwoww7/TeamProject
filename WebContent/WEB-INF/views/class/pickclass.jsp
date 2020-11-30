@@ -2,21 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 2020. 11. 30 --%>
 
+<c:if test="${pick_yn==0}">
+	<div class="mbr-section-btn align-center">
+		<a class="" href="javascript:pick(1)">
+			<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/blackheart.png" />
+	    </a> 
+	</div>
+</c:if>
 
-
-${pickYN }
-
-<%-- <c:if test="${pickYN == \"0\"} "> --%>
-<!-- 	<div class="mbr-section-btn align-center"> -->
-<!-- 		<a class="btn btn-md btn-white-outline display-4" href=""> -->
-<!-- 	        <span class="mbr-iconfont mbri-hearth"></span> 왜 안나와 ♡ -->
-<!-- 	    </a> -->
-<!-- 	</div> -->
-<%-- </c:if> --%>
-
-<%-- <c:if test="${pickYN == 1} "> --%>
-	<a class="btn item-btn btn-warning display-4" href="javascript:pick()">🧡</a>
-<%-- </c:if> --%>
-
-
-<!-- if로 db에 값이 있으면 칠한 하트 없으면 X -->
+<c:if test="${pick_yn == 1}">
+	<a class="" href="javascript:pick(2)">
+		<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/redheart.png" />
+	</a> 
+</c:if> 

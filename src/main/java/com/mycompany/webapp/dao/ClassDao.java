@@ -78,6 +78,22 @@ public class ClassDao {
 		List<ClassDto> classList = sst.selectList("mybatis.mapper.class.selectClassesOrderByHotPick", mid);
 		return classList;
 	}
+
+
+
+
+	public int insertPick(PickDto pickinfo) {
+		int result = sst.insert("mybatis.mapper.pick.inserPick",pickinfo);
+		return result;
+	}
+
+
+
+
+	public int deletePick(PickDto pickinfo) {
+		int result = sst.insert("mybatis.mapper.pick.deletePick", pickinfo);
+		return result;
+	}
 	
 	
 	

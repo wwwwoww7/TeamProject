@@ -120,10 +120,6 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
 	  <style type="text/css">
-	  
-	  	img {
-	  	  width: 100%;
-	  	}
 	  	
 	  	.prof_img{
 	  		width: 50px;
@@ -145,6 +141,11 @@
   		#star_avg {
   			font-style: italic;
   		}
+  		
+  		.w-100 {
+			width : 100%;
+			height: 170px;
+		}
   	</style>
   	<script type="text/javascript">
 	  	function allClassList(){
@@ -161,10 +162,5 @@
   		});
   	
   	</script>
-  		<style type="text/css"> 
-		.w-100 {
-			height: 170px;
-		}
-	</style>
 </body>
 </html>

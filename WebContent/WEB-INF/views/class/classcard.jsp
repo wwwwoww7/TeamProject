@@ -10,7 +10,7 @@
 		
 	     <div class="item-wrapper">
 	         <div class="item-img">
-	         	<img src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum }" alt="" data-slide-to="3">
+	         	<img class="img-thumbnail" src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum }" alt="" data-slide-to="3">
 			 </div>
 	         <div class="item-content">
 	         
@@ -22,27 +22,40 @@
 				            </h5>
 	         			</td>
 	         			<td id="tabletd" rowspan="2">
-	         				<h5 class="display-7">
-	         					<a class="mbr-iconfont" href="#">
-	         						<c:if test="${sessionMid == '' || sessionMid == null }">
-         								<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
-	         						</c:if>
-	         						<c:if test="${sessionMid != '' && sessionMid != null}">
-	         							<c:if test="${hotclass.pick_yn == sessionMid}">
-		         							<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
-		         							
-		         						</c:if>
-		         						<c:if test="${hotclass.pick_yn == 'N'}">
-		         							<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
-	<!-- 				                    <span class="btn-black-outline mbri-hearth" ></span> -->
-					               		</c:if>
-	         						
-	         						</c:if>
-	         						
-				               
-				                </a>
-	         				
+	         				<h5 id="heartpage" class="display-7">
+	         					
 	         				</h5>
+	         				<script type="text/javascript">
+								function pick(clk){
+									var mid = ${sessionMid};
+									var class_no = ${classOne.class_no};
+									if(clk == 1 || clk == 2){
+										/* 1: insert, 2: delete */
+										if( mid == null  || mid == ""){
+											alert("로그인 하세요");
+											location.href="<%=request.getContextPath()%>/login/login"
+										}else{
+											console.log("로그인한 경우 ")
+											$.ajax({
+												url: "<%=request.getContextPath()%>/class/pickClass",
+												data : {mid : mid, class_no :class_no, clk: clk  },
+												success : function(data){
+													$("#pickdiv").html(data);
+												}
+											});
+										}
+									}else {
+										$.ajax({
+											url: "<%=request.getContextPath()%>/class/pickClass",
+											data : {mid : mid, class_no : ${classOne.class_no} },
+											success : function(data){
+												$("#pickdiv").html(data);
+											}
+										});
+										
+									}
+								}
+							</script>	
 	         			</td>
 	         		</tr>
 					<tr>

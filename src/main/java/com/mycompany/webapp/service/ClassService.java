@@ -4,14 +4,19 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.webapp.controller.HomeController;
 import com.mycompany.webapp.dao.ClassDao;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.PickDto;
 
 @Service
 public class ClassService {
+	private static final Logger logger = LoggerFactory.getLogger(ClassService.class);
+	
 
 	@Resource
 	ClassDao classDao;
@@ -77,8 +82,25 @@ public class ClassService {
 
 
 	public int getPickYN(PickDto pickDto) {
+		logger.info("실행");
 		int pickYn = classDao.selectPickByMidClassNo(pickDto);
 		return pickYn;
+	}
+
+	public int setPick(PickDto pickinfo, int clk) {
+		/* clk - 1: insert, 2: delete */
+		int result = 0 ;
+		if(clk == 1) {
+			logger.info("삽입 실행");
+			classDao.insertPick(pickinfo);
+			result = 1;
+		} else if(clk == 2) {
+			logger.info("삭제 실행");
+			classDao.deletePick(pickinfo);
+			result = 0;
+		} 
+		
+		return result;
 	}
 
 

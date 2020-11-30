@@ -45,7 +45,7 @@
 		<div class="col-12 col-md-6 col-lg-3 item gallery-image">
 	        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s }">
 	            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no }">
-	            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+	            	<img class="w-100 rounded" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
 	            </a>
 	            <div class="icon-wrapper">
 	                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>

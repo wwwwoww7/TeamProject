@@ -84,19 +84,31 @@ public class ClassController {
 	}
 	
 	@GetMapping("/pickClass")
-	public String pickClass(PickDto pickinfo, Model model) {
-		if(pickinfo.getMid() == null) {
-			model.addAttribute("pickYN", 0);
-			return "/class/pickclass";
+	public String pickClass(PickDto pickinfo,@RequestParam(defaultValue = "-1") int clk, Model model) {
+		
+		logger.info("실행");
+	
+		
+		if(clk == -1) {
+			if(pickinfo.getMid() == null) {
+				model.addAttribute("pick_yn", 0);
+				return "/class/pickclass";
+			}
+			
+			int pickYN = classService.getPickYN(pickinfo);
+			model.addAttribute("pick_yn", pickYN);
+			
+		}else {
+			/* clk - 1: insert, 2: delete */
+			int result = classService.setPick(pickinfo, clk);
+			logger.info("데이터 수정 후 Class_no : " + pickinfo.getClass_no());
+			logger.info("데이터 수정 후 mid : " + pickinfo.getMid());
+			model.addAttribute("pick_yn", result);
+//			return "redirect:/class/pickClass";
 		}
 		
 		
-		int pickYN = classService.getPickYN(pickinfo);
-		
-		
-		
-		model.addAttribute("pickYN", pickYN);
-		
+	
 		
 		return "/class/pickclass"; //강의 상세 페이지 새로고침..? // ajax..?
 	}

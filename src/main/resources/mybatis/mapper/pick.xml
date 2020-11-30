@@ -10,9 +10,17 @@
 
 
 	<select id="selectPickByMidClassNo" parameterType="pick" resultType="int" >
-		select count(*) from pick where mid=${pick.mid} and class_no=${pick.class_no}
+		select count(*) from pick where mid=#{mid} and class_no=#{class_no} 
 	</select>
 
+	
+	<insert id="inserPick" parameterType="pick">
+		insert into pick (mid, class_no) values (#{mid}, #{class_no})
+	</insert>
+
+	<delete id="deletePick" parameterType="pick">
+		delete from pick where mid=#{mid} and class_no=#{class_no}
+	</delete>
 
 
 </mapper>
