@@ -65,25 +65,20 @@
 			</h3>
 			<div class="container">
 	        	<div class="row mt-4">
-					<c:forEach var="hotclass" items="${userclassList}">
-						<div class="item features-image col-12 col-md-6 col-lg-3">
-						     <div class="item-wrapper">
-						         <div class="item-img">
-						             <img src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum}" alt="" data-slide-to="3">
-						         </div>
-						         <div class="item-content">
-						             <h5 class="item-title mbr-fonts-style display-7"><strong>${hotclass.class_cate_nm}</strong></h5>
-						             <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
-						                 <em>${hotclass.class_nm_s}</em>
-						             </h6>
-						         </div>
-						         <div class="mbr-section-btn item-footer mt-2">
-							         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no}" 
-							            class="btn item-btn btn-success display-7">상세 &gt;
-							         </a>
-						         </div>
-						     </div>
-						 </div>
+					<c:forEach var="classes" items="${userclassList}">
+						<div class="col-12 col-md-6 col-lg-3 item gallery-image">
+					        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+					            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+					            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+					            </a>
+					            <div class="icon-wrapper"> <!-- 돋보기 -->
+					                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+					            </div>
+					        </div>
+					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+					           [ ${classes.class_cate_nm} ]  ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+					        </h6>
+					    </div>
 					</c:forEach>
 				</div>
 	   		</div>
@@ -100,29 +95,20 @@
 			</h3>
 			<div class="container">
 	        	<div class="row mt-4">
-					<c:forEach var="hotclass" items="${userPickList}">
-		
-						<div class="item features-image col-12 col-md-6 col-lg-3">
-							
-						     <div class="item-wrapper">
-						         <div class="item-img">
-						             <img src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum}" alt="" data-slide-to="3">
-						         </div>
-						         <div class="item-content">
-						             <h5 class="item-title mbr-fonts-style display-7"><strong>${hotclass.class_cate_nm}</strong></h5>
-						             <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
-						                 <em>${hotclass.class_nm_s}</em>
-						             </h6>
-						             
-						         </div>
-						         <div class="mbr-section-btn item-footer mt-2">
-							         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no}" 
-							            class="btn item-btn btn-success display-7">상세 &gt;
-							            <!-- 버튼 주황색 :  class="btn item-btn btn-warning display-7"  -->
-							         </a>
-						         </div>
-						     </div>
-						 </div>
+					<c:forEach var="classes" items="${userPickList}">
+						<div class="col-12 col-md-6 col-lg-3 item gallery-image">
+					        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+					            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+					            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+					            </a>
+					            <div class="icon-wrapper"> <!-- 돋보기 -->
+					                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+					            </div>
+					        </div>
+					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+					           [ ${classes.class_cate_nm} ]  ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+					        </h6>
+					    </div>
 					</c:forEach>
 				</div>
 	   		</div>

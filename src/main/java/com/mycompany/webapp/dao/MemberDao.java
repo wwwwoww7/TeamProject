@@ -52,4 +52,9 @@ public class MemberDao {
 		return list;
 	}
 
+	public int updateMember(MemberDto member) {
+		int rows = sst.update("mybatis.mapper.member.updateMember",member);
+		return rows;
+	}
+
 }

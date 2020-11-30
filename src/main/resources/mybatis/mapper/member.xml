@@ -51,4 +51,9 @@
 		        where c.class_no = p.class_no and p.mid = m.mid and ca.class_cate_no = c.class_cate_no) ta
 		where ta.mid = #{mid}
 	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateMember">
+		
+	</update>
 </mapper> 

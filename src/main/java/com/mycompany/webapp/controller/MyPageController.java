@@ -240,9 +240,27 @@ public class MyPageController {
 	
 	//*--------------회원정보수정---------------- *//
 	@GetMapping("/userEdit")
-	public String userEdit() {
+	public String userEdit(MemberDto member, Model model) {
+		
+		//회원의 회원정보 가져오기
+		MemberDto memberInfo = mService.getId(member);
+		model.addAttribute("memberInfo",memberInfo);
 		
 		return "mypage/userEdit";
+	}
+	
+	@PostMapping("/userUpdate")
+	public String userUpdate(MemberDto member) {
+		
+		mService.updateMember(member);
+		
+		if (member.getMtype().equals("ROLE_USER")) {
+			
+			return "redirect:/mypage/mypage_user";
+		} else {
+			return "redirect:/mypage/mypage_tutor";
+		}
+		
 	}
 		
 }
