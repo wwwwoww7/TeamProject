@@ -375,7 +375,7 @@
 								                        </div>
 								                        
 								                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-								                              ${ tutorInfo.memail }
+								                              <a id="emaillink" href="mailto:test_tutor@teamproject.com">${ tutorInfo.memail }</a>
 								                        </small>
 								                        
 								                    </div>
@@ -566,6 +566,7 @@
 	  	
 	  	.test-black {
 	  		color:black;
+  			text-decoration: underline;
 	  	}	
 	  	.test-black:hover {
 	  		color: #FFC800;
@@ -578,6 +579,12 @@
 	  	
   		#star_avg {
   			font-style: italic;
+  		}
+  		
+  		#emaillink {
+  			color : #ffc800;
+  			text-decoration: underline;
+  			
   		}
   	</style>
   	
