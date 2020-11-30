@@ -7,45 +7,62 @@
 	<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 	
 	<!-- 새로운테이블입니다 -->
-		<table class="table table-bordered">
-	<colgroup>
-	    <col width="15%">
-	    <col width="35%">
-	    <col width="15%">
-	    <col width="*">
-	</colgroup>
-	<tbody>
-	    <tr>
-	        <th>강의명</th>
-	        <td>강의명이 들어옴</td>
-	        <th>문의 분류</th>
-	        <td>과제제출/환불문의</td>
-	    </tr>
-	    <tr>
-	        <th>작성자</th>
-	        <td>사용자ID</td>
-	        <th>작성일</th>
-	        <td><span><fmt:formatDate value="" pattern="yyyy-MM-dd HH.mm.ss"/></span>2020-11-20</td>
-		</tr>
-		<tr>
-			<th>답변완료여부</th>
-	        <td colspan="10">답변완료/미완료</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-	        <td colspan="10">문의 제목이 들어오네요</td>
-		</tr>
-	    <tr>
-	        <th>내용</th>
-	        <td colspan="10">강의문의 내용이 들어옴</td>
-	    </tr>
+	<table class="table table-bordered">
+		<colgroup>
+			<col width="15%">
+			<col width="35%">
+			<col width="15%">
+			<col width="*">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td><div class="container">
+						<div class="dropdown">
+							<button type="button" class="btn btn-success display-4 dropdown-toggle"
+								data-toggle="dropdown" style=" width: 100px; height: 40px;">강의분류</button>
+							<div class="dropdown-menu"  >
+								<a class="dropdown-item" href="#">건강</a> 
+								<a class="dropdown-item" href="#">커리어</a> 
+								<a class="dropdown-item" href="#">머니</a>
+							</div>
+						</div>
+					</div></td>
+			
+				<td><a class="btn btn-success display-4"
+					href="javascript:openpop()">강의선택하기</a></td>
+			</tr>
+			<script type="text/javascript">
+				function openpop() {
+					open("classvideo", "popup",
+							"width=1300, height=600, top=200, left=300");
+				}
+			</script>
+			<tr>
+				<th>작성자</th>
+				<td>사용자ID</td>
+				<th>작성일</th>
+				<td><span><fmt:formatDate value=""
+							pattern="yyyy-MM-dd HH.mm.ss" /></span>2020-11-20</td>
+			</tr>
+			<tr>
+				<th>답변완료여부</th>
+				<td colspan="10">답변완료/미완료</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td colspan="10">문의 제목이 들어오네요</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan="10">강의문의 내용이 들어옴</td>
+			</tr>
 		</tbody>
 	</table>
-	
-	 
-	
-	강의선택 : <select id="mcity" name="mcity">
- 				<c:forEach var="city" items="${cityList}">
+
+
+
+	강의선택 : <select id="list" name="list">
+ 				<c:forEach var="list" items="${cityList}">
  					<c:if test="${city.value != ch11Member.mcity}">
  						<option value="${city.value}">${city.label}</option>
  					</c:if>
