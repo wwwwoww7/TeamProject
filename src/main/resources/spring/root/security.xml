@@ -104,7 +104,7 @@
 		</security:session-management>		
 	</security:http>	
 	
-	<!-- #################### 인증 관리자 설정 #################### -->
+<!-- #################### 인증 관리자 설정 #################### -->
 	<!-- 인증 관리자 설정 -->
 	<security:authentication-manager>
 		<security:authentication-provider ref="daoAuthenticationProvider"/>
@@ -124,6 +124,9 @@
 		users-by-username-query="select mid, mpw, menabled from member where mid=?"
 		authorities-by-username-query="select mid, mtype from member where mid=?"/>
 		
+		
+		
+
 	<!-- 권한 계층 설정 -->
 	<bean id="roleHierarchyAuthoritiesMapper" 
 		class="org.springframework.security.access.hierarchicalroles.RoleHierarchyAuthoritiesMapper">

@@ -44,40 +44,10 @@ public class LoginController {
 	
 	@RequestMapping("/login/login")
 	public String login(Model model) {	
-		SecurityContext securityContext = SecurityContextHolder.getContext();
-		Authentication authentication = securityContext.getAuthentication();
-		
-		if(authentication.isAuthenticated()) {
-			String mid = authentication.getName();
-			logger.info("로그인한 아이디:"+mid);
-			//model.addAttribute("sessionMid", mid);
-	
-		}
 		
 		return "login/login";
 	}
-	
-	@RequestMapping("/login/loginInfo")
-	public String loginInfo() {
-		SecurityContext securityContext = SecurityContextHolder.getContext();
-		Authentication authentication = securityContext.getAuthentication();
-		logger.info("실행");
-		//로그인 여부
-		if(authentication.isAuthenticated()) {
-			String mid = authentication.getName();
-			logger.info("로그인한 아이디:"+mid);
-			
-			for(GrantedAuthority authority : authentication.getAuthorities()) {
-				String mtype = authority.getAuthority();
-				logger.info("로그인한 아이디의 권한" + mtype);
-			}
-			
-			WebAuthenticationDetails details = (WebAuthenticationDetails) authentication.getDetails();
-			String clientIp = details.getRemoteAddress();
-			logger.info("로그인한PC IP:" + clientIp);
-		}
-		return "home";
-	}
+
 	
 	  @RequestMapping("/login/encodePassword")
 	  public String encodePassword(String mpassword) {
@@ -115,8 +85,7 @@ public class LoginController {
 	public String Join(MemberDto member, HttpServletRequest request) throws Exception {
 
 		
-		if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") ||
-		  member.getMemail().trim().equals("")) {
+		if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") || member.getMemail().trim().equals("") || member.getMtel().trim().equals("")) {
 			  request.setAttribute("member", member); 
 			  return "/login/join"; 
 		}

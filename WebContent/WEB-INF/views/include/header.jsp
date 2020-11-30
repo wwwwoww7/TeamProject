@@ -50,10 +50,11 @@
                 
                 <li class="nav-item dropdown">
 	                	<a class="nav-link link text-white dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">
-	                		<span class="mobi-mbri mbr-iconfont mbr-iconfont-btn">
-	                			<img src="<%=application.getContextPath()%>/resources/profile/">
-	                		</span>
-	                          <sec:authentication property="name"/>
+	                		<span >
+	                			<img id="profile" src="<%=application.getContextPath()%>/resources/profile/${member.mpro_img} ">
+	                		</span>	         
+	                      
+	                        ${member.mnick}      
 	                    </a>
 	                  
 	                    <div class="dropdown-menu">
@@ -88,3 +89,9 @@
         </div>
     </nav>
 </section>
+<style>
+	#profile {
+	  max-width: 70px;
+	  height: 70px;
+	}
+</style>
