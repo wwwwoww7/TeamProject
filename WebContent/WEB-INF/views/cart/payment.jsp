@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html  >
@@ -147,7 +147,7 @@
 									</ol>
 							</div>
 						</div>
-						<table class="pay_table" style="width:600px">
+						<table class="pay_table" var="cartItem" items="${cartList}" style="width:600px">
 							<thead>
 								<tr>
 									<td class="name" >상점명</td>
@@ -155,15 +155,15 @@
 								</tr>
 								<tr>
 									<td class="name">결제금액</td>
-									<td class="cont">결제 총액 끌어왕</td>
+									<td class="cont"><c:out value="${sessionScope.DATA}"/></td>
 								</tr>
 								<tr>
 									<td class="name">결제자 ID</td>
-									<td class="cont">결제할 사람 id 끌어오기</td>
+									<td class="cont">${sessionMid}</td>
 								</tr>
 								<tr>
 									<td class="name">휴대전화</td>
-									<td class="cont">휴대전화번호 끌어왑</td>
+									<td class="cont">${cartItem.mtel}</td>
 								</tr>
 								<tr class="warr">
 									<td colspan="2">*이용동의에 체크가 완료되지 않으면 결제진행의 어려움이 있습니다.</td>
@@ -174,8 +174,8 @@
 						   			<td colspan="2">
 							   			<div class="checkbox_group">
 							   				<input type="checkbox" name="checkAll" class="chkALl" id="checkAll" />전체동의
-							   				<input type="checkbox" name="chk" class="chk" id="chk"/>이용약관동의
-							   				<input type="checkbox" name="chk" class="chk" id="chk"/>개인정보 처리방침 동의
+							   				<input type="checkbox" name="chk" class="chk" id="chk"  />이용약관동의
+							   				<input type="checkbox" name="chk" class="chk" id="chk"  />개인정보 처리방침 동의
 						 	  		<script type="text/javascript">
 							 	  		
 							 	  		// 체크박스 전체 선택

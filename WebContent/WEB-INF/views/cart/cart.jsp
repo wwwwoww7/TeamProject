@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <!DOCTYPE html>
 <html  >
@@ -49,6 +51,7 @@
 			position: relative;
 			margin:0px;
 		}
+		
 </style>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
@@ -80,44 +83,52 @@
 	            <thead>
 	              <tr class="table-heads">
 	               <th class="head-item mbr-fonts-style display-7">상품선택
-	              	 <input type="checkbox" name="Allcheck" id="Allcheck" />
+	              	 <input type="checkbox" name="Allcheck" id="Allcheck" checked="checked" />
 	              	 <script>
+	              		
 			 			//전체선택 체크박스
-							var count = $("input[name='chk']").length;
-							var sum = 0;
-			 				$("#Allcheck").click(function() {
-			 					if($("#Allcheck").prop("checked")){
-									$("input[name='chk']").prop("checked", true);
+					 	var count = $("input[name='chk']").length;
+						var DATA = 0;
+							$("#Allcheck").click(function() {
+								//선택한 값만 합계 보여줌
+								if($("#Allcheck").prop("checked")){
+								    $("input[name='chk']").prop("checked", true);
+									$("input[name='chk']:checked").each(function(){ 
+								 		DATA += parseInt($(this).val());
+								 	});
 								}else{
-								   	$("input[name='chk']").prop("checked", false);
-								}
-								if($("input[name='chk']").prop("checked")){
-									for(var i=0; i<count ;i++ ){
-										
-										sum += parseInt("#cartprice");
-									}
-								}	
-				 	        console.log(sum);
-			 				$('#checkNum').text($("input:checkbox[name='chk']:checked").length);
+									$("input[name='chk']").prop("checked", false);
+							 		DATA = 0;
+							   	}
+							$("#cartSum").text(DATA);
+							$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
+						});
+			 					
 								
-			 				});
-				 			
 						 	       
-			 			    //개별 체크박스     
-			 				function checkAll() {
-				           		var cnt = $("input[name='chk']").length;
-				           		/* var count = $("input:checkbox[name='chk']:checked").length; */
-				           		console.log("cnt:", cnt, $("input[name='chk']:checked").length);
-				       
-								if($("input[name='chk']:checked").length==cnt){
-									$("#Allcheck").prop("checked",true);
-									
-								}else{
-									$("#Allcheck").prop("checked",false);
-								}
-								$('#checkNum').text($("input:checkbox[name='chk']:checked").length);
-		             		}
-							
+		 			    //개별 체크박스     
+		 				 function checkAll() {
+			           		var cnt = $("input[name='chk']").length;
+			           		console.log("cnt:", cnt, $("input[name='chk']:checked").length);
+			       
+							if($("input[name='chk']:checked").length==cnt){
+								$("#Allcheck").prop("checked",true);
+							}else{
+								$("#Allcheck").prop("checked",false);
+																
+							}
+							$('#checkNum').text($("input:checkbox[name='chk']:checked").length);
+	             		} 
+			 			
+		 				
+		 			   window.onload = function(){
+		 				   $("input[name='chk']:checked").each(function(){ 
+						 		DATA += parseInt($(this).val());
+						   });
+		 				   $("#cartSum").text(DATA);
+		 				   $("#checkNum").text($("input[name='chk']:checked").length);
+		 			   }
+		 			   
 			 		</script> 
 	               </th>
 	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
@@ -128,52 +139,47 @@
 	            </thead>
 	
 	            <tbody>
-	             <c:if test="${cartList == null}">
-					<tr>
-						<td colspan="5" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
-					</tr>
-				</c:if>
-	            <c:if test="${cartList!=null}"> 
-	             <form>
-	             <c:set var="cartSum" value="0"/>
-	             <c:forEach var="cartItem" items="${cartList}" varStatus="status" >
-
-	             	<tr> 
-			           <td class="body-item mbr-fonts-style display-7">
-			           	<input type="checkbox" value="chk" name="chk" id="chk" onclick="checkAll()"/>
-			           </td>
-			           <td class="body-item mbr-fonts-style display-7">
-			            <div>
-			           	 	<a href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black">${cartItem.class_nm}</a>
-			            </div>
-			            <div>
-			           		<img src="<%=request.getContextPath() %>/resources/images/${cartItem.class_thum}" class=""/>강의사진
-			            </div>
-			           </td>
-			           <td class="body-item mbr-fonts-style display-7">
-			           	1
-			           </td>
-			           <td class="body-item mbr-fonts-style display-7">
-			           	${cartItem.class_price}
-			           </td>
-			           <td class="body-item mbr-fonts-style display-7" id="cartprice">
-			           	${cartItem.class_price}
-			           </td>
-		            </tr>
-		         
-	             </c:forEach>
-		            </form>
-	            </c:if>
-	             
+		            <c:if test="${cartList == null}">
+						<tr>
+							<td colspan="5" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
+						</tr>
+					</c:if>
+	           		<c:if test="${cartList!=null}"> 
+	            		<c:forEach var="cartItem" items="${cartList}" varStatus="status" >
+			             	<tr> 
+						        <td class="body-item mbr-fonts-style display-7">
+						        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" onclick="checkAll()" checked="checked"/>
+						        </td>
+						        <td class="body-item mbr-fonts-style display-7">
+							        <div>
+							        	<a href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black">${cartItem.class_nm}</a>
+							        </div>
+							        <div>
+							        	<img src="<%=request.getContextPath() %>/resources/images/${cartItem.class_thum}" class=""/>강의사진
+							        </div>
+						        </td>
+						        <td class="body-item mbr-fonts-style display-7">
+						        1
+						        </td>
+					           	<td class="body-item mbr-fonts-style display-7">
+					           		${cartItem.class_price}
+					           	</td>
+					           	<td class="body-item mbr-fonts-style display-7" id="classSum">
+					           	</td>
+				            </tr>
+	             		</c:forEach>
+	            	</c:if>
+	           	</form>
              </tbody>
 			 <tfoot>
 			 	<tr>
 			 		<td colspan="2" style="text-align: left">
 			 			총 선택한 개수 : <span id="checkNum"></span> 개
+			 			
 			 		</td>
 			 		<td colspan="3" style="text-align: right">
 			 			<div>
-				 			총 결제 금액  : <span id="itemSum"> 원      
+				 			총 결제 금액  : <span id="cartSum" name="cartSum"></span> 원
 			 			</div>
 			 		</td>
 			 	</tr>
@@ -185,18 +191,17 @@
 	          	<a class="btn item-btn btn-success display-7" href="javascript:payment()">결제하기</a>
 					 <script type="text/javascript">
 						 function payment(){
-							/* if($("input:checkbox[name='chk']:checked").length==0)){
-								function goOrder(){
+							if($("input[name='chk']:checked").length==0){
 									//장바구니 체크 안하면 경고창
 									alert('선택된 상품이 없습니다.');
-									break;
-								}
-							} */
-							if(${sessionMid==null}){
-								var result = confirm("로그인 후 결제 하실 수 있습니다."); 
-								location.href="<%=application.getContextPath()%>/login/login";
-							}else{
-								location.href="<%=application.getContextPath()%>/cart/payment"; 
+									
+							} else{
+								if(${sessionMid==null}){
+									var result = confirm("로그인 후 결제 하실 수 있습니다."); 
+									location.href="<%=application.getContextPath()%>/login/login";
+								}else{
+									location.href="<%=application.getContextPath()%>/cart/payment"; 
+									}
 								}
 							};
 					</script>
