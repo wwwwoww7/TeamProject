@@ -80,32 +80,44 @@
 	            <thead>
 	              <tr class="table-heads">
 	               <th class="head-item mbr-fonts-style display-7">상품선택
-	              	 <input type="checkbox" name="Allcheck" id="Allcheck"/>
+	              	 <input type="checkbox" name="Allcheck" id="Allcheck" />
 	              	 <script>
 			 			//전체선택 체크박스
+							var count = $("input[name='chk']").length;
+							var sum = 0;
 			 				$("#Allcheck").click(function() {
 			 					if($("#Allcheck").prop("checked")){
 									$("input[name='chk']").prop("checked", true);
-									var count = $("input:checkbox[name='chk']:checked").length;
-									console.log(count);
-									$('#checkNum').text(count);
 								}else{
 								   	$("input[name='chk']").prop("checked", false);
-								   	var count = $("input:checkbox[name='chk']:checked").length;
-									console.log(count);
-									$('#checkNum').text(count);
-								   	}
-								 });
-						 	       
-						 	         
-			 			//개별선택 체크박스
-							$(".chk").click(function(){
-								if($("input[name='chk']:checked").length==2){
-									$("#checkAll").prop("checked",true);
-								}else{
-									$("#checkAll").prop("checked",false);
 								}
-							});  
+								if($("input[name='chk']").prop("checked")){
+									for(var i=0; i<count ;i++ ){
+										
+										sum += parseInt("#cartprice");
+									}
+								}	
+				 	        console.log(sum);
+			 				$('#checkNum').text($("input:checkbox[name='chk']:checked").length);
+								
+			 				});
+				 			
+						 	       
+			 			    //개별 체크박스     
+			 				function checkAll() {
+				           		var cnt = $("input[name='chk']").length;
+				           		/* var count = $("input:checkbox[name='chk']:checked").length; */
+				           		console.log("cnt:", cnt, $("input[name='chk']:checked").length);
+				       
+								if($("input[name='chk']:checked").length==cnt){
+									$("#Allcheck").prop("checked",true);
+									
+								}else{
+									$("#Allcheck").prop("checked",false);
+								}
+								$('#checkNum').text($("input:checkbox[name='chk']:checked").length);
+		             		}
+							
 			 		</script> 
 	               </th>
 	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
@@ -116,17 +128,19 @@
 	            </thead>
 	
 	            <tbody>
-	             <c:if test="${cartList==null}">
+	             <c:if test="${cartList == null}">
 					<tr>
 						<td colspan="5" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
 					</tr>
 				</c:if>
 	            <c:if test="${cartList!=null}"> 
 	             <form>
-	             <c:forEach var="cartItem" items="${cartList}" >
+	             <c:set var="cartSum" value="0"/>
+	             <c:forEach var="cartItem" items="${cartList}" varStatus="status" >
+
 	             	<tr> 
 			           <td class="body-item mbr-fonts-style display-7">
-			           	<input type="checkbox" value="chk" name="chk" id="chk"/>
+			           	<input type="checkbox" value="chk" name="chk" id="chk" onclick="checkAll()"/>
 			           </td>
 			           <td class="body-item mbr-fonts-style display-7">
 			            <div>
@@ -142,10 +156,11 @@
 			           <td class="body-item mbr-fonts-style display-7">
 			           	${cartItem.class_price}
 			           </td>
-			           <td class="body-item mbr-fonts-style display-7">
+			           <td class="body-item mbr-fonts-style display-7" id="cartprice">
 			           	${cartItem.class_price}
 			           </td>
 		            </tr>
+		         
 	             </c:forEach>
 		            </form>
 	            </c:if>
@@ -155,22 +170,10 @@
 			 	<tr>
 			 		<td colspan="2" style="text-align: left">
 			 			총 선택한 개수 : <span id="checkNum"></span> 개
-			 			<script>
-			 				//전체선택 눌렀을때 개수 나오기
-			 			/* $("#Allcheck").click(function() {
-			 	            $("input[name='chk']:checked").each(function() {
-			 	                var test = $(this).val();
-			 	                console.log(test);
-			 	                $('#checkNum').text(test.length);
-			 	            });
-			 	           
-			 	        }); */
-			 			
-			 			</script>
 			 		</td>
 			 		<td colspan="3" style="text-align: right">
 			 			<div>
-				 			총 결제 금액  :  원      
+				 			총 결제 금액  : <span id="itemSum"> 원      
 			 			</div>
 			 		</td>
 			 	</tr>
@@ -179,27 +182,23 @@
 	        </div>
 	        
 	          	<div class="mbr-section-btn item-footer mt-2" style="text-align: center;">
-	          	<a id="btn_pay" class="btn item-btn btn-success display-7" href="javascript:payment()">결제하기</a>
+	          	<a class="btn item-btn btn-success display-7" href="javascript:payment()">결제하기</a>
 					 <script type="text/javascript">
-						function payment(){
+						 function payment(){
+							/* if($("input:checkbox[name='chk']:checked").length==0)){
+								function goOrder(){
+									//장바구니 체크 안하면 경고창
+									alert('선택된 상품이 없습니다.');
+									break;
+								}
+							} */
 							if(${sessionMid==null}){
 								var result = confirm("로그인 후 결제 하실 수 있습니다."); 
-									location.href="<%=application.getContextPath()%>/login/login";
-								}else {
-									$('#btn_pay').click(function goOrder(){
-										//장바구니 체크 안하면 경고창
-										if($("input[name='chk']:checked").length==0){
-											alert('선택된 상품이 없습니다.');
-											history.go(0);
-										}else{
-											location.href="<%=application.getContextPath()%>/cart/payment"; 
-										}
-
-									});
-								
+								location.href="<%=application.getContextPath()%>/login/login";
+							}else{
+								location.href="<%=application.getContextPath()%>/cart/payment"; 
 								}
-							}
-
+							};
 					</script>
 				</div>
 	        </div>
