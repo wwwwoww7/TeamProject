@@ -8,7 +8,7 @@
 	</insert>
 
 	<select id="selectByMid" parameterType="string" resultType="member"> 
-		select mid, mpw, mname, MPRO_IMG, mnick, memail, minfo
+		select mid, mpw, mname, MPRO_IMG, mnick, memail, minfo, mtel
 		from member
 		where mid=#{mid}
 	</select>
@@ -34,21 +34,21 @@
 	
 	<!-- 수강생이 듣고 있는 강의 select -->
 	<select id="selectClass" parameterType="String" resultType="class">
-		select ta.class_no, ta.class_thum, ta.class_cate_no, ta.class_nm_s, ta.mid
+		select ta.class_no, ta.class_thum, ta.class_cate_no, ta.class_nm_s, ta.mid,ta.class_cate_nm
 		from (
-				select c.class_no, class_thum, c.class_cate_no, class_nm_s,m.mid
-		        from class c, class_appl app, member m
-		        where c.class_no = app.class_no and app.user_id = m.mid) ta
+				select c.class_no, class_thum, c.class_cate_no, class_nm_s,m.mid,ca.class_cate_nm
+		        from class c, class_appl app, member m, class_cate ca
+		        where c.class_no = app.class_no and app.user_id = m.mid and ca.class_cate_no = c.class_cate_no) ta
 		where ta.mid = #{mid}
 	</select>
 	
 	<!--  수강생의 찜 목록 가져오기 -->
 	<select id="selectPick" parameterType="String" resultType="class">
-		select ta.class_no, ta.class_thum, ta.class_cate_no, ta.class_nm_s, ta.mid
+		select ta.class_no, ta.class_thum, ta.class_cate_no, ta.class_nm_s, ta.mid,ta.class_cate_nm
 		from (
-				select c.class_no, class_thum, c.class_cate_no, class_nm_s,m.mid
-		        from class c, pick p, member m
-		        where c.class_no = p.class_no and p.mid = m.mid) ta
+				select c.class_no, class_thum, c.class_cate_no, class_nm_s,m.mid,ca.class_cate_nm
+		        from class c, pick p, member m, class_cate ca
+		        where c.class_no = p.class_no and p.mid = m.mid and ca.class_cate_no = c.class_cate_no) ta
 		where ta.mid = #{mid}
 	</select>
 </mapper> 

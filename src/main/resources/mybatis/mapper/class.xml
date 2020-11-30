@@ -71,10 +71,13 @@
 	
 	
 	<!-- 20.11.26  -->
-	<!-- tutor_id(mid)가 진행중인 강의 리스트 -->
+	<!-- tutor_id(mid)가 진행중인 강의 리스트/강의 카테고리 이름도 가져올 수 있도록 수정(지연) -->
 	<select id="selectbyTutorId" parameterType="String" resultType="class">
-		select class_no, class_nm, class_thum, class_nm_s
-		from class 
+		select class_no, class_nm, class_thum, class_nm_s, class_cate_nm
+		from ( 
+				select class_no, class_nm, class_thum, TUTOR_ID,class_nm_s, ca.class_cate_nm
+		        from class c, class_cate ca
+		        where c.class_cate_no = ca.class_cate_no) t 
 		where tutor_id=#{tutor_id} 
 	</select>
 	
