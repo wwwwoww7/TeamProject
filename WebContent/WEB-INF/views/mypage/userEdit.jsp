@@ -41,80 +41,113 @@
 				<strong style="color: #ffc800;">회원정보수정</strong><br />
 				<br />
 			</h3>
-			<%-- <div class="carousel slide" role="listbox" data-pause="true"
+			<div class="carousel slide" role="listbox" data-pause="true"
 				data-keyboard="false" data-ride="false" data-interval="false">
 				<div class="carousel-inner">
 					<div class="carousel-item">
 						<div class="user col-md-8">
 							<div class="user_image">
-								<img
-									src="<%=application.getContextPath()%>/resources/assets/images/team3.jpg">
+								<img src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
 							</div>
 							<div class="user_text mb-4">
-								<p class="mbr-fonts-style display-5">닉네임</p>
+								<p class="mbr-fonts-style display-5" style="color: #ffc800;">${memberInfo.mnick}</p>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div> --%>
+			</div>
 		</div>
 	</section>
 
-		  <div class="row justify-content-center mt-4">
-            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="YRLmS4KZ0lm+LGcWpuQxcNhFGHeSKkKc9ZhO4WBjl2aHqN64gamoCJiP4CGbZwZQuGVoS64mN03L7afuau3fpLE5TrAgTCYwLjHR3mHg4eWPPiHA+XM1HRhhv7MbytXn">
-                    <div class="">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out
-                            the form!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
-                            problem!</div>
-                    </div>
-                    <div class="dragArea row">
-                    	
-                        <div class="col-md-12 input-group" data-for="mid">
-                    		<span class="input-group-addon" style="width:80px;">아 이 디</span>
-                          	<input type="text" name="mid" placeholder="ID" data-form-field="mid" class="form-control" value="" id="id-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="mpw">
-                    		<span class="input-group-addon" style="width:80px;">비 밀 번 호 </span>
-                          	<input type="password" name="mpw" placeholder="PASSWORD" data-form-field="mpw" class="form-control" value="" id="password-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="mname">
-                    		<span class="input-group-addon" style="width:80px;">이 름</span>
-                          	<input type="text" name="mname" placeholder="NAME" data-form-field="mname" class="form-control" value="" id="name-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="mnick">
-                    		<span class="input-group-addon" style="width:80px;">닉 네 임 </span>
-                          	<input type="password" name="mpw" placeholder="NICKNAME" data-form-field="mnick" class="form-control" value="" id="nickname-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="mtel">
-                    		<span class="input-group-addon" style="width:80px;">핸드폰번호</span>
-                          	<input type="text" name="mtel" placeholder="010-xxxx-xxxx" data-form-field="mtel" class="form-control" value="" id="tel-form5-29">
-                        </div>
-                        <div class="col-md-12 input-group" data-for="memail">
-                    		<span class="input-group-addon" style="width:80px;">이 메 일</span>
-                          	<input type="text" name="mtel" placeholder="xxx@xxxx.xxx" data-form-field="memail" class="form-control" value="" id="email-form5-29">
-                        </div>
-                      
-                        <div class="col-md-12 input-group" data-for="mphotoAttach">
-							<span class="input-group-addon" style="width:80px;">프로필사진</span>     
-							<input type="file" name="mphotoAttach" class="form-control">
+	<div class="row justify-content-center mt-4">
+		<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+			<form action="userUpdate" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+				
+				<div class="dragArea row" style="margin: 5px">
+					<div class="col-md-12 input-group">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">아 이 디</span> 
+						<input type="text" id="mid" name="mid" class="form-control" value="${memberInfo.mid}" readonly/>
+					</div>
+					
+					<div class="col-md-12 input-group" data-for="mpw">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">비밀번호</span> 
+						<input type="password" id="mpw" name="mpw" class="form-control" value="${memberInfo.mpw}"/>
+					</div>
+					<div class="col-md-12 input-group" data-for="mname">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">이  름</span> 
+						<input type="text" id="mname" name="mname" class="form-control" value="${memberInfo.mname}"/>
+					</div>
+					<div class="col-md-8 input-group" data-for="mnick">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">닉  네  임</span>
+						<input type="text" id="mnick" name="mnick" class="form-control" value="${memberInfo.mnick}"/> 
+					</div>
+					<div class="col-md-3">
+	       				<button type="button" class="btn btn-sm btn-success text-primary" id="chk" value="N" onclick="check();">중복 확인</button>
+		       				<script>
+	       						<%-- function check() {
+									$.ajax({
+										url : "<%=request.getContextPath()%>/login/check",
+											type : "post",
+											dataType : "json",
+											data : { "mnick": $("#mnick").val()},
+											success : function(data){
+												console.log(data.result);
+												if(data.result == 1){
+													$("#chk").attr("value", "N");
+													document.getElementById("chk_result").innerHTML = "사용 불가능한 아이디입니다.";
+												}
+												else if(data.result == 0){
+													$("#chk").attr("value", "Y");
+													document.getElementById("chk_result").innerHTML = "변경 가능한 아이디입니다.";
+												}
+											}
+										});
+									} --%>
+							</script>
+
+              		</div>
+					<div class="col-md-12 input-group" data-for="mtel">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">전화번호</span>  
+						<input type="text" id="mtel" name="mtel" class="form-control" value="${memberInfo.mtel}"/>
+					</div>
+					<div class="col-md-12 input-group" data-for="memail">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">이메일</span>
+						<input type="text" id="memail" name="memail" class="form-control" value="${memberInfo.memail}"/>
+					</div>
+
+					<div class="col-md-12 input-group" data-for="mphotoAttach">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">프로필 이미지</span>
+						<input type="file" id="mphotoAttach" name="mphotoAttach" class="form-control">
+					</div>
+					<div class="col-md-12 input-group" data-for="mphotoAttach">
+						<span class="input-group-text" style="width: 120px; background-color: #ffff;">여기에 사진 보이게 해야함</span>
+						<input type="file" id="mphotoAttach" name="mphotoAttach" class="form-control">
+					</div>
+					<sec:authorize access="hasRole('ROLE_TUTOR')">
+						<div class="col-md-12 input-group" data-for="mphotoAttach">
+							<span class="input-group-text" style="width: 120px; background-color: #ffff;">강사소개</span>
+							<textarea id="minfo" name="minfo" class="form-control" style="height: 200px;">${memberInfo.minfo}</textarea>
 						</div>
-						
-                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-	                        <%-- <c:if test=""> <!-- 일반사용자일 경우 --> --%>
-	                        	<a class="btn" style="margin: 10px; background-color: #ffc800;" href="mypage_user">수정완료</a>
-	                        	<a class="btn" style="margin: 10px; background-color: #ffc800;" href="mypage_user">취소</a>
-	                       <%-- 	</c:if>
-                        	<c:if test=""> <!-- 튜터의 경우 --> --%>
-                        	<a class="btn" style="margin: 10px; background-color: #ffc800;" href="mypage_tutor">수정완료</a>
-                        	<a class="btn" style="margin: 10px; background-color: #ffc800;" href="mypage_tutor">취소</a>
-                       	<%-- </c:if> --%>
-                        </div>
-                    </div>
-                </form>
-            </div>
-           </div>
+					</sec:authorize>
+					
+				</div>
+				<div style="height: 60px;"></div>
+				<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="수정완료"/>
+						<a class="btn item-btn btn-success display-7 text-primary" style="margin: 10px; background-color: #ffc800;"
+							href="mypage_user?mid=${sessionMid}">취소</a>
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_TUTOR')">
+						<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="수정완료"/>
+						<a class="btn item-btn btn-success display-7 text-primary" style="margin: 10px; background-color: #ffc800;"
+							href="mypage_tutor?mid=${sessionMid}">취소</a>
+					</sec:authorize>
+				</div>
+			</form>
+			<div style="height: 100px;"></div>
+		</div>
+	</div>
 
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 

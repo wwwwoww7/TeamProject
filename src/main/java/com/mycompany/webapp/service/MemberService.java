@@ -79,5 +79,9 @@ public class MemberService {
 		List<ClassDto> list = memberDao.selectPick(mid);
 		return list;
 	}
+
+	public void updateMember(MemberDto member) {
+		int rows = memberDao.updateMember(member);
+	}
 	
 }
