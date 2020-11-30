@@ -6,7 +6,7 @@
 	
 	
 	<script type="text/javascript">
-		function boardList(pageNo) {
+		 function boardList(pageNo) {
 			if(!pageNo){
 				pageNo=1;
 			}
@@ -17,7 +17,9 @@
 					$("#fun1_result").html(data);
 				}
 			});
-		}
+		} 
+		
+		
 		function communityDetail() {
 			$.ajax({
 				url:"<%=request.getContextPath()%>/community/communityDetail",
