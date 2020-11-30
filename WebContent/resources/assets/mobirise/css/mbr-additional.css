@@ -2469,6 +2469,7 @@ section.lazy-placeholder:after {
   width: 100%;
   min-width: 100%;
   min-height: 100%;
+  border: 2px solid #ffc800;
 }
 @media (max-width: 230px) {
   .cid-sh9WSPbYRc .user_image {
