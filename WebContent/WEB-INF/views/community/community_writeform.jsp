@@ -7,10 +7,7 @@
 <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 	
 	<form action="boardWriteForm" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
-		
-		
-		
-		
+			
 		<div class="dragArea row" style="margin: 5px">
 			<div class="col-md-6 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff;">카 테 고 리</span> 

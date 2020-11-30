@@ -10,32 +10,22 @@
 	          <div class="row search">
 	            <div class="col-md-6"></div>
 	            <div class="col-md-6">
-	            
-	            
-	            
-					            
-	                <div class="mbr-section-btn" align="right">
-	                
-	               	<%-- <c:if test="${sessionMid==null}"> --%>
-	                  <a class="btn item-btn btn-warning display-4" href="javascript:communityWriteReview()">글쓰기</a>
-	                  
-						<script type="text/javascript">
-						function communityWriteReview() {
-							$.ajax({
-									url:"community/communityWriteReview",
-									success:function(data) {
-									$("#fun1_result").html(data);
-									}
-								});
-							}
-						</script>
-	                  <%-- </c:if>--%>
-	                  
-	                </div>
 	                <div  class="mbr-section-btn" align="right">
-	                
-	                	<div class="dropdown">
-							<button id="cateselect" align="right" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" style="float:right;">
+               	   		<%-- <c:if test="${sessionMid==null}"> --%>
+		                  <a class="btn item-btn btn-warning display-4" href="javascript:communityWriteReview()" >글쓰기</a>
+							<script type="text/javascript">
+							function communityWriteReview() {
+								$.ajax({
+										url:"community/communityWriteReview",
+										success:function(data) {
+										$("#fun1_result").html(data);
+										}
+									});
+								}
+							</script>
+		                  <%-- </c:if>--%>
+	                	<div class="dropdown"  style="display: inline-block;">
+							<button id="cateselect" align="right" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown">
 								 전체
 							</button>
 							<div class="dropdown-menu">
@@ -92,7 +82,7 @@
 						<th class="head-item mbr-fonts-style display-7 text-center" style="width:70px">별점</th>
 						<th class="head-item mbr-fonts-style display-7 text-center" style="width:100px">날짜</th>
 						<th class="head-item mbr-fonts-style display-7 text-center" style="width:100px">제목</th>
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">내용</th>
+						<!-- <th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">내용</th> -->
 						<th class="head-item mbr-fonts-style display-7 text-center" style="width:70px">조회수</th>
 						<th class="head-item mbr-fonts-style display-7 text-center" style="width:80px">닉네임</th>
 					</tr>
@@ -105,7 +95,7 @@
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
-						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
+						<%-- <td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
 					</tr>
@@ -117,7 +107,7 @@
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
+						<%-- <td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
 						
@@ -130,7 +120,7 @@
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
+						<%-- <td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
 						
@@ -143,7 +133,7 @@
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_star}</a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_title}</a></td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td>
+						<%-- <td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_hitno}</a></td>
 						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.mnick}</a></td>
 					</tr>
@@ -151,28 +141,27 @@
 				</tbody>
 			
 			<tr>
-				<td colspan="8" style="text-align: center; ">
-				
+				<td colspan="7" style="text-align: center; ">
 					<ul class="pagination justify-content-center" style="margin:20px 0">
-						<li class="page-item"><a class="page-link" href="javascript:fun6(1)">처음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,1)">처음</a></li>
 						<c:if test="${pager.groupNo > 1 }">
 							<li class="page-item">
-								<a class="page-link" href="javascript:fun6(${pager.startPageNo-1})">이전</a>
+								<a class="page-link" href="javascript:allFunction(6,${pager.startPageNo-1})">이전</a>
 							</li>
 						</c:if>
 						
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<c:if test="${pager.pageNo == i }">
-								<li class="page-item active"><a class="page-link" href="javascript:fun6(${i})">${i}</a></li>
+								<li class="page-item active"><a class="page-link" href="javascript:allFunction(6,${i})">${i}</a></li>
 							</c:if>
 							<c:if test="${pager.pageNo != i }">
-								<li class="page-item"><a class="page-link" href="javascript:fun6(${i})">${i}</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:allFunction(6,${i})">${i}</a></li>
 							</c:if>
 						</c:forEach>
 						<c:if test="${pager.groupNo <pager.totalGroupNo}">
-						<li class="page-item"><a class="page-link" href="javascript:fun6(${pager.endPageNo+1})">다음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,${pager.endPageNo+1})">다음</a></li>
 						</c:if>
-						<li class="page-item"><a class="page-link" href="javascript:fun6(${pager.totalPageNo})">맨끝</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,${pager.totalPageNo})">맨끝</a></li>
 					</ul>
 					
 					</td>

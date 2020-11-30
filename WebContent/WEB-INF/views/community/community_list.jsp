@@ -6,7 +6,7 @@
 	
 	
 	<script type="text/javascript">
-		 function boardList(pageNo) {
+		 /* function boardList(pageNo) {
 			if(!pageNo){
 				pageNo=1;
 			}
@@ -17,7 +17,7 @@
 					$("#fun1_result").html(data);
 				}
 			});
-		} 
+		}  */
 		
 		
 		function communityDetail() {
@@ -94,11 +94,11 @@
 			</c:forEach>
             <c:forEach var="communityDto" items="${chat}">
 				<tr>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_no}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_title}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_content}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mid}</td>
 				</tr>
@@ -108,21 +108,21 @@
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_title}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_content}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mid}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_hitno}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.mid}</a></td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${boast}">
 				<tr>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_no}</a></td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_title}</td>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_content}</td>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.mid}</td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_hitno}</a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.mid}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${assign}">
@@ -138,29 +138,26 @@
 			</c:forEach>    
               <tr>
 				<td colspan="7" style="text-align: center; ">
-				
 					<ul class="pagination justify-content-center" style="margin:20px 0">
-						<li class="page-item"><a class="page-link" href="javascript:boardList(1)">처음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate}, 1)">처음</a></li>
 						<c:if test="${pager.groupNo > 1 }">
 							<li class="page-item">
-								<a class="page-link" href="javascript:boardList(${pager.startPageNo-1})">이전</a>
+								<a class="page-link" href="javascript:allFunction(${cate},${pager.startPageNo-1})">이전</a>
 							</li>
 						</c:if>
-						
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<c:if test="${pager.pageNo == i }">
-								<li class="page-item active"><a class="page-link" href="javascript:boardList(${i})">${i}</a></li>
+								<li class="page-item active"><a class="page-link" href="javascript:allFunction(${cate},${i})">${i}</a></li>
 							</c:if>
 							<c:if test="${pager.pageNo != i }">
-								<li class="page-item"><a class="page-link" href="javascript:boardList(${i})">${i}</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate},${i})">${i}</a></li>
 							</c:if>
 						</c:forEach>
 						<c:if test="${pager.groupNo <pager.totalGroupNo}">
-						<li class="page-item"><a class="page-link" href="javascript:boardList(${pager.endPageNo+1})">다음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate},${pager.endPageNo+1})">다음</a></li>
 						</c:if>
-						<li class="page-item"><a class="page-link" href="javascript:boardList(${pager.totalPageNo})">맨끝</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate},${pager.totalPageNo})">맨끝</a></li>
 					</ul>
-					
 					<%-- <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 						<c:if test="${pager.pageNo == i }">
 							<a class="btn btn-outline-danger btn-sm" href="javascript:boardList(${i})">${i}</a>

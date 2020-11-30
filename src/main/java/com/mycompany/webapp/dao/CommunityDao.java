@@ -87,4 +87,9 @@ public class CommunityDao {
 		return review;
 	}
 
+	/*	public CommunityDto selectByComno(int comm_no) {
+			CommunityDto communityDetail = sst.selectOne("mybatis.mapper.board.selectByComno", comm_no)
+			return null;
+		}*/
+
 }
