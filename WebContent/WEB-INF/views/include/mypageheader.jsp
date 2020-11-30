@@ -37,6 +37,7 @@
                         </a>
                         <div class="dropdown-menu">
 	                        <a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>">Home</a>
+	                        <a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>/mypage/userEdit?mid=${sessionMid}">회원정보수정</a>
 	                        <sec:authorize access="hasRole('ROLE_USER')">
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2f">나의 수강 목록</a>
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2h">찜 목록</a>
@@ -48,6 +49,7 @@
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2l">공지사항</a>
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2m">강의 문의</a>
 	                        </sec:authorize>
+	                        <a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/logout">Logout</a>
                        </div>
                 </li>
              </ul>

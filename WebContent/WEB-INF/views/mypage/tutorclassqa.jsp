@@ -15,17 +15,17 @@
 		</thead>
 		<tbody>
 		<c:forEach var="qalist" items="${list}"> 
-		<tr> 
-			<td class="body-item mbr-fonts-style display-7">${qalist.class_nm_s}</td>
-			<td class="body-item mbr-fonts-style display-7">${qalist.class_qa_cate}</td>
-			<td class="body-item mbr-fonts-style display-7">
-				<a class="text-black" href="<%=request.getContextPath()%>/mypage/qaDetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
-			</td>
-			<td class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
-			<td class="body-item mbr-fonts-style display-7">
-				<fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/>
-			</td>
-		</tr>
+			<tr> 
+				<td class="body-item mbr-fonts-style display-7">${qalist.class_nm_s}</td>
+				<td class="body-item mbr-fonts-style display-7">${qalist.class_qa_cate}</td>
+				<td class="body-item mbr-fonts-style display-7">
+					<a class="text-black" href="<%=request.getContextPath()%>/mypage/qaDetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
+				</td>
+				<td class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
+				<td class="body-item mbr-fonts-style display-7">
+					<fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/>
+				</td>
+			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
@@ -48,7 +48,7 @@
 				<c:if test="${pager.groupNo < pager.totalGroupNo}">
 					<a class="text-black" style="margin-right: 15px;" href="javascript:tutorClassNotice(${pager.endPageNo+1},${pager.mid})">&gt;</a>
 				</c:if>
-					<a class="text-black" href="javascript:tutorClassNotice(${pager.totalPageNo},${pager.mid})">&raquo;</a>
+				<a class="text-black" href="javascript:tutorClassNotice(${pager.totalPageNo},${pager.mid})">&raquo;</a>
 			</td>
 		</tr>
 	</table>

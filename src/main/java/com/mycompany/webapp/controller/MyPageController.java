@@ -68,14 +68,24 @@ public class MyPageController {
 	
 	//수강생 강의문의 목록 보기
 	@GetMapping("/myQa")
-	public String myQa() {
+	public String myQa(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
+		
+		int totalRows = classNoticeService.getTotalRow();
+		
+		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
+		List<ClassQADto> list = classQAService.getQa(pager);
+		model.addAttribute("list",list);
+		model.addAttribute("pager",pager); 
 		
 		return "mypage/myQa";
 	}
 	
 	//사용자의 강의문의 상세내용보기!!
 	@GetMapping("/myqadetail")
-	public String myqadetail() {
+	public String myqadetail(int class_qa_no, Model model) {
+		
+		ClassQADto qalist = classQAService.getQADetail(class_qa_no);
+		model.addAttribute("qalist",qalist);
 		
 		return "mypage/myqadetail";
 	}
@@ -96,15 +106,6 @@ public class MyPageController {
 		model.addAttribute("memberInfo",memberInfo);
 		
 		return "mypage/mypage_tutor";
-	}
-	
-	//강사의 강의 목록
-	@PostMapping("/tutorClassList")
-	public String tutorClassList() {
-		
-	
-		
-		return "mypage/tutorclasslist";
 	}
 	
 	//강사의 공지사항 목록

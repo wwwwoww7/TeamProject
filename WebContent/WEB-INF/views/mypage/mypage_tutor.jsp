@@ -47,7 +47,7 @@
 					<div class="carousel-item">
 						<div class="user col-md-8">
 							<div class="user_image">
-								<a href="userEdit">
+								<a href="userEdit?mid=${sessionMid}">
 									<img src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
 								</a>
 							</div>

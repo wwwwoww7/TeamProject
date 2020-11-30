@@ -31,20 +31,19 @@
 </head>
 <body>
   
- <jsp:include page="/WEB-INF/views/include/mypageheader.jsp"/>
+	<jsp:include page="/WEB-INF/views/include/mypageheader.jsp"/>
 
-<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc" data-interval="false" id="testimonials3-1e">
-    <div class="text-center container-fluid">
-    	<h3 class="mb-4 mbr-fonts-style display-2">
-    		<strong style="color:#ffc800;">My Page</strong><br/><br/>
-    	</h3>
-        <div class="carousel slide" role="listbox" data-pause="true"
-				data-keyboard="false" data-ride="false" data-interval="false">
+	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc" data-interval="false" id="testimonials3-1e">
+	    <div class="text-center container-fluid">
+	    	<h3 class="mb-4 mbr-fonts-style display-2">
+	    		<strong style="color:#ffc800;">My Page</strong><br/><br/>
+	    	</h3>
+	        <div class="carousel slide" role="listbox" data-pause="true" data-keyboard="false" data-ride="false" data-interval="false">
 				<div class="carousel-inner">
 					<div class="carousel-item">
 						<div class="user col-md-8">
 							<div class="user_image">
-								<a href="userEdit">
+								<a href="userEdit?mid=${sessionMid}">
 									<img src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
 								</a>
 							</div>
@@ -55,8 +54,8 @@
 					</div>
 				</div>
 			</div>
-    </div>
-</section>
+	    </div>
+	</section>
 
 <section class="gallery5 mbr-gallery cid-shfcpp8srP" id="gallery5-2f">  
     <div class="container">
@@ -67,9 +66,7 @@
 			<div class="container">
 	        	<div class="row mt-4">
 					<c:forEach var="hotclass" items="${userclassList}">
-		
 						<div class="item features-image col-12 col-md-6 col-lg-3">
-							
 						     <div class="item-wrapper">
 						         <div class="item-img">
 						             <img src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum}" alt="" data-slide-to="3">
@@ -79,12 +76,10 @@
 						             <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
 						                 <em>${hotclass.class_nm_s}</em>
 						             </h6>
-						             
 						         </div>
 						         <div class="mbr-section-btn item-footer mt-2">
 							         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no}" 
 							            class="btn item-btn btn-success display-7">상세 &gt;
-							            <!-- 버튼 주황색 :  class="btn item-btn btn-warning display-7"  -->
 							         </a>
 						         </div>
 						     </div>
@@ -150,6 +145,7 @@
 </section>
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+ 	<input type="hidden" id="sessionMid" name="sessionMid" value="${sessionMid}"/>
 
 	
 	 <script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
