@@ -56,7 +56,7 @@
 					<input type="hidden" id="class_notice_no" name="class_notice_no" value="${notice.class_notice_no}"/>
 					<div class="row justify-content-center mt-4">
 						<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-							<form action="/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+							<form action="noticeWrite" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-6 input-group">
 										<span class="input-group-text" style="width: 30%; background-color: #ffff;">강 의 선 택</span> 
@@ -82,7 +82,7 @@
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">첨부파일</span> 
-										<input type="file" id="class_hw_file" name="class_hw_file" class="form-control"/>
+										<input type="file" id="class_hwFile" name="class_hwFile" class="form-control"/>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">

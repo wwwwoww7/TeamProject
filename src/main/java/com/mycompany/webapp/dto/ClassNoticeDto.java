@@ -1,6 +1,7 @@
 package com.mycompany.webapp.dto;
 
 import java.util.Date;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ClassNoticeDto {
 	
@@ -12,6 +13,8 @@ public class ClassNoticeDto {
 	private String mid;
 	private int class_hw_no;
 	private String class_hw_file;
+	private MultipartFile class_hwFile;
+	private String class_hw_type;
 	private int class_no;
 	
 	
@@ -68,6 +71,18 @@ public class ClassNoticeDto {
 	}
 	public void setClass_nm_s(String class_nm_s) {
 		this.class_nm_s = class_nm_s;
+	}
+	public MultipartFile getClass_hwFile() {
+		return class_hwFile;
+	}
+	public void setClass_hwFile(MultipartFile class_hwFile) {
+		this.class_hwFile = class_hwFile;
+	}
+	public String getClass_hw_type() {
+		return class_hw_type;
+	}
+	public void setClass_hw_type(String class_hw_type) {
+		this.class_hw_type = class_hw_type;
 	}
 	
 }
