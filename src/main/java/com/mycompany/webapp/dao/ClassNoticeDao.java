@@ -56,7 +56,7 @@ public class ClassNoticeDao {
 		return notice;
 	}
 
-	public List<ClassNoticeDto> selectClassName(List<ClassNoticeDto> list) {
+	public List<ClassNoticeDto> selectClassName(ClassNoticeDto list) {
 		List<ClassNoticeDto> classNamelist = sst.selectList("mybatis.mapper.class_notice.selectClassName",list);
 		return classNamelist;
 	}
@@ -65,6 +65,8 @@ public class ClassNoticeDao {
 		int totalRows = sst.selectOne("mybatis.mapper.class_notice.countAll");
 		return totalRows;
 	}
+
+
 
 	
 }

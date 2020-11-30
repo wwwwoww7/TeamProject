@@ -168,9 +168,12 @@ public class MyPageController {
 	
 	//강사의 강의공지사항 글쓰기 폼 요청
 	@GetMapping("/noticeWriteForm")
-	public String noticeWriteForm() {
-		/*List<ClassNoticeDto> classNolist = classNoticeService.selectClassNo(list);
-		model.addAttribute("classNolist",classNolist);*/
+	public String noticeWriteForm(ClassNoticeDto classNotice, Model model) {
+		
+		//해당 강사가 강의하는 강의 목록 가져와야함
+		List<ClassNoticeDto> classNames = classNoticeService.selectClassNo(classNotice);
+		model.addAttribute("classNames",classNames);
+		
 		return "mypage/noticeWriteForm";
 	}
 	
@@ -180,17 +183,7 @@ public class MyPageController {
 		//게시물쓰기
 		classNoticeService.noticeWrite(class_notice_no);
 		
-		//json응답만들기
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		String json = jsonObject.toString(); //{"result":"success"}
 		
-		//json보내기
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json;charset=utf-8");
-		out.println(json);
-		out.flush();
-		out.close();
 				
 	}
 	
@@ -198,7 +191,7 @@ public class MyPageController {
 	@PostMapping("/tutorClassQA")
 	public String tutorClassQA(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
 		
-		int totalRows = classNoticeService.getTotalRow();
+		int totalRows = classQAService.getTotalRow();
 		
 		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
 		List<ClassQADto> list = classQAService.getQa(pager);
@@ -218,12 +211,9 @@ public class MyPageController {
 		return "mypage/qadetail";
 	}
 	
-	@GetMapping("/qaAnswer")
+	
+	@PostMapping("/qaAnswer")
 	public String qaAnswer(ClassQADto qaAnswer, Model model) {
-		
-		logger.info("확인============================"+qaAnswer.getClass_qa_answer());
-		logger.info("확인============================"+qaAnswer.getClass_no());
-		
 		
 		//답변 삽입하러 감
 		classQAService.setQAAnswer(qaAnswer);
@@ -232,7 +222,7 @@ public class MyPageController {
 		ClassQADto qalist = classQAService.getQADetail(qaAnswer.getClass_qa_no());
 		model.addAttribute("qalist",qalist);
 		
-		return "redirect:/mypage/qadetail";
+		return "redirect:/mypage/qaDetail?class_qa_no="+qaAnswer.getClass_qa_no();
 	}
 	
 	
@@ -249,6 +239,7 @@ public class MyPageController {
 		return "mypage/userEdit";
 	}
 	
+	//회원정보수정하기
 	@PostMapping("/userUpdate")
 	public String userUpdate(MemberDto member) {
 		

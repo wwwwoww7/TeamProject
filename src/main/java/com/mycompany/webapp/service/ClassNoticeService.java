@@ -54,10 +54,12 @@ public class ClassNoticeService {
 		classNoticeDao.insertNotice(classNoticeDto);
 	}
 
-	public List<ClassNoticeDto> selectClassNo(List<ClassNoticeDto> list) {
+	public List<ClassNoticeDto> selectClassNo(ClassNoticeDto list) {
 		List<ClassNoticeDto> classNamelist = classNoticeDao.selectClassName(list);
 		return classNamelist;
 	}
 
+
+	
 	
 }

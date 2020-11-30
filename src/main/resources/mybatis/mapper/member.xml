@@ -53,7 +53,9 @@
 	</select>
 	
 	<!-- 회원정보 수정 -->
-	<update id="updateMember">
-		
+	<update id="updateMember" parameterType="member">
+		UPDATE member 
+		set mpw=#{mpw}, mname=#{mname},mtel=#{mtel},memail=#{memail},minfo=#{minfo},mnick=#{mnick},mpro_img=#{mpro_img}
+		where mid = #{mid}
 	</update>
 </mapper> 

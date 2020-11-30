@@ -60,24 +60,23 @@
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-6 input-group">
 										<span class="input-group-text" style="width: 30%; background-color: #ffff;">강 의 선 택</span> 
-										<select id="class_nm_s" name="class_nm_s" style="width: 70%;">
-									<c:forEach var="className" items="${classNolist}">
-										<%-- <c:if test=""> --%>
-											<option value="강의명1" selected>${className.class_no}</option>
-										<%-- </c:if> --%>
-									</c:forEach>
-								</select>
+										<select id="class_nm_s" name="class_nm_s" style="width: 70%; display: inline;" >
+											<c:forEach var="className" items="${classNames}">
+												<option value="강의명1" selected>${className.class_nm_s}</option>
+											</c:forEach>
+										</select>
 									</div>
 									<div class="col-md-6 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff;">제	목</span> 
-										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>
-										<span id="ntitleError" class="error"></span>
+										<span class="input-group-text" style="width: 100px; background-color: #ffff;">작 성 자 </span> 
+										<input type="text" id="mid" name="mid" class="form-control" value="${sessionMid}" readonly/>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px;">
+									
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff;">작 성 자 </span> 
-										<input type="text" id="mid" name="mid" class="form-control" value="${notice.mid}" readonly/>
+										<span class="input-group-text" style="width: 100px; background-color: #ffff;">제	목</span> 
+										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>
+										<span id="ntitleError" class="error"></span>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
@@ -95,10 +94,10 @@
 									</div>
 								</div>
 								<div class="dragArea row">
-									<div class="col-md-2"></div>
-									<div class="col-md-4">
-										<a class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;" href="javascript:noticeWrite()" >글쓰기</a>
-										<script type="text/javascript">
+									<div class="col-md-3"></div>
+									<div class="col-md-3">
+										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin-left: 5px;" value="글쓰기"/>
+										<!-- <script type="text/javascript">
 											function noticeWrite() {
 												
 												var noticeNo = $("#class_notice_no").val();
@@ -130,12 +129,12 @@
 													}
 												});
 											}
-										</script>		
+										</script>		 -->
 									</div>
-									<div class="col-md-4">
-										<a class="btn item-btn btn-success display-7 text-primary" href="<%=request.getContextPath()%>/mypage/mypage_tutor">취소</a>
+									<div class="col-md-3">
+										<a class="btn item-btn btn-success display-7 text-primary" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">취소</a>
 									</div>
-									<div class="col-md-2"></div>
+									<div class="col-md-3"></div>
 								</div>
 							</form>
 						</div>
@@ -145,3 +144,48 @@
 			</div>
 		</div>
 	</section>
+
+	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/popper/popper.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/tether/tether.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/smoothscroll/smooth-scroll.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/dropdown/js/nav-dropdown.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/dropdown/js/navbar-dropdown.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/parallax/jarallax.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/masonry/masonry.pkgd.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			$("#class_nm_s").show();
+		});
+	</script>
+	</body>
+</html>		

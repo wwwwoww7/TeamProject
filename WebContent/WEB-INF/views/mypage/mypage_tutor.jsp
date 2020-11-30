@@ -48,7 +48,7 @@
 						<div class="user col-md-8">
 							<div class="user_image">
 								<a href="userEdit?mid=${sessionMid}">
-									<img src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
+									<img class="rounded-circle" style="border: 4px solid #ffc800;"src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
 								</a>
 							</div>
 							<div class="user_text mb-4">
