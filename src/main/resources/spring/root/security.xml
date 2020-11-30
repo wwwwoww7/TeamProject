@@ -29,20 +29,34 @@
 		<security:form-login login-page="/login/login"
 					 login-processing-url="/login"	
 					 username-parameter="mid"
-					 password-parameter="mpw"
+					 password-parameter="mpw"		
 					 authentication-success-handler-ref="authenticationSuccessHandler"
 					 authentication-failure-handler-ref="authenticationFailureHandler"/>			 
 						 
 		<security:logout logout-url="/logout" 
-						 success-handler-ref="logoutSuccessHandler"/>
+						delete-cookies="remember_cookie"
+						success-handler-ref="logoutSuccessHandler"/>
 						 
+
+	 	<security:remember-me key="autoLoginKey"
+	 						token-validity-seconds="604800"
+	 						remember-me-parameter="remember-me"
+	 						remember-me-cookie="remember_cookie"/>
+	 
+	 
+	 	<!-- user-service-ref="userDetailsService" -->
+	 	
+	 	
+	 	
+	 	
+	 	
 		<!-- ### 사이트간 요청 위조 비활성화 (기본: 활성화)###  -->
 		<security:csrf disabled="true"/>		
 		
 		<!-- ### url 권한 설정 ### -->
 		<!-- /path/path/**, /path/method* -->
-		
-		
+
+  
 		<security:intercept-url pattern="/login/admin*" access="hasRole('ROLE_ADMIN')"/> <!-- admin*: 경로, admin:이름 -->
 		
 		<security:intercept-url pattern="/login/tutor*" access="hasRole('ROLE_TUTOR')"/>

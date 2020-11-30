@@ -32,7 +32,7 @@
 		<section class="form4 cid-shauVUIa9i mbr-fullscreen"  id="form4-27">
 		<div class="container">
 	        <div class="row content-wrapper justify-content-center">
-	            <div class="col-lg-3 offset-lg-1 mbr-form" data-form-type="formoid">
+	            <div class="col-lg-4 offset-lg-1 mbr-form" data-form-type="formoid">
 	                <form action="<%=application.getContextPath()%>/login" method="POST" class="mbr-form form-with-styler" data-form-title="loginform">
 	            
 	                    <div class="dragArea row">
@@ -50,12 +50,18 @@
 	                            <input type="password" name="mpw" placeholder="Password" data-form-field="mpw" class="form-control" value="" id="password-form4-27">
 	                        </div>
 	                    
-	                    </div>
+	                   
 	                    
-	                  	<div class="col-lg-12 col-md-12 col-sm-12">
-							<span class="pull-right">
-								<a href="<%=request.getContextPath()%>/login/findpw" style="color:black "> Forgot Password?</a>
-							</span>
+		                  	<div class="col-lg-12 row form-group">
+		                  	
+		            			<div class="col-lg-6 " style="float:left">
+									<input id ="remember-me" name ="remember-me" type ="checkbox"/>Auto Login  
+								</div>   
+								<div class="col-lg-6" style="float:right">
+									<a href="<%=request.getContextPath()%>/login/findpw" style="color:black "> Forgot Password?</a>
+								</div>
+							
+							</div>
 						</div>
 						
 						<div class="col-12 col-md-auto mbr-section-btn">
@@ -80,7 +86,7 @@
 	            </div>
 	            
 				
-	            <div class="col-lg-7 offset-lg-1 col-12">
+	            <div class="col-lg-6 offset-lg-1 col-12">
 	                <div class="image-wrapper">
 	                     <img src="<%=application.getContextPath()%>/resources/assets/images/features4.jpg" alt="Mobirise" style="height: 30rem;">
 	                </div>
