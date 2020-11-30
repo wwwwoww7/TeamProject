@@ -14,17 +14,20 @@
 			 </div>
 	         <div class="item-content">
 	         
-	         	<table>
-	         		<tr width="100%">
+	         	<table style="width: 100%;">
+	         		<tr >
 	         			<td>
 	         				<h5 class="item-title mbr-fonts-style display-7">
 				             	<strong>${hotclass.class_cate_nm }</strong>
 				            </h5>
 	         			</td>
 	         			<td rowspan="2">
-         					<a class="mbr-iconfont " href="#">
-			                    <span class="btn-black-outline mbri-hearth"></span>
-			                </a>
+	         				<h5 class="display-7">
+	         					<a class="mbr-iconfont" href="#">
+				                    <span class="btn-black-outline mbri-hearth"></span>
+				                </a>
+	         				
+	         				</h5>
 	         			</td>
 	         		</tr>
 					<tr>

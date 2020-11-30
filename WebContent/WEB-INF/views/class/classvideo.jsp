@@ -41,15 +41,44 @@
                         <strong>class name</strong>
                     </h2>
                     <p class="mbr-text mb-3 mbr-fonts-style display-7">
+                    	현재 강의 게시판 
                         Intro with Color, paddings and a video on the right. Mobirise helps you cut down
                         development time by providing you with a flexible website editor with a drag and drop interface.
-                    </p><!--  href="javascript:popupClose()" -->
-                    <div class="mbr-section-btn"><a class="btn btn-success display-4" href="https://jp89p.channel.io">class end</a></div>
+                    </p>
+                    <table class="table isSearch">
+                   		<thead>
+                   			<tr class="table-heads ">
+                   				<th class="head-item mbr-fonts-style display-7 text-center">글번호</th>
+                   				<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
+                   				<th class="head-item mbr-fonts-style display-7 text-center">작성자</th>
+                   				<th class="head-item mbr-fonts-style display-7 text-center">작성일</th>
+                   			</tr>
+                   		</thead>
+                   		<tbody>
+                   			<tr>
+                   				<td>1</td>
+                   				<td>얼마나 해야 잘 할 수 있나요?</td>
+                   				<td>빰</td>
+                   				<td>2020-11-28</td>
+                   			</tr>
+                   		
+                   		</tbody>
+                   	</table>
+                    
+                    
+                    
+                    <!--  href="javascript:popupClose()" -->
+<!--                     <div class="mbr-section-btn"><a class="btn btn-success display-4" href="https://jp89p.channel.io">class end</a></div> -->
+                    <div class="mbr-section-btn"><a class="btn btn-success display-4" href="javascript:popupClose()">강의 종료</a></div>
                 </div>
             </div>
-            <div class="mbr-figure col-12 col-md-7">
-	            <iframe class="mbr-embedded-video" src="https://www.youtube.com/embed/HujDEPAWboE?rel=0&amp;amp;showinfo=0&amp;autoplay=0&amp;loop=0" width="1280" height="500" frameborder="0" allowfullscreen>
-	            </iframe>
+            <div class="mbr-figure col-12 col-md-6">
+            	<iframe width="560" height="315" src="https://www.youtube.com/embed/1dLl54F55fk?controls=0&amp;rel=0;amp;autoplay=1;start=1" 
+            	frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+            
+<!-- 	            <iframe class="mbr-embedded-video" src="https://youtu.be/4L06QIeLntI?rel=0;amp;autoplay=1" width="1280" height="500" frameborder="0" allowfullscreen> -->
+<!-- 	            </iframe> -->
             </div>
         </div>
         
