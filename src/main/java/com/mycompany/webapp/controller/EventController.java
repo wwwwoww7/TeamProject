@@ -96,15 +96,13 @@ public class EventController {
 	public String refun () {
 		return "event/refun";
 	}
-	
-	@RequestMapping("/refun2")
-	public String refun2 () {
-		return "event/refun2";
-	}
-	
-	@RequestMapping("/refun3")
-	public String refun3 () {
-		return "event/refun3";
+
+	//이벤트 상세페이지 불러오기
+	@GetMapping("/eventDetail")
+	public String eventDetail(int event_no, Model model) {
+		EventDto eventD = service.getEventDetail(event_no);
+		model.addAttribute("eventD", eventD);
+		return "event/eventDetail";
 	}
 	
 	

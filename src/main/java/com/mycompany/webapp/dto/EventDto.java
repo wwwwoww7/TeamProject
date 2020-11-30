@@ -10,9 +10,17 @@ public class EventDto {
 	private Date event_end;
 	private int class_no;
 	private int eenable; 
+	private int eventD;
+	
 	
 	
 
+	public int getEventD() {
+		return eventD;
+	}
+	public void setEventD(int eventD) {
+		this.eventD = eventD;
+	}
 	public int getEenable() {
 		return eenable;
 	}

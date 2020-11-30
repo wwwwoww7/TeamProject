@@ -36,6 +36,12 @@ public class EventDao {
 		return totalRows;
 	}
 
+	public EventDto selectEventDetail(int event_no) {
+		EventDto ed = sst.selectOne("mybatis.mapper.event.selectEventDetail",event_no);
+		return ed;
+	}
+	
+	
 
 }
 
