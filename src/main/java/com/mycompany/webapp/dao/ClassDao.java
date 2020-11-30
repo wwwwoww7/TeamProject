@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.ClassDto;
+import com.mycompany.webapp.dto.PickDto;
 
 
 @Repository
@@ -52,6 +53,14 @@ public class ClassDao {
 	public List<ClassDto> selectbyTutorId(String tutor_id) {
 		List<ClassDto> classList = sst.selectList("mybatis.mapper.class.selectbyTutorId", tutor_id);
 		return classList;
+	}
+
+
+
+
+	public int selectPickByMidClassNo(PickDto pickDto) {
+		int pickYn =  sst.selectOne("mybatis.mapper.pick.selectPickByMidClassNo", pickDto);
+		return pickYn;
 	}
 	
 	

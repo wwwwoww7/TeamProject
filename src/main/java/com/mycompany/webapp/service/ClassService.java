@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.ClassDao;
 import com.mycompany.webapp.dto.ClassDto;
+import com.mycompany.webapp.dto.PickDto;
 
 @Service
 public class ClassService {
@@ -50,7 +51,14 @@ public class ClassService {
 		List<ClassDto> classList = classDao.selectbyTutorId(tutor_id);
 		return classList;
 	}
-	
+
+
+	public int getPickYN(PickDto pickDto) {
+		int pickYn = classDao.selectPickByMidClassNo(pickDto);
+		return pickYn;
+	}
+
+
 	
 	
 	
