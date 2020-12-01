@@ -581,10 +581,17 @@
   			
   		}
   		
-  		#pickimg{
+  		#pickimg1, #pickimg2{
   			width: 45px;
   			height: 45px;
   		}
+  		
+  		#pickimg1:hover {
+ 			filter: brightness(180%); 
+		}
+		#pickimg2:hover {
+			filter: brightness(40%); 
+		}
   		
   	</style>
   	
