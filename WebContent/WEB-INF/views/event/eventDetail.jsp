@@ -51,16 +51,19 @@
 				<input type="hidden" value="${eventD.event_no}" />
 	
 				<div>
-					${eventD.event_ct}
-					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD.event_detail}">
+					<h3>${eventD.event_ti}</h3>
+					<br/>
+					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD.event_detail}"  width="auto" height="auto">
+					<p>${eventD.event_ct}</p>
 				</div>
 					
 				<p>
 	
 				<div class="mbr-section-btn" style="text-align: center;">
+					
 					<a class="btn btn-md btn-success display-4" href="http://localhost:8080/teamproject/allClass" >클래스 구경하러가기</a>
 				</div>
-			</div>
+			</div> <p></p>
 		</div>
 	</section>
 
@@ -91,7 +94,11 @@
 	 		padding-bottom: 10rem;
 		 	background-color: #ffffff;
 	    } 
-	    img {display: block; margin-left:auto; }
+	    img {display: block;
+	    	 margin-left:auto; 
+	    	  float: right;
+	    	  vspace="10";
+	    	   hspace="10";}
 	 </style>  
 </body>
 </html>

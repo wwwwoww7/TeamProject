@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html  >
+<html>
 <head>
   <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
   <meta charset="UTF-8">
@@ -51,14 +51,15 @@
 				<input type="hidden" value="${eventD2.event_no}" />
 					
 				<div>
-					${eventD2.event_ct}
+				<h3>${eventD2.event_ti}</h3>
+					<h1>${eventD2.event_ct}</h1>
 					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD2.event_detail}">
 				</div>
 					
 				<p>
 	
 				<div class="mbr-section-btn" style="text-align: center;">
-					<a class="btn btn-md btn-success display-4" href="http://localhost:8080/teamproject/allClass" >클래스 구경하러가기</a>
+					<a class="btn btn-md btn-success display-4" href="#" >클래스 구경하러가기</a>
 				</div>
 			</div>
 		</div>

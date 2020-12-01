@@ -37,14 +37,16 @@ public class EventDao {
 		return all2;
 	}
 	
-	public EventDto selectEventDetail(int event_no) {
-		EventDto ed = sst.selectOne("mybatis.mapper.event.selectEventDetail",event_no);
-		return ed;
-	}
+	
 
 	public List<EventDto> selectEight() {
 		List<EventDto> elist = sst.selectList("mybatis.mapper.event.selectListEight");
 		return elist;
+	}
+	
+	public EventDto selectEventDetail(int event_no) {
+		EventDto ed = sst.selectOne("mybatis.mapper.event.selectEventDetail",event_no);
+		return ed;
 	}
 
 
