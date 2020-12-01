@@ -48,9 +48,16 @@
 		select count(*) from class_notice
 	</select>
 	
+	<!-- 공지사항 내용에 먼저 넣기 1-->
 	<insert id="insertNotice" parameterType="classNotice">
 		insert into CLASS_NOTICE (CLASS_NOTICE_NO,CLASS_NOTICE_DATE,CLASS_NOTICE_TITLE,CLASS_NOTICE_CONTENT,CLASS_NO)
 		values (SEQ_NOTICE_NO.nextval,sysdate,#{class_notice_title},#{class_notice_content},#{class_no})
+	</insert>
+	
+	<!-- 공지사항 첨부파일 넣기 -->
+	<insert id="noticeFileInput" parameterType="classNotice">
+		insert into CLASS_HW(CLASS_HW_NO,CLASS_HW_FILE,CLASS_HW_FILE_TYPE,MID)
+		values (SEQ_NOTICE_NO.currval,#{class_hw_file},#{class_hw_type},#{mid})
 	</insert>
 	
 	<delete id="deleteNotice" parameterType="int">
