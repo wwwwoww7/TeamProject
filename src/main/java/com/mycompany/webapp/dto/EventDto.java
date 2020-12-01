@@ -12,9 +12,16 @@ public class EventDto {
 	private int eenable; 
 	private String event_detail;
 	private String event_ct;
+	private String event_ti;
 	
 	
 
+	public String getEvent_ti() {
+		return event_ti;
+	}
+	public void setEvent_ti(String event_ti) {
+		this.event_ti = event_ti;
+	}
 	public int getEenable() {
 		return eenable;
 	}

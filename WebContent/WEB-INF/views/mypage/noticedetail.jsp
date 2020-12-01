@@ -94,9 +94,9 @@
 						</table>
 						<br/>
 						<input type="hidden" id="mid" name="mid" value="${notice.mid}"/>
-					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">목록으로</a>	
-					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}&mid=${sessionMid}">수정</a>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}&mid=${notice.mid}">삭제</a>
+					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor">목록으로</a>	
+					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a>
+						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a>
 					</div>
 				</div>
 			</div>
