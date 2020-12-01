@@ -25,18 +25,18 @@
 	         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
 	         					<c:if test="${sessionMid == '' || sessionMid == null }">
 									<a class="mbr-iconfont" href="javascript:pick(0, ${hotclass.class_no})">
-										<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+										<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
 									</a>
 								</c:if>
 								<c:if test="${sessionMid != '' && sessionMid != null}">
 									<c:if test="${hotclass.pick_yn == 'N'}">
 										<a class="mbr-iconfont" href="javascript:pick(1, ${hotclass.class_no})">
-											<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+											<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
 										</a>
 									</c:if>
 									<c:if test="${hotclass.pick_yn == sessionMid}">
 										<a class="mbr-iconfont" href="javascript:pick(2, ${hotclass.class_no})">
-											<img id="pickimg" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
+											<img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
 										</a>
 									</c:if>
 								</c:if>

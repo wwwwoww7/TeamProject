@@ -32,17 +32,28 @@ public class EventDao {
 		return totalRows;
 	}
 
-	public EventDto selectEventDetail(int event_no) {
-		EventDto ed = sst.selectOne("mybatis.mapper.event.selectEventDetail",event_no);
-		return ed;
-	}
-
 	public List<EventDto> selectByEndPage(EventPagerDto pager) {
 		List<EventDto> all2 = sst.selectList("mybatis.mapper.event.selectByEndPage", pager);
 		return all2;
 	}
 	
 	
+
+	public List<EventDto> selectEight() {
+		List<EventDto> elist = sst.selectList("mybatis.mapper.event.selectListEight");
+		return elist;
+	}
+	
+	public EventDto selectEventDetail(int event_no) {
+		EventDto ed = sst.selectOne("mybatis.mapper.event.selectEventDetail",event_no);
+		return ed;
+	}
+
+
+	public EventDto selectEventEndDetail(int event_no) {
+		EventDto ed2 = sst.selectOne("mybatis.mapper.event.selectEventEndDetail",event_no);
+		return ed2;
+	}
 
 }
 

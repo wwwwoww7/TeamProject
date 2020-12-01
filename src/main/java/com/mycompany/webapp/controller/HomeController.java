@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.ClassDto;
+import com.mycompany.webapp.dto.EventDto;
 import com.mycompany.webapp.service.ClassService;
+import com.mycompany.webapp.service.EventService;
 
 
 /**
@@ -24,7 +26,7 @@ import com.mycompany.webapp.service.ClassService;
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping("/")  //http://192.168.3.231:8080/teamproject/
+	@RequestMapping("/")  //http:// ip :8080/teamproject/
 	public String content() {
 		logger.info("실행");
 		return "home";
@@ -33,6 +35,8 @@ public class HomeController {
 	
 	@Resource
 	ClassService classService;
+	@Resource
+	EventService eventService; 
 
 	@GetMapping("/allCategory")
 	public String allCategory(Model model, HttpSession session) {
@@ -48,13 +52,9 @@ public class HomeController {
 			for(ClassDto clas : classList) {
 				logger.info( "YN : " + clas.getPick_yn());
 			}
-			
-			
 		}else {
 			classList = classService.getClassList(2);
 		}
-		
-		
 		
 		
 		model.addAttribute("hotclassList", classList); 
@@ -74,10 +74,22 @@ public class HomeController {
 		return "class/classcard_sm";
 	}
 	
-	@GetMapping("/onClasses")
-	public String careerCategory(Model model) { 
+//	@GetMapping("/onClasses")
+//	public String careerCategory(Model model) { 
+//		
+//		return "class/classcard";
+//	}
+	
+	@GetMapping("/onEventList")
+	public String onEventList(Model model) { 
 		
-		return "class/classcard";
+		logger.info("실행");
+		
+		List<EventDto> eventList =  eventService.getEventList();
+		model.addAttribute("eventList", eventList);
+		
+		
+		return "event/homeeventlist";
 	}
 	
 	

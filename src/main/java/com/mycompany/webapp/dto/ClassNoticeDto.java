@@ -18,6 +18,11 @@ public class ClassNoticeDto {
 	private int class_no;
 	
 	
+	public ClassNoticeDto(int class_no,String class_nm_s) {
+		this.class_no = class_no;
+		this.class_nm_s = class_nm_s;		
+	}
+	
 	public String getMid() {
 		return mid;
 	}
