@@ -1,16 +1,24 @@
 package com.mycompany.webapp.controller;
 
-import java.io.PrintWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,17 +58,19 @@ public class MyPageController {
 	
 	//*----------- 수강생 페이지------------------- *//
 	@RequestMapping("/mypage_user")
-	public String mypage_user(MemberDto member, Model model) {
+	public String mypage_user(Model model,HttpSession session) {
+		String mid = (String) session.getAttribute("sessionMid");
+		
 		//회원의 강의 목록 가져오기
-		List<ClassDto> userclassList = mService.getUserClasses(member.getMid());
+		List<ClassDto> userclassList = mService.getUserClasses(mid);
 		model.addAttribute("userclassList",userclassList);
 		
 		//회원의 회원정보 가져오기
-		MemberDto memberInfo = mService.getId(member);
+		MemberDto memberInfo = mService.getId(mid);
 		model.addAttribute("memberInfo",memberInfo);
 		
 		//회원의 찜 목록 가져오기
-		List<ClassDto> userPickList = mService.getUserPick(member.getMid());
+		List<ClassDto> userPickList = mService.getUserPick(mid);
 		model.addAttribute("userPickList",userPickList);
 		
 		return "mypage/mypage_user";
@@ -96,13 +106,15 @@ public class MyPageController {
 	
 	//*----------- 강사 페이지------------------- *//		
 	@RequestMapping("/mypage_tutor")
-	public String mypage_tutor(MemberDto member, Model model) {
+	public String mypage_tutor(Model model,HttpSession session) {
+		String mid = (String) session.getAttribute("sessionMid");
+		
 		//강사의 강의 목록 가져오기
-		List<ClassDto> tutorclassList = classService.getTutoringClasses(member.getMid());
+		List<ClassDto> tutorclassList = classService.getTutoringClasses(mid);
 		model.addAttribute("tutorclassList",tutorclassList);
 		
 		//강사의 회원정보 가져오기
-		MemberDto memberInfo = mService.getId(member);
+		MemberDto memberInfo = mService.getId(mid);
 		model.addAttribute("memberInfo",memberInfo);
 		
 		return "mypage/mypage_tutor";
@@ -125,12 +137,51 @@ public class MyPageController {
 	
 	//강사의 공지사항 목록의 상세내용
 	@GetMapping("/noticeDetail")
-	public String noticeDetail(int class_notice_no, Model model) {
+	public String noticeDetail(ClassNoticeDto classNotice,int class_notice_no,String class_hw_no, Model model) {
 		
-		ClassNoticeDto notice = classNoticeService.getNoticeDetail(class_notice_no);
+		ClassNoticeDto notice = classNoticeService.getNoticeDetail(classNotice.getClass_notice_no());
 		model.addAttribute("notice",notice);
+		
+		//공지사항에 보여질 파일
+		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_hw_no());
+		model.addAttribute("newUpload",newUpload);
 	
 		return "mypage/noticedetail";
+	}
+	
+	//강의 공지사항의 파일 다운로드 받기
+	@GetMapping("/download")
+	public void download(String fileName, HttpServletResponse respone,HttpServletRequest request) throws IOException {
+		logger.info(fileName);
+		//파일의 데이터를 읽기 위한 입력 스트림 얻기
+		String saveFilePath = "D:/MyWokspace/files/"+fileName;
+		InputStream is = new FileInputStream(saveFilePath);
+		
+		//[응답 HTTP 헤더 구성]
+		//1. content type 헤더 구성(파일의 종류) -  브라우저가 어떤  프로그램이 실행될지 알기 위해서 
+		ServletContext application = request.getServletContext(); 
+		String fileType = application.getMimeType(fileName);
+		respone.setContentType(fileType);
+		
+		//2. content Disposition 헤더 구성 (다운로드할 파일의 이름 지정)
+		String OriginalFileName = fileName.split("_")[1]; // 숫자[0] _ 실제이름[1]
+		//헤더에서는 한글을 그대로 전달할 수 없음으로 파일이름이 한글이면 아스키코드(ISO-8859-1)로 변환하기 위해서 사용
+		OriginalFileName = new String(OriginalFileName.getBytes("UTF-8"),"ISO-8859-1");
+		respone.setHeader("Content-Disposition", "attachment; filename=\""+OriginalFileName+"\"");
+		
+		
+		//3.Content-length 헤더 구성(다운로드할 파일의 크기 지정)
+		int filesize = (int) new File(saveFilePath).length();
+		respone.setContentLength(filesize);
+		
+		//[응답HTTP의 바디(본문) 구성] - 입출력 스트림 사용(문자타입기반)
+		OutputStream os = respone.getOutputStream();
+		FileCopyUtils.copy(is, os);// is에서 읽어서 os로 보냄
+		
+		os.flush();
+		os.close();
+		is.close();
+
 	}
 	
 	//강사 공지사항 수정폼 요청하기
@@ -159,11 +210,11 @@ public class MyPageController {
 	
 	//강사의 강의공지사항 삭제하기
 	@GetMapping("/noticeDelete")
-	public String noticeDelete(int class_notice_no, HttpServletResponse response) throws Exception {
+	public String noticeDelete(ClassNoticeDto classNotice) throws Exception {
 		//게시물 삭제 응답/요청
-		classNoticeService.noticeDelete(class_notice_no);
+		classNoticeService.noticeDelete(classNotice.getClass_notice_no());
 				
-		return "mypage/mypage_tutor";
+		return "redirect:/mypage/mypage_tutor?mid="+classNotice.getMid();
 	}
 	
 	//강사의 강의공지사항 글쓰기 폼 요청
@@ -172,18 +223,32 @@ public class MyPageController {
 		
 		//해당 강사가 강의하는 강의 목록 가져와야함
 		List<ClassNoticeDto> classNames = classNoticeService.selectClassNo(classNotice);
+		/*List<ClassNoticeDto> NamesList = Arrays.asList(new ClassNoticeDto())  */
 		model.addAttribute("classNames",classNames);
 		
 		return "mypage/noticeWriteForm";
 	}
 	
-	//강사의 강의공지사항 글쓰기 폼 요청
+	//강사의 강의공지사항 글쓰기
 	@PostMapping("/noticeWrite")
-	public void noticeWrite(ClassNoticeDto class_notice_no, HttpServletResponse response) throws Exception {
+	public String noticeWrite(ClassNoticeDto classNotice) throws Exception {
 		//게시물쓰기
-		classNoticeService.noticeWrite(class_notice_no);
+		classNoticeService.noticeWrite(classNotice);
 		
+		//파일 내용 넣기(현재날짜로 저장하기)
+		String fileName = classNotice.getClass_hwFile().getOriginalFilename();
+		String saveFile = new Date().getTime()+"_"+fileName;
+		classNotice.getClass_hwFile().transferTo(new File("D:/MyWokspace/files/"+saveFile));
+		classNotice.setClass_hw_file(saveFile);
 		
+		//파일 확장자 넣기
+		String ext = fileName.substring(fileName.lastIndexOf(".")+1);
+		classNotice.setClass_hw_type(ext);
+		
+		//첨부파일 intsert
+		classNoticeService.noticeFileInput(classNotice);
+		
+		return "redirect:/mypage/mypage_tutor?mid="+classNotice.getMid();
 				
 	}
 	
@@ -230,10 +295,12 @@ public class MyPageController {
 	
 	//*--------------회원정보수정---------------- *//
 	@GetMapping("/userEdit")
-	public String userEdit(MemberDto member, Model model) {
+	public String userEdit(MemberDto member, Model model,HttpSession session) {
+		
+		String mid = (String) session.getAttribute("sessionMid");
 		
 		//회원의 회원정보 가져오기
-		MemberDto memberInfo = mService.getId(member);
+		MemberDto memberInfo = mService.getId(mid);
 		model.addAttribute("memberInfo",memberInfo);
 		
 		return "mypage/userEdit";
@@ -243,14 +310,36 @@ public class MyPageController {
 	@PostMapping("/userUpdate")
 	public String userUpdate(MemberDto member) {
 		
-		mService.updateMember(member);
+		logger.info("실행1");
 		
-		if (member.getMtype().equals("ROLE_USER")) {
-			
-			return "redirect:/mypage/mypage_user";
-		} else {
-			return "redirect:/mypage/mypage_tutor";
-		}
+
+		/*	
+		  String originalFileName = member.getMphotoAttach().getOriginalFilename();
+		  logger.info("originalname:"+ originalFileName); //String extName =
+		  originalFileName.substring(originalFileName.lastIndexOf(".")); 
+		  //String saveName = member.getMid()+extName; //logger.info("savename: "+ saveName);
+		  //File dest = new
+		  File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName); //member.getMphotoAttach().transferTo(dest);
+		  member.setMpro_img(originalFileName); logger.info("실행2");
+		  
+		  
+		  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder(); 
+		  String encodedPassword = passwordEncoder.encode(member.getMpw());
+		  member.setMpw(encodedPassword);
+		  
+		  member.setMenabled(true); if(member.getMinfo() == null )
+		  member.setMinfo("내용없음"); mService.updateMember(member);
+		  
+		  logger.info("실행3"); 
+		  if (member.getMtype().equals("ROLE_USER")) { 
+			  return "redirect:/mypage/mypage_user"; 
+			  } 
+		  else { 
+			  return "redirect:/mypage/mypage_tutor"; 
+			  }
+		 */
+		
+		return "";
 		
 	}
 		
