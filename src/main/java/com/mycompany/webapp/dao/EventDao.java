@@ -53,8 +53,6 @@ public class EventDao {
 		return ed2;
 	}
 
-
-
 }
 
 

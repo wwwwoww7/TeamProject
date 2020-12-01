@@ -41,11 +41,18 @@ public class EventService {
 		return ed;	
 	
 	}
+	
 
 	public EventDto getEventEndDetail(int event_no) {
 		EventDto ed2 = eventDao.selectEventEndDetail(event_no);
 		return ed2;
 	}
-
-
+	
+	//진행중인가장 최근 이벤트 8개 
+	public List<EventDto> getEventList() {
+		List<EventDto> elist = eventDao.selectEight();
+		return elist;
+	} 
+	 
+	
 }

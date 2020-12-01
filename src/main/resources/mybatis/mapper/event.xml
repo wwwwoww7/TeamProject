@@ -21,29 +21,29 @@
 	</select>
 	
 	<select id="selectByPage" parameterType="EventPager" resultType="event">
-		select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
-		from (
-		      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
-		      from event
-		      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
-		      order by event_start desc
-		      ) 
-		where rNum &gt;=#{startRowNo}
+	select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
+	from (
+	      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
+	      from event
+	      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
+	      order by event_start desc
+	      ) 
+	where rNum &gt;=#{startRowNo}
 	</select>
 	<select id="selectByEndPage" parameterType="EventPager" resultType="event">
 		select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
-			from (
-		      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
-		      from event
-		      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
-		      order by event_start desc
-		      ) 
-		where rNum &gt;=#{startRowNo}
+	from (
+	      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
+	      from event
+	      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
+	      order by event_start desc
+	      ) 
+	where rNum &gt;=#{startRowNo}
 	
 	</select>
 	
 	<select id="selectEventDetail" parameterType="int" resultType="event">
-		select event_no, event_nm, event_start, event_end, event_detail, event_ct
+		select event_no, event_nm, event_start, event_end, event_detail
    		from event
     	where event_no=#{event_no}
 	</select>
@@ -53,4 +53,11 @@
    		from event
     	where event_no=#{event_no}
     </select>
+    
+	<!-- 진행중인 가장 최근 이벤트 8 개  -->
+	<select id="selectListEight" resultType="event">
+		select event_no, event_nm, event_img from event where eenable=1 and rownum &lt;= 8
+		order by event_no desc
+	</select>
+	
 </mapper>

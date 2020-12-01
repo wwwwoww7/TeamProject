@@ -120,5 +120,4 @@ public class EventController {
 		return "event/eventDetail2";
 	}
 	
-	
 }
