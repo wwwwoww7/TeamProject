@@ -203,5 +203,9 @@
 	   	   		tutorClassQA(1,mid);
 	      }); 
 	</script>
+	<style type="text/css">
+			a {color: black;}
+			a:hover {text-decoration: underline; color: #ffc800;}
+	</style>
 </body>
 </html>

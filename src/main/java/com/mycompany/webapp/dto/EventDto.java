@@ -10,17 +10,11 @@ public class EventDto {
 	private Date event_end;
 	private int class_no;
 	private int eenable; 
-	private int eventD;
-	
+	private String event_detail;
+	private String event_ct;
 	
 	
 
-	public int getEventD() {
-		return eventD;
-	}
-	public void setEventD(int eventD) {
-		this.eventD = eventD;
-	}
 	public int getEenable() {
 		return eenable;
 	}
@@ -64,6 +58,19 @@ public class EventDto {
 	}
 	public void setEvent_end(Date event_end) {
 		this.event_end = event_end;
+	}
+	public String getEvent_detail() {
+		return event_detail;
+	}
+	public void setEvent_detail(String event_detail) {
+		this.event_detail = event_detail;
+	}
+	
+	public String getEvent_ct() {
+		return event_ct;
+	}
+	public void setEvent_ct(String event_ct) {
+		this.event_ct = event_ct;
 	}
 
 	

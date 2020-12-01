@@ -51,47 +51,68 @@
 					
 					<div class="row justify-content-center mt-4">
 						<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-							<form action="noticeUpdate" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+							<form action="noticeUpdate" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<input type="hidden" id="class_notice_no" name="class_notice_no" value="${notice.class_notice_no}"/>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-6 input-group">
 										<span class="input-group-text" style="width: 80px; background-color: #ffff; ">강 의 명</span> 
-										<input type="text" id="class_nm_s" name="class_nm_s" class="form-control" value="${notice.class_nm_s}" readonly/>
+										<%-- <input type="text" id="class_nm_s" name="class_nm_s" class="form-control" value="${notice.class_nm_s}" readonly/> --%>
+										<select id="class_no" name="class_no" style="width: 70%; display: inline;" >
+											<c:forEach var="className" items="${classNames}">
+												<option value="${className.class_no}" selected>${className.class_nm_s}</option>
+											</c:forEach>
+										</select>
 									</div>
+									
 									<div class="col-md-6 input-group">
+										<span class="input-group-text" style="width: 80px; background-color: #ffff;">작 성 자 </span> 
+										<input type="text" id="mid" name="mid" class="form-control" value="${notice.mid}"  readonly/>
+									</div>
+									
+								</div>
+								<div class="dragArea row" style="margin: 5px;">
+									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 80px; background-color: #ffff;">제	목</span> 
 										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control" value="${notice.class_notice_title}"/>
 										<span id="ntitleError" class="error"></span>
 									</div>
 								</div>
-								<div class="dragArea row" style="margin: 5px;">
+								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 80px; background-color: #ffff;">작 성 자 </span> 
-										<input type="text" id="mid" name="mid" class="form-control" value="${notice.mid}"  readonly/>
+										<span class="input-group-text" style="width: 80px; background-color: #ffff;">파일변경</span> 
+										<input type="file" id="class_hwFile" name="class_hwFile" class="form-control"/>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 80px; background-color: #ffff;">첨부파일</span> 
-										<input type="file" id="class_hw_file" name="class_hw_file" class="form-control" value="${notice.class_hw_file}"/>
+										<span class="input-group-text" style="width: 80px; background-color: #ffff;">기존파일</span> 
+										<span id="class_hw_file" class="form-control">
+											<c:forEach var="loadfile" items="${newUpload}">
+												${loadfile.class_hw_file}
+											</c:forEach>
+										</span>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 80px; background-color: #ffff;">내	용 </span> 
-										<textarea id="class_notice_content" name="class_notice_content" class="form-control" 
-											style="height: 100px;">${notice.class_notice_content}</textarea>
+										<textarea id="class_notice_content" name="class_notice_content" class="form-control" rows="10">${notice.class_notice_content}</textarea>
 										<span id="ncontentError" class="error"></span>
 									</div>
 								</div>
 								
-								<div class="dragArea row">
+								<div class="dragArea row" style="text-align: center;">
 									<div class="col-md-3"></div>
-									<div class="col-md-3">
+									<div class="col-3" style="margin-right: 5px;">
 										<button type="submit" class="btn btn-success display-7 text-primary" style="margin: 5px;">수정</button>
 										<%-- <a class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;" href="<%=request.getContextPath()%>/mypage/noticeUpdate" ></a> --%>
-										<!-- <script type="text/javascript">
-											function noticeUpdate() {
+										<script type="text/javascript">
+											/* var loadFile = function(event) {
+												var output = document.getElementById("#class_hw_file");
+												output.span = URL.createObjectURL(event.target.files[0]);						
+											}; */
+												
+											/* function noticeUpdate() {
 												
 												var noticeNo = $("#class_notice_no").val();
 												
@@ -121,10 +142,10 @@
 														}
 													}
 												});
-											}
-										</script> -->		
+											} */
+										</script>		
 									</div>
-									<div class="col-md-3">
+									<div class="col-3">
 										<a class="btn item-btn btn-success display-7 text-primary" href="<%=request.getContextPath()%>/mypage/noticeDetail?class_notice_no=${notice.class_notice_no}">취소</a>
 									</div>
 									<div class="col-md-3"></div>
@@ -175,4 +196,8 @@
 		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
-	
+	<script type="text/javascript">
+		$(function(){
+			$("#class_no").show();
+		});
+	</script>

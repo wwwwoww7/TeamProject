@@ -1,5 +1,6 @@
 package com.mycompany.webapp.dao;
 
+import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -33,6 +34,13 @@ public class ClassNoticeDao {
 		return rows;
 	}	
 	
+	//공지사항의 첨부파일 넣기
+	public int noticeFileInput(ClassNoticeDto classNotice) {
+		int rows = sst.insert("mybatis.mapper.class_notice.noticeFileInput",classNotice);
+		return rows;
+	}
+
+	
 	//강사가 공지사항 삭제하기
 	public int deleteNotice(int class_notice_no) {
 		int rows = sst.delete("mybatis.mapper.class_notice.deleteNotice",class_notice_no);
@@ -45,9 +53,20 @@ public class ClassNoticeDao {
 		int rows = sst.update("mybatis.mapper.class_notice.updateNotice",classNoticeDto);
 		return rows;
 	}
-
+	
+	//강사가 공지사항 "파일"수정하기
+	public int updateFile(ClassNoticeDto classNoticeDto) {
+		int rows = sst.update("mybatis.mapper.class_notice.updateFile",classNoticeDto);
+		return rows;
+	}
+	
+	//공지사항 상세내용 불러오기
 	public ClassNoticeDto selectNoticeDetail(int class_notice_no) {
+		logger.info("here !!!!  ========>class_notice_no: " + class_notice_no);
+		
 		ClassNoticeDto notice = sst.selectOne("mybatis.mapper.class_notice.selectNoticeDetail",class_notice_no);
+		
+		logger.info("notice .classno =====> "+ notice.getClass_no());
 		return notice;
 	}
 	
@@ -56,16 +75,24 @@ public class ClassNoticeDao {
 		return notice;
 	}
 
-	public List<ClassNoticeDto> selectClassName(ClassNoticeDto list) {
-		List<ClassNoticeDto> classNamelist = sst.selectList("mybatis.mapper.class_notice.selectClassName",list);
+	public List<ClassNoticeDto> selectByTutorId(String mid) {
+		List<ClassNoticeDto> classNamelist = sst.selectList("mybatis.mapper.class_notice.selectByTutorId",mid);
 		return classNamelist;
 	}
+	
 	/* 페이지수를 가져오기 위한 전체 행 수 가져오기*/
 	public int countAll() {
 		int totalRows = sst.selectOne("mybatis.mapper.class_notice.countAll");
 		return totalRows;
 	}
 
+	/* 해당 게시물의 파일가져오기 */
+	public List<ClassNoticeDto> getFiles(int class_hw_no) {
+		List<ClassNoticeDto> fileList = sst.selectList("mybatis.mapper.class_notice.getFiles",class_hw_no);
+		return fileList;
+	}
+
+	
 
 
 	

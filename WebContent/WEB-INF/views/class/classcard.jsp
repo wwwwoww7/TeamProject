@@ -22,40 +22,26 @@
 				            </h5>
 	         			</td>
 	         			<td id="tabletd" rowspan="2">
-	         				<h5 id="heartpage" class="display-7">
-	         					
+	         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
+	         					<c:if test="${sessionMid == '' || sessionMid == null }">
+									<a class="mbr-iconfont" href="javascript:pick(0, ${hotclass.class_no})">
+										<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+									</a>
+								</c:if>
+								<c:if test="${sessionMid != '' && sessionMid != null}">
+									<c:if test="${hotclass.pick_yn == 'N'}">
+										<a class="mbr-iconfont" href="javascript:pick(1, ${hotclass.class_no})">
+											<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+										</a>
+									</c:if>
+									<c:if test="${hotclass.pick_yn == sessionMid}">
+										<a class="mbr-iconfont" href="javascript:pick(2, ${hotclass.class_no})">
+											<img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
+										</a>
+									</c:if>
+								</c:if>
 	         				</h5>
-	         				<script type="text/javascript">
-								function pick(clk){
-									var mid = ${sessionMid};
-									var class_no = ${classOne.class_no};
-									if(clk == 1 || clk == 2){
-										/* 1: insert, 2: delete */
-										if( mid == null  || mid == ""){
-											alert("로그인 하세요");
-											location.href="<%=request.getContextPath()%>/login/login"
-										}else{
-											console.log("로그인한 경우 ")
-											$.ajax({
-												url: "<%=request.getContextPath()%>/class/pickClass",
-												data : {mid : mid, class_no :class_no, clk: clk  },
-												success : function(data){
-													$("#pickdiv").html(data);
-												}
-											});
-										}
-									}else {
-										$.ajax({
-											url: "<%=request.getContextPath()%>/class/pickClass",
-											data : {mid : mid, class_no : ${classOne.class_no} },
-											success : function(data){
-												$("#pickdiv").html(data);
-											}
-										});
-										
-									}
-								}
-							</script>	
+	         					
 	         			</td>
 	         		</tr>
 					<tr>
@@ -67,10 +53,6 @@
 					</tr>
 	         	</table>
 	         	
-	            
-	         
-	           
-	             
 	         </div>
 	         <div class="mbr-section-btn item-footer mt-2">
 		         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" 
@@ -82,12 +64,29 @@
 	 </div>
 
 
-
-
-
 </c:forEach>
 
-
+<script type="text/javascript">
+	function pick(clk, class_no){
+		var mid = "${sessionMid}"; 
+		if(clk == 1 || clk == 2){
+			/* 1: insert, 2: delete */
+			console.log("로그인한 경우 ");
+			$.ajax({
+				url: "<%=request.getContextPath()%>/class/pickClass",
+				data : {mid : mid, class_no : class_no, clk: clk, maincall : 1  },
+				success : function(data){
+					$("#heartpage"+class_no).html(data);
+				}
+			});
+		}else {
+			if( mid == null  || mid == ""){
+				alert("찜하기를 위해 로그인해주세요.");
+				location.href="<%=request.getContextPath()%>/login/login";
+			} 
+		}
+	}
+</script>
 
 
  

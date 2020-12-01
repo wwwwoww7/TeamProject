@@ -92,6 +92,7 @@ public class ClassDao {
 
 	public int deletePick(PickDto pickinfo) {
 		int result = sst.insert("mybatis.mapper.pick.deletePick", pickinfo);
+		
 		return result;
 	}
 	

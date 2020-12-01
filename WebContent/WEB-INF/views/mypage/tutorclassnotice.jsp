@@ -51,5 +51,5 @@
 	</table>
 	<br />
 	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" 
-		href="<%=request.getContextPath()%>/mypage/noticeWriteForm?mid=${sessionMid}">글쓰기</a>
+		href="<%=request.getContextPath()%>/mypage/noticeWriteForm">글쓰기</a>
 </div>
