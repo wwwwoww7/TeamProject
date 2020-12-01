@@ -33,6 +33,7 @@
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
+<<<<<<< HEAD
 	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc" data-interval="false" id="testimonials3-1e">
 	    <div class="text-center container-fluid">
 	    
@@ -62,6 +63,37 @@
 			</div>
 		</div>
 	</section>
+=======
+<section class="cid-shfm0ridj5 mbr-fullscreen mbr-parallax-background" id="header2-3i">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
+
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1"> 101명 환급원정대</h1>
+                
+                <p class="mbr-text pb-3 mbr-fonts-style display-5">
+                   	클래스 런칭 기념 <br/>
+                   	101명을 위한 환급원정대<br/>
+                   	101명의 반숙이들을 추첨해서<br/>
+                   	101명의 반숙이들의 클래스 수강료를 환급해드립니다!<br/>
+                   	101명 반숙이들의 환급 원정 !!<br/>
+                </p>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-success display-4" href="http://localhost:8080/teamproject/allClass">클래스 구경하러가기</a>
+                  <!--   <a class="btn btn-md btn-white-outline display-4" href="https://mobiri.se">LIVE DEMO</a></div> -->
+            </div>
+        </div>
+    </div>
+  <!--   <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+        <a href="#next">
+            <i class="mbri-down mbr-iconfont"></i>
+        </a> -->
+    </div>
+</section>
+>>>>>>> branch 'master' of https://github.com/wwwwoww7/TeamProject.git
 
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
@@ -83,14 +115,6 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script> 
-	 <style type="text/css">
-	 	.cid-shfcpp8srP2 {
-	 		padding-bottom: 10rem;
-		 	background-color: #ffffff;
-	    } 
-	    img {display: block; margin-left:auto; }
-	 </style>
-
+	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
 </body>
 </html>
