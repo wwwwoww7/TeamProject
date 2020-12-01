@@ -21,30 +21,36 @@
 	</select>
 	
 	<select id="selectByPage" parameterType="EventPager" resultType="event">
-	select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
-	from (
-	      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
-	      from event
-	      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
-	      order by event_start desc
-	      ) 
-	where rNum &gt;=#{startRowNo}
+		select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
+		from (
+		      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
+		      from event
+		      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
+		      order by event_start desc
+		      ) 
+		where rNum &gt;=#{startRowNo}
 	</select>
 	<select id="selectByEndPage" parameterType="EventPager" resultType="event">
 		select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
-	from (
-	      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
-	      from event
-	      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
-	      order by event_start desc
-	      ) 
-	where rNum &gt;=#{startRowNo}
+			from (
+		      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
+		      from event
+		      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
+		      order by event_start desc
+		      ) 
+		where rNum &gt;=#{startRowNo}
 	
 	</select>
 	
 	<select id="selectEventDetail" parameterType="int" resultType="event">
-		select event_no, event_nm, event_start, event_end, event_detail
+		select event_no, event_nm, event_start, event_end, event_detail, event_ct
    		from event
     	where event_no=#{event_no}
 	</select>
+	
+	<select  id="selectEventEndDetail" parameterType="int" resultType="event">
+		select event_no, event_nm, event_start, event_end, event_detail, event_ct
+   		from event
+    	where event_no=#{event_no}
+    </select>
 </mapper>

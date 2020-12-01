@@ -103,12 +103,21 @@ public class EventController {
 		return "event/refun";
 	}
 
-	//이벤트 상세페이지 불러오기
+	//이벤트 상세페이지 불러오기 (현재 진행중인 페이지)
 	@GetMapping("/eventDetail")
 	public String eventDetail(int event_no, Model model) {
 		EventDto eventD = service.getEventDetail(event_no);
 		model.addAttribute("eventD", eventD);
 		return "event/eventDetail";
+	}
+	
+
+	//이벤트 상세페이지 불러오기 (마감된 페이지)
+	@GetMapping("/eventDetail2")
+	public String eventDetail2(int event_no, Model model) {
+		EventDto eventD2 = service.getEventEndDetail(event_no);
+		model.addAttribute("eventD2", eventD2);
+		return "event/eventDetail2";
 	}
 	
 	

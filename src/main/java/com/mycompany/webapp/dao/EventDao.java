@@ -41,6 +41,12 @@ public class EventDao {
 		List<EventDto> all2 = sst.selectList("mybatis.mapper.event.selectByEndPage", pager);
 		return all2;
 	}
+
+
+	public EventDto selectEventEndDetail(int event_no) {
+		EventDto ed2 = sst.selectOne("mybatis.mapper.event.selectEventEndDetail",event_no);
+		return ed2;
+	}
 	
 	
 

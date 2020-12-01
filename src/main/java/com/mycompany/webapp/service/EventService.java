@@ -42,5 +42,10 @@ public class EventService {
 	
 	}
 
+	public EventDto getEventEndDetail(int event_no) {
+		EventDto ed2 = eventDao.selectEventEndDetail(event_no);
+		return ed2;
+	}
+
 
 }
