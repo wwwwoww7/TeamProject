@@ -108,15 +108,8 @@ public class ClassController {
 		if(maincall == 0)
 			return "/class/pickclass"; //강의 상세 페이지 새로고침..? // ajax..?
 		else { 
-				
-			
-			
-			//여기 일 경우 request에 class_no 보내줘야 함... 
-			
-			
+			model.addAttribute("class_no", pickinfo.getClass_no()); 
 			return "/class/pickclassmain";
-	
-		
 		
 		}
 	}
