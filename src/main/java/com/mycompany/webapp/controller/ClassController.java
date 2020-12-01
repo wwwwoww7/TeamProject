@@ -84,10 +84,9 @@ public class ClassController {
 	}
 	
 	@GetMapping("/pickClass")
-	public String pickClass(PickDto pickinfo,@RequestParam(defaultValue = "-1") int clk, Model model) {
+	public String pickClass(PickDto pickinfo,@RequestParam(defaultValue = "-1") int clk, @RequestParam(defaultValue = "0") int maincall, Model model) {
 		
 		logger.info("실행");
-	
 		
 		if(clk == -1) {
 			if(pickinfo.getMid() == null) {
@@ -103,16 +102,24 @@ public class ClassController {
 			int result = classService.setPick(pickinfo, clk);
 			logger.info("데이터 수정 후 Class_no : " + pickinfo.getClass_no());
 			logger.info("데이터 수정 후 mid : " + pickinfo.getMid());
-			model.addAttribute("pick_yn", result);
-//			return "redirect:/class/pickClass";
+			model.addAttribute("pick_yn", result); 
 		}
 		
-		
+		if(maincall == 0)
+			return "/class/pickclass"; //강의 상세 페이지 새로고침..? // ajax..?
+		else { 
+				
+			
+			
+			//여기 일 경우 request에 class_no 보내줘야 함... 
+			
+			
+			return "/class/pickclassmain";
 	
 		
-		return "/class/pickclass"; //강의 상세 페이지 새로고침..? // ajax..?
+		
+		}
 	}
-	
 	
 	
 }

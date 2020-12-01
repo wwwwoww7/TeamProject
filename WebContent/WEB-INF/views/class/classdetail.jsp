@@ -103,8 +103,7 @@
 	        </div>
 	        
 	        <div class="row">
-	        	<div class="col-sm-8"></div>  
-	        	<div class="col-sm-4"  align="right" >
+	        	<div class="col-sm-12"  align="right" >
 	        		 
 	        		 <div id="pickdiv" class="mbr-section-btn" style="display:inline-block;">
 		             	
@@ -116,10 +115,9 @@
 							if(clk == 1 || clk == 2){
 								/* 1: insert, 2: delete */
 								if( mid == null  || mid == ""){
-									alert("로그인 하세요");
+									alert("찜하기를 위해 로그인해주세요.");
 									location.href="<%=request.getContextPath()%>/login/login"
 								}else{
-// 									console.log("로그인한 경우 ");
 									$.ajax({
 										url: "<%=request.getContextPath()%>/class/pickClass",
 										data : {mid : mid, class_no : class_no, clk : clk },
