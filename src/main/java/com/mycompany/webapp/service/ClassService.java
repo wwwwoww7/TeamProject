@@ -103,6 +103,11 @@ public class ClassService {
 		return result;
 	}
 
+	public String getTutorId(int class_no) {
+		String tutor_id = classDao.selectTutorIdByClassNo(class_no);
+		return tutor_id;
+	}
+
 
 	
 	

@@ -23,11 +23,16 @@
   
   <script type="text/javascript">
 		
-		function popupClose(){ 
-			close();				
-		}
+	function popupClose(){ 
+		close();				
+	}
 	
-	</script>
+	$(function(){
+		$('#classQAWriteForm').hide();
+	});
+  
+  
+  </script>
 </head>
 <body>
   
@@ -64,7 +69,33 @@
                    		
                    		</tbody>
                    	</table>
-                    
+                    <div class="container" id="classQAWriteForm">
+                    	<div class="mbr-section-head">
+				            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>class QA</strong></h3>
+				            
+				        </div>
+				        <div class="row justify-content-center mt-4">
+				            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+				                <form action="" method="POST" class="mbr-form form-with-styler mx-auto" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="JARFjkw3m2gJpaVnqU3mmcOaQJeIHQdqYdtpb0ASm3L6laY9m5jF82+gKIWQUX0i5P5qBWvFL5h4L9TkGHqYzi/D8+VqYXuw+4RTLTdW1Pla+f6u06XFWQBPCRGdxgO/">
+				                    <div class="">
+				                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+				                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some problem!</div>
+				                    </div>
+				                    <div class="dragArea row">
+				                        <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="name">
+				                            <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form8-40">
+				                        </div>
+				                        <div class="col-lg-4 col-md-12 col-sm-12 form-group" data-for="email">
+				                            <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email-form8-40">
+				                        </div>
+				                        <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center">
+				                      	  <button type="submit" class="btn btn-success display-4">Submit</button>
+				                        </div>
+				                    </div>
+				                </form>
+				            </div>
+				        </div>
+                    </div>
                     
                     
                     <!--  href="javascript:popupClose()" -->

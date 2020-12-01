@@ -104,5 +104,7 @@
 		where tutor_id=#{tutor_id} 
 	</select>
 	
-
+	<select id="selectTutorIdByClassNo" parameterType="int" resultType="String">
+		select tutor_id from class where class_no=#{class_no}
+	</select>
 </mapper>
