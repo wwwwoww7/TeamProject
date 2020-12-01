@@ -12,7 +12,7 @@
 	</insert>
 	
 	<select id="selectbyClassNo" resultType="cart">
-		select class_no, class_nm, class_thum, class_price from class where class_no=#{class_no}
+		select class_no, class_nm_s, class_nm, class_thum, class_price from class where class_no=#{class_no}
 	</select>
 	<!-- <select id="selectAll" resultType="cart">
 		 select m.member_id, cs.class_no, class_nm, class_thum, class_price

@@ -66,6 +66,12 @@
 			position: relative;
 			
 		}
+		.pay_table thead{
+			border-top:2px solid #945b00;
+		}
+		.pay_table tbody, tfoot{
+			border: 2px solid #FAFAFA;
+		}
 		
 		.pay_table tr{
 			text-align:center;
@@ -106,6 +112,9 @@
 		}
 		.pay_table tr.warr{ 
 			border-top:2px solid #945b00;
+			border-bottom: 2px solid #FAFAFA;
+			border-right: 2px solid #FAFAFA;
+			border-left: 2px solid #FAFAFA;
 			font-size: 5px;
 			color:red; 
 			margin:10px;
@@ -155,7 +164,7 @@
 								</tr>
 								<tr>
 									<td class="name">결제금액</td>
-									<td class="cont"><c:out value="${sessionScope.DATA}"/></td>
+									<td class="cont">${sessionSumprice} 원</td>
 								</tr>
 								<tr>
 									<td class="name">결제자 ID</td>
@@ -177,7 +186,7 @@
 							   				<input type="checkbox" name="chk" class="chk" id="chk"  />이용약관동의
 							   				<input type="checkbox" name="chk" class="chk" id="chk"  />개인정보 처리방침 동의
 						 	  		<script type="text/javascript">
-							 	  		
+							   			console.log();
 							 	  		// 체크박스 전체 선택
 									   			$("#checkAll").click(function() {
 									   				if($("#checkAll").is(':checked')){

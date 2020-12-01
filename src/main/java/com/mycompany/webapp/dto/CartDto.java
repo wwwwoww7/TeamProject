@@ -8,12 +8,16 @@ public class CartDto {
 	private String class_nm;
 	private String class_thum;
 	private int class_price;
+	private String class_nm_s;
+	private int sumPrice;
+	
 	/**
 	 * @return the mid
 	 */
 	public String getMid() {
 		return mid;
 	}
+	
 	/**
 	 * @param mid the mid to set
 	 */
@@ -92,8 +96,36 @@ public class CartDto {
 	public void setClass_price(int class_price) {
 		this.class_price = class_price;
 	}
+	/**
+	 * @return the class_nm_s
+	 */
+	public String getClass_nm_s() {
+		return class_nm_s;
+	}
+	/**
+	 * @param class_nm_s the class_nm_s to set
+	 */
+	public void setClass_nm_s(String class_nm_s) {
+		this.class_nm_s = class_nm_s;
+	}
+
+	/**
+	 * @return the sumprice
+	 */
+	public int getSumprice() {
+		return sumPrice;
+	}
+
+	/**
+	 * @param sumprice the sumprice to set
+	 */
+	public void setSumprice(int sumPrice) {
+		this.sumPrice = sumPrice;
+	}
+
 	
- 
+	
+	
 	
 	
 }

@@ -18,20 +18,21 @@
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/tether/tether.min.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/datatables/data-tables.bootstrap4.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/formstyler/jquery.formstyler.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/formstyler/jquery.formstyler.theme.css">
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/datepicker/jquery.datetimepicker.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
-  <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additionalcart.css">
+  <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
   
   
   
 </head>
 <style>
 	#basket {
-			border-bottom: 1px solid #CCC; 
+			border-bottom : 1px solid #ccc;
 			-webkit-border-radius: 0px;
 			-moz-border-radius: 0px;
 			border-radius: 0px;
@@ -50,6 +51,9 @@
 			Font-size: 15px;
 			position: relative;
 			margin:0px;
+		}
+		.classThum {
+			width: 150px;
 		}
 		
 </style>
@@ -78,108 +82,82 @@
 						</div>
 					</div>	
 	
-	        <div class="container scroll">
+	        <div class="container">
+	        <div class="col-lg-12">
 	          <table class="table" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	              <tr class="table-heads">
 	               <th class="head-item mbr-fonts-style display-7">상품선택
-	              	 <input type="checkbox" name="Allcheck" id="Allcheck" checked="checked" />
-	              	 <script>
-	              		
-			 			//전체선택 체크박스
-					 	var count = $("input[name='chk']").length;
-						var DATA = 0;
-							$("#Allcheck").click(function() {
-								//선택한 값만 합계 보여줌
-								if($("#Allcheck").prop("checked")){
-								    $("input[name='chk']").prop("checked", true);
-									$("input[name='chk']:checked").each(function(){ 
-								 		DATA += parseInt($(this).val());
-								 	});
-								}else{
-									$("input[name='chk']").prop("checked", false);
-							 		DATA = 0;
-							   	}
-							$("#cartSum").text(DATA);
-							$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
-						});
-			 					
-								
-						 	       
-		 			    //개별 체크박스     
-		 				 function checkAll() {
-			           		var cnt = $("input[name='chk']").length;
-			           		console.log("cnt:", cnt, $("input[name='chk']:checked").length);
-			       
-							if($("input[name='chk']:checked").length==cnt){
-								$("#Allcheck").prop("checked",true);
-							}else{
-								$("#Allcheck").prop("checked",false);
-																
-							}
-							$('#checkNum').text($("input:checkbox[name='chk']:checked").length);
-	             		} 
-			 			
-		 				
-		 			   window.onload = function(){
-		 				   $("input[name='chk']:checked").each(function(){ 
-						 		DATA += parseInt($(this).val());
-						   });
-		 				   $("#cartSum").text(DATA);
-		 				   $("#checkNum").text($("input[name='chk']:checked").length);
-		 			   }
-		 			   
-			 		</script> 
+	              	 <input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
 	               </th>
 	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
 	               <th class="head-item mbr-fonts-style display-7">수량</th>
 	               <th class="head-item mbr-fonts-style display-7">상품금액</th>
-	               <th class="head-item mbr-fonts-style display-7">합계금액</th>
+	               
 	              </tr>
 	            </thead>
 	
 	            <tbody>
 		            <c:if test="${cartList == null}">
 						<tr>
-							<td colspan="5" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
+							<td colspan="4" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
 						</tr>
 					</c:if>
 	           		<c:if test="${cartList!=null}"> 
 	            		<c:forEach var="cartItem" items="${cartList}" varStatus="status" >
 			             	<tr> 
 						        <td class="body-item mbr-fonts-style display-7">
-						        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" onclick="checkAll()" checked="checked"/>
-						        </td>
-						        <td class="body-item mbr-fonts-style display-7">
-							        <div>
-							        	<a href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black">${cartItem.class_nm}</a>
-							        </div>
-							        <div>
-							        	<img src="<%=request.getContextPath() %>/resources/images/${cartItem.class_thum}" class=""/>강의사진
+							        <div class="bg m-5">
+							        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" onclick="checkSelect()" />
 							        </div>
 						        </td>
 						        <td class="body-item mbr-fonts-style display-7">
-						        1
+							        <div style="float: left;">
+							        	<img src="<%=request.getContextPath() %>/resources/images/class/${cartItem.class_thum}" class="classThum"/>
+							        </div>
+							        <div style="margin:15px;">
+								        <div>
+											<a href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black; font-size: 20px; font-weight: bold;">
+												${cartItem.class_nm_s}
+											</a>						       
+								        </div>
+							        	<div>
+								        	<a href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black">
+								        		${cartItem.class_nm}
+								        	</a>
+							        	</div>
+							        </div>
+						        </td>
+						        <td class="body-item mbr-fonts-style display-7">
+						        	<div class="bg m-5">1</div>
 						        </td>
 					           	<td class="body-item mbr-fonts-style display-7">
-					           		${cartItem.class_price}
+					           		<div class="bg m-5">
+					           			${cartItem.class_price}
+					           		</div>
 					           	</td>
-					           	<td class="body-item mbr-fonts-style display-7" id="classSum">
-					           	</td>
+					           
 				            </tr>
 	             		</c:forEach>
 	            	</c:if>
-	           	</form>
+	          
              </tbody>
 			 <tfoot>
 			 	<tr>
 			 		<td colspan="2" style="text-align: left">
-			 			총 선택한 개수 : <span id="checkNum"></span> 개
-			 			
+			 			<a class="btn item-btn btn-info btn-sm display-3" href="#">전체 삭제</a>
+			 			<a class="btn item-btn btn-danger btn-sm display-3" href="#">선택 삭제</a>
+			 		<script type="text/javascript">
+				 	
+			 		</script>
 			 		</td>
-			 		<td colspan="3" style="text-align: right">
-			 			<div>
-				 			총 결제 금액  : <span id="cartSum" name="cartSum"></span> 원
+			 		<td colspan="2" style="text-align: right">
+			 			<div class="bigtext right-align sumcount">
+				 			선택한 클래스 개수 : <span id="checkNum"></span> 개
+			 			</div>
+			 			<div class="bigtext right-align box blue summoney">
+				 			결제 금액  : <span id="cartSum" name="cartSum"></span> 원
+				 			
 			 			</div>
 			 		</td>
 			 	</tr>
@@ -189,18 +167,74 @@
 	        
 	          	<div class="mbr-section-btn item-footer mt-2" style="text-align: center;">
 	          	<a class="btn item-btn btn-success display-7" href="javascript:payment()">결제하기</a>
+	          	
+	          	
 					 <script type="text/javascript">
+						//전체선택 체크박스
+						
+						 	var cnt = $("input[name='chk']").length;
+			           		var checkboxValues = [];
+			           		var class_no = $("input[name='chk']").val();
+
+			           		function checkAll(){
+								if($("#Allcheck").prop("checked")==true){
+									$("input[name='chk']").prop("checked", true);
+								}else{
+									$("input[name='chk']").prop("checked", false);
+								}
+								
+								$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
+							}		
+									
+							 	       
+			 			    //개별 체크박스     
+			 				function checkSelect() {
+				           		/* console.log("cnt:", cnt, $("input[name='chk']:checked").length); */
+				           		
+								//개별선택
+				           		if($("input[name='chk']:checked").length==cnt){
+									$("#Allcheck").prop("checked",true);
+								}else{
+									$("#Allcheck").prop("checked",false);
+									
+								}
+								//선택된 클래스의 가격을  보내줌
+				           		$("input[name='chk']:checked").each(function(i) {
+									checkboxValues.push($(this).val());
+								}); 
+								
+					           	var allData = { "chkPrice": checkboxValues };
+										
+								$.ajax({
+									url:"<%=request.getContextPath()%>/cart/sumprice",
+									data: allData,
+									dataType : 'json',
+									contentType : 'application/json',
+									success: function(data){
+										$("#cartSum").text(data.sumPrice);
+									}
+								});
+
+								
+								$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
+		             		
+			 			    } 
+				 			
+				           		
+				           		
+			 				
 						 function payment(){
 							if($("input[name='chk']:checked").length==0){
 									//장바구니 체크 안하면 경고창
 									alert('선택된 상품이 없습니다.');
-									
+// 									$("#cartSum").text();
 							} else{
 								if(${sessionMid==null}){
 									var result = confirm("로그인 후 결제 하실 수 있습니다."); 
 									location.href="<%=application.getContextPath()%>/login/login";
 								}else{
 									location.href="<%=application.getContextPath()%>/cart/payment"; 
+									
 									}
 								}
 							};
@@ -208,9 +242,8 @@
 				</div>
 	        </div>
 	      </div>
-	
-	</section>
-	
+	     </div>
+</section>	
 	
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 

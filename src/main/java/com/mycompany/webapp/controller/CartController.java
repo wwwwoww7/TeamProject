@@ -1,25 +1,21 @@
 package com.mycompany.webapp.controller;
 
-import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.management.AttributeList;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.webapp.dto.CartDto;
 import com.mycompany.webapp.service.CartService;
@@ -59,6 +55,7 @@ public class CartController {
 				classOne.setMid((String) session.getAttribute("sessionMid"));
 				cartList.add(classOne);
 				
+				
 			System.out.println(cartList);
 		}
 		// logger.info("2=================>" + cartList.size());
@@ -66,9 +63,40 @@ public class CartController {
 		return "cart/cart";
 	}
 
-	@RequestMapping("/payment")
-	public String payment(HttpSession session) {
+	@RequestMapping("/sumprice")
+	public void sumprice(
+			@RequestParam(value = "chkPrice[]") List<String> arrayParams,
+			HttpSession session, HttpServletResponse response) throws Exception {
+		int sumPrice = 0;
 		
+		List<String> chkList = arrayParams;
+		
+		for(String pkPrice : chkList) {
+			int result = Integer.parseInt(pkPrice);
+			sumPrice += result; 
+		}
+		
+		logger.info("합계 : "+sumPrice);
+		session.setAttribute("sessionSumprice", sumPrice);
+		
+		//json응답 보내기
+		JSONObject object = new JSONObject();
+		object.put("sumPrice",sumPrice);
+
+		String json = object.toString();  
+
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+	
+		
+	}
+	
+	@RequestMapping("/payment")
+	public String payment() {
 		return "cart/payment";
 	}
 
