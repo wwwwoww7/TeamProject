@@ -8,6 +8,7 @@
 		<typeAlias alias="class" type="com.mycompany.webapp.dto.ClassDto" />
 		<typeAlias alias="classQa" type="com.mycompany.webapp.dto.ClassQADto" />
 		<typeAlias alias="classNotice" type="com.mycompany.webapp.dto.ClassNoticeDto" />
+		<typeAlias alias="ClassNoticePager" type="com.mycompany.webapp.dto.ClassNoticePagerDto" />
 		<typeAlias alias="pick" type="com.mycompany.webapp.dto.PickDto" />
 		<typeAlias alias="classAppl" type="com.mycompany.webapp.dto.ClassApplDto" />
 		<typeAlias alias="community" type="com.mycompany.webapp.dto.CommunityDto" />

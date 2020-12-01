@@ -60,41 +60,41 @@ public class ClassDao {
 		return classList;
 	}
 
-
-
-
+	//강의번호로 강사 아이디 조회 12.01
+	public String selectTutorIdByClassNo(int class_no) {
+		String tutor_id =  sst.selectOne("mybatis.mapper.class.selectTutorIdByClassNo", class_no);
+		return tutor_id;
+	}
+	
+	
+	//로그인한 사용자, 찜 유무 포함 select 11.30
+	public List<ClassDto> selectClassesOrderByHotPick(String mid) {
+		List<ClassDto> classList = sst.selectList("mybatis.mapper.class.selectClassesOrderByHotPick", mid);
+		return classList;
+	}
+	
 	public int selectPickByMidClassNo(PickDto pickDto) {
 		int pickYn =  sst.selectOne("mybatis.mapper.pick.selectPickByMidClassNo", pickDto);
 		return pickYn;
 	}
 
 
-
-	//로그인한 사용자, 찜 유무 포함 select
-	public List<ClassDto> selectClassesOrderByHotPick(String mid) {
-		logger.info("실행!============================================== ");
-		
-		
-		List<ClassDto> classList = sst.selectList("mybatis.mapper.class.selectClassesOrderByHotPick", mid);
-		return classList;
-	}
-
-
-
-
+	//찜하기! 12.01
 	public int insertPick(PickDto pickinfo) {
 		int result = sst.insert("mybatis.mapper.pick.inserPick",pickinfo);
 		return result;
 	}
 
-
-
-
+	//찜해제! 12.01
 	public int deletePick(PickDto pickinfo) {
 		int result = sst.insert("mybatis.mapper.pick.deletePick", pickinfo);
 		
 		return result;
 	}
+
+
+
+	
 	
 	
 	

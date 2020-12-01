@@ -86,9 +86,22 @@
 							        	</c:forEach>
 							        </td>
 							    </tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="container table-info-container">
+					<div>
+						<table class="table table-bordered">
+							<colgroup>
+							    <col width="15%">
+							    <col width="35%">
+							    <col width="15%">
+							    <col width="*">
+							</colgroup>
+							<tbody>   
 							    <tr>
-							        <th>내용</th>
-							        <td colspan="10">${notice.class_notice_content}</td>
+							        <td style="padding: 20px 80px 20px 62px;" valign="top" height="350">${notice.class_notice_content}</td>
 							    </tr>
 							</tbody>
 						</table>

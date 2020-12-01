@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.ClassDto;
+import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.ClassNoticePagerDto;
 import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.PickDto;
 import com.mycompany.webapp.dto.ReviewDto;
+import com.mycompany.webapp.service.ClassNoticeService;
 import com.mycompany.webapp.service.ClassService;
 import com.mycompany.webapp.service.CommunityService;
 import com.mycompany.webapp.service.MemberService;
@@ -32,6 +35,9 @@ public class ClassController {
 	MemberService memberService;
 	@Resource
 	CommunityService communityService;
+	
+	@Resource
+	ClassNoticeService classNoticeService;
 	
 
 	@GetMapping("/classdetail")
@@ -112,6 +118,28 @@ public class ClassController {
 			return "/class/pickclassmain";
 		
 		}
+	}
+	
+	
+	@GetMapping("/classNotices")
+	public String classNotices(@RequestParam(defaultValue = "1")int pageNo, int class_no, Model model) {
+		
+		int totalRows = classNoticeService.getTotalRowByClassNo(class_no);
+		
+		ClassNoticePagerDto pager = new ClassNoticePagerDto(4,3,totalRows, pageNo);
+		pager.setClass_no(class_no);
+		
+		List<ClassNoticeDto> list = classNoticeService.getNoticeByClassNo(pager);
+		 
+		
+		String tutor_id = classService.getTutorId(class_no);
+		
+		model.addAttribute("tutor_id", tutor_id);
+		model.addAttribute("list",list);
+		model.addAttribute("pager",pager); 
+		
+		
+		return "/class/classnotice";
 	}
 	
 	

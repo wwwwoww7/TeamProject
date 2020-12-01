@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dao.ClassNoticeDao;
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.ClassNoticePagerDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 
 @Repository
@@ -74,6 +75,16 @@ public class ClassNoticeService {
 	public List<ClassNoticeDto> getFiles(int class_hw_no) {
 		List<ClassNoticeDto> fileList = classNoticeDao.getFiles(class_hw_no);
 		return fileList;
+	}
+
+	public int getTotalRowByClassNo(int class_no) {
+		int rows = classNoticeDao.selectAllByClassNo(class_no);
+		return 0;
+	}
+
+	public List<ClassNoticeDto> getNoticeByClassNo(ClassNoticePagerDto pager) {
+		List<ClassNoticeDto> list = classNoticeDao.selectNoticeByClassNo(pager);
+		return list;
 	}
 
 	

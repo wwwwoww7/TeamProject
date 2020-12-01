@@ -1,6 +1,5 @@
 package com.mycompany.webapp.dao;
 
-import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.ClassNoticePagerDto;
 import com.mycompany.webapp.dto.MyPagerDto;
 
 
@@ -90,6 +90,16 @@ public class ClassNoticeDao {
 	public List<ClassNoticeDto> getFiles(int class_hw_no) {
 		List<ClassNoticeDto> fileList = sst.selectList("mybatis.mapper.class_notice.getFiles",class_hw_no);
 		return fileList;
+	}
+
+	public int selectAllByClassNo(int class_no) {
+		int totalRows = sst.selectOne("mybatis.mapper.class_notice.countAllByClassNo", class_no);
+		return totalRows;
+	}
+
+	public List<ClassNoticeDto> selectNoticeByClassNo(ClassNoticePagerDto pager) {
+		List<ClassNoticeDto> noticeList = sst.selectList("mybatis.mapper.class_notice.selectNoticeByClassNo", pager);
+		return noticeList;
 	}
 
 	

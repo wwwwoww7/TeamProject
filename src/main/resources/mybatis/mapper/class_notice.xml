@@ -56,6 +56,24 @@
 		where ta.class_hw_no=#{class_hw_no}
 	</select>
 	
+	
+	<!-- 강의 상세 -> 강의 공지-->
+	<!-- 강의 번호로 강의 공지 전체 목록 수 조회 -->
+	<select id="countAllByClassNo" parameterType="int" resultType="int">
+		select count(*) from class_notice where class_no=#{class_no}
+	</select>
+	
+	<select id="selectNoticeByClassNo" parameterType="classNoticePager" resultType="classNotice">	
+		select class_notice_no, class_notice_date, class_notice_title ,mid
+		from (select rownum as rnum, class_notice_no, class_notice_date, class_notice_title, class.tutor_id as mid
+		        from class_notice, class
+		        where class_notice.class_no = #{class_no}
+		              and class.class_no = class_notice.class_no
+		              and rownum &lt;=#{endRowNo}
+		      )
+		where rnum &gt;=#{startRowNo} 
+	</select>
+	
 	<!-- 공지사항 내용에 먼저 넣기 1-->
 	<insert id="insertNotice" parameterType="classNotice">
 		insert into CLASS_NOTICE (CLASS_NOTICE_NO,CLASS_NOTICE_DATE,CLASS_NOTICE_TITLE,CLASS_NOTICE_CONTENT,CLASS_NO)
