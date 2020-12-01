@@ -48,8 +48,9 @@
 			<br/>
 			<div class="container">
 				<input type="hidden" value="${eventD2.event_no}" />
-					${eventD2.event_ct};
+					
 				<div>
+					${eventD2.event_ct};
 					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD2.event_detail}">
 				</div>
 					

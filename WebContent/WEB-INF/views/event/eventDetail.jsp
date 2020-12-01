@@ -50,6 +50,7 @@
 				<input type="hidden" value="${eventD.event_no}" />
 	
 				<div>
+					${eventD.event_ct};
 					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD.event_detail}">
 				</div>
 					
