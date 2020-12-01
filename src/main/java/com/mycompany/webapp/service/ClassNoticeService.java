@@ -1,5 +1,6 @@
 package com.mycompany.webapp.service;
 
+import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -63,6 +64,13 @@ public class ClassNoticeService {
 		classNoticeDao.noticeFileInput(classNotice);
 		
 	}
+
+	public List<ClassNoticeDto> getFiles(int class_hw_no) {
+		List<ClassNoticeDto> fileList = classNoticeDao.getFiles(class_hw_no);
+		return fileList;
+	}
+
+	
 
 
 	

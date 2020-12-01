@@ -62,7 +62,7 @@
 										<span class="input-group-text" style="width: 30%; background-color: #ffff;">강 의 선 택</span> 
 										<select id="class_nm_s" name="class_nm_s" style="width: 70%; display: inline;" >
 											<c:forEach var="className" items="${classNames}">
-												<option value="강의명1" selected>${className.class_nm_s}</option>
+												<option value="${className.class_no}" selected>${className.class_nm_s}</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -187,5 +187,7 @@
 			$("#class_nm_s").show();
 		});
 	</script>
+	
+	
 	</body>
 </html>		

@@ -1,5 +1,6 @@
 package com.mycompany.webapp.dao;
 
+import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -73,6 +74,12 @@ public class ClassNoticeDao {
 	public int countAll() {
 		int totalRows = sst.selectOne("mybatis.mapper.class_notice.countAll");
 		return totalRows;
+	}
+
+	/* 해당 게시물의 파일가져오기 */
+	public List<ClassNoticeDto> getFiles(int class_hw_no) {
+		List<ClassNoticeDto> fileList = sst.selectList("mybatis.mapper.class_notice.getFiles",class_hw_no);
+		return fileList;
 	}
 
 	

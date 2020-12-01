@@ -40,8 +40,8 @@ public class MemberService {
 	}
 	
 	//마이페이지에서 사용하려고 가져오는 멤버의 정보
-	public MemberDto getId(MemberDto member) {
-		MemberDto dbMember = memberDao.selectByMid(member.getMid());
+	public MemberDto getId(String mid) {
+		MemberDto dbMember = memberDao.selectByMid(mid);
 		return dbMember;
 	}
 	

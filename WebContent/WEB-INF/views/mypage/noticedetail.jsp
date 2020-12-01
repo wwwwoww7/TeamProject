@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%-- <input type="hidden" id="notice" name="notice" value="${notice}"/> --%>
 <!DOCTYPE html>
 <html  >
@@ -78,7 +80,11 @@
 							    </tr>
 							    <tr>
 							        <th>첨부파일</th>
-							        <td colspan="3">첨부파일이 표시</td>
+							        <td colspan="3">
+							        	<c:forEach var="loadfile" items="${newUpload}">
+							        		<a id="fileloc"href="download?fileName=${loadfile.class_hw_file}">${fn:split(loadfile.class_hw_file,'_')[1]}</a> <!-- 오리지날파일이름만 보이게 하기 -->
+							        	</c:forEach>
+							        </td>
 							    </tr>
 							    <tr>
 							        <th>내용</th>
@@ -89,8 +95,8 @@
 						<br/>
 						<input type="hidden" id="mid" name="mid" value="${notice.mid}"/>
 					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">목록으로</a>	
-					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a>
+					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}&mid=${sessionMid}">수정</a>
+						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}&mid=${notice.mid}">삭제</a>
 					</div>
 				</div>
 			</div>
@@ -133,5 +139,10 @@
 		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
+		
+		<style type="text/css">
+			a {color: black;}
+			a:hover {text-decoration: underline; color: #ffc800;}
+		</style>
 </body>
 </html>
