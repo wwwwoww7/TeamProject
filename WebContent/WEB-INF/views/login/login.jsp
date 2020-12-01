@@ -42,16 +42,14 @@
 	                        </div>
 	                        <div class="col-lg-12 col-md-12 col-sm-12"></div>
 	                        
-	                    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	                    <%-- 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 	                        <div class="col-lg-12 col-md col-12 form-group" data-for="mid">
-	                            <input type="text" name="mid" placeholder="ID" data-form-field="mid" class="form-control" value="" id="name-form4-27">
+	                            <input type="text" name="mid" placeholder="ID" data-form-field="mid" class="form-control" id="name-form4-27">
 	                        </div>
-	                        <div class="col-lg-12 col-md col-12 form-group" data-for="memail">
-	                            <input type="password" name="mpw" placeholder="Password" data-form-field="mpw" class="form-control" value="" id="password-form4-27">
+	                        <div class="col-lg-12 col-md col-12 form-group" data-for="mpw">
+	                            <input type="password" name="mpw" placeholder="Password" data-form-field="mpw" class="form-control"id="password-form4-27">
 	                        </div>
-	                    
-	                   
-	                    
+	                        
 		                  	<div class="col-lg-12 row form-group">
 		                  	
 		            			<div class="col-lg-6 " style="float:left">

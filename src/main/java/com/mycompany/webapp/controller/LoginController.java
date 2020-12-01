@@ -42,31 +42,17 @@ import com.mycompany.webapp.service.MemberService;
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
+	@Resource
+	private MemberService mService;
+	
 	@RequestMapping("/login/login")
-	public String login(Model model) {	
-		
+	public String login(Model model) {			
 		return "login/login";
 	}
-
-	
-	  @RequestMapping("/login/encodePassword")
-	  public String encodePassword(String mpassword) {
-		  logger.info("실행");
-		  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder(); 
-		  String encodedPassword = passwordEncoder.encode(mpassword);//비밀번호가 암호화 된다.
-		  logger.info("암호화된 비밀번호"+encodedPassword);
-		  return "login/login"; 
-	}
 	 
-	
-	@Resource
-	private MemberService service;
-
 	@PostMapping("/login/check")
 	public void check(String mid, HttpServletResponse response) throws Exception {
-		int result = service.check(mid);
-		logger.info("실행");	 
-		
+		int result = mService.id_check(mid);
 		JSONObject object  = new JSONObject();
 		object.put("result", result);
 		
@@ -91,7 +77,7 @@ public class LoginController {
 		}
 		 
 		
-		int result = service.check(member.getMid());
+		int result = mService.id_check(member.getMid());
 		
 			if(result == 1) { 
 				logger.info("result");
@@ -119,7 +105,7 @@ public class LoginController {
 			  member.setMenabled(true);
 			  //member.setMinfo("");(member.xml에 minfo(강사소개) insert부분 삭제함 - 혜빈)
 		}
-			service.join(member); 
+			mService.join(member); 
 		
 		
 		return"home";

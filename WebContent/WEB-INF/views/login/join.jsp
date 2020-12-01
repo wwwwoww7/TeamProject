@@ -218,8 +218,7 @@
 								output.src = URL.createObjectURL(event.target.files[0]);
 								
 							};
-	            		</script> 
-						<script>
+
 							function joinbt(){
 								if($("#mid").val()==""){
 									alert("아이디를 입력해주세요.");
@@ -263,9 +262,6 @@
 		    </div>
 		</section>
 	
-	 	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-	
-		
-		 
+	 	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>		 
 	</body>
 </html>

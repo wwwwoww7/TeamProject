@@ -59,10 +59,10 @@
 	                  
 	                    <div class="dropdown-menu">
 	                    	<sec:authorize access="hasRole('ROLE_USER')">
-	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user?mid=${sessionMid}">My Page</a>
+	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user">My Page</a>
 	                  		</sec:authorize>
 	                  		<sec:authorize access="hasAnyRole('ROLE_TUTOR')">
-	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">강의 관리</a>
+	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_tutor">강의 관리</a>
 	                  		</sec:authorize>
 	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/logout">Logout</a>
 	                  	</div>
@@ -91,8 +91,8 @@
 </section>
 <style>
 	#profile {
-	  max-width: 70px;
-	  height: 70px;
+	  max-width: 55px;
+	  height: 55px;
 	  border: 2px solid #ffff;
 	}
 </style>

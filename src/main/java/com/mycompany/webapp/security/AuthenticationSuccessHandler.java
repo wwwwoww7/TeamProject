@@ -45,7 +45,7 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
 		
 		MemberDto temp = new MemberDto();
 		temp.setMid(user_id);
-		MemberDto member = memberService.getId(temp);
+		MemberDto member = memberService.getId(temp.getMid());
 		session.setAttribute("member", member);
 
 	}
