@@ -42,6 +42,7 @@ public class ReviewDto {
 	public void setReview_content(String review_content) {
 		this.review_content = review_content;
 	}
+	
 	public int getReview_hitno() {
 		return review_hitno;
 	}

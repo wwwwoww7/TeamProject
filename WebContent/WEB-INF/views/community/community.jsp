@@ -104,12 +104,10 @@
 				if(!pageNo){
 					pageNo = 1;
 				}
-				console.log("fnumber: " + fnumber + " , pageNo : " + pageNo);
 				var url ='community/';
 				$('#itemlist a').attr('class', 'nav-link');
 				$('#'+fnumber).attr('class','nav-link active');
 				
-// 				fnumber = $('#itemlist a[class="nav-link active"]')[0].id;
 				
 				switch (fnumber) {
 				case 1:

@@ -99,19 +99,19 @@ public class CommunityController {
 		return "community/community_list";
 	}
 
-	/*	@GetMapping("/communityDetail")
-		public String communityDetail(int comm_no, Model model) {
-				
-				CommunityDto communitydetail = service.getCommunityDetail(comm_no);
-				model.addAttribute("communityDetail", communityDetail);
-				return "ch14/boardDetail";
-			
-			return "community/community_detail";
-		}*/
+	@GetMapping("/communityDetail")
+	public String communityDetail(int comm_no, Model model) {
+		CommunityDto communitydetail = service.getCommunityDetail(comm_no);
+		model.addAttribute("communityDetail", communitydetail);
+		
+		return "community/community_detail";
+		}
 
 	@GetMapping("/communityDetailReview")
-	public String communityDetailReview() {
-
+	public String communityDetailReview(int review_no, Model model) {
+		ReviewDto reviewDetail = service.getReviewDetail(review_no);
+		model.addAttribute("reviewDetail", reviewDetail);
+		
 		return "community/community_detail_review";
 	}
 

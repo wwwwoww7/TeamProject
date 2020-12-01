@@ -9,30 +9,30 @@
 	</select>
  
  	<select id="selectChat" resultType="community">
-		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
-		from community 
-		where comm_cate_no = '1'
+      	select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, member.mid ,comm_cate_nm, comm_cate_no, mnick
+		from community,member
+		where comm_cate_no = '1' and community.mid=member.mid
 		order by comm_date desc 
 	</select>
  	
  	<select id="selectTips" resultType="community">
-		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
-		from community 
-		where comm_cate_no = '2'
+		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, member.mid ,comm_cate_nm, comm_cate_no, mnick
+		from community,member
+		where comm_cate_no = '2' and community.mid=member.mid
 		order by comm_date desc 
 	</select>
  
 	<select id="selectBoast" resultType="community">
-		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
-		from community 
-		where comm_cate_no = '3'
+			select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, member.mid ,comm_cate_nm, comm_cate_no, mnick
+		from community,member
+		where comm_cate_no = '3' and community.mid=member.mid
 		order by comm_date desc 
 	</select> 
 	
 	<select id="selectAssign" resultType="community">
-		select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_nm, comm_cate_no
-		from community 
-		where comm_cate_no = '4'
+			select comm_no,comm_cate_nm, comm_date, comm_title, comm_content, comm_hitno, member.mid ,comm_cate_nm, comm_cate_no, mnick
+		from community,member
+		where comm_cate_no = '4' and community.mid=member.mid
 		order by comm_date desc 
 	</select>
  	<!-- 후기 게시판 내용 가져오기 -->
@@ -76,12 +76,13 @@
 	</select>
 	
 	<select id="selectByPage" parameterType="communityPager" resultType="community">
-	select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid,comm_cate_no,comm_cate_nm
+	 select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid , mnick, comm_cate_no,comm_cate_nm
 	from (
-		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_no,comm_cate_nm
+		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno,mid , mnick ,comm_cate_no,comm_cate_nm
 	  	from (
-   			select comm_no, comm_date, comm_title, comm_content, comm_hitno, mid ,comm_cate_no,comm_cate_nm
-   			from community
+   			select comm_no, comm_date, comm_title, comm_content, comm_hitno, member.mid , member.mnick, comm_cate_no,comm_cate_nm
+   			from community, member
+            where community.mid = member.mid 
    
    		)
 		where rownum &lt;= #{endRowNo}
@@ -112,11 +113,18 @@
 	
 	<!-- detailpage -->
 	<select id="selectByComno" parameterType="int" resultType="community">
-		select comm_no, comm_date, comm_title, comm_content,comm_hitno,mid,comm_cate_no, comm_cate_nm
-		from community, class, member
-		where commnunity.mid = class.mid 
+		select comm_no, comm_date, comm_title, comm_content,comm_hitno, member.mid, member.mnick,comm_cate_no, comm_cate_nm
+		from community, member
+		where community.mid = member.mid 
+          and comm_no = #{comm_no} 
 	</select>
 	
+	<select id="selectByReviewno" parameterType="int" resultType="review">
+		 select r.review_no, r.review_date, r.review_title, r.review_content, r.review_hitno, m.mid, m.mnick, c.class_no, r.review_star, ca.class_cate_no, ca.class_cate_nm
+		from review r, member m,class c,class_cate ca
+		where c.class_cate_no=ca.class_cate_no and r.class_no=c.class_no and r.mid=m.mid
+          and r.review_no = #{review_no}
+	</select>
 	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
 	<select id="selectByClassNo" parameterType="int" resultType="review"> 

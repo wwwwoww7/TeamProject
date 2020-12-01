@@ -25,6 +25,10 @@ public class CommunityService {
 		List<CommunityDto> list = communityDao.selectAll();
 		return list;
 	}*/
+	/*public List<ReviewDto> getReviewAll() {
+		List<ReviewDto> review = communityDao.selectReviewAll();
+		return review;
+		}*/
 
 	public List<CommunityDto> getCommunityChat(){
 		List<CommunityDto> chat = communityDao.selectChat();
@@ -46,10 +50,6 @@ public class CommunityService {
 		return assign;
 	}
 
-	/*	public List<ReviewDto> getReviewAll() {
-			List<ReviewDto> review = communityDao.selectReviewAll();
-			return review;
-		}*/
 
 	public List<ReviewDto> getReviewCatereview1() {
 		List<ReviewDto> catereview1 = communityDao.selectCatereview1();
@@ -94,11 +94,18 @@ public class CommunityService {
 		return list;
 	}
 
-	/*public CommunityDto getCommunityDetail(int comm_no) {
+
+
+	public CommunityDto getCommunityDetail(int comm_no) {
 		CommunityDto communityDetail = communityDao.selectByComno(comm_no);
 		return communityDetail;
 	}
-	*/
+
+	public ReviewDto getReviewDetail(int review_no) {
+		ReviewDto reviewDetail = communityDao.selectByReviewno(review_no);
+		return reviewDetail;
+	}
+	
 	
 	
 	
