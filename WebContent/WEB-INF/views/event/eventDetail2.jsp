@@ -10,53 +10,59 @@
   <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="<%=application.getContextPath()%>/resources/assets/images/mbr-96x48.png" type="image/x-icon">
-  <meta name="description" content="Site Builder Description">
+  <meta name="description" content="Website Creator Description">
   
   
-  <title>community</title>
+  <title>eventDetail</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/tether/tether.min.css">
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/datatables/data-tables.bootstrap4.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/dropdown/css/style.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
   <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
-
+  
+  
+  
+  
 </head>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
-	<section class="tabs content18 cid-shajdlT652">
-	
-	    <div class="container">
-	        <div class="row justify-content-center">
-	            <div class="col-12 col-md-8">
-	                <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2">
-	                    <strong>Community</strong></h3>
-	                
-	            </div>
-	        </div>
-	        
-	        <ul id = "itemlist" class="nav nav-tabs">
-				<li class="nav-item"><a id ="1" class="nav-link active" href="javascript:allFunction(1)">전체</a></li>
-				<li class="nav-item"><a id ="2" class="nav-link" href="javascript:allFunction(2)">잡담</a></li>
-				<li class="nav-item"><a id ="3"class="nav-link" href="javascript:allFunction(3)">꿀팁</a></li>
-				<li class="nav-item"><a id ="4" class="nav-link" href="javascript:allFunction(4)">자랑</a></li>
-				<li class="nav-item"><a id ="5" class="nav-link" href="javascript:allFunction(5)">양도</a></li>
-				<li class="nav-item"><a id = "6" class="nav-link" href="javascript:allFunction(6)">후기</a></li>
-			</ul>
-			<div id="fun1_result"></div>
-	        
-	        
-	    </div>
-	</section>
-	
-	
+<section class="cid-shfm0ridj5 mbr-fullscreen mbr-parallax-background" id="header2-3i">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
+
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1"> 101명 환급원정대</h1>
+                
+                <p class="mbr-text pb-3 mbr-fonts-style display-5">
+                   	클래스 런칭 기념 <br/>
+                   	101명을 위한 환급원정대<br/>
+                   	101명의 반숙이들을 추첨해서<br/>
+                   	101명의 반숙이들의 클래스 수강료를 환급해드립니다!<br/>
+                   	101명 반숙이들의 환급 원정 !!<br/>
+                </p>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-success display-4" href="http://localhost:8080/teamproject/allClass">클래스 구경하러가기</a>
+                  <!--   <a class="btn btn-md btn-white-outline display-4" href="https://mobiri.se">LIVE DEMO</a></div> -->
+            </div>
+        </div>
+    </div>
+  <!--   <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+        <a href="#next">
+            <i class="mbri-down mbr-iconfont"></i>
+        </a> -->
+    </div>
+</section>
+
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 
@@ -78,78 +84,5 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
-	 
-	
-	<style type="text/css">
-		a {
-			color : black;
-		}
-		#table1-1l {
-			padding-top: 30px;
-		}
-		
-		#fun1_result , #table1-1l {
-			background: #FFF;
-		}
-		
-		.input-group-text {
-			background-color : #FFF;
-			background: #FFF;
-			width:  100%;
-		}
-		
-	</style>
-	<script>
-			function allFunction(fnumber, pageNo) {
-				if(!pageNo){
-					pageNo = 1;
-				}
-				console.log("fnumber: " + fnumber + " , pageNo : " + pageNo);
-				var url ='community/';
-				$('#itemlist a').attr('class', 'nav-link');
-				$('#'+fnumber).attr('class','nav-link active');
-				
-// 				fnumber = $('#itemlist a[class="nav-link active"]')[0].id;
-				
-				switch (fnumber) {
-				case 1:
-					url += 'communityAll';
-					break;
-				case 2:
-					url += 'communityChat';
-					break;
-				case 3:
-					url += 'communityTips';
-					break;
-				case 4:
-					url += 'communityBoast';
-					break;
-				case 5:
-					url += 'communityAssign';
-					break;
-
-				case 6:
-					url += 'reviewAll';
-					break;
-				}
-				
-				
-				
-				$.ajax({
-					url : url , 
-					data : {pageNo : pageNo},
-					success : function(data) {
-						$("#fun1_result").html(data);
-					}
-				});
-
-			}
-			
-			$(document).ready(function(){
-				allFunction(1);
-			});
-					
-	</script>
-	
 </body>
 </html>

@@ -59,6 +59,11 @@ public class ClassNoticeService {
 		return classNamelist;
 	}
 
+	public void noticeFileInput(ClassNoticeDto classNotice) {
+		classNoticeDao.noticeFileInput(classNotice);
+		
+	}
+
 
 	
 	

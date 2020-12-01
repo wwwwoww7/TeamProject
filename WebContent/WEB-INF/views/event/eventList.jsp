@@ -18,7 +18,7 @@
 				<c:forEach var="event" items="${all}">
 					<tr>
 						<td><input type="hidden" value="${event.event_no}"/></td>
-						<td><a class="text-black"  href="event/free">${event.event_nm}</a></td>
+						<td><a class="text-black"  href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}">${event.event_nm}</a></td>
 						<td><div style="margin:15px"><a href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}"><img src="<%=application.getContextPath()%>/resources/img/ar/${event.event_img}" width="400" height="240"/></a></div>
 						</td>
 						<td><fmt:formatDate value="${event.event_start}" pattern="yyyy-MM-dd"/> </td>
@@ -30,7 +30,7 @@
 					<td colspan="4" style="text-align: center;">
 						<a class="btn btn-outline btn-sm" href="javascript:openCity(1,1)">&laquo</a> 
 						
-						<c:if test="${pager.groupNo > 1}">
+						<c:if test="${pager.groupNo > 0}">
 							<a class="btn btn-outline btn-sm" href="javascript:openCity(1,${pager.startPageNo-1})">이전</a> 
 						</c:if>
 						
@@ -44,7 +44,7 @@
 						 	
 						 </c:forEach> 
 						 
-						 <c:if test="${pager.groupNo < pager.totalGroupNo}">
+						 <c:if test="${pager.groupNo < pager.totalGroupNo+1}">
 						 <a class="btn btn-outline btn-sm" href="javascript:openCity(1,${pager.endPageNo+1})">다음</a>
 						 </c:if>
 						 

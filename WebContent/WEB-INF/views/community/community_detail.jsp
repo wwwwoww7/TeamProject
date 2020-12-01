@@ -3,60 +3,104 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<div>
-	<div>
-		<div>
-		
-			<br/>
-			<span>번호:</span> 
-			<span></span> <br/>
+	<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+	
+	<form action="boardWriteForm" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+		<div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">강 의 선 택</span> 
+				<select id="class_nm_s" name="class_nm_s" style="width: 65%;">
+					<c:forEach var="className" items="${classNolist}">
+						<c:if test="">
+							<option value="강의명1" selected>${className.class_no}</option>
+						</c:if>
+					</c:forEach>
+				</select>
+			</div>
 			
-			<span>제목:</span> 
-			<span></span> <br/>
-			
-			<span>글쓴이:</span> 
-			<span></span> <br/>
-			
-			<span class="title">날짜:</span> 
-			<span><fmt:formatDate value="" pattern="yyyy-MM-dd HH.mm.ss"/></span> <br/>
+		</div>
+		<div class="dragArea row" style="margin: 5px">
+			<div class="col-md-6 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">후 기 별 점</span> 
+				<select id="class_nm_s" name="class_nm_s" style="width: 65%;">
+					<c:forEach var="" items="${classNolist}">
+						<c:if test="">
+							<option value="강의명1" selected>${className.class_no}</option>
+							<option value="강의명1" selected>${className.class_no}</option>
+							<option value="강의명1" selected>${className.class_no}</option>
+							<option value="강의명1" selected>${className.class_no}</option>
+							<option value="강의명1" selected>${className.class_no}</option>
+						</c:if>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="col-md-6 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">작 성 자</span> 
+				<input type="text" id="mid" name="mid" class="form-control"
+					<c:if test="${sessionMid!=null}">value="${sessionMid}"</c:if>
+					<c:if test="${sessionMid==null}">value="fall"</c:if>
+				readonly/>
+			</div>
+		</div>
+		<div class="dragArea row" style="margin: 5px;">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">제목 </span> 
+				<input type="text" id="btitle" name="btitle" class="form-control"/>
+				<span id="btitleError" class="error"></span>
+			</div>
+		</div>
+		<!-- <div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">첨부파일</span> 
+				<input type="file" id="class_hw_file" name="class_hw_file" class="form-control"/>
+			</div>
+		</div> -->
+		<div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
+				<textarea id="bcontent" name="bcontent" class="form-control" rows="12"></textarea>
+				<span id="bcontentError" class="error"></span>
+			</div>
 		</div>
 		
-		<div>
-			<span class="title">내용:</span> <br/>
-			<textarea style="width:100%" readonly></textarea>
+		<div class="dragArea row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<a class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;" href="javascript:boardWrite()" >글쓰기</a>
+				<script type="text/javascript">
+				function boardWrite() {
+					var btitle = $("#btitle").val().trim();
+					if(btitle == "") { $("#btitleError").text("필수"); }
+					else { $("#btitleError").text(""); }
+					
+					var bcontent = $("#bcontent").val().trim();
+					if(bcontent == "") { $("#bcontentError").text("필수"); }
+					else { $("#bcontentError").text(""); }
+					
+					if(btitle == "" || bcontent == "") {
+						return;	
+					} 
+					
+					var mid = $("#mid").val().trim();
+					
+					$.ajax({
+						url:"boardWrite",
+						method:"post",
+						data: {btitle:btitle, bcontent:bcontent, mid:mid},
+						success:function(data) {
+							if(data.result == "success") {
+								boardList();
+							}
+							console.log(data);
+						}
+					});
+				}
+				</script>		
+			</div>
+			<div class="col-md-4">
+				<a class="btn item-btn btn-success display-7 text-primary" href="community">취소</a>
+			</div>
+			<div class="col-md-2"></div>
 		</div>
-		
-		<a class="btn btn-danger btn-sm" href="javascript:boardDelete()">삭제</a>
-		<script type="text/javascript">
-			function boardDelete() {
-				$.ajax({
-					url:"community/boardDelete",
-					method:"post",
-					success:function(data) {
-						$("#fun1_result").html(data);
-						/* if(data.result == "success") {
-							boardList();
-						} */
-					}
-				});
-			}
-		</script>	
-		
-		<a class="btn btn-danger btn-sm" href="javascript:boardUpdate()">수정</a>
-		<script type="text/javascript">
-			function boardUpdate() {
-				$.ajax({
-					url:"community/boardUpdate",
-					method:"post",
-					success:function(data) {
-						$("#fun1_result").html(data);
-						/* if(data.result == "success") {
-							boardList();
-						} */
-					}
-				});
-			}
-		</script>	
-		<a class="btn btn-info btn-sm" href="community" style="float:right" >목록</a>	
-	</div>
-</div> 
+	</form>
+</div>

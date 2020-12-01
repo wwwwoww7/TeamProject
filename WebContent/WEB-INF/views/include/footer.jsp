@@ -26,7 +26,7 @@
                     Contacts
                 </h5>
                 <p class="mbr-text">
-                    Hyebin/ Jiyeong/ Jiyeon/ Juhyeon/ Jieun/ Ar! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    Hyebin/ Jiyeong/ Jiyeon/ Juhyeon/ Jieun/ A-reum! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <br>Phone: +1 (0) 000 8282 001 
                 </p>
             </div>

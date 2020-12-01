@@ -59,17 +59,23 @@ public class EventController {
 		*/
 	
 	@GetMapping("/eventList2")
-	public String eventList2(int eenable, Model model) {
-		List<EventDto> all2 = service.getEndEventList(eenable);
+	public String eventList2(@RequestParam(defaultValue = "1") int pageNo, int eenable, Model model) {
+		
+		int totalRows = service.getTotalRows(eenable);
+		EventPagerDto pager = new EventPagerDto(5, 5, totalRows, pageNo,eenable);
+		
+		List<EventDto> all2 = service.getEndEventList(pager);
 		model.addAttribute("all2", all2);
+		model.addAttribute("pager", pager); 
 		return "event/eventList2";
 	}
 	
 	@GetMapping("/eventList")
-	public String eventList(@RequestParam(defaultValue = "1") int pageNo,int eenable,Model model) {
+	public String eventList(@RequestParam(defaultValue = "1") int pageNo, int eenable, Model model) {
 		
-		int totalRows = service.getTotalRows();
+		int totalRows = service.getTotalRows(eenable);
 		EventPagerDto pager = new EventPagerDto(5, 5, totalRows, pageNo,eenable);
+		
 		List<EventDto> all = service.getEventList(pager);
 		model.addAttribute("all", all);
 		model.addAttribute("pager", pager); 

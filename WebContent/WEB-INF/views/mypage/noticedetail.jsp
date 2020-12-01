@@ -74,7 +74,7 @@
 							        <th>작성자</th>
 							        <td>${notice.mid}</td>
 							        <th>작성시간</th>
-							        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd HH.mm.ss"/></span></td>
+							        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></span></td>
 							    </tr>
 							    <tr>
 							        <th>첨부파일</th>

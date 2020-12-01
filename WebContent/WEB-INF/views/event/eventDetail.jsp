@@ -42,9 +42,12 @@
     <div class="container align-center">
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1"> 101명 환급원정대</h1>
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">EVENT DETAIL</h1>
                 
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">
+                <input type="hidden" value="${event.event_no}"/>
+                <div style="margin:15px"><a href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}">
+                <img src="<%=application.getContextPath()%>/resources/img/ar/${event.event_detail}" width="400" height="240"/></a></div>
                    	클래스 런칭 기념 <br/>
                    	101명을 위한 환급원정대<br/>
                    	101명의 반숙이들을 추첨해서<br/>

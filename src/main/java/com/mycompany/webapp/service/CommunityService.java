@@ -93,6 +93,13 @@ public class CommunityService {
 		List<ReviewDto> list = communityDao.selectByReviewPage(pager);
 		return list;
 	}
+
+	/*public CommunityDto getCommunityDetail(int comm_no) {
+		CommunityDto communityDetail = communityDao.selectByComno(comm_no);
+		return communityDetail;
+	}
+	*/
+	
 	
 	
 	

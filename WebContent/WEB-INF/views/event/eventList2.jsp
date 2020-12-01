@@ -29,21 +29,21 @@
 				<td colspan="4" style="text-align: center;">
 					<a class="btn btn-outline btn-sm" href="javascript:closeCity(0,1)">&laquo</a> 
 					
-					<c:if test="${pager.groupNo > 1}">
+					<c:if test="${pager.groupNo > 0}">
 						<a class="btn btn-outline btn-sm" href="javascript:closeCity(0,${pager.startPageNo-1})">이전</a> 
-					</c:if>
+					</c:if> 
 					
 					 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					 	<c:if test="${pager.pageNo == i }">
 					 		<a class="btn btn btn-sm" href="javascript:closeCity(0,${i})">${i}</a> 
 					 	</c:if>
 					 	<c:if test="${pager.pageNo != i }">
-					 		<a class="btn btn-outline btn-sm" href="javascript:closeCity(0,${i})">1</a> 
+					 		<a class="btn btn-outline btn-sm" href="javascript:closeCity(0,${i})">${i}</a> 
 					 	</c:if>
 					 	
 					 </c:forEach> 
 					 
-					 <c:if test="${pager.groupNo < pager.totalGroupNo}">
+					  <c:if test="${pager.groupNo < pager.totalGroupNo+1}">
 					 <a class="btn btn-outline btn-sm" href="javascript:closeCity(0,${pager.endPageNo+1})">다음</a>
 					 </c:if>
 					 
