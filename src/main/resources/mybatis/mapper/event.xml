@@ -47,4 +47,11 @@
    		from event
     	where event_no=#{event_no}
 	</select>
+	
+	<!-- 진행중인 가장 최근 이벤트 8 개  -->
+	<select id="selectListEight" resultType="event">
+		select event_no, event_nm, event_img from event where eenable=1 and rownum &lt;= 8
+		order by event_no desc
+	</select>
+	
 </mapper>

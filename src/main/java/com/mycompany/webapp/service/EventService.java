@@ -42,5 +42,11 @@ public class EventService {
 	
 	}
 
+	//진행중인가장 최근 이벤트 8개 
+	public List<EventDto> getEventList() {
+		List<EventDto> elist = eventDao.selectEight();
+		return elist;
+	}
+
 
 }
