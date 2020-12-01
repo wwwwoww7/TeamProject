@@ -32,7 +32,7 @@
 	</select>
 	
 	<!-- 강의공지에서 사용할 강의명 가져오기 -->
-	<select id="selectClassName" parameterType="classNotice" resultType="classNotice">
+	<select id="selectByTutorId" parameterType="String" resultType="classNotice">
 		<!-- select ta.class_no, ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
 		from (	SELECT c.class_no, c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
         		FROM class c, class_notice n, class_hw h 
@@ -46,6 +46,14 @@
 	<!-- 공지사항 행 수 가져오기 -->
 	<select id="countAll" resultType="int">
 		select count(*) from class_notice
+	</select>
+	<!-- 파일 다운로드  -->
+	<select id="getFiles" parameterType="int" resultType="classNotice">
+		select ta.class_no,ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
+		from (	SELECT c.class_no,c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
+	            FROM class c, class_notice n, class_hw h 
+	            where c.class_no = n.class_no and n.class_notice_no = h.class_hw_no) ta
+		where ta.class_hw_no=#{class_hw_no}
 	</select>
 	
 	<!-- 공지사항 내용에 먼저 넣기 1-->
@@ -65,8 +73,13 @@
 	</delete>
 	
 	<update id="updateNotice" parameterType="classNotice" >
-		update CLASS_NOTICE set class_notice_title=#{class_notice_title}, class_notice_content=#{class_notice_content}
+		update CLASS_NOTICE set class_notice_title=#{class_notice_title}, class_notice_content=#{class_notice_content}, class_no=#{class_no}
 		where class_notice_no=#{class_notice_no}
+	</update>
+	
+	<update id="updateFile" parameterType="classNotice" >
+		update CLASS_HW set CLASS_HW_FILE=#{class_hw_file}, CLASS_HW_FILE_TYPE=#{class_hw_type}
+		where CLASS_HW_NO=#{class_notice_no}
 	</update>	
 
 
