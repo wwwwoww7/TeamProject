@@ -51,7 +51,7 @@
 				<input type="hidden" value="${eventD2.event_no}" />
 					
 				<div>
-					${eventD2.event_ct};
+					${eventD2.event_ct}
 					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD2.event_detail}">
 				</div>
 					
@@ -85,6 +85,13 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script> 
+	 <style type="text/css">
+	 	.cid-shfcpp8srP2 {
+	 		padding-bottom: 10rem;
+		 	background-color: #ffffff;
+	    } 
+	    img {display: block; margin-left:auto; }
+	 </style>  
 </body>
 </html>

@@ -14,12 +14,7 @@ public class EventDto {
 	private String event_ct;
 	
 	
-	public String getEvent_ct() {
-		return event_ct;
-	}
-	public void setEvent_ct(String event_ct) {
-		this.event_ct = event_ct;
-	}
+
 	public int getEenable() {
 		return eenable;
 	}
@@ -69,6 +64,13 @@ public class EventDto {
 	}
 	public void setEvent_detail(String event_detail) {
 		this.event_detail = event_detail;
+	}
+	
+	public String getEvent_ct() {
+		return event_ct;
+	}
+	public void setEvent_ct(String event_ct) {
+		this.event_ct = event_ct;
 	}
 
 	
