@@ -104,7 +104,7 @@ public class MyPageController {
 		model.addAttribute("notice",notice);
 		
 		//공지사항에 보여질 파일
-		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
+		ClassNoticeDto newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
 		model.addAttribute("newUpload",newUpload);
 	
 		return "mypage/userNoticeDetail";
@@ -177,7 +177,7 @@ public class MyPageController {
 		model.addAttribute("notice",notice);
 		
 		//공지사항에 보여질 파일
-		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
+		ClassNoticeDto newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
 		model.addAttribute("newUpload",newUpload);
 	
 		return "mypage/noticedetail";
@@ -227,7 +227,7 @@ public class MyPageController {
 		model.addAttribute("notice",notice);
 		
 		//공지사항에 보여질 파일
-		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
+		ClassNoticeDto newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
 		model.addAttribute("newUpload",newUpload);
 		
 		//해당 강사가 강의하는 강의 목록 가져와야함
@@ -244,11 +244,13 @@ public class MyPageController {
 		//게시물 수정 - 공지사항 게시판
 		classNoticeService.noticeUpdate(classNotice);
 		
+		logger.info("너 타입 어디있어????================="+classNotice.getClass_hw_type());
 		
 		if(classNotice.getClass_hwFile().getOriginalFilename().equals("")) {
-
-			classNotice.setClass_hw_file("");
-			classNotice.setClass_hw_type("");
+			//공지사항에 보여질 파일 - 기존파일
+			ClassNoticeDto newUpload = classNoticeService.getFiles(classNotice.getClass_notice_no());
+			classNotice.setClass_hw_file(newUpload.getClass_hw_file());
+			classNotice.setClass_hw_type(newUpload.getClass_hw_type());
 			
 		}else {
 			//파일 내용 넣기(현재날짜로 저장하기)
@@ -268,14 +270,14 @@ public class MyPageController {
 		//게시물 수정 - 공지사항 첨부파일
 		int result = classNoticeService.updateFile(classNotice);
 		
-		if(result == 0) {
+		if(result<0) {
 			logger.info("파일 수정 실패~~");
 		}else {
 			//수정한 게시물을 다시 가져오기
 			ClassNoticeDto notice = classNoticeService.getNoticeDetail(classNotice.getClass_notice_no());
 			model.addAttribute("notice",notice);
 			//공지사항에 보여질 파일
-			List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
+			ClassNoticeDto newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
 			model.addAttribute("newUpload",newUpload);
 		}
 		
@@ -322,8 +324,7 @@ public class MyPageController {
 		//게시물쓰기
 		classNoticeService.noticeWrite(classNotice);
 		
-		if(!classNotice.getClass_hwFile().isEmpty()) { //파일을 올렸을 경우에만
-			logger.info("파일 올렸을 때 실행 되는 곳=============================");
+		if(!classNotice.getClass_hwFile().getOriginalFilename().equals("")) { //파일을 올렸을 경우에만
 			//파일 내용 넣기(현재날짜로 저장하기)
 			String fileName = classNotice.getClass_hwFile().getOriginalFilename();
 			String saveFile = new Date().getTime()+"_"+fileName;

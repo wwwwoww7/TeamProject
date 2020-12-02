@@ -57,9 +57,15 @@
 									<div class="col-md-6 input-group">
 										<span class="input-group-text" style="width: 80px; background-color: #ffff; ">강 의 명</span> 
 										<%-- <input type="text" id="class_nm_s" name="class_nm_s" class="form-control" value="${notice.class_nm_s}" readonly/> --%>
+										
 										<select id="class_no" name="class_no" style="width: 70%; display: inline;" >
 											<c:forEach var="className" items="${classNames}">
-												<option value="${className.class_no}" selected>${className.class_nm_s}</option>
+												<c:if test="${className.class_no == notice.class_no}">
+													<option value="${className.class_no}" selected>${className.class_nm_s}</option>
+												</c:if>
+												<c:if test="${className.class_no != notice.class_no}">
+													<option value="${className.class_no}">${className.class_nm_s}</option>
+												</c:if>
 											</c:forEach>
 										</select>
 									</div>
@@ -86,11 +92,7 @@
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 80px; background-color: #ffff;">기존파일</span> 
-										<span id="class_hw_file" class="form-control">
-											<c:forEach var="loadfile" items="${newUpload}">
-												${loadfile.class_hw_file}
-											</c:forEach>
-										</span>
+										<span id="class_hw_file" class="form-control">${newUpload.class_hw_file}</span>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">

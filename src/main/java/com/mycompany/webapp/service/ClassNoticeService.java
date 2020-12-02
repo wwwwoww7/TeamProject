@@ -72,8 +72,8 @@ public class ClassNoticeService {
 		
 	}
 
-	public List<ClassNoticeDto> getFiles(int class_hw_no) {
-		List<ClassNoticeDto> fileList = classNoticeDao.getFiles(class_hw_no);
+	public ClassNoticeDto getFiles(int class_hw_no) {
+		ClassNoticeDto fileList = classNoticeDao.getFiles(class_hw_no);
 		return fileList;
 	}
 

@@ -87,8 +87,8 @@ public class ClassNoticeDao {
 	}
 
 	/* 해당 게시물의 파일가져오기 */
-	public List<ClassNoticeDto> getFiles(int class_hw_no) {
-		List<ClassNoticeDto> fileList = sst.selectList("mybatis.mapper.class_notice.getFiles",class_hw_no);
+	public ClassNoticeDto getFiles(int class_hw_no) {
+		ClassNoticeDto fileList = sst.selectOne("mybatis.mapper.class_notice.getFiles",class_hw_no);
 		return fileList;
 	}
 

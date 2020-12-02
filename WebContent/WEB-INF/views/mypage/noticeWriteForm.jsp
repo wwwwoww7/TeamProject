@@ -75,7 +75,7 @@
 									
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">제	목</span> 
-										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>>
+										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
