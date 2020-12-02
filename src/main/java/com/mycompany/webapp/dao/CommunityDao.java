@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.webapp.dto.ClassCateDto;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
 import com.mycompany.webapp.dto.ReviewDto;
@@ -47,9 +48,9 @@ public class CommunityDao {
 		return review;
 	}
 
-	public List<ReviewDto> selectCatereview1() {
-		List<ReviewDto> catereview1 = sst.selectList("mybatis.mapper.community.selectCatereview1");
-		return catereview1;
+	public List<ReviewDto> selectCatereview(int cateno) {
+		List<ReviewDto> catereview = sst.selectList("mybatis.mapper.community.selectCatereview", cateno);
+		return catereview;
 	}
 
 	public List<ReviewDto> selectCatereview2() {
@@ -100,6 +101,21 @@ public class CommunityDao {
 	public List<CommunityDto> selectByCommWrite() {
 		List<CommunityDto> communityWrite = sst.selectList("mybatis.mapper.community.selectByCommWrite");
 		return communityWrite;
+	}
+
+	public List<ReviewDto> selectcateReview() {
+		List<ReviewDto> cateReview = sst.selectList("mybatis.mapper.community.selectcateReview");
+		return cateReview;
+	}
+
+	public List<ClassCateDto> selectCateList() {
+		List<ClassCateDto> catelist = sst.selectList("mybatis.mapper.community.selectCateList");
+		return catelist;
+	}
+
+	public String selectCatenmByCateno(int cateno) {
+		String catenm = sst.selectOne("mybatis.mapper.community.selectCatenmByCateno", cateno);
+		return catenm;
 	}	
 
 	

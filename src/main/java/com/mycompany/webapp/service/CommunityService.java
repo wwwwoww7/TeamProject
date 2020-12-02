@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.CommunityDao;
+import com.mycompany.webapp.dto.ClassCateDto;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
 import com.mycompany.webapp.dto.ReviewDto;
@@ -51,19 +52,9 @@ public class CommunityService {
 	}
 
 	//분야별 review 받아오기
-	public List<ReviewDto> getReviewCatereview1() {
-		List<ReviewDto> catereview1 = communityDao.selectCatereview1();
+	public List<ReviewDto> getReviewCatereview(int cateno) {
+		List<ReviewDto> catereview1 = communityDao.selectCatereview(cateno);
 		return catereview1;
-	}
-
-	public List<ReviewDto> getReviewCatereview2() {
-		List<ReviewDto> catereview2 = communityDao.selectCatereview2();
-		return catereview2;
-	}
-
-	public List<ReviewDto> getReviewCatereview3() {
-		List<ReviewDto> catereview3 = communityDao.selectCatereview3();
-		return catereview3;
 	}
 
 	
@@ -109,6 +100,21 @@ public class CommunityService {
 	public List<CommunityDto> getCommunityWrite() {
 		List<CommunityDto>  communityWrite = communityDao.selectByCommWrite();
 		return communityWrite;
+	}
+
+	public List<ReviewDto> getcateReview() {
+		List<ReviewDto> cateReview = communityDao.selectcateReview();
+		return cateReview;
+	}
+
+	public List<ClassCateDto> getCateList() {
+		List<ClassCateDto> catelist = communityDao.selectCateList();
+		return catelist;
+	}
+
+	public String getCatenm(int cateno) {
+		String catanm = communityDao.selectCatenmByCateno(cateno);
+		return catanm;
 	}
 	
 

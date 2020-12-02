@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.ClassCateDto;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
 import com.mycompany.webapp.dto.ReviewDto;
@@ -56,7 +57,8 @@ public class CommunityController {
 		int totalRows = service.getTotalReviewRows();
 		ReviewPagerDto pager = new ReviewPagerDto(3, 5, totalRows, pageNo);
 		List<ReviewDto> review = service.getReviewAll(pager);
-
+		List<ClassCateDto> catelist = service.getCateList();
+		model.addAttribute("catelist", catelist);
 		model.addAttribute("review", review);
 		model.addAttribute("cate", "전체");
 		model.addAttribute("pager", pager);
@@ -148,28 +150,25 @@ public class CommunityController {
 		out.close();
 	}
 
-	@GetMapping("/catereview1")
-	public String catereview1(Model model) {
-		model.addAttribute("cate", "건강");
-		List<ReviewDto> catereview1 = service.getReviewCatereview1();
-		model.addAttribute("catereview1", catereview1);
+	@GetMapping("/catereview")
+	public String catereview1(int cateno, Model model) {
+		logger.info("여기가찍히나요");
+		
+		List<ReviewDto> catereview = service.getReviewCatereview(cateno);
+		model.addAttribute("review", catereview);
+		List<ClassCateDto> catelist = service.getCateList();
+		model.addAttribute("catelist", catelist);
+		String catenm = service.getCatenm(cateno);
+		model.addAttribute("cate", catenm);
+
 		return "community/community_list_review";
 	}
 
-	@GetMapping("/catereview2")
-	public String catereview2(Model model) {
-		model.addAttribute("cate", "커리어");
-		logger.info("cate2야 오고있니");
-		List<ReviewDto> catereview2 = service.getReviewCatereview2();
-		model.addAttribute("catereview2", catereview2);
-		return "community/community_list_review";
-	}
-
-	@GetMapping("/catereview3")
-	public String catereview3(Model model) {
-		model.addAttribute("cate", "머니");
-		List<ReviewDto> catereview3 = service.getReviewCatereview3();
-		model.addAttribute("catereview3", catereview3);
+	
+	@GetMapping("/cateReview")
+	public String cateReview(Model model) {
+		List<ReviewDto> cateReview = service.getcateReview();
+		model.addAttribute("cateReview", cateReview);
 		return "community/community_list_review";
 	}
 
