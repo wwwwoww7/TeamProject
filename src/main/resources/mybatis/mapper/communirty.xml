@@ -104,37 +104,43 @@
           and comm_no = #{comm_no} 
 	</select>
 	
-	
+	<!--커뮤니티_글쓰기안에서 분야별 데이터 가져오기 -->
 	<select id="selectCommunityCateList" resultType="community">
 	    select *
 		from community_CATE
 	</select>
-	
+	<!-- 리뷰_list dropdown 분야별 데이터 가져오기 -->
 	<select id="selectCateList" resultType="classcate">
 	    select *
 		from class_CATE
 		order by class_cate_no asc
 	</select>
 	
-	<select id="selectCateReviewList" resultType="classcate">
+	<!--<select id="selectCateReviewList" resultType="classcate">
 	    select *
 		from class_CATE
 		order by class_cate_no asc
-	</select>
+	</select> -->
 	
+	<!-- 리뷰_list 분야번호로 이름 데이터 가져오기 -->
 	<select id="selectCatenmByCateno" resultType="String">
 	    select class_cate_nm
         from class_cate
         where class_cate_no = #{cateno}
 	</select>
 	
+	<!-- 리뷰dropdown분야별 데이터 가져오기 -->
+	<select id="selectReviewCateList" resultType="review">
+	     select class.class_nm, class.class_no, review.review_star
+		from class, review
+        where class.class_no=review.review_no
+		order by review.review_date asc
+	</select>
+	
 	<insert id="insertCommunityWriteApply" parameterType="community">
 		 insert into Community 
         values (SEQ_COMM_NO.nextval, sysdate, #{comm_title}, #{comm_content},0, #{mid}, #{comm_cate_no}  )
 	</insert>
-	
-	
-	
 	
 	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->

@@ -122,10 +122,12 @@ public class CommunityService {
 		return result;
 	}
 
-	public List<ReviewDto> getReviewCateList() {
-		List<ReviewDto> catereviewlist = communityDao.selectCateReviewList();
-		return catereviewlist;
+	public List<ReviewDto> getCommunitReviewCateList() {
+		List<ReviewDto> reviewCateList = communityDao.selectReviewCateList();
+		return reviewCateList;
 	}
+
+	
 	
 
 

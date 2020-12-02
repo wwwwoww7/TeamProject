@@ -123,9 +123,9 @@ public class CommunityDao {
 		return result;
 	}
 
-	public List<ReviewDto> selectCateReviewList() {
-		List<ReviewDto> catereviewlist = sst.selectList("mybatis.mapper.community.selectCateReviewList");
-		return catereviewlist;
+	public List<ReviewDto> selectReviewCateList() {
+		List<ReviewDto> reviewCateList = sst.selectList("mybatis.mapper.community.selectReviewCateList");
+		return reviewCateList;
 	}	
 
 	

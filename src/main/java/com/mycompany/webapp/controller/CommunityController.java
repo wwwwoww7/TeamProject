@@ -119,7 +119,8 @@ public class CommunityController {
 		
 		return "community/community_detail_review";
 	}
-
+	
+	//community_글쓰기 누르면 뜨는 페이지
 	@GetMapping("/communityWrite")
 	public String communityWrite(Model model) {
 		//class_cate_nm을 불러와야된다. & 작성자 불러와야된다.
@@ -131,13 +132,11 @@ public class CommunityController {
 	}
 
 	@GetMapping("/communityWriteReview") 
-	public String communityWriteReview(ReviewDto reviewapply, HttpSession session, HttpServletResponse response) {
-		
-		String sessionMid = (String) session.getAttribute("sessionMid");
-		
-		List<ReviewDto> ReviewCateList = service.getReviewCateList();
-		reviewapply.setMid(sessionMid);
-
+	public String communityWriteReview(Model model) {
+		//class.class_nm & review.review_star 불러와야함.
+		logger.info("나올차례임니다.");
+		List<ReviewDto> reviewCateList = service.getCommunitReviewCateList();
+		model.addAttribute("reviewCateList", reviewCateList);
 		return "community/community_reviewform";
 	}
 	

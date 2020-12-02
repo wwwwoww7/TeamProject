@@ -8,8 +8,8 @@
 			<div class="col-md-12 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff;">강 의 선 택</span> 
 				<select id="class_nm_s" name="class_nm_s" style="width: 65%;">
-					<c:forEach var="commreviewform" items="${list}">
-						<option value="강의명1" selected>${commreviewform.mid}</option>
+					<c:forEach var="reviewitem" items="${reviewCateList}">
+						<option value="강의명1" selected>${reviewitem.class_nm}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -19,8 +19,8 @@
 			<div class="col-md-6 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff;">후 기 별 점</span> 
 				<select id="class_nm_s" name="class_nm_s" style="width: 65%;">
-					<c:forEach var="commreviewform" items="${list}">
-						<option value="강의명1" selected>${commreviewform.comm_title}</option>
+					<c:forEach var="reviewitem" items="${reviewCateList}">
+						<option value="강의명1" selected>${reviewitem.review_star}</option>
 					</c:forEach>
 				</select>
 			</div>
