@@ -7,8 +7,8 @@
 		<thead>
 			<tr class="table-heads ">  
 			<th class="head-item mbr-fonts-style display-7">강의명</th>
-			<th class="head-item mbr-fonts-style display-7">문의분류</th>
 			<th class="head-item mbr-fonts-style display-7">문의제목</th>
+			<th class="head-item mbr-fonts-style display-7">답변여부</th>
 			<th class="head-item mbr-fonts-style display-7">작성자</th>
 			<th class="head-item mbr-fonts-style display-7">문의날짜</th>
 		</tr>
@@ -17,11 +17,12 @@
 		<c:forEach var="qalist" items="${list}"> 
 			<tr> 
 				<td class="body-item mbr-fonts-style display-7">${qalist.class_nm_s}</td>
-				<td class="body-item mbr-fonts-style display-7">${qalist.class_qa_cate}</td>
 				<td class="body-item mbr-fonts-style display-7">
 					<a class="text-black" href="<%=request.getContextPath()%>/mypage/qaDetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
-					<c:if test="${qalist.class_qa_answer != null}"> 답변완료 </c:if>
-					<c:if test="${qalist.class_qa_answer == null}"> 미응답 </c:if>
+				</td>
+				<td class="body-item mbr-fonts-style display-7">
+					<c:if test="${qalist.class_qa_answer != null}">답변완료</c:if>
+					<c:if test="${qalist.class_qa_answer == null}">미응답</c:if>
 				</td>
 				<td class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
 				<td class="body-item mbr-fonts-style display-7">

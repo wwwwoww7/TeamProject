@@ -69,23 +69,19 @@
 						    <tr>
 						        <th>강의명</th>
 						        <td>${qalist.class_nm_s}</td>
-						        <th>문의 분류</th>
-						        <td>${qalist.class_qa_cate}</td>
-						    </tr>
-						    <tr>
-						        <th>작성자</th>
-						        <td>${qalist.writer_id}</td>
-						        <th>작성일</th>
-						        <td><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/></span></td>
-							</tr>
-							<tr>
-								<th>답변완료여부</th>
+						        <th>답변완료여부</th>
 								<c:if test="${qalist.class_qa_answer != null}">
 						        	<td colspan="10">답변완료</td>
 						        </c:if>
 						        <c:if test="${qalist.class_qa_answer == null}">
 						        	<td colspan="10">미응답</td>
 						        </c:if>
+						    </tr>
+						    <tr>
+						        <th>작성자</th>
+						        <td>${qalist.writer_id}</td>
+						        <th>작성일</th>
+						        <td><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/></span></td>
 							</tr>
 							<tr>
 								<th>제목</th>
