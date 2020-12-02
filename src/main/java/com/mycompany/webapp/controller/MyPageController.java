@@ -147,7 +147,7 @@ public class MyPageController {
 		model.addAttribute("notice",notice);
 		
 		//공지사항에 보여질 파일
-		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_hw_no());
+		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
 		model.addAttribute("newUpload",newUpload);
 	
 		return "mypage/noticedetail";
@@ -197,7 +197,7 @@ public class MyPageController {
 		model.addAttribute("notice",notice);
 		
 		//공지사항에 보여질 파일
-		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_hw_no());
+		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
 		model.addAttribute("newUpload",newUpload);
 		
 		//해당 강사가 강의하는 강의 목록 가져와야함
@@ -245,7 +245,7 @@ public class MyPageController {
 			ClassNoticeDto notice = classNoticeService.getNoticeDetail(classNotice.getClass_notice_no());
 			model.addAttribute("notice",notice);
 			//공지사항에 보여질 파일
-			List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_hw_no());
+			List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
 			model.addAttribute("newUpload",newUpload);
 		}
 		
@@ -260,9 +260,15 @@ public class MyPageController {
 		String mid = (String) session.getAttribute("sessionMid");
 		
 		//게시물 삭제 응답/요청
-		classNoticeService.noticeDelete(class_notice_no);
-				
+		int resNotice = classNoticeService.noticeDelete(class_notice_no);
+		int resFile = classNoticeService.noticeFileDelete(class_notice_no);
+		
+		if(resNotice == 0 && resFile == 0) {
+			logger.info("공지사항 삭제 실패!!!");
+		}
+		
 		return "redirect:/mypage/mypage_tutor?mid="+mid;
+
 	}
 	
 	//강사의 강의공지사항 글쓰기 폼 요청
@@ -287,7 +293,7 @@ public class MyPageController {
 		classNoticeService.noticeWrite(classNotice);
 		
 		if(!classNotice.getClass_hwFile().isEmpty()) { //파일을 올렸을 경우에만
-			
+			logger.info("파일 올렸을 때 실행 되는 곳=============================");
 			//파일 내용 넣기(현재날짜로 저장하기)
 			String fileName = classNotice.getClass_hwFile().getOriginalFilename();
 			String saveFile = new Date().getTime()+"_"+fileName;
@@ -300,6 +306,7 @@ public class MyPageController {
 			classNotice.setClass_hw_type(ext);
 			
 		} else {
+			logger.info("파일 노우!!!!!!!!!!!!!!!!!=============================");
 			classNotice.setClass_hw_file("");
 			classNotice.setClass_hw_type("");
 		}
