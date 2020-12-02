@@ -14,13 +14,37 @@
 		where rnum &gt;=#{startRowNo} 
 	</select>
 	
-	
+	<!-- 강사의 공지사항 테이블 -->
 	<select id="selectNoticeDetail" parameterType="int" resultType="classNotice">
 		select ta.class_no, ta.class_notice_no, ta.class_nm_s, ta.class_notice_title, ta.mid, ta.class_hw_no, ta.class_hw_file, ta.class_notice_date, ta.class_notice_content
 		from (	SELECT c.class_no, c.class_nm_s, c.TUTOR_ID as mid, h.class_hw_no,h.class_hw_file,n.class_notice_no,n.class_notice_title,n.class_notice_date,n.class_notice_content
         		FROM class c, class_notice n, class_hw h 
         		where c.class_no = n.class_no and n.class_notice_no = h.class_notice_no(+)) ta
 		where ta.class_notice_no=#{class_notice_no}
+	</select>
+	
+	<!-- 사용자의 공지사항 행 수 가져오기 -->
+	<select id="countAllByUserID" parameterType="String" resultType="int">
+		select count(*)
+		from class_notice n, class_appl app, class c
+		where app.class_no = n.class_no and c.class_no =  n.class_no and app.user_id = #{mid}
+	</select>
+	
+	<!-- 수강생이 수강한 강의의 공지사항 가져오기 -->
+	<select id="getUserNotice" parameterType="myPager" resultType="classNotice">
+	    select rnum, class_no, class_nm_s, class_notice_no, class_notice_title, class_notice_date, mid
+		from (
+				select rownum as rnum, new_t.class_no, new_t.class_nm_s,new_t.mid, new_t.class_notice_no, new_t.class_notice_title, new_t.class_notice_date
+	        	from (
+	                    select rownum as rnum, n.class_no, c.class_nm_s,c.TUTOR_ID as mid, n.class_notice_no, n.class_notice_title, n.class_notice_date
+	                    from class_notice n, class_appl app, class c
+	                    where app.class_no = n.class_no 
+	                    		and c.class_no =  n.class_no 
+	                    		and app.user_id = #{mid}
+	                    order  by n.class_notice_no desc) new_t
+	            where rownum &lt;= #{endRowNo} 
+	        )   
+			where rnum &gt;=#{startRowNo} 
 	</select>
 	
 	<!--  이거 코드 중복 확인해 봐 -->
@@ -39,7 +63,7 @@
 		where c.TUTOR_ID =  #{mid}
 	</select>
 	
-	<!-- 공지사항 행 수 가져오기 -->
+	<!-- 강사의 공지사항 행 수 가져오기 -->
 	<select id="countAll" resultType="int">
 		select count(*) from class_notice
 	</select>

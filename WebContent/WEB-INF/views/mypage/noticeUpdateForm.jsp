@@ -51,7 +51,7 @@
 					
 					<div class="row justify-content-center mt-4">
 						<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-							<form action="noticeUpdate" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
+							<form onsubmit="return writeCheck();" action="noticeUpdate" method="POST" id="noticeUpdate"class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<input type="hidden" id="class_notice_no" name="class_notice_no" value="${notice.class_notice_no}"/>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-6 input-group">
@@ -107,42 +107,29 @@
 										<button type="submit" class="btn btn-success display-7 text-primary" style="margin: 5px;">수정</button>
 										<%-- <a class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;" href="<%=request.getContextPath()%>/mypage/noticeUpdate" ></a> --%>
 										<script type="text/javascript">
-											/* var loadFile = function(event) {
-												var output = document.getElementById("#class_hw_file");
-												output.span = URL.createObjectURL(event.target.files[0]);						
-											}; */
+											function writeCheck() {
+	
+												var ntitle = $("#class_notice_title").val();
+												if(ntitle == "") { 
+													
+													alert("제목을 입력해주세요");
+													$("#class_notice_title").focus();
+													return false;
+												}
 												
-											/* function noticeUpdate() {
 												
-												var noticeNo = $("#class_notice_no").val();
-												
-												var ntitle = $("#class_notice_title").val().trim();
-												if(ntitle == "") { $("#ntitleError").text("필수입력"); }
-												else { $("#ntitleError").text(""); }
-												
-												var ncontent = $("#class_notice_content").val().trim();
-												if(ncontent == "") { $("#ncontentError").text("필수"); }
-												else { $("#ncontentError").text(""); }
-												
-												if(ntitle == "" || ncontent == "") {
-													return ;	
-												} 
-												
-												var nfile = $("#class_hw_file").val();
-												
-												var mid = $("#mid").val();
-												
-												$.ajax({
-													url:"noticeUpdate",
-													method:"post",
-													data: { class_notice_no : noticeNo, class_notice_title:ntitle, class_notice_content:ncontent},
-													success:function(data) { //{"result":"success"}형태의 json방식
-														if(data.result == "success") {
-															noticeDetail(data.notice_no); 
-														}
-													}
-												});
-											} */
+												var ncontent = $("#class_notice_content").val();
+												if(ncontent == "") {
+													alert("내용을 입력해주세요");
+													$("#class_notice_content").focus();
+													return false;
+												}
+												else{
+													$("#noticeUpdate").writeCheck();
+												}
+												return true;
+	
+											}
 										</script>		
 									</div>
 									<div class="col-3">

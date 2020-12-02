@@ -56,7 +56,7 @@
 					<input type="hidden" id="class_notice_no" name="class_notice_no" value="${notice.class_notice_no}"/>
 					<div class="row justify-content-center mt-4">
 						<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-							<form action="noticeWrite" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
+							<form onsubmit="return writeCheck();" action="noticeWrite" method="POST" id="noticeWrite" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-6 input-group">
 										<span class="input-group-text" style="width: 30%; background-color: #ffff;">강 의 선 택</span> 
@@ -75,8 +75,7 @@
 									
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">제	목</span> 
-										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>
-										<span id="ntitleError" class="error"></span>
+										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
@@ -90,46 +89,38 @@
 										<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
 										<textarea id="class_notice_content" name="class_notice_content" class="form-control" 
 											style="height: 250px;"></textarea>
-										<span id="ncontentError" class="error"></span>
 									</div>
 								</div>
 								<div class="dragArea row">
 									<div class="col-md-3"></div>
 									<div class="col-md-3">
 										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin-left: 5px;" value="글쓰기"/>
-										<!-- <script type="text/javascript">
-											function noticeWrite() {
+										<script type="text/javascript">
+											function writeCheck() {
+
+												var ntitle = $("#class_notice_title").val();
+												if(ntitle == "") { 
+													
+													alert("제목을 입력해주세요");
+													$("#class_notice_title").focus();
+													return false;
+												}
 												
-												var noticeNo = $("#class_notice_no").val();
 												
-												var ntitle = $("#class_notice_title").val().trim();
-												if(ntitle == "") { $("#ntitleError").text("필수입력"); }
-												else { $("#ntitleError").text(""); }
-												
-												var ncontent = $("#class_notice_content").val().trim();
-												if(ncontent == "") { $("#ncontentError").text("필수"); }
-												else { $("#ncontentError").text(""); }
-												
-												if(ntitle == "" || ncontent == "") {
-													return ;	
-												} 
-												
-												var nfile = $("#class_hw_file").val();
-												
-												var mid = $("#mid").val();
-												
-												$.ajax({
-													url:"noticeWrite",
-													method:"post",
-													data: { class_notice_no : noticeNo, class_notice_title:ntitle, class_notice_content:ncontent},
-													success:function(data) { 
-														if(data.result == "success") {
-															tutorClassNotice();
-														}
-													}
-												});
+												var ncontent = $("#class_notice_content").val();
+												if(ncontent == "") {
+													alert("내용을 입력해주세요");
+													$("#class_notice_content").focus();
+													return false;
+												}
+												else{
+													$("#noticeWrite").writeCheck();
+												}
+												return true;
+
 											}
-										</script>		 -->
+											
+										</script>		
 									</div>
 									<div class="col-md-3">
 										<a class="btn item-btn btn-success display-7 text-primary" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">취소</a>
