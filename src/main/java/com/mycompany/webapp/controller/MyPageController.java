@@ -330,7 +330,7 @@ public class MyPageController {
 			
 			//파일 확장자 넣기
 			String ext = fileName.substring(fileName.lastIndexOf(".")+1);
-			classNotice.getClass_hwFile().transferTo(new File("D:/MyWokspace/files/"+saveFile));
+			classNotice.getClass_hwFile().transferTo(new File("D:/MyWorkspace/files/"+saveFile));
 			classNotice.setClass_hw_file(saveFile);
 	
 			classNotice.setClass_hw_type(ext);
