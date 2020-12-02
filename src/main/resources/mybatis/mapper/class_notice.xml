@@ -87,6 +87,10 @@
 		delete from CLASS_NOTICE where class_notice_no =#{class_notice_no}
 	</delete>
 	
+	<delete id="deleteNoticeFile" parameterType="int">
+		delete from CLASS_HW where class_notice_no =#{class_notice_no}
+	</delete>
+	
 	<update id="updateNotice" parameterType="classNotice" >
 		update CLASS_NOTICE set class_notice_title=#{class_notice_title}, class_notice_content=#{class_notice_content}, class_no=#{class_no}
 		where class_notice_no=#{class_notice_no}
@@ -94,7 +98,7 @@
 	
 	<update id="updateFile" parameterType="classNotice" >
 		update CLASS_HW set CLASS_HW_FILE=#{class_hw_file}, CLASS_HW_FILE_TYPE=#{class_hw_type}
-		where CLASS_HW_NO=#{class_notice_no}
+		where class_notice_no=#{class_notice_no}
 	</update>	
 
 

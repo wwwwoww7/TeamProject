@@ -102,6 +102,11 @@ public class ClassNoticeDao {
 		return noticeList;
 	}
 
+	public int deleteNoticeFile(int class_notice_no) {
+		int rows = sst.delete("mybatis.mapper.class_notice.deleteNoticeFile",class_notice_no);
+		return rows;
+	}
+
 	
 
 
