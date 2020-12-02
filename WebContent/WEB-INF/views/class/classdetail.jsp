@@ -304,7 +304,7 @@
 								                <div class="panel-item p-3">
 								                    <div class="card-block">
 								                        <div class="testimonial-photo">
-								                            <img src="<%=application.getContextPath()%>/resources/profile/${tutorInfo.mpro_img}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
+								                            <img style="border: 4px solid #ffc800;" src="<%=application.getContextPath()%>/class/tutorphotoDownload?tutor=${classOne.tutor_id}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
 								                        </div>
 								                        <p class="mbr-text mbr-fonts-style display-7 mt-3">
 								                        	${tutorInfo.minfo}
