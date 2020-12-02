@@ -80,6 +80,36 @@ public class MyPageController {
 		return "mypage/mypage_user";
 	}
 	
+	//수강생의 공지사항 목록 보기
+	@PostMapping("/userClassNotice")
+	public String userClassNotice(@RequestParam(defaultValue = "1")int pageNo, Model model,HttpSession session) {
+		String mid = (String) session.getAttribute("sessionMid");
+		
+		int totalRows = classNoticeService.countAllByUserID(mid);
+		
+		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
+		List<ClassNoticeDto> list = classNoticeService.getUserNotice(pager);
+		model.addAttribute("list",list);
+		model.addAttribute("pager",pager); 
+		
+		
+		return "mypage/userclassnotice";
+	}
+	
+	//강사의 공지사항 목록의 상세내용
+	@GetMapping("/userNoticeDetail")
+	public String userNoticeDetail(int class_notice_no, Model model) {
+		
+		ClassNoticeDto notice = classNoticeService.getNoticeDetail(class_notice_no);
+		model.addAttribute("notice",notice);
+		
+		//공지사항에 보여질 파일
+		List<ClassNoticeDto> newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
+		model.addAttribute("newUpload",newUpload);
+	
+		return "mypage/userNoticeDetail";
+	}
+	
 	//수강생 강의문의 목록 보기
 	@GetMapping("/myQa")
 	public String myQa(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
