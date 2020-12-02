@@ -89,7 +89,7 @@
 				                            <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control" value="" id="email-form8-40">
 				                        </div>
 				                        <div class="col-lg-4 col-md-12 col-sm-12 mbr-section-btn align-center">
-				                      	  <button type="submit" class="btn btn-success display-4">Submit</button>
+				                      	  <button type="submit" class="btn btn-success display-4 ">Submit</button>
 				                        </div>
 				                    </div>
 				                </form>
@@ -100,7 +100,7 @@
                     
                     <!--  href="javascript:popupClose()" -->
 <!--                     <div class="mbr-section-btn"><a class="btn btn-success display-4" href="https://jp89p.channel.io">class end</a></div> -->
-                    <div class="mbr-section-btn"><a class="btn btn-success display-4" href="javascript:popupClose()">강의 종료</a></div>
+                    <div class="mbr-section-btn"><a class="btn btn-success display-4  text-primary" href="javascript:popupClose()">강의 종료</a></div>
                 </div>
             </div>
             <div class="mbr-figure col-12 col-md-6">

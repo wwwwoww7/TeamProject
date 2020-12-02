@@ -13,13 +13,13 @@
 			</colgroup>
 			<tbody>
 			    <tr>
-			        <th>제목</th>
+			        <th class="text-center">제목</th>
 			        <td>${notice.class_notice_title}</td>
-			        <th>작성일</th>
+			        <th class="text-center">작성일</th>
 			        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></span></td>
 			    </tr>
 			    <tr>
-			        <th>첨부파일</th>
+			        <th class="text-center">첨부파일</th>
 			        <td colspan="3">
 			        	<c:forEach var="loadfile" items="${newUpload}">
 			        		<a id="fileloc"href="download?fileName=${loadfile.class_hw_file}"> </a> <!-- 오리지날파일이름만 보이게 하기 -->
@@ -32,16 +32,15 @@
 			</tbody>
 			
 		</table>
-	
-		<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:classNotice(1)">목록으로</a>	
-	    
-	    <c:if test="${notice.mid == sessionMid}">
-	    	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a>
-			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a>
-		</c:if>
+	  	<div class="mbr-section-btn" align="right">
+			<a class="btn btn-success display-4 text-primary" href="javascript:classNotice(1)">목록으로</a>	
+	   
+		    <c:if test="${notice.mid == sessionMid}">
+		    	<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a>
+				<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a>
+			</c:if>
+		</div> 
 	</div>
 </div>
 <style type="text/css">
-	a {color: black;}
-	a:hover {text-decoration: underline; color: #ffc800;}
 </style>

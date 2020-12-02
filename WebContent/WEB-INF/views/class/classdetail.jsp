@@ -187,7 +187,7 @@
 													
 													
 								                    <div class="mbr-section-btn">
-								                    	<a class="btn btn-success display-4" href="javascript:openpop()">강의 보기</a>
+								                    	<a class="btn btn-success display-4 text-primary" href="javascript:openpop()">강의 보기</a>
 								                    </div>
 								                 	   버튼 강의 구매자에게만 보여야 함..
 								                </div>

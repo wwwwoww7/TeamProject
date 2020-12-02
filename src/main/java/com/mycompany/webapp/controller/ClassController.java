@@ -62,8 +62,16 @@ public class ClassController {
 		return "/class/classdetail";
 	}
 	
+	
+	
+	//강의 영상 팝업
 	@GetMapping("/classvideo")
 	public String classvideo( ) {
+		
+		
+		
+		
+		
 		return "/class/classvideo";
 	}
 	
@@ -124,8 +132,7 @@ public class ClassController {
 	public String classNotices(@RequestParam(defaultValue = "1")int pageNo, int class_no, Model model) {
 		
 		int totalRows = classNoticeService.getTotalRowByClassNo(class_no);
-		logger.info("totalRows ====> " + totalRows);
-		ClassNoticePagerDto pager = new ClassNoticePagerDto(3,3,totalRows, pageNo);
+		ClassNoticePagerDto pager = new ClassNoticePagerDto(10,5,totalRows, pageNo);
 		pager.setClass_no(class_no);
 		
 		List<ClassNoticeDto> list = classNoticeService.getNoticeByClassNo(pager);
