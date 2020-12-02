@@ -73,6 +73,11 @@
 									<input type="radio" style="margin-left: 10px"id="mkind3" name="mkind" value="career">
 									<label for="mkind3">career</label>
 								</span>
+								
+								<span>
+									<input type="radio" style="margin-left: 10px"id="mkind4" name="mkind" value="cooking">
+									<label for="mkind4">cooking</label>
+								</span>
 								<br/>
 							</div>
 							
