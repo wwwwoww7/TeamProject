@@ -65,13 +65,11 @@
 	
 	  
 	  
-	  <div class="container container-table">
+	  <div class="container">
 	      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><strong>
 	         <span class="mbri-shopping-basket"></span> CART</strong></h2>
 	      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5">Get your Classes!</h3>
 	     
-	      <div class="table-wrapper">
-			
 				<div class="col-lg-12">
 					<div id="basket">
 						<h3>주문상품확인</h3>
@@ -83,12 +81,14 @@
 					</div>	
 	
 	        <div class="container">
-	        <div class="col-lg-12">
+	        <div class="col-lg-12" >
 	          <table class="table" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	              <tr class="table-heads">
 	               <th class="head-item mbr-fonts-style display-7">상품선택
-	              	 <input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
+		               	<div>
+		              		<input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
+	            	   	</div>
 	               </th>
 	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
 	               <th class="head-item mbr-fonts-style display-7">수량</th>
@@ -145,7 +145,8 @@
 			 <tfoot>
 			 	<tr>
 			 		<td colspan="2" style="text-align: left">
-			 			<a class="btn item-btn btn-info btn-sm display-3" href="#">전체 삭제</a>
+			 			<a class="btn item-btn btn-info btn-sm display-3" href="#" ">전체 삭제</a>
+			 			
 			 			<a class="btn item-btn btn-danger btn-sm display-3" href="#">선택 삭제</a>
 			 		<script type="text/javascript">
 				 	
@@ -175,18 +176,35 @@
 						 	var cnt = $("input[name='chk']").length;
 			           		var checkboxValues = [];
 			           		var class_no = $("input[name='chk']").val();
-
-			           		function checkAll(){
+							
+							function checkAll(){
 								if($("#Allcheck").prop("checked")==true){
 									$("input[name='chk']").prop("checked", true);
+									checkboxValues = [];
+									$("input[name='chk']:checked").each(function(i) {
+										checkboxValues.push($(this).val());
+									});
 								}else{
 									$("input[name='chk']").prop("checked", false);
+									checkboxValues = [0];
 								}
+								
+								var allData = { "chkPrice": checkboxValues };
+				           		
+								$.ajax({
+									url:"<%=request.getContextPath()%>/cart/sumprice",
+									data: allData,
+									dataType : 'json',
+									contentType : 'application/json',
+									success: function(data){
+										$("#cartSum").text(data.sumPrice);
+									}
+								});
 								
 								$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
 							}		
-									
-							 	       
+						
+						   
 			 			    //개별 체크박스     
 			 				function checkSelect() {
 				           		/* console.log("cnt:", cnt, $("input[name='chk']:checked").length); */
@@ -194,17 +212,26 @@
 								//개별선택
 				           		if($("input[name='chk']:checked").length==cnt){
 									$("#Allcheck").prop("checked",true);
+									return checkAll();
 								}else{
 									$("#Allcheck").prop("checked",false);
-									
-								}
-								//선택된 클래스의 가격을  보내줌
-				           		$("input[name='chk']:checked").each(function(i) {
-									checkboxValues.push($(this).val());
-								}); 
+									//배열 초기화
+									checkboxValues = [];
+									//선택된 체크값 배열
+									$("input[name='chk']:checked").each(function(i) {
+											checkboxValues.push($(this).val());
+									}); 
+									//선택되지 않은 값 빼기
+									if($("input[name='chk']").is((":checked")==false)){
+										$("input[name='chk']:checked").each(function(i) {
+											checkboxValues.splice(i,1);
+											}); 
+										}
+									}
 								
-					           	var allData = { "chkPrice": checkboxValues };
-										
+				           		
+								var allData = { "chkPrice": checkboxValues };
+				           		
 								$.ajax({
 									url:"<%=request.getContextPath()%>/cart/sumprice",
 									data: allData,
@@ -221,7 +248,6 @@
 			 			    } 
 				 			
 				           		
-				           		
 			 				
 						 function payment(){
 							if($("input[name='chk']:checked").length==0){
@@ -237,12 +263,12 @@
 									
 									}
 								}
-							};
+							}
 					</script>
 				</div>
 	        </div>
 	      </div>
-	     </div>
+	    
 </section>	
 	
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>

@@ -171,8 +171,8 @@
 									<td class="cont">${sessionMid}</td>
 								</tr>
 								<tr>
-									<td class="name">휴대전화</td>
-									<td class="cont">${cartItem.mtel}</td>
+									<td class="name">신청일</td>
+									<td class="cont">${classDate}</td>
 								</tr>
 								<tr class="warr">
 									<td colspan="2">*이용동의에 체크가 완료되지 않으면 결제진행의 어려움이 있습니다.</td>

@@ -1,7 +1,9 @@
 package com.mycompany.webapp.controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -70,7 +72,7 @@ public class CartController {
 		int sumPrice = 0;
 		
 		List<String> chkList = arrayParams;
-		
+		logger.info("받은 배열 : " + arrayParams);
 		for(String pkPrice : chkList) {
 			int result = Integer.parseInt(pkPrice);
 			sumPrice += result; 
@@ -96,7 +98,14 @@ public class CartController {
 	}
 	
 	@RequestMapping("/payment")
-	public String payment() {
+	public String payment(Model model) {
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Date class_date = new Date();
+		
+		String classDate = format1.format(class_date);
+		
+		model.addAttribute("classDate", classDate);
 		return "cart/payment";
 	}
 

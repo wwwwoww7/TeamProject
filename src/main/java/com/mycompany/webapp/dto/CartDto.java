@@ -1,5 +1,9 @@
 package com.mycompany.webapp.dto;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class CartDto {
 	private String mid;
 	private String mtel;
@@ -10,6 +14,7 @@ public class CartDto {
 	private int class_price;
 	private String class_nm_s;
 	private int sumPrice;
+	@DateTimeFormat(pattern = "yyyy-MM-dd") private Date class_date;
 	
 	/**
 	 * @return the mid
@@ -110,19 +115,34 @@ public class CartDto {
 	}
 
 	/**
-	 * @return the sumprice
+	 * @return the sumPrice
 	 */
-	public int getSumprice() {
+	public int getSumPrice() {
 		return sumPrice;
 	}
 
 	/**
-	 * @param sumprice the sumprice to set
+	 * @param sumPrice the sumPrice to set
 	 */
-	public void setSumprice(int sumPrice) {
+	public void setSumPrice(int sumPrice) {
 		this.sumPrice = sumPrice;
 	}
 
+	/**
+	 * @return the class_date
+	 */
+	public Date getClass_date() {
+		return class_date;
+	}
+
+	/**
+	 * @param class_date the class_date to set
+	 */
+	public void setClass_date(Date class_date) {
+		this.class_date = class_date;
+	}
+
+	
 	
 	
 	
