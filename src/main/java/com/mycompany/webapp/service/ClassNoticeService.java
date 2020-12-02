@@ -53,9 +53,9 @@ public class ClassNoticeService {
 		return rows;
 	}
 
-	public void noticeDelete(int class_notice_no) {
+	public int noticeDelete(int class_notice_no) {
 		int rows = classNoticeDao.deleteNotice(class_notice_no);
-		
+		return rows;
 	}
 
 	public void noticeWrite(ClassNoticeDto classNoticeDto) {
@@ -79,12 +79,17 @@ public class ClassNoticeService {
 
 	public int getTotalRowByClassNo(int class_no) {
 		int rows = classNoticeDao.selectAllByClassNo(class_no);
-		return 0;
+		return rows;
 	}
 
 	public List<ClassNoticeDto> getNoticeByClassNo(ClassNoticePagerDto pager) {
 		List<ClassNoticeDto> list = classNoticeDao.selectNoticeByClassNo(pager);
 		return list;
+	}
+
+	public int noticeFileDelete(int class_notice_no) {
+		int rows = classNoticeDao.deleteNoticeFile(class_notice_no);
+		return rows;
 	}
 
 	

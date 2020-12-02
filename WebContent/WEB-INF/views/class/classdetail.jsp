@@ -103,54 +103,29 @@
 	        
 	        <div class="row">
 	        	<div class="col-sm-12"  align="right" >
-	        		 
-	        		 <div id="pickdiv" class="mbr-section-btn" style="display:inline-block;">
-		             	
-		             </div>
-			         <script type="text/javascript">
-						function pick(clk){
-							var mid = "${sessionMid}";
-							var class_no  = "${classOne.class_no}";
-							if(clk == 1 || clk == 2){
-								/* 1: insert, 2: delete */
-								if( mid == null  || mid == ""){
-									alert("찜하기를 위해 로그인해주세요.");
-									location.href="<%=request.getContextPath()%>/login/login"
-								}else{
-									$.ajax({
-										url: "<%=request.getContextPath()%>/class/pickClass",
-										data : {mid : mid, class_no : class_no, clk : clk },
-										success : function(data){
-											$("#pickdiv").html(data);
-										}
-									});
+	        		 <c:if test="${member.mtype != 'ROLE_TUTOR'}">
+	        		 	<div id="pickdiv" class="mbr-section-btn" style="display:inline-block;"></div>
+	        		 	<div class="mbr-section-btn"  style="display:inline-block;">
+		               		<a class="btn item-btn btn-warning display-4" href="javascript:putt()">장바구니 담기</a>
+		             	</div>
+			             
+				         <script type="text/javascript">
+							function putt(){
+								var result = confirm("장바구니에 담으시겠습니까?");
+								if(result){
+									location.href="<%=application.getContextPath()%>/cart/pick_cl?classNo=${classOne.class_no}";
 								}
-							}else {
-								$.ajax({
-									url: "<%=request.getContextPath()%>/class/pickClass",
-									data : {mid : mid, class_no : class_no },
-									success : function(data){
-										$("#pickdiv").html(data);
-									}
-								});
-								
 							}
-							
-							
-						}
-					</script>	
-	        		 <div class="mbr-section-btn"  style="display:inline-block;">
-		               	<a class="btn item-btn btn-warning display-4" href="javascript:putt()">장바구니 담기</a>
-		             </div>
-		             
-			         <script type="text/javascript">
-						function putt(){
-							var result = confirm("장바구니에 담으시겠습니까?");
-							if(result){
-								location.href="<%=application.getContextPath()%>/cart/pick_cl?classNo=${classOne.class_no}";
-							}
-						}
-					</script>
+						</script>
+	        		 
+	        		 </c:if>
+	        		 
+	        		 
+	        		 <c:if test="${sessionMid == classOne.tutor_id || member.mtype == 'ROLE_ADMIN'}">
+	        		 	<div class="mbr-section-btn"  style="display:inline-block;">
+		               		<a class="btn item-btn btn-warning display-4" href="#">강의수정</a>
+		             	</div>
+	        		 </c:if>
 	        	</div>
 	        </div>
 	        
@@ -475,7 +450,7 @@
 									</p>
 									
 									
-									<div id="tutorNotice">
+									<div id="tutorNotice" class="table-wrapper">
 								        
 								        
 								        
@@ -570,7 +545,6 @@
   	</style>
   	
   	<script type="text/javascript"> 
-  		
   	
   		var review_star = ${classOne.review_star};
   		var star = Math.ceil(review_star *2 ) / 2; 
@@ -579,6 +553,8 @@
   		for(var i=0; i<star*2; i++){
 	        $(".star").eq(i).addClass("on");
      	}
+  		
+  		
   		function classNotice(pageNo){
 		
   			var class_no  = "${classOne.class_no}";
@@ -595,9 +571,45 @@
 			});
 		}
   		
+		function pick(clk){
+			var mid = "${sessionMid}";
+			var class_no  = "${classOne.class_no}";
+			if(clk == 1 || clk == 2){
+				/* 1: insert, 2: delete */
+				if( mid == null  || mid == ""){
+					alert("찜하기를 위해 로그인해주세요.");
+					location.href="<%=request.getContextPath()%>/login/login"
+				}else{
+					$.ajax({
+						url: "<%=request.getContextPath()%>/class/pickClass",
+						data : {mid : mid, class_no : class_no, clk : clk },
+						success : function(data){
+							$("#pickdiv").html(data);
+						}
+					});
+				}
+			}else {
+				$.ajax({
+					url: "<%=request.getContextPath()%>/class/pickClass",
+					data : {mid : mid, class_no : class_no },
+					success : function(data){
+						$("#pickdiv").html(data);
+					}
+				});
+			}
+		}
+  		
+  		
+  		
   		$(function(){
+  			
   			pick();
   			classNotice(1);
+  			
+  			//탭 클릭시 공지 목록으로 돌아가게...
+  			$("[role='tablist'] li a").click(function(){
+  				classNotice(1);
+  			});
   		});
   		
      </script>
