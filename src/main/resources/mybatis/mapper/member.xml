@@ -65,4 +65,15 @@
 			mpro_img=#{mpro_img}
 		where mid = #{mid}
 	</update>
+	
+	<update id="updateMemberNoImage" parameterType="member">
+		UPDATE member 
+		set mpw=#{mpw},
+			mname=#{mname},
+			mtel=#{mtel},
+			memail=#{memail},
+			minfo=#{minfo},
+			mnick=#{mnick}
+		where mid = #{mid}
+	</update>	
 </mapper> 

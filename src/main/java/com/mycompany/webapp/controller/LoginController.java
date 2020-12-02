@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import org.json.JSONObject;
@@ -46,7 +47,9 @@ public class LoginController {
 	private MemberService mService;
 	
 	@RequestMapping("/login/login")
-	public String login(Model model) {			
+	public String login(MemberDto member, HttpSession session) {
+		logger.info("member:"+member);
+		//session.setAttribute("member", member);
 		return "login/login";
 	}
 	 
@@ -91,7 +94,7 @@ public class LoginController {
 					String originalFileName = member.getMphotoAttach().getOriginalFilename(); 
 					String extName = originalFileName.substring(originalFileName.lastIndexOf(".")); 
 					String saveName = member.getMid()+extName;
-					File dest = new File("D:/MyWorkspace/java-projects/TeamProject/WebContent/resources/profile/"+saveName);
+					File dest = new File("D:/MyWorkspace/photo/member/"+saveName);
 					member.getMphotoAttach().transferTo(dest);
 					member.setMpro_img(saveName); 
 				

@@ -47,7 +47,7 @@
 						<div class="carousel-item">
 							<div class="user col-md-8">
 								<div class="user_image">
-									<img class="rounded-circle" style="border: 4px solid #ffc800;" src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}">
+									<img class="rounded-circle" style="border: 4px solid #ffc800;" src="<%=application.getContextPath()%>/mypage/myphotoDownload">
 								</div>
 								<div class="user_text mb-4">
 									<p class="mbr-fonts-style display-5" style="color: #ffc800;">${memberInfo.mnick}</p>
@@ -108,7 +108,7 @@
 											
 						<div class="col-md-12 input-group" data-for="mphoto">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">프로필 이미지</span>
-							<img  class="rounded-circle" id="id_mphoto" class="max-small" border="0" src="<%=application.getContextPath()%>/resources/profile/${memberInfo.mpro_img}"/>
+							<img  class="rounded-circle" id="id_mphoto" class="max-small" border="0" src="<%=application.getContextPath()%>/mypage/myphotoDownload"/>
 						</div>
 						<sec:authorize access="hasRole('ROLE_TUTOR')">
 							<div class="col-md-12 input-group">
