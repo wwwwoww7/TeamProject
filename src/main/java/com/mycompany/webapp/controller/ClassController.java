@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassNoticeDto;
 import com.mycompany.webapp.dto.ClassNoticePagerDto;
+import com.mycompany.webapp.dto.ClassVideoDto;
 import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.PickDto;
 import com.mycompany.webapp.dto.ReviewDto;
@@ -110,8 +110,14 @@ public class ClassController {
 	
 	//강의 영상 팝업
 	@GetMapping("/classvideo")
-	public String classvideo( ) {
+	public String classvideo(int class_no, Model model) {
 		
+		List<ClassVideoDto> videoList =  classService.getClassVideo(class_no);
+		ClassDto classInfo = classService.getClass(class_no);
+		
+		model.addAttribute("videoList", videoList);
+		model.addAttribute("firstVideoUrl", videoList.get(0).getClass_video_url());
+		model.addAttribute("classInfo", classInfo);
 		
 		
 		

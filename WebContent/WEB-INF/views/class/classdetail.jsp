@@ -169,10 +169,6 @@
 	                                    
 	                                    <!-- 강의 소개 -->
 	                                </p>
-	                                
-	                                
-	                                
-	                                
 	                                <div class="container">
 								        <div class="row justify-content-center">
 								            <div class="card col-12 col-lg">
@@ -194,7 +190,7 @@
 								            </div>
 								            <script type="text/javascript">
 												function openpop(){
-													open("classvideo","popup", "width=1300, height=600, top=200, left=300");
+													open("classvideo?class_no=${classOne.class_no}","popup", "width=1300, height=600, top=200, left=300");
 												}
 											</script>
 								            
@@ -304,7 +300,7 @@
 								                <div class="panel-item p-3">
 								                    <div class="card-block">
 								                        <div class="testimonial-photo">
-								                            <img style="border: 4px solid #ffc800;" src="<%=application.getContextPath()%>/class/tutorphotoDownload?tutor=${classOne.tutor_id}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
+								                            <img id="tutorimg" style="border: 4px solid #ffc800;" src="<%=application.getContextPath()%>/class/tutorphotoDownload?tutor=${classOne.tutor_id}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
 								                        </div>
 								                        <p class="mbr-text mbr-fonts-style display-7 mt-3">
 								                        	${tutorInfo.minfo}
@@ -505,6 +501,10 @@
 	  	.prof_img{
 	  		width: 50px;
 	  		height : 50px;
+	  	}
+	  	
+	  	#tutorimg {
+	  		width: 400px;
 	  	}
 	  	
 	  	.test-black {

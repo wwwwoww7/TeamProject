@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.controller.HomeController;
 import com.mycompany.webapp.dto.ClassDto;
+import com.mycompany.webapp.dto.ClassVideoDto;
 import com.mycompany.webapp.dto.PickDto;
 
 
@@ -90,6 +91,13 @@ public class ClassDao {
 		int result = sst.insert("mybatis.mapper.pick.deletePick", pickinfo);
 		
 		return result;
+	}
+
+
+
+	public List<ClassVideoDto> selectVideoList(int class_no) {
+		List<ClassVideoDto> vlist = sst.selectList("mybatis.mapper.video.selectVideoList", class_no);
+		return vlist;
 	}
 
 

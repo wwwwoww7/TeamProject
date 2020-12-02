@@ -19,5 +19,6 @@
 		<typeAlias alias="event" type="com.mycompany.webapp.dto.EventDto" />
 		<typeAlias alias="eventPager" type="com.mycompany.webapp.dto.EventPagerDto" />
 		<typeAlias alias="classcate" type="com.mycompany.webapp.dto.ClassCateDto" />
+		<typeAlias alias="video" type="com.mycompany.webapp.dto.ClassVideoDto" />
 	</typeAliases>
 </configuration>

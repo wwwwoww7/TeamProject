@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html  >
@@ -20,35 +21,27 @@
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/theme/css/style.css">
   <link rel="preload" as="style" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  <script type="text/javascript">
-		
-	function popupClose(){ 
-		close();				
-	}
-	
-	$(function(){
-		$('#classQAWriteForm').hide();
-	});
-  
-  
-  </script>
 </head>
 <body>
   
   <section class="header15 cid-shftsDGMKY mbr-fullscreen" id="header15-43">
     
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md">
+    	<div class="row">
+    		<div class="col-12">
+    			<h2 class="mbr-section-title mb-3 mbr-fonts-style display-2">
+                    <strong>${classInfo.class_nm_s }</strong>
+                </h2>
+        	</div>
+    	</div>
+        <div id="allDiv" class="row justify-content-center">
+            <div class="col-12 col-md-6">
                 <div class="text-wrapper">
-                    <h2 class="mbr-section-title mb-3 mbr-fonts-style display-2">
-                        <strong>class name</strong>
-                    </h2>
+                	<h6 class="card-title mbr-fonts-style mb-4 display-5">
+	               		<strong>Class QA</strong>
+	            	</h6>
                     <p class="mbr-text mb-3 mbr-fonts-style display-7">
-                    	현재 강의 게시판 
-                        Intro with Color, paddings and a video on the right. Mobirise helps you cut down
-                        development time by providing you with a flexible website editor with a drag and drop interface.
+                    	자유롭게 강의에 대한 질문을 해주세요!
                     </p>
                     <table class="table isSearch">
                    		<thead>
@@ -71,7 +64,7 @@
                    	</table>
                     <div class="container" id="classQAWriteForm">
                     	<div class="mbr-section-head">
-				            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>class QA</strong></h3>
+				            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>Class QA</strong></h3>
 				            
 				        </div>
 				        <div class="row justify-content-center mt-4">
@@ -97,31 +90,41 @@
 				        </div>
                     </div>
                     
-                    
-                    <!--  href="javascript:popupClose()" -->
-<!--                     <div class="mbr-section-btn"><a class="btn btn-success display-4" href="https://jp89p.channel.io">class end</a></div> -->
-                    <div class="mbr-section-btn"><a class="btn btn-success display-4  text-primary" href="javascript:popupClose()">강의 종료</a></div>
                 </div>
             </div>
             <div class="mbr-figure col-12 col-md-6">
-            	<iframe width="560" height="315" src="https://www.youtube.com/embed/1dLl54F55fk?controls=0&amp;rel=0;amp;autoplay=1;start=1" 
-            	frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
-            
-<!-- 	            <iframe class="mbr-embedded-video" src="https://youtu.be/4L06QIeLntI?rel=0;amp;autoplay=1" width="1280" height="500" frameborder="0" allowfullscreen> -->
-<!-- 	            </iframe> -->
+            	<h6 class="card-title mbr-fonts-style mb-2 display-5">
+                   	<strong>Class List</strong>
+                </h6>
+                
+				<div class="list-group">
+				<c:forEach var="videoItem" items="${videoList}">
+					<a href="#" class="list-group-item list-group-item-action" data="${videoItem.class_video_url}">${videoItem.class_video_nm}</a>
+				</c:forEach>
+				</div>
+<!--             	<ul class="jq-selectbox mb-2"> -->
+<%--             	<c:forEach var="videoItem" items="${videoList}"> --%>
+<!--             		<li class="jq-selectbox"> -->
+<%--             			<a class="text-black" data="${videoItem.class_video_url}">${videoItem.class_video_nm}</a> --%>
+<!--             		</li> -->
+<%--             	</c:forEach> --%>
+<!--             	</ul> -->
+            	<iframe width="560" height="315" src="${firstVideoUrl}" 
+            		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         
         <div class="row">
         
+	         <div class="col-12">
+	         	<div class="mbr-section-btn">
+		         	<a class="btn btn-success display-4  text-primary" href="javascript:popupClose()">강의 종료</a>
+		         </div>
+	         </div>
         	
-			<!-- End Channel Plugin -->
         </div>
     </div>
 </section>
-
-
 
 
 
@@ -131,6 +134,54 @@
 	 Go  <a href="/" style="color:#aaa;">Team1</a>
  	</p>
 </section>
+<script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
+<script src="<%=application.getContextPath()%>/resources/assets/popper/popper.min.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/tether/tether.min.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/smoothscroll/smooth-scroll.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/nav-dropdown.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/dropdown/js/navbar-dropdown.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/touchswipe/jquery.touch-swipe.min.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/parallax/jarallax.min.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/masonry/masonry.pkgd.min.js"></script> 
+<script src="<%=application.getContextPath()%>/resources/assets/imagesloaded/imagesloaded.pkgd.min.js"></script> 
+<script src="<%=application.getContextPath()%>/resources/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script> 
+<script src="<%=application.getContextPath()%>/resources/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
+<script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
+<script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+
+<script type="text/javascript">
   
+	
+	function popupClose(){ 
+		close();				
+	}
+	
+	$(function(){
+		$('#classQAWriteForm').hide();
+	});
+
+   	$(function(){
+   		$("a").click(function(){
+   			var url = $(this).attr("data");
+   			console.log(url);
+   			$("iframe").attr("src",url);
+   		});
+   	});
+    
+</script>
+<style type="text/css">
+	#header15-43 {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	
+	
+	#allDiv {
+		vertical-align: top;
+	}
+</style>
 </body>
 </html>

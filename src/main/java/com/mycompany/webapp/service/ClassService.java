@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.webapp.controller.HomeController;
 import com.mycompany.webapp.dao.ClassDao;
 import com.mycompany.webapp.dto.ClassDto;
+import com.mycompany.webapp.dto.ClassVideoDto;
 import com.mycompany.webapp.dto.PickDto;
 
 @Service
@@ -108,9 +109,11 @@ public class ClassService {
 		return tutor_id;
 	}
 
+	public List<ClassVideoDto> getClassVideo(int class_no) {
+		List<ClassVideoDto> vlist = classDao.selectVideoList(class_no);
+		return vlist;
+	}
 
-	
-	
 	
 	
 	
