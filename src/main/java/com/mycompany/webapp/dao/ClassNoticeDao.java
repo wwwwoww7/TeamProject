@@ -107,6 +107,16 @@ public class ClassNoticeDao {
 		return rows;
 	}
 
+	public int countAllByUserID(String mid) {
+		int rows = sst.selectOne("mybatis.mapper.class_notice.countAllByUserID",mid);
+		return rows;
+	}
+
+	public List<ClassNoticeDto> getUserNotice(MyPagerDto pager) {
+		List<ClassNoticeDto> list = sst.selectList("mybatis.mapper.class_notice.getUserNotice", pager);
+		return list;
+	}
+
 	
 
 

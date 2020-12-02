@@ -92,6 +92,17 @@ public class ClassNoticeService {
 		return rows;
 	}
 
+	public int countAllByUserID(String mid) {
+		int rows = classNoticeDao.countAllByUserID(mid);
+		return rows;
+	}
+
+	public List<ClassNoticeDto> getUserNotice(MyPagerDto pager) {
+		List<ClassNoticeDto> list = classNoticeDao.getUserNotice(pager);
+		return list;
+	}
+
+
 	
 
 
