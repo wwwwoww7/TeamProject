@@ -41,6 +41,7 @@
 	                        <sec:authorize access="hasRole('ROLE_USER')">
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2f">나의 수강 목록</a>
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#gallery5-2h">찜 목록</a>
+		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2g">공지사항</a>
 		                        <a class="dropdown-item text-white text-primary display-4" href="mypage.jsp#table1-2i">나의 문의</a>
 	                       </sec:authorize>
                    

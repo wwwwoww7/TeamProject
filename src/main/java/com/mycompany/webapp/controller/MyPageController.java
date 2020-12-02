@@ -188,7 +188,7 @@ public class MyPageController {
 	public void download(String fileName, HttpServletResponse respone,HttpServletRequest request) throws IOException {
 		logger.info(fileName);
 		//파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "D:/MyWokspace/files/"+fileName;
+		String saveFilePath = "D:/MyWorkspace/files/"+fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		
 		//[응답 HTTP 헤더 구성]
@@ -257,7 +257,7 @@ public class MyPageController {
 			
 			//파일 확장자 넣기
 			String ext = fileName.substring(fileName.lastIndexOf(".")+1);
-			classNotice.getClass_hwFile().transferTo(new File("D:/MyWokspace/files/"+saveFile));
+			classNotice.getClass_hwFile().transferTo(new File("D:/MyWorkspace/files/"+saveFile));
 			classNotice.setClass_hw_file(saveFile);
 			
 			//파일 확장자 넣기

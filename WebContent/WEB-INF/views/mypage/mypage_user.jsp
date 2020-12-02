@@ -169,19 +169,36 @@
     </div>
 </section>
 
-<!-- 나의 문의 -->
-<section class="section-table cid-shfcHOKpqJ" id="table1-2i">
-  <div class="container container-table">
-	<h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
-		<strong>강의 문의</strong>
-	</h2>
-	<div class="table-wrapper">
-		<div class="container"></div>
-		<div id="myqa" class="container scroll"></div>
-		<div class="container table-info-container"></div>
-	</div>
+
+	<!-- 공지사항 -->
+	<section class="section-table cid-shfdiSEq9c" id="table1-2g">
+		<div class="container container-table">
+			<h2
+				class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
+				<strong>공지사항</strong>
+			</h2>
+
+			<div class="table-wrapper">
+				<div class="container"></div>
+
+				<div id="userNotice" class="container table-info-container"></div>
+			</div>
 		</div>
-</section>
+	</section>
+
+	<!-- 나의 문의 -->
+	<section class="section-table cid-shfcHOKpqJ" id="table1-2i">
+	  <div class="container container-table">
+		<h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
+			<strong>강의 문의</strong>
+		</h2>
+		<div class="table-wrapper">
+			<div class="container"></div>
+			<div id="myqa" class="container scroll"></div>
+			<div class="container table-info-container"></div>
+		</div>
+			</div>
+	</section>
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
  	<input type="hidden" id="sessionMid" name="sessionMid" value="${sessionMid}"/>
@@ -204,7 +221,28 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
-  	 <script type="text/javascript">              
+  	 <script type="text/javascript">
+  		/* 공지사항 */
+
+		function userClassNotice(pageNo){
+			if(!pageNo){ //페이지수가 0이면 기본값으로 1로 줌
+				pageNo =1;
+			}
+			$.ajax({
+				url:"userClassNotice",
+				method: "post",
+				data:{pageNo:pageNo},
+				success: function(data){
+						$("#userNotice").html(data);
+					}
+		
+				});
+			}
+		
+	     $(function(){
+	    	 userClassNotice();
+	     });
+  	 
 			function myQa(){
 				$.ajax({
 					url:"myQa",
