@@ -7,7 +7,7 @@
 	<div class="table-wrapper">
 
 		<div class="container scroll">
-		
+
 			<div>
 				<table class="table table-bordered">
 				<colgroup>
@@ -17,6 +17,7 @@
 				    <col width="*">
 				</colgroup>
 				<tbody>
+				
 				    <tr>
 				        <th>카테고리</th>
 				        <td>${communityDetail.comm_cate_nm}</td>

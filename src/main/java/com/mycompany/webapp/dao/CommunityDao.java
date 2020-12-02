@@ -97,4 +97,11 @@ public class CommunityDao {
 		return reviewDetail;
 	}
 
+	public List<CommunityDto> selectByCommWrite() {
+		List<CommunityDto> communityWrite = sst.selectList("mybatis.mapper.community.selectByCommWrite");
+		return communityWrite;
+	}	
+
+	
+
 }

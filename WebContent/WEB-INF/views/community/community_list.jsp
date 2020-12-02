@@ -41,10 +41,10 @@
                 <div class="mbr-section-btn" align="right">
                 
                	<%-- <c:if test="${sessionMid==null}"> --%>
-                  <a class="btn item-btn btn-warning display-4" href="javascript:boardWrite()">글쓰기</a>
+                  <a class="btn item-btn btn-warning display-4" href="javascript:communityWrite()">글쓰기</a>
                   
 					<script type="text/javascript">
-						function boardWrite() {
+						function communityWrite() {
 							$.ajax({
 									url:"community/communityWrite",
 									success:function(data) {
