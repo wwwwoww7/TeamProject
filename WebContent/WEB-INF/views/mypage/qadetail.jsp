@@ -90,11 +90,19 @@
 								<th>제목</th>
 						        <td colspan="10">${qalist.class_qa_title}</td>
 							</tr>
-						    <tr>
-						        <th>내용</th>
-						        <td colspan="10">${qalist.class_qa_content}</td>
-						        
-						    </tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered">
+							<colgroup>
+							    <col width="15%">
+							    <col width="35%">
+							    <col width="15%">
+							    <col width="*">
+							</colgroup>
+							<tbody>   
+							    <tr>
+							        <td style="padding: 20px 80px 20px 62px;" valign="top" height="350">${qalist.class_qa_content}</td>
+							    </tr>
 							</tbody>
 						</table>
 						<br/>
@@ -115,7 +123,7 @@
 						    </tbody>
 					    </table>
 						<br/>
-						<form action="qaAnswer" method="POST" class="mbr-form form-with-styler">
+						<form onsubmit="return writeCheck();" action="qaAnswer" method="POST" id="qaAnswer" class="mbr-form form-with-styler">
 							<input type="hidden" id="class_qa_no" name="class_qa_no" value="${qalist.class_qa_no}"/>
 							
 							<div class="input-group">
@@ -124,7 +132,7 @@
 							</div>
 						</form>
 						<br/>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">확인</a>	
+						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor">확인</a>	
 					</div>
 				
 				</div>
@@ -133,7 +141,25 @@
 			</div>
 		</div>
 	</section>
-
+	<script type="text/javascript">
+		function writeCheck() {
+	
+			var answer = $("#class_qa_answer").val();
+			if(answer == "") { 
+				
+				alert("답변을 입력해주세요");
+				$("#class_qa_answer").focus();
+				return false;
+			}
+			
+			else{
+				$("#qaAnswer").writeCheck();
+			}
+			return true;
+	
+		}
+		
+	</script>	
 
 
 <jsp:include page="/WEB-INF/views/include/footer.jsp" />

@@ -1,5 +1,6 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import javax.print.attribute.standard.PageRanges;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.json.JSONObject;
@@ -122,33 +124,67 @@ public class CommunityController {
 	public String communityWrite(Model model) {
 		//class_cate_nm을 불러와야된다. & 작성자 불러와야된다.
 		logger.info("안녕하셈");
-		List<CommunityDto> communityWrite = service.getCommunityWrite();
+		List<CommunityDto> communityCateList = service.getCommunityCateList();
 		
-		model.addAttribute("communityWrite", communityWrite);
+		model.addAttribute("communityCateList", communityCateList);
 		return "community/community_writeform";
 	}
 
 	@GetMapping("/communityWriteReview") 
-	public String communityWriteReview(Model model) {
+	public String communityWriteReview(ReviewDto reviewapply, HttpSession session, HttpServletResponse response) {
+		
+		String sessionMid = (String) session.getAttribute("sessionMid");
+		
+		List<ReviewDto> ReviewCateList = service.getReviewCateList();
+		reviewapply.setMid(sessionMid);
 
 		return "community/community_reviewform";
 	}
+	
+	@PostMapping("/communityWrite")
+	public String communityWriteApply(CommunityDto writeapply,HttpSession session,HttpServletResponse response) throws Exception {
+		
+		logger.info("와ㅓ이라누 =====> "+writeapply.getComm_content() );
+		logger.info("와ㅓ이라누 =====> "+writeapply.getComm_title() );
+		
+		String sessionMid = (String) session.getAttribute("sessionMid");
+		writeapply.setMid(sessionMid);
+		int result = service.communityWriteApply(writeapply);
+		if(result==1) {
+			return "redirect:/community";
+//			JSONObject object = new JSONObject();
+//			object.put("result", "success");
+//
+//			String json = object.toString(); // {"result" : "success"}
+//
+//			// 응답보내기
+//			PrintWriter out = response.getWriter();
+//			response.setContentType("application/json;charset=utf-8");
+//			out.println(json);
+//			out.flush();
+//			out.close();
+		}else {
+			return "redirect:/community";
+		}
+			
+	}
 
-	@PostMapping("/communityWriteReview")
+
+	/*@PostMapping("/communityWriteReview")
 	public void communityWriteReview(HttpServletResponse response) throws Exception {
 		logger.info("실행");
 		JSONObject object = new JSONObject();
 		object.put("result", "success");
-
+	
 		String json = object.toString(); // {"result" : "success"}
-
+		
 		// 응답보내기
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json;charset=utf-8");
 		out.println(json);
 		out.flush();
 		out.close();
-	}
+	}*/
 
 	@GetMapping("/catereview")
 	public String catereview1(int cateno, Model model) {

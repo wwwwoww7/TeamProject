@@ -98,8 +98,8 @@ public class CommunityDao {
 		return reviewDetail;
 	}
 
-	public List<CommunityDto> selectByCommWrite() {
-		List<CommunityDto> communityWrite = sst.selectList("mybatis.mapper.community.selectByCommWrite");
+	public List<CommunityDto> selectCommunityCateList() {
+		List<CommunityDto> communityWrite = sst.selectList("mybatis.mapper.community.selectCommunityCateList");
 		return communityWrite;
 	}
 
@@ -116,6 +116,16 @@ public class CommunityDao {
 	public String selectCatenmByCateno(int cateno) {
 		String catenm = sst.selectOne("mybatis.mapper.community.selectCatenmByCateno", cateno);
 		return catenm;
+	}
+
+	public int insertCommunityWriteApply(CommunityDto writeapply) {
+		int result = sst.insert("mybatis.mapper.community.insertCommunityWriteApply", writeapply);
+		return result;
+	}
+
+	public List<ReviewDto> selectCateReviewList() {
+		List<ReviewDto> catereviewlist = sst.selectList("mybatis.mapper.community.selectCateReviewList");
+		return catereviewlist;
 	}	
 
 	

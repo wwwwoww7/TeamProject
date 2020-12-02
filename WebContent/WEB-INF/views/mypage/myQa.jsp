@@ -19,7 +19,9 @@
 				<td class="body-item mbr-fonts-style display-7">${qalist.class_nm_s}</td>
 				<td class="body-item mbr-fonts-style display-7">${qalist.class_qa_cate}</td>
 				<td class="body-item mbr-fonts-style display-7">
-					<a class="text-black" href="<%=request.getContextPath()%>/mypage/myqadetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
+					<a class="text-black" 
+					href="<%=request.getContextPath()%>/mypage/myqadetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title} <c:if test="${qalist.class_qa_answer != null}"> 답변완료 </c:if> <c:if test="${qalist.class_qa_answer == null}"> 미응답 </c:if>
+					</a>
 				</td>
 				<td class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
 				<td class="body-item mbr-fonts-style display-7">

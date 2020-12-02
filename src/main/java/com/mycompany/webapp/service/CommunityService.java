@@ -97,8 +97,8 @@ public class CommunityService {
 		return reviewDetail;
 	}
 
-	public List<CommunityDto> getCommunityWrite() {
-		List<CommunityDto>  communityWrite = communityDao.selectByCommWrite();
+	public List<CommunityDto> getCommunityCateList() {
+		List<CommunityDto>  communityWrite = communityDao.selectCommunityCateList();
 		return communityWrite;
 	}
 
@@ -115,6 +115,16 @@ public class CommunityService {
 	public String getCatenm(int cateno) {
 		String catanm = communityDao.selectCatenmByCateno(cateno);
 		return catanm;
+	}
+
+	public int communityWriteApply(CommunityDto writeapply) {
+		int result = communityDao.insertCommunityWriteApply(writeapply);
+		return result;
+	}
+
+	public List<ReviewDto> getReviewCateList() {
+		List<ReviewDto> catereviewlist = communityDao.selectCateReviewList();
+		return catereviewlist;
 	}
 	
 

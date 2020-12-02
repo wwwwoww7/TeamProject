@@ -91,11 +91,19 @@
 								<th>제목</th>
 						        <td colspan="10">${qalist.class_qa_title}</td>
 							</tr>
-						    <tr>
-						        <th>내용</th>
-						        <td colspan="10">${qalist.class_qa_content}</td>
-						        
-						    </tr>
+						    </tbody>
+						</table>
+						<table class="table table-bordered">
+							<colgroup>
+							    <col width="15%">
+							    <col width="35%">
+							    <col width="15%">
+							    <col width="*">
+							</colgroup>
+							<tbody>   
+							    <tr>
+							        <td style="padding: 20px 80px 20px 62px;" valign="top" height="350">${qalist.class_qa_content}</td>
+							    </tr>
 							</tbody>
 						</table>
 						<br/>
@@ -116,8 +124,7 @@
 						    </tbody>
 					    </table>
 						<br/>
-						<br/>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_user?mid=${sessionMid}">확인</a>	
+						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_user">확인</a>	
 					</div>
 				
 				</div>

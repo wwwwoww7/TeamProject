@@ -105,7 +105,7 @@
 	</select>
 	
 	
-	<select id="selectByCommWrite" resultType="community">
+	<select id="selectCommunityCateList" resultType="community">
 	    select *
 		from community_CATE
 	</select>
@@ -116,11 +116,27 @@
 		order by class_cate_no asc
 	</select>
 	
+	<select id="selectCateReviewList" resultType="classcate">
+	    select *
+		from class_CATE
+		order by class_cate_no asc
+	</select>
+	
 	<select id="selectCatenmByCateno" resultType="String">
 	    select class_cate_nm
         from class_cate
         where class_cate_no = #{cateno}
 	</select>
+	
+	<insert id="insertCommunityWriteApply" parameterType="community">
+		 insert into Community 
+        values (SEQ_COMM_NO.nextval, sysdate, #{comm_title}, #{comm_content},0, #{mid}, #{comm_cate_no}  )
+	</insert>
+	
+	
+	
+	
+	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
 	<select id="selectByClassNo" parameterType="int" resultType="review"> 
 		select mnick,mpro_img,review_title,review_content,review_date from (
