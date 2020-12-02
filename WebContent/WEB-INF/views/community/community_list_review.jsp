@@ -40,35 +40,18 @@
 								 전체
 							</button>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="javascript:fun6()">전체</a>
-								<a class="dropdown-item" href="javascript:catereview1()">건강</a>
+							<a class="dropdown-item" href="javascript:allFunction(6,1)">전체</a>
+							<c:forEach var="cateitem" items="${catelist}">
+								<a class="dropdown-item" href="javascript:catereview(${cateitem.class_cate_no})">${cateitem.class_cate_nm}</a>
+							</c:forEach>
+							
+							
+								
 								<script>
-										function catereview1(){ 
-											
+										function catereview(cateno){ 
 											$.ajax({
-												url : "community/catereview1" , 
-												success : function(data) {
-													$("#fun1_result").html(data);
-												}
-											});
-										}
-									</script>
-								<a class="dropdown-item" href="javascript:catereview2()">커리어</a>
-								<script>
-										function catereview2(){ 
-											$.ajax({
-												url : "community/catereview2" , 
-												success : function(data) {
-													$("#fun1_result").html(data);
-												}
-											});
-										}
-									</script>
-								<a class="dropdown-item" href="javascript:catereview3()">머니</a>
-								<script>
-										function catereview3(){ 
-											$.ajax({
-												url : "community/catereview3" , 
+												url : 'community/catereview' , 
+												data : {cateno:cateno},
 												success : function(data) {
 													$("#fun1_result").html(data);
 												}
@@ -111,44 +94,7 @@
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.mnick}</td>
 					</tr>
 					</c:forEach>
-	            	<c:forEach var="ReviewDto" items="${catereview1}">
-					<tr>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_no}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.class_cate_nm}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><${ReviewDto.review_star}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</td>
-						<%-- <td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_hitno}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.mnick}</td>
-						
-					</tr>
-					</c:forEach>
-					<c:forEach var="ReviewDto" items="${catereview2}">
-					<tr>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_no}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.class_cate_nm}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_star}/td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</a></td>
-						<%-- <td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_hitno}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.mnick}</td>
-						
-					</tr>
-					</c:forEach>
-					<c:forEach var="ReviewDto" items="${catereview3}">
-					<tr>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_no}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.class_cate_nm}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_star}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></td>
-						<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</a></td>
-						<%-- <td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.review_hitno}</td>
-						<td class="body-item mbr-fonts-style display-7 text-center">${ReviewDto.mnick}</td>
-					</tr>
-					</c:forEach>
+	            	
 				</tbody>
 			
 			<tr>

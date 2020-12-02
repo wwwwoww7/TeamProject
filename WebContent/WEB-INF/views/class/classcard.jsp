@@ -69,7 +69,17 @@
 <script type="text/javascript">
 	function pick(clk, class_no){
 		var mid = "${sessionMid}"; 
+		var mtype = "${member.mtype}"; 
+		
+		
 		if(clk == 1 || clk == 2){
+			
+			if(mtype == 'ROLE_TUTOR'){
+				alert("강사 계정은 찜할 수 없습니다.");
+				return; 
+			}
+			
+			
 			/* 1: insert, 2: delete */
 			console.log("로그인한 경우 ");
 			$.ajax({
@@ -80,6 +90,7 @@
 				}
 			});
 		}else {
+			
 			if( mid == null  || mid == ""){
 				alert("찜하기를 위해 로그인해주세요.");
 				location.href="<%=request.getContextPath()%>/login/login";

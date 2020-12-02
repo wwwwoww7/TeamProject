@@ -59,7 +59,6 @@ public class ClassController {
 		List<ReviewDto> reviewList = communityService.getReviewList(classNo);
 		model.addAttribute("reviewList", reviewList);
 		
-		
 		return "/class/classdetail";
 	}
 	
@@ -125,8 +124,8 @@ public class ClassController {
 	public String classNotices(@RequestParam(defaultValue = "1")int pageNo, int class_no, Model model) {
 		
 		int totalRows = classNoticeService.getTotalRowByClassNo(class_no);
-		
-		ClassNoticePagerDto pager = new ClassNoticePagerDto(4,3,totalRows, pageNo);
+		logger.info("totalRows ====> " + totalRows);
+		ClassNoticePagerDto pager = new ClassNoticePagerDto(3,3,totalRows, pageNo);
 		pager.setClass_no(class_no);
 		
 		List<ClassNoticeDto> list = classNoticeService.getNoticeByClassNo(pager);
@@ -140,6 +139,16 @@ public class ClassController {
 		
 		
 		return "/class/classnotice";
+	}
+	
+	
+	@GetMapping("/noticeDetail")
+	public String noticeDetail(int class_notice_no, Model model) {
+		
+		ClassNoticeDto notice = classNoticeService.getNoticeDetail(class_notice_no);
+		model.addAttribute("notice",notice);
+		
+		return "/class/classnoticedetail";
 	}
 	
 	
