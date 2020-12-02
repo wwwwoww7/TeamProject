@@ -440,4 +440,22 @@ public class MyPageController {
 		is.close();
 		
 	}
+	
+	//*=========강의정보 수정 by 강사(혜빈)=================//
+	@RequestMapping("/classEdit")
+	public String classEdit(@RequestParam(defaultValue = "1") int classNo, Model model) {
+		
+		
+		ClassDto classOne = classService.getClass(classNo);
+		model.addAttribute("classOne", classOne);
+		
+		
+		//String mid = (String) session.getAttribute("sessionMid");
+		//logger.info("실행");
+		//강사의 해당 강의정보 가져오기/ classno에 의해서 
+		//휘뚜루 마뚜루 강의 정보 불러오는 ClassDto classOne = cSErvice.getclassINfo(mid)
+		//
+		
+		return "mypage/classEdit";
+	}
 }

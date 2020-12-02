@@ -123,7 +123,7 @@
 	        		 
 	        		 <c:if test="${sessionMid == classOne.tutor_id || member.mtype == 'ROLE_ADMIN'}">
 	        		 	<div class="mbr-section-btn"  style="display:inline-block;">
-		               		<a class="btn item-btn btn-warning display-4" href="#">강의수정</a>
+		               		<a class="btn item-btn btn-warning display-4" href="<%=application.getContextPath()%>/mypage/classEdit?classNo=${classOne.class_no}">강의수정</a>
 		             	</div>
 	        		 </c:if>
 	        	</div>
