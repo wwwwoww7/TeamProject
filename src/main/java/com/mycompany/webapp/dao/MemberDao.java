@@ -61,7 +61,12 @@ public class MemberDao {
 	}
 
 	public int updateMember(MemberDto member) {
-		int rows = sst.update("mybatis.mapper.member.updateMember", member);
+		int rows = 0;
+		if(member.getMpro_img() != null) {
+			rows = sst.update("mybatis.mapper.member.updateMember", member);
+		} else {
+			rows = sst.update("mybatis.mapper.member.updateMemberNoImage", member);
+		}
 		return rows;
 	}
 

@@ -96,8 +96,9 @@ public class MemberService {
 		return list;
 	}
 
-	public void updateMember(MemberDto member) {
-		memberDao.updateMember(member);
+	public int updateMember(MemberDto member) {
+		int row = memberDao.updateMember(member);
+		return row;
 	}
 	
 }
