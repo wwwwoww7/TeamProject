@@ -20,6 +20,8 @@
 				<td class="body-item mbr-fonts-style display-7">${qalist.class_qa_cate}</td>
 				<td class="body-item mbr-fonts-style display-7">
 					<a class="text-black" href="<%=request.getContextPath()%>/mypage/qaDetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
+					<c:if test="${qalist.class_qa_answer != null}"> 답변완료 </c:if>
+					<c:if test="${qalist.class_qa_answer == null}"> 미응답 </c:if>
 				</td>
 				<td class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
 				<td class="body-item mbr-fonts-style display-7">
