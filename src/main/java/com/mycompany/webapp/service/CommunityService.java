@@ -25,7 +25,11 @@ public class CommunityService {
 		List<CommunityDto> list = communityDao.selectAll();
 		return list;
 	}*/
-
+	/*public List<ReviewDto> getReviewAll() {
+		List<ReviewDto> review = communityDao.selectReviewAll();
+		return review;
+		}*/
+	//분야별 list 받아오기
 	public List<CommunityDto> getCommunityChat(){
 		List<CommunityDto> chat = communityDao.selectChat();
 		return chat;
@@ -46,11 +50,7 @@ public class CommunityService {
 		return assign;
 	}
 
-	/*	public List<ReviewDto> getReviewAll() {
-			List<ReviewDto> review = communityDao.selectReviewAll();
-			return review;
-		}*/
-
+	//분야별 review 받아오기
 	public List<ReviewDto> getReviewCatereview1() {
 		List<ReviewDto> catereview1 = communityDao.selectCatereview1();
 		return catereview1;
@@ -78,7 +78,7 @@ public class CommunityService {
 		return reviewList;
 	}
 
-
+	//pager추가한 community 불러오기
 	public List<CommunityDto> getCommunityAll(CommunityPagerDto pager) {
 		List<CommunityDto> list = communityDao.selectByPage(pager);
 		return list;
@@ -88,17 +88,31 @@ public class CommunityService {
 		int totalRows = communityDao.countReviewAll();
 		return totalRows;
 	}
-
+	
+	//pager추가한 Review 불러오기
 	public List<ReviewDto> getReviewAll(ReviewPagerDto pager) {
 		List<ReviewDto> list = communityDao.selectByReviewPage(pager);
 		return list;
 	}
 
-	/*public CommunityDto getCommunityDetail(int comm_no) {
+	//community&review 상세페이지 불러오기
+	public CommunityDto getCommunityDetail(int comm_no) {
 		CommunityDto communityDetail = communityDao.selectByComno(comm_no);
 		return communityDetail;
 	}
-	*/
+
+	public ReviewDto getReviewDetail(int review_no) {
+		ReviewDto reviewDetail = communityDao.selectByReviewno(review_no);
+		return reviewDetail;
+	}
+
+	public List<CommunityDto> getCommunityWrite() {
+		List<CommunityDto>  communityWrite = communityDao.selectByCommWrite();
+		return communityWrite;
+	}
+	
+
+
 	
 	
 	

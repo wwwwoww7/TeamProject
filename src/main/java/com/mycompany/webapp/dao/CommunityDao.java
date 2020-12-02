@@ -87,9 +87,21 @@ public class CommunityDao {
 		return review;
 	}
 
-	/*	public CommunityDto selectByComno(int comm_no) {
-			CommunityDto communityDetail = sst.selectOne("mybatis.mapper.board.selectByComno", comm_no)
-			return null;
-		}*/
+	public CommunityDto selectByComno(int comm_no) {
+		CommunityDto communityDetail = sst.selectOne("mybatis.mapper.community.selectByComno", comm_no);
+		return communityDetail;
+	}
+
+	public ReviewDto selectByReviewno(int review_no) {
+		ReviewDto reviewDetail = sst.selectOne("mybatis.mapper.community.selectByReviewno", review_no);
+		return reviewDetail;
+	}
+
+	public List<CommunityDto> selectByCommWrite() {
+		List<CommunityDto> communityWrite = sst.selectList("mybatis.mapper.community.selectByCommWrite");
+		return communityWrite;
+	}	
+
+	
 
 }

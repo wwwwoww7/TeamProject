@@ -20,9 +20,10 @@
 		}  */
 		
 		
-		function communityDetail() {
+		function communityDetail(comm_no) {
 			$.ajax({
 				url:"<%=request.getContextPath()%>/community/communityDetail",
+				data : {comm_no:comm_no},
 				success:function(data) {
 					$("#fun1_result").html(data);
 				}
@@ -40,10 +41,10 @@
                 <div class="mbr-section-btn" align="right">
                 
                	<%-- <c:if test="${sessionMid==null}"> --%>
-                  <a class="btn item-btn btn-warning display-4" href="javascript:boardWrite()">글쓰기</a>
+                  <a class="btn item-btn btn-warning display-4" href="javascript:communityWrite()">글쓰기</a>
                   
 					<script type="text/javascript">
-						function boardWrite() {
+						function communityWrite() {
 							$.ajax({
 									url:"community/communityWrite",
 									success:function(data) {
@@ -68,7 +69,7 @@
 				<th class="head-item mbr-fonts-style display-7 text-center" style="width:250px">제목</th>
 				<th class="head-item mbr-fonts-style display-7 text-center" style="width:250px">내용</th>
 				<th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">조회</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">아이디</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">닉네임</th>
                   
              <!--  <th class="head-item mbr-fonts-style display-7">
                       NAME</th>
@@ -83,46 +84,47 @@
               
             <c:forEach var="communityDto" items="${list}">
 				<tr>
-					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${communityDto.comm_no}</a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${communityDto.comm_hitno}</a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${communityDto.mid}</a></td>
+					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_no}</td>
+					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_cate_nm}</td>
+					<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
+					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
+					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_content}</a></td>
+					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_hitno}</td>
+					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.mnick}</td>
 				</tr>
 			</c:forEach>
+			
             <c:forEach var="communityDto" items="${chat}">
 				<tr>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_no}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_content}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mid}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${tips}">
 				<tr>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_hitno}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.mid}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_content}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${boast}">
 				<tr>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_no}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_title}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_content}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_hitno}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.mid}</td>
+					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
+					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_content}</a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
+					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${assign}">
@@ -130,10 +132,10 @@
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_title}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_content}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_content}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mid}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 				</tr>
 			</c:forEach>    
               <tr>

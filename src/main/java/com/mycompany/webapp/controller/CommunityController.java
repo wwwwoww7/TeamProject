@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.print.attribute.standard.PageRanges;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
@@ -99,29 +100,33 @@ public class CommunityController {
 		return "community/community_list";
 	}
 
-	/*	@GetMapping("/communityDetail")
-		public String communityDetail(int comm_no, Model model) {
-				
-				CommunityDto communitydetail = service.getCommunityDetail(comm_no);
-				model.addAttribute("communityDetail", communityDetail);
-				return "ch14/boardDetail";
-			
-			return "community/community_detail";
-		}*/
+	@GetMapping("/communityDetail")
+	public String communityDetail(int comm_no, Model model) {
+		CommunityDto communitydetail = service.getCommunityDetail(comm_no);
+		model.addAttribute("communityDetail", communitydetail);
+		
+		return "community/community_detail";
+		}
 
 	@GetMapping("/communityDetailReview")
-	public String communityDetailReview() {
-
+	public String communityDetailReview(int review_no, Model model) {
+		ReviewDto reviewDetail = service.getReviewDetail(review_no);
+		model.addAttribute("reviewDetail", reviewDetail);
+		
 		return "community/community_detail_review";
 	}
 
 	@GetMapping("/communityWrite")
-	public String communityWrite() {
-
+	public String communityWrite(Model model) {
+		//class_cate_nm을 불러와야된다. & 작성자 불러와야된다.
+		logger.info("안녕하셈");
+		List<CommunityDto> communityWrite = service.getCommunityWrite();
+		
+		model.addAttribute("communityWrite", communityWrite);
 		return "community/community_writeform";
 	}
 
-	@GetMapping("/communityWriteReview")
+	@GetMapping("/communityWriteReview") 
 	public String communityWriteReview(Model model) {
 
 		return "community/community_reviewform";

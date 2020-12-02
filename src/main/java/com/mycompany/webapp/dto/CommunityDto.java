@@ -9,6 +9,7 @@ public class CommunityDto {
 	private String comm_content;
 	private int comm_hitno;
 	private String mid;
+	private String mnick;
 	private int comm_cate_no;
 	private String comm_cate_nm;
 	
@@ -61,6 +62,12 @@ public class CommunityDto {
 	}
 	public void setComm_cate_nm(String comm_cate_nm) {
 		this.comm_cate_nm = comm_cate_nm;
+	}
+	public String getMnick() {
+		return mnick;
+	}
+	public void setMnick(String mnick) {
+		this.mnick = mnick;
 	}
 	
 		

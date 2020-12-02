@@ -9,5 +9,7 @@
 </c:if>
 
 <c:if test="${pick_yn == 1}">
-	<a class="" href="javascript:pick(2)"><img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png" /></a> 
+	<div class="mbr-section-btn align-center">
+		<a class="" href="javascript:pick(2)"><img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png" /></a> 
+	</div>
 </c:if> 

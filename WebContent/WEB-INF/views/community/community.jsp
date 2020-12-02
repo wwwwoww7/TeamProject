@@ -33,7 +33,7 @@
 
 	<section class="tabs content18 cid-shajdlT652">
 	
-	    <div class="container">
+	    <div class="container mt-5">
 	        <div class="row justify-content-center">
 	            <div class="col-12 col-md-8">
 	                <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2">
@@ -104,12 +104,10 @@
 				if(!pageNo){
 					pageNo = 1;
 				}
-				console.log("fnumber: " + fnumber + " , pageNo : " + pageNo);
 				var url ='community/';
 				$('#itemlist a').attr('class', 'nav-link');
 				$('#'+fnumber).attr('class','nav-link active');
 				
-// 				fnumber = $('#itemlist a[class="nav-link active"]')[0].id;
 				
 				switch (fnumber) {
 				case 1:

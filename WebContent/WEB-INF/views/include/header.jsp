@@ -51,7 +51,7 @@
                 <li class="nav-item dropdown">
 	                	<a class="nav-link link text-white dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">
 	                		<span >
-	                			<img class="rounded-circle" id="profile" src="<%=application.getContextPath()%>/resources/profile/${member.mpro_img} ">
+	                			<img class="rounded-circle" id="profile" src="<%=application.getContextPath()%>/mypage/myphotoDownload"/>
 	                		</span>	         
 	                      
 	                        ${member.mnick}      
