@@ -44,9 +44,6 @@
 							<c:forEach var="cateitem" items="${catelist}">
 								<a class="dropdown-item" href="javascript:catereview(${cateitem.class_cate_no})">${cateitem.class_cate_nm}</a>
 							</c:forEach>
-							
-							
-								
 								<script>
 										function catereview(cateno){ 
 											$.ajax({
@@ -57,7 +54,7 @@
 												}
 											});
 										}
-									</script>
+								</script>
 							</div>
 						</div>	
 	                
