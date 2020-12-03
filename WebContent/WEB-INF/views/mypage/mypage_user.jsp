@@ -85,7 +85,7 @@
 										<fmt:parseNumber var="endvalue" value="${startvalue+3}" integerOnly="true" />
 									</c:if>
 									
-									<c:forEach var="classes" items="${userPickList}" begin="${startvalue}" end="${endvalue}">
+									<c:forEach var="classes" items="${userclassList}" begin="${startvalue}" end="${endvalue}">
 										<div class="col-12 col-md-6 col-lg-3 item gallery-image" style="display:inline-block;">
 									        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
 									            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
