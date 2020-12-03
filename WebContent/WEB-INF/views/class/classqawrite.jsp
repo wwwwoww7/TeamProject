@@ -26,7 +26,7 @@
 	    <tr>
 	    	<th class="text-center">내용</th>
 	        <td colspan="3" class="p-0 m-0" width="100%;">
-	        	<textarea id="class_qa_content" name="class_qa_content" placeholder="내용을 입력하세요." rows="9" style="width: 100%; background-color:transparent;resize: none;border: 0;" inputmode="text" class="form-control p-3"> </textarea>
+	        	<textarea id="class_qa_content" name="class_qa_content" placeholder="내용을 입력하세요." rows="9" style="width: 100%; background-color:transparent;resize: none;border: 0;" inputmode="text" class="form-control p-3"></textarea>
 	        </td> <!--  border: 0; -->
 	    </tr>
 	</tbody> 

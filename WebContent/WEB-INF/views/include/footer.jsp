@@ -1,24 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%-- 2020. 11. 24. --%>
 
-<section class="cid-sh7J186cnJ" id="footer1-l">
+<section class="cid-sh7J186cnJ pb-0" id="footer1-l">
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(51, 51, 51);"></div>
 
     <div class="container">
         <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-2">
                 <div class="media-wrap">
                     <a href="<%=application.getContextPath()%>">
-                        <img src="<%=application.getContextPath()%>/resources/assets/images/mbr-192x184.png" alt="Mobirise">
+                        <img src="<%=application.getContextPath()%>/resources/assets/images/mbr-192x184.png" alt="">
                     </a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+            <div class="col-12 col-md-4 mbr-fonts-style display-7">
                 <h5 class="pb-3">
                     BanSook</h5>
                 <p class="mbr-text">
-                    1234 Street Name
-                    <br>City, AA 99999
+                	배움으로 완숙되기 위한 반숙이들을 위한 클래스
+                    <br>BanSook Learn
                 </p>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
@@ -26,8 +26,7 @@
                     Contacts
                 </h5>
                 <p class="mbr-text">
-                    Hyebin/ Jiyeong/ Jiyeon/ Juhyeon/ Jieun/ A-reum! &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <br>Phone: +1 (0) 000 8282 001 
+                    Hyebin/ Jiyeong/ Jiyeon/ Juhyeon/ Jieun/ A-reum! 
                 </p>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
@@ -37,7 +36,6 @@
                 <p class="mbr-text">
                     <a class="text-success" href="<%=request.getContextPath()%>/email/apply_class">New Class Apply for tutor</a>
                     <br><a class="text-success" href="#">이용약관</a>
-                    <br><a class="text-success" href="#">Download for Mac</a>
                 </p>
             </div>
         </div>
