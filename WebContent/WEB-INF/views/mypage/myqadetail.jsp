@@ -98,7 +98,9 @@
 							</colgroup>
 							<tbody>   
 							    <tr>
-							        <td style="padding: 20px 80px 20px 62px;" valign="top" height="350">${qalist.class_qa_content}</td>
+							        <td colspan="4" width="100%;">
+							        	<textarea rows="10"  class="p-3"  style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_content}</textarea>
+							        </td>
 							    </tr>
 							</tbody>
 						</table>
@@ -113,8 +115,10 @@
 							<tbody>
 							    <c:if test="${qalist.class_qa_answer != null}">
 									<tr>
-								        <th>답변</th>
-								        <td colspan="10">${qalist.class_qa_answer}</td>
+								        <th class="text-center">답변</th>
+								         <td class="p-3" width="100%;">
+								        	<textarea rows="6" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_answer}</textarea>
+								        </td>
 								    </tr>    
 						 		</c:if>
 						    </tbody>

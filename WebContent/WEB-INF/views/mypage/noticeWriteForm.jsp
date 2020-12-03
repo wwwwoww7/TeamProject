@@ -88,7 +88,7 @@
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
 										<textarea id="class_notice_content" name="class_notice_content" class="form-control" 
-											style="height: 250px;"></textarea>
+											style="height: 250px;" inputmode="text"></textarea>
 									</div>
 								</div>
 								<div class="dragArea row">

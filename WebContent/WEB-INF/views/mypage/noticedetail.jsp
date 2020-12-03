@@ -99,7 +99,9 @@
 							</colgroup>
 							<tbody>   
 							    <tr>
-							        <td style="padding: 20px 80px 20px 62px;" valign="top" height="350">${notice.class_notice_content}</td>
+								    <td colspan="4" width="100%;">
+								    	<textarea rows="10"  class="p-3"  style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${notice.class_notice_content}</textarea>
+								    </td>
 							    </tr>
 							</tbody>
 						</table>
