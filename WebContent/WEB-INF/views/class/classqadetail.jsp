@@ -31,8 +31,8 @@
 	        <td colspan="3">${qaInfo.class_qa_title}</td>
 		</tr>
 	    <tr>
-	        <td colspan="4" class="p-3" width="100%;">
-	        	<textarea rows="3" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qaInfo.class_qa_content}</textarea>
+	        <td colspan="4" width="100%;">
+	        	<textarea rows="3"  class="p-3"  style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qaInfo.class_qa_content}</textarea>
 	        </td>
 	    </tr>
 	</tbody>
