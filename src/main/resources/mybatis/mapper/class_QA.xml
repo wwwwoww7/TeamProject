@@ -69,5 +69,10 @@
 		insert into class_qa (CLASS_QA_NO, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, WRITER_ID, TUTOR_ID, CLASS_NO)
 					  values (SEQ_QA_NO.nextval, #{class_qa_title}, sysdate, #{class_qa_content}, #{writer_id}, #{tutor_id}, #{class_no} )
 	</insert>
+	
+	<!-- 답글 삭제 -->
+	<update id="QaDelete" parameterType="int">
+		update CLASS_QA set CLASS_QA_ANSWER='' where CLASS_QA_NO=#{class_qa_no}
+	</update>
 
 </mapper>

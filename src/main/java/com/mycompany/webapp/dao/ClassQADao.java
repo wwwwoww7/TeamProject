@@ -58,5 +58,9 @@ public class ClassQADao {
 		int rows = sst.insert("mybatis.mapper.class_QA.insertQA", qa);
 		return rows;
 	}
+	public int QaDelete(int class_qa_no) {
+		int rows = sst.update("mybatis.mapper.class_QA.QaDelete", class_qa_no);
+		return rows;
+	}
 	
 }

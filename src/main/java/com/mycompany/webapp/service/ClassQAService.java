@@ -62,6 +62,11 @@ public class ClassQAService {
 		int result = classQADao.insertQa(qa);
 		return result;
 	}
+
+	public int QaDelete(int class_qa_no) {
+		int result = classQADao.QaDelete(class_qa_no);
+		return result;
+	}
 	
 	
 }
