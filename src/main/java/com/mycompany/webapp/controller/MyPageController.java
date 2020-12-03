@@ -114,7 +114,7 @@ public class MyPageController {
 	@GetMapping("/myQa")
 	public String myQa(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
 		
-		int totalRows = classNoticeService.getTotalRow();
+		int totalRows = classNoticeService.getTotalRow(); //++++++++++++++++++++++++++++++++++++++++++++++++++++++++왜 공지사항서비스를 사용하고 았냐?
 		
 		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
 		List<ClassQADto> list = classQAService.getQa(pager);
@@ -350,9 +350,12 @@ public class MyPageController {
 	
 	//=============강사의 강의문의 목록===================================
 	@PostMapping("/tutorClassQA")
-	public String tutorClassQA(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
+	public String tutorClassQA(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model,HttpSession session) {
+		String tutorid = (String) session.getAttribute("sessionMid");
 		
-		int totalRows = classQAService.getTotalRow();
+		int totalRows = classQAService.countAllByTutorID(tutorid); //++++++++++++++++++++++++++++++++++++++++++++ 강사 id로 등록된 강의의 강의문의만 가져와야함
+		
+		logger.info("totalRows==============================================="+totalRows);
 		
 		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
 		List<ClassQADto> list = classQAService.getQa(pager);

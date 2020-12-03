@@ -22,8 +22,8 @@ public class ClassQADao {
 	private SqlSessionTemplate sst;
 	
 	//qa목록의 전체 행수 가져오기
-	public int countAll() {
-		int totalRows = sst.selectOne("mybatis.mapper.class_QA.countAll");
+	public int countAllByTutorID(String mid) {
+		int totalRows = sst.selectOne("mybatis.mapper.class_QA.countAllByTutorID",mid);
 		return totalRows;
 	}
 	public List<ClassQADto> selectQa(MyPagerDto pager) {

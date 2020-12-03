@@ -21,8 +21,8 @@ public class ClassQAService {
 	private ClassQADao classQADao;
 
 	//페이지 전체 행수 가져오기
-	public int getTotalRow() {
-		int totalRows = classQADao.countAll();
+	public int countAllByTutorID(String mid) {
+		int totalRows = classQADao.countAllByTutorID(mid);
 		return totalRows;
 	}
 
