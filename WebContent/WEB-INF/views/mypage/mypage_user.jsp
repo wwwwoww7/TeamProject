@@ -258,6 +258,7 @@
 					scrollTop: $('#gallery5-2h').offset().top
 				}, 'slow'); */
 			});
+
 	</script> 
 </body>
 </html>
