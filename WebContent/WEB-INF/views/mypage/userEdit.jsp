@@ -123,13 +123,13 @@
 					<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
 						<sec:authorize access="hasRole('ROLE_USER')">
 							<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="수정완료"/>
-							<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="취소"/>
+							<input type="reset" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="취소"/>
 							<%-- <a class="btn item-btn btn-success display-7 text-primary" style="margin: 10px; background-color: #ffc800;"
 								href="mypage_user?mid=${sessionMid}">취소</a> --%>
 						</sec:authorize>
 						<sec:authorize access="hasRole('ROLE_TUTOR')">
 							<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="수정완료"/>
-							<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="취소"/>
+							<input type="reset" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="취소"/>
 							<%-- <a class="btn item-btn btn-success display-7 text-primary" style="margin: 10px; background-color: #ffc800;"
 								href="mypage_tutor?mid=${sessionMid}">취소</a> --%>
 						</sec:authorize>

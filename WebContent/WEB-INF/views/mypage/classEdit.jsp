@@ -42,11 +42,14 @@
 		</section>
 		<div class="row justify-content-center mt-4">
 			<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-				<form  action="<%=application.getContextPath()%>/mypage/classEdit" method="POST" class="mbr-form form-with-styler" id="classeditform">
-					<div class="dragArea row" style="margin: 5px">
+				<form  action="<%=request.getContextPath() %>/email/classEdit" method="POST" class="mbr-form form-with-styler" id="classeditform">
+					<div class="dragArea row" style=" margin: 5px">
+						<input type="hidden" id="class_no" name="class_no" value="${classOne.class_no}"/>
+						<input type="hidden" id="tutor_id" name="tutor_id" value="${classOne.tutor_id}"/>
+						
 						<div class="col-md-12 input-group">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">강의명</span> 
-							<input type="text" id="class_nm" name="class_nm" class="form-control" value="${classOne.class_nm_s}" />
+							<input type="text" id="class_nm_s" name="class_nm_s" class="form-control" value="${classOne.class_nm_s}" />
 						</div>
 						
 						<div class="col-md-12 input-group">
@@ -56,29 +59,31 @@
 						
 						<div class="col-md-12 input-group" data-for="mpw">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">강의 소개</span> 
-							<input type="password" id="mpw" name="mpw" class="form-control" value="${classOne.class_sub}"/>
+							<textarea id="class_sub" name="class_sub" style="word-break:break-all;" rows="5" cols="100">${classOne.class_sub}</textarea>
+						
 						</div>
 						<div class="col-md-12 input-group" data-for="mname">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">커리큘럼</span> 
-							<input type="text" id="mname" name="mname" class="form-control" value="${classOne.class_curr}"/>
+							<textarea id="class_curr" name="class_curr" style="word-break:break-all;" rows="7" cols="100">${classOne.class_curr}</textarea>
 						</div>
 						
-						<div class="col-md-12 input-group" data-for="mphotoAttach">
+						<!--  일단 썸네일은 바꾸지 마!! -->
+						<%-- <div class="col-md-12 input-group" data-for="mphotoAttach">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">썸네일 선택</span>
-							<input type="file" id="mphotoAttach" name="mphotoAttach" class="form-control" value="${classOne.class_thum}" onchange="loadFile(event)"/>
+							<input type="file" id="class_thum" name="cphotoAttach" class="form-control" value="${classOne.class_thum}" onchange="loadFile(event)"/>
 						</div>
 											
 						<div class="col-md-12 input-group" data-for="mphoto">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">썸네일 이미지</span>
-							<img  class="rounded-circle" id="id_mphoto" class="max-small" border="0" src="<%=application.getContextPath()%>/mypage/myphotoDownload"/>
-						</div>
+							<img  class="rounded-circle" id="id_mphoto" class="max-small" border="0" src="<%=application.getContextPath()%>/resources/images/class"/>
+						</div> --%>
 					</div>
 					
 					<div style="height: 60px;"></div>
 					<div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
 	
 						<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="수정완료"/>
-						<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="취소"/>
+						<input type="reset" class="btn item-btn btn-success display-7 text-primary" style="margin: 10px;" value="취소"/>
 				
 					</div>
 				</form>
