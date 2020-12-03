@@ -13,7 +13,7 @@
   <meta name="description" content="Website Creator Description">
   
   
-  <title>eventDetail</title>
+  <title>eventUpdate</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
@@ -33,33 +33,52 @@
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
-<section class="cid-shfm0ridj5 mbr-fullscreen mbr-parallax-background" id="header2-3i">
 
-    
+	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc mb-5" data-interval="false" id="testimonials3-1e">
+	    <div class="text-center container">
+	    	
+	    	<h3 class="mb-4 mbr-fonts-style display-2">
+	    		<strong style="color:#ffc800;">이벤트 수정</strong>
+	    	</h3>
+<!-- 	    </div> -->
+<!-- 	    <div class="container-fluid m-5" align="center" > -->
+	    	
+			<div class="row">
+				<div class="col-12">
+					<hr style="border: 2px solid #ffc800;"/>
+					<input type="hidden" value="${eventD.event_no}" />
+					<h3>${eventD.event_ti}</h3>
+					<br/>
+				</div>
+			</div>
+			
+	    	<div class="row">
+	    		
+	    		<div class="col-6"  align="center">
+	    			<p>${eventD.event_ct}</p>
+	    			<p>내용 적어보세요 </p>
+	    		</div>
+	    		<div class="col-6"  align="center">
+	    			<img width="100%" src="<%=application.getContextPath()%>/resources/img/ar/${eventD.event_detail}">
+	    		</div>
+	    		
+	    	</div>
+	    	
+	    
+			
+			
+			
+			<div class="mbr-section-btn mt-4" >
+				
+				<a  class="btn btn-md btn-success display-4 text-primary" href="javascript:eventUpdateForm()" >이벤트수정</a>
+				<input type=button class="btn btn-md btn-success display-4 text-primary" value="취소" onClick="history.back();">
+			</div>
+			<!-- <div class="container">
+						
+			</div> <p></p> -->
+		</div>
+	</section>
 
-    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
-
-    <div class="container align-center">
-        <div class="row justify-content-md-center">
-            <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">EVENT DETAIL</h1>
-                
-                <p class="mbr-text pb-3 mbr-fonts-style display-5">
-                   	친구와 함께 수강하면 하나 가격에 함께 !
-                   	친구와 함께 1+1
-                   	친구와 함께, 공부도 함께 착한 가격에 정주행 해봐요!
-                </p>
-                <div class="mbr-section-btn"><a class="btn btn-md btn-success display-4" href=http://localhost:8080/teamproject/allClass">클래스 구경하러가기</a>
-                    <!-- <a class="btn btn-md btn-white-outline display-4" href="https://mobiri.se">LIVE DEMO</a></div> -->
-            </div>
-        </div>
-    </div>
-   <!--  <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
-        <a href="#next">
-            <i class="mbri-down mbr-iconfont"></i>
-        </a> -->
-    </div>
-</section>
 
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
@@ -81,6 +100,22 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
+	 	 <style type="text/css">
+	 	 
+	 	 #gallery5-2f {
+	 	 	background: #fff;
+	 	 }
+	 	/* .cid-shfcpp8srP2 {
+	 		height: 100%;
+	 		/* padding-bottom: 100rem; */
+		 	background-color: #ffffff;
+	    }  */
+	    img {display: block;
+	    	 margin-left:auto; 
+	    	  float: right;
+	    	  vspace="10";
+	    	   hspace="10";}
+	 </style>  
 </body>
 </html>

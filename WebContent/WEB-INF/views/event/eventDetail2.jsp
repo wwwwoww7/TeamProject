@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html  >
 <head>
   <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
   <meta charset="UTF-8">
@@ -34,34 +34,47 @@
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
 
-	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc" data-interval="false" id="testimonials3-1e">
-	    <div class="text-center container-fluid">
-	    
+	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc mb-5" data-interval="false" id="testimonials3-1e">
+	    <div class="text-center container">
+	    	
 	    	<h3 class="mb-4 mbr-fonts-style display-2">
 	    		<strong style="color:#ffc800;">${eventD2.event_nm}</strong>
 	    	</h3>
-	    </div>
-	</section>
-	
-	<section class="gallery5 mbr-gallery cid-shfcpp8srP2" id="gallery5-2f">  
-	    <div class="container">
-			<hr style="border: 2px solid #ffc800;"/>
-			<br/>
-			<div class="container">
-				<input type="hidden" value="${eventD2.event_no}" />
-					
-				<div>
-				<h3>${eventD2.event_ti}</h3>
-					<h1>${eventD2.event_ct}</h1>
-					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD2.event_detail}">
-				</div>
-					
-				<p>
-	
-				<div class="mbr-section-btn" style="text-align: center;">
-					<a class="btn btn-md btn-success display-4" href="#" >클래스 구경하러가기</a>
+<!-- 	    </div> -->
+<!-- 	    <div class="container-fluid m-5" align="center" > -->
+	    	
+			<div class="row">
+				<div class="col-12">
+					<hr style="border: 2px solid #ffc800;"/>
+					<input type="hidden" value="${eventD2.event_no}" />
+					<h3>${eventD2.event_ti}</h3>
+					<br/>
 				</div>
 			</div>
+			
+	    	<div class="row">
+	    		
+	    		<div class="col-6"  align="center">
+	    			<p>${eventD2.event_ct}</p>
+	    			<p>내용 적어보세요 </p>
+	    		</div>
+	    		<div class="col-6"  align="center">
+	    			<img width="100%" src="<%=application.getContextPath()%>/resources/img/ar/${eventD2.event_detail}">
+	    		</div>
+	    		
+	    	</div>
+	    	
+	    
+			
+			
+			
+			<div class="mbr-section-btn mt-4" >
+				<input type=button  class="btn btn-md btn-success display-4 text-primary"value="취소" onClick="history.back();">
+				<a  class="btn btn-md btn-success display-4 text-primary" href="#" >클래스 구경하러가기</a>
+			</div>
+			<!-- <div class="container">
+						
+			</div> <p></p> -->
 		</div>
 	</section>
 
@@ -86,13 +99,22 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/theme/js/script.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
-	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script> 
-	 <style type="text/css">
-	 	.cid-shfcpp8srP2 {
-	 		padding-bottom: 10rem;
+	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
+	 	 <style type="text/css">
+	 	 
+	 	 #gallery5-2f {
+	 	 	background: #fff;
+	 	 }
+	 	/* .cid-shfcpp8srP2 {
+	 		height: 100%;
+	 		/* padding-bottom: 100rem; */
 		 	background-color: #ffffff;
-	    } 
-	    img {display: block; margin-left:auto; }
+	    }  */
+	    img {display: block;
+	    	 margin-left:auto; 
+	    	  float: right;
+	    	  vspace="10";
+	    	   hspace="10";}
 	 </style>  
 </body>
 </html>

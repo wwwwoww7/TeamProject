@@ -36,22 +36,22 @@
 		<!-- 하단 페이징 버튼 -->
 		<tr>
 			<td colspan="4" style="text-align: center;">
-				<a class="text-black" style="margin-right: 15px; margin-top: 5px;" href="javascript:tutorClassQA(1,${pager.mid})">&laquo;</a>
+				<a class="text-black" style="margin-right: 15px; margin-top: 5px;" href="javascript:tutorClassQA(1)">&laquo;</a>
 				<c:if test="${pager.groupNo > 1}">
-					<a class="text-black" style="margin-right: 15px;" href="javascript:tutorClassQA(${pager.startPageNo-1},${pager.mid})">&lt;</a>
+					<a class="text-black" style="margin-right: 15px;" href="javascript:tutorClassQA(${pager.startPageNo-1})">&lt;</a>
 				</c:if>
 				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo==i}">
-						<a class="text-success" style="margin-right: 15px;" href="javascript:tutorClassQA(${i},${pager.mid})">${i}</a>
+						<a class="text-success" style="margin-right: 15px;" href="javascript:tutorClassQA(${i})">${i}</a>
 					</c:if>
 					<c:if test="${pager.pageNo !=i}">
-						<a class="text-black" style="margin-right: 15px;" href="javascript:tutorClassQA(${i},${pager.mid})">${i}</a>
+						<a class="text-black" style="margin-right: 15px;" href="javascript:tutorClassQA(${i})">${i}</a>
 					</c:if>
 				</c:forEach> 
 				<c:if test="${pager.groupNo < pager.totalGroupNo}">
-					<a class="text-black" style="margin-right: 15px;" href="javascript:tutorClassQA(${pager.endPageNo+1},${pager.mid})">&gt;</a>
+					<a class="text-black" style="margin-right: 15px;" href="javascript:tutorClassQA(${pager.endPageNo+1})">&gt;</a>
 				</c:if>
-				<a class="text-black" href="javascript:tutorClassQA(${pager.totalPageNo},${pager.mid})">&raquo;</a>
+				<a class="text-black" href="javascript:tutorClassQA(${pager.totalPageNo})">&raquo;</a>
 			</td>
 		</tr>
 	</table>

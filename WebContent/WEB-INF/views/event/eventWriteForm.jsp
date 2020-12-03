@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html  >
+<html>
 <head>
   <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   <link rel="shortcut icon" href="<%=application.getContextPath()%>/resources/assets/images/mbr-96x48.png" type="image/x-icon">
   <meta name="description" content="Web Page Generator Description">
   
-  <title>my page</title>
+  <title>EVENT REGISTERING</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
@@ -30,102 +30,133 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/include/userEditheader.jsp" />
+	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<section
 			class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc"
 			data-interval="false" id="testimonials3-1e">
 			<div class="text-center container-fluid">
 				<h3 class="mb-4 mbr-fonts-style display-2">
-					<strong style="color: #ffc800;">공지사항</strong><br />
+					<strong style="color: #ffc800;">이벤트 등록</strong><br />
 					<br />
 				</h3>
 			</div>
 	</section>
-	<!-- 공지사항 -->
-	<section class="section-table cid-shfdiSEq9c" id="table1-2l">
-		<div class="container container-table">
-			<!-- <h2
-				class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
-				<strong>공지사항</strong>
-			</h2> -->
+	<!-- 이벤트 등록 -->
 
+		<div class="container container-table">
 			<div class="table-wrapper">
 				<div class="container"></div>
-
-				<div id="tutorNotice" class="container table-info-container">
-					<input type="hidden" id="class_notice_no" name="class_notice_no" value="${notice.class_notice_no}"/>
+				<div id="eventWrite" class="container table-info-container">
+					<input type="hidden" id="evnet_no" name="evnet_no" value="${evnet_no}"/>
 					<div class="row justify-content-center mt-4">
 						<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-							<form onsubmit="return writeCheck();" action="noticeWrite" method="POST" id="noticeWrite" class="mbr-form form-with-styler" enctype="multipart/form-data">
+							<form onsubmit="eventWrite()" action="eventWriteForm" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<div class="dragArea row" style="margin: 5px">
-									<div class="col-md-6 input-group">
-										<span class="input-group-text" style="width: 30%; background-color: #ffff;">강 의 선 택</span> 
-										<select id="class_no" name="class_no" style="width: 70%; display: inline;" >
-											<c:forEach var="className" items="${classNames}">
+									<%-- <div class="col-md-6 input-group"> 
+										<select id="event_no" name="event_no" style="width: 70%; display: inline;" >
+											<c:forEach var="event_nm" items="${event_nm}">
 												<option value="${className.class_no}" selected>${className.class_nm_s}</option>
 											</c:forEach>
 										</select>
-									</div>
+									</div> --%>
 									<div class="col-md-6 input-group">
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">작 성 자 </span> 
 										<input type="text" id="mid" name="mid" class="form-control" value="${sessionMid}" readonly/>
+										<span class="input-group-text" style="width: 100px; background-color: #ffff;">번호 </span>
+										<input type="int" id="eenable" name="eenable" class="form-control" value="1" />
+											
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px;">
 									
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff;">제	목</span> 
-										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>
+										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 이름</span> 
+										<input type="text" id="event_nm" name="event_nm" class="form-control"/>
+										<span id="event_nmError" class="error"></span>
+									</div>
+								</div>
+								<div class="dragArea row" style="margin: 5px;">
+									
+									<div class="col-md-12 input-group">
+										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 상세 이름</span> 
+										<input type="text" id="event_ti" name="event_ti" class="form-control"/>
+										<span id="event_tiError" class="error"></span>
+									</div>
+								</div>
+								<div class="dragArea row" style="margin: 5px;">
+									
+									<div class="col-md-12 input-group">
+										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 시작일</span> 
+										<input type="date" id="event_start_picker" name="event_start_picker" class="form-control" placeholder="yyyy-MM-dd"/>
+										<input type="hidden" id="event_start" name="event_start" value=""/>
+										<span id="event_startError" class="error"></span>
+									</div>
+								</div>
+								<div class="dragArea row" style="margin: 5px;">
+									
+									<div class="col-md-12 input-group">
+										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 종료일</span> 
+										<input type="date" id="event_end_picker" name="event_end_picker" class="form-control" placeholder="yyyy-MM-dd"/>
+										<input type="hidden" id="event_end" name="event_end" value=""/>
+										<span id="event_endError" class="error"></span>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff;">첨부파일</span> 
-										<input type="file" id="class_hwFile" name="class_hwFile" class="form-control"/>
+										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 썸네일</span> 
+										<input type="file" id="eventIMG" name="eventIMG" class="form-control"/>
 									</div>
+									
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
-										<textarea id="class_notice_content" name="class_notice_content" class="form-control" 
-											style="height: 250px;" inputmode="text"></textarea>
+										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 상세이미지</span> 
+										<input type="file" id="eventIMGDetail" name="eventIMGDetail" class="form-control"/>
 									</div>
+									
 								</div>
+								 <div class="dragArea row" style="margin: 5px">
+									<div class="col-md-12 input-group">
+										<span class="input-group-text" style="width: 130px; background-color: #ffff; text-align: center;">이벤트 내용 </span> 
+										<textarea id="event_ct" name="event_ct" class="event_ct" 
+											style="height: 250px; width: 800px;"></textarea>
+										<span id="event_ctError" class="error"></span>
+									</div>
+								</div> 
 								<div class="dragArea row">
 									<div class="col-md-3"></div>
 									<div class="col-md-3">
-										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin-left: 5px;" value="글쓰기"/>
+										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin-left: 5px;" value="등록"/>
 										<script type="text/javascript">
-											function writeCheck() {
-
-												var ntitle = $("#class_notice_title").val();
-												if(ntitle == "") { 
-													
-													alert("제목을 입력해주세요");
-													$("#class_notice_title").focus();
-													return false;
-												}
+											 function eventWrite() {
+												
+												var event_no = $("#event_no").val();
+												
+												 event_nm = $("#event_nm").val().trim();
+												if(event_nm == "") { $("#event_nmError").text("필수입력"); }
+												else { $("#event_nmError").text(""); }
+												
+												var event_ct = $("#event_ct").val().trim();
+												if(event_ct == "") { $("#event_ctError").text("필수"); }
+												else { $("#event_ctError").text(""); }
+												
+												if(event_nm == "" || event_ct == "") {
+													return false;	
+												} 
+												
+												var event_img = $("#event_img").val();
+												
+												var mid = $("#mid").val();
 												
 												
-												var ncontent = $("#class_notice_content").val();
-												if(ncontent == "") {
-													alert("내용을 입력해주세요");
-													$("#class_notice_content").focus();
-													return false;
-												}
-												else{
-													$("#noticeWrite").writeCheck();
-												}
 												return true;
-
-											}
-											
-										</script>		
+											} 
+										</script>
 									</div>
 									<div class="col-md-3">
-										<a class="btn item-btn btn-success display-7 text-primary" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">취소</a>
+									<input type=button  class="btn item-btn btn-success display-7 text-primary"value="취소" onClick="history.back();">
 									</div>
-									<div class="col-md-3"></div>
+									<div class="col-md-3"></div> 
 								</div>
 							</form>
 						</div>
@@ -172,11 +203,23 @@
 		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
-	
 	<script type="text/javascript">
-		$(function(){
-			$("#class_no").show();
+	$(function(){
+		
+// 		$("#event_start_picker, #event_end_picker").datepicker({ minDate: 0});
+
+		$("#event_start_picker").change(function(){
+			var date = $(this).val();
+			$("#event_start").val(date);
 		});
+		$("#event_end_picker").change(function(){
+			var date = $(this).val();
+			$("#event_end").val(date);
+		});
+	});
+	
+
+
 	</script>
-	</body>
-</html>		
+</body>
+</html>	

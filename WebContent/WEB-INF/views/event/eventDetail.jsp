@@ -34,36 +34,48 @@
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
 
-	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc" data-interval="false" id="testimonials3-1e">
-	    <div class="text-center container-fluid">
-	    
+	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc mb-5" data-interval="false" id="testimonials3-1e">
+	    <div class="text-center container">
+	    	
 	    	<h3 class="mb-4 mbr-fonts-style display-2">
 	    		<strong style="color:#ffc800;">${eventD.event_nm}</strong>
 	    	</h3>
-	    </div>
-	</section>
-	
-	<section class="gallery5 mbr-gallery cid-shfcpp8srP2" id="gallery5-2f">  
-	    <div class="container">
-			<hr style="border: 2px solid #ffc800;"/>
-			<br/>
-			<div class="container">
-				<input type="hidden" value="${eventD.event_no}" />
-	
-				<div>
+<!-- 	    </div> -->
+<!-- 	    <div class="container-fluid m-5" align="center" > -->
+	    	
+			<div class="row">
+				<div class="col-12">
+					<hr style="border: 2px solid #ffc800;"/>
+					<input type="hidden" value="${eventD.event_no}" />
 					<h3>${eventD.event_ti}</h3>
 					<br/>
-					<img style="" src="<%=application.getContextPath()%>/resources/img/ar/${eventD.event_detail}"  width="auto" height="auto">
-					<p>${eventD.event_ct}</p>
 				</div>
-					
-				<p>
-	
-				<div class="mbr-section-btn" style="text-align: center;">
-					
-					<a class="btn btn-md btn-success display-4" href="http://localhost:8080/teamproject/allClass" >클래스 구경하러가기</a>
-				</div>
-			</div> <p></p>
+			</div>
+			
+	    	<div class="row">
+	    		
+	    		<div class="col-6"  align="center">
+	    			<p>${eventD.event_ct}</p>
+	    			<p>내용 적어보세요 </p>
+	    		</div>
+	    		<div class="col-6"  align="center">
+	    			<img width="100%" src="<%=application.getContextPath()%>/resources/img/ar/${eventD.event_detail}">
+	    		</div>
+	    		
+	    	</div>
+	    	
+	    
+			
+			
+			
+			<div class="mbr-section-btn mt-4" >
+				
+				<a  class="btn btn-md btn-success display-4 text-primary" href="<%=application.getContextPath()%>/allClass" >클래스 구경하러가기</a>
+				<input type=button class="btn btn-md btn-success display-4 text-primary" value="취소" onClick="history.back();">
+			</div>
+			<!-- <div class="container">
+						
+			</div> <p></p> -->
 		</div>
 	</section>
 
@@ -90,10 +102,15 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
 	 	 <style type="text/css">
-	 	.cid-shfcpp8srP2 {
-	 		padding-bottom: 10rem;
+	 	 
+	 	 #gallery5-2f {
+	 	 	background: #fff;
+	 	 }
+	 	/* .cid-shfcpp8srP2 {
+	 		height: 100%;
+	 		/* padding-bottom: 100rem; */
 		 	background-color: #ffffff;
-	    } 
+	    }  */
 	    img {display: block;
 	    	 margin-left:auto; 
 	    	  float: right;

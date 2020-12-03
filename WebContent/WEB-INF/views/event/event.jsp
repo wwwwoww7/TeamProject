@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%-- 2020. 10. 29. --%>
 
 <%-- <!DOCTYPE html>
@@ -148,12 +149,17 @@
 	                <div class="dataTables_filter">
 	                  <label class="searchInfo mbr-fonts-style display-7">이벤트 검색:</label>
 	                  <input class="form-control input-sm" type="text" name="q" value="" >
-	                  <input class="btn btn-sm btn-success btn-primary-outline display-7" type="submit" value="검색">
+	                  <input class="btn btn-sm btn-success btn-primary-outline display-7 text-primary" type="submit" value="검색">
 	                </div>
 	            </div>
 	          </div>
 	        </div>
-	        
+	        <div class="container" style="text-align:right; vertical-align:right;">
+              	<sec:authorize access="hasRole('ADMIN')">
+           		<a class="btn btn-sm btn-success btn-primary-outline display-7 text-primary" href="<%=application.getContextPath()%>/event/eventWriteForm">이벤트등록</a>
+           		<a class="btn btn-sm btn-success btn-primary-outline display-7 text-primary" href="<%=application.getContextPath()%>/event/eventUpdateForm">이벤트수정</a>
+           		</sec:authorize>
+	        </div>
 	      </div>
 	    </div>
 	</section>
@@ -162,8 +168,8 @@
 		<div class="container">
 			<div>
 				<div style="text-align:center;vertical-align:middle;"> <!-- mbr-gallery-filter container gallery-filter-active  -->
-							<a class="btn btn-md btn-success btn-primary-outline display-7" href="javascript:openCity(1,1)">진행중</a>
-							<a class="btn btn-md btn-success btn-primary-outline display-7" href="javascript:closeCity(0,1)">종료</a>
+							<a class="btn btn-md btn-success btn-primary-outline display-7 text-primary" href="javascript:openCity(1,1)">진행중</a>
+							<a class="btn btn-md btn-success btn-primary-outline display-7 text-primary" href="javascript:closeCity(0,1)">종료</a>
 				</div>
 				
 			<!-- Gallery -->

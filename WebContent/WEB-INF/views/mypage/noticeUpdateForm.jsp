@@ -30,7 +30,7 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/include/mypageheader.jsp" />
+	<jsp:include page="/WEB-INF/views/include/userEditheader.jsp" />
 	<section
 		class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc"
 		data-interval="false" id="testimonials3-1e">
@@ -98,7 +98,7 @@
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 80px; background-color: #ffff;">내	용 </span> 
-										<textarea id="class_notice_content" name="class_notice_content" class="form-control" rows="10">${notice.class_notice_content}</textarea>
+										<textarea id="class_notice_content" name="class_notice_content" class="form-control" rows="10" inputmode="text">${notice.class_notice_content}</textarea>
 										<span id="ncontentError" class="error"></span>
 									</div>
 								</div>

@@ -5,6 +5,7 @@
 		select EVENT_NO,EVENT_NM,EVENT_IMG,EVENT_START,EVENT_END,CLASS_NO, EENABLE
 		from event
 		where EENABLE=#{eenable}
+		order by event_start desc 
 
 	</select>
 
@@ -21,14 +22,17 @@
 	</select>
 	
 	<select id="selectByPage" parameterType="EventPager" resultType="event">
-	select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
-	from (
-	      select event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
-	      from event
-	      where rownum &lt;= #{endRowNo} and event.eenable=#{eenable}
-	      order by event_start desc
-	      ) 
-	where rNum &gt;=#{startRowNo}
+		select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
+		from (
+		      select ev.event_no, ev.event_nm, ev.event_img, ev.event_start, ev.event_end, ev.class_no, ev.eenable, rownum as rNum
+		      from (SELECT event_no, event_nm, event_img, event_start, event_end, class_no, eenable, rownum as rNum
+	                FROM event
+	                where eenable=#{eenable}
+	                order by event_start desc
+	                )ev
+		      where rownum &lt;= #{endRowNo}
+		      ) 
+		where rNum &gt;=#{startRowNo}
 	</select>
 	<select id="selectByEndPage" parameterType="EventPager" resultType="event">
 		select rNum, event_no, event_nm, event_img, event_start, event_end, class_no, eenable
@@ -59,5 +63,10 @@
 		select event_no, event_nm, event_img from event where eenable=1 and rownum &lt;= 8
 		order by event_no desc
 	</select>
+	
+	<insert id="insert" parameterType="event">
+		insert into event (event_no, event_nm, event_img, event_start, event_end, event_ti, eenable, event_detail, event_ct)  
+        values (SEQ_EVENT.nextval,#{event_nm}, #{event_img}, #{event_start}, #{event_end}, #{event_ti}, #{eenable}, #{event_detail}, #{event_ct})
+	</insert>
 	
 </mapper>

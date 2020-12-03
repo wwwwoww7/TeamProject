@@ -31,7 +31,7 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/include/mypageheader.jsp" />
+	<jsp:include page="/WEB-INF/views/include/userEditheader.jsp" />
 
 <section
 		class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc"
@@ -97,7 +97,9 @@
 							</colgroup>
 							<tbody>   
 							    <tr>
-							        <td style="padding: 20px 80px 20px 62px;" valign="top" height="350">${qalist.class_qa_content}</td>
+							        <td colspan="4" width="100%;">
+							        	<textarea rows="10"  class="p-3"  style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_content}</textarea>
+							        </td>
 							    </tr>
 							</tbody>
 						</table>
@@ -112,8 +114,10 @@
 							<tbody>
 							    <c:if test="${qalist.class_qa_answer != null}">
 									<tr>
-								        <th>답변</th>
-								        <td colspan="10">${qalist.class_qa_answer}</td>
+								        <th class="text-center">답변</th>
+								         <td class="p-3" width="100%;">
+								        	<textarea rows="4" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_answer}</textarea>
+								        </td>
 								    </tr>    
 						 		</c:if>
 						    </tbody>
@@ -123,8 +127,8 @@
 							<input type="hidden" id="class_qa_no" name="class_qa_no" value="${qalist.class_qa_no}"/>
 							
 							<div class="input-group">
-							<textarea id="class_qa_answer" name="class_qa_answer" class="form-control">답변 내용을 입력하세요!</textarea>
-							<input type="submit" class="btn item-btn btn-success text-primary display-7" value="답변" />
+							<textarea  id="class_qa_answer" name="class_qa_answer" class="form-control">답변 내용을 입력하세요!</textarea>
+							<input type="submit" class="btn item-btn btn-success text-primary display-7" inputmode="text" value="답변" />
 							</div>
 						</form>
 						<br/>
