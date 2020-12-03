@@ -8,6 +8,16 @@
 	</div> 
 </c:if>
 <div class="container scroll">
+	<c:if test="${fn:length(list) == 0 }">
+		<div class="card col-12 col-md-12">
+			<p class="mbr-text mbr-fonts-style mb-4 display-7 align-center text-center">
+				<strong> 아직 공지사항이 없어요! </strong> 
+			</p>
+		</div>
+    </c:if>
+	<c:if test="${fn:length(list) > 0 }">
+	
+	
 	<table class="table" cellspacing="0" data-empty="No matching records found">
 		<thead>
 			<tr class="table-heads ">
@@ -29,7 +39,6 @@
 				<td class="body-item mbr-fonts-style display-7" align="center"><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
-		
 		<c:if test="${fn:length(list) > 10 }">
 			<tr>
 				<td colspan="4" style="text-align: center;">
@@ -55,6 +64,7 @@
 		</tbody>
 
 	</table>
+	</c:if>
 	<br />
 	
 	<script type="text/javascript">

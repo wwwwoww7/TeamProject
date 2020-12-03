@@ -11,12 +11,14 @@ import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +27,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassNoticeDto;
 import com.mycompany.webapp.dto.ClassNoticePagerDto;
+import com.mycompany.webapp.dto.ClassQADto;
 import com.mycompany.webapp.dto.ClassVideoDto;
 import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.PickDto;
 import com.mycompany.webapp.dto.ReviewDto;
 import com.mycompany.webapp.service.ClassNoticeService;
+import com.mycompany.webapp.service.ClassQAService;
 import com.mycompany.webapp.service.ClassService;
 import com.mycompany.webapp.service.CommunityService;
 import com.mycompany.webapp.service.MemberService;
@@ -45,9 +49,10 @@ public class ClassController {
 	MemberService memberService;
 	@Resource
 	CommunityService communityService;
-	
 	@Resource
 	ClassNoticeService classNoticeService;
+	@Resource
+	ClassQAService classQAService;
 	
 
 	@GetMapping("/classdetail")
@@ -73,11 +78,11 @@ public class ClassController {
 	}
 	
 	
-	@RequestMapping("/tutorphotoDownload")
-	public void tutorphotoDownload(String tutor,HttpServletRequest request, HttpServletResponse response) throws IOException{
+	@RequestMapping("/profilephotoDownload")
+	public void profilephotoDownload(String mem,HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
 		//tutor_id로 member 가져오기 
-		MemberDto member = memberService.getMemberInfo(tutor);
+		MemberDto member = memberService.getMemberInfo(mem);
 		String fileName = member.getMpro_img();
 
 		//파일의 데이터를 읽기 위한 입력 스트림 얻기
@@ -119,10 +124,48 @@ public class ClassController {
 		model.addAttribute("firstVideoUrl", videoList.get(0).getClass_video_url());
 		model.addAttribute("classInfo", classInfo);
 		
-		
-		
-		
 		return "/class/classvideo";
+	}
+	
+	@GetMapping("/classqalist")
+	public String classqalist(int class_no, Model model) {
+		//qa list 불러오기
+		List<ClassQADto> qaList = classQAService.getQAListByClassNo(class_no);
+		model.addAttribute("qaList", qaList);
+		return "/class/classqalist";
+	}
+	
+	
+	@GetMapping("/classqadetail")
+	public String classqadetail(int class_no,int class_qa_no, Model model) {
+		//qa 정보 불러오기
+		ClassQADto qaInfo = classQAService.getQADetail(class_qa_no);
+		model.addAttribute("qaInfo", qaInfo);
+		return "/class/classqadetail";
+	}
+	
+	
+	@GetMapping("/classqaWriteForm")
+	public String classqaWriteForm(int class_no, Model model, HttpSession session) {
+		model.addAttribute("class_no", class_no);
+		
+		String mid = (String) session.getAttribute("sessionMid");
+		MemberDto userInfo = memberService.getMemberInfo(mid);
+		model.addAttribute("mnick", userInfo.getMnick());
+		
+		return "/class/classqawrite";
+	}
+	
+
+	@GetMapping("/classqawrite")
+	public void classqawrite(ClassQADto qa, Model model, HttpSession session) {
+		
+		String mid = (String) session.getAttribute("sessionMid");
+		
+		
+		//qa 정보 불러오기
+//		int result = classQAService.putQa(qa);
+//		model.addAttribute("qaInfo", qaInfo);
 	}
 	
 

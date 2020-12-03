@@ -55,11 +55,11 @@
 	
 	<select id="selectClassesOrderByNew" resultType="class">
 		select class_no, class_cate_nm, class_nm, class_nm_s, class_thum
-		from (select rownum as rnum, class_no, class_cate_nm, class_nm,class_nm_s, class_thum
-              from class, class_cate
-              where class.class_cate_no = class_cate.class_cate_no
-              order by CLASS_NO desc)
-		where rnum &lt;=4 
+		from (select class_no, class_cate_nm, class_nm,class_nm_s, class_thum
+		      from class, class_cate
+		      where class.class_cate_no = class_cate.class_cate_no
+		      order by CLASS_NO desc)
+		where rownum &lt;= 4 
 	</select>
 	
 	<select id="selectClasses" resultType="class">
