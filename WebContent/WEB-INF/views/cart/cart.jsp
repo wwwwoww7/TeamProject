@@ -96,17 +96,21 @@
 	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
 	               <th class="head-item mbr-fonts-style display-7">수량</th>
 	               <th class="head-item mbr-fonts-style display-7">상품금액</th>
-	               <th class="head-item mbr-fonts-style display-7">선택</th>
 	              </tr>
 	            </thead>
 	
 	            <tbody>
-		            <c:if test="${cartList == null}">
+		            <c:if test="${empty cartList}">
 						<tr>
-							<td colspan="5" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
+							<td colspan="4" style="text-align: center;">
+								<div style="font-size:60px; color:#CCC">
+									<span class="mbri-info"></span>
+								</div>
+								<b style="font-size: 18px">담긴 상품이 없습니다.</b>
+							</td>
 						</tr>
 					</c:if>
-	           		<c:if test="${cartList!=null}"> 
+	           		<c:if test="${not empty cartList}"> 
 	            		<c:forEach var="cartItem" items="${cartList}" varStatus="status" >
 			             	<tr> 
 						        <td class="body-item mbr-fonts-style display-7">
@@ -139,32 +143,6 @@
 					           			${cartItem.class_price}
 					           		</div>
 					           	</td>
-						 		<td>
-						 			<%-- <a id="deletebtn" class="btn btn-md btn-info-outline display-1" href="javascript:deleteAll()" >삭제</a>
-						 		<script type="text/javascript">
-							 		//전체 삭제 함수
-						 			function deleteAll(){
-					 					var deleteNum;
-					 	
-					 					$("input[name='chk']").is(":checked", function() {
-					 						deleteNum = ${data-cartNum};
-										});
-					 					console.log(deleteNum);
-					 					if(deleteNum==null){
-					 						alert("삭제할 클래스를 선택하여 주세요.");
-					 					}else{
-						 					$.ajax({
-						 						url:"<%=request.getContextPath()%>/cart/cartdelete",
-												data: { "deleteArr" : deleteArr },
-												success: function(data){
-													alert('삭제가 완료되었습니다.');
-												}
-						 					});
-					 					}
-					 				}				 	
-						 		</script> --%>
-						 		</td>
-					           
 				            </tr>
 	             		</c:forEach>
 	            	</c:if>
@@ -172,16 +150,12 @@
              </tbody>
 			 <tfoot>
 			 	<tr>
-			 		<td colspan="3" style="text-align: left">
-						 <a id="deletebtn" class="btn btn-md btn-info-outline display-1" href="javascript:deleteAll()" >삭제</a>
+			 		<td colspan="2" style="text-align: left">
+						 <a id="deletebtn" class="btn btn-md btn-info display-3 btn-sm" href="javascript:deleteAll()" >삭제</a>
 						 <script type="text/javascript">
 							//삭제 함수
 						 	function deleteAll(){
 					 			var deleteArr = new Array();
-					 			
-					 			/* $("input[name='chk']").is(":checked", function() {
-					 						deleteNum = ${data-cartNum};
-										}); */
 										
 								$("input[name='chk']:checked").each(function(){
 									deleteArr.push($(this).attr("data-cartNum"));
@@ -194,7 +168,12 @@
 						 				url:"<%=request.getContextPath()%>/cart/cartdelete",
 										data: { "deleteArr" : deleteArr },
 										success: function(data){
-											alert('삭제가 완료되었습니다.');
+											if(data.result == "success") {
+												alert('삭제가 완료되었습니다.');
+												location.href = "pick_cl";
+											} else {
+												alert('삭제 실패');
+											} 
 										}
 						 			});
 					 			}
@@ -277,6 +256,9 @@
 											checkboxValues.splice(i,1);
 											}); 
 										}
+										if(checkboxValues.length==0){
+											checkboxValues = [0];
+										}
 									}
 								
 				           		
@@ -303,7 +285,6 @@
 							if($("input[name='chk']:checked").length==0){
 									//장바구니 체크 안하면 경고창
 									alert('선택된 상품이 없습니다.');
-// 									$("#cartSum").text();
 							} else{
 								if(${sessionMid==null}){
 									var result = confirm("로그인 후 결제 하실 수 있습니다."); 
@@ -312,8 +293,8 @@
 									location.href="<%=application.getContextPath()%>/cart/payment"; 
 									
 									}
-								}
-							}
+								} 
+							};
 					</script>
 				</div>
 	        </div>

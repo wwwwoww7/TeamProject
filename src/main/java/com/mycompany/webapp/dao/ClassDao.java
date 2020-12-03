@@ -94,7 +94,7 @@ public class ClassDao {
 	}
 
 
-
+	//강의번호에 해당하는 비디오 목록 
 	public List<ClassVideoDto> selectVideoList(int class_no) {
 		List<ClassVideoDto> vlist = sst.selectList("mybatis.mapper.video.selectVideoList", class_no);
 		return vlist;

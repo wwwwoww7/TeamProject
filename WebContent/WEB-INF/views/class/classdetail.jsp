@@ -190,7 +190,7 @@
 								            </div>
 								            <script type="text/javascript">
 												function openpop(){
-													open("classvideo?class_no=${classOne.class_no}","popup", "width=1300, height=600, top=200, left=300");
+													open("classvideo?class_no=${classOne.class_no}","popup", "width=1300, height=670, top=200, left=300");
 												}
 											</script>
 								            
@@ -203,7 +203,7 @@
 								            </div>
 								        </div>
 								    </div>
-	                          
+	                                
 	                            </div>
 	                        </div>
 	                    </div>
@@ -217,11 +217,12 @@
 	                                
 	                                
 	                                <div class="container">
-								        <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-5">
-								        <strong>Curriculum</strong></h2>
-								        <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style align-center display-7">
-								           	클래스를 신청하신 분들이 배우고 있는 커리큘럼입니다. 
+	                                	<h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
+								        <strong>Curriculum</strong>
 								        </h3>
+								        <p class="mbr-text mbr-fonts-style mb-4 display-7 align-center text-center">
+								           	클래스를 신청하신 분들이 배우고 있는 커리큘럼입니다. 
+								        </p>
 								        <div class="media-container-row">
 								        	<div class="container-fluid">
 								        	
@@ -294,7 +295,7 @@
 								                <div class="panel-item p-3">
 								                    <div class="card-block">
 								                        <div class="testimonial-photo">
-								                            <img id="tutorimg" style="border: 4px solid #ffc800;" src="<%=application.getContextPath()%>/class/tutorphotoDownload?tutor=${classOne.tutor_id}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
+								                            <img id="tutorimg" style="border: 4px solid #ffc800;" src="<%=application.getContextPath()%>/class/profilephotoDownload?mem=${classOne.tutor_id}" class="rounded-circle" alt=" ${ tutorInfo.mnick }">
 								                        </div>
 								                        <p class="mbr-text mbr-fonts-style display-7 mt-3">
 								                        	${tutorInfo.minfo}
@@ -370,7 +371,8 @@
 									
 									<div class="container">
 								        <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
-								            <strong>Reviews</strong></h3>
+								            <strong>Reviews</strong>
+								        </h3>
 								        <div class="row justify-content-center">
 								            
 								            <c:if test="${fn:length(reviewList) == 0 }">
@@ -395,7 +397,7 @@
 									                <div class="d-flex mb-md-0 mb-4">
 									                    <div class="image-wrapper">
 									                        <img id="" width="50px" height="50px" class="rounded-circle mr-2 prof_img" 
-									                        	src="<%=application.getContextPath()%>/resources/profile/${review.mpro_img }" >
+									                        	src="<%=application.getContextPath()%>/class/profilephotoDownload?mem=${review.mid}" >
 									                    </div>
 									                    <div class="text-wrapper">
 									                        <p class="name mbr-fonts-style mb-1 display-4">
@@ -438,17 +440,20 @@
 	                                <p class="mbr-text mbr-fonts-style display-7">
 	                                    <!-- 강의 문의 -->
 									</p>
+									<div class="container">
+								        <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
+								            <strong>Notice</strong>
+								        </h3>
+									
+										<div id="tutorNotice" class="table-wrapper">
+									        
+									        
+									        
+									        
+									    </div>
 									
 									
-									<div id="tutorNotice" class="table-wrapper">
-								        
-								        
-								        
-								        
-								    </div>
-									
-									
-									
+									</div>
 									
 									
 									

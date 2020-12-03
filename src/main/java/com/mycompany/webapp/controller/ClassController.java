@@ -5,13 +5,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -25,11 +28,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassNoticeDto;
 import com.mycompany.webapp.dto.ClassNoticePagerDto;
+import com.mycompany.webapp.dto.ClassQADto;
 import com.mycompany.webapp.dto.ClassVideoDto;
 import com.mycompany.webapp.dto.MemberDto;
 import com.mycompany.webapp.dto.PickDto;
 import com.mycompany.webapp.dto.ReviewDto;
 import com.mycompany.webapp.service.ClassNoticeService;
+import com.mycompany.webapp.service.ClassQAService;
 import com.mycompany.webapp.service.ClassService;
 import com.mycompany.webapp.service.CommunityService;
 import com.mycompany.webapp.service.MemberService;
@@ -45,9 +50,10 @@ public class ClassController {
 	MemberService memberService;
 	@Resource
 	CommunityService communityService;
-	
 	@Resource
 	ClassNoticeService classNoticeService;
+	@Resource
+	ClassQAService classQAService;
 	
 
 	@GetMapping("/classdetail")
@@ -73,11 +79,11 @@ public class ClassController {
 	}
 	
 	
-	@RequestMapping("/tutorphotoDownload")
-	public void tutorphotoDownload(String tutor,HttpServletRequest request, HttpServletResponse response) throws IOException{
+	@RequestMapping("/profilephotoDownload")
+	public void profilephotoDownload(String mem,HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
 		//tutor_id로 member 가져오기 
-		MemberDto member = memberService.getMemberInfo(tutor);
+		MemberDto member = memberService.getMemberInfo(mem);
 		String fileName = member.getMpro_img();
 
 		//파일의 데이터를 읽기 위한 입력 스트림 얻기
@@ -119,10 +125,65 @@ public class ClassController {
 		model.addAttribute("firstVideoUrl", videoList.get(0).getClass_video_url());
 		model.addAttribute("classInfo", classInfo);
 		
-		
-		
-		
 		return "/class/classvideo";
+	}
+	
+	@GetMapping("/classqalist")
+	public String classqalist(int class_no, Model model) {
+		//qa list 불러오기
+		List<ClassQADto> qaList = classQAService.getQAListByClassNo(class_no);
+		model.addAttribute("qaList", qaList);
+		return "/class/classqalist";
+	}
+	
+	
+	@GetMapping("/classqadetail")
+	public String classqadetail(int class_no,int class_qa_no, Model model) {
+		//qa 정보 불러오기
+		ClassQADto qaInfo = classQAService.getQADetail(class_qa_no);
+		model.addAttribute("qaInfo", qaInfo);
+		return "/class/classqadetail";
+	}
+	
+	
+	@GetMapping("/classqaWriteForm")
+	public String classqaWriteForm(int class_no, Model model, HttpSession session) {
+		model.addAttribute("class_no", class_no);
+		
+		String mid = (String) session.getAttribute("sessionMid");
+		MemberDto userInfo = memberService.getMemberInfo(mid);
+		model.addAttribute("mnick", userInfo.getMnick());
+		
+		return "/class/classqawrite";
+	}
+	
+
+	@PostMapping("/classqawrite")
+	public void classqawrite(ClassQADto qa, Model model, HttpSession session,HttpServletResponse response) throws Exception {
+		
+		String mid = (String) session.getAttribute("sessionMid");
+		String tutor_id = classService.getTutorId(qa.getClass_no());
+		
+		qa.setWriter_id(mid);
+		qa.setTutor_id(tutor_id);
+		
+		int result = classQAService.applyQa(qa);
+		
+		JSONObject jobject = new JSONObject();
+		
+		if(result == 1) {
+			jobject.put("result", "success");
+		}else {
+			jobject.put("result", "fail");
+		}
+		
+		String jsonString = jobject.toString();
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter writer = response.getWriter();
+		writer.println(jsonString);
+		writer.flush();
+		writer.close();
+		
 	}
 	
 

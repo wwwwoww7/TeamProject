@@ -13,8 +13,8 @@ public class CartDto {
 	private String class_thum;
 	private int class_price;
 	private String class_nm_s;
-	private int sumPrice;
-	@DateTimeFormat(pattern = "yyyy-MM-dd") private Date class_date;
+	@DateTimeFormat(pattern = "yyyy-MM-dd") private Date cart_date;
+	
 	
 	/**
 	 * @return the mid
@@ -115,32 +115,24 @@ public class CartDto {
 	}
 
 	/**
-	 * @return the sumPrice
+	 * @return the cart_date
 	 */
-	public int getSumPrice() {
-		return sumPrice;
+	public Date getCart_date() {
+		return cart_date;
 	}
 
 	/**
-	 * @param sumPrice the sumPrice to set
+	 * @param cart_date the cart_date to set
 	 */
-	public void setSumPrice(int sumPrice) {
-		this.sumPrice = sumPrice;
+	public void setCart_date(Date cart_date) {
+		this.cart_date = cart_date;
 	}
 
-	/**
-	 * @return the class_date
-	 */
-	public Date getClass_date() {
-		return class_date;
-	}
 
-	/**
-	 * @param class_date the class_date to set
-	 */
-	public void setClass_date(Date class_date) {
-		this.class_date = class_date;
-	}
+
+	
+
+	
 
 	
 	

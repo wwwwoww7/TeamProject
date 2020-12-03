@@ -57,6 +57,11 @@ public class ClassQAService {
 		List<ClassQADto> qlist = classQADao.selectQaListByClassNo(class_no);
 		return qlist;
 	}
+
+	public int applyQa(ClassQADto qa) {
+		int result = classQADao.insertQa(qa);
+		return result;
+	}
 	
 	
 }

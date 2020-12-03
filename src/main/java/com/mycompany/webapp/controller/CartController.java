@@ -1,9 +1,11 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,9 +15,11 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,11 +38,19 @@ public class CartController {
 	public String cart() {
 		return "cart/cart";
 	}
-
+	
+	
+	//장바구니 담기
 	@RequestMapping("/pick_cl")
 	public String pick_cl(@RequestParam(defaultValue = "-1") int classNo, HttpSession session) {
-
+		
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
+		//날짜 넣기
+			//SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+			
+			Date cart_date = new Date();
+			
+			
 		if(cartList == null) {
 			cartList = new ArrayList<CartDto>();
 			session.setAttribute("cartList", cartList);
@@ -55,8 +67,9 @@ public class CartController {
 			if(!exist) {
 				CartDto classOne = cartService.getClass(classNo);
 				classOne.setMid((String) session.getAttribute("sessionMid"));
+				classOne.setCart_date(cart_date);
 				cartList.add(classOne);
-				session.setAttribute("cartList", cartList);
+				logger.info("저장한 날짜 : "+classOne.getCart_date());
 				
 			System.out.println(cartList);
 		}
@@ -65,7 +78,7 @@ public class CartController {
 		return "cart/cart";
 	}
 
-	
+	//값 합계
 	@RequestMapping("/sumprice")
 	public void sumprice(
 			@RequestParam(value = "chkPrice[]") List<String> arrayParams,
@@ -98,16 +111,34 @@ public class CartController {
 	
 		
 	}
+	
+	//장바구니 삭제
 	@RequestMapping("/cartdelete")
 	public void cartdelete(@RequestParam(value = "deleteArr[]") List<Integer> delList,
-							 @RequestParam(defaultValue = "-1") int classNo,
-							 HttpSession session){
-		List<Integer> deleteArr = delList;
-		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
-		logger.info("받은 배열 : " + deleteArr);
+							 HttpSession session, HttpServletResponse response) throws IOException{
+		//logger.info("받은 배열 : " + delList);
 		
-		for(CartDto cartItem : cartList) {
-			logger.info("카트에 담긴 class_no : "+cartItem.getClass_no());
+		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
+		//logger.info("" + cartList.get(0).getClass_no());
+
+		Iterator<CartDto> iterator = cartList.iterator(); //iterator은 list중에서 하나 골라서 갯수를 확인하면서 실행
+		while(iterator.hasNext()) { //hasNext로 확인할게 남아있는지 확인하여 반복함(hasNext는 boolean타입임)
+			CartDto cartItem = iterator.next(); //cartItem 중 하나 반복자로 설정
+			int class_no = cartItem.getClass_no(); //타켓 정함
+			logger.info("카트에 담긴 class_no : "+class_no);	 
+			for(int deleteNum : delList) { //ajax로 받아온 타켓리스트를 반복하여 하나씩 실행함
+				logger.info("deleteNum : "+deleteNum);
+				if(deleteNum == class_no) {
+					iterator.remove();
+				}
+				logger.info("카트에 담긴 class_no deleteX: "+class_no);
+			}
+		}
+		
+		
+		
+		/*for(CartDto cartItem : cartList) {
+			logger.info("카트에 담긴 class_no : "+cartItem.getClass_no());	
 			for(int deleteNum : deleteArr) {
 				logger.info("deleteNum : "+deleteNum);
 				if(deleteNum == cartItem.getClass_no()) {
@@ -116,23 +147,43 @@ public class CartController {
 				}
 				logger.info("카트에 담긴 class_no deleteX: "+cartItem.getClass_no());
 			}
-		}
+		}*/
+		
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println(json);
+		out.flush();
+		out.close();
 	}
 	
+	//결제창 날짜 넣기
 	@RequestMapping("/payment")
-	public String payment(Model model) {
-		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-		
-		Date class_date = new Date();
-		
-		String classDate = format1.format(class_date);
-		
-		model.addAttribute("classDate", classDate);
+	public String payment(Model model, HttpSession session) {
+		//날짜 넣기		
+		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
+			
+		Iterator<CartDto> iterator = cartList.iterator(); //iterator은 list중에서 하나 골라서 갯수를 확인하면서 실행
+		while(iterator.hasNext()) { //hasNext로 확인할게 남아있는지 확인하여 반복함(hasNext는 boolean타입임)
+			CartDto cartItem = iterator.next(); //cartItem 중 하나 반복자로 설정
+			Date classDate = cartItem.getCart_date(); //타켓 정함
+			logger.info("꺼내온 날짜(변환 전) : "+classDate);
+			//String cartDate = classDate.toString();
+			model.addAttribute("classDate", classDate);
+		}
 		return "cart/payment";
 	}
 
 	@GetMapping("/pay_complete")
 	public String pay_complete(HttpSession session) {
+		//구매정보 DB 저장
+		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
+		logger.info("카트리스트  : " + cartList);
+		
+		//세션에 담긴 cartList삭제
 		session.removeAttribute("cartList");
 		return "cart/pay_complete";
 	}

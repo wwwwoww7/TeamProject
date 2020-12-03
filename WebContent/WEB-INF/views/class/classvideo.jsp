@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html  >
@@ -13,7 +14,7 @@
   <meta name="description" content="Web Generator Description">
   
   
-  <title>showclass</title>
+  <title>BanSook</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/bootstrap/css/bootstrap-reboot.min.css">
@@ -28,40 +29,47 @@
     
     <div class="container-fluid">
     	<div class="row">
-    		<div class="col-12">
+    		<div class="col-6">
+                <div class="mbr-section-btn" align="right">
+		         	<a class="btn btn-success display-4  text-primary" href="javascript:popupClose()">강의 종료</a>
+		        </div>
+        	</div>
+    		<div class="col-6">
     			<h2 class="mbr-section-title mb-3 mbr-fonts-style display-2">
                     <strong>${classInfo.class_nm_s }</strong>
                 </h2>
+                
         	</div>
+        	
     	</div>
-        <div id="allDiv" class="row justify-content-center">
+        <div id="allDiv" class="row"  style="vertical-align: top;">
             <div class="col-12 col-md-6">
                 <div class="text-wrapper">
-                	<h6 class="card-title mbr-fonts-style mb-4 display-5">
-	               		<strong>Class QA</strong>
-	            	</h6>
-                    <p class="mbr-text mb-3 mbr-fonts-style display-7">
-                    	자유롭게 강의에 대한 질문을 해주세요!
-                    </p>
-                    <table class="table isSearch">
-                   		<thead>
-                   			<tr class="table-heads ">
-                   				<th class="head-item mbr-fonts-style display-7 text-center">글번호</th>
-                   				<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
-                   				<th class="head-item mbr-fonts-style display-7 text-center">작성자</th>
-                   				<th class="head-item mbr-fonts-style display-7 text-center">작성일</th>
-                   			</tr>
-                   		</thead>
-                   		<tbody>
-                   			<tr>
-                   				<td>1</td>
-                   				<td>얼마나 해야 잘 할 수 있나요?</td>
-                   				<td>빰</td>
-                   				<td>2020-11-28</td>
-                   			</tr>
-                   		
-                   		</tbody>
-                   	</table>
+                	<table style="width: 100%;">
+                		<tr>
+                			<td>
+                				<h6 class="card-title mbr-fonts-style mb-4 display-5">
+				               		<strong>Class QA</strong>
+				            	</h6>
+                			</td>
+                			<td rowspan="2">
+                				<div id="writeBtnDiv" class="mbr-section-btn" align="right">
+									<a class="btn btn-success display-4 text-primary" href="javascript:pageLoad(3)">글쓰기</a>
+								</div> 
+                			</td>
+                		</tr>
+                		<tr>
+                			<td>
+                				<p class="mbr-text mb-3 mbr-fonts-style display-7">
+			                    	자유롭게 강의에 대한 질문을 남겨 주세요!
+			                    </p>
+                			</td>
+                		</tr>
+                	</table>
+					<div id="qaContentDiv">
+						
+					</div>
+                    
                     <div class="container" id="classQAWriteForm">
                     	<div class="mbr-section-head">
 				            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5"><strong>Class QA</strong></h3>
@@ -111,18 +119,12 @@
 <!--             	</ul> -->
             	<iframe width="560" height="315" src="${firstVideoUrl}" 
             		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	         	
+            
             </div>
         </div>
         
-        <div class="row">
-        
-	         <div class="col-12">
-	         	<div class="mbr-section-btn">
-		         	<a class="btn btn-success display-4  text-primary" href="javascript:popupClose()">강의 종료</a>
-		         </div>
-	         </div>
-        	
-        </div>
+       
     </div>
 </section>
 
@@ -153,17 +155,47 @@
 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
 
 <script type="text/javascript">
-  
+  	function pageLoad(page, class_qa_no){
+  		var url = "";
+  		
+  		/* page-1:list , 2:write, 3:detail */
+  		var class_no = "${classInfo.class_no}";
+  		if(page == 1){
+  			url+="classqalist";
+  			$("#writeBtnDiv").show();
+  		}else if(page == 2){
+  			url+="classqadetail?class_qa_no="+class_qa_no;
+  			$("#writeBtnDiv").hide();
+  		} else {
+  			var mid = "${sessionMid}";
+  			
+  			if(mid == null || mid== ""){
+  				
+  				alert("다시 로그인 해 주세요");
+  				return false;
+  			}
+  			
+  			
+  			url+="classqaWriteForm";
+  			$("#writeBtnDiv").hide();
+  		}
+  			
+  		$.ajax({
+  			url : url,
+  			data : {class_no : class_no},
+  			success: function(data){
+  				$("#qaContentDiv").html(data);
+  			}
+  		});
+  	}
 	
 	function popupClose(){ 
 		close();				
 	}
 	
 	$(function(){
+		pageLoad(1);
 		$('#classQAWriteForm').hide();
-	});
-
-   	$(function(){
    		$("a").click(function(){
    			var url = $(this).attr("data");
    			console.log(url);
@@ -178,10 +210,14 @@
 		padding-bottom: 10px;
 	}
 	
-	
-	#allDiv {
+	.mbr-fullscreen ,.container-fluid {
 		vertical-align: top;
 	}
+	
+	.display-2{
+		font-size: 2rem;
+	}
+	
 </style>
 </body>
 </html>

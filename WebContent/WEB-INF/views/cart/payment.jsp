@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html  >
@@ -172,7 +173,7 @@
 								</tr>
 								<tr>
 									<td class="name">신청일</td>
-									<td class="cont">${classDate}</td>
+									<td class="cont"><fmt:formatDate value="${classDate}" type="both" pattern="yyyy-MM-dd"/></td>
 								</tr>
 								<tr class="warr">
 									<td colspan="2">*이용동의에 체크가 완료되지 않으면 결제진행의 어려움이 있습니다.</td>
