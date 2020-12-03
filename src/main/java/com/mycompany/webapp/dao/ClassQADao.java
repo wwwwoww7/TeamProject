@@ -26,8 +26,16 @@ public class ClassQADao {
 		int totalRows = sst.selectOne("mybatis.mapper.class_QA.countAllByTutorID",mid);
 		return totalRows;
 	}
+	public int countAllByUserID(String mid) {
+		int totalRows = sst.selectOne("mybatis.mapper.class_QA.countAllByUserID",mid);
+		return totalRows;
+	}
 	public List<ClassQADto> selectQa(MyPagerDto pager) {
-		List<ClassQADto> qaList = sst.selectList("mybatis.mapper.class_QA.selectQa",pager);
+		List<ClassQADto> qaList = sst.selectList("mybatis.mapper.class_QA.selectByTutorQa",pager);
+		return qaList;
+	}
+	public List<ClassQADto> selectByUserQa(MyPagerDto pager) {
+		List<ClassQADto> qaList = sst.selectList("mybatis.mapper.class_QA.selectByUserQa",pager);
 		return qaList;
 	}
 	public ClassQADto selectQADetail(int class_qa_no) {

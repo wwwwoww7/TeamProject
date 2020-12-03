@@ -6,10 +6,13 @@
 	<select id="countAllByTutorID" parameterType="String" resultType="int">
 		select count(*) from class_qa where TUTOR_ID=#{mid}
 	</select>
+	<select id="countAllByUserID" parameterType="String" resultType="int">
+		select count(*) from class_qa where WRITER_ID=#{mid}
+	</select>
 
 	
 	<!-- qa목록을 페이징별로 가져옴 -->
-	<select id="selectQa" parameterType="myPager" resultType="classQa">
+	<select id="selectByTutorQa" parameterType="myPager" resultType="classQa">
 		select  rnum, class_qa_no,class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID,tutor_id
 		from( 
 		        select rownum as rnum,newQ.class_qa_no,newQ.class_nm_s, newQ.CLASS_QA_CATE, newQ.CLASS_QA_TITLE, newQ.CLASS_QA_DATE, newQ.CLASS_QA_CONTENT, newQ.CLASS_QA_ANSWER,newQ.WRITER_ID,newQ.tutor_id
@@ -19,6 +22,19 @@
 		                    ORDER by CLASS_QA_DATE DESC
 		                ) newQ
 		        where rownum &lt;= #{endRowNo} and TUTOR_ID=#{mid}
+		        )
+		where rownum &gt;=#{startRowNo}
+	</select>
+	<select id="selectByUserQa" parameterType="myPager" resultType="classQa">
+		select  rnum, class_qa_no,class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID,tutor_id
+		from( 
+		        select rownum as rnum,newQ.class_qa_no,newQ.class_nm_s, newQ.CLASS_QA_CATE, newQ.CLASS_QA_TITLE, newQ.CLASS_QA_DATE, newQ.CLASS_QA_CONTENT, newQ.CLASS_QA_ANSWER,newQ.WRITER_ID,newQ.tutor_id
+		        from (  SELECT rownum as rnum, class_qa_no,class_nm_s, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID ,qa.tutor_id
+		                    FROM class_qa qa, class c, member m
+		                    where qa.class_no = c.class_no and m.mid = qa.writer_id
+		                    ORDER by CLASS_QA_DATE DESC
+		                ) newQ
+		        where rownum &lt;= #{endRowNo} and writer_id=#{mid}
 		        )
 		where rownum &gt;=#{startRowNo}
 	</select>

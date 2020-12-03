@@ -112,12 +112,14 @@ public class MyPageController {
 	
 	//수강생 강의문의 목록 보기
 	@GetMapping("/myQa")
-	public String myQa(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
+	public String myQa(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model,HttpSession session) {
+		String userid = (String) session.getAttribute("sessionMid");
 		
-		int totalRows = classNoticeService.getTotalRow(); //++++++++++++++++++++++++++++++++++++++++++++++++++++++++왜 공지사항서비스를 사용하고 았냐?
 		
-		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
-		List<ClassQADto> list = classQAService.getQa(pager);
+		int totalRows = classQAService.countAllByUserID(userid); //++++++++++++++++++++++++++++++++++++++++++++++++++++++++왜 공지사항서비스를 사용하고 았냐?
+		
+		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, userid);
+		List<ClassQADto> list = classQAService.selectByUserQa(pager);
 		model.addAttribute("list",list);
 		model.addAttribute("pager",pager); 
 		

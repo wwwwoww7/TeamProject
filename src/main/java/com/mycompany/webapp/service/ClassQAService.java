@@ -25,10 +25,20 @@ public class ClassQAService {
 		int totalRows = classQADao.countAllByTutorID(mid);
 		return totalRows;
 	}
+	
+	public int countAllByUserID(String mid) {
+		int totalRows = classQADao.countAllByUserID(mid);
+		return totalRows;
+	}
 
-	//페이징 단위 만큼 가져오기
+	//페이징 단위 만큼 가져오기----강사의 아이디 기준으로 가져오기
 	public List<ClassQADto> getQa(MyPagerDto pager) {
 		List<ClassQADto> list = classQADao.selectQa(pager);
+		return list;
+	}
+	//페이징 단위 만큼 가져오기 ----사용자 아이디 기준으로 가져오기
+	public List<ClassQADto> selectByUserQa(MyPagerDto pager) {
+		List<ClassQADto> list = classQADao.selectByUserQa(pager);
 		return list;
 	}
 
