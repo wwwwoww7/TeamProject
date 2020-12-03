@@ -81,9 +81,7 @@
 							    <tr>
 							        <th>첨부파일</th>
 							        <td colspan="3">
-							        	<c:forEach var="loadfile" items="${newUpload}">
-							        		<a id="fileloc"href="download?fileName=${loadfile.class_hw_file}">${fn:split(loadfile.class_hw_file,'_')[1]}</a> <!-- 오리지날파일이름만 보이게 하기 -->
-							        	</c:forEach>
+							        	<a id="fileloc"href="download?fileName=${newUpload.class_hw_file}">${fn:split(newUpload.class_hw_file,'_')[1]}</a> <!-- 오리지날파일이름만 보이게 하기 -->
 							        </td>
 							    </tr>
 							</tbody>

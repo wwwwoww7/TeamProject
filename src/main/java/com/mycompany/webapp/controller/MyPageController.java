@@ -158,9 +158,10 @@ public class MyPageController {
 	
 	//강사의 공지사항 목록
 	@PostMapping("/tutorClassNotice")
-	public String tutorClassNotice(@RequestParam(defaultValue = "1")int pageNo, String mid, Model model) {
+	public String tutorClassNotice(@RequestParam(defaultValue = "1")int pageNo, HttpSession session, Model model) {
+		String mid = (String) session.getAttribute("sessionMid");
 		
-		int totalRows = classNoticeService.getTotalRow();
+		int totalRows = classNoticeService.getTotalRowByTutorID(mid);
 		
 		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
 		List<ClassNoticeDto> list = classNoticeService.getNotice(pager);

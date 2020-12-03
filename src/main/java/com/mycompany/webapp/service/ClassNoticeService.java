@@ -21,10 +21,15 @@ public class ClassNoticeService {
 	@Resource
 	private ClassNoticeDao classNoticeDao;
 
-	//페이지 전체 행수 가져오기
-	public int getTotalRow() {
-		int totalRows = classNoticeDao.countAll();
+	//페이지 전체 행수 가져오기 - 해당 강사의 공지사항만
+	public int getTotalRowByTutorID(String mid) {
+		int totalRows = classNoticeDao.getTotalRowByTutorID(mid);
 		return totalRows;
+	}
+	//페이지 전체 행수 가져오기 - 해당 "수강생"의 공지사항만
+	public int countAllByUserID(String mid) {
+		int rows = classNoticeDao.countAllByUserID(mid);
+		return rows;
 	}
 	
 	public List<ClassNoticeDto> getNotice(MyPagerDto pager){
@@ -91,11 +96,8 @@ public class ClassNoticeService {
 		int rows = classNoticeDao.deleteNoticeFile(class_notice_no);
 		return rows;
 	}
-
-	public int countAllByUserID(String mid) {
-		int rows = classNoticeDao.countAllByUserID(mid);
-		return rows;
-	}
+	
+	
 
 	public List<ClassNoticeDto> getUserNotice(MyPagerDto pager) {
 		List<ClassNoticeDto> list = classNoticeDao.getUserNotice(pager);

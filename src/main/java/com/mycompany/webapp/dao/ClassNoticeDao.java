@@ -81,8 +81,8 @@ public class ClassNoticeDao {
 	}
 	
 	/* 페이지수를 가져오기 위한 전체 행 수 가져오기*/
-	public int countAll() {
-		int totalRows = sst.selectOne("mybatis.mapper.class_notice.countAll");
+	public int getTotalRowByTutorID(String mid) {
+		int totalRows = sst.selectOne("mybatis.mapper.class_notice.getTotalRowByTutorID",mid);
 		return totalRows;
 	}
 
