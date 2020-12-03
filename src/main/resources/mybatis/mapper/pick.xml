@@ -7,7 +7,10 @@
 		FROM pick, member m, class 
 		where pick.mid = m.mid and pick.class_no = class.class_no and m.mid=#{mid}
 	</select> -->
-
+	
+	<select id="selectPickCount" parameterType="int" resultType="int">
+		select count(*) from pick where class_no=#{class_no}
+	</select>
 
 	<select id="selectPickByMidClassNo" parameterType="pick" resultType="int" >
 		select count(*) from pick where mid=#{mid} and class_no=#{class_no} 
@@ -22,5 +25,5 @@
 		delete from pick where mid=#{mid} and class_no=#{class_no}
 	</delete>
 
-
+	
 </mapper>

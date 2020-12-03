@@ -114,6 +114,11 @@ public class ClassService {
 		return vlist;
 	}
 
+	public int getPickCount(int class_no) {
+		int pickCount = classDao.selectPickCount(class_no);
+		return pickCount;
+	}
+
 	
 	
 	

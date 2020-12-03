@@ -211,19 +211,22 @@ public class ClassController {
 	public String pickClass(PickDto pickinfo,@RequestParam(defaultValue = "-1") int clk, @RequestParam(defaultValue = "0") int maincall, Model model) {
 		
 		logger.info("실행");
+		int pick_cnt = classService.getPickCount(pickinfo.getClass_no());
+		model.addAttribute("pick_cnt", pick_cnt);
 		
 		if(clk == -1) {
+			
 			if(pickinfo.getMid() == null) {
 				model.addAttribute("pick_yn", 0);
 				return "/class/pickclass";
 			}
-			
 			int pickYN = classService.getPickYN(pickinfo);
 			model.addAttribute("pick_yn", pickYN);
-			
 		}else {
 			/* clk - 1: insert, 2: delete */
 			int result = classService.setPick(pickinfo, clk);
+			pick_cnt = classService.getPickCount(pickinfo.getClass_no());
+			model.addAttribute("pick_cnt", pick_cnt);
 			logger.info("데이터 수정 후 Class_no : " + pickinfo.getClass_no());
 			logger.info("데이터 수정 후 mid : " + pickinfo.getMid());
 			model.addAttribute("pick_yn", result); 

@@ -78,17 +78,22 @@
 	
 	<!-- 20.11.25 -->
 	<!-- 20.11.27 별점 추가 -->
+	<!-- 20.12.03  -->
 	<select id="selectbyClassNo" resultType="class" parameterType="int"> 
+        
         select class.CLASS_NO, CLASS_NM, CLASS_SUB, CLASS_CURR, CLASS_THUM, class_thum2, TUTOR_ID, CLASS_CATE_NO, CLASS_VIDEO_NO, CLASS_PRICE, 
-			   CLASS_TOT_TIME, CLASS_CURR2, CLASS_CURR3, CLASS_NM_S, member.mname, member.minfo, nvl(classreview.review_star, 0) as review_star  
+			   CLASS_TOT_TIME, CLASS_CURR2, CLASS_CURR3, CLASS_NM_S, member.mname, member.minfo, nvl(classreview.review_star, 0) as review_star, nvl(pickcount.class_pick_cnt,0) as class_pick_cnt
 		from class, member, ( select avg(REVIEW_STAR) as review_star, class.class_no
                                  from review ,class
                                  where class.class_no = review.class_no(+)
                                  group by class.class_no 
-                             ) classreview
+                             ) classreview, (select count(*) as class_pick_cnt, class_no from pick
+                                        where class_no = #{class_no}
+                                        group by class_no) pickcount
 		where class.class_no = #{class_no}
 		      and member.mid = class.TUTOR_ID
               and class.class_no = classreview.class_no 
+              and pickcount.class_no(+) = class.class_no 
 	</select>
 	
 	

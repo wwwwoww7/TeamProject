@@ -89,7 +89,6 @@ public class ClassDao {
 	//찜해제! 12.01
 	public int deletePick(PickDto pickinfo) {
 		int result = sst.insert("mybatis.mapper.pick.deletePick", pickinfo);
-		
 		return result;
 	}
 
@@ -98,6 +97,14 @@ public class ClassDao {
 	public List<ClassVideoDto> selectVideoList(int class_no) {
 		List<ClassVideoDto> vlist = sst.selectList("mybatis.mapper.video.selectVideoList", class_no);
 		return vlist;
+	}
+
+
+
+
+	public int selectPickCount(int class_no) {
+		int pickCount = sst.selectOne("mybatis.mapper.pick.selectPickCount", class_no);
+		return pickCount;
 	}
 
 
