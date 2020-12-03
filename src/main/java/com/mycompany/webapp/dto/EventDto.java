@@ -2,6 +2,9 @@ package com.mycompany.webapp.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+
 public class EventDto {
 	private int event_no;
 	private String event_nm;
@@ -13,9 +16,22 @@ public class EventDto {
 	private String event_detail;
 	private String event_ct;
 	private String event_ti;
+	private MultipartFile  eventIMG;
+	private MultipartFile  eventIMGDetail;
+	
 	
 	
 
+	
+	public MultipartFile getEventIMGDetail() {
+		return eventIMGDetail;
+	}
+	public void setEventIMGDetail(MultipartFile eventIMGDetail) {
+		this.eventIMGDetail = eventIMGDetail;
+	}
+	public void setEventIMG(MultipartFile eventIMG) {
+		this.eventIMG = eventIMG;
+	}
 	public String getEvent_ti() {
 		return event_ti;
 	}
@@ -49,7 +65,7 @@ public class EventDto {
 	public Date getEvent_start() {
 		return event_start;
 	}
-	public void setEvent_start(Date event_start) {
+	public void setEvent_start(@DateTimeFormat(pattern = "yyyy-MM-dd")Date event_start) {
 		this.event_start = event_start;
 	}
 	
@@ -63,7 +79,7 @@ public class EventDto {
 	public Date getEvent_end() {
 		return event_end;
 	}
-	public void setEvent_end(Date event_end) {
+	public void setEvent_end(@DateTimeFormat(pattern = "yyyy-MM-dd")Date event_end) {
 		this.event_end = event_end;
 	}
 	public String getEvent_detail() {
@@ -79,6 +95,12 @@ public class EventDto {
 	public void setEvent_ct(String event_ct) {
 		this.event_ct = event_ct;
 	}
+	public MultipartFile getEventIMG() {
+		return eventIMG;
+	}
+	
+	
+
 
 	
 	

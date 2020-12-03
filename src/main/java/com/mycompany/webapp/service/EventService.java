@@ -52,6 +52,11 @@ public class EventService {
 	public List<EventDto> getEventList() {
 		List<EventDto> elist = eventDao.selectEight();
 		return elist;
+	}
+
+	public void eventWrite(EventDto event) {
+		eventDao.insert(event);
+		
 	} 
 	 
 	

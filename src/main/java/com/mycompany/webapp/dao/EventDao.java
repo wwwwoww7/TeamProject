@@ -55,6 +55,12 @@ public class EventDao {
 		return ed2;
 	}
 
+
+	public int insert(EventDto event) {
+		int rows = sst.insert("mybatis.mapper.event.insert", event);
+		return rows;
+	}
+
 }
 
 
