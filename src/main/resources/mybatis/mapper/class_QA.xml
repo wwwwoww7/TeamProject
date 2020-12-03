@@ -41,8 +41,8 @@
 	
 	<!-- QA 세부 내용 가져오기 -->
 	<select id="selectQADetail" parameterType="int" resultType="classQa">
-		select newq.class_nm_s,newq.class_qa_no,newQ.class_qa_cate, newQ.writer_id, newQ.class_qa_date, newQ.class_qa_title,newQ.class_qa_content,newQ.class_qa_answer
-		from( SELECT class_nm_s,class_qa_no, class_qa_cate, writer_id, class_qa_date, class_qa_title,class_qa_content,qa.class_qa_answer
+		select newq.class_nm_s,newq.class_qa_no,newQ.class_qa_cate, newQ.writer_id, newQ.class_qa_date, newQ.class_qa_title,newQ.class_qa_content,newQ.class_qa_answer,newQ.mnick
+		from( SELECT class_nm_s,class_qa_no, class_qa_cate, writer_id, class_qa_date, class_qa_title,class_qa_content,qa.class_qa_answer,m.mnick
 		        FROM class_qa qa,class c, member m
 		        where qa.class_no = c.class_no and qa.writer_id = m.mid) newQ
 		where newQ.class_qa_no = #{class_qa_no}
