@@ -13,6 +13,7 @@ public class ClassQADto {
 	private String writer_id;
 	private String tutor_id;
 	private String mid;
+	private String mnick;
 	private int class_no ;
 	private String class_nm_s;
 	private int class_ans_check;
@@ -89,6 +90,12 @@ public class ClassQADto {
 	}
 	public void setClass_ans_check(int class_ans_check) {
 		this.class_ans_check = class_ans_check;
+	}
+	public String getMnick() {
+		return mnick;
+	}
+	public void setMnick(String mnick) {
+		this.mnick = mnick;
 	}
 	
 }

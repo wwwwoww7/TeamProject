@@ -32,6 +32,15 @@
 		where newQ.class_qa_no = #{class_qa_no}
 	</select>
 	
+	<!-- class_no로 qa list 조회 -->
+	<select id="selectQAListClassNo" resultType="classQa">
+		select CLASS_QA_NO, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID, member.MNICK, TUTOR_ID, CLASS_NO
+		from class_qa, member
+		where class_qa.WRITER_ID = member.mid
+		and class_no = #{class_no} 
+	</select>
+	
+	
 	<!-- 답변 입력하기 -->
 	<update id="updateQAAnswer" parameterType="classQa">
 		UPDATE class_qa set class_qa_answer=#{class_qa_answer} where class_qa_no=#{class_qa_no}

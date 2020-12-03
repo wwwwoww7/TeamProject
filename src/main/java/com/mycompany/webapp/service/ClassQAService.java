@@ -42,6 +42,11 @@ public class ClassQAService {
 	public void setQAAnswer(ClassQADto qaAnswer) {
 		int qa = classQADao.updateQAAnswer(qaAnswer);		
 	}
+
+	public List<ClassQADto> getQAListByClassNo(int class_no) {
+		List<ClassQADto> qlist = classQADao.selectQaListByClassNo(class_no);
+		return qlist;
+	}
 	
 	
 }

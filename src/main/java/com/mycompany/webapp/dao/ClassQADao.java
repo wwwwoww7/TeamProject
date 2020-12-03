@@ -5,14 +5,18 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.webapp.controller.HomeController;
 import com.mycompany.webapp.dto.ClassNoticeDto;
 import com.mycompany.webapp.dto.ClassQADto;
 import com.mycompany.webapp.dto.MyPagerDto;
 
 @Repository
 public class ClassQADao {
+	private static final Logger logger = LoggerFactory.getLogger(ClassQADao.class);
 
 	@Resource
 	private SqlSessionTemplate sst;
@@ -33,6 +37,14 @@ public class ClassQADao {
 	public int updateQAAnswer(ClassQADto qaAnswer) {
 		int rows = sst.insert("mybatis.mapper.class_QA.updateQAAnswer", qaAnswer);
 		return rows;
+	}
+	
+	
+	//강의번호로 qalist 조회
+	public List<ClassQADto> selectQaListByClassNo(int class_no) {
+		List<ClassQADto> qlist = sst.selectList("mybatis.mapper.class_QA.selectQAListClassNo", class_no);
+		logger.info("===================>" + qlist.size());
+		return qlist;
 	}
 	
 }
