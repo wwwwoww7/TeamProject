@@ -59,12 +59,12 @@
 						
 						<div class="col-md-12 input-group" data-for="mpw">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">강의 소개</span> 
-							<textarea id="class_sub" name="class_sub" style="word-break:break-all;" rows="5" cols="100">${classOne.class_sub}</textarea>
+							<input type="textarea" id="class_sub" name="class_sub" style="word-break:break-all;" rows="5" cols="100" value="${classOne.class_sub}"/>
 						
 						</div>
 						<div class="col-md-12 input-group" data-for="mname">
 							<span class="input-group-text" style="width: 120px; background-color: #ffff;">커리큘럼</span> 
-							<textarea id="class_curr" name="class_curr" style="word-break:break-all;" rows="7" cols="100">${classOne.class_curr}</textarea>
+							<input type="textarea" id="class_curr" name="class_curr" style="word-break:break-all;" rows="7" cols="100" value="${classOne.class_curr}"/>
 						</div>
 						
 						<!--  일단 썸네일은 바꾸지 마!! -->

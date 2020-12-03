@@ -113,7 +113,7 @@
 						<sec:authorize access="hasRole('ROLE_TUTOR')">
 							<div class="col-md-12 input-group">
 								<span class="input-group-text" style="width: 120px; background-color: #ffff;">강사소개</span>
-								<textarea id="minfo" name="minfo" class="form-control" style="height: 200px;">${memberInfo.minfo}</textarea>
+								<input "textarea" id="minfo" name="minfo" class="form-control" style="height: 200px;" value="${memberInfo.minfo}"/>
 							</div>
 						</sec:authorize>
 						
