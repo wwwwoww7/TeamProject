@@ -112,7 +112,7 @@ public class LoginController {
 			mService.join(member); 
 		
 		
-		return"home";
+		return"redirect:/";
 	
 	}
 	

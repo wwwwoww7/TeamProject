@@ -34,6 +34,7 @@ public class CartController {
 	@Resource
 	private CartService cartService;
 
+	
 	@RequestMapping
 	public String cart() {
 		return "cart/cart";
@@ -160,10 +161,10 @@ public class CartController {
 		out.close();
 	}
 	
-	//결제창 날짜 넣기
+	//결제확인 창 
 	@RequestMapping("/payment")
 	public String payment(Model model, HttpSession session) {
-		//날짜 넣기		
+		//결제 확인 날짜 넣기		
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
 			
 		Iterator<CartDto> iterator = cartList.iterator(); //iterator은 list중에서 하나 골라서 갯수를 확인하면서 실행
@@ -176,12 +177,18 @@ public class CartController {
 		}
 		return "cart/payment";
 	}
-
+	
+	//결제 완료창 DB저장
 	@GetMapping("/pay_complete")
 	public String pay_complete(HttpSession session) {
 		//구매정보 DB 저장
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
-		logger.info("카트리스트  : " + cartList);
+		String userId = (String)session.getAttribute("sessionMid");
+		
+		logger.info("저장개수 : "+cartList.size());
+		
+		cartService.cartInsert(cartList);
+		cartService.classApplInsert(cartList);
 		
 		//세션에 담긴 cartList삭제
 		session.removeAttribute("cartList");

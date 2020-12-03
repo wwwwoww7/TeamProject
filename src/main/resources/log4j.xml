@@ -17,7 +17,7 @@
 	
 	<!-- 2020.11.16 -->
 	<logger name="jdbc.sqltiming"> 
-		<level value="error" />
+		<level value="info" />
 	</logger>	
 
 	<root>

@@ -220,6 +220,7 @@
 								   					function paycomplate(){
 								   						if($("input[name='checkAll']:checked").length>0){
 								   							location.href="<%=application.getContextPath()%>/cart/pay_complete";
+								   							
 								   						}else{
 								   							var result = alert("이용약관동의 모두 체크 부탁드립니다."); 
 								   						}

@@ -59,7 +59,7 @@
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 
 
-	<section class="features3 cid-shfqnnLy7B"  id="features3-g">
+	<section class="gallery5 mbr-gallery cid-sh7IU3CgJD mt-5 tabs content18 cid-shfqnnLy7B"  id="gallery5-j">
 		<div class="container">
             <div class="row justify-content-center">
 	            <div class="col-12 col-md-8">
@@ -142,9 +142,11 @@
   			font-style: italic;
   		}
   		
-  		.w-100 {
-			width : 100%;
-			height: 170px;
+		.w-100 {
+			width: 100%;
+		  	height: 100%;
+		  	height: 170px;
+		  	object-fit: cover;
 		}
   	</style>
   	<script type="text/javascript">
@@ -162,5 +164,6 @@
   		});
   	
   	</script>
+  	
 </body>
 </html>

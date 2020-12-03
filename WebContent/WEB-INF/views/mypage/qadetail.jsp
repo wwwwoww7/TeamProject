@@ -118,10 +118,13 @@
 								         <td class="p-3" width="100%;">
 								        	<textarea rows="4" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_answer}</textarea>
 								        </td>
-								    </tr>    
+								    </tr> 
 						 		</c:if>
-						    </tbody>
+						    </tbody> 
 					    </table>
+					    <div align="right">
+					    	<a class="btn btn-sm" style="background-color: #ffc800; color: #ffff;" href="<%=request.getContextPath()%>/mypage/qaDelete?class_qa_no=${qalist.class_qa_no}">답글삭제</a>   
+						</div>
 						<br/>
 						<form onsubmit="return writeCheck();" action="qaAnswer" method="POST" id="qaAnswer" class="mbr-form form-with-styler">
 							<input type="hidden" id="class_qa_no" name="class_qa_no" value="${qalist.class_qa_no}"/>

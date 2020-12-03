@@ -19,6 +19,7 @@ public class ClassDto {
 	private String class_nm_s;
 	private String class_cate_nm; 
 	private String pick_yn;
+	private int class_pick_cnt;
 	
 	
 	
@@ -123,6 +124,12 @@ public class ClassDto {
 	}
 	public void setPick_yn(String pick_yn) {
 		this.pick_yn = pick_yn;
+	}
+	public int getClass_pick_cnt() {
+		return class_pick_cnt;
+	}
+	public void setClass_pick_cnt(int class_pick_cnt) {
+		this.class_pick_cnt = class_pick_cnt;
 	}
 	 
 	

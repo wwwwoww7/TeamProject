@@ -391,6 +391,23 @@ public class MyPageController {
 		return "redirect:/mypage/qaDetail?class_qa_no="+qaAnswer.getClass_qa_no();
 	}
 	
+	//강사의 문의의 답변 삭제하기
+	@GetMapping("/qaDelete")
+	public String qaDelete(int class_qa_no, HttpSession session) throws Exception {
+		String mid = (String) session.getAttribute("sessionMid");
+		
+		//게시물 삭제 응답/요청
+		int resQA = classQAService.QaDelete(class_qa_no);
+		
+		
+		if(resQA == 00) {
+			logger.info("공지사항 삭제 실패!!!");
+		}
+		
+		return "redirect:/mypage/qaDetail?class_qa_no="+class_qa_no;
+
+	}
+	
 	//*--------------회원정보수정---------------- *//
 	@GetMapping("/userEdit")
 	public String userEdit(MemberDto member, Model model, HttpSession session) {
