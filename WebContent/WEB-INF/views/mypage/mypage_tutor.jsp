@@ -100,7 +100,7 @@
 			</h2>
 
 			<div class="table-wrapper">
-			<div class="dropdown"  style="display: inline-block;">
+			<%-- <div class="dropdown"  style="display: inline-block;">
 				<button id="cateselect" align="right" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown">전체</button>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="javascript:tutorClassNotice(1,${sessionMid})">전체</a>
@@ -108,7 +108,7 @@
 						<a class="dropdown-item" href="javascript:catereview(${classList.class_no})">${classList.class_nm_s}</a>
 					</c:forEach>
 				</div>
-			</div>	
+			</div>	 --%>
 				<div class="container"></div>
 
 				<div id="tutorNotice" class="container table-info-container"></div>

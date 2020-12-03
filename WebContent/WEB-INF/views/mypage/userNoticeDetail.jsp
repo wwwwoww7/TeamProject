@@ -33,7 +33,7 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/include/mypageheader.jsp" />
+	<jsp:include page="/WEB-INF/views/include/userEditheader.jsp" />
 
 <section
 		class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc"
@@ -100,7 +100,7 @@
 							<tbody>   
 							    <tr>
 							        <td colspan="4" width="100%;">
-							        	<textarea rows="3"  class="p-3"  style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${notice.class_notice_content}</textarea>
+							        	<textarea rows="10"  class="p-3"  style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${notice.class_notice_content}</textarea>
 						        	</td>
 							    </tr>
 							</tbody>

@@ -96,7 +96,7 @@ public class MyPageController {
 		return "mypage/userclassnotice";
 	}
 	
-	//강사의 공지사항 목록의 상세내용
+	//사용자의 공지사항 목록의 상세내용
 	@GetMapping("/userNoticeDetail")
 	public String userNoticeDetail(int class_notice_no, Model model) {
 		

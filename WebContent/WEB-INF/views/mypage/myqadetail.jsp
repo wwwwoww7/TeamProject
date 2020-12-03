@@ -32,7 +32,7 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/views/include/mypageheader.jsp" />
+	<jsp:include page="/WEB-INF/views/include/userEditheader.jsp" />
 
 <section
 		class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc"
