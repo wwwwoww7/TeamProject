@@ -130,7 +130,7 @@ public class CommunityController {
 		model.addAttribute("communityCateList", communityCateList);
 		return "community/community_writeform";
 	}
-
+	//class.class_no, review.review_star불러와야됨
 	@GetMapping("/communityWriteReview") 
 	public String communityWriteReview(Model model) {
 		//class.class_nm & review.review_star 불러와야함.
@@ -167,23 +167,31 @@ public class CommunityController {
 		}
 			
 	}
-
-
-	/*@PostMapping("/communityWriteReview")
-	public void communityWriteReview(HttpServletResponse response) throws Exception {
-		logger.info("실행");
-		JSONObject object = new JSONObject();
-		object.put("result", "success");
 	
-		String json = object.toString(); // {"result" : "success"}
+	@PostMapping("/communityWriteReview")
+	public String communityWriteReview(ReviewDto reviewapply, HttpSession session, HttpServletResponse response) throws Exception {
+		logger.info("지금 이게 찍혀야 정상임");
+		String sessionMid = (String) session.getAttribute("sessionMid");
+		reviewapply.setMid(sessionMid);
+		int result = service.CommunityReviewApply(reviewapply);
+		if(result==1) {
+			return "redirect:/community";
+//			JSONObject object = new JSONObject();
+//			object.put("result", "success");
+//
+//			String json = object.toString(); // {"result" : "success"}
+//
+//			// 응답보내기
+//			PrintWriter out = response.getWriter();
+//			response.setContentType("application/json;charset=utf-8");
+//			out.println(json);
+//			out.flush();
+//			out.close();
+		}else {
+			return "redirect:/community";
+		}
 		
-		// 응답보내기
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json;charset=utf-8");
-		out.println(json);
-		out.flush();
-		out.close();
-	}*/
+	}
 
 	@GetMapping("/catereview")
 	public String catereview1(int cateno, Model model) {

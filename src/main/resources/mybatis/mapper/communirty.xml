@@ -68,7 +68,7 @@
    			select comm_no, comm_date, comm_title, comm_content, comm_hitno, member.mid , member.mnick, community.comm_cate_no,comm_cate_nm
    			from community, member, community_cate
             where community.mid = member.mid and community.comm_cate_no=community_cate.comm_cate_no
-   
+   			order by comm_date desc    
    		)
 		where rownum &lt;= #{endRowNo}
 	)
@@ -90,10 +90,14 @@
             where review.class_no= class.class_no 
                   and class_cate.class_cate_no= class.class_cate_no
                   and review.mid = member.mid
+            order by review_date desc      
+                  
    		)
 		where rownum &lt;= #{endRowNo} 
+		
 	)
 	where rnum &gt;= #{startRowNo}
+	
 	</select>
 	
 	<!-- detailpage -->
@@ -129,19 +133,23 @@
         where class_cate_no = #{cateno}
 	</select>
 	
-	<!-- 리뷰dropdown분야별 데이터 가져오기 -->
+	<!-- 리뷰_글쓰기 강의/별점 가져오기-->
 	<select id="selectReviewCateList" resultType="review">
 	     select class.class_nm, class.class_no, review.review_star
 		from class, review
         where class.class_no=review.review_no
 		order by review.review_date asc
 	</select>
-	
+	<!-- 커뮤니티_글쓰기 insert하기 -->
 	<insert id="insertCommunityWriteApply" parameterType="community">
 		 insert into Community 
         values (SEQ_COMM_NO.nextval, sysdate, #{comm_title}, #{comm_content},0, #{mid}, #{comm_cate_no}  )
 	</insert>
 	
+	<insert id="insertCommunityReviewApply" parameterType="review">
+		 insert into Review 
+        values (SEQ_REVIEW_NO.nextval, sysdate, #{review_title}, #{review_content},0, #{mid}, #{class_no}, #{review_star})
+	</insert>
 	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
 	<select id="selectByClassNo" parameterType="int" resultType="review"> 

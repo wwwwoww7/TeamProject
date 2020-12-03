@@ -1,9 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
-
 <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 	
 	<form onsubmit="communityWrite()" action="<%=request.getContextPath()%>/community/communityWrite" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">

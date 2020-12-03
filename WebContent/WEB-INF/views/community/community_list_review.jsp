@@ -65,7 +65,7 @@
 	        </div>
 	
 	        <div class="container scroll">
-	          <table class="table isSearch" cellspacing="0" data-empty="No matching records found">
+	          <table class="table table-hover" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 		            <tr class="table-heads">
 						<th class="head-item mbr-fonts-style display-7 text-center" style="width:70px">번호</th>

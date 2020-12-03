@@ -127,6 +127,11 @@ public class CommunityService {
 		return reviewCateList;
 	}
 
+	public int CommunityReviewApply(ReviewDto reviewapply) {
+		int result = communityDao.insertCommunityReviewApply(reviewapply);
+		return result;
+	}
+
 	
 	
 

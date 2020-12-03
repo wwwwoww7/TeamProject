@@ -118,14 +118,19 @@ public class CommunityDao {
 		return catenm;
 	}
 
-	public int insertCommunityWriteApply(CommunityDto writeapply) {
-		int result = sst.insert("mybatis.mapper.community.insertCommunityWriteApply", writeapply);
-		return result;
-	}
 
 	public List<ReviewDto> selectReviewCateList() {
 		List<ReviewDto> reviewCateList = sst.selectList("mybatis.mapper.community.selectReviewCateList");
 		return reviewCateList;
+	}
+
+	public int insertCommunityWriteApply(CommunityDto writeapply) {
+		int result = sst.insert("mybatis.mapper.community.insertCommunityWriteApply", writeapply);
+		return result;
+	}
+	public int insertCommunityReviewApply(ReviewDto reviewapply) {
+		int result = sst.insert("mybatis.mapper.community.insertCommunityReviewApply", reviewapply);
+		return result;
 	}	
 
 	
