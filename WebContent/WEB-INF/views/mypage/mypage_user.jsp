@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html  >
@@ -64,7 +65,58 @@
 			<h3 class="mbr-fonts-style align-center m-0 display-5">
 				<strong>나의 강의</strong>
 			</h3>
-			<div class="container">
+			<div class="container p-0">
+	        	<div class="row mt-4">
+	        		<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/4}" integerOnly="true" />
+	        		<div id="demo" class="carousel slide" data-ride="carousel">
+						<ul class="carousel-indicators">
+							<c:forEach var="i" begin="0" end="${listlength}">
+								 <li data-target="#demo" data-slide-to="${i}"></li>
+							</c:forEach>
+					  	</ul>
+						<div class="carousel-inner">
+							<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
+								<div class="carousel-item">
+									<fmt:parseNumber var="startvalue" value="${j*4}" integerOnly="true" />
+									<c:if test="${status.last}">
+										<fmt:parseNumber var="endvalue" value="${fn:length(userclassList)}" integerOnly="true" />
+									</c:if>
+									<c:if test="${!status.last}">
+										<fmt:parseNumber var="endvalue" value="${startvalue+3}" integerOnly="true" />
+									</c:if>
+									
+									<c:forEach var="classes" items="${userPickList}" begin="${startvalue}" end="${endvalue}">
+										<div class="col-12 col-md-6 col-lg-3 item gallery-image" style="display:inline-block;">
+									        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+									            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+									            	<img class="w-100 rounded" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+									            </a>
+									            <div class="icon-wrapper"> <!-- 돋보기 -->
+									                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+									            </div>
+									        </div>
+									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+									           [ ${classes.class_cate_nm} ] 
+									        </h6>
+									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+									        	${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+									        </h6>
+									    </div>
+									</c:forEach>
+								</div>
+							</c:forEach>
+						</div>
+					  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+					    <span class="carousel-control-prev-icon"></span>
+					  </a>
+					  <a class="carousel-control-next" href="#demo" data-slide="next">
+					    <span class="carousel-control-next-icon"></span>
+					  </a>
+					</div> 
+				</div>
+	   		</div>
+			
+			<%-- <div class="container">
 	        	<div class="row mt-4">
 	        	
 					<c:forEach var="classes" items="${userclassList}">
@@ -83,7 +135,7 @@
 					    </div>
 					</c:forEach>
 				</div>
-	   		</div>
+	   		</div> --%>
 		</section>
     </div>
 </section>
@@ -95,84 +147,54 @@
 			<h3 class="mbr-fonts-style align-center m-0 display-5">
 				<strong>찜 목록</strong>
 			</h3>
-			<div class="container">
+			<div class="container p-0">
 	        	<div class="row mt-4">
+	        		<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/4}" integerOnly="true" />
 	        		<div id="demo" class="carousel slide" data-ride="carousel">
-
-						${fn:length(userPickList)}
-						${fn:length(userPickList)%3 == 1}
-						
-					  <!-- Indicators -->
 						<ul class="carousel-indicators">
-							<li data-target="#demo" data-slide-to="0" class="active"></li>
-							<c:if test="${fn:length(userPickList)%3 ==0}">
-								<li data-target="#demo" data-slide-to="i"></li>
-							</c:if>
-						</ul>
-					  
-					  
-					  <!-- The slideshow -->
+							<c:forEach var="i" begin="0" end="${listlength}">
+								 <li data-target="#demo" data-slide-to="${i}"></li>
+							</c:forEach>
+					  	</ul>
 						<div class="carousel-inner">
-						<c:if test="${fn:length(userPickList) %3==0}">
-							<%-- <c:forEach > --%>
-								<div class="carousel-item active">
-									 <c:forEach var="classes" items="${userPickList}" begin="0" end="2">
+							<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
+								<div class="carousel-item">
+									<fmt:parseNumber var="startvalue" value="${j*4}" integerOnly="true" />
+									<c:if test="${status.last}">
+										<fmt:parseNumber var="endvalue" value="${fn:length(userPickList)}" integerOnly="true" />
+									</c:if>
+									<c:if test="${!status.last}">
+										<fmt:parseNumber var="endvalue" value="${startvalue+3}" integerOnly="true" />
+									</c:if>
+									
+									<c:forEach var="classes" items="${userPickList}" begin="${startvalue}" end="${endvalue}">
 										<div class="col-12 col-md-6 col-lg-3 item gallery-image" style="display:inline-block;">
 									        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
 									            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
-									            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+									            	<img class="w-100 rounded" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
 									            </a>
 									            <div class="icon-wrapper"> <!-- 돋보기 -->
 									                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
 									            </div>
 									        </div>
 									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-									           [ ${classes.class_cate_nm} ]  ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+									           [ ${classes.class_cate_nm} ] 
+									        </h6>
+									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+									        	${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
 									        </h6>
 									    </div>
 									</c:forEach>
 								</div>
-							<%-- </c:forEach> --%>
-						</c:if>
-						<c:if test="${fn:length(userPickList) %3!=0}">
-							<div class="carousel-item">
-								<c:forEach var="classes" items="${userPickList}" begin="3" end="4">
-									<div class="col-12 col-md-6 col-lg-3 item gallery-image" style="display:inline-block;">
-								        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
-								            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
-								            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
-								            </a>
-								            <div class="icon-wrapper"> <!-- 돋보기 -->
-								                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-								            </div>
-								        </div>
-								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-								           [ ${classes.class_cate_nm} ]  ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
-								        </h6>
-								    </div>
-								</c:forEach>
-							</div>
-						</c:if>
-							<div class="carousel-item">
-								 
-							</div>
+							</c:forEach>
 						</div>
-					
-					
-						<a class="carousel-control-prev" href="#demo" data-slide="prev">
-							<span class="carousel-control-prev-icon"></span>
-						</a>
-						<a class="carousel-control-next" href="#demo" data-slide="next">
-							<span class="carousel-control-next-icon"></span>
-						</a>
-					</div>
-	        	
-	        	
-	        	
-	        	
-	        	
-	        	
-					
+					  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+					    <span class="carousel-control-prev-icon"></span>
+					  </a>
+					  <a class="carousel-control-next" href="#demo" data-slide="next">
+					    <span class="carousel-control-next-icon"></span>
+					  </a>
+					</div> 
 				</div>
 	   		</div>
 		</section>
@@ -211,7 +233,6 @@
 	</section>
 
  	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
- 	<input type="hidden" id="sessionMid" name="sessionMid" value="${sessionMid}"/>
 
 	
 	 <script src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script> 
@@ -231,6 +252,29 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
+	 
+	 
+	 <style type="text/css">
+	 	.w-100 {
+			width: 100%;
+		  	height: 100%;
+		  	height: 170px;
+		  	object-fit: cover;
+		}
+		@media (min-width: 768px){
+			.col-md-6 {
+			    max-width: 49%;
+			}
+		}
+		@media (min-width: 992px){
+			.col-lg-3{
+				max-width: 24%
+			}
+		
+		}
+		
+	
+	 </style>
   	 <script type="text/javascript">
   		/* 공지사항 */
 
@@ -246,29 +290,31 @@
 						$("#userNotice").html(data);
 					}
 		
-				});
-			}
-		
-	     $(function(){
-	    	 userClassNotice(1);
-	     });
-  	 
-			function myQa(pageNo){
-				$.ajax({
-					url:"myQa",
-					data:{pageNo:pageNo},
-					success: function(data){
-						$("#myqa").html(data);
-					}
-				});
-			}
-			
-			$(function() {
-				myQa(1);
-				/* $('html, body').animate({
-					scrollTop: $('#gallery5-2h').offset().top
-				}, 'slow'); */
 			});
+		}
+  	 
+		function myQa(pageNo){
+			$.ajax({
+				url:"myQa",
+				data:{pageNo:pageNo},
+				success: function(data){
+					$("#myqa").html(data);
+				}
+			});
+		}
+		
+		$(function() {
+			myQa(1);
+			userClassNotice(1);
+			
+			$("#demo > ul > li:nth-child(1)").addClass("active");
+			$(".carousel-inner div:nth-child(1)").addClass("active");
+			
+			
+			/* $('html, body').animate({
+				scrollTop: $('#gallery5-2h').offset().top
+			}, 'slow'); */
+		});
 
 	</script> 
 </body>

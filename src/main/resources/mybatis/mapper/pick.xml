@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.pick">
 
-	<select id="selectPick">
+	<!-- <select id="selectPick" resultType="pick" parameterType="String">
 		SELECT  class.class_nm, class.class_thum, class.class_no
 		FROM pick, member m, class 
-		where pick.user_id = m.mid and pick.class_no = class.class_no
-	</select>
+		where pick.mid = m.mid and pick.class_no = class.class_no and m.mid=#{mid}
+	</select> -->
 
 
 	<select id="selectPickByMidClassNo" parameterType="pick" resultType="int" >
