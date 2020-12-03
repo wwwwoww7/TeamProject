@@ -13,8 +13,10 @@
 		<config>src/main/resources/spring/root/messagesource.xml</config>
 		<config>src/main/resources/spring/root/multipart_resolver.xml</config>
 		<config>src/main/resources/spring/root/datasource.xml</config>
+		<config>src/main/resources/spring/root/email.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/spring/root/security.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

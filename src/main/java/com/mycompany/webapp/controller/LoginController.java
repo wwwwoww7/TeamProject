@@ -74,10 +74,11 @@ public class LoginController {
 	public String Join(MemberDto member, HttpServletRequest request) throws Exception {
 
 		
-		if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") || member.getMemail().trim().equals("") || member.getMtel().trim().equals("")) {
-			  request.setAttribute("member", member); 
-			  return "/login/join"; 
-		}
+		/*
+		 * if(member.getMid().trim().equals("") || member.getMpw().trim().equals("") ||
+		 * member.getMemail().trim().equals("") || member.getMtel().trim().equals("")) {
+		 * request.setAttribute("member", member); return "/login/join"; }
+		 */
 		 
 		
 		int result = mService.id_check(member.getMid());

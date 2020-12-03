@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%-- 2020. 11. 24. --%>
 
 <section class="menu cid-shfokUU9e4" once="menu" id="menu1-3q">
@@ -33,24 +34,39 @@
                          Cart
                      </a>
                 </li>
+                <sec:authorize access="isAnonymous()">
                 <li class="nav-item">
-              		<c:if test="${sessionMid == null}">
               			<a class="nav-link link text-white text-primary display-4" href="<%=application.getContextPath()%>/login/login">
 	                    	<!-- <span class="mobi-mbri mobi-mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></span> -->
 	                         Login
                      	</a>
-                	</c:if>
-                	<c:if test="${sessionMid != null}"> 
-	                	<a class="nav-link link text-white dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">
-	                		<span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>
-	                        UserName
-	                    </a>
-	                    <div class="dropdown-menu">
-	                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user">My Page</a>
-	                  		<a class="text-white dropdown-item display-4" href="https://mobiri.se">Logout</a>
-	                  	</div>
-	                 </c:if>
                  </li>
+                 </sec:authorize>
+                 <sec:authorize access="isAuthenticated()">
+                 <li class="nav-item dropdown">
+                 	<a class="nav-link link dropdown-toggle text-white display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">
+                		<span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>
+                        UserName
+                    </a>
+                    
+                    
+                    <sec:authentication property="mnick"/>님 환영합니다.
+											
+                    
+                    <div class="dropdown-menu">
+                    	<sec:authorize access="hasRole('ROLE_USER')">
+                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_user">My Page</a>
+                  		</sec:authorize>
+                  		<sec:authorize access="hasRole('ROLE_TUTOR')">
+                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/mypage/mypage_tutor">My Page</a>
+                  		</sec:authorize>
+                  		<a class="text-white dropdown-item display-4" href="<%=application.getContextPath()%>/logout">Logout</a>
+                  	</div>
+                  
+                 </li>
+                 </sec:authorize> 
+                 
+                 
                 <li class="nav-item dropdown">
                     <a class="nav-link link dropdown-toggle text-white display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">
                     	<span class="mobi-mbri mobi-mbri-menu mbr-iconfont mbr-iconfont-btn"></span>

@@ -28,9 +28,7 @@ public class MemberDao {
 	
 	public MemberDto selectByMid(String mid) {
 		MemberDto dbMember = sst.selectOne("mybatis.mapper.member.selectByMid",mid); 
-		
-		logger.info("DAO === dbMember.type ===> " + dbMember.getMtype());
-		
+			
 		return dbMember;
 	}
 

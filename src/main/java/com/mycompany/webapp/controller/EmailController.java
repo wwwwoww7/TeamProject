@@ -56,11 +56,7 @@ public class EmailController {
             return mav;
         }
     }
-	
-	
-	
-	
-	
+
 	/*
 	 * @RequestMapping(value="/formTag.do") public ModelAndView
 	 * formTag(HttpServletRequest request){ ModelAndView mv = new ModelAndView();
@@ -97,6 +93,27 @@ public class EmailController {
 		JOptionPane.showMessageDialog(null, "신청 접수가 되었습니다.");
 		mav = new ModelAndView("redirect:/");
 		return mav;
+	}
+	
+	@PostMapping("/classEdit")
+	public String classEdit(HttpServletRequest request) throws Exception {
+		ModelAndView mav;    
+		
+		String class_no = request.getParameter("class_no");
+		logger.info("class_no ====> " + class_no);
+		String tutor_id = request.getParameter("tutor_id");
+		String class_nm_s = request.getParameter("class_nm_s");
+		String class_nm = request.getParameter("class_nm");
+		String class_sub = request.getParameter("class_sub");
+		String class_curr = request.getParameter("class_curr");
+		
+		email.setContent("강의 제목: "+ class_nm_s +"강의 소제목: "+class_nm+"강의 소개: " + class_sub+ "강의 커리큘럼: " + class_curr);
+		email.setReceiver("bansookteam1@gmail.com");
+		email.setSubject(tutor_id+"님의 강의 사항 수정 요청 메일입니다.");
+		emailSender.SendEmail(email);
+		
+//		JOptionPane.showMessageDialog(null, "신청 접수가 되었습니다.");
+		return "redirect:/class/classdetail?classNo="+class_no;
 	}
 	
 	

@@ -91,7 +91,7 @@
 </section>
 <style>
 	#profile {
-	  max-width: 55px;
+	  width: 55px;
 	  height: 55px;
 	  border: 2px solid #ffff;
 	}
