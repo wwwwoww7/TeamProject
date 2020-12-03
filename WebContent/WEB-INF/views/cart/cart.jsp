@@ -55,6 +55,9 @@
 		.classThum {
 			width: 150px;
 		}
+		.deletebtn {
+			
+		}
 		
 </style>
 <body>
@@ -85,7 +88,7 @@
 	          <table class="table" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	              <tr class="table-heads">
-	               <th class="head-item mbr-fonts-style display-7">상품선택
+	               <th class="head-item mbr-fonts-style display-7">
 		               	<div>
 		              		<input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
 	            	   	</div>
@@ -93,14 +96,14 @@
 	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
 	               <th class="head-item mbr-fonts-style display-7">수량</th>
 	               <th class="head-item mbr-fonts-style display-7">상품금액</th>
-	               
+	               <th class="head-item mbr-fonts-style display-7">선택</th>
 	              </tr>
 	            </thead>
 	
 	            <tbody>
 		            <c:if test="${cartList == null}">
 						<tr>
-							<td colspan="4" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
+							<td colspan="5" style="text-align: center;"><b style="font-size: 18px">담긴 상품이 없습니다.</b></td>
 						</tr>
 					</c:if>
 	           		<c:if test="${cartList!=null}"> 
@@ -108,7 +111,7 @@
 			             	<tr> 
 						        <td class="body-item mbr-fonts-style display-7">
 							        <div class="bg m-5">
-							        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" onclick="checkSelect()" />
+							        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="checkSelect()" />
 							        </div>
 						        </td>
 						        <td class="body-item mbr-fonts-style display-7">
@@ -136,6 +139,31 @@
 					           			${cartItem.class_price}
 					           		</div>
 					           	</td>
+						 		<td>
+						 			<%-- <a id="deletebtn" class="btn btn-md btn-info-outline display-1" href="javascript:deleteAll()" >삭제</a>
+						 		<script type="text/javascript">
+							 		//전체 삭제 함수
+						 			function deleteAll(){
+					 					var deleteNum;
+					 	
+					 					$("input[name='chk']").is(":checked", function() {
+					 						deleteNum = ${data-cartNum};
+										});
+					 					console.log(deleteNum);
+					 					if(deleteNum==null){
+					 						alert("삭제할 클래스를 선택하여 주세요.");
+					 					}else{
+						 					$.ajax({
+						 						url:"<%=request.getContextPath()%>/cart/cartdelete",
+												data: { "deleteArr" : deleteArr },
+												success: function(data){
+													alert('삭제가 완료되었습니다.');
+												}
+						 					});
+					 					}
+					 				}				 	
+						 		</script> --%>
+						 		</td>
 					           
 				            </tr>
 	             		</c:forEach>
@@ -144,14 +172,36 @@
              </tbody>
 			 <tfoot>
 			 	<tr>
-			 		<td colspan="2" style="text-align: left">
-			 			<a class="btn item-btn btn-info btn-sm display-3" href="#" ">전체 삭제</a>
-			 			
-			 			<a class="btn item-btn btn-danger btn-sm display-3" href="#">선택 삭제</a>
-			 		<script type="text/javascript">
-				 	
-			 		</script>
-			 		</td>
+			 		<td colspan="3" style="text-align: left">
+						 <a id="deletebtn" class="btn btn-md btn-info-outline display-1" href="javascript:deleteAll()" >삭제</a>
+						 <script type="text/javascript">
+							//삭제 함수
+						 	function deleteAll(){
+					 			var deleteArr = new Array();
+					 			
+					 			/* $("input[name='chk']").is(":checked", function() {
+					 						deleteNum = ${data-cartNum};
+										}); */
+										
+								$("input[name='chk']:checked").each(function(){
+									deleteArr.push($(this).attr("data-cartNum"));
+								});
+										
+					 			if(deleteArr.length==0){
+					 				alert("삭제할 클래스를 선택하여 주세요.");
+					 			}else{
+						 			$.ajax({
+						 				url:"<%=request.getContextPath()%>/cart/cartdelete",
+										data: { "deleteArr" : deleteArr },
+										success: function(data){
+											alert('삭제가 완료되었습니다.');
+										}
+						 			});
+					 			}
+					 		}				 	
+						 </script>
+					</td>
+			 		
 			 		<td colspan="2" style="text-align: right">
 			 			<div class="bigtext right-align sumcount">
 				 			선택한 클래스 개수 : <span id="checkNum"></span> 개

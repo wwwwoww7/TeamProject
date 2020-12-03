@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.mycompany.webapp.dao.CartDao;
 import com.mycompany.webapp.dao.ClassDao;
 import com.mycompany.webapp.dto.CartDto;
-import com.mycompany.webapp.dto.CartPager;
 import com.mycompany.webapp.dto.ClassDto;
 
 @Service

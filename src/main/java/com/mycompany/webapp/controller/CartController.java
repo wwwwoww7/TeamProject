@@ -56,7 +56,7 @@ public class CartController {
 				CartDto classOne = cartService.getClass(classNo);
 				classOne.setMid((String) session.getAttribute("sessionMid"));
 				cartList.add(classOne);
-				
+				session.setAttribute("cartList", cartList);
 				
 			System.out.println(cartList);
 		}
@@ -65,6 +65,7 @@ public class CartController {
 		return "cart/cart";
 	}
 
+	
 	@RequestMapping("/sumprice")
 	public void sumprice(
 			@RequestParam(value = "chkPrice[]") List<String> arrayParams,
@@ -73,6 +74,7 @@ public class CartController {
 		
 		List<String> chkList = arrayParams;
 		logger.info("받은 배열 : " + arrayParams);
+		
 		for(String pkPrice : chkList) {
 			int result = Integer.parseInt(pkPrice);
 			sumPrice += result; 
@@ -95,6 +97,26 @@ public class CartController {
 		out.close();
 	
 		
+	}
+	@RequestMapping("/cartdelete")
+	public void cartdelete(@RequestParam(value = "deleteArr[]") List<Integer> delList,
+							 @RequestParam(defaultValue = "-1") int classNo,
+							 HttpSession session){
+		List<Integer> deleteArr = delList;
+		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
+		logger.info("받은 배열 : " + deleteArr);
+		
+		for(CartDto cartItem : cartList) {
+			logger.info("카트에 담긴 class_no : "+cartItem.getClass_no());
+			for(int deleteNum : deleteArr) {
+				logger.info("deleteNum : "+deleteNum);
+				if(deleteNum == cartItem.getClass_no()) {
+					cartList.remove(deleteNum);
+					//session.removeAttribute(deleteNum);
+				}
+				logger.info("카트에 담긴 class_no deleteX: "+cartItem.getClass_no());
+			}
+		}
 	}
 	
 	@RequestMapping("/payment")

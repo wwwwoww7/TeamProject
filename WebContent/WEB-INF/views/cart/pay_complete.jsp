@@ -75,15 +75,6 @@
 			border: 2px solid #FAFAFA;
 		}
 		
-		a:HOVER {     /* 마우스 커서 올렸을때 */
-        text-decoration: underline; 
-        color: #ffc800; 
-        font-weight: bold;
-		}
-
-		a:ACTIVE {    /* 마우스 버튼을 눌렀을때 */
-        text-decoration: none;
-		}
 	</style>
 	<script type="text/javascript">
 			$(function(){
@@ -145,7 +136,7 @@
 						        </tr>
 						        <tr>
 						         	<td class="ico4">
-						         		주문내역 확인은 <a href="#" style="color:#bf9500;">[마이페이지]</a>에서 조회 하실 수 있습니다. 
+						         		주문내역 확인은 <a class="text-warning" href="#">[마이페이지]</a>에서 조회 하실 수 있습니다. 
 						         	</td>
 						        </tr>
 						        

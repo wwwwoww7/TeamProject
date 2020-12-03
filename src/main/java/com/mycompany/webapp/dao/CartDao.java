@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.controller.CartController;
 import com.mycompany.webapp.dto.CartDto;
-import com.mycompany.webapp.dto.CartPager;
 import com.mycompany.webapp.dto.ClassDto;
 
 
