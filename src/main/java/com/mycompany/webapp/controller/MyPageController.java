@@ -357,7 +357,7 @@ public class MyPageController {
 		
 		logger.info("totalRows==============================================="+totalRows);
 		
-		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, mid);
+		MyPagerDto pager = new MyPagerDto(4,3,totalRows, pageNo, tutorid);
 		List<ClassQADto> list = classQAService.getQa(pager);
 		model.addAttribute("list",list);
 		model.addAttribute("pager",pager); 
