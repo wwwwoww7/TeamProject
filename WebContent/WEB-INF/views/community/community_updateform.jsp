@@ -1,65 +1,93 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<form id="boardUpdateForm">
-	<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
-	<input type="hidden" id="bno" name="bno" value="${board.bno}" />
 	
+<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 	
-	<div class="input-group">
-		<div class="input-group-prepend"><span class="input-group-text">btitle</span></div>
-		<input id="btitle" type="text" name="btitle" class="form-control" value="${board.btitle}">
-		<span id="btitleError" class="error"></span>
-	</div>
-	
-	<div class="input-group">
-		<div class="input-group-prepend"><span class="input-group-text">bcontent</span></div>
-		<textarea id="bcontent" name="bcontent" class="form-control">${board.bcontent}</textarea>
-		<span id="bcontentError" class="error"></span>
-	</div>
-	
-	<div class="input-group">
-		<div class="input-group-prepend"><span class="input-group-text">mid</span></div>
-		<input id="mid" type="text" name="mid" class="form-control" 
-			<c:if test="${sessionMid!=null}">value="${sessionMid}"</c:if>
-			<c:if test="${sessionMid==null}">value="fall"</c:if>
-			readonly>
-		<span id="btitleError" class="error"></span>
-	</div>
+	<form onsubmit="communityModify()" action="<%=request.getContextPath()%>/community/communityModify" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
 		
-	<div style="margin-top: 10px">
-		<a class="btn btn-info" href="javascript:boardUpdate()">글 수정</a>
-		<script type="text/javascript">
-			function boardUpdate() {
-				var bno = $("#bno").val();
-				var btitle = $("#btitle").val().trim();
-				if(btitle == "") { $("#btitleError").text("필수"); }
-				else { $("#btitleError").text(""); }
-				
-				var bcontent = $("#bcontent").val().trim();
-				if(bcontent == "") { $("#bcontentError").text("필수"); }
-				else { $("#bcontentError").text(""); }
-				
-				if(btitle == "" || bcontent == "") {
-					return;	
-				} 
-				
-				
-				$.ajax({
-					url:"boardUpdate",
-					method:"post",
-					data: {bno:bno, btitle:btitle, bcontent:bcontent},
-					success:function(data) {
-						$("#fun1_result").html(data);
-					/* 	if(data.result == "success") {
-							boardList();
-						}
-						console.log(data); */
+		<input type="hidden" id="comm_no" name="comm_no" value="${communityDetail.comm_no}"/>
+		
+		
+		<div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">카 테 고 리</span> 
+				<select id="comm_cate_no" name="comm_cate_no" style="width: 35%;">
+					<c:forEach var="communityitem" items="${communityCateList}">
+						<option value="${communityitem.comm_cate_no}" selected>${communityitem.comm_cate_nm}</option>
+					</c:forEach>
+				</select>
+			</div>
+		</div>
+		 <div class="dragArea row" style="margin: 5px;">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">제목 </span> 
+				<input type="text" id="comm_title" name="comm_title" class="form-control" value="${communityDetail.comm_title}"/>
+				<span id="btitleError" class="error"></span>
+			</div>
+		</div> 
+		<!-- <div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">첨부파일</span> 
+				<input type="file" id="class_hw_file" name="class_hw_file" class="form-control"/>
+			</div>
+		</div> -->
+		 <div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
+				<textarea id="comm_content" name="comm_content" class="form-control" rows="12" inputmode="text" >${communityDetail.comm_content}</textarea>
+				<span id="bcontentError" class="error"></span>
+			</div>
+		</div> 
+		
+		 <div class="dragArea row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<button type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;"  >글쓰기</button>
+				<script type="text/javascript">
+				function communityModify() { 
+					
+					console.log("안오나 ");
+					var btitle = $("#comm_title").val().trim();
+					if(btitle == "") { 
+						$("#comm_title").focus();
+						$("#btitleError").text("필수"); 
 					}
-				});
-			}
-		</script>		
-		
-		<a class="btn btn-info" href="community">취소</a>
-	</div>
-</form>
+					else { $("#btitleError").text(""); }
+					
+					var bcontent = $("#comm_content").val().trim();
+					if(bcontent == "") {
+						$("#comm_content").focus();
+						$("#bcontentError").text("필수"); 
+					}
+					else { $("#bcontentError").text(""); }
+					
+					if(btitle == "" || bcontent == "") {
+						return false;	
+					} 
+					
+					return true;
+// 					console.log("안오나 2");
+// 					$.ajax({
+<%-- 						url:"<%=request.getContextPath()%>/community/communityWrite", --%>
+// 						method:"post",
+// 						data: {comm_title:comm_title, comm_content:comm_content},
+// 						success:function(data) {
+// 							if(data.result == "success") {
+// 								allFunction(1,1);
+// 							}
+// 							console.log(data);
+// 						}
+// 					});
+				}
+				</script>		
+			</div>
+			<div class="col-md-4">
+				<a class="btn item-btn btn-success display-7 text-primary" href="community">취소</a>
+			</div>
+			<div class="col-md-2"></div>
+		</div> 
+	</form>
+</div>
+
+	

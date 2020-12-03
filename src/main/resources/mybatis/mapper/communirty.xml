@@ -108,6 +108,13 @@
           and comm_no = #{comm_no} 
 	</select>
 	
+	<select id="selectByReviewno" parameterType="int" resultType="review">
+		 select r.review_no, r.review_date, r.review_title, r.review_content, r.review_hitno, m.mid, m.mnick, c.class_no, r.review_star, ca.class_cate_no, ca.class_cate_nm
+		from review r, member m,class c,class_cate ca
+		where c.class_cate_no=ca.class_cate_no and r.class_no=c.class_no and r.mid=m.mid
+          and r.review_no = #{review_no}
+	</select>
+	
 	<!--커뮤니티_글쓰기안에서 분야별 데이터 가져오기 -->
 	<select id="selectCommunityCateList" resultType="community">
 	    select *
@@ -154,6 +161,15 @@
 	<!-- 커뮤니티 hitno update하기 -->
 	<update id="addCommunityHitno" parameterType="int">
 		update Community set comm_hitno = (select comm_hitno from community where comm_no=#{comm_no})+1 where comm_no= #{comm_no}
+	</update>
+	
+	<!-- 리뷰 hitno update하기 -->
+	<update id="addReviewHitno" parameterType="int">
+		update Review set review_hitno = (select review_hitno from review where review_no=#{review_no})+1 where review_no= #{review_no}
+	</update>
+	
+	<update id="updateCommunity" parameterType="community">
+		update Community set comm_title=#{comm_title}, comm_content=#{comm_content}, comm_cate_no=#{comm_cate_no} where comm_no=#{comm_no}
 	</update>
 	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->

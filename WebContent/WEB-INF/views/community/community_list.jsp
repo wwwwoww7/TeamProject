@@ -40,7 +40,7 @@
             <div class="col-md-6">
                 <div class="mbr-section-btn" align="right">
                 
-               	<%-- <c:if test="${sessionMid==null}"> --%>
+               	 <c:if test="${sessionMid!=null}"> 
                   <a class="btn item-btn btn-warning display-4" href="javascript:communityWrite()">글쓰기</a>
                   
 					<script type="text/javascript">
@@ -53,22 +53,30 @@
 								});
 							}
 					</script>
-                  <%-- </c:if>--%>
+                   </c:if>
                 </div>
             </div>
           </div>
         </div>
 
-        <div class="container scroll">
-          <table class="table table-hover" cellspacing="0" data-empty="No matching records found">
+        <div class="container">
+          <table class="table table-hover " cellspacing="0" data-empty="No matching records found">
+            <colgroup>
+			    <col width="10%">
+			    <col width="15%">
+			    <col width="15%">
+			    <col width="35%">
+			    <col width="15%">
+			    <col width="*">
+			</colgroup>
             <thead>
               <tr class="table-heads ">
-                <th class="head-item mbr-fonts-style display-7 text-center" style="width:100px">번호</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" style="width:100px">분야</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">날짜</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" style="width:250px">제목</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">조회</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">닉네임</th>
+                <th class="head-item mbr-fonts-style display-7 text-center">번호</th>
+				<th class="head-item mbr-fonts-style display-7 text-center">분야</th>
+				<th class="head-item mbr-fonts-style display-7 text-center">날짜</th>
+				<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
+				<th class="head-item mbr-fonts-style display-7 text-center">닉네임</th>
+				<th class="head-item mbr-fonts-style display-7 text-center">조회수</th>
                   
              <!--  <th class="head-item mbr-fonts-style display-7">
                       NAME</th>
@@ -87,8 +95,8 @@
 					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
 					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_hitno}</td>
 					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.mnick}</td>
+					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			
@@ -98,8 +106,8 @@
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${tips}">
@@ -108,8 +116,8 @@
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${boast}">
@@ -118,8 +126,8 @@
 					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
+					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${assign}">
@@ -128,12 +136,12 @@
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
+					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>    
               <tr>
-				<td colspan="7" style="text-align: center; ">
+				<td colspan="6" style="text-align: center; ">
 					<ul class="pagination justify-content-center" style="margin:20px 0">
 						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate}, 1)">처음</a></li>
 						<c:if test="${pager.groupNo > 1 }">

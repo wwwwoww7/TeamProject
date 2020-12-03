@@ -137,6 +137,16 @@ public class CommunityService {
 		return result;
 	}
 
+	public int addReviewHitno(int review_no) {
+		int result = communityDao.addReviewHitno(review_no);
+		return result;
+	}
+
+	public int setCommunityModify(CommunityDto modify) {
+		int result = communityDao.updateCommunity(modify);
+		return result;
+	}
+
 	
 	
 

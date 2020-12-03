@@ -30,7 +30,7 @@
 		 <div class="dragArea row" style="margin: 5px">
 			<div class="col-md-12 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
-				<textarea id="comm_content" name="comm_content" class="form-control" rows="12"></textarea>
+				<textarea id="comm_content" name="comm_content" class="form-control" rows="12" inputmode="text" ></textarea>
 				<span id="bcontentError" class="error"></span>
 			</div>
 		</div> 

@@ -106,8 +106,8 @@ public class CommunityController {
 
 	@GetMapping("/communityDetail")
 	public String communityDetail(int comm_no, Model model) {
-		CommunityDto communitydetail = service.getCommunityDetail(comm_no);
-		model.addAttribute("communityDetail", communitydetail);
+		CommunityDto communityDetail = service.getCommunityDetail(comm_no);
+		model.addAttribute("communityDetail", communityDetail);
 		int result = service.addCommunityHitno(comm_no);
 		logger.info("result="+result);
 		return "community/community_detail";
@@ -117,7 +117,7 @@ public class CommunityController {
 	public String communityDetailReview(int review_no, Model model) {
 		ReviewDto reviewDetail = service.getReviewDetail(review_no);
 		model.addAttribute("reviewDetail", reviewDetail);
-		
+		int result = service.addReviewHitno(review_no);
 		return "community/community_detail_review";
 	}
 	
@@ -215,5 +215,35 @@ public class CommunityController {
 		model.addAttribute("cateReview", cateReview);
 		return "community/community_list_review";
 	}
-
+	
+	//커뮤니티_상세페이지_수정
+	@GetMapping("/communityUpdateform")
+	public String communityUpdateform(int comm_no, Model model) {
+		logger.info("자 수정해보자");
+		List<CommunityDto> communityCateList = service.getCommunityCateList();
+		model.addAttribute("communityCateList", communityCateList);
+		CommunityDto communityDetail = service.getCommunityDetail(comm_no);
+		model.addAttribute("communityDetail", communityDetail);
+		return "community/community_updateform";
+	}
+	
+	
+	@PostMapping("/communityModify")
+	public String communityModify(CommunityDto modify) {
+	
+		
+		int result = service.setCommunityModify(modify);
+		
+		return "redirect:/community";
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }

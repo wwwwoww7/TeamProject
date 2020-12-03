@@ -35,7 +35,7 @@
 				</table>
 				
 				<br/>
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="community">목록</a>		
+				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(6)">목록</a>		
 			</div>
 		
 		</div>
