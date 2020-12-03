@@ -6,10 +6,20 @@
 		insert into CART(member_id, class_no, class_nm, class_thum, class_price)
 		values(#{member_id}, #{class_no}, #{class_nm}, #{class_thum}, #{class_price})
 	</insert> -->
-	<insert id="insert" parameterType="cart">
-		insert into cart (Mid, class_no)
-		values(#{mid}, #{class_no})
+	<!-- cart테이블 구입 목록저장 -->
+	<insert id="insert1" parameterType="cart">
+		insert into CART (Mid, class_no)
+		values (#{mid}, #{class_no})
+		
 	</insert>
+	
+	<!-- 마이페이지 수강내역 목록저장 -->
+	<insert id="insert2" parameterType="cart" >
+		insert into class_Appl (Mid, class_no, cart_date)
+		values (#{mid}, #{class_no}, #{cart_date}) form cart
+		
+	</insert>
+	
 	
 	<select id="selectbyClassNo" resultType="cart">
 		select class_no, class_nm_s, class_nm, class_thum, class_price from class where class_no=#{class_no}

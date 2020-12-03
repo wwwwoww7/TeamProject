@@ -18,6 +18,7 @@ import com.mycompany.webapp.dto.ClassDto;
 public class CartDao{
 
 	private static final Logger logger = LoggerFactory.getLogger(CartDao.class);
+	
 	@Resource
 	private SqlSessionTemplate sst;
 
@@ -31,13 +32,19 @@ public class CartDao{
 	}
 
 
-	public int insert(CartDto cartItem) {
+	//cartDto에 저장한거 카트에 insert
+	public int insert1(CartDto cartItem) {
 		int cartRow = sst.insert("mybatis.mapper.cart.insert", cartItem);
+		//logger.info("insert하는 : "+cartItem.toString());
 		return cartRow;
-		
 	}
 
-
+	//cartDto에 저장한거 카트어플라이 insert
+	public int insert2(CartDto cartItem) {
+		int cartRow = sst.insert("mybatis.mapper.classAppl.insert", cartItem);
+		//logger.info("insert하는 : "+cartItem.toString());
+		return cartRow;
+	}
 	
 
 
