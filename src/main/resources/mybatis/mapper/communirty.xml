@@ -151,6 +151,11 @@
         values (SEQ_REVIEW_NO.nextval, sysdate, #{review_title}, #{review_content},0, #{mid}, #{class_no}, #{review_star})
 	</insert>
 	
+	<!-- 커뮤니티 hitno update하기 -->
+	<update id="addCommunityHitno" parameterType="int">
+		update Community set comm_hitno = (select comm_hitno from community where comm_no=#{comm_no})+1 where comm_no= #{comm_no}
+	</update>
+	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
 	<select id="selectByClassNo" parameterType="int" resultType="review"> 
 		select mnick,mpro_img,review_title,review_content,review_date from (

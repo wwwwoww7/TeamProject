@@ -108,7 +108,8 @@ public class CommunityController {
 	public String communityDetail(int comm_no, Model model) {
 		CommunityDto communitydetail = service.getCommunityDetail(comm_no);
 		model.addAttribute("communityDetail", communitydetail);
-		
+		int result = service.addCommunityHitno(comm_no);
+		logger.info("result="+result);
 		return "community/community_detail";
 		}
 

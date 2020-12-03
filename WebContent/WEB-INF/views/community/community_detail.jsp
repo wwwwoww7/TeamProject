@@ -27,11 +27,13 @@
 				   
 					<tr>
 						<th>제목</th>
-				        <td colspan="10">${communityDetail.comm_title}</td>
+				        <td>${communityDetail.comm_title}</td>
+				        <th>조회수</th>
+				        <td>${communityDetail.comm_hitno}</td>
 					</tr>
 				    <tr>
 				        <th>내용</th>
-				        <td colspan="10">${communityDetail.comm_content}</td>
+				        <td colspan="3">${communityDetail.comm_content}</td>
 				        
 				    </tr>
 					</tbody>

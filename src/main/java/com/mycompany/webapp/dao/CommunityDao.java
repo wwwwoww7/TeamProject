@@ -131,6 +131,11 @@ public class CommunityDao {
 	public int insertCommunityReviewApply(ReviewDto reviewapply) {
 		int result = sst.insert("mybatis.mapper.community.insertCommunityReviewApply", reviewapply);
 		return result;
+	}
+
+	public int addCommunityHitno(int comm_no) {
+		int result = sst.insert("mybatis.mapper.community.addCommunityHitno", comm_no);
+		return result;
 	}	
 
 	

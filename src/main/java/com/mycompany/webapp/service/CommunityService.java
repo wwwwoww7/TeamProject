@@ -132,6 +132,11 @@ public class CommunityService {
 		return result;
 	}
 
+	public int addCommunityHitno(int comm_no) {
+		int result = communityDao.addCommunityHitno(comm_no);
+		return result;
+	}
+
 	
 	
 

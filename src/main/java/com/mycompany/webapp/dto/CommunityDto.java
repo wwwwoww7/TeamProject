@@ -15,6 +15,7 @@ public class CommunityDto {
 	
 	
 	
+	
 	public int getComm_no() {
 		return comm_no;
 	}
