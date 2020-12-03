@@ -21,11 +21,12 @@
 		</tr>
 		<tr>
 			<th class="text-center">제목</th>
-	        <td colspan="3"><input type="text" id="class_qa_title" name="class_qa_title" style="width: 100%"/></td>
+	        <td colspan="3" class="p-0 m-0"><input type="text" id="class_qa_title" name="class_qa_title" style="width: 100%;  border: 0;" class="form-control"/></td>
 		</tr>
 	    <tr>
-	        <td colspan="4" class="p-3" width="100%;">
-	        	<textarea id="class_qa_content" name="class_qa_content" placeholder="내용을 입력하세요." rows="9" style="width: 100%; background-color:transparent;resize: none;" inputmode="text" > </textarea>
+	    	<th class="text-center">내용</th>
+	        <td colspan="3" class="p-0 m-0" width="100%;">
+	        	<textarea id="class_qa_content" name="class_qa_content" placeholder="내용을 입력하세요." rows="9" style="width: 100%; background-color:transparent;resize: none;border: 0;" inputmode="text" class="form-control p-3"> </textarea>
 	        </td> <!--  border: 0; -->
 	    </tr>
 	</tbody> 
@@ -36,48 +37,59 @@
    	<a type="button"  onclick="applyForm(); return false;" class="btn btn-success display-4 text-primary">글작성</a>
 </div>
 <script type="text/javascript">
+
+	$(function(){
+		$("#class_qa_title").focus();
+	});
+
 	function applyForm(){
-		
-		
 		//필수 값 체크
 		var mid = "${sessionMid}";
 		
 		if(mid == null || mid== ""){
-			
 			alert("다시 로그인 해 주세요");
+			return false;
+		}
+		
+		var class_qa_title = $("#class_qa_title").val().trim();
+		if(class_qa_title == "") { 
+			alert("제목을 입력해주세요.");
+			$("#class_qa_title").focus();
+			return false;
+		}
+		
+		var class_qa_content = $("#class_qa_content").val().trim();
+		if(class_qa_content == "") {
+			alert("내용을 입력해주세요.");
+			$("#class_qa_content").focus();
 			return false;
 		}
 		
 		
 		
 		
-		
-		
-		
-		
-		
-		
 		var formData = $("#qaWriteform").serialize();
-       
-		alert(formData.class_qa_title);
-		return false;
 		
 		$.ajax({
 	            cache : false,
-	            url : "",  
+	            url : "classqawrite",  
 	            type : 'POST', 
 	            data : formData, 
 	            success : function(data) {
-	                var jsonObj = JSON.parse(data);
+					if(data.result == "success"){
+						 pageLoad(1);
+					}else {
+						alert("글 작성 실패");
+					}
+// 	                var jsonObj = JSON.parse(data);
 	                
-	                pageLoad(1);
+	               
 	                
 	            }, // success 
 	            error : function(xhr, status) {
 	                alert(xhr + " : " + status);
 	            }
 	        }); // $.ajax */
-			
-		
 	}
 </script>
+

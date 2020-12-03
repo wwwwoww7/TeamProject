@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,12 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -157,15 +158,32 @@ public class ClassController {
 	}
 	
 
-	@GetMapping("/classqawrite")
-	public void classqawrite(ClassQADto qa, Model model, HttpSession session) {
+	@PostMapping("/classqawrite")
+	public void classqawrite(ClassQADto qa, Model model, HttpSession session,HttpServletResponse response) throws Exception {
 		
 		String mid = (String) session.getAttribute("sessionMid");
+		String tutor_id = classService.getTutorId(qa.getClass_no());
 		
+		qa.setWriter_id(mid);
+		qa.setTutor_id(tutor_id);
 		
-		//qa 정보 불러오기
-//		int result = classQAService.putQa(qa);
-//		model.addAttribute("qaInfo", qaInfo);
+		int result = classQAService.applyQa(qa);
+		
+		JSONObject jobject = new JSONObject();
+		
+		if(result == 1) {
+			jobject.put("result", "success");
+		}else {
+			jobject.put("result", "fail");
+		}
+		
+		String jsonString = jobject.toString();
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter writer = response.getWriter();
+		writer.println(jsonString);
+		writer.flush();
+		writer.close();
+		
 	}
 	
 

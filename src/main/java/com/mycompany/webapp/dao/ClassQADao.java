@@ -54,5 +54,9 @@ public class ClassQADao {
 		logger.info("===================>" + qlist.size());
 		return qlist;
 	}
+	public int insertQa(ClassQADto qa) {
+		int rows = sst.insert("mybatis.mapper.class_QA.insertQA", qa);
+		return rows;
+	}
 	
 }

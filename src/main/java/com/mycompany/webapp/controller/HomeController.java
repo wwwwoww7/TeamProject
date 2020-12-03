@@ -88,7 +88,6 @@ public class HomeController {
 		List<EventDto> eventList =  eventService.getEventList();
 		model.addAttribute("eventList", eventList);
 		
-		
 		return "event/homeeventlist";
 	}
 	

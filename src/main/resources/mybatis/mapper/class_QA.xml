@@ -63,4 +63,11 @@
 		UPDATE class_qa set class_qa_answer=#{class_qa_answer} where class_qa_no=#{class_qa_no}
 	</update>
 
+	
+	<!-- 문의 삽입 -->
+	<insert id="insertQA" parameterType="classQa">
+		insert into class_qa (CLASS_QA_NO, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, WRITER_ID, TUTOR_ID, CLASS_NO)
+					  values (SEQ_QA_NO.nextval, #{class_qa_title}, sysdate, #{class_qa_content}, #{writer_id}, #{tutor_id}, #{class_no} )
+	</insert>
+
 </mapper>
