@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html  >
@@ -104,6 +105,7 @@
 							</tbody>
 						</table>
 						<br/>
+						<sec:authorize access="hasAnyRole('ROLE_TUTOR')">
 						<table class="table table-bordered">
 							<colgroup>
 							    <col width="15%">
@@ -112,6 +114,7 @@
 							    <col width="*">
 							</colgroup>
 							<tbody>
+								
 							    <c:if test="${qalist.class_qa_answer != null}">
 									<tr>
 								        <th class="text-center">답변</th>
@@ -120,6 +123,7 @@
 								        </td>
 								    </tr> 
 						 		</c:if>
+						 		
 						    </tbody> 
 					    </table>
 					    <c:if test="${qalist.class_qa_answer != null}">
@@ -127,6 +131,7 @@
 						    	<a class="btn btn-sm" style="background-color: #ffc800; color: #ffff;" href="<%=request.getContextPath()%>/mypage/qaDelete?class_qa_no=${qalist.class_qa_no}">답변삭제</a>   
 							</div>
 						</c:if>
+						
 						<br/>
 						<form onsubmit="return writeCheck();" action="qaAnswer" method="POST" id="qaAnswer" class="mbr-form form-with-styler">
 							<input type="hidden" id="class_qa_no" name="class_qa_no" value="${qalist.class_qa_no}"/>
@@ -136,6 +141,7 @@
 								<input type="submit" class="btn item-btn btn-success text-primary display-7" inputmode="text" value="답변"  height="100%"/>
 							</div>
 						</form>
+						</sec:authorize>
 						<br/>
 						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor">확인</a>	
 					</div>

@@ -1,65 +1,85 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<form id="boardUpdateForm">
-	<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
-	<input type="hidden" id="bno" name="bno" value="${board.bno}" />
 	
+<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 	
-	<div class="input-group">
-		<div class="input-group-prepend"><span class="input-group-text">btitle</span></div>
-		<input id="btitle" type="text" name="btitle" class="form-control" value="${board.btitle}">
-		<span id="btitleError" class="error"></span>
-	</div>
-	
-	<div class="input-group">
-		<div class="input-group-prepend"><span class="input-group-text">bcontent</span></div>
-		<textarea id="bcontent" name="bcontent" class="form-control">${board.bcontent}</textarea>
-		<span id="bcontentError" class="error"></span>
-	</div>
-	
-	<div class="input-group">
-		<div class="input-group-prepend"><span class="input-group-text">mid</span></div>
-		<input id="mid" type="text" name="mid" class="form-control" 
-			<c:if test="${sessionMid!=null}">value="${sessionMid}"</c:if>
-			<c:if test="${sessionMid==null}">value="fall"</c:if>
-			readonly>
-		<span id="btitleError" class="error"></span>
-	</div>
+	<form onsubmit="communityModify()" action="<%=request.getContextPath()%>/community/communityModify" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+		 
+		<input type="hidden" id="review_no" name="review_no" value="${reviewDetail.review_no}"/>
+		<div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">강 의 명</span> 
+				<input type="text" id="" name="" class="form-control" value="${class_nm}" disabled/>
+			</div>
+			
+		</div>
+		<div class="dragArea row" style="margin: 5px">
+			<div class="col-md-6 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">후 기 별 점</span> 
+				<select id="review_star" name="review_star" style="width: 65%;">
+					<option value="1" >★☆☆☆☆</option>
+					<option value="2" >★★☆☆☆</option>
+					<option value="3" >★★★☆☆</option>
+					<option value="4" >★★★★☆</option>
+					<option value="5" selected>★★★★★</option>
+				</select>
+			</div>
+		</div>
 		
-	<div style="margin-top: 10px">
-		<a class="btn btn-info" href="javascript:boardUpdateReview()">글 수정</a>
-		<script type="text/javascript">
-			function boardUpdateReview() {
-				var bno = $("#bno").val();
-				var btitle = $("#btitle").val().trim();
-				if(btitle == "") { $("#btitleError").text("필수"); }
-				else { $("#btitleError").text(""); }
-				
-				var bcontent = $("#bcontent").val().trim();
-				if(bcontent == "") { $("#bcontentError").text("필수"); }
-				else { $("#bcontentError").text(""); }
-				
-				if(btitle == "" || bcontent == "") {
-					return;	
-				} 
-				
-				
-				$.ajax({
-					url:"boardUpdateReview",
-					method:"post",
-					/* data: {bno:bno, btitle:btitle, bcontent:bcontent}, */
-					success:function(data) {
-						$("#fun1_result").html(data);
-					/* 	if(data.result == "success") {
-							boardList();
-						}
-						console.log(data); */
+		
+		 <div class="dragArea row" style="margin: 5px;">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff;">제목 </span> 
+				<input type="text" id="review_title" name="review_title" class="form-control" value="${reviewDetail.review_title}"/>
+				<span id="btitleError" class="error"></span>
+			</div>
+		</div> 
+		 <div class="dragArea row" style="margin: 5px">
+			<div class="col-md-12 input-group">
+				<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
+				<textarea id="review_content" name="review_content" class="form-control" rows="12" inputmode="text" >${reviewDetail.review_content}</textarea>
+				<span id="bcontentError" class="error"></span>
+			</div>
+		</div> 
+		
+		 <div class="dragArea row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<button type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;"  >글쓰기</button>
+				<script type="text/javascript">
+				function communityModify() { 
+					
+					console.log("안오나 ");
+					var btitle = $("#review_title").val().trim();
+					if(btitle == "") 
+						{ $("#btitleError").text("필수"); 
 					}
-				});
-			}
-		</script>		
-		
-		<a class="btn btn-info" href="community">취소</a>
-	</div>
-</form>
+					else { $("#btitleError").text(""); }
+					
+					var bcontent = $("#review_content").val().trim();
+					if(bcontent == "") { $("#bcontentError").text("필수"); }
+					else { $("#bcontentError").text(""); }
+					
+					if(btitle == "" || bcontent == "") {
+						return false;	
+					} 
+					 
+				}
+				</script>		
+			</div>
+			<div class="col-md-4">
+				<a class="btn item-btn btn-success display-7 text-primary" href="community">취소</a>
+			</div>
+			<div class="col-md-2"></div>
+		</div> 
+	</form>
+</div>
+<script type="text/javascript">
+	$(function(){ 
+		$("#class_no").val('${reviewDetail.class_no}');
+		$("#review_star").val('${reviewDetail.review_star}');
+	});
+
+
+</script>
+ 	

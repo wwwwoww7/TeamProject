@@ -3,7 +3,55 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="container container-table mt-5">
 	<div class="table-wrapper">
-
+	<!-- 수정/삭제/목록가기 -->
+	
+		<div class="row">
+		<div class="col-12"  align="right">
+			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:reviewUpdateform(${reviewDetail.review_no})">수정</a>	
+			<script type="text/javascript">
+			function reviewUpdateform(review_no) {
+				$.ajax({
+						url:"community/reviewUpdateform",
+						data : {review_no:review_no},
+						success:function(data) {
+							$("#fun1_result").html(data);
+						}
+					});
+				}
+			</script>
+			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityDeleteform(${reviewDetaill.review_no})">삭제</a>	
+			<script type="text/javascript">
+			function communityDeleteform(review_no) {
+				$.ajax({
+						url:"community/communityDeleteform",
+						data : {review_no:review_no},
+						success:function(data) {
+							if(data.result=="success"){
+								allFunction(1);
+							}
+						}
+					});
+				}
+			</script>
+			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(6)">목록</a>
+			<!-- <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>	 -->	
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		<div class="container scroll">
 		
 			<div>

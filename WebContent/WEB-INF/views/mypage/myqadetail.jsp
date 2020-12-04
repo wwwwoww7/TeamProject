@@ -113,14 +113,14 @@
 							    <col width="*">
 							</colgroup>
 							<tbody>
-							    <c:if test="${qalist.class_qa_answer != null}">
+							   <%--  <c:if test="${qalist.class_qa_answer != null}">
 									<tr>
 								        <th class="text-center">답변</th>
 								         <td class="p-3" width="100%;">
 								        	<textarea rows="6" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_answer}</textarea>
 								        </td>
 								    </tr>    
-						 		</c:if>
+						 		</c:if> --%>
 						    </tbody>
 					    </table>
 						<br/>
@@ -137,7 +137,6 @@
 
 
 <jsp:include page="/WEB-INF/views/include/footer.jsp" />
-	<input type="hidden" id="mid" name="mid" value="${sessionMid}"/>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script>
 	<script

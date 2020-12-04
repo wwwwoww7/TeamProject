@@ -67,15 +67,24 @@
 	        <div class="container scroll">
 	          <table class="table table-hover" cellspacing="0" data-empty="No matching records found">
 	            <thead>
+	            <colgroup>
+	            	<col width="10%">
+				    <col width="12%">
+				    <col width="12%">
+				    <col width="30%">
+				    <col width="12%">
+				    <col width="12%">
+				    <col width="*">
+	            </colgroup>
 		            <tr class="table-heads">
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:70px">번호</th>
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:70px">강의분야</th>
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:70px">별점</th>
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:100px">날짜</th>
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:100px">제목</th>
+						<th class="head-item mbr-fonts-style display-7 text-center">번호</th>
+						<th class="head-item mbr-fonts-style display-7 text-center">강의분야</th>
+						<th class="head-item mbr-fonts-style display-7 text-center">별점</th>
+						<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
 						<!-- <th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">내용</th> -->
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:70px">조회수</th>
-						<th class="head-item mbr-fonts-style display-7 text-center" style="width:80px">닉네임</th>
+						<th class="head-item mbr-fonts-style display-7 text-center">닉네임</th>
+						<th class="head-item mbr-fonts-style display-7 text-center">날짜</th>
+						<th class="head-item mbr-fonts-style display-7 text-center">조회수</th>
 					</tr>
 	            </thead>
 	            <tbody>
@@ -84,11 +93,11 @@
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_no}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.class_cate_nm}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_star}</td>
-						<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></td>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</a></td>
 						<%-- <td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
-						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_hitno}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.mnick}</td>
+						<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></td>
+						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_hitno}</td>
 					</tr>
 					</c:forEach>
 	            	

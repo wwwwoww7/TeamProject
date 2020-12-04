@@ -1,15 +1,11 @@
 package com.mycompany.webapp.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.print.attribute.standard.PageRanges;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -21,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.ClassApplDto;
 import com.mycompany.webapp.dto.ClassCateDto;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
@@ -118,6 +115,7 @@ public class CommunityController {
 		ReviewDto reviewDetail = service.getReviewDetail(review_no);
 		model.addAttribute("reviewDetail", reviewDetail);
 		int result = service.addReviewHitno(review_no);
+		logger.info("result="+result);
 		return "community/community_detail_review";
 	}
 	
@@ -131,38 +129,35 @@ public class CommunityController {
 		model.addAttribute("communityCateList", communityCateList);
 		return "community/community_writeform";
 	}
+	
+	
+	
 	//class.class_no, review.review_star불러와야됨
 	@GetMapping("/communityWriteReview") 
-	public String communityWriteReview(Model model) {
+	public String communityWriteReview(Model model, HttpSession session) {
+		
+		String sessionMid = (String) session.getAttribute("sessionMid");
+		
 		//class.class_nm & review.review_star 불러와야함.
 		logger.info("나올차례임니다.");
-		List<ReviewDto> reviewCateList = service.getCommunitReviewCateList();
-		model.addAttribute("reviewCateList", reviewCateList);
+		
+		
+		//현재 로그인한 아이디가 수강중인 강의 리스트 , 이미 리뷰를 작성한 강의 제외 
+		List<ClassApplDto> inclassList = service.getCommunitReviewList(sessionMid);
+		model.addAttribute("inclassList", inclassList);
+		
+		
 		return "community/community_reviewform";
 	}
 	
 	@PostMapping("/communityWrite")
 	public String communityWriteApply(CommunityDto writeapply,HttpSession session,HttpServletResponse response) throws Exception {
 		
-		logger.info("와ㅓ이라누 =====> "+writeapply.getComm_content() );
-		logger.info("와ㅓ이라누 =====> "+writeapply.getComm_title() );
-		
 		String sessionMid = (String) session.getAttribute("sessionMid");
 		writeapply.setMid(sessionMid);
 		int result = service.communityWriteApply(writeapply);
 		if(result==1) {
-			return "redirect:/community";
-//			JSONObject object = new JSONObject();
-//			object.put("result", "success");
-//
-//			String json = object.toString(); // {"result" : "success"}
-//
-//			// 응답보내기
-//			PrintWriter out = response.getWriter();
-//			response.setContentType("application/json;charset=utf-8");
-//			out.println(json);
-//			out.flush();
-//			out.close();
+			return "redirect:/community"; 
 		}else {
 			return "redirect:/community";
 		}
@@ -235,9 +230,26 @@ public class CommunityController {
 		int result = service.setCommunityModify(modify);
 		
 		return "redirect:/community";
+	}
+	
+	
+	//리뷰_상세페이지_수정
+	@GetMapping("/reviewUpdateform")
+	public String reviewUpdateform(int review_no, Model model) {
 		
+		String class_nm = service.getClassName(review_no);
+		ReviewDto reviewDetail = service.getReviewDetail(review_no);
+		model.addAttribute("reviewDetail", reviewDetail);
+		model.addAttribute("class_nm", class_nm);
 		
+		return "community/community_updateform_review";
+	}
+	
+	@PostMapping("/reviewModify")
+	public String reviewModify(ReviewDto modify) {
+		int result = service.setReviewModify(modify);
 		
+		return "redirect:/community";
 	}
 	
 	@GetMapping("/communityDeleteform")

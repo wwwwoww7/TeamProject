@@ -227,7 +227,7 @@
 	<section class="section-table cid-shfcHOKpqJ" id="table1-2i">
 	  <div class="container container-table">
 		<h2 class="mbr-section-title mbr-fonts-style align-center display-5">
-			<strong>강의 문의</strong>
+			<strong>나의 문의</strong>
 		</h2>
 		<hr style="background-color: #ffc800; height:2px;">
 		<div class="table-wrapper">

@@ -140,13 +140,45 @@
         where class_cate_no = #{cateno}
 	</select>
 	
-	<!-- 리뷰_글쓰기 강의/별점 가져오기-->
-	<select id="selectReviewCateList" resultType="review">
-	     select class.class_nm, class.class_no, review.review_star
-		from class, review
-        where class.class_no=review.review_no
-		order by review.review_date asc
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 리뷰 작성 가능 리스트, 이미 리뷰를 작성한 강의는 제외 -->
+	<select id="selectReviewList" resultType="review" parameterType="String">
+	    select class.class_no, class.class_nm from CLASS_APPL,CLASS 
+		where CLASS_APPL.class_no = class.class_no
+     		  and mid=#{mid}
+      		  and class.class_no not in (select class_no from review where mid=#{mid})
 	</select>
+	
+	
+	<select id="selectClassNameByReviewNo" parameterType="int" resultType="String">
+		select class_nm from class,review 
+		 where class.class_no = review.class_no 
+      		   and review.review_no = #{review_no}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 커뮤니티_글쓰기 insert하기 -->
 	<insert id="insertCommunityWriteApply" parameterType="community">
 		 insert into Community 
@@ -175,6 +207,8 @@
 	<delete id="deleteByCommbno" parameterType="int">
 		delete from community where comm_no=#{comm_no}
 	</delete>
+	
+	<!-- 커뮤니티 댓글-->
 	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
 	<select id="selectByClassNo" parameterType="int" resultType="review"> 

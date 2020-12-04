@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.webapp.dto.ClassApplDto;
 import com.mycompany.webapp.dto.ClassCateDto;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
@@ -118,9 +119,10 @@ public class CommunityDao {
 		return catenm;
 	}
 
-
-	public List<ReviewDto> selectReviewCateList() {
-		List<ReviewDto> reviewCateList = sst.selectList("mybatis.mapper.community.selectReviewCateList");
+	
+	//mid가 구매한 강의 리스트+이미 리뷰를 작성한 강의 제외 
+	public List<ClassApplDto> selectReviewList(String mid) {
+		List<ClassApplDto> reviewCateList = sst.selectList("mybatis.mapper.community.selectReviewList", mid);
 		return reviewCateList;
 	}
 
@@ -142,7 +144,7 @@ public class CommunityDao {
 		int result = sst.insert("mybatis.mapper.community.addReviewHitno", review_no);
 		return result;
 	}
-
+	//community_내용 수정하기
 	public int updateCommunity(CommunityDto modify) {
 		int result = sst.update("mybatis.mapper.community.updateCommunity", modify);
 		return result;
@@ -151,8 +153,16 @@ public class CommunityDao {
 	public int deleteByCommno(int comm_no) {
 		int result = sst.delete("mybatis.mapper.community.deleteByCommbno", comm_no);
 		return result;
-	}	
+	}
+	//Review_내용수정하기
+	public int updateReview(ReviewDto modify) {
+		int result = sst.update("mybatis.mapper.community.updateReview", modify);
+		return result;
+	}
 
-	
+	public String selectClassNameByReviewNo(int review_no) {
+		String result = sst.selectOne("mybatis.mapper.community.selectClassNameByReviewNo", review_no);
+		return result;
+	}
 
 }

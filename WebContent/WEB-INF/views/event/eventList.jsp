@@ -6,23 +6,28 @@
 <section id="table_list" class="section-table cid-shflacCz1o" >
 <div class="container-fruid" >
 		<div class="row" >
-			<table style="border: 0px solid; margin: 20px; padding: 60px;" width="55%" class=""  >
+			<table class="table1" style="border: 0px solid; margin: 20px; padding: 60px;" width="55%"  >
 				<tr>
-					<th style="width:100px"><input type="hidden" value="이벤트 번호"/></th>
-					<th style="width:200px">이벤트제목</th>
+					<th id="no" style="width:100px"><input type="hidden" value="이벤트 번호"/></th>
+					<th id="nm" style="width:150px">이벤트제목</th>
 					<th></th>
-					<th style="width:100px">시작날짜</th>
-					<th style="width:100px">마감날짜</th>
+					<th id="start" style="width:150px">시작날짜</th>
+					<th id="end" style="width:150px">마감날짜</th>
 				</tr>
 				
 				<c:forEach var="event" items="${all}">
 					<tr>
-						<td><input type="hidden" value="${event.event_no}"/></td>
-						<td><a class="text-black"  href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}">${event.event_nm}</a></td>
-						<td><div style="margin:15px"><a href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}"><img src="<%=application.getContextPath()%>/resources/img/ar/${event.event_img}" width="400" height="240"/></a></div>
+						<td id="noT"><input type="hidden" value="${event.event_no}"/></td>
+						<td id="nmT"><a class="text-black"  href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}">${event.event_nm}</a></td>
+						<td>
+						<div  class="col-4" style="margin:15px">
+							<a href="<%=application.getContextPath()%>/event/eventDetail?event_no=${event.event_no}">
+								<img src="<%=application.getContextPath()%>/event/event_imgDownload?event_img=${event.event_img}" width="400" height="240"/>
+							</a>
+						</div>
 						</td>
-						<td><fmt:formatDate value="${event.event_start}" pattern="yyyy-MM-dd"/> </td>
-						<td><fmt:formatDate value="${event.event_end}" pattern="yyyy-MM-dd"/></td>
+						<td id="startT"><fmt:formatDate value="${event.event_start}" pattern="yyyy-MM-dd"/> </td>
+						<td id="endT"><fmt:formatDate value="${event.event_end}" pattern="yyyy-MM-dd"/></td>
 					</tr>	
 				</c:forEach>
 				
