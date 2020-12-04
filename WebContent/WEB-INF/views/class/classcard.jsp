@@ -16,7 +16,7 @@
 		<c:forEach var="i" begin="0" end="2">
 			<div class="carousel-item">
 				<c:forEach var="hotclass" items="${hotclassList}" begin="${i*4}" end="${i*4+3}">
-					<div class="item features-image col-12 col-md-6 col-lg-3 "> <!--  col-12 col-md-6 col-lg-3 -->
+					<div class="item features-image col-12 col-md-6 col-lg-6 col-xl-3"> <!--  col-12 col-md-6 col-lg-3 -->
 					     <div class="item-wrapper">
 					         <div class="item-img">
 					         	<a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" >
@@ -88,11 +88,11 @@
 	</div>
 
 	<!-- Left and right controls -->
-	<a class="carousel-control-prev" href="#hotclassca" data-slide="prev"> 
-		<span class="carousel-control-prev-icon"></span>
+	<a class="carousel-control-prev text-black" href="#hotclassca" data-slide="prev"> 
+		<span class="carousel-control-prev-icon">&lt;&lt;</span>
 	</a> 
-	<a class="carousel-control-next" href="#hotclassca" data-slide="next"> 
-		<span class="carousel-control-next-icon"></span>
+	<a class="carousel-control-next text-black" href="#hotclassca" data-slide="next"> 
+		<span class="carousel-control-next-icon">&gt;&gt;</span>
 	</a>
 </div>
 
@@ -144,7 +144,8 @@
 </script>
 
 
- 
+<style type="text/css">
+</style>
  
  
  

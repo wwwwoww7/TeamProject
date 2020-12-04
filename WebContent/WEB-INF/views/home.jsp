@@ -245,6 +245,16 @@
 		    width: 99.5%; } 
 		}
 		
+		.carousel-indicators .active {
+			background: #ffc800;
+		}
+		
+		.carousel-indicators .active, .carousel-indicators li{
+			width: 30px;
+			height: 5px;
+			border: 1px;
+		}
+		
 /* 		#cardLayout { */
 /* 			padding: 0 15px; */
 /* 			width: 285px; */
