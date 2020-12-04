@@ -53,15 +53,13 @@
 			</div>
 			
 	    	<div class="row">
-	    		
-	    		<div class="col-6"  align="center">
+	    		<div class="col-sm-6"  align="center">
 	    			<p>${eventD2.event_ct}</p>
 	    			<p>내용 적어보세요 </p>
 	    		</div>
-	    		<div class="col-6"  align="center">
+	    		<div class="col-sm-6"  align="center">
 	    			<img width="100%" src="<%=application.getContextPath()%>/resources/img/ar/${eventD2.event_detail}">
 	    		</div>
-	    		
 	    	</div>
 	    	
 	    

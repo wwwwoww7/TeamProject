@@ -55,9 +55,9 @@
 	            </div> -->
 	          </div>
 	        </div>
-	        <div class="container" style="text-align:right; vertical-align:right;">
+	        <div class="mbr-section-btn mt-4" style="text-align:right; vertical-align:right;">
               	<sec:authorize access="hasRole('ADMIN')">
-           		<a class="btn btn-sm btn-success btn-primary-outline display-7 text-primary" href="<%=application.getContextPath()%>/event/eventWriteForm">이벤트등록</a>
+           		<a class="btn btn-md btn-success display-4 text-primary" href="<%=application.getContextPath()%>/event/eventWriteForm">이벤트등록</a>
            		</sec:authorize>
 	        </div>
 	      </div>
@@ -67,9 +67,9 @@
 	<section class=" " id="gallery2-3a">
 		<div class="container">
 			<div>
-				<div style="text-align:center;vertical-align:middle;"> <!-- mbr-gallery-filter container gallery-filter-active  -->
-							<a class="btn btn-md btn-success btn-primary-outline display-7 text-primary" href="javascript:openCity(1,1)">진행중</a>
-							<a class="btn btn-md btn-success btn-primary-outline display-7 text-primary" href="javascript:closeCity(0,1)">종료</a>
+				<div class="mbr-section-btn mt-4" style="text-align:center;vertical-align:middle;"> <!-- mbr-gallery-filter container gallery-filter-active  -->
+							<a class="btn btn-md btn-success display-4 text-primary" href="javascript:openCity(1,1)">진행중</a>
+							<a class="btn btn-md btn-success display-4 text-primary" href="javascript:closeCity(0,1)">종료</a>
 				</div>
 				
 			<!-- Gallery -->
