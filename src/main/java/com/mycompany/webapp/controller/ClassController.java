@@ -283,7 +283,7 @@ public class ClassController {
 	}
 	
 	//*=========강의정보 수정 by 강사(혜빈)=================//
-	@RequestMapping("/classEdit")
+	@GetMapping("/classEdit")
 	public String classEdit(@RequestParam(defaultValue = "1") int classNo, Model model) {
 		
 		
@@ -295,4 +295,20 @@ public class ClassController {
 		return "/class/classEdit";
 	}
 	
+	@PostMapping("/classEdit")
+	public String classEdit(ClassDto classd, Model model) {
+		logger.info("test-1a");
+		int update_result = classService.updateClass(classd);
+		
+		logger.info("2");
+		if(update_result == 1) {
+//			ClassDto classOne = classService.getClass(classd.getClass_no());
+			
+//			model.addAttribute("classOne", classOne);
+		}
+		logger.info("b");
+		
+		return "redirect:/class/classdetail?classNo="+classd.getClass_no();
+	}
+
 }

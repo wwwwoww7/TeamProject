@@ -119,8 +119,10 @@ public class ClassService {
 		return pickCount;
 	}
 
-	
-	
+	public int updateClass(ClassDto classd) {
+		int rows = classDao.updateClass(classd);
+		return rows;
+	}
 	
 	
 	

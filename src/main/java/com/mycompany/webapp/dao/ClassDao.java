@@ -127,8 +127,7 @@ public class ClassDao {
 
 	//혜빈
 	public int updateClass(ClassDto classd) {
-		int rows=0;
-		rows = sst.selectOne("mybatis.mapper.class.updateClass",classd);
+		int rows=sst.selectOne("mybatis.mapper.class.updateClass",classd);
 		return rows;
 	}
 

@@ -200,7 +200,7 @@
 			class_nm_s=#{class_nm_s},
 			class_sub=#{class_sub},
 			class_curr=#{class_curr}
-		where CLASS_NO
+		where class_no=#{class_no}
 	</update>
 	
 	
