@@ -65,7 +65,7 @@
 			<h3 class="mbr-fonts-style align-center m-0 display-5">
 				<strong>나의 강의</strong>
 			</h3>
-			<div class="container p-0">
+<%-- 			<div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/4}" integerOnly="true" />
 	        		<div id="demo" class="carousel slide" data-ride="carousel">
@@ -114,9 +114,9 @@
 					  </a>
 					</div> 
 				</div>
-	   		</div>
+	   		</div> --%>
 			
-			<%-- <div class="container">
+			<div class="container">
 	        	<div class="row mt-4">
 	        	
 					<c:forEach var="classes" items="${userclassList}">
@@ -130,12 +130,15 @@
 					            </div>
 					        </div>
 					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-					           [ ${classes.class_cate_nm} ]  ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+					           [ ${classes.class_cate_nm} ]
+					        </h6> 
+					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+					           ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
 					        </h6>
 					    </div>
 					</c:forEach>
 				</div>
-	   		</div> --%>
+	   		</div>
 		</section>
     </div>
 </section>
@@ -261,6 +264,9 @@
 		  	height: 170px;
 		  	object-fit: cover;
 		}
+		.cid-sh7HNKMuDe .item-wrapper {
+		    height: 80%;
+		} 
 		@media (min-width: 768px){
 			.col-md-6 {
 			    max-width: 49%;
@@ -306,7 +312,6 @@
 		$(function() {
 			myQa(1);
 			userClassNotice(1);
-			
 			$("#demo > ul > li:nth-child(1)").addClass("active");
 			$(".carousel-inner div:nth-child(1)").addClass("active");
 			
