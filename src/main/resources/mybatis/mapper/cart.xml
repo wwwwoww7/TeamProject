@@ -2,38 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.cart">
 
-	<!-- <insert id="insert" parameterType="cart">
-		insert into CART(member_id, class_no, class_nm, class_thum, class_price)
-		values(#{member_id}, #{class_no}, #{class_nm}, #{class_thum}, #{class_price})
-	</insert> -->
 	<!-- cart테이블 구입 목록저장 -->
 	<insert id="insert1" parameterType="cart">
 		insert into CART (Mid, class_no)
 		values (#{mid}, #{class_no})
-		
 	</insert>
 	
 	<!-- 마이페이지 수강내역 목록저장 -->
 	<insert id="insert2" parameterType="cart" >
-		insert into class_Appl (Mid, class_no, cart_date)
-		values (#{mid}, #{class_no}, #{cart_date}) form cart
-		
-	</insert>
+		insert into CLASS_APPL (Mid, class_no, class_appl_date, CLASS_APPL_TOT_TIME )
+		values (#{mid}, #{class_no}, #{cart_date} , 0) 
+	</insert> 
 	
-	
+	<!-- 장바구니 담기는 클래스 정보 불러오기 -->
 	<select id="selectbyClassNo" resultType="cart">
 		select class_no, class_nm_s, class_nm, class_thum, class_price from class where class_no=#{class_no}
 	</select>
-	<!-- <select id="selectAll" resultType="cart">
-		 select m.member_id, cs.class_no, class_nm, class_thum, class_price
-		 from MEMBER m, CART c, CLASS cs
-		 where m.member_id = c.member_id and c.class_no=cs.class_no;
-	</select>
-	
-	<select id="selectbyClassNo" resultType="class" parameterType="int">
-		select * from class where class_no = #{class_no}
-	</select>
- -->
 	
 	
 </mapper>

@@ -46,10 +46,9 @@ public class CartController {
 	public String pick_cl(@RequestParam(defaultValue = "-1") int classNo, HttpSession session) {
 		
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
-		//날짜 넣기
-			//SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-			
-			Date cart_date = new Date();
+		
+		//날짜 넣기위한 객체
+		Date cart_date = new Date();
 			
 			
 		if(cartList == null) {
@@ -173,6 +172,7 @@ public class CartController {
 			Date classDate = cartItem.getCart_date(); //타켓 정함
 			logger.info("꺼내온 날짜(변환 전) : "+classDate);
 			//String cartDate = classDate.toString();
+			
 			model.addAttribute("classDate", classDate);
 		}
 		return "cart/payment";
@@ -183,7 +183,7 @@ public class CartController {
 	public String pay_complete(HttpSession session) {
 		//구매정보 DB 저장
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
-		String userId = (String)session.getAttribute("sessionMid");
+		//String userId = (String)session.getAttribute("sessionMid");
 		
 		logger.info("저장개수 : "+cartList.size());
 		

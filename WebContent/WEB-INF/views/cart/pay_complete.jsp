@@ -136,7 +136,7 @@
 						        </tr>
 						        <tr>
 						         	<td class="ico4">
-						         		주문내역 확인은 <a class="text-warning" href="#">[마이페이지]</a>에서 조회 하실 수 있습니다. 
+						         		주문내역 확인은 <a class="text-warning" href="<%=application.getContextPath()%>/mypage/mypage_user">[마이페이지]</a>에서 조회 하실 수 있습니다. 
 						         	</td>
 						        </tr>
 						        

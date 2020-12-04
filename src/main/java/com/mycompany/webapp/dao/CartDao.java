@@ -34,16 +34,16 @@ public class CartDao{
 
 	//cartDto에 저장한거 카트에 insert
 	public int insert1(CartDto cartItem) {
-		int cartRow = sst.insert("mybatis.mapper.cart.insert", cartItem);
+		int cart1 = sst.insert("mybatis.mapper.cart.insert1", cartItem);
 		//logger.info("insert하는 : "+cartItem.toString());
-		return cartRow;
+		return cart1;
 	}
 
 	//cartDto에 저장한거 카트어플라이 insert
 	public int insert2(CartDto cartItem) {
-		int cartRow = sst.insert("mybatis.mapper.classAppl.insert", cartItem);
+		int cart2 = sst.insert("mybatis.mapper.cart.insert2", cartItem);
 		//logger.info("insert하는 : "+cartItem.toString());
-		return cartRow;
+		return cart2;
 	}
 	
 
