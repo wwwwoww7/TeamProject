@@ -120,28 +120,6 @@
 					</div> 
 				</div>
 	   		</div>
-				
-				
-				
-				<%-- <div class="container">
-		        	<div class="row mt-4">
-						<c:forEach var="classes" items="${tutorclassList}">
-							<div class="col-12 col-md-6 col-lg-3 item gallery-image">
-						        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
-						            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
-						            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
-						            </a>
-						            <div class="icon-wrapper"> <!-- 돋보기 -->
-						                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-						            </div>
-						        </div>
-						        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-						           [ ${classes.class_cate_nm} ]  ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
-						        </h6>
-						    </div>
-						</c:forEach>
-					</div>
-		   		</div> --%>
 			</section>
 		</div>
 	</section>
@@ -237,12 +215,50 @@
 			.col-md-6 {
 			    max-width: 49%;
 			}
+			
 		}
+		
 		@media (min-width: 992px){
 			.col-lg-3{
 				max-width: 24%
 			}
 		
+		}
+		
+		@media screen and (max-width: 768px){ 
+			.table #no {
+				display: none;
+			}
+			.table #noTD {
+				display: none;
+			}	
+			.table #qaMid {
+				display: none;
+			}
+			.table #qaMidTD {
+				display: none;
+			}
+			.display-7 {
+				font-size: 15px;
+			}		
+		}
+		
+		@media screen and (max-width: 576px){ 
+			.table #noticeDate {
+				display: none;
+			}
+			.table #noticeDateTD {
+				display: none;
+			}	
+			.table #qaDate {
+				display: none;
+			}
+			.table #qaDateTD {
+				display: none;
+			}
+			.display-7 {
+				font-size: 12px;
+			}		
 		}
 	 </style>
 	<script type="text/javascript">

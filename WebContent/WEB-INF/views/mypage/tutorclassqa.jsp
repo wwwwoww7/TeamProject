@@ -9,8 +9,8 @@
 			<th class="head-item mbr-fonts-style display-7">강의명</th>
 			<th class="head-item mbr-fonts-style display-7">문의제목</th>
 			<th class="head-item mbr-fonts-style display-7">답변여부</th>
-			<th class="head-item mbr-fonts-style display-7">작성자</th>
-			<th class="head-item mbr-fonts-style display-7">문의날짜</th>
+			<th id="qaMid" class="head-item mbr-fonts-style display-7">작성자</th>
+			<th id="qaDate" class="head-item mbr-fonts-style display-7">문의날짜</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -24,8 +24,8 @@
 					<c:if test="${qalist.class_qa_answer != null}">답변완료</c:if>
 					<c:if test="${qalist.class_qa_answer == null}">미응답</c:if>
 				</td>
-				<td class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
-				<td class="body-item mbr-fonts-style display-7">
+				<td id="qaMidTD" class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
+				<td id="qaDateTD"class="body-item mbr-fonts-style display-7">
 					<fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/>
 				</td>
 			</tr>
