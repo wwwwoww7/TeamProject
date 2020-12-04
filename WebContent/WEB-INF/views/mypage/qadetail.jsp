@@ -116,22 +116,24 @@
 									<tr>
 								        <th class="text-center">답변</th>
 								         <td class="p-3" width="100%;">
-								        	<textarea rows="4" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_answer}</textarea>
+								         	<textarea class="p-3" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_answer}</textarea>
 								        </td>
 								    </tr> 
 						 		</c:if>
 						    </tbody> 
 					    </table>
-					    <div align="right">
-					    	<a class="btn btn-sm" style="background-color: #ffc800; color: #ffff;" href="<%=request.getContextPath()%>/mypage/qaDelete?class_qa_no=${qalist.class_qa_no}">답글삭제</a>   
-						</div>
+					    <c:if test="${qalist.class_qa_answer != null}">
+						    <div align="right">
+						    	<a class="btn btn-sm" style="background-color: #ffc800; color: #ffff;" href="<%=request.getContextPath()%>/mypage/qaDelete?class_qa_no=${qalist.class_qa_no}">답변삭제</a>   
+							</div>
+						</c:if>
 						<br/>
 						<form onsubmit="return writeCheck();" action="qaAnswer" method="POST" id="qaAnswer" class="mbr-form form-with-styler">
 							<input type="hidden" id="class_qa_no" name="class_qa_no" value="${qalist.class_qa_no}"/>
 							
 							<div class="input-group">
-							<textarea  id="class_qa_answer" name="class_qa_answer" class="form-control">답변 내용을 입력하세요!</textarea>
-							<input type="submit" class="btn item-btn btn-success text-primary display-7" inputmode="text" value="답변" />
+								<textarea  id="class_qa_answer" name="class_qa_answer" class="form-control autosize" onkeydown="resize(this)" onkeyup="resize(this)" placeholder="답변 내용을 입력하세요!"></textarea>
+								<input type="submit" class="btn item-btn btn-success text-primary display-7" inputmode="text" value="답변"  height="100%"/>
 							</div>
 						</form>
 						<br/>
@@ -160,6 +162,10 @@
 			}
 			return true;
 	
+		}
+		function resize(obj) {
+			  obj.style.height = "1px";
+			  obj.style.height = (12+obj.scrollHeight)+"px";
 		}
 		
 	</script>	
@@ -201,5 +207,8 @@
 		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
+		<style>
+			textarea.autosize { min-height: 50px; }
+		</style>
 </body>
 </html>
