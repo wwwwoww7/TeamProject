@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html  >
@@ -51,16 +51,25 @@
 					<input type="hidden" value="${eventD.event_no}" />
 					<h3>${eventD.event_ti}</h3>
 					<br/>
+					<br/>
+					<br/>
 				</div>
 			</div>
 			
 	    	<div class="row">
 	    		
-	    		<div class="col-6"  align="center">
+	    		<div class="col-sm-6"  align="center" >
+	    		
+	    			<h4><fmt:formatDate value="${eventD.event_start}" pattern="yyyy-MM-dd"/>~
+	    				<fmt:formatDate value="${eventD.event_end}" pattern="yyyy-MM-dd"/>
+	    			</h4>
+    				<br/>
 	    			<p>${eventD.event_ct}</p>
+	    			
 	    			<p>내용 적어보세요 </p>
 	    		</div>
-	    		<div class="col-6"  align="center">
+	    		<div class="col-sm-6"  align="center">
+	    			<br/>
 	    			<img width="100%" src="<%=application.getContextPath()%>/event/eventDetailDownload?event_detail=${eventD.event_detail}">
 	    		</div>
 	    		
@@ -75,30 +84,19 @@
 				<c:if test="${eventD.eenable == 1}">
 				<a class="btn btn-md btn-success display-4 text-primary" href="<%=application.getContextPath()%>/allClass" >클래스 구경하러가기</a>
 				</c:if>
-				<input type=button class="btn btn-md btn-success display-4 text-primary" value="취소" onClick="history.back();">
+				<a class="btn btn-md btn-success display-4 text-primary" href="javascript:history.back()" >취소</a>
 				
 			</div>
+			
+				
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<a class="btn btn-sm btn-success btn-primary-outline display-7 text-primary" href="<%=application.getContextPath()%>/event/eventUpdateForm?event_no=${eventD.event_no}">이벤트수정</a>
-			<a class="btn btn-sm btn-success btn-primary-outline display-7 text-primary" href="<%=application.getContextPath()%>/event/eventDelete?event_no=${eventD.event_no}">이벤트삭제</a>
-			<!-- 		<script type="text/javascript">
-				function eventDelete(event_no) {
-					$.ajax({
-						url:"eventDelete",
-						data:{event_no:event_no},
-						method:"post",
-						success:function(data) {
-							if(data.result == "success") {
-								eventList();
-							}// 삭제를 했으므로 리스트를 재시작 한다는 의미
-						}
-					});
-				}
-			</script> -->
+				<div class="mbr-section-btn mt-4" >
+				<a class="btn btn-md btn-success display-4 text-primary" href="<%=application.getContextPath()%>/event/eventUpdateForm?event_no=${eventD.event_no}">이벤트수정</a>
+				<a class="btn btn-md btn-success display-4 text-primary" href="<%=application.getContextPath()%>/event/eventDelete?event_no=${eventD.event_no}">이벤트삭제</a>
+				
+				</div>
 			</sec:authorize>
-			<!-- <div class="container">
-						
-			</div> <p></p> -->
+			
 		</div>
 	</section>
 

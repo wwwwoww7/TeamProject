@@ -46,11 +46,11 @@
 		<div class="container container-table">
 			<div class="table-wrapper">
 				<div class="container"></div>
-				<div id="eventUpdate" class="container table-info-container">
+				<div  class="container table-info-container">
 					<input type="hidden" id="evnet_no" name="evnet_no" value="${evnet_no}"/>
 					<div class="row justify-content-center mt-4">
 						<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-							<form action="eventUpdate" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
+							<form onsubmit="return updateCheck();"action="eventUpdate" id="eventUpdate" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<div class="dragArea row" style="margin: 5px">
 									<input type="hidden" id="event_no" name="event_no" value="${event.event_no}">
 									<div class="col-md-6 input-group">
@@ -195,6 +195,71 @@
 												});
 											  }
 										</script> -->
+										
+										<script type="text/javascript">
+											function updateCheck() {
+
+												var ntitle = $("#event_nm").val();
+												if(ntitle == "") { 
+													
+													alert("이벤트제목을 입력해주세요");
+													$("#event_nm").focus();
+													return false;
+												}
+												
+												var eventTitle = $("#event_ti").val();
+												if(eventTitle == "") { 
+													
+													alert("이벤트 상세 제목을 입력해주세요");
+													$("#event_ti").focus();
+													return false;
+												}
+												
+												var eventStart = $("#event_start").val();
+												if(eventStart == "") { 
+													
+													alert("이벤트 시작일을 입력해주세요");
+													$("#event_start").focus();
+													return false;
+												}
+												
+												var eventEnd = $("#event_end").val();
+												if(eventEnd == "") { 
+													
+													alert("이벤트 종료일을 입력해주세요");
+													$("#event_end").focus();
+													return false;
+												}
+												var eventImg = $("#eventIMG").val();
+												if(eventImg == "") { 
+													
+													alert("이벤트 사진을 등록해주세요");
+													$("#eventIMG").focus();
+													return false;
+												}	
+												
+												var eventDetail = $("#event_detail").val();
+												if(eventDetail == "") { 
+													
+													alert("이벤트 상세사진을 등록해주세요");
+													$("#event_detail").focus(); event_ct
+													return false;
+												}
+												var eventCt = $("#event_ct").val();
+												if(eventCt == "") { 
+													
+													alert("이벤트 상세정보를 입력해주세요");
+													$("#event_ct").focus();
+													return false;
+												}	
+												else{
+													$("#eventUpdate").writeCheck();
+												}
+												return true;
+
+											}
+											
+										</script>		
 									</div>
 									<div class="col-md-3">
 									<input type=button  class="btn item-btn btn-success display-7 text-primary"value="취소" onClick="history.back();">

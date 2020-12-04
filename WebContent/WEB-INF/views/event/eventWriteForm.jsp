@@ -46,11 +46,11 @@
 		<div class="container container-table">
 			<div class="table-wrapper">
 				<div class="container"></div>
-				<div id="eventWrite" class="container table-info-container">
+				<div class="container table-info-container">
 					<input type="hidden" id="evnet_no" name="evnet_no" value="${evnet_no}"/>
 					<div class="row justify-content-center mt-4">
 						<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-							<form onsubmit="eventWrite()" action="eventWriteForm" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
+							<form onsubmit="return writeCheck();" id="eventWrite" action="eventWriteForm" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<div class="dragArea row" style="margin: 5px">
 									<%-- <div class="col-md-6 input-group"> 
 										<select id="event_no" name="event_no" style="width: 70%; display: inline;" >
@@ -105,6 +105,7 @@
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 썸네일</span> 
 										<input type="file" id="eventIMG" name="eventIMG" class="form-control"/>
+										<span id="event_ctError" class="error"></span>
 									</div>
 									
 								</div>
@@ -112,6 +113,7 @@
 									<div class="col-md-12 input-group">
 										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 상세이미지</span> 
 										<input type="file" id="eventIMGDetail" name="eventIMGDetail" class="form-control"/>
+										<span id="event_ctError" class="error"></span>
 									</div>
 									
 								</div>
@@ -125,36 +127,122 @@
 								</div> 
 								<div class="dragArea row">
 									<div class="col-md-3"></div>
-									<div class="col-md-3">
+									<div class="mbr-section-btn mt-4" >
 										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin-left: 5px;" value="등록"/>
-										<script type="text/javascript">
+										<!-- <script type="text/javascript">
 											 function eventWrite() {
-												
+												 
+												 console.log("나와주세요 ");
+												 
 												var event_no = $("#event_no").val();
-												
-												 event_nm = $("#event_nm").val().trim();
-												if(event_nm == "") { $("#event_nmError").text("필수입력"); }
+
+												var event_nm = $("#event_nm").val().trim();
+												if(event_nm == "") { 
+													$("#event_nmError").text("필수입력"); 
+												}
 												else { $("#event_nmError").text(""); }
 												
 												var event_ct = $("#event_ct").val().trim();
 												if(event_ct == "") { $("#event_ctError").text("필수입력"); }
 												else { $("#event_ctError").text(""); }
 												
+												var event_ti = $("#event_ti").val().trim();
+												if(event_ti == "") { $("#event_tiError").text("필수입력"); }
+												else { $("#event_tiError").text(""); }
+												
+												var event_start = $("#event_start").val().trim();
+												if(event_start == "") { $("#event_startError").text("필수입력"); }
+												else { $("#event_startError").text(""); }
+												
+												var event_end = $("#event_end").val().trim();
+												if(event_end == "") { $("#event_endError").text("필수입력"); }
+												else { $("#event_endError").text(""); }
+												
+												var event_img = $("#event_img").val().trim();
+												if(event_img == "") { $("#event_imgError").text("필수입력"); }
+												else { $("#event_imgError").text(""); }
+												
+												var event_detail = $("#event_detail ").val().trim();
+												if(detail  == "") { $("#event_detail Error").text("필수입력"); }
+												else { $("#event_detailError").text(""); }
+												
+												
 												if(event_nm == "" || event_ct == "") {
-													return false;	
+													
+													
+													return;	
 												} 
-												
-												var event_img = $("#event_img").val();
-												
-												var mid = $("#mid").val();
-												
 												
 												return true;
 											} 
-										</script>
+										</script> -->
+										<script type="text/javascript">
+											function writeCheck() {
+
+												var ntitle = $("#event_nm").val();
+												if(ntitle == "") { 
+													
+													alert("이벤트제목을 입력해주세요");
+													$("#event_nm").focus();
+													return false;
+												}
+												
+												var eventTitle = $("#event_ti").val();
+												if(eventTitle == "") { 
+													
+													alert("이벤트 상세 제목을 입력해주세요");
+													$("#event_ti").focus();
+													return false;
+												}
+												
+												var eventStart = $("#event_start").val();
+												if(eventStart == "") { 
+													
+													alert("이벤트 시작일을 입력해주세요");
+													$("#event_start").focus();
+													return false;
+												}
+												
+												var eventEnd = $("#event_end").val();
+												if(eventEnd == "") { 
+													
+													alert("이벤트 종료일을 입력해주세요");
+													$("#event_end").focus();
+													return false;
+												}
+												var eventImg = $("#eventIMG").val();
+												if(eventImg == "") { 
+													
+													alert("이벤트 사진을 등록해주세요");
+													$("#eventIMG").focus();
+													return false;
+												}	
+												
+												var eventDetail = $("#event_detail").val();
+												if(eventDetail == "") { 
+													
+													alert("이벤트 상세사진을 등록해주세요");
+													$("#event_detail").focus(); event_ct
+													return false;
+												}
+												var eventCt = $("#event_ct").val();
+												if(eventCt == "") { 
+													
+													alert("이벤트 상세정보를 입력해주세요");
+													$("#event_ct").focus();
+													return false;
+												}	
+												else{
+													$("#eventWrite").writeCheck();
+												}
+												return true;
+
+											}
+											
+										</script>		
 									</div>
-									<div class="col-md-3">
-									<input type=button  class="btn item-btn btn-success display-7 text-primary"value="취소" onClick="history.back();">
+									<div class="mbr-section-btn mt-4" >
+									<a class="btn btn-md btn-success display-4 text-primary" href="javascript:history.back()">취소</a>
 									</div>
 									<div class="col-md-3"></div> 
 								</div>

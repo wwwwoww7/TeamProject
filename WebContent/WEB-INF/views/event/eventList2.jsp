@@ -29,7 +29,7 @@
 				<td colspan="4" style="text-align: center;">
 					<a class="btn btn-outline btn-sm" href="javascript:closeCity(0,1)">&laquo</a> 
 					
-					<c:if test="${pager.groupNo > 0}">
+					<c:if test="${pager.groupNo > 1}">
 						<a class="btn btn-outline btn-sm" href="javascript:closeCity(0,${pager.startPageNo-1})">이전</a> 
 					</c:if> 
 					
@@ -43,7 +43,7 @@
 					 	
 					 </c:forEach> 
 					 
-					  <c:if test="${pager.groupNo < pager.totalGroupNo+1}">
+					  <c:if test="${pager.groupNo < pager.totalGroupNo}">
 					 <a class="btn btn-outline btn-sm" href="javascript:closeCity(0,${pager.endPageNo+1})">다음</a>
 					 </c:if>
 					 
