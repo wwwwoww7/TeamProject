@@ -278,6 +278,40 @@
 			}
 		
 		}
+		@media screen and (max-width: 768px){ 
+			.table #no {
+				display: none;
+			}
+			.table #noTD {
+				display: none;
+			}	
+			.table #qaMid {
+				display: none;
+			}
+			.table #qaMidTD {
+				display: none;
+			}
+			.display-7 {
+				font-size: 15px;
+			}		
+		}
+		
+		@media screen and (max-width: 576px){ 
+			.table #noticeDate {
+				display: none;
+			}
+			.table #noticeDateTD {
+				display: none;
+			}	
+			.table #qaDate {
+				display: none;
+			}
+			.table #qaDateTD {
+				display: none;
+			}
+			.display-7 {
+				font-size: 12px;
+			}	
 		
 	
 	 </style>

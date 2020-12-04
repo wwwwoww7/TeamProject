@@ -6,7 +6,7 @@
 	<select id="countAllByUserID" parameterType="String" resultType="int">
 		select count(*)
 		from class_notice n, class_appl app, class c
-		where app.class_no = n.class_no and c.class_no =  n.class_no and app.user_id = #{mid}
+		where app.class_no = n.class_no and c.class_no =  n.class_no and app.mid = #{mid}
 	</select>
 	<!-- "강사"의 공지사항 행 수 가져오기 -->
 	<select id="getTotalRowByTutorID" resultType="int">
@@ -41,7 +41,7 @@
 	                    from class_notice n, class_appl app, class c
 	                    where app.class_no = n.class_no 
 	                    		and c.class_no =  n.class_no 
-	                    		and app.user_id = #{mid}
+	                    		and app.mid = #{mid}
 	                    order  by n.class_notice_no desc) new_t
 	            where rownum &lt;= #{endRowNo} 
 	        )   
