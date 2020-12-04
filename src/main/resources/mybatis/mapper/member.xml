@@ -39,7 +39,7 @@
 		from (
 				select c.class_no, class_thum, c.class_cate_no, class_nm_s,m.mid,ca.class_cate_nm
 		        from class c, class_appl app, member m, class_cate ca
-		        where c.class_no = app.class_no and app.user_id = m.mid and ca.class_cate_no = c.class_cate_no) ta
+		        where c.class_no = app.class_no and app.mid = m.mid and ca.class_cate_no = c.class_cate_no) ta
 		where ta.mid = #{mid}
 	</select>
 	
