@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dao.ClassQADao;
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.ClassNoticePagerDto;
 import com.mycompany.webapp.dto.ClassQADto;
 import com.mycompany.webapp.dto.MyPagerDto;
 
@@ -53,8 +54,8 @@ public class ClassQAService {
 		int qa = classQADao.updateQAAnswer(qaAnswer);		
 	}
 
-	public List<ClassQADto> getQAListByClassNo(int class_no) {
-		List<ClassQADto> qlist = classQADao.selectQaListByClassNo(class_no);
+	public List<ClassQADto> getQAListByClassNo(ClassNoticePagerDto pager) {
+		List<ClassQADto> qlist = classQADao.selectQaListByClassNo(pager);
 		return qlist;
 	}
 
@@ -65,6 +66,11 @@ public class ClassQAService {
 
 	public int QaDelete(int class_qa_no) {
 		int result = classQADao.QaDelete(class_qa_no);
+		return result;
+	}
+
+	public int getTotalRowByClassNo(int class_no) {
+		int result = classQADao.selectTotalCountByClassNo(class_no);
 		return result;
 	}
 	

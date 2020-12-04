@@ -86,13 +86,15 @@
 		
 		</c:forEach>
 	</div>
-
+	
 	<!-- Left and right controls -->
 	<a class="carousel-control-prev text-black" href="#hotclassca" data-slide="prev"> 
-		<span class="carousel-control-prev-icon">&lt;&lt;</span>
+		<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+<!-- 		<span class="mobi-mbri-arrow-prev"></span> -->
 	</a> 
 	<a class="carousel-control-next text-black" href="#hotclassca" data-slide="next"> 
-		<span class="carousel-control-next-icon">&gt;&gt;</span>
+		<img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+<!-- 		<span class="mobi-mbri-arrow-next"></span> -->
 	</a>
 </div>
 
@@ -145,6 +147,20 @@
 
 
 <style type="text/css">
+ .carousel-control-prev, .carousel-control-next  {
+ 	filter: brightness(70%); 
+ }
+ 
+ .carousel-control-prev:hover, .carousel-control-next:hover  {
+ 	filter: brightness(20%); 
+ }
+ .carousel-control-prev > img , .carousel-control-next  > img {
+ 	width: 50px;
+ 	height: 50px;
+ }
+
+
+
 </style>
  
  

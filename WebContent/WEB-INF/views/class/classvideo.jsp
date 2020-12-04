@@ -155,13 +155,18 @@
 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
 
 <script type="text/javascript">
-  	function pageLoad(page, class_qa_no){
+  	function pageLoad(page, class_qa_no,pageNo){
   		var url = "";
+  		
+  		if(!pageNo){
+  			pageNo=1;
+  		}
+  		
   		
   		/* page-1:list , 2:write, 3:detail */
   		var class_no = "${classInfo.class_no}";
   		if(page == 1){
-  			url+="classqalist";
+  			url+="classqalist?pageNo="+pageNo;
   			$("#writeBtnDiv").show();
   		}else if(page == 2){
   			url+="classqadetail?class_qa_no="+class_qa_no;
@@ -171,7 +176,7 @@
   			
   			if(mid == null || mid== ""){
   				
-  				alert("다시 로그인 해 주세요");
+  				alert("로그인 해 주세요");
   				return false;
   			}
   			
@@ -194,7 +199,7 @@
 	}
 	
 	$(function(){
-		pageLoad(1);
+		pageLoad(1,0,1);
 		$('#classQAWriteForm').hide();
    		$("a").click(function(){
    			var url = $(this).attr("data");

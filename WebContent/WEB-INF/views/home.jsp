@@ -203,7 +203,6 @@
 		}
 		
 		
-		
 		#pickimg1, #pickimg2 {
 			width: 25px;
 			height: 25px;

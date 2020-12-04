@@ -39,7 +39,7 @@
 				<td class="body-item mbr-fonts-style display-7" align="center"><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
-		<c:if test="${fn:length(list) > 10 }">
+<%-- 		<c:if test="${fn:length(list) > 10 }"> --%>
 			<tr>
 				<td colspan="4" style="text-align: center;">
 					<a class="text-black" style="margin-right: 15px; margin-top: 5px;" href="javascript:classNotice(1)">&laquo;</a>
@@ -60,7 +60,7 @@
 						<a class="text-black" href="javascript:classNotice(${pager.totalPageNo})">&raquo;</a>
 				</td>		
 			</tr>
-		</c:if>
+<%-- 		</c:if> --%>
 		</tbody>
 
 	</table>

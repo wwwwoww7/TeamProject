@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.controller.HomeController;
 import com.mycompany.webapp.dto.ClassNoticeDto;
+import com.mycompany.webapp.dto.ClassNoticePagerDto;
 import com.mycompany.webapp.dto.ClassQADto;
 import com.mycompany.webapp.dto.MyPagerDto;
 
@@ -49,8 +50,8 @@ public class ClassQADao {
 	
 	
 	//강의번호로 qalist 조회
-	public List<ClassQADto> selectQaListByClassNo(int class_no) {
-		List<ClassQADto> qlist = sst.selectList("mybatis.mapper.class_QA.selectQAListClassNo", class_no);
+	public List<ClassQADto> selectQaListByClassNo(ClassNoticePagerDto pager) {
+		List<ClassQADto> qlist = sst.selectList("mybatis.mapper.class_QA.selectQAListClassNo", pager);
 		logger.info("===================>" + qlist.size());
 		return qlist;
 	}
@@ -61,6 +62,12 @@ public class ClassQADao {
 	public int QaDelete(int class_qa_no) {
 		int rows = sst.update("mybatis.mapper.class_QA.QaDelete", class_qa_no);
 		return rows;
+	}
+	
+	
+	public int selectTotalCountByClassNo(int class_no) {
+		int totalRows = sst.selectOne("mybatis.mapper.class_QA.selectTotalCountByClassNo",class_no);
+		return totalRows;
 	}
 	
 }

@@ -56,6 +56,7 @@ public class ClassController {
 	ClassQAService classQAService;
 	
 
+
 	@GetMapping("/classdetail")
 	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model) {
 		
@@ -129,10 +130,18 @@ public class ClassController {
 	}
 	
 	@GetMapping("/classqalist")
-	public String classqalist(int class_no, Model model) {
+	public String classqalist(@RequestParam(defaultValue = "1")int pageNo, int class_no, Model model) {
+		
+		int totalRows = classQAService.getTotalRowByClassNo(class_no);
+		ClassNoticePagerDto pager = new ClassNoticePagerDto(5, 3, totalRows, pageNo);
+		pager.setClass_no(class_no);
+		
 		//qa list 불러오기
-		List<ClassQADto> qaList = classQAService.getQAListByClassNo(class_no);
+		List<ClassQADto> qaList = classQAService.getQAListByClassNo(pager);
+		
 		model.addAttribute("qaList", qaList);
+		model.addAttribute("pager",pager); 
+		
 		return "/class/classqalist";
 	}
 	
@@ -256,7 +265,7 @@ public class ClassController {
 	public String classNotices(@RequestParam(defaultValue = "1")int pageNo, int class_no, Model model) {
 		
 		int totalRows = classNoticeService.getTotalRowByClassNo(class_no);
-		ClassNoticePagerDto pager = new ClassNoticePagerDto(10,5,totalRows, pageNo);
+		ClassNoticePagerDto pager = new ClassNoticePagerDto(10,3,totalRows, pageNo);
 		pager.setClass_no(class_no);
 		
 		List<ClassNoticeDto> list = classNoticeService.getNoticeByClassNo(pager);
@@ -281,6 +290,7 @@ public class ClassController {
 		
 		return "/class/classnoticedetail";
 	}
+	
 	
 	//*=========강의정보 수정 by 강사(혜빈)=================//
 	@GetMapping("/classEdit")

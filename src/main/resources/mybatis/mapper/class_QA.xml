@@ -49,12 +49,25 @@
 	</select>
 	
 	<!-- class_no로 qa list 조회 -->
-	<select id="selectQAListClassNo" resultType="classQa">
-		select CLASS_QA_NO, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID, member.MNICK, TUTOR_ID, CLASS_NO
-		from class_qa, member
-		where class_qa.WRITER_ID = member.mid
-		and class_no = #{class_no} 
-		order by CLASS_QA_NO desc
+	<select id="selectQAListClassNo" resultType="classQa" parameterType="classNoticePager">
+		
+		select CLASS_QA_NO, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID, MNICK, TUTOR_ID, CLASS_NO
+		from (
+		        select rownum as rnum, CLASS_QA_NO, CLASS_QA_CATE, CLASS_QA_TITLE, CLASS_QA_DATE, CLASS_QA_CONTENT, CLASS_QA_ANSWER, WRITER_ID, member.MNICK, TUTOR_ID, CLASS_NO
+		          from class_qa, member
+		         where class_qa.WRITER_ID = member.mid
+		               and class_no = #{class_no} 
+		               and rownum &lt;= #{endRowNo}
+		        order by CLASS_QA_NO desc
+		     )
+		where rnum &gt;=#{startRowNo}
+		
+	</select>
+	
+	
+	<!-- 강의번호로 전체 count  -->
+	<select id="selectTotalCountByClassNo" parameterType="int" resultType="int">
+		select count(*) from class_qa where class_no = #{class_no}
 	</select>
 	
 	

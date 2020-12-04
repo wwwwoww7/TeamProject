@@ -66,7 +66,7 @@
 				<strong>나의 강의</strong>
 			</h3>
 			<hr style="background-color: #ffc800; height:2px;">
-<%-- 			<div class="container p-0">
+ 			<div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/4}" integerOnly="true" />
 	        		<div id="demo" class="carousel slide" data-ride="carousel">
@@ -115,31 +115,31 @@
 					  </a>
 					</div> 
 				</div>
-	   		</div> --%>
+	   		</div> 
 			
-			<div class="container">
-	        	<div class="row mt-4">
+<!-- 			<div class="container"> -->
+<!-- 	        	<div class="row mt-4"> -->
 	        	
-					<c:forEach var="classes" items="${userclassList}">
-						<div class="col-12 col-md-6 col-lg-3 item gallery-image">
-					        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
-					            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
-					            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
-					            </a>
-					            <div class="icon-wrapper"> <!-- 돋보기 -->
-					                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-					            </div>
-					        </div>
-					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-					           [ ${classes.class_cate_nm} ]
-					        </h6> 
-					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-					           ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
-					        </h6>
-					    </div>
-					</c:forEach>
-				</div>
-	   		</div>
+<%-- 					<c:forEach var="classes" items="${userclassList}"> --%>
+<!-- 						<div class="col-12 col-md-6 col-lg-3 item gallery-image"> -->
+<%-- 					        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}"> --%>
+<%-- 					            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}"> --%>
+<%-- 					            	<img class="w-100" src="<%=request.getContextPath() %>/resources/images/class/${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}"> --%>
+<!-- 					            </a> -->
+<!-- 					            <div class="icon-wrapper"> 돋보기 -->
+<!-- 					                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span> -->
+<!-- 					            </div> -->
+<!-- 					        </div> -->
+<!-- 					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7"> -->
+<%-- 					           [ ${classes.class_cate_nm} ] --%>
+<!-- 					        </h6>  -->
+<!-- 					        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7"> -->
+<%-- 					           ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a> --%>
+<!-- 					        </h6> -->
+<!-- 					    </div> -->
+<%-- 					</c:forEach> --%>
+<!-- 				</div> -->
+<!-- 	   		</div> -->
 		</section>
     </div>
 </section>
@@ -155,10 +155,10 @@
 			<div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/4}" integerOnly="true" />
-	        		<div id="demo" class="carousel slide" data-ride="carousel">
+	        		<div id="pickcardview" class="carousel slide" data-ride="carousel">
 						<ul class="carousel-indicators">
 							<c:forEach var="i" begin="0" end="${listlength}">
-								 <li data-target="#demo" data-slide-to="${i}"></li>
+								 <li data-target="#pickcardview" data-slide-to="${i}"></li>
 							</c:forEach>
 					  	</ul>
 						<div class="carousel-inner">
@@ -193,10 +193,10 @@
 								</div>
 							</c:forEach>
 						</div>
-					  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+					  <a class="carousel-control-prev" href="#pickcardview" data-slide="prev">
 					    <span class="carousel-control-prev-icon"></span>
 					  </a>
-					  <a class="carousel-control-next" href="#demo" data-slide="next">
+					  <a class="carousel-control-next" href="#pickcardview" data-slide="next">
 					    <span class="carousel-control-next-icon"></span>
 					  </a>
 					</div> 
