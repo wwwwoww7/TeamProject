@@ -35,17 +35,11 @@ public class EventService {
 		List<EventDto> all = eventDao.selectByPage(pager);
 		return all;
 	}
-
+	//이벤트 상세페이지
 	public EventDto getEventDetail(int event_no) {
 		EventDto ed = eventDao.selectEventDetail(event_no);
 		return ed;	
 	
-	}
-	
-
-	public EventDto getEventEndDetail(int event_no) {
-		EventDto ed2 = eventDao.selectEventEndDetail(event_no);
-		return ed2;
 	}
 	
 	//진행중인가장 최근 이벤트 8개 
@@ -53,11 +47,29 @@ public class EventService {
 		List<EventDto> elist = eventDao.selectEight();
 		return elist;
 	}
-
+	//이벤트 등록
 	public void eventWrite(EventDto event) {
 		eventDao.insert(event);
 		
-	} 
-	 
+	}
+	//이벤트 업데이트
+	public EventDto getevent(int event_no) {
+		EventDto event = eventDao.selectByBno(event_no);
+		return event;
+	}
+
+	public int eventUpdate(EventDto event) {
+		int rows = eventDao.UpdateEvent(event);
+		return rows;
+	}
+
+	public int eventDelete(int evnet_no) {
+		int rows = eventDao.deleteByBno(evnet_no);
+		return rows;
+	}
+
+
+
+
 	
 }

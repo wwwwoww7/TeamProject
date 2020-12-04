@@ -49,17 +49,30 @@ public class EventDao {
 		return ed;
 	}
 
-
-	public EventDto selectEventEndDetail(int event_no) {
-		EventDto ed2 = sst.selectOne("mybatis.mapper.event.selectEventEndDetail",event_no);
-		return ed2;
-	}
-
-
 	public int insert(EventDto event) {
 		int rows = sst.insert("mybatis.mapper.event.insert", event);
 		return rows;
 	}
+
+
+	public EventDto selectByBno(int event_no) {
+		EventDto event = sst.selectOne("mybatis.mapper.event.selectByBno", event_no);
+		return event;
+	}
+
+
+	public int UpdateEvent(EventDto event) {
+		int rows = sst.update("mybatis.mapper.event.update", event);
+		return rows;
+	}
+
+	
+		public int deleteByBno(int event_no) {
+			int rows = sst.delete("mybatis.mapper.event.deleteByBno", event_no);
+			return rows;
+		}
+	
+
 
 }
 

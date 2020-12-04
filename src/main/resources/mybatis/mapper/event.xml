@@ -47,16 +47,10 @@
 	</select>
 	
 	<select id="selectEventDetail" parameterType="int" resultType="event">
-		select event_no, event_nm, event_start, event_end, event_detail,event_ct, event_ti
+		select event_no, event_nm, event_start, event_end, event_detail,event_ct, event_ti, eenable
    		from event
     	where event_no=#{event_no}
 	</select>
-	
-	<select  id="selectEventEndDetail" parameterType="int" resultType="event">
-		select event_no, event_nm, event_start, event_end, event_detail, event_ct, event_ti
-   		from event
-    	where event_no=#{event_no} 
-    </select>
     
 	<!-- 진행중인 가장 최근 이벤트 8 개  -->
 	<select id="selectListEight" resultType="event">
@@ -64,9 +58,30 @@
 		order by event_no desc
 	</select>
 	
+	<select id="selectByBno" parameterType="int" resultType="event">
+		 select event_no, event_nm, event_start, event_end, event_detail, event_ct, event_ti
+		 from event
+		 where event_no=#{event_no} 
+	</select>
+	
+	<!-- 이벤트 등록 -->
 	<insert id="insert" parameterType="event">
 		insert into event (event_no, event_nm, event_img, event_start, event_end, event_ti, eenable, event_detail, event_ct)  
         values (SEQ_EVENT.nextval,#{event_nm}, #{event_img}, #{event_start}, #{event_end}, #{event_ti}, #{eenable}, #{event_detail}, #{event_ct})
 	</insert>
+	
+	<!-- 이벤트 수정 -->
+	<update id="update" parameterType="event">
+		update event set event_nm=#{event_nm}, event_img=#{event_img}, event_start=#{event_start}, event_end=#{event_end}, event_ti=#{event_ti}, event_detail=#{event_detail}, event_ct=#{event_ct}
+		where event_no=#{event_no}
+	</update>
+	
+	<!-- 이벤트 삭제 -->
+	<delete id="deleteByBno" parameterType="int">
+		delete from event where event_no=#{event_no}	
+	</delete> 
+	
+	
+
 	
 </mapper>

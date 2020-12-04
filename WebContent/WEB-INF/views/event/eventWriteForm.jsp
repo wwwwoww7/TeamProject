@@ -137,7 +137,7 @@
 												else { $("#event_nmError").text(""); }
 												
 												var event_ct = $("#event_ct").val().trim();
-												if(event_ct == "") { $("#event_ctError").text("필수"); }
+												if(event_ct == "") { $("#event_ctError").text("필수입력"); }
 												else { $("#event_ctError").text(""); }
 												
 												if(event_nm == "" || event_ct == "") {

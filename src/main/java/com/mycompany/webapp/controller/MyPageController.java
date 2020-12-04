@@ -470,7 +470,7 @@ public class MyPageController {
 		//파일의 데이터를 읽기 위한 입력 스트림 얻기
 		String saveFilePath = "D:/MyWorkspace/photo/member/" + fileName;
 		InputStream is = new FileInputStream(saveFilePath);
-		
+		  
 		//응답 HTTP 헤더 구성
 		//1)Content-Type 헤더 구성(파일의 종류 지정)
 		ServletContext application = request.getServletContext();

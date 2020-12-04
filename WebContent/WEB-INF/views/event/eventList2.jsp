@@ -18,7 +18,7 @@
 				<tr>
 					<td><input type="hidden" value="${event.event_no}"/></td>
 					<td><a class="text-black"  href="<%=application.getContextPath()%>/event/eventDetail2?event_no=${event.event_no}">${event.event_nm}</a></td>
-					<td><div style="margin:15px"><a href="<%=application.getContextPath()%>/event/eventDetail2?event_no=${event.event_no}"><img src="<%=application.getContextPath()%>/resources/img/ar/${event.event_img}" width="400" height="240" /></a></div>
+					<td><div style="margin:15px"><a href="<%=application.getContextPath()%>/event/eventDetail2?event_no=${event.event_no}"><img src="<%=application.getContextPath()%>/event/event_imgDownload?event_img=${event.event_img}" width="400" height="240" /></a></div>
 					</td>
 					<td><fmt:formatDate value="${event.event_start}" pattern="yyyy-MM-dd"/> </td>
 					<td><fmt:formatDate value="${event.event_end}" pattern="yyyy-MM-dd"/></td>
