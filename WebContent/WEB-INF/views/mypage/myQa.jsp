@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="container scroll">
-	<table class="table" cellspacing="0" data-empty="No matching records found">
+	<table class="table table-hover" cellspacing="0" data-empty="No matching records found">
 		<thead>
 			<tr class="table-heads ">  
 			<th class="head-item mbr-fonts-style display-7">강의명</th>
@@ -18,7 +18,7 @@
 			<tr> 
 				<td class="body-item mbr-fonts-style display-7">${qalist.class_nm_s}</td>
 				<td class="body-item mbr-fonts-style display-7">
-					<a class="text-black" href="<%=request.getContextPath()%>/mypage/qaDetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
+					<a class="text-black" href="<%=request.getContextPath()%>/mypage/myqadetail?class_qa_no=${qalist.class_qa_no}">${qalist.class_qa_title}</a>
 				</td>
 				<td class="body-item mbr-fonts-style display-7">
 					<c:if test="${qalist.class_qa_answer != null}">답변완료</c:if>

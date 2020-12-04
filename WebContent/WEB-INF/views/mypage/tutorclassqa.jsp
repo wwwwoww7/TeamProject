@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-	<table class="table" cellspacing="0" data-empty="No matching records found">
+	<table class="table table-hover" cellspacing="0" data-empty="No matching records found">
 		<thead>
 			<tr class="table-heads ">  
 			<th class="head-item mbr-fonts-style display-7">강의명</th>

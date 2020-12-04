@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="container scroll">
-	<table class="table" cellspacing="0" data-empty="No matching records found">
+	<table class="table table-hover" cellspacing="0" data-empty="No matching records found">
 		<thead>
 			<tr class="table-heads ">
-				<th id="no"class="head-item mbr-fonts-style display-7">공지번호</th>
+				<th id="no"class="head-item mbr-fonts-style display-7">글번호</th>
 				<th id="className"class="head-item mbr-fonts-style display-7">강의명</th>
 				<th id="noticeName"class="head-item mbr-fonts-style display-7">제목</th>
 				<th id="noticeMid"class="head-item mbr-fonts-style display-7">작성자</th>
@@ -51,6 +51,6 @@
 			</td>
 	</table>
 	<br />
-	<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" 
+	<a class="btn text-primary btn item-btn btn-success display-7" style="margin: 0px; border-radius: 100px;" 
 		href="<%=request.getContextPath()%>/mypage/noticeWriteForm">글쓰기</a>
 </div>

@@ -60,23 +60,25 @@
 					<div>
 						<table class="table table-bordered">
 							<colgroup>
-							    <col width="15%">
+							    <col width="20%">
 							    <col width="35%">
-							    <col width="15%">
+							    <col width="20%">
 							    <col width="*">
 							</colgroup>
 							<tbody>
 							    <tr>
 							        <th>강의명</th>
-							        <td>${notice.class_nm_s}</td>
+							        <td colspan="3">${notice.class_nm_s}</td>
+							    </tr>
+							    <tr>
 							        <th>제목</th>
-							        <td>${notice.class_notice_title}</td>
+							        <td colspan="3">${notice.class_notice_title}</td>
 							    </tr>
 							    <tr>
 							        <th>작성자</th>
 							        <td>${notice.mid}</td>
 							        <th>작성시간</th>
-							        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></span></td>
+							        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yy.MM.dd"/></span></td>
 							    </tr>
 							    <tr>
 							        <th>첨부파일</th>
@@ -106,8 +108,7 @@
 							</tbody>
 						</table>
 						<br/>
-						<input type="hidden" id="mid" name="mid" value="${notice.mid}"/>
-					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_user">목록으로</a>
+					    <a class="btn item-btn btn-success display-7 text-primary" style="margin: 0px; border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/mypage_user#table1-2g">목록으로</a>
 					</div>
 				</div>
 			</div>
@@ -115,7 +116,7 @@
 	</section>
 	
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-	<input type="hidden" id="mid" name="mid" value="${sessionMid}"/>
+	
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script>
 	<script

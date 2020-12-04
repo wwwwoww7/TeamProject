@@ -44,7 +44,7 @@
 			</h3>
 		</div>
 </section>
-<section class="section-table cid-shfdjfFbld" id="table1-2m">
+<section class="section-table cid-shfdjfFbld" >
 
 		<div class="container container-table">
 			<h2
@@ -60,9 +60,9 @@
 					<div>
 						<table class="table table-bordered">
 						<colgroup>
-						    <col width="15%">
+						    <col width="20%">
 						    <col width="35%">
-						    <col width="15%">
+						    <col width="25%">
 						    <col width="*">
 						</colgroup>
 						<tbody>
@@ -81,7 +81,7 @@
 						        <th>작성자</th>
 						        <td>${qalist.writer_id}</td>
 						        <th>작성일</th>
-						        <td><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/></span></td>
+						        <td><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yy.MM.dd"/></span></td>
 							</tr>
 							<tr>
 								<th>제목</th>
@@ -128,7 +128,7 @@
 					    </table>
 					    <c:if test="${qalist.class_qa_answer != null}">
 						    <div align="right">
-						    	<a class="btn btn-sm" style="background-color: #ffc800; color: #ffff;" href="<%=request.getContextPath()%>/mypage/qaDelete?class_qa_no=${qalist.class_qa_no}">답변삭제</a>   
+						    	<a class="btn btn-sm" style="background-color: #ffc800; color: #ffff; border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/qaDelete?class_qa_no=${qalist.class_qa_no}">답변삭제</a>   
 							</div>
 						</c:if>
 						
@@ -143,7 +143,7 @@
 						</form>
 						</sec:authorize>
 						<br/>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor">확인</a>	
+						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor#table1-2m">확인</a>	
 					</div>
 				
 				</div>

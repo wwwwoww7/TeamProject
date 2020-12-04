@@ -60,9 +60,9 @@
 					<div>
 						<table class="table table-bordered">
 						<colgroup>
-						    <col width="15%">
+						    <col width="20%">
 						    <col width="35%">
-						    <col width="15%">
+						    <col width="25%">
 						    <col width="*">
 						</colgroup>
 						<tbody>
@@ -81,7 +81,7 @@
 						        <th>작성자</th>
 						        <td>${qalist.writer_id}</td>
 						        <th>작성일</th>
-						        <td><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/></span></td>
+						        <td id="date"><span><fmt:formatDate value="${qalist.class_qa_date}" pattern="yy.MM.dd"/></span></td>
 							</tr>
 							<tr>
 								<th>제목</th>
@@ -91,10 +91,7 @@
 						</table>
 						<table class="table table-bordered">
 							<colgroup>
-							    <col width="15%">
-							    <col width="35%">
-							    <col width="15%">
-							    <col width="*">
+							    <col width="20%">
 							</colgroup>
 							<tbody>   
 							    <tr>
@@ -107,24 +104,22 @@
 						<br/>
 						<table class="table table-bordered">
 							<colgroup>
-							    <col width="15%">
-							    <col width="35%">
-							    <col width="15%">
+							    <col width="20%">
 							    <col width="*">
 							</colgroup>
 							<tbody>
-							   <%--  <c:if test="${qalist.class_qa_answer != null}">
+							    <c:if test="${qalist.class_qa_answer != null}">
 									<tr>
 								        <th class="text-center">답변</th>
 								         <td class="p-3" width="100%;">
 								        	<textarea rows="6" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qalist.class_qa_answer}</textarea>
 								        </td>
 								    </tr>    
-						 		</c:if> --%>
+						 		</c:if>
 						    </tbody>
 					    </table>
 						<br/>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_user">확인</a>	
+						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/mypage_user#table1-2i">확인</a>	
 					</div>
 				
 				</div>
@@ -171,5 +166,8 @@
 		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
+	
+		
+		
 </body>
 </html>

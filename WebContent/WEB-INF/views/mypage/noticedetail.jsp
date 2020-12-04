@@ -46,7 +46,7 @@
 		</div>
 </section>
 <!-- 공지사항 -->
-<section class="section-table cid-shfdiSEq9c" id="table1-2l">
+<section class="section-table cid-shfdiSEq9c" >
 		<div class="container container-table">
 			<h2
 				class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
@@ -60,23 +60,26 @@
 					<div>
 						<table class="table table-bordered">
 							<colgroup>
-							    <col width="15%">
-							    <col width="35%">
-							    <col width="15%">
-							    <col width="*">
+								<col width="20%">
+								<col width="35%">
+								<col width="20%">
+								<col width="*">
 							</colgroup>
 							<tbody>
 							    <tr>
 							        <th>강의명</th>
-							        <td>${notice.class_nm_s}</td>
-							        <th>제목</th>
-							        <td>${notice.class_notice_title}</td>
+							        <td colspan="3">${notice.class_nm_s}</td>
+							        
+							    </tr>
+							    <tr>
+							    	<th>제목</th>
+							        <td colspan="3">${notice.class_notice_title}</td>
 							    </tr>
 							    <tr>
 							        <th>작성자</th>
 							        <td>${notice.mid}</td>
 							        <th>작성시간</th>
-							        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></span></td>
+							        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yy.MM.dd"/></span></td>
 							    </tr>
 							    <tr>
 							        <th>첨부파일</th>
@@ -106,10 +109,9 @@
 							</tbody>
 						</table>
 						<br/>
-						<input type="hidden" id="mid" name="mid" value="${notice.mid}"/>
-					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor">목록으로</a>	
-					    <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a>
-						<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a>
+					    <a class="btn text-primary item-btn btn-success display-7" style="margin: 1px; border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/mypage_tutor#table1-2l">목록으로</a>	
+					    <a class="btn text-primary item-btn btn-success display-7" style="margin: 1px; border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a>
+						<a class="btn text-primary item-btn btn-success display-7" style="margin: 1px; border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a>
 					</div>
 				</div>
 			</div>
@@ -117,7 +119,6 @@
 	</section>
 	
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-	<input type="hidden" id="mid" name="mid" value="${sessionMid}"/>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script>
 	<script
