@@ -11,10 +11,20 @@
 	
 	
 	
-	
+	<!-- 메인:인기순 강의 -->
 	<select id="selectClassesOrderByHot" resultType="class"> 
-			  
-		select star.class_no,class.CLASS_NM_S, class.CLASS_THUM, class_cate.class_cate_nm
+		<!-- 구매 인원 순 --><!-- , nvl(appl_cnt.appl_cnt,0) -->
+		select class.class_no, class_nm_s, class_thum, class_cate.class_cate_nm   
+		  from class, class_cate, (select count(*) as appl_cnt, class_no
+			                         from class_appl
+			                       group by class_no
+			                       order by count(*) desc) appl_cnt
+		 where class.class_cate_no = class_cate.class_cate_no
+			      and class.class_no = appl_cnt.class_no(+)
+			      and rownum &lt;= 4
+		
+		<!-- 별점순 -->  
+		<!-- select star.class_no,class.CLASS_NM_S, class.CLASS_THUM, class_cate.class_cate_nm
 		  from (select ROWNUM AS RNUM, nvl(review_star,0) as review_star, class_no
 		          from ( select nvl(avg(review.REVIEW_STAR),0) as review_star, class.class_no as class_no 
 		                  from class, review
@@ -25,12 +35,29 @@
 		where rnum &lt;=4
 		     and star.class_no =class.class_no
 		     and class.class_cate_no = class_cate.class_cate_no
-		order by star.review_star desc	  
+		order by star.review_star desc -->	  
 			  
 	</select>
 	
+	<!-- 메인:인기순 강의, 로그인 사용자 찜유무 포함 -->
 	<select id="selectClassesOrderByHotPick" parameterType="String" resultType="class">
-		select hotlist.class_no, class_nm_s, class_thum, class_cate_nm, nvl(pick.mid, 'N') as pick_yn
+		<!-- 구매 인원 순 -->
+		select hotlist.* , nvl(pick.mid, 'N') as pick_yn
+		from (
+		    select class.class_no, class_nm_s, class_thum, class_cate.class_cate_nm, nvl(appl_cnt.appl_cnt,0)
+		    from class, class_cate, (select count(*) as appl_cnt, class_no
+		                               from class_appl
+		                              group by class_no
+		                              order by count(*) desc) appl_cnt
+		    where class.class_cate_no = class_cate.class_cate_no
+		          and class.class_no = appl_cnt.class_no(+)
+		          and rownum &lt;= 4
+		 )hotlist, pick
+		where hotlist.class_no = pick.class_no (+)
+		      and pick.mid(+) = #{mid}
+		
+		<!-- 별점순 -->  
+		<!-- select hotlist.class_no, class_nm_s, class_thum, class_cate_nm, nvl(pick.mid, 'N') as pick_yn
 		from (
 		    select star.class_no,class.CLASS_NM_S, class.CLASS_THUM, class_cate.class_cate_nm
 		    from (select ROWNUM AS RNUM, nvl(review_star,0) as review_star, class_no
@@ -46,11 +73,11 @@
 		    order by star.review_star desc
 		    ) hotlist, pick
 		where hotlist.class_no = pick.class_no (+)
-		      and pick.mid(+) = #{mid}
-	
+		      and pick.mid(+) = #{mid} -->
 	</select>
 	 
 	
+	<!-- 메인 신규 강의  -->
 	<select id="selectClassesOrderByNew" resultType="class">
 		select class_no, class_cate_nm, class_nm,class_nm_s, class_thum
 		  from class, class_cate
@@ -58,6 +85,7 @@
 		  order by CLASS_NO desc
 	</select>
 	
+	<!-- 메인 신규 강의 , 로그인 사용자 찜 유무 포함 -->
 	<select id="selectClassesOrderByNewPick" parameterType="String" resultType="class">
 		select newlist.class_no, class_cate_nm, class_nm,class_nm_s, class_thum, nvl(pick.mid, 'N') as pick_yn
 			from (
@@ -71,9 +99,18 @@
 	</select>
 	
 	
-	
+	<!-- 강의중인 전체 강의 조회  -->
 	<select id="selectClasses" resultType="class">
-		select nvl(star.review_star,0)as review_star , star.class_no, class.class_nm_s, class.CLASS_THUM, class.class_thum2, class_cate.class_cate_nm
+		<!-- 구매 인원 순 -->
+		select class.class_no, class_nm_s, class_thum, class_cate.class_cate_nm, nvl(appl_cnt.appl_cnt,0)
+		from class, class_cate, (select count(*) as appl_cnt, class_no
+		                           from class_appl
+		                          group by class_no
+		                          order by count(*) desc) appl_cnt
+		where class.class_cate_no = class_cate.class_cate_no
+		      and class.class_no = appl_cnt.class_no(+)
+		
+		<!-- select nvl(star.review_star,0)as review_star , star.class_no, class.class_nm_s, class.CLASS_THUM, class.class_thum2, class_cate.class_cate_nm
 		  from (  select avg(review.REVIEW_STAR) as review_star, class.class_no as class_no 
 		            from class, review
 		           where class.CLASS_NO = review.CLASS_NO(+)
@@ -82,11 +119,27 @@
 		        ) star, class, class_cate
 		  where star.class_no = class.class_no
 		        and class.class_cate_no = class_cate.class_cate_no
-		  order by review_star desc
+		  order by review_star desc -->
 	</select>
 	
+	<!-- 강의중인 전체 강의 조회 , 로그인 사용자 찜 유무 포함 -->
 	<select id="selectClassesPick" resultType="class">
-		select clist.*, nvl(pick.mid, 'N') as pick_yn from
+		<!-- 구매 인원 순 -->
+		select clist.*, nvl(pick.mid, 'N') as pick_yn 
+		from(    
+		    select class.class_no, class_nm_s, class_thum, class_cate.class_cate_nm, nvl(appl_cnt.appl_cnt,0)
+		    from class, class_cate, (select count(*) as appl_cnt, class_no
+		                               from class_appl
+		                              group by class_no
+		                              order by count(*) desc) appl_cnt
+		    where class.class_cate_no = class_cate.class_cate_no
+		          and class.class_no = appl_cnt.class_no(+)
+		) clist, pick
+		where clist.class_no = pick.class_no (+)
+		     and pick.mid(+) = #{mid}
+		     
+		<!-- 별점순 -->
+		<!-- select clist.*, nvl(pick.mid, 'N') as pick_yn from
 			 ( select nvl(star.review_star,0)as review_star , star.class_no, class.class_nm_s, class.CLASS_THUM, class.class_thum2, class_cate.class_cate_nm
 			      from (  select avg(review.REVIEW_STAR) as review_star, class.class_no as class_no 
 			                from class, review
@@ -99,7 +152,7 @@
 			      order by review_star desc
 			  )clist, pick
 		 where clist.class_no = pick.class_no (+)
-			   and pick.mid(+) = #{mid}
+			   and pick.mid(+) = #{mid} -->
 	</select>
 	
 	
