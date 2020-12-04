@@ -240,6 +240,24 @@ public class CommunityController {
 		
 	}
 	
+	@GetMapping("/communityDeleteform")
+	public String communityDeleteform(int comm_no, HttpServletResponse response) throws Exception {
+		
+		service.communityDeleteform(comm_no);
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString(); //{"result" : "success"}
+		
+		//응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+		return "community/community_deleteform";
+	}
+	
 	
 	
 	

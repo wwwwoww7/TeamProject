@@ -146,6 +146,11 @@ public class CommunityDao {
 	public int updateCommunity(CommunityDto modify) {
 		int result = sst.update("mybatis.mapper.community.updateCommunity", modify);
 		return result;
+	}
+	//community_글 삭제하기
+	public int deleteByCommno(int comm_no) {
+		int result = sst.delete("mybatis.mapper.community.deleteByCommbno", comm_no);
+		return result;
 	}	
 
 	

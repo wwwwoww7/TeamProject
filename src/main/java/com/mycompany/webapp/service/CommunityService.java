@@ -147,6 +147,11 @@ public class CommunityService {
 		return result;
 	}
 
+	public void communityDeleteform(int comm_no) {
+		int result = communityDao.deleteByCommno(comm_no);
+		
+	}
+
 	
 	
 

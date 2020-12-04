@@ -57,7 +57,20 @@
 							});
 						}
 					</script>
-					<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="community">삭제</a>	
+					<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityDeleteform(${communityDetail.comm_no})">삭제</a>	
+					<script type="text/javascript">
+					function communityDeleteform(comm_no) {
+						$.ajax({
+								url:"community/communityDeleteform",
+								data : {comm_no:comm_no},
+								success:function(data) {
+								if(data.result=="success"){
+									allFunction(1);
+								}
+								}
+							});
+						}
+					</script>
 				</div>
 				<div class="col-6"  align="right">
 					<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>		
