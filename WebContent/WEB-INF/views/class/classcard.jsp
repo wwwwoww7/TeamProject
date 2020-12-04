@@ -85,13 +85,6 @@
 			</div>	
 		
 		</c:forEach>
-	
-	
-		
-		<div class="carousel-item">
-		</div>
-		<div class="carousel-item">
-		</div>
 	</div>
 
 	<!-- Left and right controls -->
