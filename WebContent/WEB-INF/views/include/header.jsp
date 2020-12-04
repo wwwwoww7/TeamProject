@@ -29,10 +29,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
             	<li class="nav-item">
+            		<c:if test="${member.mtype != 'ROLE_TUTOR'}">
                     <a class="nav-link link text-white text-primary display-4" href="<%=application.getContextPath()%>/cart">
                     	<span class="mobi-mbri mobi-mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>
                          Cart
                      </a>
+                     </c:if>
                 </li>
                 
                 
