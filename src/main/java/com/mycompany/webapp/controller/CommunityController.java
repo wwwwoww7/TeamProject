@@ -1,5 +1,6 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -247,13 +248,17 @@ public class CommunityController {
 	
 	@PostMapping("/reviewModify")
 	public String reviewModify(ReviewDto modify) {
+		
+		
+		
+		
 		int result = service.setReviewModify(modify);
 		
 		return "redirect:/community";
 	}
 	
 	@GetMapping("/communityDeleteform")
-	public String communityDeleteform(int comm_no, HttpServletResponse response) throws Exception {
+	public void communityDeleteform(int comm_no, HttpServletResponse response) throws Exception {
 		
 		service.communityDeleteform(comm_no);
 		
@@ -266,9 +271,28 @@ public class CommunityController {
 		response.setContentType("application/json;charset=utf-8");
 		out.println(json);
 		out.flush();
-		out.close();
-		return "community/community_deleteform";
+		out.close(); 
 	}
+	
+	@GetMapping("/reviewDeleteform")
+	public void reviewDeleteform(int review_no, HttpServletResponse response) throws Exception {
+		
+		
+		logger.info("review_no : "+review_no);
+		service.reviewDeleteform(review_no);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString(); //{"result" : "success"}
+		
+		//응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+	}
+	
+	
 	
 	
 	

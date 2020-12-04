@@ -3,7 +3,7 @@
 	
 <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 	
-	<form onsubmit="communityModify()" action="<%=request.getContextPath()%>/community/communityModify" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+	<form onsubmit="communityModify()" action="<%=request.getContextPath()%>/community/reviewModify" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
 		 
 		<input type="hidden" id="review_no" name="review_no" value="${reviewDetail.review_no}"/>
 		<div class="dragArea row" style="margin: 5px">

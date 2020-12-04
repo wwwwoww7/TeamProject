@@ -19,15 +19,15 @@
 					});
 				}
 			</script>
-			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityDeleteform(${reviewDetaill.review_no})">삭제</a>	
+			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:reviewDeleteform(${reviewDetail.review_no})">삭제</a>	
 			<script type="text/javascript">
-			function communityDeleteform(review_no) {
+			function reviewDeleteform(review_no) {
 				$.ajax({
-						url:"community/communityDeleteform",
+						url:"community/reviewDeleteform",
 						data : {review_no:review_no},
 						success:function(data) {
 							if(data.result=="success"){
-								allFunction(1);
+								allFunction(6);
 							}
 						}
 					});
@@ -52,7 +52,7 @@
 	
 	
 	
-		<div class="container scroll">
+		<div class="container scroll mt-2">
 		
 			<div>
 				<table class="table table-bordered">
@@ -83,7 +83,6 @@
 				</table>
 				
 				<br/>
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(6)">목록</a>		
 			</div>
 		
 		</div>

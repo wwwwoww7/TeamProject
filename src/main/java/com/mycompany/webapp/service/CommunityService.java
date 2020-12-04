@@ -163,6 +163,10 @@ public class CommunityService {
 		return class_nm;
 	}
 
+	public void reviewDeleteform(int review_no) {
+		int result = communityDao.deleteByReviewno(review_no);
+	}
+
 	
 	
 

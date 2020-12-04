@@ -20,5 +20,6 @@
 		<typeAlias alias="eventPager" type="com.mycompany.webapp.dto.EventPagerDto" />
 		<typeAlias alias="classcate" type="com.mycompany.webapp.dto.ClassCateDto" />
 		<typeAlias alias="video" type="com.mycompany.webapp.dto.ClassVideoDto" />
+		<typeAlias alias="reply" type="com.mycompany.webapp.dto.CommunityReplyDto" />
 	</typeAliases>
 </configuration>

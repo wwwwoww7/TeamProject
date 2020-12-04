@@ -161,7 +161,12 @@ public class CommunityDao {
 	}
 
 	public String selectClassNameByReviewNo(int review_no) {
-		String result = sst.selectOne("mybatis.mapper.community.selectClassNameByReviewNo", review_no);
+		String class_nm = sst.selectOne("mybatis.mapper.community.selectClassNameByReviewNo", review_no);
+		return class_nm;
+	}
+
+	public int deleteByReviewno(int review_no) {
+		int result = sst.delete("mybatis.mapper.community.deleteByReviewno", review_no);
 		return result;
 	}
 
