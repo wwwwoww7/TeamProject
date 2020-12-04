@@ -43,7 +43,7 @@ public class CartController {
 	
 	//장바구니 담기
 	@RequestMapping("/pick_cl")
-	public String pick_cl(@RequestParam(defaultValue = "-1") int classNo, HttpSession session) {
+	public String pick_cl(@RequestParam(defaultValue = "-1") int classNo, HttpSession session, Model model) {
 		
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
 		
@@ -61,6 +61,10 @@ public class CartController {
 			for(CartDto cartItem : cartList) {
 				if(cartItem.getClass_no() == classNo) {
 					exist = true;
+					model.addAttribute("classNum", classNo);
+					model.addAttribute("msg", "중복된 클래스는 담을 수 없습니다.");
+					//logger.info(model.toString());
+					
 				}
 			}
 			
@@ -69,9 +73,9 @@ public class CartController {
 				classOne.setMid((String) session.getAttribute("sessionMid"));
 				classOne.setCart_date(cart_date);
 				cartList.add(classOne);
-				logger.info("저장한 날짜 : "+classOne.getCart_date());
+				//logger.info("저장한 날짜 : "+classOne.getCart_date());
 				
-			System.out.println(cartList);
+			System.out.println(cartList+"저장완료");
 		}
 		// logger.info("2=================>" + cartList.size());
 	}
@@ -115,7 +119,7 @@ public class CartController {
 	//장바구니 삭제
 	@RequestMapping("/cartdelete")
 	public void cartdelete(@RequestParam(value = "deleteArr[]") List<Integer> delList,
-							 HttpSession session, HttpServletResponse response) throws IOException{
+							 HttpSession session, HttpServletResponse response) throws Exception{
 		//logger.info("받은 배열 : " + delList);
 		
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");

@@ -65,8 +65,7 @@
 	
 	
 	<section class="section-table cid-shasoJbvYr" id="table1-23">
-	
-	  
+		
 	  
 	  <div class="container">
 	      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><strong>
@@ -112,6 +111,13 @@
 					</c:if>
 	           		<c:if test="${not empty cartList}"> 
 	            		<c:forEach var="cartItem" items="${cartList}" varStatus="status" >
+						 <!-- 중복클래스는 담기 안됨(경고문) -->
+						  <script type="text/javascript">
+						  	if(${cartItem.class_no}==${classNum}){
+								var message = '${msg}'; 
+								alert(message); 
+						  	}
+						  </script>
 			             	<tr> 
 						        <td class="body-item mbr-fonts-style display-7">
 							        <div class="bg m-5">
@@ -170,7 +176,7 @@
 										success: function(data){
 											if(data.result == "success") {
 												alert('삭제가 완료되었습니다.');
-												location.href = "pick_cl";
+												location.href = "cart";
 											} else {
 												alert('삭제 실패');
 											} 
