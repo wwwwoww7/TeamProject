@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.CommunityDao;
+import com.mycompany.webapp.dto.ClassApplDto;
 import com.mycompany.webapp.dto.ClassCateDto;
 import com.mycompany.webapp.dto.CommunityDto;
 import com.mycompany.webapp.dto.CommunityPagerDto;
@@ -122,9 +123,9 @@ public class CommunityService {
 		return result;
 	}
 
-	public List<ReviewDto> getCommunitReviewCateList() {
-		List<ReviewDto> reviewCateList = communityDao.selectReviewCateList();
-		return reviewCateList;
+	public List<ClassApplDto> getCommunitReviewList(String mid) {
+		List<ClassApplDto> reviewList = communityDao.selectReviewList(mid);
+		return reviewList;
 	}
 
 	public int CommunityReviewApply(ReviewDto reviewapply) {
@@ -150,6 +151,16 @@ public class CommunityService {
 	public void communityDeleteform(int comm_no) {
 		int result = communityDao.deleteByCommno(comm_no);
 		
+	}
+
+	public int setReviewModify(ReviewDto modify) {
+		int result = communityDao.updateReview(modify);
+		return result;
+	}
+
+	public String getClassName(int review_no) {
+		String class_nm = communityDao.selectClassNameByReviewNo(review_no);
+		return class_nm;
 	}
 
 	

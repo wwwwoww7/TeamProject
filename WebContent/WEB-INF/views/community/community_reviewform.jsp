@@ -7,7 +7,7 @@
 			<div class="col-md-12 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff;">강 의 선 택</span> 
 				<select id="class_no" name="class_no" style="width: 65%;">
-					<c:forEach var="reviewitem" items="${reviewCateList}">
+					<c:forEach var="reviewitem" items="${inclassList}">
 						<option value="${reviewitem.class_no}" selected>${reviewitem.class_nm}</option>
 					</c:forEach>
 				</select>
