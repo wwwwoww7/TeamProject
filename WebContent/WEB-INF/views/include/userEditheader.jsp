@@ -27,9 +27,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
             	<li class="nav-item">
+                    <sec:authorize access="hasRole('ROLE_USER')">
                     <a class="nav-link link text-white text-primary display-4" href="<%=request.getContextPath()%>/cart">
-                    <span class="mobi-mbri mobi-mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>
-                        Cart</a>
+                    	<span class="mobi-mbri mobi-mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>Cart</a>
+                    </sec:authorize>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link link dropdown-toggle text-white display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">

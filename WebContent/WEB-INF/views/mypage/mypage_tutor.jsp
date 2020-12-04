@@ -70,6 +70,7 @@
 				<h3 class="mbr-fonts-style align-center m-0 display-5">
 					<strong>나의 강의</strong>
 				</h3>
+				<hr style="background-color: #ffc800; height:2px;">
 				<div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(tutorclassList)/4}" integerOnly="true" />
@@ -128,10 +129,10 @@
 	<section class="section-table cid-shfdiSEq9c" id="table1-2l">
 		<div class="container container-table">
 			<h2
-				class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
+				class="mbr-section-title mbr-fonts-style align-center display-5">
 				<strong>공지사항</strong>
 			</h2>
-
+			<hr style="background-color: #ffc800; height:2px;">	
 			<div class="table-wrapper">
 			<%-- <div class="dropdown"  style="display: inline-block;">
 				<button id="cateselect" align="right" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown">전체</button>
@@ -153,10 +154,10 @@
 
 		<div class="container container-table">
 			<h2
-				class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
+				class="mbr-section-title mbr-fonts-style align-center display-5">
 				<strong>강의 문의</strong>
 			</h2>
-
+			<hr style="background-color: #ffc800; height:2px;">
 			<div class="table-wrapper">
 				<div class="container"></div>
 

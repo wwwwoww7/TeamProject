@@ -65,6 +65,7 @@
 			<h3 class="mbr-fonts-style align-center m-0 display-5">
 				<strong>나의 강의</strong>
 			</h3>
+			<hr style="background-color: #ffc800; height:2px;">
 <%-- 			<div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/4}" integerOnly="true" />
@@ -150,6 +151,7 @@
 			<h3 class="mbr-fonts-style align-center m-0 display-5">
 				<strong>찜 목록</strong>
 			</h3>
+			<hr style="background-color: #ffc800; height:2px;">
 			<div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/4}" integerOnly="true" />
@@ -208,11 +210,11 @@
 	<!-- 공지사항 -->
 	<section class="section-table cid-shfdiSEq9c" id="table1-2g">
 		<div class="container container-table">
-			<h2
-				class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
+			<h3
+				class="mbr-section-title mbr-fonts-style align-center display-5">
 				<strong>공지사항</strong>
-			</h2>
-
+			</h3>
+			<hr style="background-color: #ffc800; height:2px;">
 			<div class="table-wrapper">
 				<div class="container"></div>
 
@@ -224,9 +226,10 @@
 	<!-- 나의 문의 -->
 	<section class="section-table cid-shfcHOKpqJ" id="table1-2i">
 	  <div class="container container-table">
-		<h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-5">
+		<h2 class="mbr-section-title mbr-fonts-style align-center display-5">
 			<strong>강의 문의</strong>
 		</h2>
+		<hr style="background-color: #ffc800; height:2px;">
 		<div class="table-wrapper">
 			<div class="container"></div>
 			<div id="myqa" class="container scroll"></div>
