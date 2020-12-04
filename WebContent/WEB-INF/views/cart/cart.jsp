@@ -51,57 +51,87 @@
 			Font-size: 15px;
 			position: relative;
 			margin:0px;
+		}	
+		.btn-sm{
+			height: 35px;
+			
 		}
-		.classThum {
-			width: 150px;
-		}
-		.deletebtn {
+	
+		
+		#classThum {
+			max-width: 150px;
+		} 
+		
+		
+		@media screen and (max-width: 768px){
+			#mobileTable {
+				display: block;
+			} 
+			
+			#whildTable {
+				display: none;
+			}
 			
 		}
 		
+		@media screen and (min-width: 768px){
+			#mobileTable {
+				display: none;
+			} 
+			
+			#whildTable {
+				display: block;
+			}
+			
+		}
+		
+		
+		/* @media screen and (min-width: 576px){ 
+			.cid-shasoJbvYr{
+				width: 100%;
+			}
+		} */
 </style>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
 	
 	
-	<section class="section-table cid-shasoJbvYr" id="table1-23">
+	<section class="section-table cid-shasoJbvYr" id="table1-23"> <!-- cid-shasoJbvYr -->
 		
 	  
 	  <div class="container">
-	      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><strong>
-	         <span class="mbri-shopping-basket"></span> CART</strong></h2>
-	      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5">Get your Classes!</h3>
-	     
-				<div class="col-lg-12">
+	  
+	  	  <div class="row">
+	  	  	<div class="col-12">
+	  	  		<h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2"><strong>
+			         <span class="mbri-shopping-basket"></span> CART</strong>
+			    </h2>
+			    <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5">Get your Classes!</h3>
+			     
+				<div class="col-12">
 					<div id="basket">
 						<h3>주문상품확인</h3>
 						
 						<div id="sm_title">
 							<span style="color: #690700; font-weight: bold">01 장바구니 ></span> <span>02 주문서작성/결제 > </span> <span>03 주문완료</span>
 						</div>
-						</div>
-					</div>	
-	
-	        <div class="container">
-	        <div class="col-lg-12" >
-	          <table class="table" cellspacing="0" data-empty="No matching records found">
-	            <thead>
-	              <tr class="table-heads">
-	               <th class="head-item mbr-fonts-style display-7">
-		               	<div>
-		              		<input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
-	            	   	</div>
-	               </th>
-	               <th class="head-item mbr-fonts-style display-7">상품/옵션 정보</th>
-	               <th class="head-item mbr-fonts-style display-7">수량</th>
-	               <th class="head-item mbr-fonts-style display-7">상품금액</th>
-	              </tr>
-	            </thead>
-	
-	            <tbody>
+					</div>
+				</div>	
+	  	  	</div>
+	  	  </div>
+	      <div class="row">
+	      	<div id="mobileTable" class="col-12">
+	      		<table class="table" cellspacing="0" data-empty="No matching records found">
+	      			<tr>
+		      			<td class="head-item mbr-fonts-style display-7  text-center">
+			              	<input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
+			            </td>
+			            <td class="head-item mbr-fonts-style display-7 text-center">상품/옵션 정보</td>
+			        </tr>
+			        
 		            <c:if test="${empty cartList}">
 						<tr>
-							<td colspan="4" style="text-align: center;">
+							<td colspan="2" class="text-center">
 								<div style="font-size:60px; color:#CCC">
 									<span class="mbri-info"></span>
 								</div>
@@ -111,200 +141,218 @@
 					</c:if>
 	           		<c:if test="${not empty cartList}"> 
 	            		<c:forEach var="cartItem" items="${cartList}" varStatus="status" >
-						 <!-- 중복클래스는 담기 안됨(경고문) -->
-						  <script type="text/javascript">
-						  	if(${cartItem.class_no}==${classNum}){
-								var message = '${msg}'; 
-								alert(message); 
-						  	}
-						  </script>
+						 
 			             	<tr> 
 						        <td class="body-item mbr-fonts-style display-7">
 							        <div class="bg m-5">
-							        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="checkSelect()" />
-							        </div>
+								        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="checkSelect()" />
+								    </div>
 						        </td>
-						        <td class="body-item mbr-fonts-style display-7">
-							        <div style="float: left;">
-							        	<img src="<%=request.getContextPath() %>/resources/images/class/${cartItem.class_thum}" class="classThum"/>
-							        </div>
-							        <div style="margin:15px;">
-								        <div>
-											<a href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black; font-size: 20px; font-weight: bold;">
-												${cartItem.class_nm_s}
-											</a>						       
+						        <td class="body-item mbr-fonts-style display-7 text-center" style="vertical-align: middle;">
+						        	<div>
+						       			<div style="margin-right: 10px;">
+								        	<img width="150px" src="<%=request.getContextPath() %>/resources/images/class/${cartItem.class_thum}"/>
 								        </div>
-							        	<div>
-								        	<a href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black">
-								        		${cartItem.class_nm}
-								        	</a>
+						       			<div>
+						       				<div>
+												<a class="text-black" href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black;font-size:1.5em;">
+													${cartItem.class_nm_s}
+												</a>	
+											</div>					       
+											<div>
+									        	<a class="text-black" href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black;font-size:1em;" >
+									        		${cartItem.class_nm}
+									        	</a>
+									        </div>
+									        <div style="margin : 10px;">
+								        		수량 : 1
+								        	</div>
+									        <div>
+							           			가격:${cartItem.class_price}
+							           		</div>
 							        	</div>
 							        </div>
 						        </td>
-						        <td class="body-item mbr-fonts-style display-7">
-						        	<div class="bg m-5">1</div>
-						        </td>
-					           	<td class="body-item mbr-fonts-style display-7">
-					           		<div class="bg m-5">
-					           			${cartItem.class_price}
-					           		</div>
-					           	</td>
 				            </tr>
 	             		</c:forEach>
-	            	</c:if>
-	          
-             </tbody>
-			 <tfoot>
-			 	<tr>
-			 		<td colspan="2" style="text-align: left">
-						 <a id="deletebtn" class="btn btn-md btn-info display-3 btn-sm" href="javascript:deleteAll()" >삭제</a>
-						 <script type="text/javascript">
-							//삭제 함수
-						 	function deleteAll(){
-					 			var deleteArr = new Array();
-										
-								$("input[name='chk']:checked").each(function(){
-									deleteArr.push($(this).attr("data-cartNum"));
-								});
-										
-					 			if(deleteArr.length==0){
-					 				alert("삭제할 클래스를 선택하여 주세요.");
-					 			}else{
-						 			$.ajax({
-						 				url:"<%=request.getContextPath()%>/cart/cartdelete",
-										data: { "deleteArr" : deleteArr },
-										success: function(data){
-											if(data.result == "success") {
-												alert('삭제가 완료되었습니다.');
-												location.href = "cart";
-											} else {
-												alert('삭제 실패');
-											} 
-										}
-						 			});
-					 			}
-					 		}				 	
-						 </script>
-					</td>
-			 		
-			 		<td colspan="2" style="text-align: right">
-			 			<div class="bigtext right-align sumcount">
-				 			선택한 클래스 개수 : <span id="checkNum"></span> 개
-			 			</div>
-			 			<div class="bigtext right-align box blue summoney">
-				 			결제 금액  : <span id="cartSum" name="cartSum"></span> 원
-				 			
-			 			</div>
-			 		</td>
-			 	</tr>
-			 </tfoot>
-	          </table>
-	        </div>
-	        
-	          	<div class="mbr-section-btn item-footer mt-2" style="text-align: center;">
-	          	<a class="btn item-btn btn-success display-7" href="javascript:payment()">결제하기</a>
-	          	
-	          	
-					 <script type="text/javascript">
-						//전체선택 체크박스
-						
-						 	var cnt = $("input[name='chk']").length;
-			           		var checkboxValues = [];
-			           		var class_no = $("input[name='chk']").val();
-							
-							function checkAll(){
-								if($("#Allcheck").prop("checked")==true){
-									$("input[name='chk']").prop("checked", true);
-									checkboxValues = [];
-									$("input[name='chk']:checked").each(function(i) {
-										checkboxValues.push($(this).val());
-									});
-								}else{
-									$("input[name='chk']").prop("checked", false);
-									checkboxValues = [0];
-								}
-								
-								var allData = { "chkPrice": checkboxValues };
-				           		
-								$.ajax({
-									url:"<%=request.getContextPath()%>/cart/sumprice",
-									data: allData,
-									dataType : 'json',
-									contentType : 'application/json',
-									success: function(data){
-										$("#cartSum").text(data.sumPrice);
-									}
-								});
-								
-								$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
-							}		
-						
-						   
-			 			    //개별 체크박스     
-			 				function checkSelect() {
-				           		/* console.log("cnt:", cnt, $("input[name='chk']:checked").length); */
-				           		
-								//개별선택
-				           		if($("input[name='chk']:checked").length==cnt){
-									$("#Allcheck").prop("checked",true);
-									return checkAll();
-								}else{
-									$("#Allcheck").prop("checked",false);
-									//배열 초기화
-									checkboxValues = [];
-									//선택된 체크값 배열
-									$("input[name='chk']:checked").each(function(i) {
-											checkboxValues.push($(this).val());
-									}); 
-									//선택되지 않은 값 빼기
-									if($("input[name='chk']").is((":checked")==false)){
-										$("input[name='chk']:checked").each(function(i) {
-											checkboxValues.splice(i,1);
-											}); 
-										}
-										if(checkboxValues.length==0){
-											checkboxValues = [0];
-										}
-									}
-								
-				           		
-								var allData = { "chkPrice": checkboxValues };
-				           		
-								$.ajax({
-									url:"<%=request.getContextPath()%>/cart/sumprice",
-									data: allData,
-									dataType : 'json',
-									contentType : 'application/json',
-									success: function(data){
-										$("#cartSum").text(data.sumPrice);
-									}
-								});
+	             		
+						<tr>
+					 		<td style="text-align: left">
+								 <a id="deletebtn" class="btn btn-info display-3 btn-sm" href="javascript:deleteAll()" > 삭 제 </a>
+								 <script type="text/javascript">
+									//삭제 함수
+								 	function deleteAll(){
+							 			var deleteArr = new Array();
+												
+										$("input[name='chk']:checked").each(function(){
+											deleteArr.push($(this).attr("data-cartNum"));
+										});
+												
+							 			if(deleteArr.length==0){
+							 				alert("삭제할 클래스를 선택하여 주세요.");
+							 			}else{
+								 			$.ajax({
+								 				url:"<%=request.getContextPath()%>/cart/cartdelete",
+												data: { "deleteArr" : deleteArr },
+												success: function(data){
+													if(data.result == "success") {
+														alert('삭제가 완료되었습니다.');
+														location.href = "cart";
+													} else {
+														alert('삭제 실패');
+													} 
+												}
+								 			});
+							 			}
+							 		}				 	
+								 </script>
+							</td>
+					 		
+					 		<td class="text-right">
+					 			<div class="bigtext right-align sumcount">
+						 			선택한 클래스 개수 : <span id="checkNum"></span> 개
+					 			</div>
+					 			<div class="bigtext right-align box blue summoney">
+						 			결제 금액  : <span id="cartSum" name="cartSum"></span> 원
+						 			
+					 			</div>
+					 		</td>
+					 	</tr>	             		
+	            	</c:if>			        
+	      		</table>
+	      	</div> 
+	  	  	<div id="whildTable" class="col-12">
+	  	  		<table class="table" cellspacing="0" data-empty="No matching records found">
+		            <tbody>
+		              <tr class="table-head">
+		              	<td class="head-item mbr-fonts-style display-7  text-center">
+		              		<input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
+		              	</td>
+		              	<td class="head-item mbr-fonts-style display-7 text-center">상품/옵션 정보</td>
+		            	<td class="head-item mbr-fonts-style display-7">수량</td>
+		              	<td class="head-item mbr-fonts-style display-7">상품금액</td>
+		              </tr>
 
-								
-								$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
-		             		
-			 			    } 
-				 			
-				           		
-			 				
-						 function payment(){
-							if($("input[name='chk']:checked").length==0){
-									//장바구니 체크 안하면 경고창
-									alert('선택된 상품이 없습니다.');
-							} else{
-								if(${sessionMid==null}){
-									var result = confirm("로그인 후 결제 하실 수 있습니다."); 
-									location.href="<%=application.getContextPath()%>/login/login";
-								}else{
-									location.href="<%=application.getContextPath()%>/cart/payment"; 
-									
-									}
-								} 
-							};
-					</script>
+			            <c:if test="${empty cartList}">
+							<tr>
+								<td colspan="4" class="text-center">
+									<div style="font-size:60px; color:#CCC">
+										<span class="mbri-info"></span>
+									</div>
+									<b style="font-size: 18px">담긴 상품이 없습니다.</b>
+								</td>
+							</tr>
+						</c:if>
+		           		<c:if test="${not empty cartList}"> 
+		            		<c:forEach var="cartItem" items="${cartList}" varStatus="status" >
+							 <!-- 중복클래스는 담기 안됨(경고문) -->
+							  <script type="text/javascript">
+							  	if("${cartItem.class_no}"=="${classNum}"){
+									var message = '${msg}'; 
+									alert(message); 
+							  	}
+							  </script>
+				             	<tr> 
+							        <td class="body-item mbr-fonts-style display-7">
+								        <div class="bg m-5">
+								        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="checkSelect()" />
+								        </div>
+							        </td>
+							        <td class="body-item mbr-fonts-style display-7 text-center" style="vertical-align: middle;">
+							        	<div style="display:flex">
+							       			<div style="margin-right: 10px;">
+									        	<img width="100px" src="<%=request.getContextPath() %>/resources/images/class/${cartItem.class_thum}"/>
+									        </div>
+							       			<div>
+							       				<div>
+													<a class="text-black" href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black;font-size:1.5em;">
+														${cartItem.class_nm_s}
+													</a>	
+												</div>					       
+												<div>
+										        	<a class="text-black" href="<%=request.getContextPath() %>/class/classdetail?classNo=${cartItem.class_no}" style="color:black;font-size:1em;" >
+										        		${cartItem.class_nm}
+										        	</a>
+										        </div>
+								        	</div>
+								        </div>
+							        </td>
+							        <td class="body-item mbr-fonts-style display-7">
+							        	<div class="col-lg">
+							        	<div class="bg m-5">1</div>
+							        	</div>
+							        </td>
+						           	<td class="body-item mbr-fonts-style display-7">
+						           		<div class="bg m-5">
+						           			${cartItem.class_price}
+						           		</div>
+						           	</td>
+					            </tr>
+		             		</c:forEach>
+		            	</c:if>
+		          
+	             </tbody>
+				 <tfoot>
+				 	<tr>
+				 		<td colspan="2" style="text-align: left">
+							 <a id="deletebtn" class="btn btn-md btn-info btn-sm" href="javascript:deleteAll()" >삭제</a>
+							 <script type="text/javascript">
+								//삭제 함수
+							 	function deleteAll(){
+						 			var deleteArr = new Array();
+											
+									$("input[name='chk']:checked").each(function(){
+										deleteArr.push($(this).attr("data-cartNum"));
+									});
+											
+						 			if(deleteArr.length==0){
+						 				alert("삭제할 클래스를 선택하여 주세요.");
+						 			}else{
+							 			$.ajax({
+							 				url:"<%=request.getContextPath()%>/cart/cartdelete",
+											data: { "deleteArr" : deleteArr },
+											success: function(data){
+												if(data.result == "success") {
+													alert('삭제가 완료되었습니다.');
+													location.href = "cart";
+												} else {
+													alert('삭제 실패');
+												} 
+											}
+							 			});
+						 			}
+						 		}				 	
+							 </script>
+						</td>
+				 		
+				 		<td colspan="2" class="text-right">
+				 			<div class="bigtext right-align sumcount">
+					 			선택한 클래스 개수 : <span id="checkNum"></span> 개
+				 			</div>
+				 			<div class="bigtext right-align box blue summoney">
+					 			결제 금액  : <span id="cartSum" name="cartSum"></span> 원
+					 			
+				 			</div>
+				 		</td>
+				 	</tr>
+				 </tfoot>
+	          </table>
+	  	  	</div>
+	  	  </div>
+			
+	      <div class="row">
+	        <div class="col-12" >
+	        	<div class="mbr-section-btn item-footer mt-2" align="center">
+	          		<a class="btn item-btn btn-success btn-lg display-7" href="javascript:payment()">결제하기</a>
+	          	
+	          	
+					
 				</div>
 	        </div>
-	      </div>
+	        
+	          	
+		</div>
+	</div>
 	    
 </section>	
 	
@@ -328,6 +376,112 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
-  
+  <script type="text/javascript">
+	//전체선택 체크박스
+	
+	 	var cnt = $("input[name='chk']").length;
+         		var checkboxValues = [];
+         		var class_no = $("input[name='chk']").val();
+		
+		function checkAll(){
+			if($("#Allcheck").prop("checked")==true){
+				$("input[name='chk']").prop("checked", true);
+				
+				checkboxValues = [];
+				
+				$("input[name='chk']:checked").each(function(i) {
+					checkboxValues.push($(this).val());
+				});
+			}else{
+				$("input[name='chk']").prop("checked", false);
+				checkboxValues = [0];
+			}
+			
+			var allData = { "chkPrice": checkboxValues };
+          		
+			$.ajax({
+				url:"<%=request.getContextPath()%>/cart/sumprice",
+				data: allData,
+				dataType : 'json',
+				contentType : 'application/json',
+				success: function(data){
+					$("#cartSum").text(data.sumPrice);
+				}
+			});
+			
+			$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
+		}		
+	
+	   
+		    //개별 체크박스     
+			function checkSelect() {
+          		/* console.log("cnt:", cnt, $("input[name='chk']:checked").length); */
+          		
+			//개별선택
+          	if($("input[name='chk']:checked").length==cnt){
+				$("#Allcheck").prop("checked",true);
+				return checkAll();
+			}else{
+				$("#Allcheck").prop("checked",false);
+				//배열 초기화
+				checkboxValues = [];
+				//선택된 체크값 배열
+				$("input[name='chk']:checked").each(function(i) {
+						checkboxValues.push($(this).val());
+				}); 
+				//선택되지 않은 값 빼기
+				if($("input[name='chk']").is((":checked")==false)){
+					$("input[name='chk']:checked").each(function(i) {
+						checkboxValues.splice(i,1);
+						}); 
+					}
+					if(checkboxValues.length==0){
+						checkboxValues = [0];
+					}
+				}
+			
+          		
+			var allData = { "chkPrice": checkboxValues };
+          		
+			$.ajax({
+				url:"<%=request.getContextPath()%>/cart/sumprice",
+				data: allData,
+				dataType : 'json',
+				contentType : 'application/json',
+				success: function(data){
+					$("#cartSum").text(data.sumPrice);
+				}
+			});
+
+			
+			$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
+          		
+		    } 
+			
+		    
+		    
+          		
+			
+	 function payment(){
+		if($("input[name='chk']:checked").length==0){
+				//장바구니 체크 안하면 경고창
+				alert('선택된 상품이 없습니다.');
+		} else{
+			if(${sessionMid==null}){
+				var result = confirm("로그인 후 결제 하실 수 있습니다."); 
+				location.href="<%=application.getContextPath()%>/login/login";
+			}else{
+				location.href="<%=application.getContextPath()%>/cart/payment"; 
+				
+				}
+			} 
+		};
+	</script>
+<!-- <style type="text/css">
+
+	table {
+		min-width: auto;
+	}
+</style> -->
 </body>
 </html>

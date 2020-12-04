@@ -9,5 +9,6 @@
 		WHERE a.class_no=class.class_no and m.mid=a.user_id;
 	</select>
 
-
+	
+	
 </mapper>

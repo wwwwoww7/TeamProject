@@ -35,7 +35,7 @@ public class CartController {
 	private CartService cartService;
 
 	
-	@RequestMapping
+	@RequestMapping("/cart")
 	public String cart() {
 		return "cart/cart";
 	}
@@ -85,12 +85,12 @@ public class CartController {
 	//값 합계
 	@RequestMapping("/sumprice")
 	public void sumprice(
-			@RequestParam(value = "chkPrice[]") List<String> arrayParams,
+			@RequestParam(value = "chkPrice[]") List<String> chkList,
 			HttpSession session, HttpServletResponse response) throws Exception {
 		int sumPrice = 0;
 		
-		List<String> chkList = arrayParams;
-		logger.info("받은 배열 : " + arrayParams);
+		
+		logger.info("받은 배열 : " + chkList);
 		
 		for(String pkPrice : chkList) {
 			int result = Integer.parseInt(pkPrice);
