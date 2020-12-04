@@ -282,5 +282,17 @@ public class ClassController {
 		return "/class/classnoticedetail";
 	}
 	
+	//*=========강의정보 수정 by 강사(혜빈)=================//
+	@RequestMapping("/classEdit")
+	public String classEdit(@RequestParam(defaultValue = "1") int classNo, Model model) {
+		
+		
+		ClassDto classOne = classService.getClass(classNo);
+		model.addAttribute("classOne", classOne);
+
+		logger.info("classEdit");
+		
+		return "/class/classEdit";
+	}
 	
 }

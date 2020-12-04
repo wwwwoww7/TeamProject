@@ -115,14 +115,8 @@ public class LoginController {
 		return"redirect:/";
 	
 	}
-	
-	@GetMapping("/login/join")
-	public String Joinmove() {
-		
-		return"login/join";
-	}
-	
-	@GetMapping("/login/findpw")
+
+
 	public String getfindpw() {
 		
 		return "login/findpw";

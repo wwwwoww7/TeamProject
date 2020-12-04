@@ -192,4 +192,17 @@
 	<select id="selectTutorIdByClassNo" parameterType="int" resultType="String">
 		select tutor_id from class where class_no=#{class_no}
 	</select>
+	
+	<!-- 강의정보 수정/혜빈 -->
+	<update id="updateClass" parameterType="class">
+		UPDATE class
+		set class_nm=#{class_nm},
+			class_nm_s=#{class_nm_s},
+			class_sub=#{class_sub},
+			class_curr=#{class_curr}
+		where CLASS_NO
+	</update>
+	
+	
+	
 </mapper>
