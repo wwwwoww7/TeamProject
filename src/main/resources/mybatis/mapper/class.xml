@@ -21,7 +21,7 @@
 			                       order by count(*) desc) appl_cnt
 		 where class.class_cate_no = class_cate.class_cate_no
 			      and class.class_no = appl_cnt.class_no(+)
-			      and rownum &lt;= 4
+			      and rownum &lt;= 12
 		
 		<!-- 별점순 -->  
 		<!-- select star.class_no,class.CLASS_NM_S, class.CLASS_THUM, class_cate.class_cate_nm
@@ -51,7 +51,7 @@
 		                              order by count(*) desc) appl_cnt
 		    where class.class_cate_no = class_cate.class_cate_no
 		          and class.class_no = appl_cnt.class_no(+)
-		          and rownum &lt;= 4
+		          and rownum &lt;= 12
 		 )hotlist, pick
 		where hotlist.class_no = pick.class_no (+)
 		      and pick.mid(+) = #{mid}

@@ -47,15 +47,15 @@
 	                            <input type="text" name="mid" placeholder="ID" data-form-field="mid" class="form-control" id="name-form4-27">
 	                        </div>
 	                        <div class="col-lg-12 col-md col-12 form-group" data-for="mpw">
-	                            <input type="password" name="mpw" placeholder="Password" data-form-field="mpw" class="form-control"id="password-form4-27">
+	                            <input type="password" name="mpw" value="" placeholder="Password" data-form-field="mpw" class="form-control"id="password-form4-27">
 	                        </div>
 	                        
-		                  	<div class="col-lg-12 row form-group">
+		                  	<div class="col-12 row form-group">
 		                  	
-		            			<div class="col-lg-6 " style="float:left">
-									<input id ="remember-me" name ="remember-me" type ="checkbox"/>Auto Login  
+		            			<div class="col-6 " align="left">
+									<label><input id ="remember-me" name ="remember-me" type ="checkbox"/> Auto Login </label>
 								</div>   
-								<div class="col-lg-6" style="float:right">
+								<div class="col-6" align="right">
 									<a href="<%=request.getContextPath()%>/login/findpw" style="color:black "> Forgot Password?</a>
 								</div>
 							

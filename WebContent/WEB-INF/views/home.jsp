@@ -45,10 +45,7 @@
 	                </h3>
 	                <p class="mbr-text align-center pb-3 mbr-fonts-style display-7">
 	                	완숙을 바라는 당신에게!/ 반숙이여 완숙이 되어라 / 반숙이여 쑥쑥 크자 / 반숙이들의 완숙원정대 / Don't stop me from being 완숙/
-	                	배움으로 완숙되기 위한 반숙이들을 위한 클래스, 
-	                	which is why having the right tools and resources can make all the difference.
-						This is a frequently asked question among families just starting out. 
-						There are many ways to homeschool and homeschool laws vary by state, so it’s important to get all the facts.
+	                	배움으로 완숙되기 위한 반숙이들을 위한 클래스 
 	                </p>
 	                <div class="mbr-section-btn align-center">
 	                	<a class="btn btn-md btn-white-outline display-4" href="#사이트정보페이지">
@@ -66,10 +63,10 @@
 	    <div class="container">
 	        <div class="mbr-section-head">
 	            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5">
-	            	<strong>지금, 인기 TOP 04</strong>
+	            	<strong>지금, 인기 TOP 12</strong>
 	            </h4>
 	        </div>
-	        <div id="main-content-hot" class="row mt-4">
+	        <div id="main-content-hot" class="row mt-4">  <!-- style="overFlow-x : scroll;" -->
 	            
 	            
 	        </div>
@@ -196,6 +193,66 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
 	  <!-- Channel Plugin Scripts -->
+	
+	<style type="text/css"> 
+		.w-100 {
+			width: 100%;
+		  	height: 100%;
+		  	height: 170px;
+		  	object-fit: cover;
+		}
+		
+		
+		
+		#pickimg1, #pickimg2 {
+			width: 25px;
+			height: 25px;
+		}
+		
+		#pickimg1:hover {
+ 			filter: brightness(180%); 
+		}
+		#pickimg2:hover {
+			filter: brightness(40%); 
+		}
+		
+		#tabletd {
+			float: right;
+
+		}
+		
+		
+		.mbr-gallery-item div img {
+		
+			width: 100%;
+		  	height: 100%;
+		  	height: 150px;
+		  	object-fit: cover;
+		
+		}
+		
+		.mbr-gallery .mbr-gallery-item {
+			width: 24.5%;
+		}
+		
+		
+		@media (max-width: 768px) {
+		  .mbr-gallery .mbr-gallery-item {
+		    width: 49.5%; } 
+		}
+		@media (max-width: 400px) {
+		  .mbr-gallery .mbr-gallery-item {
+		    width: 99.5%; } 
+		}
+		
+/* 		#cardLayout { */
+/* 			padding: 0 15px; */
+/* 			width: 285px; */
+/* 		}   */
+		
+		
+	</style>
+	
 	<script>
 	  (function() {
 	    var w = window;
@@ -243,6 +300,7 @@
 				url: "<%=request.getContextPath()%>/allCategory",
 				success: function(data){
 					$("#main-content-hot").html(data);
+					
 				}
 				
 			});
@@ -258,7 +316,6 @@
 			});
 		}
 		
-		
 		function eventList(){
 			$.ajax({
 				url:"<%=request.getContextPath()%>/onEventList",
@@ -268,56 +325,13 @@
 			});
 		}
 		
-		
-		$(function(){ 
+		$(function() {
 			allCategory();
 			newClasses();
 			eventList();
+			
 		});
-		
 	</script>
-	
- 	<style type="text/css"> 
-		.w-100 {
-			width: 100%;
-		  	height: 100%;
-		  	height: 170px;
-		  	object-fit: cover;
-		}
-		
-		
-		
-		#pickimg1, #pickimg2 {
-			width: 25px;
-			height: 25px;
-		}
-		
-		#pickimg1:hover {
- 			filter: brightness(180%); 
-		}
-		#pickimg2:hover {
-			filter: brightness(40%); 
-		}
-		
-		#tabletd {
-			float: right;
-
-		}
-		
-		
-		.mbr-gallery-item div img {
-		
-			width: 100%;
-		  	height: 100%;
-		  	height: 150px;
-		  	object-fit: cover;
-		
-		}
-		
-		.mbr-gallery .mbr-gallery-item {
-			width: 24.5%;
-		}
-	</style>
     
 	</body>
 </html>
