@@ -52,10 +52,10 @@ public class ClassService {
 		
 		switch(orderby) {
 		case 0:
-			classList = classDao.selectClasses();
+			classList = classDao.selectClassesPick(mid);
 			break; 
 		case 1:
-			classList = classDao.selectClassesOrderByNew();
+			classList = classDao.selectClassesOrderByNew(mid);
 			break;
 		
 		case 2:

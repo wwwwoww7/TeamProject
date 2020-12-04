@@ -199,9 +199,18 @@ public class ClassController {
 	
 	
 	@GetMapping("/allClassList")
-	public String allClassList(Model model) {
+	public String allClassList(Model model, HttpSession session) {
+		String mid = (String) session.getAttribute("sessionMid");
 		
-		List<ClassDto> classList = classService.getClassList(0);
+		
+		List<ClassDto> classList;
+		
+		if(mid != null) {
+			classList = classService.getClassList(0, mid);
+		}else {
+			classList = classService.getClassList(0);
+		}
+		
 		model.addAttribute("classList", classList); 
 		
 		return "class/classcard_sm";
@@ -236,6 +245,7 @@ public class ClassController {
 			return "/class/pickclass"; //강의 상세 페이지 새로고침..? // ajax..?
 		else { 
 			model.addAttribute("class_no", pickinfo.getClass_no()); 
+			model.addAttribute("listtype", pickinfo.getListtype()); 
 			return "/class/pickclassmain";
 		
 		}

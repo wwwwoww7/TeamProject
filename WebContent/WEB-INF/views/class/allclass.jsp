@@ -148,6 +148,11 @@
 		  	height: 170px;
 		  	object-fit: cover;
 		}
+		
+		#pickimg1, #pickimg2 {
+			width: 25px;
+			height: 25px;
+		}
   	</style>
   	<script type="text/javascript">
 	  	function allClassList(){
@@ -162,6 +167,41 @@
   		$(function(){
   			allClassList();
   		});
+  		
+  		
+  		function pick(type, clk, class_no){
+  			var mid = "${sessionMid}"; 
+  			var mtype = "${member.mtype}"; 
+  			
+  			type = 1;
+  			if(clk == 1 || clk == 2){
+  				
+  				if(mtype == 'ROLE_TUTOR'){
+  					alert("강사 계정은 찜할 수 없습니다.");
+  					return; 
+  				}
+  				
+  				
+  				/* 1: insert, 2: delete */
+  				console.log("로그인한 경우 ");
+  				$.ajax({
+  					url: "<%=request.getContextPath()%>/class/pickClass",
+  					data : {listtype: type, mid : mid, class_no : class_no, clk: clk, maincall : 1  },
+  					success : function(data){
+  						
+  						if(type==1){
+  							$("#heartpagenewc"+class_no).html(data);
+  						}
+  					}
+  				});
+  			}else {
+  				
+  				if( mid == null  || mid == ""){
+  					alert("찜하기를 위해 로그인해주세요.");
+  					location.href="<%=request.getContextPath()%>/login/login";
+  				} 
+  			}
+  		}
   	
   	</script>
   	

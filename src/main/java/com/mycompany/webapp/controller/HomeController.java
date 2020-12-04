@@ -48,10 +48,6 @@ public class HomeController {
 		
 		if(mid != null) {
 			classList = classService.getClassList(2,mid);
-			
-			for(ClassDto clas : classList) {
-				logger.info( "YN : " + clas.getPick_yn());
-			}
 		}else {
 			classList = classService.getClassList(2);
 		}
@@ -63,12 +59,25 @@ public class HomeController {
 	}
 	
 	@GetMapping("/newClasses")
-	public String newClasses(Model model) { 
+	public String newClasses(Model model, HttpSession session) { 
 		
 		
 		logger.info("newClasses 실행");
 		
-		List<ClassDto> classList = classService.getClassList(1);
+		String mid = (String)session.getAttribute("sessionMid");
+		
+		List<ClassDto> classList; 
+		
+		if(mid != null) {
+			classList = classService.getClassList(1, mid);
+			
+			for(ClassDto clas : classList) {
+				logger.info( "YN : " + clas.getPick_yn());
+			}
+		}else {
+			classList = classService.getClassList(1);
+		}
+		
 		model.addAttribute("classList", classList);
 		
 		return "class/classcard_sm";

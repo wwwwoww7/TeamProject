@@ -10,7 +10,9 @@
 		
 	     <div class="item-wrapper">
 	         <div class="item-img">
-	         	<img class="img-thumbnail" src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum }" alt="" data-slide-to="3">
+	         	<a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" >
+	         		<img class="img-thumbnail" src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum }" alt="" data-slide-to="3">
+			 	</a>
 			 </div>
 	         <div class="item-content">
 	         
@@ -23,24 +25,27 @@
 	         			</td>
 	         			<td id="tabletd" rowspan="2">
 	         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
+	         					
 	         					<c:if test="${sessionMid == '' || sessionMid == null }">
-									<a class="mbr-iconfont" href="javascript:pick(0, ${hotclass.class_no})">
+									<a class="mbr-iconfont" href="javascript:pick(0, 0, ${hotclass.class_no})">
 										<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
 									</a>
 								</c:if>
 								<c:if test="${sessionMid != '' && sessionMid != null}">
 									<c:if test="${hotclass.pick_yn == 'N'}">
-										<a class="mbr-iconfont" href="javascript:pick(1, ${hotclass.class_no})">
+										<a class="mbr-iconfont" href="javascript:pick(0, 1, ${hotclass.class_no})">
 											<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
 										</a>
 									</c:if>
 									<c:if test="${hotclass.pick_yn == sessionMid}">
-										<a class="mbr-iconfont" href="javascript:pick(2, ${hotclass.class_no})">
+										<a class="mbr-iconfont" href="javascript:pick(0, 2, ${hotclass.class_no})">
 											<img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
 										</a>
 									</c:if>
 								</c:if>
+								
 	         				</h5>
+	         				
 	         					
 	         			</td>
 	         		</tr>
@@ -67,7 +72,7 @@
 </c:forEach>
 
 <script type="text/javascript">
-	function pick(clk, class_no){
+	function pick(type, clk, class_no){
 		var mid = "${sessionMid}"; 
 		var mtype = "${member.mtype}"; 
 		
@@ -84,9 +89,14 @@
 			console.log("로그인한 경우 ");
 			$.ajax({
 				url: "<%=request.getContextPath()%>/class/pickClass",
-				data : {mid : mid, class_no : class_no, clk: clk, maincall : 1  },
+				data : {listtype: type, mid : mid, class_no : class_no, clk: clk, maincall : 1  },
 				success : function(data){
-					$("#heartpage"+class_no).html(data);
+					
+					if(type==0)
+						$("#heartpage"+class_no).html(data);
+					else if(type==1){
+						$("#heartpagenewc"+class_no).html(data);
+					}
 				}
 			});
 		}else {

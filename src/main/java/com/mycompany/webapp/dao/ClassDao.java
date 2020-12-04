@@ -74,6 +74,15 @@ public class ClassDao {
 		return classList;
 	}
 	
+
+	public List<ClassDto> selectClassesOrderByNew(String mid) {
+		List<ClassDto> classList = sst.selectList("mybatis.mapper.class.selectClassesOrderByNewPick", mid);
+		return classList;
+	}
+
+
+	
+	
 	public int selectPickByMidClassNo(PickDto pickDto) {
 		int pickYn =  sst.selectOne("mybatis.mapper.pick.selectPickByMidClassNo", pickDto);
 		return pickYn;
@@ -106,6 +115,16 @@ public class ClassDao {
 		int pickCount = sst.selectOne("mybatis.mapper.pick.selectPickCount", class_no);
 		return pickCount;
 	}
+
+
+
+
+	public List<ClassDto> selectClassesPick(String mid) {
+		List<ClassDto> classList = sst.selectList("mybatis.mapper.class.selectClassesPick", mid);
+		return classList;
+	}
+
+
 
 
 

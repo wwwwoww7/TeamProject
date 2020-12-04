@@ -15,7 +15,46 @@
             </div>
         </div>
         <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-           [ ${classes.class_cate_nm} ]  ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no }" class="text-success">Try</a>
+        	<table style="width: 100%;">
+        		<tr>
+        			<td>
+        				[ ${classes.class_cate_nm} ]
+        			</td>
+        			<td rowspan="2">
+        				<h5 id="heartpagenewc${classes.class_no}" class="display-7">
+	         					
+         					<c:if test="${sessionMid == '' || sessionMid == null }">
+								<a class="mbr-iconfont" href="javascript:pick(1, 0, ${classes.class_no})">
+									<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+								</a>
+							</c:if>
+							<c:if test="${sessionMid != '' && sessionMid != null}">
+								<c:if test="${classes.pick_yn == 'N'}">
+									<a class="mbr-iconfont" href="javascript:pick(1, 1, ${classes.class_no})">
+										<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+									</a>
+								</c:if>
+								<c:if test="${classes.pick_yn == sessionMid}">
+									<a class="mbr-iconfont" href="javascript:pick(1, 2, ${classes.class_no})">
+										<img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
+									</a>
+								</c:if>
+							</c:if>
+							
+         				</h5>
+        			
+        			
+        			</td>
+        			
+        		</tr>
+        		<tr>
+        			<td>
+        				 ${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no }" class="text-success">Try</a>
+        			</td>
+        		</tr>
+        	</table>
+         
         </h6>
     </div>
 </c:forEach>
+ 
