@@ -94,7 +94,7 @@
 								<div class="dragArea row">
 									<div class="col-md-3"></div>
 									<div class="col-md-3">
-										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin-left: 5px;" value="글쓰기"/>
+										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="border-radius: 100px" value="글쓰기"/>
 										<script type="text/javascript">
 											function writeCheck() {
 
@@ -123,7 +123,7 @@
 										</script>		
 									</div>
 									<div class="col-md-3">
-										<a class="btn item-btn btn-success display-7 text-primary" href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">취소</a>
+										<a class="btn item-btn btn-success display-7 text-primary" style="border-radius: 100px;"href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">취소</a>
 									</div>
 									<div class="col-md-3"></div>
 								</div>

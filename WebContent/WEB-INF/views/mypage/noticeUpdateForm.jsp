@@ -106,7 +106,7 @@
 								<div class="dragArea row" style="text-align: center;">
 									<div class="col-md-3"></div>
 									<div class="col-3" style="margin-right: 5px;">
-										<button type="submit" class="btn btn-success display-7 text-primary" style="margin: 5px;">수정</button>
+										<button type="submit" class="btn btn-success display-7 text-primary" style="margin: 5px; border-radius: 100px;">수정</button>
 										<%-- <a class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;" href="<%=request.getContextPath()%>/mypage/noticeUpdate" ></a> --%>
 										<script type="text/javascript">
 											function writeCheck() {
@@ -135,7 +135,7 @@
 										</script>		
 									</div>
 									<div class="col-3">
-										<a class="btn item-btn btn-success display-7 text-primary" href="<%=request.getContextPath()%>/mypage/noticeDetail?class_notice_no=${notice.class_notice_no}">취소</a>
+										<a class="btn item-btn btn-success display-7 text-primary" style="border-radius: 100px;" href="<%=request.getContextPath()%>/mypage/noticeDetail?class_notice_no=${notice.class_notice_no}">취소</a>
 									</div>
 									<div class="col-md-3"></div>
 								</div>
@@ -149,7 +149,6 @@
 	
 	
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-	<input type="hidden" id="mid" name="mid" value="${sessionMid}"/>
 
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/web/assets/jquery/jquery.min.js"></script>
