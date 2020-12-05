@@ -112,11 +112,13 @@
 								</div>
 							</c:forEach>
 						</div>
-					  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-					    <span class="carousel-control-prev-icon"></span>
+					  <a class="carousel-control-prev text-black" href="#demo" data-slide="prev">
+					  	<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+					    <!-- <span class="carousel-control-prev-icon"></span> -->
 					  </a>
-					  <a class="carousel-control-next" href="#demo" data-slide="next">
-					    <span class="carousel-control-next-icon"></span>
+					  <a class="carousel-control-next text-black" href="#demo" data-slide="next">
+					    <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+					    <!-- <span class="carousel-control-next-icon"></span> -->
 					  </a>
 					</div> 
 				</div>
@@ -212,6 +214,28 @@
 		  	height: 170px;
 		  	object-fit: cover;
 		}
+		.carousel-control-prev, .carousel-control-next  {
+		 	filter: brightness(70%); 
+		 }
+		 
+		.carousel-control-prev:hover, .carousel-control-next:hover  {
+		 	filter: brightness(20%); 
+		 }
+		.carousel-control-prev > img , .carousel-control-next  > img {
+		 	width: 50px;
+		 	height: 50px;
+		 }
+		 
+		.carousel-indicators .active {
+			background: #ffc800;
+		}
+		
+		.carousel-indicators .active, .carousel-indicators li{
+			width: 30px;
+			height: 5px;
+			border: 1px;
+		}
+		
 		@media (min-width: 768px){
 			.col-md-6 {
 			    max-width: 49%;
@@ -239,7 +263,7 @@
 			.table #qaMidTD {
 				display: none;
 			}
-			.display-7 {
+			table .display-7 {
 				font-size: 15px;
 			}		
 		}
@@ -257,10 +281,12 @@
 			.table #qaDateTD {
 				display: none;
 			}
-			.display-7 {
+			table .display-7 {
 				font-size: 12px;
 			}		
 		}
+		
+		
 	 </style>
 	<script type="text/javascript">
 		/* 공지사항 */

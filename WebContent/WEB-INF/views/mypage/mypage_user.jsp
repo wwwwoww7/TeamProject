@@ -108,10 +108,10 @@
 							</c:forEach>
 						</div>
 					  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-					    <span class="carousel-control-prev-icon"></span>
+					    <img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
 					  </a>
 					  <a class="carousel-control-next" href="#demo" data-slide="next">
-					    <span class="carousel-control-next-icon"></span>
+					     <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
 					  </a>
 					</div> 
 				</div>
@@ -194,10 +194,10 @@
 							</c:forEach>
 						</div>
 					  <a class="carousel-control-prev" href="#pickcardview" data-slide="prev">
-					    <span class="carousel-control-prev-icon"></span>
+					    <img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
 					  </a>
 					  <a class="carousel-control-next" href="#pickcardview" data-slide="next">
-					    <span class="carousel-control-next-icon"></span>
+					     <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
 					  </a>
 					</div> 
 				</div>
@@ -267,6 +267,28 @@
 		  	height: 170px;
 		  	object-fit: cover;
 		}
+		.carousel-control-prev, .carousel-control-next  {
+		 	filter: brightness(70%); 
+		 }
+		 
+		.carousel-control-prev:hover, .carousel-control-next:hover  {
+		 	filter: brightness(20%); 
+		 }
+		.carousel-control-prev > img , .carousel-control-next  > img {
+		 	width: 50px;
+		 	height: 50px;
+		 }
+		 
+		.carousel-indicators .active {
+			background: #ffc800;
+		}
+		
+		.carousel-indicators .active, .carousel-indicators li{
+			width: 30px;
+			height: 5px;
+			border: 1px;
+		}
+		
 		.cid-sh7HNKMuDe .item-wrapper {
 		    height: 80%;
 		} 
