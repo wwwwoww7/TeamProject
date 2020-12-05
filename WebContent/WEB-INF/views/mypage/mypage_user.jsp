@@ -316,7 +316,7 @@
 			.table #qaMidTD {
 				display: none;
 			}
-			.display-7 {
+			table .display-7 {
 				font-size: 15px;
 			}		
 		}
@@ -334,7 +334,7 @@
 			.table #qaDateTD {
 				display: none;
 			}
-			.display-7 {
+			table .display-7 {
 				font-size: 12px;
 			}	
 		

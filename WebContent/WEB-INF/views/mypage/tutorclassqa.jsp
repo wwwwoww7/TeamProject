@@ -24,7 +24,7 @@
 					<c:if test="${qalist.class_qa_answer != null}">답변완료</c:if>
 					<c:if test="${qalist.class_qa_answer == null}">미응답</c:if>
 				</td>
-				<td id="qaMidTD" class="body-item mbr-fonts-style display-7">${qalist.writer_id}</td>
+				<td id="qaMidTD" class="body-item mbr-fonts-style display-7">${qalist.mnick}</td>
 				<td id="qaDateTD"class="body-item mbr-fonts-style display-7">
 					<fmt:formatDate value="${qalist.class_qa_date}" pattern="yyyy-MM-dd"/>
 				</td>
