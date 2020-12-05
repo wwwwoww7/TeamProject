@@ -6,11 +6,12 @@
 	<section class="section-table cid-shajIi4vc3" id="table1-1l">
 	  <div class="container container-table">
 	      <div class="table-wrapper">
-	        <div class="container">
+	        <div class="container-fulid">
 	          <div class="row search">
 	            <div class="col-md-6"></div>
 	            <div class="col-md-6">
 	                <div  class="mbr-section-btn" align="right">
+	                <c:if test="${sessionMid!=null}" >  
                	   		<%-- <c:if test="${sessionMid==null}"> --%>
 		                  <a class="btn item-btn btn-warning display-4" href="javascript:communityWriteReview()" >글쓰기</a>
 							<script type="text/javascript">
@@ -23,6 +24,7 @@
 									});
 								}
 							</script>
+							</c:if>
 							<script type="text/javascript">
 							function communityDetailReview(review_no) {
 								$.ajax({
@@ -64,12 +66,12 @@
 	          </div>
 	        </div>
 	
-	        <div class="container scroll">
-	          <table class="table table-hover" cellspacing="0" data-empty="No matching records found">
+	        <div class="row border">
+	          <table class="table table-hover m-0" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	            <colgroup>
 	            	<col width="10%">
-				    <col width="12%">
+				    <col width="15%">
 				    <col width="12%">
 				    <col width="30%">
 				    <col width="12%">
@@ -77,27 +79,27 @@
 				    <col width="*">
 	            </colgroup>
 		            <tr class="table-heads">
-						<th class="head-item mbr-fonts-style display-7 text-center">번호</th>
+						<th id="no" class="head-item mbr-fonts-style display-7 text-center">번호</th>
 						<th class="head-item mbr-fonts-style display-7 text-center">강의분야</th>
 						<th class="head-item mbr-fonts-style display-7 text-center">별점</th>
 						<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
 						<!-- <th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">내용</th> -->
 						<th class="head-item mbr-fonts-style display-7 text-center">닉네임</th>
-						<th class="head-item mbr-fonts-style display-7 text-center">날짜</th>
-						<th class="head-item mbr-fonts-style display-7 text-center">조회수</th>
+						<th id="comDate" class="head-item mbr-fonts-style display-7 text-center">날짜</th>
+						<th id="hit" class="head-item mbr-fonts-style display-7 text-center">조회수</th>
 					</tr>
 	            </thead>
 	            <tbody>
 	            	<c:forEach var="ReviewDto" items="${review}">
 					<tr>
-						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_no}</td>
+						<td id="noTD" class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_no}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.class_cate_nm}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_star}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</a></td>
 						<%-- <td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.mnick}</td>
-						<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yyyy-MM-dd"/></td>
-						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_hitno}</td>
+						<td id="comDateTD" class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yy.MM.dd"/></td>
+						<td id="hitTD"class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_hitno}</td>
 					</tr>
 					</c:forEach>
 	            	
@@ -143,6 +145,38 @@
 	
 	
 </div>
+	<style type="text/css">
+		@media screen and (max-width: 768px){ 
+			.table #no {
+				display: none;
+			}
+			.table #noTD {
+				display: none;
+			}
+				
+			.display-7 {
+				font-size: 15px;
+			}		
+		}
+		
+		@media screen and (max-width: 576px){ 
+			.table #comDate {
+				display: none;
+			}
+			.table #comDateTD {
+				display: none;
+			}	
+			.table #hit{
+				display: none;
+			}
+			.table #hitTD{
+				display: none;
+			}
+			.display-7 {
+				font-size: 12px;
+			}		
+		}
+	</style>
 
 <script type="text/javascript">
 	

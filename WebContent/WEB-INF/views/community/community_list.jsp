@@ -39,8 +39,7 @@
             <div class="col-md-6"></div>
             <div class="col-md-6">
                 <div class="mbr-section-btn" align="right">
-                
-               	 <c:if test="${sessionMid!=null}"> 
+               	 <c:if test="${sessionMid!=null}" > 
                   <a class="btn item-btn btn-warning display-4" href="javascript:communityWrite()">글쓰기</a>
                   
 					<script type="text/javascript">

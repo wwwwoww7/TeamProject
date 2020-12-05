@@ -41,7 +41,7 @@ public class CommunityController {
 	@GetMapping("/communityAll")
 	public String communityAll(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalRows();
-		CommunityPagerDto pager = new CommunityPagerDto(2, 5, totalRows, pageNo);
+		CommunityPagerDto pager = new CommunityPagerDto(10, 3, totalRows, pageNo);
 		List<CommunityDto> list = service.getCommunityAll(pager);
 		
 		model.addAttribute("cate", 1);

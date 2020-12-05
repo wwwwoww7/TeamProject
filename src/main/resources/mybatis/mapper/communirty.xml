@@ -109,7 +109,7 @@
 	</select>
 	
 	<select id="selectByReviewno" parameterType="int" resultType="review">
-		 select r.review_no, r.review_date, r.review_title, r.review_content, r.review_hitno, m.mid, m.mnick, c.class_no, r.review_star, ca.class_cate_no, ca.class_cate_nm
+		 select r.review_no, r.review_date, r.review_title, r.review_content, r.review_hitno, m.mid, m.mnick, c.class_no, r.review_star, ca.class_cate_no, ca.class_cate_nm, c.class_nm
 		from review r, member m,class c,class_cate ca
 		where c.class_cate_no=ca.class_cate_no and r.class_no=c.class_no and r.mid=m.mid
           and r.review_no = #{review_no}
@@ -220,8 +220,10 @@
 	
 	<!-- 20.11.26 지은 추가, class_no로 가장 최근 리뷰 두개 조회  -->
 	<select id="selectByClassNo" parameterType="int" resultType="review"> 
-		select mnick,mid,mpro_img,review_title,review_content,review_date from (
-		    select rownum as rnum,mnick,mid,mpro_img,review_title, review_content, review_date from (
+		select mnick,mid,mpro_img,review_title,review_content,review_date
+		from (
+		    select rownum as rnum,mnick,mid,mpro_img,review_title, review_content, review_date 
+		    from (
 		        select member.mnick, member.mpro_img, review_title, review_content, review_date, member.mid
 		        from review, member
 		        where review.class_no = #{class_no}

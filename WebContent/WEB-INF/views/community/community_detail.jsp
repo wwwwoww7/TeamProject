@@ -8,32 +8,34 @@
 	<!-- 수정/삭제/목록가기 -->
 	<div class="row">
 		<div class="col-12"  align="right">
-			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
-			<script type="text/javascript">
-			function communityUpdateform(comm_no) {
-				$.ajax({
-						url:"community/communityUpdateform",
-						data : {comm_no:comm_no},
-						success:function(data) {
-						$("#fun1_result").html(data);
-						}
-					});
-				}
-			</script>
-			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityDeleteform(${communityDetail.comm_no})">삭제</a>	
-			<script type="text/javascript">
-			function communityDeleteform(comm_no) {
-				$.ajax({
-						url:"community/communityDeleteform",
-						data : {comm_no:comm_no},
-						success:function(data) {
-						if(data.result=="success"){
-							allFunction(1);
-						}
-						}
-					});
-				}
-			</script>
+			<c:if test="${sessionMid==communityDetail.mid}"> 
+				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
+				<script type="text/javascript">
+				function communityUpdateform(comm_no) {
+					$.ajax({
+							url:"community/communityUpdateform",
+							data : {comm_no:comm_no},
+							success:function(data) {
+							$("#fun1_result").html(data);
+							}
+						});
+					}
+				</script>
+				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityDeleteform(${communityDetail.comm_no})">삭제</a>	
+				<script type="text/javascript">
+				function communityDeleteform(comm_no) {
+					$.ajax({
+							url:"community/communityDeleteform",
+							data : {comm_no:comm_no},
+							success:function(data) {
+							if(data.result=="success"){
+								allFunction(1);
+							}
+							}
+						});
+					}
+				</script>
+			</c:if>	
 			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>		
 		</div>
 	</div>
@@ -45,9 +47,9 @@
 				<div class="col-12">
 					<table class="table table-bordered">
 					<colgroup>
-					    <col width="15%">
-					    <col width="35%">
-					    <col width="15%">
+					    <col width="22%">
+					    <col width="40%">
+					    <col width="20%">
 					    <col width="*">
 					</colgroup>
 					<tbody>
@@ -77,7 +79,7 @@
 			</div>
 			
 			<!-- 댓글등록 -->
-			<div class="row">
+			<%-- <div class="row">
 				 <div class="col-12"  align="left">
 				    <c:if test="">
 						<tr>
@@ -92,7 +94,7 @@
 						</div>
 						<br/>
 						
-						<c:if test="${sessionMid!=null || sessionMid!=' ' }">
+						<c:if test="${sessionMid==reviewDetail.mid}">
 							<form method="POST" id="replyAdd" name="replyAdd" class="mbr-form form-with-styler">
 								<input type="hidden" id="comm_no" name="comm_no" value="${communityDetail.comm_no}"/>
 								
@@ -156,7 +158,7 @@
 				 
 				</div> 
 				<br/>
-			</div>
+			</div> --%>
 		
 		</div>
 		
