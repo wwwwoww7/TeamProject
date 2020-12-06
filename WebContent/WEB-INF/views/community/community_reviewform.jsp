@@ -15,7 +15,7 @@
 			
 		</div>
 		<div class="dragArea row" style="margin: 5px">
-			<div class="col-md-6 input-group">
+			<div class="col-md-12 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff;">후 기 별 점</span> 
 				<select id="review_star" name="review_star" style="width: 65%;">
 					<option value="1" >★☆☆☆☆</option>

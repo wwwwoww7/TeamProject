@@ -70,12 +70,12 @@
 	          <table class="table table-hover m-0" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	            <colgroup>
-	            	<col width="15%">
-				    <col width="15%">
-				    <col width="15%">
-				    <col width="30%">
+	            	<col width="12%">
 				    <col width="12%">
 				    <col width="12%">
+				    <col width="27%">
+				    <col width="14%">
+				    <col width="14%">
 				    <col width="*">
 	            </colgroup>
 		            <tr class="table-heads">
@@ -85,7 +85,7 @@
 						<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
 						<!-- <th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">내용</th> -->
 						<th class="head-item mbr-fonts-style display-7 text-center">닉네임</th>
-						<th id="comDate" class="head-item mbr-fonts-style display-7 text-center">날짜</th>
+						<th id="date" class="head-item mbr-fonts-style display-7 text-center">날짜</th>
 						<th id="hit" class="head-item mbr-fonts-style display-7 text-center">조회수</th>
 					</tr>
 	            </thead>
@@ -98,7 +98,7 @@
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</a></td>
 						<%-- <td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.mnick}</td>
-						<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yy.MM.dd"/></td>
+						<td id="dateTD" class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yy.MM.dd"/></td>
 						<td id="hitTD"class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_hitno}</td>
 					</tr>
 					</c:forEach>
@@ -147,10 +147,10 @@
 </div>
 	<style type="text/css">
 		@media screen and (max-width: 768px){ 
-			.table #no {
+			.table #hit {
 				display: none;
 			}
-			.table #noTD {
+			.table #hitTD {
 				display: none;
 			}
 				
@@ -160,10 +160,10 @@
 		}
 		
 		@media screen and (max-width: 576px){ 
-			.table #cate {
+			.table #date {
 				display: none;
 			}
-			.table #cateTD {
+			.table #dateTD {
 				display: none;
 			}	
 		/* 	.table #hit{

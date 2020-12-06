@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="col-12"  align="right">
 			<c:if test="${sessionMid==communityDetail.mid}"> 
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
+				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
 				<script type="text/javascript">
 				function communityUpdateform(comm_no) {
 					$.ajax({
@@ -21,7 +21,7 @@
 						});
 					}
 				</script>
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:communityDeleteform(${communityDetail.comm_no})">삭제</a>	
+				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:communityDeleteform(${communityDetail.comm_no})">삭제</a>	
 				<script type="text/javascript">
 				function communityDeleteform(comm_no) {
 					$.ajax({
@@ -36,7 +36,7 @@
 					}
 				</script>
 			</c:if>	
-			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>		
+			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>		
 		</div>
 	</div>
 		<!-- 커뮤니티list -->
