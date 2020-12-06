@@ -320,25 +320,18 @@ public class ClassController {
 		
 		
 		ClassDto classOne = classService.getClass(classNo);
-		model.addAttribute("classOne", classOne);
-
-		logger.info("classEdit");
-		
+		model.addAttribute("classOne", classOne);		
 		return "/class/classEdit";
 	}
 	
 	@PostMapping("/classEdit")
 	public String classEdit(ClassDto classd, Model model) {
-		logger.info("test-1a");
+
 		int update_result = classService.updateClass(classd);
 		
-		logger.info("2");
 		if(update_result == 1) {
-//			ClassDto classOne = classService.getClass(classd.getClass_no());
-			
-//			model.addAttribute("classOne", classOne);
+
 		}
-		logger.info("b");
 		
 		return "redirect:/class/classdetail?classNo="+classd.getClass_no();
 	}
