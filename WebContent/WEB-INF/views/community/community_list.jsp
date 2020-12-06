@@ -61,7 +61,7 @@
         <div class="row border">
           <table class="table table-hover m-0 " cellspacing="0" data-empty="No matching records found">
             <colgroup>
-			    <col width="10%">
+			    <col width="13%">
 			    <col width="15%">
 			    <col width="35%">
 			    <col width="15%">
@@ -74,7 +74,7 @@
 				<th class="head-item mbr-fonts-style display-7 text-center">분야</th>
 				<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
 				<th class="head-item mbr-fonts-style display-7 text-center">닉네임</th>
-				<th class="head-item mbr-fonts-style display-7 text-center">날짜</th>
+				<th id="date" class="head-item mbr-fonts-style display-7 text-center">날짜</th>
 				<th id="hit" class="head-item mbr-fonts-style display-7 text-center">조회수</th>
                   
              <!--  <th class="head-item mbr-fonts-style display-7">
@@ -105,7 +105,7 @@
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
+					<td id="dateTD" class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
@@ -115,7 +115,7 @@
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
+					<td id="dateTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
@@ -125,7 +125,7 @@
 					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
+					<td id="dateTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 					<td id="hitTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
@@ -135,7 +135,7 @@
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
+					<td id="dateTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>    
@@ -189,16 +189,16 @@
 </div>
 	<style type="text/css">
 		@media screen and (max-width: 768px){ 
-			.table #no {
+			/* .table #date {
 				display: none;
 			}
-			.table #noTD {
+			.table #dateTD {
 				display: none;
 			}
 				
 			.display-7 {
 				font-size: 15px;
-			}		
+			}	 */	
 		}
 		
 		@media screen and (max-width: 576px){ 
@@ -208,12 +208,12 @@
 			.table #comDateTD {
 				display: none;
 			}	 */
-			/* .table #hit{
+			 .table #hit{
 				display: none;
 			}
 			.table #hitTD{
 				display: none;
-			} */
+			} 
 			.display-7 {
 				font-size: 12px;
 			}		
