@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
-<c:if test="${tutor_id == sessionMid}">
-	<div class="mbr-section-btn" align="right">
-	<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeWriteForm">글쓰기</a>
-	</div> 
-</c:if>
+<%-- <c:if test="${tutor_id == sessionMid}"> --%>
+<!-- 	<div class="mbr-section-btn" align="right"> -->
+<%-- 	<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeWriteForm">글쓰기</a> --%>
+<!-- 	</div>  -->
+<%-- </c:if> --%>
 <div class="container scroll">
 	<c:if test="${fn:length(list) == 0 }">
 		<div class="card col-12 col-md-12">

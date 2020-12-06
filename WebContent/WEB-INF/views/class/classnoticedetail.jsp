@@ -34,10 +34,10 @@
 	  	<div class="mbr-section-btn" align="right">
 			<a class="btn btn-success display-4 text-primary" href="javascript:classNotice(1)">목록으로</a>	
 	   
-		    <c:if test="${notice.mid == sessionMid}">
-		    	<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a>
-				<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a>
-			</c:if>
+<%-- 		    <c:if test="${notice.mid == sessionMid}"> --%>
+<%-- 		    	<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeUpdateForm?class_notice_no=${notice.class_notice_no}">수정</a> --%>
+<%-- 				<a class="btn btn-success display-4 text-primary" href="<%=request.getContextPath()%>/mypage/noticeDelete?class_notice_no=${notice.class_notice_no}">삭제</a> --%>
+<%-- 			</c:if> --%>
 		</div> 
 	</div>
 </div>
