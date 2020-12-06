@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.controller.HomeController;
+import com.mycompany.webapp.dto.ClassApplDto;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassVideoDto;
 import com.mycompany.webapp.dto.PickDto;
@@ -129,6 +130,14 @@ public class ClassDao {
 	public int updateClass(ClassDto classd) {
 		int rows=sst.selectOne("mybatis.mapper.class.updateClass",classd);
 		return rows;
+	}
+
+
+
+
+	public int selectCountApplByMidClassNo(ClassApplDto appl) {
+		int row = sst.selectOne("mybatis.mapper.class.selectCountApplByMidClassNo",appl);
+		return row;
 	}
 
 

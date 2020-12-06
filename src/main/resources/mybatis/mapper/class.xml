@@ -192,7 +192,14 @@
 	<select id="selectTutorIdByClassNo" parameterType="int" resultType="String">
 		select tutor_id from class where class_no=#{class_no}
 	</select>
-	
+
+
+	<select id="selectCountApplByMidClassNo" resultType="int" parameterType="classAppl">
+		select count(*) from class_appl where class_no=#{class_no} and mid=#{mid}
+	</select>
+
+
+
 	<!-- 강의정보 수정/혜빈 -->
 	<update id="updateClass" parameterType="class">
 		UPDATE class

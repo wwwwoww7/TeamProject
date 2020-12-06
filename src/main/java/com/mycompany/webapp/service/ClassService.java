@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.controller.HomeController;
 import com.mycompany.webapp.dao.ClassDao;
+import com.mycompany.webapp.dto.ClassApplDto;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassVideoDto;
 import com.mycompany.webapp.dto.PickDto;
@@ -122,6 +123,11 @@ public class ClassService {
 	public int updateClass(ClassDto classd) {
 		int rows = classDao.updateClass(classd);
 		return rows;
+	}
+
+	public int getBuyYn(ClassApplDto appl) {
+		int row = classDao.selectCountApplByMidClassNo(appl);
+		return row;
 	}
 	
 	

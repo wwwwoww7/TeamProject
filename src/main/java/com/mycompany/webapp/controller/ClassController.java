@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.ClassApplDto;
 import com.mycompany.webapp.dto.ClassDto;
 import com.mycompany.webapp.dto.ClassNoticeDto;
 import com.mycompany.webapp.dto.ClassNoticePagerDto;
@@ -58,8 +59,9 @@ public class ClassController {
 
 
 	@GetMapping("/classdetail")
-	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model) {
-		
+	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model, HttpSession session) {
+
+	
 		
 		ClassDto classOne = classService.getClass(classNo);
 		model.addAttribute("classOne", classOne);
@@ -75,6 +77,21 @@ public class ClassController {
 		//후기 두개
 		List<ReviewDto> reviewList = communityService.getReviewList(classNo);
 		model.addAttribute("reviewList", reviewList);
+		
+		
+		String mid = (String) session.getAttribute("sessionMid");
+		
+		if(mid != null && !mid.equals("")) {
+			ClassApplDto appl = new ClassApplDto();
+			appl.setClass_no(classNo);
+			appl.setMid(mid);
+			int applyYN = classService.getBuyYn(appl);
+			logger.info("-------------->" + applyYN);
+			model.addAttribute("applyYN", applyYN);
+		}else {
+			model.addAttribute("applyYN", 0);
+		}
+	
 		
 		return "/class/classdetail";
 	}

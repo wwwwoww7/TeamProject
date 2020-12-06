@@ -102,13 +102,15 @@
 	        </div>
 	        
 	        <div class="row">
-	        	<div class="col-sm-12"  align="right" >
+	        	<div class="col-sm-12  pr-4"  align="right" >
 	        		 <c:if test="${member.mtype != 'ROLE_TUTOR'}">
-	        		 	<div id="pickdiv" class="mbr-section-btn" style="display:inline-block;"></div>
-	        		 	<div class="mbr-section-btn"  style="display:inline-block;">
-		               		<a class="btn item-btn btn-warning display-4" href="javascript:putt()">장바구니 담기</a>
-		             	</div>
-			             
+	        		 	<div id="pickdiv" class="mbr-section-btn mr-2" style="display:inline-block;"></div>
+	        		 
+	        		 	<c:if test="${applyYN==0}">
+		        		 	<div class="mbr-section-btn"  style="display:inline-block;">
+			               		<a class="btn item-btn btn-warning display-4" href="javascript:putt()">장바구니 담기</a>
+			             	</div>
+			            </c:if>
 				         <script type="text/javascript">
 							function putt(){
 								var result = confirm("장바구니에 담으시겠습니까?");
@@ -181,11 +183,11 @@
 
 													</p>
 													
-													
-								                    <div class="mbr-section-btn">
-								                    	<a class="btn btn-success display-4 text-primary" href="javascript:openpop()">강의 보기</a>
-								                    </div>
-								                 	   버튼 강의 구매자에게만 보여야 함..
+													<c:if test="${applyYN==1}">
+									                    <div class="mbr-section-btn">
+									                    	<a class="btn btn-success display-4 text-primary" href="javascript:openpop()">강의 보기</a>
+									                    </div>
+								                 	</c:if>
 								                </div>
 								            </div>
 								            <script type="text/javascript">
