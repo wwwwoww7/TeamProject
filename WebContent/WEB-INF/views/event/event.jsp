@@ -192,6 +192,30 @@
 				display: none;
 			}
 			
+		@media screen and (max-width: 576px){ 	
+				.table1 #nm{
+			display: none;
+			}
+			.table1 #start {
+				display: none;
+			}
+			.table1 #end {
+				display: none;
+			}
+			
+			.table1 #nmT {
+				display: none;
+			}
+			
+			.table1 #startT {
+				display: none;
+			}
+			
+			.table1 #endT {
+				display: none;
+			}
+			
+			
 	</style>
 	
 </body>

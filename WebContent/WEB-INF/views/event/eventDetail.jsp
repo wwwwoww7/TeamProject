@@ -14,7 +14,7 @@
   <link rel="shortcut icon" href="<%=application.getContextPath()%>/resources/assets/images/mbr-96x48.png" type="image/x-icon">
   <meta name="description" content="Website Creator Description">
   
-  
+   
   <title>eventDetail</title>
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -34,7 +34,7 @@
 </head>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
-
+<br/>
 
 	<section class="testimonails3 carousel slide testimonials-slider cid-sh9WSPbYRc mb-5" data-interval="false" id="testimonials3-1e">
 	    <div class="text-center container">
@@ -66,7 +66,7 @@
     				<br/>
 	    			<p>${eventD.event_ct}</p>
 	    			
-	    			<p>내용 적어보세요 </p>
+	    			<p> </p>
 	    		</div>
 	    		<div class="col-sm-6"  align="center">
 	    			<br/>
