@@ -5,7 +5,7 @@
 <form id="qaWriteform" name="qaWriteform" method="POST" >
 <table class="table table-bordered">
 	<colgroup>
-	    <col width="15%">
+	    <col id="qadetail1"  width="15%">
 	    <col width="35%">
 	    <col width="15%">
 	    <col width="*">
@@ -16,7 +16,7 @@
 <%--         	<td colspan="3"  class="text-center">${class_no}</td> --%>
 <!-- 	    </tr> -->
 	    <tr>
-	        <th class="text-center">작성자</th>
+	        <th id="qadetail1" class="text-center">작성자</th>
 	        <td colspan="3">${mnick}<input type="hidden" id="class_no" name="class_no" value="${class_no}"/></td>
 		</tr>
 		<tr>
@@ -93,3 +93,10 @@
 	}
 </script>
 
+<style type="text/css">
+	@media (max-width: 576px) {
+	    #qadetail1 {
+	      width: 20%;
+	    }
+	 }
+</style>

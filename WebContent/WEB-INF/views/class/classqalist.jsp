@@ -17,9 +17,9 @@
 		<thead>
 			<tr class="table-heads ">
 	<!--        <th class="head-item mbr-fonts-style display-7 text-center">글번호</th> -->
-				<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
-				<th class="head-item mbr-fonts-style display-7 text-center">작성자</th>
-				<th class="head-item mbr-fonts-style display-7 text-center">작성일</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj1">제목</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj2">작성자</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj3">작성날짜</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,7 +28,7 @@
 	<%-- 	        <td>${qaItem.class_qa_no}</td> --%>
 					<td><a class="text-black" href="javascript:pageLoad(2,${qaItem.class_qa_no})">${qaItem.class_qa_title}</a></td>
 					<td class="text-center">${qaItem.mnick}</td>
-					<td class="text-center"><fmt:formatDate value="${qaItem.class_qa_date}" pattern="yyyy-MM-dd"/></td>
+					<td class="text-center"><fmt:formatDate value="${qaItem.class_qa_date}" pattern="yy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
 			

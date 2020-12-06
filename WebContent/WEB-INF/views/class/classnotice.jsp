@@ -21,22 +21,22 @@
 	<table class="table" cellspacing="0" data-empty="No matching records found">
 		<thead>
 			<tr class="table-heads ">
-				<th class="head-item mbr-fonts-style display-7 text-center" width="10%">공지번호</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" width="70%" >제목</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" width="19%" >작성날짜</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" width="10%" id="noticecase1">공지번호</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" width="70%" id="noticecase2">제목</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" width="19%" id="noticedate">작성날짜</th>
 			</tr>
 		</thead>
 	
 		<tbody>
 		<c:forEach var="notice" items="${list}">
 			<tr>
-				<td class="body-item mbr-fonts-style display-7" align="center" >${notice.class_notice_no}</td>
+				<td class="body-item mbr-fonts-style display-7" align="center" id="noticecase1">${notice.class_notice_no}</td>
 				<td class="body-item mbr-fonts-style display-7">
 					<a class="text-black" href="javascript:noticeDetail(${notice.class_notice_no})">
 						${notice.class_notice_title}
 					</a>
 				</td>
-				<td class="body-item mbr-fonts-style display-7" align="center"><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></td>
+				<td class="body-item mbr-fonts-style display-7" align="center"><fmt:formatDate  value="${notice.class_notice_date}" pattern="yy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
 <%-- 		<c:if test="${fn:length(list) > 10 }"> --%>

@@ -506,6 +506,41 @@
 	  		width: 400px;
 	  	}
 	  	
+	  	
+	  	@media (max-width: 576px) {
+		    #tutorimg {
+		      width: 100%;
+		    }
+		    
+		   	#noticecase1 {
+		   		display:none;
+		   	}
+		   	
+		   	#noticedate {
+		   		width:29%;
+		   	}
+		   	
+		   	#noticecase2 {
+		   		width : 70%;
+		   	}
+		   	#noticeadj1 {
+		   		width: 20%;
+		   	}
+		   	#noticeadj2 {
+		   		width: 35%;
+		   	}
+	   		#noticeadj3 {
+		   		width: 24%;
+		   	}
+		   	
+		   	
+		   	.table-bordered {
+		   		font-size:14px;
+		   	}
+		   	
+		   	
+		}
+
 	  	.test-black {
 	  		color:black;
   			text-decoration: underline;

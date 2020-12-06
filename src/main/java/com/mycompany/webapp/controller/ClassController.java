@@ -151,6 +151,7 @@ public class ClassController {
 		//qa 정보 불러오기
 		ClassQADto qaInfo = classQAService.getQADetail(class_qa_no);
 		model.addAttribute("qaInfo", qaInfo);
+		
 		return "/class/classqadetail";
 	}
 	
@@ -287,6 +288,10 @@ public class ClassController {
 		
 		ClassNoticeDto notice = classNoticeService.getNoticeDetail(class_notice_no);
 		model.addAttribute("notice",notice);
+		
+		ClassNoticeDto newUpload = classNoticeService.getFiles(notice.getClass_notice_no());
+		model.addAttribute("newUpload",newUpload);
+		
 		
 		return "/class/classnoticedetail";
 	}

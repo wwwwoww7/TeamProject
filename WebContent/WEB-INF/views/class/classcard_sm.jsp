@@ -20,7 +20,7 @@
         			<td>
         				[ ${classes.class_cate_nm} ]
         			</td>
-        			<td rowspan="2">
+        			<td rowspan="2" class="text-right">
         				<h5 id="heartpagenewc${classes.class_no}" class="display-7">
 	         					
          					<c:if test="${sessionMid == '' || sessionMid == null }">

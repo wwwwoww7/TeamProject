@@ -5,10 +5,10 @@
 
 <table class="table table-bordered">
 	<colgroup>
-	    <col width="15%">
-	    <col width="35%">
-	    <col width="15%">
-	    <col width="*">
+	    <col id="qadetail1" width="15%">
+	    <col id="qadetail2" width="35%">
+	    <col id="qadetail1" width="15%">
+	    <col id="qadetail3"width="*">
 	</colgroup>
 	<tbody>
 	    <tr>
@@ -23,8 +23,8 @@
 	    <tr>
 	        <th class="text-center">작성자</th>
 	        <td>${qaInfo.mnick}</td>
-	        <th class="text-center">작성일</th>
-	        <td><span><fmt:formatDate value="${qaInfo.class_qa_date}" pattern="yyyy-MM-dd"/></span></td>
+	        <th class="text-center">작성날짜</th>
+	        <td><span><fmt:formatDate value="${qaInfo.class_qa_date}" pattern="yy-MM-dd"/></span></td>
 		</tr>
 		<tr>
 			<th class="text-center">제목</th>
@@ -45,7 +45,7 @@
 	<tbody>
 	    <c:if test="${qaInfo.class_qa_answer != null}">
 			<tr>
-		        <th class="text-center">답변</th>
+		        <th id="qadetail1" class="text-center" width="15%">답변</th>
 		         <td class="p-3" width="100%;">
 	        		<textarea rows="4" style="width: 100%;background-color:transparent;border: 0;resize: none;" disabled>${qaInfo.class_qa_answer}</textarea>
 	       		</td>
@@ -56,3 +56,19 @@
 <div class="mbr-section-btn" align="center">
    	<a class="btn btn-success display-4  text-primary" href="javascript:pageLoad(1)">목록으로</a>
 </div>
+
+<style type="text/css">
+	@media (max-width: 576px) {
+	    #qadetail1 {
+	      width: 20%;
+	    }
+    
+/*     	#qaadj2 { */
+/* 	      width: 25%; */
+/* 	    } */
+/*    		#qaadj3 { */
+/* 	      width: 24%; */
+/* 	    } */
+    }
+
+</style>

@@ -1,29 +1,28 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 	
 <div id="tutorNotice" class="container table-info-container">
 	<div>
 		<table class="table table-bordered">
 			<colgroup>
-			    <col width="15%">
-			    <col width="55%">
-			    <col width="15%">
-			    <col width="*">
+			    <col id="noticeadj1" width="15%">
+			    <col id="noticeadj2" width="55%">
+			    <col id="noticeadj1" width="15%">
+			    <col id="noticeadj3" width="*">
 			</colgroup>
 			<tbody>
 			    <tr>
-			        <th class="text-center">제목</th>
-			        <td>${notice.class_notice_title}</td>
-			        <th class="text-center">작성일</th>
-			        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yyyy-MM-dd"/></span></td>
+			        <th id="noticeadj1" class="text-center">제목</th>
+			        <td id="noticeadj2">${notice.class_notice_title}</td>
+			        <th id="noticeadj1" class="text-center">작성날짜</th>
+			        <td id="noticeadj3"><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yy-MM-dd"/></span></td>
 			    </tr>
 			    <tr>
 			        <th class="text-center">첨부파일</th>
 			        <td colspan="3">
-			        	<c:forEach var="loadfile" items="${newUpload}">
-			        		<a id="fileloc"href="download?fileName=${loadfile.class_hw_file}"> </a> <!-- 오리지날파일이름만 보이게 하기 -->
-			        	</c:forEach>
+			        	<a id="fileloc"href="<%=request.getContextPath()%>/mypage/download?fileName=${newUpload.class_hw_file}" class="text-black">${fn:split(newUpload.class_hw_file,'_')[1]}</a>
 			        </td>
 			    </tr>
 			    <tr>

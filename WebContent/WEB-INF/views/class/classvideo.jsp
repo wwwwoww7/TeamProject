@@ -52,7 +52,7 @@
 				               		<strong>Class QA</strong>
 				            	</h6>
                 			</td>
-                			<td rowspan="2">
+                			<td rowspan="2" width="40%" class="text-right">
                 				<div id="writeBtnDiv" class="mbr-section-btn" align="right">
 									<a class="btn btn-success display-4 text-primary" href="javascript:pageLoad(3)">글쓰기</a>
 								</div> 
@@ -222,6 +222,20 @@
 	.display-2{
 		font-size: 2rem;
 	}
+	
+		
+  	@media (max-width: 576px) {
+	    #qaadj1 {
+	      width: 50%;
+	    }
+    
+    	#qaadj2 {
+	      width: 25%;
+	    }
+   		#qaadj3 {
+	      width: 24%;
+	    }
+    }
 	
 </style>
 </body>
