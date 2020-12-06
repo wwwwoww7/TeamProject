@@ -58,8 +58,8 @@
           </div>
         </div>
 
-        <div class="container">
-          <table class="table table-hover " cellspacing="0" data-empty="No matching records found">
+        <div class="row border">
+          <table class="table table-hover m-0 " cellspacing="0" data-empty="No matching records found">
             <colgroup>
 			    <col width="10%">
 			    <col width="15%">
@@ -70,12 +70,12 @@
 			</colgroup>
             <thead>
               <tr class="table-heads ">
-                <th class="head-item mbr-fonts-style display-7 text-center">번호</th>
+                <th id="no" class="head-item mbr-fonts-style display-7 text-center">번호</th>
 				<th class="head-item mbr-fonts-style display-7 text-center">분야</th>
 				<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
 				<th class="head-item mbr-fonts-style display-7 text-center">닉네임</th>
 				<th class="head-item mbr-fonts-style display-7 text-center">날짜</th>
-				<th class="head-item mbr-fonts-style display-7 text-center">조회수</th>
+				<th id="hit" class="head-item mbr-fonts-style display-7 text-center">조회수</th>
                   
              <!--  <th class="head-item mbr-fonts-style display-7">
                       NAME</th>
@@ -90,53 +90,53 @@
               
             <c:forEach var="communityDto" items="${list}">
 				<tr>
-					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_no}</td>
+					<td id="noTD" class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_no}</td>
 					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.mnick}</td>
 					<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
-					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_hitno}</td>
+					<td id="hitTD" class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			
             <c:forEach var="communityDto" items="${chat}">
 				<tr>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</a></td>
+					<td id="noTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
+					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${tips}">
 				<tr>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
+					<td id="noTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
+					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${boast}">
 				<tr>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
+					<td id="noTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
 					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
-					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
+					<td id="hitTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
 			<c:forEach var="communityDto" items="${assign}">
 				<tr>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
+					<td id="noTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
-					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
+					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>    
               <tr>
@@ -183,27 +183,41 @@
 
       </div>
     </div>
+    
+    
 </section>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 </div>
+	<style type="text/css">
+		@media screen and (max-width: 768px){ 
+			.table #no {
+				display: none;
+			}
+			.table #noTD {
+				display: none;
+			}
+				
+			.display-7 {
+				font-size: 15px;
+			}		
+		}
+		
+		@media screen and (max-width: 576px){ 
+			/* .table #comDate {
+				display: none;
+			}
+			.table #comDateTD {
+				display: none;
+			}	 */
+			/* .table #hit{
+				display: none;
+			}
+			.table #hitTD{
+				display: none;
+			} */
+			.display-7 {
+				font-size: 12px;
+			}		
+		}
+	</style>
+
+	

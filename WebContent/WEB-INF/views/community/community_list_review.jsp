@@ -70,7 +70,7 @@
 	          <table class="table table-hover m-0" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	            <colgroup>
-	            	<col width="10%">
+	            	<col width="15%">
 				    <col width="15%">
 				    <col width="12%">
 				    <col width="30%">
@@ -80,7 +80,7 @@
 	            </colgroup>
 		            <tr class="table-heads">
 						<th id="no" class="head-item mbr-fonts-style display-7 text-center">번호</th>
-						<th class="head-item mbr-fonts-style display-7 text-center">강의분야</th>
+						<th id="cate"class="head-item mbr-fonts-style display-7 text-center">분야</th>
 						<th class="head-item mbr-fonts-style display-7 text-center">별점</th>
 						<th class="head-item mbr-fonts-style display-7 text-center">제목</th>
 						<!-- <th class="head-item mbr-fonts-style display-7 text-center" style="width:200px">내용</th> -->
@@ -93,12 +93,12 @@
 	            	<c:forEach var="ReviewDto" items="${review}">
 					<tr>
 						<td id="noTD" class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_no}</td>
-						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.class_cate_nm}</td>
+						<td id="cateTD" class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.class_cate_nm}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_star}</td>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</a></td>
 						<%-- <td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.mnick}</td>
-						<td id="comDateTD" class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yy.MM.dd"/></td>
+						<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${ReviewDto.review_date}" pattern="yy.MM.dd"/></td>
 						<td id="hitTD"class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_hitno}</td>
 					</tr>
 					</c:forEach>
@@ -160,18 +160,18 @@
 		}
 		
 		@media screen and (max-width: 576px){ 
-			.table #comDate {
+			.table #cate {
 				display: none;
 			}
-			.table #comDateTD {
+			.table #cateTD {
 				display: none;
 			}	
-			.table #hit{
+		/* 	.table #hit{
 				display: none;
 			}
 			.table #hitTD{
 				display: none;
-			}
+			} */
 			.display-7 {
 				font-size: 12px;
 			}		
