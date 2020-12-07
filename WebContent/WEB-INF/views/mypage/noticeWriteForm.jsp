@@ -59,7 +59,7 @@
 							<form onsubmit="return writeCheck();" action="noticeWrite" method="POST" id="noticeWrite" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-6 input-group">
-										<span class="input-group-text" style="width: 30%; background-color: #ffff;">강 의 선 택</span> 
+										<span class="input-group-text" style="width: 30%; background-color: #ffff;">강의선택</span> 
 										<select id="class_no" name="class_no" style="width: 70%; display: inline;" >
 											<c:forEach var="className" items="${classNames}">
 												<option value="${className.class_no}" selected>${className.class_nm_s}</option>
@@ -67,33 +67,33 @@
 										</select>
 									</div>
 									<div class="col-md-6 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff;">작 성 자 </span> 
+										<span class="input-group-text" style="width: 30%; background-color: #ffff;">작 성 자 </span> 
 										<input type="text" id="mid" name="mid" class="form-control" value="${sessionMid}" readonly/>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px;">
 									
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff;">제	목</span> 
+										<span class="input-group-text" style="width:30%; background-color: #ffff;">제	목</span> 
 										<input type="text" id="class_notice_title" name="class_notice_title" class="form-control"/>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff;">첨부파일</span> 
+										<span class="input-group-text" style="width: 30%; background-color: #ffff;">첨부파일</span> 
 										<input type="file" id="class_hwFile" name="class_hwFile" class="form-control"/>
 									</div>
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 100px; background-color: #ffff; text-align: center;">내	용 </span> 
+										<span class="input-group-text" style="width: 30%; background-color: #ffff; text-align: center;">내	용 </span> 
 										<textarea id="class_notice_content" name="class_notice_content" class="form-control" 
 											style="height: 250px;" inputmode="text"></textarea>
 									</div>
 								</div>
 								<div class="dragArea row">
-									<div class="col-md-3"></div>
-									<div class="col-md-3">
+									<div class="col-3"></div>
+									<div class="col-3">
 										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="border-radius: 100px" value="글쓰기"/>
 										<script type="text/javascript">
 											function writeCheck() {
@@ -122,10 +122,10 @@
 											
 										</script>		
 									</div>
-									<div class="col-md-3">
+									<div class="col-3">
 										<a class="btn item-btn btn-success display-7 text-primary" style="border-radius: 100px;"href="<%=request.getContextPath()%>/mypage/mypage_tutor?mid=${sessionMid}">취소</a>
 									</div>
-									<div class="col-md-3"></div>
+									<div class="col-3" style="width:15%;"></div>
 								</div>
 							</form>
 						</div>
@@ -172,7 +172,6 @@
 		src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>
-	
 	<script type="text/javascript">
 		$(function(){
 			$("#class_no").show();
