@@ -61,22 +61,35 @@
 	                   
 								Subject:
 								<span>
-									<input type="radio" style="margin-left: 10px"id="mkind1" name="mkind" value="health">
-									<label for="mkind1">health</label>
+									<input type="radio" style="margin-left: 10px"id="mkind1" name="mkind" value="baking">
+									<label for="mkind1">베이킹</label>
 								</span>
 								 
 								<span>
-									<input type="radio" style="margin-left: 10px"id="mkind2" name="mkind" value="money">
-									<label for="mkind2">money</label>
+									<input type="radio" style="margin-left: 10px"id="mkind2" name="mkind" value="exercise">
+									<label for="mkind2">운동</label>
 								</span>
 								<span>
-									<input type="radio" style="margin-left: 10px"id="mkind3" name="mkind" value="career">
-									<label for="mkind3">career</label>
+									<input type="radio" style="margin-left: 10px"id="mkind3" name="mkind" value="drinks">
+									<label for="mkind3">음료</label>
 								</span>
 								
 								<span>
-									<input type="radio" style="margin-left: 10px"id="mkind4" name="mkind" value="cooking">
-									<label for="mkind4">cooking</label>
+									<input type="radio" style="margin-left: 10px"id="mkind4" name="mkind" value="business">
+									<label for="mkind4">비즈니스</label>
+								</span>
+								<span>
+									<input type="radio" style="margin-left: 10px"id="mkind5" name="mkind" value="tools">
+									<label for="mkind5">도구</label>
+								</span>
+								<span>
+									<input type="radio" style="margin-left: 10px"id="mkind6" name="mkind" value="cooking">
+									<label for="mkind6">요리</label>
+								</span>
+								
+								<span>
+									<input type="radio" style="margin-left: 10px"id="mkind7" name="mkind" value="others">
+									<label for="mkind7">기타</label>
 								</span>
 								<br/>
 							</div>
