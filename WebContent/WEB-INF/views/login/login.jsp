@@ -86,7 +86,7 @@
 				
 	            <div class="col-lg-6 offset-lg-1 col-12">
 	                <div class="image-wrapper">
-	                     <img src="<%=application.getContextPath()%>/resources/assets/images/features4.jpg" alt="Mobirise" style="max-width:100%; height:auto;">
+	                     <img src="<%=application.getContextPath()%>/resources/assets/images/features4.jpg"  style="max-width:100%; height:auto;">
 	                </div>
 	            </div>
 	        </div>
