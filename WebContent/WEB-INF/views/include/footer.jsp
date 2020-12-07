@@ -26,7 +26,7 @@
                     Contacts
                 </h5>
                 <p class="mbr-text">
-                    Hyebin/ Jiyeong/ Jiyeon/ Juhyeon/ Jieun/ A-reum! 
+                    Hyebin/ Jiyeong/ Jiyeon/<br/>Juhyeon/ Jieun/ A-reum! 
                 </p>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
