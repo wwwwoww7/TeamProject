@@ -65,7 +65,7 @@
 
 	<!--  나의 강의  -->
 	<section class="gallery5 mbr-gallery cid-shfdgokGZw" id="gallery5-2k">
-		<!-- 992px부터 -->
+		
 		<div class="container">
 			<section class="features3 cid-sh7HNKMuDe" id="features3-g">
 				<h3 class="mbr-fonts-style align-center m-0 display-5">
@@ -76,7 +76,13 @@
 				<!-- 992px부터 -->
 				<div id="class992" class="container p-0">
 	        	<div class="row mt-4">
-	        		<fmt:parseNumber var="listlength" value="${fn:length(tutorclassList)/4}" integerOnly="true" />
+	        	
+	        		<c:if test="${fn:length(tutorclassList)%4 == 0}">
+	        			<fmt:parseNumber var="listlength" value="${fn:length(tutorclassList)/4 - 1}" integerOnly="true" />
+	        		</c:if>
+	        		<c:if test="${fn:length(tutorclassList)%4 != 0}">
+	        			<fmt:parseNumber var="listlength" value="${fn:length(tutorclassList)/4}" integerOnly="true" />
+	        		</c:if>
 	        		<div id="demo" class="carousel slide" data-ride="carousel">
 						<ul class="carousel-indicators">
 							<c:forEach var="i" begin="0" end="${listlength}">
@@ -84,19 +90,20 @@
 							</c:forEach>
 					  	</ul>
 					  	
+					  	<!-- The slideshow -->
 						<div class="carousel-inner">
 							<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
 								<div class="carousel-item">
 									<fmt:parseNumber var="startvalue" value="${j*4}" integerOnly="true" />
 									<c:if test="${status.last}">
-										<fmt:parseNumber var="endvalue" value="${fn:length(tutorclassList)}" integerOnly="true" />
+										<fmt:parseNumber var="endvalue" value="${fn:length(tutorclassList)-1}" integerOnly="true" />
 									</c:if>
 									<c:if test="${!status.last}">
 										<fmt:parseNumber var="endvalue" value="${startvalue+3}" integerOnly="true" />
 									</c:if>
 									
 									<c:forEach var="classes" items="${tutorclassList}" begin="${startvalue}" end="${endvalue}">
-										<div class="col-md-6 col-lg-3 item gallery-image" style="display:inline-block;">
+										<div class="col-6 col-sm-6 col-md-3 col-lg-3 item gallery-image" style="display:inline-block;">
 									        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
 									            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
 									            	<img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
@@ -121,6 +128,68 @@
 					    <!-- <span class="carousel-control-prev-icon"></span> -->
 					  </a>
 					  <a class="carousel-control-next text-black" href="#demo" data-slide="next">
+					    <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+					    <!-- <span class="carousel-control-next-icon"></span> -->
+					  </a>
+					</div> 
+				</div>
+	   		</div>
+	   		
+	   		
+	   		<div id="class576" class="container p-0">
+	        	<div class="row mt-4">
+	        		
+	        		<c:if test="${fn:length(tutorclassList)%2 == 0}">
+	        			<fmt:parseNumber var="listlength" value="${fn:length(tutorclassList)/2 - 1}" integerOnly="true" />
+	        		</c:if>
+	        		<c:if test="${fn:length(tutorclassList)%2 != 0}">
+	        			<fmt:parseNumber var="listlength" value="${fn:length(tutorclassList)/2}" integerOnly="true" />
+	        		</c:if>
+	        		
+	        		<div id="demosmall" class="carousel slide" data-ride="carousel">
+						<ul class="carousel-indicators">
+							<c:forEach var="i" begin="0" end="${listlength}">
+								 <li data-target="#demosmall" data-slide-to="${i}"></li>
+							</c:forEach>
+					  	</ul>
+					  	
+						<div class="carousel-inner">
+							<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
+								<div class="carousel-item">
+									<fmt:parseNumber var="startvalue" value="${j*2}" integerOnly="true" />
+									<c:if test="${status.last}">
+										<fmt:parseNumber var="endvalue" value="${fn:length(tutorclassList)}" integerOnly="true" />
+									</c:if>
+									<c:if test="${!status.last}">
+										<fmt:parseNumber var="endvalue" value="${startvalue+1}" integerOnly="true" />
+									</c:if>
+									
+									<c:forEach var="classes" items="${tutorclassList}" begin="${startvalue}" end="${endvalue}">
+										<div class="col-6 item gallery-image" style="display:inline-block;">
+									        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+									            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+									            	<img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+									            </a>
+									            <div class="icon-wrapper"> <!-- 돋보기 -->
+									                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+									            </div>
+									        </div>
+									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+									           [ ${classes.class_cate_nm} ] 
+									        </h6>
+									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+									        	${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+									        </h6>
+									    </div>
+									</c:forEach>
+								</div>
+							</c:forEach>
+						</div>
+					  <a class="carousel-control-prev text-black" href="#demosmall" data-slide="prev">
+					  	<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+					    <!-- <span class="carousel-control-prev-icon"></span> -->
+					  </a>
+					  <a class="carousel-control-next text-black" href="#demosmall" data-slide="next">
 					    <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
 					    <!-- <span class="carousel-control-next-icon"></span> -->
 					  </a>
@@ -247,7 +316,20 @@
 			.col-lg-3{
 				max-width: 24%
 			}
+			#class576{
+				display: none;
+			}
 		}	
+		
+		#class576 {
+			display: none;
+		}
+		
+		@media (max-width: 992px){
+			.col-lg-3{
+				max-width: 24%
+			}
+		}
 		
 		@media (max-width: 768px){ 
 			.table #no {
@@ -265,6 +347,19 @@
 			table .display-7 {
 				font-size: 15px;
 			}
+			
+			#class576 {
+				display: block;
+			}
+			
+			.col-6 {
+				width: 45%;
+			}
+			
+			#class992 {
+				display: none;
+			}
+			
 				
 		}
 		
@@ -284,6 +379,8 @@
 			table .display-7 {
 				font-size: 12px;
 			}
+			
+
 		}
 		
 		
@@ -326,7 +423,7 @@
 	   		$(function(){
 	    	  	tutorClassNotice(1);
 	   	   		tutorClassQA(1);
-		   	   	$("#demo > ul > li:nth-child(1)").addClass("active");
+		   	   /* 	$("#demo > ul > li:nth-child(1)").addClass("active"); */
 				$(".carousel-inner div:nth-child(1)").addClass("active");
 	      	}); 
 	</script>
