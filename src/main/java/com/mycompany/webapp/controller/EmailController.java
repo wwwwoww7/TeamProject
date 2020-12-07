@@ -57,19 +57,6 @@ public class EmailController {
         }
     }
 
-	/*
-	 * @RequestMapping(value="/formTag.do") public ModelAndView
-	 * formTag(HttpServletRequest request){ ModelAndView mv = new ModelAndView();
-	 * String title = request.getParameter("title"); String content =
-	 * request.getParameter("content");
-	 * 
-	 * logger.info("title은? {}", title); logger.info("content은? {}", content);
-	 * 
-	 * return mv; }
-	 */
-
-	
-	
 	@GetMapping("/apply_class")
 	public String apply_class() {
 		return "apply/apply_class";

@@ -62,11 +62,11 @@
 							</div>
 						</div>
 						
-						<div class="col-12 col-md-auto mbr-section-btn">
-							<button type="submit" class="btn btn-success display-4">Login</button>
+						<div class="col-12 col-md-auto mbr-section-btn ">    
+							<button type="submit" class="btn item-btn btn-success display-7 " style="border-radius: 100px;">Login</button>
 						</div>
 						<div class="col-12 col-md-auto mbr-section-btn">
-							<button type="button" class="btn btn-success display-4" onclick="join()">Join</button>
+							<button type="button" class="btn item-btn btn-success display-7" style="border-radius: 100px;" onclick="join()">Join</button>
 						</div>
 						
 						<script>
