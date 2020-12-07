@@ -68,19 +68,13 @@
 		<div class="container">
 			<div>
 				<div class="mbr-section-btn mt-4" style="text-align:center;vertical-align:middle;"> <!-- mbr-gallery-filter container gallery-filter-active  -->
-							<a class="btn btn-md btn-success display-4 text-primary" href="javascript:openCity(1,1)">진행중</a>
-							<a class="btn btn-md btn-success display-4 text-primary" href="javascript:closeCity(0,1)">종료</a>
+					<a class="btn btn-md btn-success display-4 text-primary" href="javascript:openCity(1,1)">진행중</a>
+					<a class="btn btn-md btn-success display-4 text-primary" href="javascript:closeCity(0,1)">종료</a>
 				</div>
 				
 			<!-- Gallery -->
-			<div class="mbr-gallery-row">
-				<div class="mbr-gallery-layout-default">
-					<div>
-						<div id="ingendview" > </div>
-					</div>
-					<div class="clearfix">
-					</div>
-				</div>
+			<div class="row" align="center">
+				<div id="ingendview" class="col-12"> </div>
 			</div>
 			   
 		   </div>
@@ -169,8 +163,12 @@
 				display: none;
 			}
 		}
-		@media screen and (max-width: 768px){ 
-			.table1 #nm{
+		@media (max-width: 768px){ 
+			.table1{
+				width: 90%;
+			}
+			
+			.table1 #nm, #noT{
 			display: none;
 			}
 			.table1 #start {
@@ -192,30 +190,22 @@
 				display: none;
 			}
 			
-		@media screen and (max-width: 576px){ 	
-				.table1 #nm{
-			display: none;
+		@media (max-width: 576px){ 	
+		
+			.table1{
+				width: 100%;
 			}
-			.table1 #start {
+			.table1 #nm, #start,#end,#nmT,#noT,#startT,#endT,#no,#nm {
 				display: none;
 			}
-			.table1 #end {
-				display: none;
+			#eventlistimg {
+				width:100%;
 			}
-			
-			.table1 #nmT {
-				display: none;
+		
+			#imgcol{
+				width: 100%;
 			}
-			
-			.table1 #startT {
-				display: none;
-			}
-			
-			.table1 #endT {
-				display: none;
-			}
-			
-			
+		}	
 	</style>
 	
 </body>
