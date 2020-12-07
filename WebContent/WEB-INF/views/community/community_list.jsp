@@ -94,7 +94,7 @@
 					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7  text-center">${communityDto.mnick}</td>
-					<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
+					<td class="body-item mbr-fonts-style display-7  text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yy.MM.dd"/></a></td>
 					<td id="hitTD" class="body-item mbr-fonts-style display-7  text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
@@ -105,7 +105,7 @@
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
-					<td id="dateTD" class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
+					<td id="dateTD" class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yy.MM.dd"/></td>
 					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
@@ -114,7 +114,7 @@
 					<td id="noTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yy.MM.dd"/></td>
 					<td id="dateTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
@@ -124,7 +124,7 @@
 					<td id="noTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td  class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></a></td>
+					<td  class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yy.MM.dd"/></a></td>
 					<td id="dateTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 					<td id="hitTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
@@ -134,7 +134,7 @@
 					<td id="noTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail()">${communityDto.comm_cate_nm}</a></td>
 					<td class="body-item mbr-fonts-style display-7 text-center"><a href="javascript:communityDetail(${communityDto.comm_no})">${communityDto.comm_title}</a></td>
-					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yyyy-MM-dd"/></td>
+					<td class="body-item mbr-fonts-style display-7 text-center"><fmt:formatDate value="${communityDto.comm_date}" pattern="yy.MM.dd"/></td>
 					<td id="dateTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.mnick}</td>
 					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
