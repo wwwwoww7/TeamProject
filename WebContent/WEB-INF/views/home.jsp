@@ -275,9 +275,10 @@
 			}
 			
 			.mbr-gallery .mbr-gallery-item {
-		    	width: 45%; 
-		  } 
+			   	width: 45%; 
+			} 
 		}
+		
 		
 		
 		
