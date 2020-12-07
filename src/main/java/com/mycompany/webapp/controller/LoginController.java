@@ -116,16 +116,12 @@ public class LoginController {
 	
 	}
 
-
+	@GetMapping("/login/findpw")
 	public String getfindpw() {
 		
 		return "login/findpw";
 	}
 	
-	@PostMapping("/login/findpw")
-	public String postfindpw() {
-		
-		return "login/findpw";
-	}
+
 
 }
