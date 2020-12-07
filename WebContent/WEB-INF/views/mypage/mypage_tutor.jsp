@@ -116,7 +116,7 @@
 									           [ ${classes.class_cate_nm} ] 
 									        </h6>
 									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-									        	${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+									        	${classes.class_nm_s} <%-- <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a> --%>
 									        </h6>
 									    </div>
 									</c:forEach>
@@ -178,7 +178,7 @@
 									           [ ${classes.class_cate_nm} ] 
 									        </h6>
 									        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
-									        	${classes.class_nm_s} <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a>
+									        	${classes.class_nm_s} <%-- <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a> --%>
 									        </h6>
 									    </div>
 									</c:forEach>
