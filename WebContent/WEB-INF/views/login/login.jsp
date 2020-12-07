@@ -53,7 +53,7 @@
 		                  	<div class="col-12 row form-group">
 		                  	
 		            			<div class="col-6 " align="left">
-									<label><input id ="remember-me" name ="remember-me" type ="checkbox"/> Auto Login </label>
+									<label><input id="remember_me" name="remember_me" type ="checkbox" /> Auto Login </label>
 								</div>   
 								<div class="col-6" align="right">
 									<a href="<%=request.getContextPath()%>/login/findpw" style="color:black "> Forgot Password?</a>
@@ -86,7 +86,7 @@
 				
 	            <div class="col-lg-6 offset-lg-1 col-12">
 	                <div class="image-wrapper">
-	                     <img src="<%=application.getContextPath()%>/resources/assets/images/features4.jpg"  style="max-width:100%; height:auto;">
+	                     <img src="<%=application.getContextPath()%>/resources/assets/images/login.png"  style="max-width:100%; height:auto;">
 	                </div>
 	            </div>
 	        </div>
