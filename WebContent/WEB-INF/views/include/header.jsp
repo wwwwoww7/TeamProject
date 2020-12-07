@@ -83,16 +83,16 @@
                 </li>
                 
                 <li class="nav-item navbarver2">
-                    <a class="dropdown-item text-white text-primary display-4" href="<%=application.getContextPath()%>">Home</a>
+                    <a class="nav-link link text-white text-primary display-4" href="<%=application.getContextPath()%>">Home</a>
                 </li>
                 <li class="nav-item navbarver2">
-                   	<a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>/allClass">All Class</a>
+                   	<a class="nav-link link text-white text-primary display-4" href="<%=request.getContextPath()%>/allClass">All Class</a>
                 </li>
                 <li class="nav-item navbarver2">
-                   	<a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>/community">Community</a>
+                   	<a class="nav-link link text-white text-primary display-4" href="<%=request.getContextPath()%>/community">Community</a>
                 </li>
                 <li class="nav-item navbarver2">
-                   	<a class="dropdown-item text-white text-primary display-4" href="<%=request.getContextPath()%>/event">Event</a>
+                   	<a class="nav-link link text-white text-primary display-4" href="<%=request.getContextPath()%>/event">Event</a>
                 </li>
                 
                 
