@@ -76,8 +76,7 @@ public class EmailController {
 		email.setReceiver("bansookteam1@gmail.com");
 		email.setSubject("강사의 신규 강의 개설 신청이 들어왔습니다.");
 		emailSender.SendEmail(email);
-		
-		JOptionPane.showMessageDialog(null, "신청 접수가 되었습니다.");
+
 		mav = new ModelAndView("redirect:/");
 		return mav;
 	}
@@ -98,8 +97,7 @@ public class EmailController {
 		email.setReceiver("bansookteam1@gmail.com");
 		email.setSubject(tutor_id+"님의 강의 사항 수정 요청 메일입니다.");
 		emailSender.SendEmail(email);
-		
-//		JOptionPane.showMessageDialog(null, "신청 접수가 되었습니다.");
+
 		return "redirect:/class/classdetail?classNo="+class_no;
 	}
 	
