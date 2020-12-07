@@ -34,11 +34,12 @@
 	<section class="header1 cid-sh8TVI48I4 mbr-parallax-background" id="header1-o">
 	    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(35, 35, 35);">
 	    </div>
-	
+	 	
 	    <div class="container">
 	        <div class="row justify-content-md-center">
 	            <div class="mbr-white col-md-10">
-	                <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Learn, To Be 완숙란</h1>
+	                <h1 id="maintext1" class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Learn, To Be 완숙란</h1>
+	                <h1 id="maintext2" class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Learn,<br/>To Be 완숙란</h1>
 	                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
 	                	배움으로 완숙되기 위한 반숙이들을 위한 클래스
 <!-- 	                    Time to Learn! Learn everything you need to know about getting started and how BanSook can help. -->
@@ -106,8 +107,8 @@
 	        <div><!-- Filter --><!-- Gallery -->
 		        <div class="mbr-gallery-row">
 		        	<div class="mbr-gallery-layout-default">
-				        <div>
-					        <div id="eventListDiv" > <!-- class="d-flex justify-content-center" -->
+				        <div class="row">
+					        <div id="eventListDiv" class="col-12 ml-3" > <!-- class="d-flex justify-content-center" -->
 						        
 				       		</div>
 			       		</div>
@@ -234,15 +235,12 @@
 			width: 24.5%;
 		}
 		
+		.mbr-gallery-item--p1 {
+			padding: 4px;
+		}
 		
-		@media (max-width: 768px) {
-		  .mbr-gallery .mbr-gallery-item {
-		    width: 49.5%; } 
-		}
-		@media (max-width: 400px) {
-		  .mbr-gallery .mbr-gallery-item {
-		    width: 99.5%; } 
-		}
+		
+		 
 		
 		.carousel-indicators .active {
 			background: #ffc800;
@@ -258,6 +256,29 @@
 /* 			padding: 0 15px; */
 /* 			width: 285px; */
 /* 		}   */
+		
+		#maintext2 {
+			display: none;
+		}
+		
+		@media (max-width: 768px) {
+		  .mbr-gallery .mbr-gallery-item {
+		    width: 49.5%; } 
+		}
+		
+		@media (max-width: 576px) { 
+			#maintext1 {
+				display: none;
+			}
+			#maintext2 {
+				display: block;
+			}
+			
+			.mbr-gallery .mbr-gallery-item {
+		    	width: 45%; 
+		  } 
+		}
+		
 		
 		
 	</style>

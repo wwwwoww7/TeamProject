@@ -5,8 +5,8 @@
 
 
 <c:forEach var="eventItem" items="${eventList}">
-	<a href="<%=request.getContextPath() %>/event/eventDetail?event_no=${eventItem.event_no}">
-	<div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false"  >
+	<a href="<%=request.getContextPath() %>/event/eventDetail?event_no=${eventItem.event_no}" class="col-6 col-md-3 p-0">
+	<div class="mbr-gallery-item mbr-gallery-item--p1" data-video-url="false" >
 		<div href="#" data-slide-to="0" data-toggle="modal">
 			<img class="rounded" src="<%=application.getContextPath()%>/event/event_imgDownload?event_img=${eventItem.event_img}" alt="" title=""/>
 			<span class="icon-focus"></span>
