@@ -29,12 +29,12 @@
 					         
 					         	<table style="width: 100%;">
 					         		<tr >
-					         			<td>
-					         				<h5 class="item-title mbr-fonts-style display-7">
+					         			<td class="p-0">
+					         				<h5 class="item-title mbr-fonts-style display-7 mb-0">
 								             	<strong>${hotclass.class_cate_nm }</strong>
 								            </h5>
 					         			</td>
-					         			<td id="tabletd" rowspan="2">
+					         			<td id="tabletd" >
 					         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
 					         					
 					         					<c:if test="${sessionMid == '' || sessionMid == null }">
@@ -61,7 +61,7 @@
 					         			</td>
 					         		</tr>
 									<tr>
-										<td>
+										<td colspan="2">
 											<h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
 								                 <em>${hotclass.class_nm_s }</em>
 								            </h6>
@@ -123,12 +123,12 @@
 					         
 					         	<table style="width: 100%;">
 					         		<tr >
-					         			<td>
-					         				<h5 class="item-title mbr-fonts-style display-7">
+					         			<td class="pl-5">
+					         				<h5 class="item-title mbr-fonts-style display-7 mb-0" >
 								             	<strong>${hotclass.class_cate_nm }</strong>
 								            </h5>
 					         			</td>
-					         			<td id="tabletd" rowspan="2">
+					         			<td id="tabletd"  class="pr-5">
 					         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
 					         					
 					         					<c:if test="${sessionMid == '' || sessionMid == null }">
@@ -155,7 +155,7 @@
 					         			</td>
 					         		</tr>
 									<tr>
-										<td>
+										<td class="pl-5" colspan="2">
 											<h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
 								                 <em>${hotclass.class_nm_s }</em>
 								            </h6>
@@ -164,7 +164,7 @@
 					         	</table>
 					         	
 					         </div>
-					         <div class="mbr-section-btn item-footer mt-2">
+					         <div class="mbr-section-btn item-footer mt-2 pl-5">
 						         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" 
 						            class="btn item-btn btn-success display-7">수강하기
 						            <!-- 버튼 주황색 :  class="btn item-btn btn-warning display-7"   &gt;-->
@@ -222,12 +222,12 @@
 				         
 				         	<table style="width: 100%;">
 				         		<tr>
-				         			<td  class="px-5">
+				         			<td  class="pl-5">
 				         				<h5 class="item-title mbr-fonts-style display-7">
 							             	<strong>${hotclass.class_cate_nm }</strong>
 							            </h5>
 				         			</td>
-				         			<td id="tabletd" rowspan="2"  class="px-5">
+				         			<td id="tabletd" rowspan="2"  class="pr-5">
 				         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
 				         					
 				         					<c:if test="${sessionMid == '' || sessionMid == null }">
@@ -254,7 +254,7 @@
 				         			</td>
 				         		</tr>
 								<tr>
-									<td  class="px-5">
+									<td  class="pl-5">
 										<h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
 							                 <em>${hotclass.class_nm_s }</em>
 							            </h6>
