@@ -60,15 +60,11 @@
 <style type="text/css">
 	@media (max-width: 576px) {
 	    #qadetail1 {
-	      width: 20%;
+	      width: 23%;
+	    }
+	    
+	    #qadetail2{
+	    	width: 28%
 	    }
     
-/*     	#qaadj2 { */
-/* 	      width: 25%; */
-/* 	    } */
-/*    		#qaadj3 { */
-/* 	      width: 24%; */
-/* 	    } */
-    }
-
 </style>

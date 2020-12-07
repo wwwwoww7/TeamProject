@@ -169,6 +169,10 @@ public class CartController {
 	public String payment(Model model, HttpSession session) {
 		//결제 확인 날짜 넣기		
 		List<CartDto> cartList = (List<CartDto>)session.getAttribute("cartList");
+		
+		if(cartList==null || cartList.size()==0) {
+			return "redirect:/";
+		}
 			
 		Iterator<CartDto> iterator = cartList.iterator(); //iterator은 list중에서 하나 골라서 갯수를 확인하면서 실행
 		while(iterator.hasNext()) { //hasNext로 확인할게 남아있는지 확인하여 반복함(hasNext는 boolean타입임)
@@ -195,7 +199,8 @@ public class CartController {
 		cartService.classApplInsert(cartList);
 		
 		//세션에 담긴 cartList삭제
-		session.removeAttribute("cartList");
+		//session.removeAttribute("cartList");
+		cartList.clear();
 		return "cart/pay_complete";
 	}
 

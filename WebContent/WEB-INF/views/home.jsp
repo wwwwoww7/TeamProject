@@ -38,19 +38,18 @@
 	    <div class="container">
 	        <div class="row justify-content-md-center">
 	            <div class="mbr-white col-md-10">
-	                <h1 id="maintext1" class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Learn, To Be 완숙란</h1>
-	                <h1 id="maintext2" class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Learn,<br/>To Be 완숙란</h1>
+	                <h1 id="maintext1" class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Edu, To Be 완숙란</h1>
+	                <h1 id="maintext2" class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Edu<br/>To Be 완숙란</h1>
 	                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
-	                	배움으로 완숙되기 위한 반숙이들을 위한 클래스
+	                	배움으로 완숙되기 위한 반숙이를 위한 클래스
 <!-- 	                    Time to Learn! Learn everything you need to know about getting started and how BanSook can help. -->
 	                </h3>
 	                <p class="mbr-text align-center pb-3 mbr-fonts-style display-7">
-	                	완숙을 바라는 당신에게!/ 반숙이여 완숙이 되어라 / 반숙이여 쑥쑥 크자 / 반숙이들의 완숙원정대 / Don't stop me from being 완숙/
-	                	배움으로 완숙되기 위한 반숙이들을 위한 클래스 
+	                	완숙을 바라는 당신에게 추천하는 온라인 강의 플랫폼
 	                </p>
 	                <div class="mbr-section-btn align-center">
-	                	<a class="btn btn-md btn-white-outline display-4" href="#사이트정보페이지">
-	                        <span class="mbr-iconfont mbri-file"></span>LEARN MORE
+	                	<a class="btn btn-md btn-white-outline display-4" href="<%=request.getContextPath()%>/allClass">
+	                        <span class="mbr-iconfont mbri-file"></span>MORE CLASSES
 	                    </a>
 	                </div>
 	            </div>

@@ -30,7 +30,7 @@
   .navbar-dropdown.navbar-fixed-top {
     position: fixed; }
   .navbar-dropdown .navbar-brand span {
-    vertical-align: -4px; }
+    vertical-align: 0px; }
   .navbar-dropdown.bg-color.transparent {
     background: none; }
   .navbar-dropdown.navbar-short .navbar-brand {
