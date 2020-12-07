@@ -21,7 +21,7 @@
                 </span>
                 <span class="navbar-caption-wrap">
                		<a class="navbar-caption text-white text-primary display-5" href="<%=application.getContextPath()%>">
-                    	BAN숙
+                    	BANSOOK  <span style="display: inline-block; font-size: 14px">Online Class</span> 
                     </a>
                 </span>
             </div>

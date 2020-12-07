@@ -30,7 +30,7 @@
     <div class="container-fluid">
     	<div class="row">
     		<div class="col-6">
-                <div class="mbr-section-btn" align="right">
+                <div class="mbr-section-btn closebtn" align="right">
 		         	<a class="btn btn-success display-4  text-primary" href="javascript:popupClose()">강의 종료</a>
 		        </div>
         	</div>
@@ -52,7 +52,7 @@
 				               		<strong>Class QA</strong>
 				            	</h6>
                 			</td>
-                			<td rowspan="2" width="40%" class="text-right">
+                			<td rowspan="2" id="btntd" width="40%" class="text-right">
                 				<div id="writeBtnDiv" class="mbr-section-btn" align="right">
 									<a class="btn btn-success display-4 text-primary" href="javascript:pageLoad(3)">글쓰기</a>
 								</div> 
@@ -60,8 +60,11 @@
                 		</tr>
                 		<tr>
                 			<td>
-                				<p class="mbr-text mb-3 mbr-fonts-style display-7">
+                				<p class="mbr-text mb-3 mbr-fonts-style display-7" id="textver1">
 			                    	자유롭게 강의에 대한 질문을 남겨 주세요!
+			                    </p>
+			                    <p class="mbr-text mb-3 mbr-fonts-style display-7" id="textver2">
+			                    	자유롭게 강의에 대한 질문을<br/>남겨 주세요!
 			                    </p>
                 			</td>
                 		</tr>
@@ -110,13 +113,6 @@
 					<a href="#" class="list-group-item list-group-item-action" data="${videoItem.class_video_url}">${videoItem.class_video_nm}</a>
 				</c:forEach>
 				</div>
-<!--             	<ul class="jq-selectbox mb-2"> -->
-<%--             	<c:forEach var="videoItem" items="${videoList}"> --%>
-<!--             		<li class="jq-selectbox"> -->
-<%--             			<a class="text-black" data="${videoItem.class_video_url}">${videoItem.class_video_nm}</a> --%>
-<!--             		</li> -->
-<%--             	</c:forEach> --%>
-<!--             	</ul> -->
             	<iframe width="560" height="315" src="${firstVideoUrl}" 
             		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	         	
@@ -223,18 +219,37 @@
 		font-size: 2rem;
 	}
 	
+	#textver2 {
+		display: none;
+	}
 		
   	@media (max-width: 576px) {
 	    #qaadj1 {
-	      width: 50%;
+	      width: 45%;
 	    }
     
     	#qaadj2 {
 	      width: 25%;
 	    }
    		#qaadj3 {
-	      width: 24%;
+	      width: 29%;
 	    }
+	    
+	    #textver1 {
+			display: none;
+		}
+		#textver2 {
+			display: block;
+		}
+		
+		#btntd {
+			width: 50%;
+		}
+		
+		.closebtn {
+			display: none;
+		}
+		
     }
 	
 </style>
