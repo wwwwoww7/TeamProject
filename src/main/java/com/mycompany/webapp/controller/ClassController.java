@@ -43,7 +43,7 @@ import com.mycompany.webapp.service.MemberService;
 @Controller
 @RequestMapping("/class")
 public class ClassController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+private static final Logger logger = LoggerFactory.getLogger(ClassController.class);
 	
 	@Resource
 	ClassService classService;
@@ -130,6 +130,38 @@ public class ClassController {
 		is.close();
 		
 	}
+	
+	
+	
+	@RequestMapping("/classphotoDownload")
+	public void classphotoDownload(String img, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
+		//class_no로 class 정보 가져오기 
+		String fileName = img;
+
+		//파일의 데이터를 읽기 위한 입력 스트림 얻기
+		String saveFilePath = "D:/MyWorkspace/photo/class/" + fileName;
+		InputStream is = new FileInputStream(saveFilePath);
+		
+		//응답 HTTP 헤더 구성
+		//1)Content-Type 헤더 구성(파일의 종류 지정)
+		ServletContext application = request.getServletContext();
+		String fileType = application.getMimeType(fileName); //fileName의 확장명을 알려줌.
+		response.setContentType(fileType);
+		//2)Content-Disposition 헤더 구성(다운로드할 파일의 이름을 지정)
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");  
+		//3)Content-Length 헤더 구성(다운로드 할 파일의 크기를 지정)
+		int fileSize = (int)new File(saveFilePath).length(); 
+		response.setContentLength(fileSize);
+		
+		OutputStream os = response.getOutputStream(); 
+		FileCopyUtils.copy(is, os);
+		os.flush();
+		os.close();
+		is.close();
+		
+	}
+	
 	
 	
 	//강의 영상 팝업

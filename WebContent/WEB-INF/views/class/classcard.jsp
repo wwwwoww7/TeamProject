@@ -1,13 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="hotclassca" class="carousel slide col-12" data-ride="carousel">
 
+
+
+<div id="hotclasscaL" class="carousel slide col-12 hotclassca" data-ride="carousel">
 	<!-- Indicators -->
 	<ul class="carousel-indicators">
-		<li data-target="#hotclassca" data-slide-to="0" class="active"></li>
-		<li data-target="#hotclassca" data-slide-to="1"></li>
-		<li data-target="#hotclassca" data-slide-to="2"></li>
+		<li data-target="#hotclasscaL" data-slide-to="0" class="active"></li>
+		<li data-target="#hotclasscaL" data-slide-to="1"></li>
+		<li data-target="#hotclasscaL" data-slide-to="2"></li>
 	</ul>
 
 	<!-- The slideshow -->
@@ -20,7 +22,7 @@
 					     <div class="item-wrapper">
 					         <div class="item-img">
 					         	<a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" >
-					         		<img class="img-thumbnail" src="<%=request.getContextPath() %>/resources/images/class/${hotclass.class_thum }" alt="" data-slide-to="3">
+					         		<img class="img-thumbnail" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${hotclass.class_thum }" alt="" data-slide-to="3">
 							 	</a>
 							 </div>
 					         <div class="item-content">
@@ -77,29 +79,211 @@
 					     </div>
 					 </div>
 				</c:forEach>
-						
-			
-			
-			
-			
 			</div>	
 		
 		</c:forEach>
 	</div>
 	
 	<!-- Left and right controls -->
-	<a class="carousel-control-prev text-black" href="#hotclassca" data-slide="prev"> 
+	<a class="carousel-control-prev text-black" href="#hotclasscaL" data-slide="prev"> 
 		<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
 <!-- 		<span class="mobi-mbri-arrow-prev"></span> -->
 	</a> 
-	<a class="carousel-control-next text-black" href="#hotclassca" data-slide="next"> 
+	<a class="carousel-control-next text-black" href="#hotclasscaL" data-slide="next"> 
 		<img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
 <!-- 		<span class="mobi-mbri-arrow-next"></span> -->
 	</a>
 </div>
 
-<%-- 2020. 11. 25 --%>
+<div id="hotclasscaM" class="carousel slide col-12 hotclassca" data-ride="carousel">
+	<!-- Indicators -->
+	<ul class="carousel-indicators">
+		<li data-target="#hotclasscaM" data-slide-to="0" class="active"></li>
+		<li data-target="#hotclasscaM" data-slide-to="1"></li>
+		<li data-target="#hotclasscaM" data-slide-to="2"></li>
+		<li data-target="#hotclasscaM" data-slide-to="3"></li>
+		<li data-target="#hotclasscaM" data-slide-to="4"></li>
+		<li data-target="#hotclasscaM" data-slide-to="5"></li>
+	</ul>
 
+	<!-- The slideshow -->
+	<div class="carousel-inner">
+	
+		<c:forEach var="i" begin="0" end="5">
+			<div class="carousel-item">
+				<c:forEach var="hotclass" items="${hotclassList}" begin="${i*2}" end="${i*2+1}">
+					<div class="item features-image col-12 col-md-6 col-lg-6 col-xl-3"> <!--  col-12 col-md-6 col-lg-3 -->
+					     <div class="item-wrapper">
+					         <div class="item-img">
+					         	<a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" >
+					         		<img class="img-thumbnail" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${hotclass.class_thum}" alt="" data-slide-to="3">
+							 	</a>
+							 </div>
+					         <div class="item-content">
+					         
+					         	<table style="width: 100%;">
+					         		<tr >
+					         			<td>
+					         				<h5 class="item-title mbr-fonts-style display-7">
+								             	<strong>${hotclass.class_cate_nm }</strong>
+								            </h5>
+					         			</td>
+					         			<td id="tabletd" rowspan="2">
+					         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
+					         					
+					         					<c:if test="${sessionMid == '' || sessionMid == null }">
+													<a class="mbr-iconfont" href="javascript:pick(0, 0, ${hotclass.class_no})">
+														<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+													</a>
+												</c:if>
+												<c:if test="${sessionMid != '' && sessionMid != null}">
+													<c:if test="${hotclass.pick_yn == 'N'}">
+														<a class="mbr-iconfont" href="javascript:pick(0, 1, ${hotclass.class_no})">
+															<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+														</a>
+													</c:if>
+													<c:if test="${hotclass.pick_yn == sessionMid}">
+														<a class="mbr-iconfont" href="javascript:pick(0, 2, ${hotclass.class_no})">
+															<img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
+														</a>
+													</c:if>
+												</c:if>
+												
+					         				</h5>
+					         				
+					         					
+					         			</td>
+					         		</tr>
+									<tr>
+										<td>
+											<h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
+								                 <em>${hotclass.class_nm_s }</em>
+								            </h6>
+										</td>
+									</tr>
+					         	</table>
+					         	
+					         </div>
+					         <div class="mbr-section-btn item-footer mt-2">
+						         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" 
+						            class="btn item-btn btn-success display-7">수강하기
+						            <!-- 버튼 주황색 :  class="btn item-btn btn-warning display-7"   &gt;-->
+						         </a>
+					         </div>
+					     </div>
+					 </div>
+				</c:forEach>
+			</div>	
+		
+		</c:forEach>
+	</div>
+	
+	<!-- Left and right controls -->
+	<a class="carousel-control-prev text-black" href="#hotclasscaM" data-slide="prev"> 
+		<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+<!-- 		<span class="mobi-mbri-arrow-prev"></span> -->
+	</a> 
+	<a class="carousel-control-next text-black" href="#hotclasscaM" data-slide="next"> 
+		<img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+<!-- 		<span class="mobi-mbri-arrow-next"></span> -->
+	</a>
+</div>
+
+<div id="hotclasscaS" class="carousel slide col-12 hotclassca" data-ride="carousel">
+	<!-- Indicators -->
+	<ul class="carousel-indicators">
+		<li data-target="#hotclasscaS" data-slide-to="0" class="active"></li>
+		<li data-target="#hotclasscaS" data-slide-to="1"></li>
+		<li data-target="#hotclasscaS" data-slide-to="2"></li>
+		<li data-target="#hotclasscaS" data-slide-to="3"></li>
+		<li data-target="#hotclasscaS" data-slide-to="4"></li>
+		<li data-target="#hotclasscaS" data-slide-to="5"></li>
+		<li data-target="#hotclasscaS" data-slide-to="6"></li>
+		<li data-target="#hotclasscaS" data-slide-to="7"></li>
+		<li data-target="#hotclasscaS" data-slide-to="8"></li>
+		<li data-target="#hotclasscaS" data-slide-to="9"></li>
+		<li data-target="#hotclasscaS" data-slide-to="10"></li>
+		<li data-target="#hotclasscaS" data-slide-to="11"></li>
+	</ul>
+
+	<!-- The slideshow -->
+	<div class="carousel-inner">
+	
+		<c:forEach var="hotclass" items="${hotclassList}">
+			<div class="carousel-item">
+				<div class="item features-image col-12"> <!--  col-12 col-md-6 col-lg-3 -->
+				     <div class="item-wrapper">
+				         <div class="item-img">
+				         	<a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" >
+				         		<img class="img-thumbnail" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${hotclass.class_thum}" alt="" data-slide-to="3">
+						 	</a>
+						 </div>
+				         <div class="item-content">
+				         
+				         	<table style="width: 100%;">
+				         		<tr>
+				         			<td  class="px-5">
+				         				<h5 class="item-title mbr-fonts-style display-7">
+							             	<strong>${hotclass.class_cate_nm }</strong>
+							            </h5>
+				         			</td>
+				         			<td id="tabletd" rowspan="2"  class="px-5">
+				         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
+				         					
+				         					<c:if test="${sessionMid == '' || sessionMid == null }">
+												<a class="mbr-iconfont" href="javascript:pick(0, 0, ${hotclass.class_no})">
+													<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+												</a>
+											</c:if>
+											<c:if test="${sessionMid != '' && sessionMid != null}">
+												<c:if test="${hotclass.pick_yn == 'N'}">
+													<a class="mbr-iconfont" href="javascript:pick(0, 1, ${hotclass.class_no})">
+														<img id="pickimg1" src="<%= request.getContextPath()%>/resources/images/blackheart.png"/>
+													</a>
+												</c:if>
+												<c:if test="${hotclass.pick_yn == sessionMid}">
+													<a class="mbr-iconfont" href="javascript:pick(0, 2, ${hotclass.class_no})">
+														<img id="pickimg2" src="<%= request.getContextPath()%>/resources/images/redheart.png"/>
+													</a>
+												</c:if>
+											</c:if>
+											
+				         				</h5>
+				         				
+				         					
+				         			</td>
+				         		</tr>
+								<tr>
+									<td  class="px-5">
+										<h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
+							                 <em>${hotclass.class_nm_s }</em>
+							            </h6>
+									</td>
+								</tr>
+				         	</table>
+				         	
+				         </div>
+				         <div class="mbr-section-btn item-footer mt-2 px-5">
+					         <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${hotclass.class_no }" 
+					            class="btn item-btn btn-success display-7">수강하기
+					            <!-- 버튼 주황색 :  class="btn item-btn btn-warning display-7"   &gt;-->
+					         </a>
+				         </div>
+				     </div>
+				 </div>
+			</div>	
+		
+		</c:forEach>
+	</div>
+	
+	<!-- Left and right controls -->
+	<a class="carousel-control-prev text-black" href="#hotclasscaS" data-slide="prev"> 
+		<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+	</a> 
+	<a class="carousel-control-next text-black" href="#hotclasscaS" data-slide="next"> 
+		<img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+	</a>
+</div>
 
 <script type="text/javascript">
 	function pick(type, clk, class_no){
@@ -140,7 +324,7 @@
 	
 	
 	$(function(){
-		$("#hotclassca > div > div:nth-child(1)").addClass("active");	
+		$(".hotclassca > div > div:nth-child(1)").addClass("active");	
 	});
 	
 </script>
@@ -158,8 +342,29 @@
  	width: 50px;
  	height: 50px;
  }
+ 
+ 
+	@media (min-width: 1200px) {
+	    #hotclasscaM, #hotclasscaS  {
+	      display: none;
+	    } 
+    }
 
+	@media (max-width: 1200px) {
+	    #hotclasscaL, #hotclasscaS  {
+	      display: none;
+	    } 
+    }
 
+	@media (max-width: 767px) {
+	    #hotclasscaL, #hotclasscaM {
+	      display: none;
+	    } 
+	    
+	    #hotclasscaS {
+	    	display: inline;
+	    }
+    }
 
 </style>
  

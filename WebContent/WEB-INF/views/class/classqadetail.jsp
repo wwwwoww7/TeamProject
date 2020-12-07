@@ -5,9 +5,9 @@
 
 <table class="table table-bordered">
 	<colgroup>
-	    <col id="qadetail1" width="15%">
-	    <col id="qadetail2" width="35%">
-	    <col id="qadetail1" width="15%">
+	    <col id="qadetail1" width="19%">
+	    <col id="qadetail2" width="33%">
+	    <col id="qadetail1" width="19%">
 	    <col id="qadetail3"width="*">
 	</colgroup>
 	<tbody>
