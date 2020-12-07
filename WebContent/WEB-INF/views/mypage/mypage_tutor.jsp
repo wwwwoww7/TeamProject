@@ -65,13 +65,16 @@
 
 	<!--  나의 강의  -->
 	<section class="gallery5 mbr-gallery cid-shfdgokGZw" id="gallery5-2k">
+		<!-- 992px부터 -->
 		<div class="container">
 			<section class="features3 cid-sh7HNKMuDe" id="features3-g">
 				<h3 class="mbr-fonts-style align-center m-0 display-5">
 					<strong>나의 강의</strong>
 				</h3>
 				<hr style="background-color: #ffc800; height:2px;">
-				<div class="container p-0">
+				
+				<!-- 992px부터 -->
+				<div id="class992" class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(tutorclassList)/4}" integerOnly="true" />
 	        		<div id="demo" class="carousel slide" data-ride="carousel">
@@ -80,6 +83,7 @@
 								 <li data-target="#demo" data-slide-to="${i}"></li>
 							</c:forEach>
 					  	</ul>
+					  	
 						<div class="carousel-inner">
 							<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
 								<div class="carousel-item">
@@ -92,7 +96,7 @@
 									</c:if>
 									
 									<c:forEach var="classes" items="${tutorclassList}" begin="${startvalue}" end="${endvalue}">
-										<div class="col-12 col-md-6 col-lg-3 item gallery-image" style="display:inline-block;">
+										<div class="col-md-6 col-lg-3 item gallery-image" style="display:inline-block;">
 									        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
 									            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
 									            	<img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
@@ -123,8 +127,11 @@
 					</div> 
 				</div>
 	   		</div>
+
 			</section>
 		</div>
+		
+		
 	</section>
 
 	<!-- 공지사항 -->
@@ -236,21 +243,13 @@
 			border: 1px;
 		}
 		
-		@media (min-width: 768px){
-			.col-md-6 {
-			    max-width: 49%;
-			}
-			
-		}
-		
 		@media (min-width: 992px){
 			.col-lg-3{
 				max-width: 24%
 			}
+		}	
 		
-		}
-		
-		@media screen and (max-width: 768px){ 
+		@media (max-width: 768px){ 
 			.table #no {
 				display: none;
 			}
@@ -265,10 +264,11 @@
 			}
 			table .display-7 {
 				font-size: 15px;
-			}		
+			}
+				
 		}
 		
-		@media screen and (max-width: 576px){ 
+		@media (max-width: 576px){ 
 			.table #noticeDate {
 				display: none;
 			}
@@ -283,7 +283,7 @@
 			}
 			table .display-7 {
 				font-size: 12px;
-			}		
+			}
 		}
 		
 		

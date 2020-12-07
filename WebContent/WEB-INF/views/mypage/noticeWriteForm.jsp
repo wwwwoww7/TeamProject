@@ -177,5 +177,14 @@
 			$("#class_no").show();
 		});
 	</script>
+	<style type="text/css">
+	@media (max-width: 576px) {
+	   .btn{
+			padding: 0.6rem 1.5rem;
+		    border-radius: 3px;
+	   }
+	    
+    }
+	</style>
 	</body>
 </html>		
