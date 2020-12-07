@@ -70,6 +70,11 @@ public class LoginController {
 		
 	}
 	
+	@GetMapping("/login/join")
+	public String Join() {
+		return "login/join";
+	}
+	
 	@PostMapping("/login/join")
 	public String Join(MemberDto member, HttpServletRequest request) throws Exception {
 

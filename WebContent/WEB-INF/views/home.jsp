@@ -107,7 +107,7 @@
 		        <div class="mbr-gallery-row">
 		        	<div class="mbr-gallery-layout-default">
 				        <div class="row">
-					        <div id="eventListDiv" class="col-12 ml-3" > <!-- class="d-flex justify-content-center" -->
+					        <div id="eventListDiv" class="col-12" > <!-- class="d-flex justify-content-center" -->
 						        
 				       		</div>
 			       		</div>

@@ -153,7 +153,7 @@
 						        <td class="body-item mbr-fonts-style display-7 text-center" style="vertical-align: middle;">
 						        	<div>
 						       			<div style="margin-right: 10px;">
-								        	<img width="150px" src="<%=request.getContextPath() %>/resources/images/class/${cartItem.class_thum}"/>
+								        	<img width="150px" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${cartItem.class_thum}"/>
 								        </div>
 						       			<div>
 						       				<div>
@@ -265,7 +265,7 @@
 							        <td class="body-item mbr-fonts-style display-7 text-center" style="vertical-align: middle;">
 							        	<div style="display:flex">
 							       			<div style="margin-right: 10px;">
-									        	<img width="100px" src="<%=request.getContextPath() %>/resources/images/class/${cartItem.class_thum}"/>
+									        	<img width="100px" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${cartItem.class_thum}"/>
 									        </div>
 							       			<div>
 							       				<div>

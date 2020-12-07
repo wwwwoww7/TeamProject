@@ -201,7 +201,7 @@
 								            
 								            <div class="col-12 col-lg-6">
 								                <div class="image-wrapper">
-								                    <img class="w-100" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classOne.class_thum}" alt="Mobirise">
+								                    <img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classOne.class_thum}" alt="Mobirise">
 								                </div>
 								            </div>
 								        </div>
@@ -235,7 +235,7 @@
 								        			<div class="col-md-6">
 								        				<div class="media-block" >
 											                <div class="mbr-figure">
-											                    <img class="w-100" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classOne.class_thum2}">
+											                    <img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classOne.class_thum2}">
 											                </div>
 											            </div>
 								        				
