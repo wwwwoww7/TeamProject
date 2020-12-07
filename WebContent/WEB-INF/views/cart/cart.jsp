@@ -68,7 +68,7 @@
 				display: block;
 			} 
 			
-			#whildTable {
+			#wideTable {
 				display: none;
 			}
 			
@@ -79,7 +79,7 @@
 				display: none;
 			} 
 			
-			#whildTable {
+			#wideTable {
 				display: block;
 			}
 			
@@ -124,7 +124,9 @@
 	      		<table class="table" cellspacing="0" data-empty="No matching records found">
 	      			<tr>
 		      			<td class="head-item mbr-fonts-style display-7  text-center">
-			              	<input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
+		      				<div>
+		              		<input type="checkbox" name="Allcheck" id="Allcheck" onclick="mobileCheckAll()"/>
+	            	   	</div>
 			            </td>
 			            <td class="head-item mbr-fonts-style display-7 text-center">상품/옵션 정보</td>
 			        </tr>
@@ -145,8 +147,8 @@
 			             	<tr> 
 						        <td class="body-item mbr-fonts-style display-7">
 							        <div class="bg m-5">
-								        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="checkSelect()" />
-								    </div>
+							        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="mobileCheckSelect()" />
+							        </div>
 						        </td>
 						        <td class="body-item mbr-fonts-style display-7 text-center" style="vertical-align: middle;">
 						        	<div>
@@ -178,13 +180,13 @@
 	             		
 						<tr>
 					 		<td style="text-align: left">
-								 <a id="deletebtn" class="btn btn-info display-3 btn-sm" href="javascript:deleteAll()" > 삭 제 </a>
+								 <a id="deletebtn" class="btn btn-info display-3 btn-sm" href="javascript:mobileDeleteAll()" > 삭 제 </a>
 								 <script type="text/javascript">
 									//삭제 함수
-								 	function deleteAll(){
+								 	function mobileDeleteAll(){
 							 			var deleteArr = new Array();
 												
-										$("input[name='chk']:checked").each(function(){
+										$("#mobileTable input[name='chk']:checked").each(function(){
 											deleteArr.push($(this).attr("data-cartNum"));
 										});
 												
@@ -221,12 +223,14 @@
 	            	</c:if>			        
 	      		</table>
 	      	</div> 
-	  	  	<div id="whildTable" class="col-12">
+	  	  	<div id="wideTable" class="col-12">
 	  	  		<table class="table" cellspacing="0" data-empty="No matching records found">
 		            <tbody>
 		              <tr class="table-head">
 		              	<td class="head-item mbr-fonts-style display-7  text-center">
-		              		<input type="checkbox" name="Allcheck" id="Allcheck" onclick="checkAll()"/>
+		              		<div>
+		              			<input type="checkbox" name="Allcheck" id="Allcheck" onclick="wideCheckAll()"/>
+	            	   		</div>
 		              	</td>
 		              	<td class="head-item mbr-fonts-style display-7 text-center">상품/옵션 정보</td>
 		            	<td class="head-item mbr-fonts-style display-7">수량</td>
@@ -255,8 +259,8 @@
 				             	<tr> 
 							        <td class="body-item mbr-fonts-style display-7">
 								        <div class="bg m-5">
-								        	<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="checkSelect()" />
-								        </div>
+							        		<input type="checkbox" value="${cartItem.class_price}" name="chk" id="chk" data-cartNum="${cartItem.class_no}" onclick="wideCheckSelect()" />
+							        	</div>
 							        </td>
 							        <td class="body-item mbr-fonts-style display-7 text-center" style="vertical-align: middle;">
 							        	<div style="display:flex">
@@ -295,13 +299,13 @@
 				 <tfoot>
 				 	<tr>
 				 		<td colspan="2" style="text-align: left">
-							 <a id="deletebtn" class="btn btn-md btn-info btn-sm" href="javascript:deleteAll()" >삭제</a>
+							 <a id="deletebtn" class="btn btn-md btn-info btn-sm" href="javascript:wildDeleteAll()" >삭제</a>
 							 <script type="text/javascript">
 								//삭제 함수
-							 	function deleteAll(){
+							 	function wildDeleteAll(){
 						 			var deleteArr = new Array();
 											
-									$("input[name='chk']:checked").each(function(){
+									$("#wideTable input[name='chk']:checked").each(function(){
 										deleteArr.push($(this).attr("data-cartNum"));
 									});
 											
@@ -344,9 +348,6 @@
 	        <div class="col-12" >
 	        	<div class="mbr-section-btn item-footer mt-2" align="center">
 	          		<a class="btn item-btn btn-success btn-lg display-7" href="javascript:payment()">결제하기</a>
-	          	
-	          	
-					
 				</div>
 	        </div>
 	        
@@ -376,112 +377,181 @@
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/player.min.js"></script>  
 	 <script src="<%=application.getContextPath()%>/resources/assets/gallery/script.js"></script> 
 	 <script src="<%=application.getContextPath()%>/resources/assets/slidervideo/script.js"></script>  
-  <script type="text/javascript">
+	
+	<script type="text/javascript">
 	//전체선택 체크박스
 	
-	 	var cnt = $("input[name='chk']").length;
-         		var checkboxValues = [];
-         		var class_no = $("input[name='chk']").val();
-		
-		function checkAll(){
-			if($("#Allcheck").prop("checked")==true){
-				$("input[name='chk']").prop("checked", true);
-				
-				checkboxValues = [];
-				
-				$("input[name='chk']:checked").each(function(i) {
-					checkboxValues.push($(this).val());
-				});
-			}else{
-				$("input[name='chk']").prop("checked", false);
-				checkboxValues = [0];
-			}
-			
-			var allData = { "chkPrice": checkboxValues };
-          		
-			$.ajax({
-				url:"<%=request.getContextPath()%>/cart/sumprice",
-				data: allData,
-				dataType : 'json',
-				contentType : 'application/json',
-				success: function(data){
-					$("#cartSum").text(data.sumPrice);
-				}
-			});
-			
-			$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
-		}		
+ 	var mobile_cnt = $("#mobileTable input[name='chk']").length;
+	var mobile_checkboxValues = [];
+	var mobile_class_no = $("#mobileTable input[name='chk']").val();
 	
-	   
-		    //개별 체크박스     
-			function checkSelect() {
-          		/* console.log("cnt:", cnt, $("input[name='chk']:checked").length); */
-          		
+	function mobileCheckAll(){
+		if($("#mobileTable #Allcheck").prop("checked")==true){
+			$("#mobileTable input[name='chk']").prop("checked", true);
+			mobile_checkboxValues = [];
+			$("#mobileTable input[name='chk']:checked").each(function(i) {
+				mobile_checkboxValues.push($(this).val());
+			});
+		}else{
+			$("#mobileTable input[name='chk']").prop("checked", false);
+			mobile_checkboxValues = [0];
+		}
+		
+		var allData = { "chkPrice": mobile_checkboxValues };
+   		
+		$.ajax({
+			url:"<%=request.getContextPath()%>/cart/sumprice",
+			data: allData,
+			dataType : 'json',
+			contentType : 'application/json',
+			success: function(data){
+				$("#mobileTable #cartSum").text(data.sumPrice);
+			}
+		});
+		
+		$('#mobileTable #checkNum').text($("#mobileTable  input:checkbox[name='chk']:checked").length);   
+	}	
+	
+
+
+   
+	    //개별 체크박스     
+		function mobileCheckSelect() {
+	   		/* console.log("cnt:", cnt, $("input[name='chk']:checked").length); */
+	   		
 			//개별선택
-          	if($("input[name='chk']:checked").length==cnt){
-				$("#Allcheck").prop("checked",true);
-				return checkAll();
+	   		if($("#mobileTable input[name='chk']:checked").length==mobile_cnt){
+				$("#mobileTable #Allcheck").prop("checked",true);
+				return mobileCheckAll();
 			}else{
-				$("#Allcheck").prop("checked",false);
+				$("#mobileTable #Allcheck").prop("checked",false);
 				//배열 초기화
-				checkboxValues = [];
+				mobile_checkboxValues = [];
 				//선택된 체크값 배열
-				$("input[name='chk']:checked").each(function(i) {
-						checkboxValues.push($(this).val());
+				$("#mobileTable input[name='chk']:checked").each(function(i) {
+					mobile_checkboxValues.push($(this).val());
 				}); 
 				//선택되지 않은 값 빼기
-				if($("input[name='chk']").is((":checked")==false)){
-					$("input[name='chk']:checked").each(function(i) {
-						checkboxValues.splice(i,1);
+				if($("#mobileTable input[name='chk']").is((":checked")==false)){
+					$("#mobileTable input[name='chk']:checked").each(function(i) {
+						mobile_checkboxValues.splice(i,1);
 						}); 
 					}
-					if(checkboxValues.length==0){
-						checkboxValues = [0];
+				if($("#mobileTable input[name='chk']:checked").length==0){
+					mobile_checkboxValues = [0];
 					}
 				}
 			
-          		
-			var allData = { "chkPrice": checkboxValues };
-          		
+	   		
+			var allData = { "chkPrice": mobile_checkboxValues };
+	   		
 			$.ajax({
 				url:"<%=request.getContextPath()%>/cart/sumprice",
 				data: allData,
 				dataType : 'json',
 				contentType : 'application/json',
 				success: function(data){
-					$("#cartSum").text(data.sumPrice);
+					$("#mobileTable #cartSum").text(data.sumPrice);
 				}
 			});
-
+	
 			
-			$('#checkNum').text($("input:checkbox[name='chk']:checked").length);   
-          		
-		    } 
+			$('#mobileTable #checkNum').text($("#mobileTable input:checkbox[name='chk']:checked").length);   
+		
+	    } 
+	    
+	    
+		var wide_cnt = $("#wideTable input[name='chk']").length;
+		var wide_checkboxValues = [];
+		var wide_class_no = $("#wideTable input[name='chk']").val();	    
+	    
+		function wideCheckAll(){
+			if($("#wideTable #Allcheck").prop("checked")==true){
+				$("#wideTable input[name='chk']").prop("checked", true);
+				wide_checkboxValues = [];
+				$("#wideTable input[name='chk']:checked").each(function(i) {
+					wide_checkboxValues.push($(this).val());
+				});
+			}else{
+				$("#wideTable input[name='chk']").prop("checked", false);
+				wide_checkboxValues = [0];
+			}
 			
-		    
-		    
-          		
+			var allData = { "chkPrice": wide_checkboxValues };
+	   		
+			$.ajax({
+				url:"<%=request.getContextPath()%>/cart/sumprice",
+				data: allData,
+				dataType : 'json',
+				contentType : 'application/json',
+				success: function(data){
+					$("#wideTable #cartSum").text(data.sumPrice);
+				}
+			});
 			
-	 function payment(){
-		if($("input[name='chk']:checked").length==0){
+			$('#wideTable #checkNum').text($("#wideTable input:checkbox[name='chk']:checked").length);   
+		}			    
+	    
+	    //개별 체크박스     
+		function wideCheckSelect() {
+	   		/* console.log("cnt:", cnt, $("input[name='chk']:checked").length); */
+	   		
+			//개별선택
+	   		if($("#wideTable input[name='chk']:checked").length==wide_cnt){
+				 $("#wideTable #Allcheck").prop("checked",true);
+				return wideCheckAll();
+			}else{
+				$("#wideTable #Allcheck").prop("checked",false);
+				//배열 초기화
+				wide_checkboxValues = [];
+				//선택된 체크값 배열
+				$("#wideTable input[name='chk']:checked").each(function(i) {
+					wide_checkboxValues.push($(this).val());
+				}); 
+				//선택되지 않은 값 빼기
+				if($("#wideTable input[name='chk']").is((":checked")==false)){
+					$("#wideTable input[name='chk']:checked").each(function(i) {
+						wide_checkboxValues.splice(i,1);
+						}); 
+					}
+				if($("#wideTable input[name='chk']:checked").length==0){
+					wide_checkboxValues = [0];
+					}
+				}
+			
+	   		
+			var allData = { "chkPrice": wide_checkboxValues };
+	   		
+			$.ajax({
+				url:"<%=request.getContextPath()%>/cart/sumprice",
+				data: allData,
+				dataType : 'json',
+				contentType : 'application/json',
+				success: function(data){
+					$("#wideTable #cartSum").text(data.sumPrice);
+				}
+			});
+	
+			
+			$('#wideTable #checkNum').text($("#wideTable input:checkbox[name='chk']:checked").length);   
+		
+	    } 	    
+	
+		function payment(){
+			if($("input[name='chk']:checked").length==0){
 				//장바구니 체크 안하면 경고창
 				alert('선택된 상품이 없습니다.');
-		} else{
-			if(${sessionMid==null}){
-				var result = confirm("로그인 후 결제 하실 수 있습니다."); 
-				location.href="<%=application.getContextPath()%>/login/login";
-			}else{
-				location.href="<%=application.getContextPath()%>/cart/payment"; 
-				
+			} else {
+				if(${sessionMid==null}){
+					var result = confirm("로그인 후 결제 하실 수 있습니다."); 
+					location.href="<%=application.getContextPath()%>/login/login";
+				}else{
+					location.href="<%=application.getContextPath()%>/cart/payment"; 
+					
 				}
 			} 
-		};
+		}
 	</script>
-<!-- <style type="text/css">
 
-	table {
-		min-width: auto;
-	}
-</style> -->
 </body>
 </html>
