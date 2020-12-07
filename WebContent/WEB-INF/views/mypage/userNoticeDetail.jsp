@@ -77,7 +77,7 @@
 							    <tr>
 							        <th>작성자</th>
 							        <td>${notice.mid}</td>
-							        <th>작성시간</th>
+							        <th>작성일</th>
 							        <td><span><fmt:formatDate value="${notice.class_notice_date}" pattern="yy.MM.dd"/></span></td>
 							    </tr>
 							    <tr>
