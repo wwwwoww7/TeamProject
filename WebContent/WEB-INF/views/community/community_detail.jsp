@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="col-12"  align="right">
 			<c:if test="${sessionMid==communityDetail.mid}"> 
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
+				<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
 				<script type="text/javascript">
 				function communityUpdateform(comm_no) {
 					$.ajax({
@@ -21,7 +21,7 @@
 						});
 					}
 				</script>
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:communityDeleteform(${communityDetail.comm_no})">삭제</a>	
+				<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:communityDeleteform(${communityDetail.comm_no})">삭제</a>	
 				<script type="text/javascript">
 				function communityDeleteform(comm_no) {
 					$.ajax({
@@ -36,7 +36,7 @@
 					}
 				</script>
 			</c:if>	
-			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>		
+			<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 2px; border-radius: 100px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>		
 		</div>
 	</div>
 		<!-- 커뮤니티list -->
@@ -45,11 +45,11 @@
 			<div class="row">
 			
 				<div class="col-12">
-					<table class="table table-bordered">
+					<table class="table table-bordered" style="font-size: small">
 					<colgroup>
-					    <col width="22%">
-					    <col width="40%">
-					    <col width="20%">
+					    <col width="23.5%">
+					    <col width="35%">
+					    <col width="19%">
 					    <col width="*">
 					</colgroup>
 					<tbody>
@@ -165,3 +165,12 @@
 		<div class="container table-info-container"></div>
 	</div>
 </div>
+<style type="text/css">
+
+	@media (max-width: 576px) {
+		#commDetailTable{
+			font-size: 13px;
+		}
+	}
+
+</style>

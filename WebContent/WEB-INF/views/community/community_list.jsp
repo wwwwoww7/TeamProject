@@ -61,8 +61,8 @@
         <div class="row border">
           <table class="table table-hover m-0 " cellspacing="0" data-empty="No matching records found">
             <colgroup>
-			    <col width="12%">
-			    <col width="12%">
+			    <col width="13%">
+			    <col width="13%">
 			    <col width="32%">
 			    <col width="15%">
 			    <col width="15%">
@@ -218,12 +218,12 @@
 			.table #comDateTD {
 				display: none;
 			}	 */
-			 .table #date{
+			/*  .table #date{
 				display: none;
 			}
 			.table #dateTD{
 				display: none;
-			} 
+			}  */
 			.display-7 {
 				font-size: 12px;
 			}		

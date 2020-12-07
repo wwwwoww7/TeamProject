@@ -9,8 +9,7 @@
 		
 		<div class="col-12"  align="right">
 			 <c:if test="${sessionMid==reviewDetail.mid}"> 
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:reviewUpdateform(${reviewDetail.review_no})">수정</a>	
-			
+				<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:reviewUpdateform(${reviewDetail.review_no})">수정</a>	
 					<script type="text/javascript">
 						function reviewUpdateform(review_no) {
 							$.ajax({
@@ -22,7 +21,7 @@
 								});
 							}
 					</script>
-				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:reviewDeleteform(${reviewDetail.review_no})">삭제</a>	
+				<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:reviewDeleteform(${reviewDetail.review_no})">삭제</a>	
 				<script type="text/javascript">
 					function reviewDeleteform(review_no) {
 						$.ajax({
@@ -37,17 +36,17 @@
 						}
 				</script>
 			</c:if>
-			<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:allFunction(6)">목록</a>
+			<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:allFunction(6)">목록</a>
 			<!-- <a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px;" href="javascript:allFunction(${communityDetail.comm_cate_no+1})" >목록</a>	 -->	
 		</div>
 	</div>
 		<div class="container scroll mt-2">
 			<div>
-				<table class="table table-bordered">
+				<table class="table table-bordered" style="font-size: small">
 				<colgroup>
-				    <col width="15%">
-				    <col width="35%">
-				    <col width="15%">
+				    <col width="23.5%">
+				    <col width="30%">
+				    <col width="20%">
 				    <col width="*">
 				</colgroup>
 				<tbody>

@@ -70,7 +70,7 @@
 	          <table class="table table-hover m-0" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	            <colgroup>
-	            	<col width="13%">
+	            	<col width="11%">
 				    <col width="13%">
 				    <col width="13%">
 				    <col width="27%">

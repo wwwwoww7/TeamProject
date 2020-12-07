@@ -119,6 +119,7 @@
 	<select id="selectCommunityCateList" resultType="community">
 	    select *
 		from community_CATE
+		where community_cate
 	</select>
 	<!-- 리뷰_list dropdown 분야별 데이터 가져오기 -->
 	<select id="selectCateList" resultType="classcate">

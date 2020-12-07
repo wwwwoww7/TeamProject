@@ -55,7 +55,7 @@ public class CommunityController {
 	public String reviewAll(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 
 		int totalRows = service.getTotalReviewRows();
-		ReviewPagerDto pager = new ReviewPagerDto(3, 5, totalRows, pageNo);
+		ReviewPagerDto pager = new ReviewPagerDto(10, 5, totalRows, pageNo);
 		List<ReviewDto> review = service.getReviewAll(pager);
 		List<ClassCateDto> catelist = service.getCateList();
 		model.addAttribute("catelist", catelist);

@@ -135,7 +135,7 @@
 				
 				$.ajax({
 					url : url , 
-					data : {pageNo : pageNo},
+					data : {pageNo : pageNo, },
 					success : function(data) {
 						$("#fun1_result").html(data);
 					}

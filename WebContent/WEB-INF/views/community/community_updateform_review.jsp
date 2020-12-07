@@ -43,7 +43,6 @@
 		</div> 
 		
 		 <div class="dragArea row">
-		
 			<div>
 				<button type="submit" class="btn item-btn btn-success display-7 text-primary" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;"  >글쓰기</button>
 				<a class="btn" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="community">취소</a>
