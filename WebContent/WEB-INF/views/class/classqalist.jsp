@@ -17,9 +17,9 @@
 		<thead>
 			<tr class="table-heads ">
 	<!--        <th class="head-item mbr-fonts-style display-7 text-center">글번호</th> -->
-				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj1">제목</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj2">작성자</th>
-				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj3">작성날짜</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj1" width="60%">제목</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj2" width="20%">작성자</th>
+				<th class="head-item mbr-fonts-style display-7 text-center" id="qaadj3" width="19%">작성날짜</th>
 			</tr>
 		</thead>
 		<tbody>
