@@ -35,13 +35,26 @@
 						 
 		<security:logout logout-url="/logout" 
 						delete-cookies="remember_cookie"
-						success-handler-ref="logoutSuccessHandler"/>
-						 
+						success-handler-ref="logoutSuccessHandler"
+						invalidate-session="true"/>
+						<!-- "remember_cookie" -->
+						
+		<!-- <security:remember-me key="autoLoginKey"
+	 						token-validity-seconds="604800"
+	 						remember-me-parameter="remember_me"
+	 						remember-me-cookie="remember_cookie"/> -->				
+						
+		<security:remember-me key="autoLoginKey"
+	 						token-validity-seconds="604800"
+	 						remember-me-parameter="remember_me"
+	 						remember-me-cookie="remember_cookie"
+	 						authentication-success-handler-ref="rememberMeSuccessHandler"
+	 						/>				
 
-	 	<security:remember-me key="autoLoginKey"
+	 	<!-- <security:remember-me key="autoLoginKey"
 	 						token-validity-seconds="604800"
 	 						remember-me-parameter="remember-me"
-	 						remember-me-cookie="remember_cookie"/>
+	 						remember-me-cookie="remember_cookie"/> -->					
 	 
 	 
 	 	<!-- user-service-ref="userDetailsService" -->
@@ -181,6 +194,9 @@
 		<property name="defaultTargetUrl" value="/"/>
 	</bean>	
 	
-<!-- 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> -->
+	<bean id="rememberMeSuccessHandler" class="com.mycompany.webapp.security.RememberMeSuccessHandler">
+	
+	</bean>
+
 </beans> 
 

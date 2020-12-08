@@ -66,7 +66,136 @@
 				<strong>나의 강의</strong>
 			</h3>
 			<hr style="background-color: #ffc800; height:2px;">
- 			<div class="container p-0">
+			
+			<!-- 992px부터 -->
+			<div id="class992" class="container p-0">
+        	<div class="row mt-4">
+        	
+        		<c:if test="${fn:length(userclassList)%4 == 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/4 - 1}" integerOnly="true" />
+        		</c:if>
+        		<c:if test="${fn:length(userclassList)%4 != 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/4}" integerOnly="true" />
+        		</c:if>
+        		<div id="demo" class="carousel slide" data-ride="carousel">
+					<ul class="carousel-indicators">
+						<c:forEach var="i" begin="0" end="${listlength}">
+							 <li data-target="#demo" data-slide-to="${i}"></li>
+						</c:forEach>
+				  	</ul>
+				  	
+				  	<!-- The slideshow -->
+					<div class="carousel-inner">
+						<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
+							<div class="carousel-item">
+								<fmt:parseNumber var="startvalue" value="${j*4}" integerOnly="true" />
+								<c:if test="${status.last}">
+									<fmt:parseNumber var="endvalue" value="${fn:length(userclassList)-1}" integerOnly="true" />
+								</c:if>
+								<c:if test="${!status.last}">
+									<fmt:parseNumber var="endvalue" value="${startvalue+3}" integerOnly="true" />
+								</c:if>
+								
+								<c:forEach var="classes" items="${userclassList}" begin="${startvalue}" end="${endvalue}">
+									<div class="col-6 col-sm-6 col-md-3 col-lg-3 item gallery-image" style="display:inline-block;">
+								        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+								            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+								            	<img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+								            </a>
+								            <div class="icon-wrapper"> <!-- 돋보기 -->
+								                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+								            </div>
+								        </div>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								           [ ${classes.class_cate_nm} ] 
+								        </h6>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								        	${classes.class_nm_s} <%-- <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a> --%>
+								        </h6>
+								    </div>
+								</c:forEach>
+							</div>
+						</c:forEach>
+					</div>
+				  <a class="carousel-control-prev text-black" href="#demo" data-slide="prev">
+				  	<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+				    <!-- <span class="carousel-control-prev-icon"></span> -->
+				  </a>
+				  <a class="carousel-control-next text-black" href="#demo" data-slide="next">
+				    <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+				    <!-- <span class="carousel-control-next-icon"></span> -->
+				  </a>
+				</div> 
+			</div>
+   		</div>
+   		
+   		<div id="class576" class="container p-0">
+        	<div class="row mt-4">
+        		
+        		<c:if test="${fn:length(userclassList)%2 == 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/2 - 1}" integerOnly="true" />
+        		</c:if>
+        		<c:if test="${fn:length(userclassList)%2 != 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/2}" integerOnly="true" />
+        		</c:if>
+        		
+        		<div id="demosmall" class="carousel slide" data-ride="carousel">
+					<ul class="carousel-indicators">
+						<c:forEach var="i" begin="0" end="${listlength}">
+							 <li data-target="#demosmall" data-slide-to="${i}"></li>
+						</c:forEach>
+				  	</ul>
+				  	
+					<div class="carousel-inner">
+						<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
+							<div class="carousel-item">
+								<fmt:parseNumber var="startvalue" value="${j*2}" integerOnly="true" />
+								<c:if test="${status.last}">
+									<fmt:parseNumber var="endvalue" value="${fn:length(userclassList)}" integerOnly="true" />
+								</c:if>
+								<c:if test="${!status.last}">
+									<fmt:parseNumber var="endvalue" value="${startvalue+1}" integerOnly="true" />
+								</c:if>
+								
+								<c:forEach var="classes" items="${userclassList}" begin="${startvalue}" end="${endvalue}">
+									<div class="col-6 item gallery-image" style="display:inline-block;">
+								        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+								            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+								            	<img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+								            </a>
+								            <div class="icon-wrapper"> <!-- 돋보기 -->
+								                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+								            </div>
+								        </div>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								           [ ${classes.class_cate_nm} ] 
+								        </h6>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								        	${classes.class_nm_s} <%-- <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a> --%>
+								        </h6>
+								    </div>
+								</c:forEach>
+							</div>
+						</c:forEach>
+					</div>
+				  <a class="carousel-control-prev text-black" href="#demosmall" data-slide="prev">
+				  	<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+				    <!-- <span class="carousel-control-prev-icon"></span> -->
+				  </a>
+				  <a class="carousel-control-next text-black" href="#demosmall" data-slide="next">
+				    <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+				    <!-- <span class="carousel-control-next-icon"></span> -->
+				  </a>
+				</div> 
+			</div>
+		</div>
+			
+			
+			
+			
+			
+			<!-- 수정 전  -->
+ 			<%-- <div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(userclassList)/4}" integerOnly="true" />
 	        		<div id="demo" class="carousel slide" data-ride="carousel">
@@ -115,7 +244,7 @@
 					  </a>
 					</div> 
 				</div>
-	   		</div> 
+	   		</div>  --%>
 			
 <!-- 			<div class="container"> -->
 <!-- 	        	<div class="row mt-4"> -->
@@ -152,7 +281,134 @@
 				<strong>찜 목록</strong>
 			</h3>
 			<hr style="background-color: #ffc800; height:2px;">
-			<div class="container p-0">
+			
+			<!-- 992 -->
+			<div id="class992pick" class="container p-0">
+        	<div class="row mt-4">
+        	
+        		<c:if test="${fn:length(userPickList)%4 == 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/4 - 1}" integerOnly="true" />
+        		</c:if>
+        		<c:if test="${fn:length(userPickList)%4 != 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/4}" integerOnly="true" />
+        		</c:if>
+        		<div id="pickcardview" class="carousel slide" data-ride="carousel">
+					<ul class="carousel-indicators">
+						<c:forEach var="i" begin="0" end="${listlength}">
+							 <li data-target="#pickcardview" data-slide-to="${i}"></li>
+						</c:forEach>
+				  	</ul>
+				  	
+				  	<!-- The slideshow -->
+					<div class="carousel-inner">
+						<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
+							<div class="carousel-item">
+								<fmt:parseNumber var="startvalue" value="${j*4}" integerOnly="true" />
+								<c:if test="${status.last}">
+									<fmt:parseNumber var="endvalue" value="${fn:length(userPickList)-1}" integerOnly="true" />
+								</c:if>
+								<c:if test="${!status.last}">
+									<fmt:parseNumber var="endvalue" value="${startvalue+3}" integerOnly="true" />
+								</c:if>
+								
+								<c:forEach var="classes" items="${userPickList}" begin="${startvalue}" end="${endvalue}">
+									<div class="col-6 col-sm-6 col-md-3 col-lg-3 item gallery-image" style="display:inline-block;">
+								        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+								            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+								            	<img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+								            </a>
+								            <div class="icon-wrapper"> <!-- 돋보기 -->
+								                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+								            </div>
+								        </div>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								           [ ${classes.class_cate_nm} ] 
+								        </h6>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								        	${classes.class_nm_s}<%--  <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a> --%>
+								        </h6>
+								    </div>
+								</c:forEach>
+							</div>
+						</c:forEach>
+					</div>
+				  <a class="carousel-control-prev text-black" href="#pickcardview" data-slide="prev">
+				  	<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+				    <!-- <span class="carousel-control-prev-icon"></span> -->
+				  </a>
+				  <a class="carousel-control-next text-black" href="#pickcardview" data-slide="next">
+				    <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+				    <!-- <span class="carousel-control-next-icon"></span> -->
+				  </a>
+				</div> 
+			</div>
+   		</div>
+   		
+   		<div id="class576pick" class="container p-0">
+        	<div class="row mt-4">
+        		
+        		<c:if test="${fn:length(userPickList)%2 == 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/2 - 1}" integerOnly="true" />
+        		</c:if>
+        		<c:if test="${fn:length(userPickList)%2 != 0}">
+        			<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/2}" integerOnly="true" />
+        		</c:if>
+        		
+        		<div id="demosmall2" class="carousel slide" data-ride="carousel">
+					<ul class="carousel-indicators">
+						<c:forEach var="i" begin="0" end="${listlength}">
+							 <li data-target="#demosmall2" data-slide-to="${i}"></li>
+						</c:forEach>
+				  	</ul>
+				  	
+					<div class="carousel-inner">
+						<c:forEach var="j" begin="0" end="${listlength}" varStatus="status">
+							<div class="carousel-item">
+								<fmt:parseNumber var="startvalue" value="${j*2}" integerOnly="true" />
+								<c:if test="${status.last}">
+									<fmt:parseNumber var="endvalue" value="${fn:length(userPickList)}" integerOnly="true" />
+								</c:if>
+								<c:if test="${!status.last}">
+									<fmt:parseNumber var="endvalue" value="${startvalue+1}" integerOnly="true" />
+								</c:if>
+								
+								<c:forEach var="classes" items="${userPickList}" begin="${startvalue}" end="${endvalue}">
+									<div class="col-6 item gallery-image" style="display:inline-block;">
+								        <div class="item-wrapper" data-toggle="modal" data-target="${classes.class_nm_s}">
+								            <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}">
+								            	<img class="w-100 rounded" src="<%=application.getContextPath()%>/class/classphotoDownload?img=${classes.class_thum}" alt="" data-slide-to="0" data-target="${classes.class_nm_s}">
+								            </a>
+								            <div class="icon-wrapper"> <!-- 돋보기 -->
+								                <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+								            </div>
+								        </div>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								           [ ${classes.class_cate_nm} ] 
+								        </h6>
+								        <h6 class="mbr-item-subtitle mbr-fonts-style align-center mb-2 mt-2 display-7">
+								        	${classes.class_nm_s} <%-- <a href="<%=request.getContextPath()%>/class/classdetail?classNo=${classes.class_no}" class="text-success">Try</a> --%>
+								        </h6>
+								    </div>
+								</c:forEach>
+							</div>
+						</c:forEach>
+					</div>
+				  <a class="carousel-control-prev text-black" href="#demosmall2" data-slide="prev">
+				  	<img src="<%=request.getContextPath()%>/resources/images/arrow_before.png"/>
+				    <!-- <span class="carousel-control-prev-icon"></span> -->
+				  </a>
+				  <a class="carousel-control-next text-black" href="#demosmall2" data-slide="next">
+				    <img src="<%=request.getContextPath()%>/resources/images/arrow_next.png"/>
+				    <!-- <span class="carousel-control-next-icon"></span> -->
+				  </a>
+				</div> 
+			</div>
+		</div>
+			
+			
+
+			<!-- 수정전 -->
+			<%-- <div class="container p-0">
 	        	<div class="row mt-4">
 	        		<fmt:parseNumber var="listlength" value="${fn:length(userPickList)/4}" integerOnly="true" />
 	        		<div id="pickcardview" class="carousel slide" data-ride="carousel">
@@ -201,7 +457,7 @@
 					  </a>
 					</div> 
 				</div>
-	   		</div>
+	   		</div> --%>
 		</section>
     </div>
 </section>
@@ -292,6 +548,7 @@
 		.cid-sh7HNKMuDe .item-wrapper {
 		    height: 80%;
 		} 
+		
 		@media (min-width: 768px){
 			.col-md-6 {
 			    max-width: 49%;
@@ -301,9 +558,30 @@
 			.col-lg-3{
 				max-width: 24%
 			}
+			#class576{
+				display: none;
+			}
+			#class576pick{
+				display: none;
+			}
 		
 		}
-		@media screen and (max-width: 768px){ 
+		
+		
+		#class576 {
+			display: none;
+		}
+		#class576pick{
+				display: none;
+			}
+		
+		@media (max-width: 992px){
+			.col-lg-3{
+				max-width: 24%
+			}
+		}
+		
+		@media (max-width: 768px){ 
 			.table #no {
 				display: none;
 			}
@@ -318,10 +596,28 @@
 			}
 			table .display-7 {
 				font-size: 15px;
+			}
+			
+			#class576 {
+				display: block;
+			}
+			#class576pick {
+				display: block;
+			}
+			
+			.col-6 {
+				width: 45%;
+			}
+			
+			#class992 {
+				display: none;
+			}
+			#class992pick {
+				display: none;
 			}		
 		}
 		
-		@media screen and (max-width: 576px){ 
+		@media (max-width: 576px){ 
 			.table #noticeDate {
 				display: none;
 			}
