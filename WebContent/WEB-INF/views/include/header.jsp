@@ -106,8 +106,7 @@
 </section>
 <style>
 	#profile {
-	  width: 57px;
-	  height: 55px;
+	  height: 50px;
 	  border: 2px solid #ffff;
 	}
 	
