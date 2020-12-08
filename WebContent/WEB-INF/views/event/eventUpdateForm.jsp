@@ -119,8 +119,9 @@
 								</div> 
 								<div class="dragArea row">
 									<div class="col-md-3"></div>
-									<div class="col-md-3">
-										<input type="submit" class="btn item-btn btn-success display-7 text-primary" value="글 수정"/>
+									<!-- <div class="col-md-3"> -->
+									<div class="mbr-section-btn mt-4" >
+										<input type="submit" class="btn btn-md btn-success display-4 text-primary" style="border-radius: 100px" value="글수정"/>
 										<!-- <script type="text/javascript">
 											function eventUpdate(event_no) {
 												$.ajax({
@@ -262,9 +263,10 @@
 										</script>		
 									</div>
 									<div class="col-md-3">
-									<input type=button  class="btn item-btn btn-success display-7 text-primary"value="취소" onClick="history.back();">
+									<div class="mbr-section-btn mt-4" >
+									<input type=button  class="btn item-btn btn-success display-4 text-primary" style="border-radius: 100px" value="취소" onClick="history.back();">
+									<div class="col-sm-3"></div>
 									</div>
-									<div class="col-md-3"></div> 
 								</div>
 							</form>
 						</div>

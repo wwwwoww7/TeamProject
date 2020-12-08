@@ -59,7 +59,7 @@
 											</c:forEach>
 										</select>
 									</div> --%>
-									<div class="col-md-6 input-group">
+									<div class="col-md-8 input-group">
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">작 성 자 </span> 
 										<input type="text" id="mid" name="mid" class="form-control" value="${sessionMid}" readonly/>
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">번호 </span>
@@ -70,7 +70,7 @@
 								<div class="dragArea row" style="margin: 5px;">
 									
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 이름</span> 
+										<span class="input-group-text" style="width: 140px; background-color: #ffff;">이벤트 이름</span> 
 										<input type="text" id="event_nm" name="event_nm" class="form-control"/>
 										<span id="event_nmError" class="error"></span>
 									</div>
@@ -78,7 +78,7 @@
 								<div class="dragArea row" style="margin: 5px;">
 									
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 상세 이름</span> 
+										<span class="input-group-text" style="width: 140px; background-color: #ffff;">이벤트 상세 제목</span> 
 										<input type="text" id="event_ti" name="event_ti" class="form-control"/>
 										<span id="event_tiError" class="error"></span>
 									</div>
@@ -86,7 +86,7 @@
 								<div class="dragArea row" style="margin: 5px;">
 									
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 시작일</span> 
+										<span class="input-group-text" style="width: 140px; background-color: #ffff;">이벤트 시작일</span> 
 										<input type="date" id="event_start_picker" name="event_start_picker" class="form-control" placeholder="yyyy-MM-dd"/>
 										<input type="hidden" id="event_start" name="event_start" value=""/>
 										<span id="event_startError" class="error"></span>
@@ -95,7 +95,7 @@
 								<div class="dragArea row" style="margin: 5px;">
 									
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 종료일</span> 
+										<span class="input-group-text" style="width: 140px; background-color: #ffff;">이벤트 종료일</span> 
 										<input type="date" id="event_end_picker" name="event_end_picker" class="form-control" placeholder="yyyy-MM-dd"/>
 										<input type="hidden" id="event_end" name="event_end" value=""/>
 										<span id="event_endError" class="error"></span>
@@ -103,7 +103,7 @@
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 썸네일</span> 
+										<span class="input-group-text" style="width: 140px; background-color: #ffff;">이벤트 썸네일</span> 
 										<input type="file" id="eventIMG" name="eventIMG" class="form-control"/>
 										<span id="event_ctError" class="error"></span>
 									</div>
@@ -111,7 +111,7 @@
 								</div>
 								<div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 130px; background-color: #ffff;">이벤트 상세이미지</span> 
+										<span class="input-group-text" style="width: 140px; background-color: #ffff;">이벤트 상세이미지</span> 
 										<input type="file" id="eventIMGDetail" name="eventIMGDetail" class="form-control"/>
 										<span id="event_ctError" class="error"></span>
 									</div>
@@ -119,16 +119,17 @@
 								</div>
 								 <div class="dragArea row" style="margin: 5px">
 									<div class="col-md-12 input-group">
-										<span class="input-group-text" style="width: 130px; background-color: #ffff; text-align: center;">이벤트 내용 </span> 
+										<span class="input-group-text" style="width: 140px; background-color: #ffff; text-align: center;">이벤트 내용 </span> 
 										<textarea id="event_ct" name="event_ct" class="event_ct" 
 											style="height: 250px; width: 800px;"></textarea>
 										<span id="event_ctError" class="error"></span>
 									</div>
 								</div> 
 								<div class="dragArea row">
-									<div class="col-md-3"></div>
+									<div class="col-md-3" > </div>
 									<div class="mbr-section-btn mt-4" >
-										<input type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin-left: 5px;" value="등록"/>
+										 <input type="submit" class="btn btn-md btn-success display-4 text-primary" style="border-radius: 100px" value="등록"/> 
+										
 										<!-- <script type="text/javascript">
 											 function eventWrite() {
 												 
@@ -241,11 +242,11 @@
 											
 										</script>		
 									</div>
-									<div class="mbr-section-btn mt-4" >
-									<a class="btn btn-md btn-success display-4 text-primary" href="javascript:history.back()">취소</a>
+										<div class="col-md-3">
+										<div class="mbr-section-btn mt-4">
+											<a class="btn btn-md btn-success display-4 text-primary"   href="javascript:history.back()">취소</a>
+										</div>			
 									</div>
-									<div class="col-md-3"></div> 
-								</div>
 							</form>
 						</div>
 					</div>
@@ -309,5 +310,11 @@
 
 
 	</script>
+	
+	<style type="text/css">
+	#table
+	
+	</style>
+	
 </body>
 </html>	

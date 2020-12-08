@@ -75,7 +75,7 @@
 	    		
 	    	</div>
 	    	
-	    
+	    	
 			
 			
 			
@@ -87,17 +87,14 @@
 				<a class="btn btn-md btn-success display-4 text-primary" href="javascript:history.back()" >취소</a>
 				
 			</div>
-			
-				
+
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<div class="mbr-section-btn mt-4" >
 				<a class="btn btn-md btn-success display-4 text-primary" href="<%=application.getContextPath()%>/event/eventUpdateForm?event_no=${eventD.event_no}">이벤트수정</a>
 				<a class="btn btn-md btn-success display-4 text-primary" href="<%=application.getContextPath()%>/event/eventDelete?event_no=${eventD.event_no}">이벤트삭제</a>
-				
 				</div>
-			</sec:authorize>
-			
-		</div>
+			</sec:authorize>	
+				</div>
 	</section>
 
 
