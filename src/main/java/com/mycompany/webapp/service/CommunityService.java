@@ -23,32 +23,31 @@ public class CommunityService {
 	@Resource
 	private CommunityDao communityDao;
 
-	/*public List<CommunityDto> getCommunityAll(){
-		List<CommunityDto> list = communityDao.selectAll();
+	/*//pager추가한 community 불러오기
+	public List<CommunityDto> getCommunityAll(CommunityPagerDto pager) {
+		List<CommunityDto> list = communityDao.selectByPage(pager);
 		return list;
 	}*/
-	/*public List<ReviewDto> getReviewAll() {
-		List<ReviewDto> review = communityDao.selectReviewAll();
-		return review;
-		}*/
+		
+	
 	//분야별 list 받아오기
-	public List<CommunityDto> getCommunityChat(){
-		List<CommunityDto> chat = communityDao.selectChat();
+	public List<CommunityDto> getCommunityChat(CommunityPagerDto pager){
+		List<CommunityDto> chat = communityDao.selectChat(pager);
 		return chat;
 	}
 	
-	public List<CommunityDto> getCommunityTips(){
-		List<CommunityDto> tips = communityDao.selectTips();
+	public List<CommunityDto> getCommunityTips(CommunityPagerDto pager){
+		List<CommunityDto> tips = communityDao.selectTips(pager);
 		return tips;
 	}
 	
-	public List<CommunityDto> getCommunityBoast(){
-		List<CommunityDto> boast = communityDao.selectBoast();
+	public List<CommunityDto> getCommunityBoast(CommunityPagerDto pager){
+		List<CommunityDto> boast = communityDao.selectBoast(pager);
 		return boast;
 	}
 	
-	public List<CommunityDto> getCommunityAssign(){
-		List<CommunityDto> assign = communityDao.selectAssign();
+	public List<CommunityDto> getCommunityAssign(CommunityPagerDto pager){
+		List<CommunityDto> assign = communityDao.selectAssign(pager);
 		return assign;
 	}
 
@@ -167,7 +166,20 @@ public class CommunityService {
 		int result = communityDao.deleteByReviewno(review_no);
 	}
 
-	
+	/*public List<CommunityDto> getCommunityAll(){
+	List<CommunityDto> list = communityDao.selectAll();
+	return list;
+}*/
+/*public List<ReviewDto> getReviewAll() {
+	List<ReviewDto> review = communityDao.selectReviewAll();
+	return review;
+	}*/
+/*//community&review 상세페이지 불러오기
+	public CommunityDto getCommunityDetail(int comm_no) {
+		CommunityDto communityDetail = communityDao.selectByComno(comm_no);
+		return communityDetail;
+	}
+*/
 	
 
 

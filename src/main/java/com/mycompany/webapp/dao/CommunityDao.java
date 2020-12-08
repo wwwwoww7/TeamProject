@@ -23,24 +23,30 @@ public class CommunityDao {
 		List<CommunityDto> list = sst.selectList("mybatis.mapper.community.selectAll");
 		return list;
 	}
+	
+	/* comm_전체 pager
+	 * public List<CommunityDto> selectByPage(CommunityPagerDto pager) {
+		List<CommunityDto> list = sst.selectList("mybatis.mapper.community.selectByPage", pager);
+		return list;
+	}*/
 
-	public List<CommunityDto> selectChat(){
-		List<CommunityDto> chat = sst.selectList("mybatis.mapper.community.selectChat");
+	public List<CommunityDto> selectChat(CommunityPagerDto pager){
+		List<CommunityDto> chat = sst.selectList("mybatis.mapper.community.selectChat" , pager);
 		return chat;
 	}
 	
-	public List<CommunityDto> selectTips() {
-		List<CommunityDto> tips = sst.selectList("mybatis.mapper.community.selectTips");
+	public List<CommunityDto> selectTips(CommunityPagerDto pager) {
+		List<CommunityDto> tips = sst.selectList("mybatis.mapper.community.selectTips", pager);
 		return tips;
 	}
 	
-	public List<CommunityDto> selectBoast() {
-		List<CommunityDto> boast = sst.selectList("mybatis.mapper.community.selectBoast");
+	public List<CommunityDto> selectBoast(CommunityPagerDto pager) {
+		List<CommunityDto> boast = sst.selectList("mybatis.mapper.community.selectBoast", pager);
 		return boast;
 	}
 	
-	public List<CommunityDto> selectAssign() {
-		List<CommunityDto> assign = sst.selectList("mybatis.mapper.community.selectAssign");
+	public List<CommunityDto> selectAssign(CommunityPagerDto pager) {
+		List<CommunityDto> assign = sst.selectList("mybatis.mapper.community.selectAssign", pager);
 		return assign;
 	}
 	

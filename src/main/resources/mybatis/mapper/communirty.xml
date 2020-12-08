@@ -9,32 +9,75 @@
 		order by comm_date desc 
 	</select>
  
- 	<select id="selectChat" resultType="community">
+ 	<!-- <select id="selectChat" resultType="community">
       	select comm_no,comm_date, comm_title, comm_content, comm_hitno, member.mid ,community_cate.comm_cate_nm, community_cate.comm_cate_no, member.mnick
 		from community, member, community_cate
 		where community_cate.comm_cate_no = '1' and community.mid=member.mid and community.comm_cate_no=community_cate.comm_cate_no
 		order by comm_date desc
+	</select> -->
+ 	<select id="selectChat" resultType="community">
+      	select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid , mnick, comm_cate_no,comm_cate_nm
+			from (
+		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno,mid , mnick ,comm_cate_no,comm_cate_nm
+	 	 	from (
+   			select comm_no, comm_date, comm_title, comm_content, comm_hitno, member.mid , member.mnick, community.comm_cate_no,comm_cate_nm
+   			from community, member, community_cate
+            where community.mid = member.mid and community.comm_cate_no=community_cate.comm_cate_no and community_cate.comm_cate_no = '1'
+   			order by comm_date desc    
+   		)
+   		where rownum &lt;= #{endRowNo} 
+		
+		)
+		where rnum &gt;= #{startRowNo}
 	</select>
  	
+ 	
  	<select id="selectTips" resultType="community">
-		select comm_no,comm_date, comm_title, comm_content, comm_hitno, member.mid ,community_cate.comm_cate_nm, community_cate.comm_cate_no, member.mnick
-		from community, member, community_cate
-		where community_cate.comm_cate_no = '2' and community.mid=member.mid and community.comm_cate_no=community_cate.comm_cate_no
-		order by comm_date desc
+			select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid , mnick, comm_cate_no,comm_cate_nm
+			from (
+		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno,mid , mnick ,comm_cate_no,comm_cate_nm
+	 	 	from (
+   			select comm_no, comm_date, comm_title, comm_content, comm_hitno, member.mid , member.mnick, community.comm_cate_no,comm_cate_nm
+   			from community, member, community_cate
+            where community.mid = member.mid and community.comm_cate_no=community_cate.comm_cate_no and community_cate.comm_cate_no = '2'
+   			order by comm_date desc    
+   		)
+   		where rownum &lt;= #{endRowNo} 
+		
+		)
+		where rnum &gt;= #{startRowNo}
 	</select>
  
 	<select id="selectBoast" resultType="community">
-			select comm_no,comm_date, comm_title, comm_content, comm_hitno, member.mid ,community_cate.comm_cate_nm, community_cate.comm_cate_no, member.mnick
-		from community, member, community_cate
-		where community_cate.comm_cate_no = '3' and community.mid=member.mid and community.comm_cate_no=community_cate.comm_cate_no
-		order by comm_date desc
+				select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid , mnick, comm_cate_no,comm_cate_nm
+			from (
+		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno,mid , mnick ,comm_cate_no,comm_cate_nm
+	 	 	from (
+   			select comm_no, comm_date, comm_title, comm_content, comm_hitno, member.mid , member.mnick, community.comm_cate_no,comm_cate_nm
+   			from community, member, community_cate
+            where community.mid = member.mid and community.comm_cate_no=community_cate.comm_cate_no and community_cate.comm_cate_no = '3'
+   			order by comm_date desc    
+   		)
+   		where rownum &lt;= #{endRowNo} 
+		
+		)
+		where rnum &gt;= #{startRowNo}
 	</select> 
 	
 	<select id="selectAssign" resultType="community">
-			select comm_no,comm_date, comm_title, comm_content, comm_hitno, member.mid ,community_cate.comm_cate_nm, community_cate.comm_cate_no, member.mnick
-		from community, member, community_cate
-		where community_cate.comm_cate_no = '4' and community.mid=member.mid and community.comm_cate_no=community_cate.comm_cate_no
-		order by comm_date desc 
+			select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid , mnick, comm_cate_no,comm_cate_nm
+			from (
+		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno,mid , mnick ,comm_cate_no,comm_cate_nm
+	 	 	from (
+   			select comm_no, comm_date, comm_title, comm_content, comm_hitno, member.mid , member.mnick, community.comm_cate_no,comm_cate_nm
+   			from community, member, community_cate
+            where community.mid = member.mid and community.comm_cate_no=community_cate.comm_cate_no and community_cate.comm_cate_no = '4'
+   			order by comm_date desc    
+   		)
+   		where rownum &lt;= #{endRowNo} 
+		
+		)
+		where rnum &gt;= #{startRowNo} 
 	</select>
  	<!-- 후기 게시판 내용 가져오기 -->
 	<select id="selectReviewAll" resultType="review">
@@ -119,7 +162,6 @@
 	<select id="selectCommunityCateList" resultType="community">
 	    select *
 		from community_CATE
-		where community_cate
 	</select>
 	<!-- 리뷰_list dropdown 분야별 데이터 가져오기 -->
 	<select id="selectCateList" resultType="classcate">

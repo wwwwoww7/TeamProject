@@ -37,7 +37,7 @@
 	        <div class="row justify-content-center">
 	            <div class="col-12 col-md-8">
 	                <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2">
-	                    <strong>Community</strong></h3>
+	                   <a href="community" style=" color: #ffc107; margin: 0px;"><strong>Community</strong></a></h3>
 	                
 	            </div>
 	        </div>
@@ -46,7 +46,7 @@
 				<li class="nav-item"><a id ="1" class="nav-link active" href="javascript:allFunction(1)">전체</a></li>
 				<li class="nav-item"><a id ="2" class="nav-link" href="javascript:allFunction(2)">잡담</a></li>
 				<li class="nav-item"><a id ="3"class="nav-link" href="javascript:allFunction(3)">꿀팁</a></li>
-				<li class="nav-item"><a id ="4" class="nav-link" href="javascript:allFunction(4)">자랑</a></li>
+				<li class="nav-item"><a id ="4" class="nav-link" href="javascript:allFunction(4)">추천</a></li>
 				<li class="nav-item"><a id ="5" class="nav-link" href="javascript:allFunction(5)">양도</a></li>
 				<li class="nav-item"><a id = "6" class="nav-link" href="javascript:allFunction(6)">후기</a></li>
 			</ul>
@@ -135,7 +135,7 @@
 				
 				$.ajax({
 					url : url , 
-					data : {pageNo : pageNo, },
+					data : {pageNo : pageNo},
 					success : function(data) {
 						$("#fun1_result").html(data);
 					}
