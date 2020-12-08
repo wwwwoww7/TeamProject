@@ -86,11 +86,7 @@
 		}
 		
 		
-		/* @media screen and (min-width: 576px){ 
-			.cid-shasoJbvYr{
-				width: 100%;
-			}
-		} */
+		
 </style>
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"/>

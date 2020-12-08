@@ -138,21 +138,7 @@ public class CartController {
 				logger.info("카트에 담긴 class_no deleteX: "+class_no);
 			}
 		}
-		
-		
-		
-		/*for(CartDto cartItem : cartList) {
-			logger.info("카트에 담긴 class_no : "+cartItem.getClass_no());	
-			for(int deleteNum : deleteArr) {
-				logger.info("deleteNum : "+deleteNum);
-				if(deleteNum == cartItem.getClass_no()) {
-					cartList.remove(deleteNum);
-					//session.removeAttribute(deleteNum);
-				}
-				logger.info("카트에 담긴 class_no deleteX: "+cartItem.getClass_no());
-			}
-		}*/
-		
+	
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
