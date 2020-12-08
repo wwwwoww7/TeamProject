@@ -120,10 +120,10 @@
 			<tr>
 				<td colspan="7" style="text-align: center; ">
 					<ul class="pagination justify-content-center" style="margin:20px 0">
-						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,1)">처음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,1)"><<</a></li>
 						<c:if test="${pager.groupNo > 1 }">
 							<li class="page-item">
-								<a class="page-link" href="javascript:allFunction(6,${pager.startPageNo-1})">이전</a>
+								<a class="page-link" href="javascript:allFunction(6,${pager.startPageNo-1})"><</a>
 							</li>
 						</c:if>
 						
@@ -136,9 +136,9 @@
 							</c:if>
 						</c:forEach>
 						<c:if test="${pager.groupNo <pager.totalGroupNo}">
-						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,${pager.endPageNo+1})">다음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,${pager.endPageNo+1})">></a></li>
 						</c:if>
-						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,${pager.totalPageNo})">맨끝</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(6,${pager.totalPageNo})">>></a></li>
 					</ul>
 					
 					</td>

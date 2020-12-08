@@ -142,10 +142,10 @@
               <tr>
 				<td colspan="6" style="text-align: center; ">
 					<ul class="pagination justify-content-center" style="margin:20px 0">
-						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate}, 1)">처음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate}, 1)"><<</a></li>
 						<c:if test="${pager.groupNo > 1 }">
 							<li class="page-item">
-								<a class="page-link" href="javascript:allFunction(${cate},${pager.startPageNo-1})">이전</a>
+								<a class="page-link" href="javascript:allFunction(${cate},${pager.startPageNo-1})"><</a>
 							</li>
 						</c:if>
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
@@ -157,22 +157,10 @@
 							</c:if>
 						</c:forEach>
 						<c:if test="${pager.groupNo <pager.totalGroupNo}">
-						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate},${pager.endPageNo+1})">다음</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate},${pager.endPageNo+1})">></a></li>
 						</c:if>
-						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate},${pager.totalPageNo})">맨끝</a></li>
+						<li class="page-item"><a class="page-link" href="javascript:allFunction(${cate},${pager.totalPageNo})">>></a></li>
 					</ul>
-					<%-- <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-						<c:if test="${pager.pageNo == i }">
-							<a class="btn btn-outline-danger btn-sm" href="javascript:boardList(${i})">${i}</a>
-						</c:if>
-						<c:if test="${pager.pageNo != i }">
-							<a class="btn btn-outline-success btn-sm" href="javascript:boardList(${i})">${i}</a>
-						</c:if>
-					</c:forEach>
-					<c:if test="${pager.groupNo <pager.totalGroupNo}">
-					<a class="btn btn-outline-info btn-sm" href="javascript:boardList(${pager.endPageNo+1})">다음</a>
-					</c:if>
-					<a class="btn btn-outline-primary btn-sm" href="javascript:boardList(${pager.totalPageNo})">맨끝</a> --%>
 					</td>
 				</tr>  
              
