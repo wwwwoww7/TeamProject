@@ -127,6 +127,10 @@
 			display: block;
 		} 
 	}
-		
-		
+	
+	
+	.navbar-short #profile {
+		width: 40px;
+		height: 40px;
+	}
 </style>
