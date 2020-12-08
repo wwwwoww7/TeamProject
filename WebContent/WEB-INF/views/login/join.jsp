@@ -206,7 +206,7 @@
 		                     
 		                        <div class="col-md-4">
 			                    	<div class="image-wrapper">
-		                     			<img src="<%=application.getContextPath()%>/resources/assets/images/eggtower.jpg" alt="Mobirise" style="height: 30rem;">
+		                     			<img src="<%=application.getContextPath()%>/resources/assets/images/eggtower.jpg" alt="Mobirise" style="max-width:100%; height:auto;">
 		                			</div>
 		                        </div>
 		                    </div>
