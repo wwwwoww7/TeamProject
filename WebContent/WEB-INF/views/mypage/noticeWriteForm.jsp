@@ -180,7 +180,7 @@
 	<style type="text/css">
 	@media (max-width: 576px) {
 	   .btn{
-			padding: 0.6rem 1.5rem;
+			padding: 0.6rem 0.8rem;
 		    border-radius: 3px;
 	   }
 	    

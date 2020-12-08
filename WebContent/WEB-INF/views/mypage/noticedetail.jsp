@@ -157,6 +157,12 @@
 		<style type="text/css">
 			a {color: black;}
 			a:hover {text-decoration: underline; color: #ffc800;}
+			@media (max-width: 576px) {
+			   .btn{
+					padding: 0.6rem 1.5rem;
+				    border-radius: 3px;
+			   }
+    }
 		</style>
 </body>
 </html>

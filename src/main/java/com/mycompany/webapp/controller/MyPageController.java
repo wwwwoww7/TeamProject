@@ -247,7 +247,6 @@ public class MyPageController {
 		//게시물 수정 - 공지사항 게시판
 		classNoticeService.noticeUpdate(classNotice);
 		
-		logger.info("너 타입 어디있어????================="+classNotice.getClass_hw_type());
 		
 		if(classNotice.getClass_hwFile().getOriginalFilename().equals("")) {
 			//공지사항에 보여질 파일 - 기존파일
