@@ -199,8 +199,8 @@ public class CartController {
 		cartService.classApplInsert(cartList);
 		
 		//세션에 담긴 cartList삭제
-		//session.removeAttribute("cartList");
-		cartList.clear();
+		session.removeAttribute("cartList");
+		//cartList.clear();
 		return "cart/pay_complete";
 	}
 
