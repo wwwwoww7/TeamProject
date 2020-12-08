@@ -35,7 +35,7 @@
 								            </h5>
 					         			</td>
 					         			<td id="tabletd" >
-					         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
+					         				<h5 id="heartpageL${hotclass.class_no}" class="display-7">
 					         					
 					         					<c:if test="${sessionMid == '' || sessionMid == null }">
 													<a class="mbr-iconfont" href="javascript:pick(0, 0, ${hotclass.class_no})">
@@ -129,7 +129,7 @@
 								            </h5>
 					         			</td>
 					         			<td id="tabletd"  class="pr-5">
-					         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
+					         				<h5 id="heartpageM${hotclass.class_no}" class="display-7">
 					         					
 					         					<c:if test="${sessionMid == '' || sessionMid == null }">
 													<a class="mbr-iconfont" href="javascript:pick(0, 0, ${hotclass.class_no})">
@@ -228,7 +228,7 @@
 							            </h5>
 				         			</td>
 				         			<td id="tabletd" rowspan="2"  class="pr-5">
-				         				<h5 id="heartpage${hotclass.class_no}" class="display-7">
+				         				<h5 id="heartpageS${hotclass.class_no}" class="display-7">
 				         					
 				         					<c:if test="${sessionMid == '' || sessionMid == null }">
 												<a class="mbr-iconfont" href="javascript:pick(0, 0, ${hotclass.class_no})">
@@ -306,8 +306,11 @@
 				data : {listtype: type, mid : mid, class_no : class_no, clk: clk, maincall : 1  },
 				success : function(data){
 					
-					if(type==0)
-						$("#heartpage"+class_no).html(data);
+					if(type==0){
+						$("#heartpageL"+class_no).html(data);
+						$("#heartpageM"+class_no).html(data);
+						$("#heartpageS"+class_no).html(data);
+					}
 					else if(type==1){
 						$("#heartpagenewc"+class_no).html(data);
 					}
