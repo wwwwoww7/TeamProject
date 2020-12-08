@@ -41,7 +41,7 @@ public class CommunityController {
 	@GetMapping("/communityAll")
 	public String communityAll(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalRows();
-		CommunityPagerDto pager = new CommunityPagerDto(10, 5, totalRows, pageNo);
+		CommunityPagerDto pager = new CommunityPagerDto(5, 5, totalRows, pageNo);
 		List<CommunityDto> list = service.getCommunityAll(pager);
 		
 		model.addAttribute("cate", 1);
@@ -55,7 +55,7 @@ public class CommunityController {
 	@GetMapping("/communityChat")
 	public String communityChat(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalRows();
-		CommunityPagerDto pager = new CommunityPagerDto(10, 5, totalRows, pageNo);
+		CommunityPagerDto pager = new CommunityPagerDto(5, 5, totalRows, pageNo);
 		List<CommunityDto> chat = service.getCommunityChat(pager);
 
 		model.addAttribute("chat", chat);
@@ -68,7 +68,7 @@ public class CommunityController {
 	@GetMapping("/communityTips")
 	public String communityCareer(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalRows();
-		CommunityPagerDto pager = new CommunityPagerDto(10, 5, totalRows, pageNo);
+		CommunityPagerDto pager = new CommunityPagerDto(5, 5, totalRows, pageNo);
 		List<CommunityDto> tips = service.getCommunityTips(pager);
 		model.addAttribute("tips", tips);
 		model.addAttribute("cate", 3);
@@ -78,7 +78,7 @@ public class CommunityController {
 	@GetMapping("/communityRecommend")
 	public String communityRecommend(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalRows();
-		CommunityPagerDto pager = new CommunityPagerDto(10, 5, totalRows, pageNo);
+		CommunityPagerDto pager = new CommunityPagerDto(5, 5, totalRows, pageNo);
 		List<CommunityDto> recommend = service.getCommunityRecommend(pager);
 		model.addAttribute("recommend", recommend);
 		model.addAttribute("cate", 4);
@@ -88,7 +88,7 @@ public class CommunityController {
 	@GetMapping("/communityAssign")
 	public String communityAssign(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalRows();
-		CommunityPagerDto pager = new CommunityPagerDto(10, 3, totalRows, pageNo);
+		CommunityPagerDto pager = new CommunityPagerDto(5, 5, totalRows, pageNo);
 		List<CommunityDto> assign = service.getCommunityAssign(pager);
 		model.addAttribute("assign", assign);
 		model.addAttribute("cate", 5);
@@ -98,7 +98,7 @@ public class CommunityController {
 	@GetMapping("/reviewAll")
 	public String reviewAll(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalReviewRows();
-		ReviewPagerDto pager = new ReviewPagerDto(10, 5, totalRows, pageNo);
+		ReviewPagerDto pager = new ReviewPagerDto(5, 5, totalRows, pageNo);
 		List<ReviewDto> review = service.getReviewAll(pager);
 		List<ClassCateDto> catelist = service.getCateList();
 		model.addAttribute("catelist", catelist);

@@ -70,13 +70,13 @@
 	          <table class="table table-hover m-0" cellspacing="0" data-empty="No matching records found">
 	            <thead>
 	            <colgroup>
-	            	<col width="11%">
-				    <col width="13%">
-				    <col width="13%">
-				    <col width="27%">
-				    <col width="14%">
+	            	<col width="12%">
+				    <col width="16.5%">
 				    <col width="14%">
 				    <col width="*">
+				    <col width="14%">
+				    <col width="13%">
+				    <col width="13%">
 	            </colgroup>
 		            <tr class="table-heads">
 						<th id="no" class="head-item mbr-fonts-style display-7 text-center">번호</th>
@@ -94,7 +94,19 @@
 					<tr>
 						<td id="noTD" class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_no}</td>
 						<td id="cateTD" class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.class_cate_nm}</td>
-						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.review_star}</td>
+						<td class="body-item mbr-fonts-style display-7  text-center">
+							<div id="star_pic">
+								<c:forEach var="i" begin="0" end="${ReviewDto.review_star-1}">
+								⭐
+								</c:forEach>
+							</div>
+							
+							<span id="star_num">
+								${ReviewDto.review_star-1}
+							</span>
+							
+						
+						</td>
 						<td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetailReview(${ReviewDto.review_no})">${ReviewDto.review_title}</a></td>
 						<%-- <td class="body-item mbr-fonts-style display-7  text-center"><a href="javascript:communityDetail()">${ReviewDto.review_content}</a></td> --%>
 						<td class="body-item mbr-fonts-style display-7  text-center">${ReviewDto.mnick}</td>
@@ -146,6 +158,11 @@
 	
 </div>
 	<style type="text/css">
+	
+		#star_num {
+			display: none;
+		}
+	
 		@media screen and (max-width: 768px){ 
 			.table #hit {
 				display: none;
@@ -156,7 +173,15 @@
 				
 			.display-7 {
 				font-size: 15px;
-			}		
+			}
+
+			#star_pic {
+				display: none;
+			}
+			
+			#star_num {
+				display: inline-block;
+			}	
 		}
 		
 		@media screen and (max-width: 576px){ 
@@ -174,6 +199,14 @@
 			} */
 			.display-7 {
 				font-size: 12px;
+			}	
+			
+			#star_pic {
+				display: none;
+			}
+			
+			#star_num {
+				display: inline-block;
 			}		
 		}
 	</style>

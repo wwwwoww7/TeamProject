@@ -9,7 +9,8 @@
 	<div class="row">
 		<div class="col-12"  align="right">
 			<c:if test="${sessionMid==communityDetail.mid}"> 
-				<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
+				<a class="btn-sm" style="background-color: #ffc800; color: #ffff; margin: 0px; border-radius: 100px;" 
+				href="javascript:communityUpdateform(${communityDetail.comm_no})">수정</a>	
 				<script type="text/javascript">
 				function communityUpdateform(comm_no) {
 					$.ajax({
