@@ -17,11 +17,6 @@ import com.mycompany.webapp.dto.EventDto;
 import com.mycompany.webapp.service.ClassService;
 import com.mycompany.webapp.service.EventService;
 
-
-/**
- * 2020. 11. 17 
- *
- */
 @Controller
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -32,17 +27,15 @@ public class HomeController {
 		return "home";
 	} 
 	
-	
 	@Resource
 	ClassService classService;
 	@Resource
 	EventService eventService; 
 
-	@GetMapping("/allCategory")
-	public String allCategory(Model model, HttpSession session) {
+	
+	@GetMapping("/hotClasses")
+	public String hotClasses(Model model, HttpSession session) {
 
-		logger.info("allCategory 실행");
-		
 		String mid = (String)session.getAttribute("sessionMid");
 		List<ClassDto> classList;
 		
@@ -52,17 +45,14 @@ public class HomeController {
 			classList = classService.getClassList(2);
 		}
 		
-		
 		model.addAttribute("hotclassList", classList); 
 		
 		return "class/classcard";
 	}
 	
+	
 	@GetMapping("/newClasses")
 	public String newClasses(Model model, HttpSession session) { 
-		
-		
-		logger.info("newClasses 실행");
 		
 		String mid = (String)session.getAttribute("sessionMid");
 		
@@ -70,10 +60,6 @@ public class HomeController {
 		
 		if(mid != null) {
 			classList = classService.getClassList(1, mid);
-			
-			for(ClassDto clas : classList) {
-				logger.info( "YN : " + clas.getPick_yn());
-			}
 		}else {
 			classList = classService.getClassList(1);
 		}
@@ -83,16 +69,8 @@ public class HomeController {
 		return "class/classcard_sm";
 	}
 	
-//	@GetMapping("/onClasses")
-//	public String careerCategory(Model model) { 
-//		
-//		return "class/classcard";
-//	}
-	
 	@GetMapping("/onEventList")
 	public String onEventList(Model model) { 
-		
-		logger.info("실행");
 		
 		List<EventDto> eventList =  eventService.getEventList();
 		model.addAttribute("eventList", eventList);
@@ -103,7 +81,6 @@ public class HomeController {
 	
 	@GetMapping("/allClass")
 	public String moneyCategory(Model model) {
-
 		return "class/allclass";
 	}
 	
@@ -127,13 +104,6 @@ public class HomeController {
 	
 	@GetMapping("/classCardList")
 	public String classCardList(Model model) {
-
-		
-		
-		
-		
-		
-		
 		
 		return "class/classcard";
 	}

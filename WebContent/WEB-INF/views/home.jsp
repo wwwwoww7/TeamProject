@@ -42,7 +42,6 @@
 	                <h1 id="maintext2" class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-2">BanSook Edu<br/>To Be 완숙란</h1>
 	                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
 	                	배움으로 완숙되기 위한 반숙이를 위한 클래스
-<!-- 	                    Time to Learn! Learn everything you need to know about getting started and how BanSook can help. -->
 	                </h3>
 	                <p class="mbr-text align-center pb-3 mbr-fonts-style display-7">
 	                	완숙을 바라는 당신에게 추천하는 온라인 강의 플랫폼
@@ -85,7 +84,6 @@
 	        </div>
 	        <div id="main-content-new" class="row mt-4">
 	           
-	           
 	            
 	        </div>
 	
@@ -103,67 +101,18 @@
 	            	<strong>진행중 이벤트</strong>
 	            </h3>
 	        </div>
-	        <div><!-- Filter --><!-- Gallery -->
+	        <div> 
 		        <div class="mbr-gallery-row">
 		        	<div class="mbr-gallery-layout-default">
 				        <div class="row">
-					        <div id="eventListDiv" class="col-12" > <!-- class="d-flex justify-content-center" -->
+					        <div id="main-content-event" class="col-12" > 
 						        
 				       		</div>
 			       		</div>
 			        	<div class="clearfix"></div>
 		       		</div>
 	        	</div>
-		        <!-- Lightbox -->
-		        <%-- <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery1-n">
-			        <div class="modal-dialog">
-			        	<div class="modal-content">
-			        		<div class="modal-body">
-			       				<div class="carousel-inner">
-							        <div class="carousel-item active">
-							        	<img src="<%=request.getContextPath() %>/resources/assets/images/gallery00.jpg" alt="" title="">
-							        </div>
-							        <div class="carousel-item">
-							       		<img src="<%=request.getContextPath() %>/resources/assets/images/gallery01.jpg" alt="" title="">
-							        </div>
-							        <div class="carousel-item">
-							        	<img src="<%=request.getContextPath() %>/resources/assets/images/gallery02.jpg" alt="" title="">
-							        </div>
-							        <div class="carousel-item">
-							        	<img src="<%=request.getContextPath() %>/resources/assets/images/gallery03.jpg" alt="" title="">
-							        </div>
-							        <div class="carousel-item">
-							        	<img src="<%=request.getContextPath() %>/resources/assets/images/gallery04.jpg" alt="" title="">
-							        </div>
-							        <div class="carousel-item">
-							        	<img src="<%=request.getContextPath() %>/resources/assets/images/gallery05.jpg" alt="" title="">
-							        </div>
-							        <div class="carousel-item">
-							        	<img src="<%=request.getContextPath() %>/resources/assets/images/gallery06.jpg" alt="" title="">
-							        </div>
-							        <div class="carousel-item">
-							        	<img src="<%=request.getContextPath() %>/resources/assets/images/gallery07.jpg" alt="" title="">
-							        </div>
-						        </div>
-						        <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery1-n">
-							        <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
-							        <span class="sr-only">Previous</span>
-							    </a>
-			        			<a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#lb-gallery1-n">
-							        <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
-							        <span class="sr-only">Next</span>
-			        			</a>
-			        			<a class="close" href="#" role="button" data-dismiss="modal">
-			        				<span class="sr-only">Close</span>
-			        			</a>
-			        		</div>
-			        	</div>
-			        </div>
-		        </div> --%>
 	        </div>
-		   
-	   
-	   
 	    </div>
 	
 	</section>
@@ -250,12 +199,7 @@
 			height: 5px;
 			border: 1px;
 		}
-		
-/* 		#cardLayout { */
-/* 			padding: 0 15px; */
-/* 			width: 285px; */
-/* 		}   */
-		
+
 		#maintext2 {
 			display: none;
 		}
@@ -325,12 +269,11 @@
 	</script>
   	<script type="text/javascript">
 		
-		function allCategory(){
+		function hotClasses(){
 			$.ajax({
-				url: "<%=request.getContextPath()%>/allCategory",
+				url: "<%=request.getContextPath()%>/hotClasses",
 				success: function(data){
 					$("#main-content-hot").html(data);
-					
 				}
 				
 			});
@@ -350,17 +293,17 @@
 			$.ajax({
 				url:"<%=request.getContextPath()%>/onEventList",
 				success : function(data){
-					$("#eventListDiv").html(data);
+					$("#main-content-event").html(data);
 				}
 			});
 		}
 		
 		$(function() {
-			allCategory();
+			hotClasses();
 			newClasses();
 			eventList();
-			
 		});
+		
 	</script>
     
 	</body>
