@@ -262,10 +262,10 @@
 											
 										</script>		
 									</div>
-									<div class="col-md-3">
+									<!-- <div class="col-md-3"> -->
 									<div class="mbr-section-btn mt-4" >
 									<input type=button  class="btn item-btn btn-success display-4 text-primary" style="border-radius: 100px" value="취소" onClick="history.back();">
-									<div class="col-sm-3"></div>
+									<!-- <div class="col-sm-3"></div> -->
 									</div>
 								</div>
 							</form>

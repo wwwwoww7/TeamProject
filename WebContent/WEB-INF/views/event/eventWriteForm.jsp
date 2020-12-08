@@ -127,7 +127,7 @@
 								</div> 
 								<div class="dragArea row">
 									<div class="col-md-3" > </div>
-									<div class="mbr-section-btn mt-4" >
+									<div class="mbr-section-btn mt-4" style="text-align:right; vertical-align:right;" >
 										 <input type="submit" class="btn btn-md btn-success display-4 text-primary" style="border-radius: 100px" value="등록"/> 
 										
 										<!-- <script type="text/javascript">
@@ -242,9 +242,9 @@
 											
 										</script>		
 									</div>
-										<div class="col-md-3">
+										<!-- <div class="col-md-3"> -->
 										<div class="mbr-section-btn mt-4">
-											<a class="btn btn-md btn-success display-4 text-primary"   href="javascript:history.back()">취소</a>
+											<a class="btn btn-md btn-success display-4 text-primary" href="javascript:history.back()">취소</a>
 										</div>			
 									</div>
 							</form>
@@ -312,8 +312,12 @@
 	</script>
 	
 	<style type="text/css">
-	#table
-	
+	@media (max-width: 576px){ 
+		.col-md3 {
+			position: absolute;
+			top: 20px;
+		}
+		}
 	</style>
 	
 </body>
