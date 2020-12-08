@@ -75,12 +75,12 @@ public class CommunityController {
 		return "community/community_list";
 	}
 
-	@GetMapping("/communityBoast")
-	public String communityBoast(@RequestParam(defaultValue = "1") int pageNo, Model model) {
+	@GetMapping("/communityRecommend")
+	public String communityRecommend(@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		int totalRows = service.getTotalRows();
 		CommunityPagerDto pager = new CommunityPagerDto(10, 5, totalRows, pageNo);
-		List<CommunityDto> boast = service.getCommunityBoast(pager);
-		model.addAttribute("boast", boast);
+		List<CommunityDto> recommend = service.getCommunityRecommend(pager);
+		model.addAttribute("recommend", recommend);
 		model.addAttribute("cate", 4);
 		return "community/community_list";
 	}

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="col-lg-8 mx-auto mbr-form mt-5" data-form-type="formoid">
-	<form onsubmit="communityWriteReview()" action="<%=request.getContextPath()%>/community/communityWriteReview" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+	<form onsubmit="return communityWriteReview();" action="<%=request.getContextPath()%>/community/communityWriteReview" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
 		<div class="dragArea row" style="margin: 5px">
 			<div class="col-md-12 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff;">강 의 선 택</span> 
@@ -55,7 +55,6 @@
 				<button type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;" >글쓰기</button>
 				<script type="text/javascript">
 				function communityWriteReview() {
-					console.log("오고있나.");
 					var btitle = $("#review_title").val().trim();
 					if(btitle == "") 
 						{ $("#btitleError").text("필수"); 
@@ -75,7 +74,7 @@
 				</script>		
 			</div>
 			<div class="col-md-4">
-				<a class="btn item-btn btn-success display-7 text-primary" href="community">취소</a>
+				<a class="btn item-btn btn-success display-7 text-primary" href="javascript:allFunction(6)">취소</a>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

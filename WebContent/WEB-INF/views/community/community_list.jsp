@@ -119,7 +119,7 @@
 					<td id="hitTD" class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_hitno}</td>
 				</tr>
 			</c:forEach>
-			<c:forEach var="communityDto" items="${boast}">
+			<c:forEach var="communityDto" items="${recommend}">
 				<tr>
 					<td id="noTD"  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_no}</td>
 					<td  class="body-item mbr-fonts-style display-7 text-center">${communityDto.comm_cate_nm}</td>

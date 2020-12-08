@@ -120,7 +120,7 @@
 					url += 'communityTips';
 					break;
 				case 4:
-					url += 'communityBoast';
+					url += 'communityRecommend';
 					break;
 				case 5:
 					url += 'communityAssign';

@@ -48,7 +48,7 @@
 		where rnum &gt;= #{startRowNo}
 	</select>
  
-	<select id="selectBoast" resultType="community">
+	<select id="selectRecommend" resultType="community">
 				select rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno, mid , mnick, comm_cate_no,comm_cate_nm
 			from (
 		select rownum as rnum, comm_no, comm_date, comm_title, comm_content, comm_hitno,mid , mnick ,comm_cate_no,comm_cate_nm

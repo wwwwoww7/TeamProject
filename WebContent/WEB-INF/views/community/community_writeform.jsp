@@ -3,7 +3,7 @@
 
 <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
 	
-	<form onsubmit="communityWrite()" action="<%=request.getContextPath()%>/community/communityWrite" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
+	<form onsubmit="return communityWrite()" action="<%=request.getContextPath()%>/community/communityWrite" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
 		<div class="dragArea row" style="margin: 5px">
 			<div class="col-md-12 input-group">
 				<span class="input-group-text" style="width: 100px; background-color: #ffff;">카 테 고 리</span> 
@@ -38,11 +38,9 @@
 		 <div class="dragArea row">
 			<div class="col-md-2"></div>
 			<div class="col-md-4">
-				<button type="submit" class="btn item-btn btn-success display-7 text-primary" style="margin: 5px;"  >글쓰기</button>
+				<button type="submit" class="btn item-btn btn-success display-7 text-primary" style="color:red; margin: 5px;"  >글쓰기</button>
 				<script type="text/javascript">
 				function communityWrite() { 
-					
-					console.log("안오나 ");
 					var btitle = $("#comm_title").val().trim();
 					if(btitle == "") { 
 						$("#btitleError").text("필수"); 

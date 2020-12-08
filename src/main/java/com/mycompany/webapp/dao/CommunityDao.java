@@ -40,9 +40,9 @@ public class CommunityDao {
 		return tips;
 	}
 	
-	public List<CommunityDto> selectBoast(CommunityPagerDto pager) {
-		List<CommunityDto> boast = sst.selectList("mybatis.mapper.community.selectBoast", pager);
-		return boast;
+	public List<CommunityDto> selectRecommend(CommunityPagerDto pager) {
+		List<CommunityDto> recommend = sst.selectList("mybatis.mapper.community.selectRecommend", pager);
+		return recommend;
 	}
 	
 	public List<CommunityDto> selectAssign(CommunityPagerDto pager) {

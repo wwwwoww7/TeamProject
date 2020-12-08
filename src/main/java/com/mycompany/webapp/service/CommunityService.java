@@ -41,9 +41,9 @@ public class CommunityService {
 		return tips;
 	}
 	
-	public List<CommunityDto> getCommunityBoast(CommunityPagerDto pager){
-		List<CommunityDto> boast = communityDao.selectBoast(pager);
-		return boast;
+	public List<CommunityDto> getCommunityRecommend(CommunityPagerDto pager){
+		List<CommunityDto> recommend = communityDao.selectRecommend(pager);
+		return recommend;
 	}
 	
 	public List<CommunityDto> getCommunityAssign(CommunityPagerDto pager){
