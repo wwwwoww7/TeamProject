@@ -106,13 +106,13 @@
 </section>
 <style>
 	#profile {
-	  height: 50px;
+	  max-height: 50px;
 	  width: 50px;
 	  border: 2px solid #ffff;
 	}
 	
 	.cid-shfokUU9e4 .navbar-toggleable-sm .navbar-collapse {
-		    overflow: visible;
+	    overflow: visible;
 	}
 	
 	.navbarver2 {
@@ -130,7 +130,8 @@
 	
 	
 	.navbar-short #profile {
-		width: 40px;
-		height: 40px;
+		max-height: 40px; 
+		width : 40px;
+	  	border: 2px solid #ffff;
 	}
 </style>
