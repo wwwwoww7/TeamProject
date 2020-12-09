@@ -186,34 +186,63 @@ public class MyPageController {
 		return "mypage/noticedetail";
 	}
 	
-	//강의 공지사항의 파일 다운로드 받기
+	//강사의 강의공지사항 글쓰기 폼 요청
+	@PostMapping("/noticeWrite")
+	public String noticeWrite(ClassNoticeDto classNotice,HttpSession session) throws Exception {
+		String mid = (String) session.getAttribute("sessionMid");
+		
+		//게시물쓰기
+		classNoticeService.noticeWrite(classNotice);
+		
+		if(!classNotice.getClass_hwFile().getOriginalFilename().equals("")) { //파일을 올렸을 경우에만
+			//파일 내용 넣기(현재날짜로 저장하기)
+			String fileName = classNotice.getClass_hwFile().getOriginalFilename();
+			String saveFile = new Date().getTime()+"_"+fileName;
+			
+			//파일 확장자 넣기
+			String ext = fileName.substring(fileName.lastIndexOf(".")+1);
+			classNotice.getClass_hwFile().transferTo(new File("D:/MyWorkspace/files/"+saveFile));
+			classNotice.setClass_hw_file(saveFile);
+	
+			classNotice.setClass_hw_type(ext);
+			
+		} else {
+			classNotice.setClass_hw_file("");
+			classNotice.setClass_hw_type("");
+		}
+		
+		//첨부파일 intsert
+		classNoticeService.noticeFileInput(classNotice);
+		
+		return "redirect:/mypage/mypage_tutor?mid="+mid;
+	}
+	
+	
+	//강의 공지사항의 파일 다운로드
 	@GetMapping("/download")
 	public void download(String fileName, HttpServletResponse respone,HttpServletRequest request) throws IOException {
-		logger.info(fileName);
-		//파일의 데이터를 읽기 위한 입력 스트림 얻기
+		
 		String saveFilePath = "D:/MyWorkspace/files/"+fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		
 		//[응답 HTTP 헤더 구성]
-		//1. content type 헤더 구성(파일의 종류) -  브라우저가 어떤  프로그램이 실행될지 알기 위해서 
+		//1. content type 헤더 구성(파일의 종류)
 		ServletContext application = request.getServletContext(); 
 		String fileType = application.getMimeType(fileName);
 		respone.setContentType(fileType);
 		
 		//2. content Disposition 헤더 구성 (다운로드할 파일의 이름 지정)
-		String OriginalFileName = fileName.split("_")[1]; // 숫자[0] _ 실제이름[1]
+		String OriginalFileName = fileName.split("_")[1]; 
 		//헤더에서는 한글을 그대로 전달할 수 없음으로 파일이름이 한글이면 아스키코드(ISO-8859-1)로 변환하기 위해서 사용
 		OriginalFileName = new String(OriginalFileName.getBytes("UTF-8"),"ISO-8859-1");
 		respone.setHeader("Content-Disposition", "attachment; filename=\""+OriginalFileName+"\"");
-		
 		
 		//3.Content-length 헤더 구성(다운로드할 파일의 크기 지정)
 		int filesize = (int) new File(saveFilePath).length();
 		respone.setContentLength(filesize);
 		
-		//[응답HTTP의 바디(본문) 구성] - 입출력 스트림 사용(문자타입기반)
 		OutputStream os = respone.getOutputStream();
-		FileCopyUtils.copy(is, os);// is에서 읽어서 os로 보냄
+		FileCopyUtils.copy(is, os);
 		
 		os.flush();
 		os.close();
@@ -316,38 +345,6 @@ public class MyPageController {
 		model.addAttribute("classNames",classNames);
 		
 		return "mypage/noticeWriteForm";
-	}
-	
-	//강사의 강의공지사항 글쓰기 폼 요청
-	@PostMapping("/noticeWrite")
-	public String noticeWrite(ClassNoticeDto classNotice,HttpSession session) throws Exception {
-		String mid = (String) session.getAttribute("sessionMid");
-		
-		//게시물쓰기
-		classNoticeService.noticeWrite(classNotice);
-		
-		if(!classNotice.getClass_hwFile().getOriginalFilename().equals("")) { //파일을 올렸을 경우에만
-			//파일 내용 넣기(현재날짜로 저장하기)
-			String fileName = classNotice.getClass_hwFile().getOriginalFilename();
-			String saveFile = new Date().getTime()+"_"+fileName;
-			
-			//파일 확장자 넣기
-			String ext = fileName.substring(fileName.lastIndexOf(".")+1);
-			classNotice.getClass_hwFile().transferTo(new File("D:/MyWorkspace/files/"+saveFile));
-			classNotice.setClass_hw_file(saveFile);
-	
-			classNotice.setClass_hw_type(ext);
-			
-		} else {
-			logger.info("파일 노우!!!!!!!!!!!!!!!!!=============================");
-			classNotice.setClass_hw_file("");
-			classNotice.setClass_hw_type("");
-		}
-		
-		//첨부파일 intsert
-		classNoticeService.noticeFileInput(classNotice);
-		
-		return "redirect:/mypage/mypage_tutor?mid="+mid;
 	}
 	
 	//=============강사의 강의문의 목록===================================

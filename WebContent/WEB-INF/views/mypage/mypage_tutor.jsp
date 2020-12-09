@@ -212,15 +212,7 @@
 			</h2>
 			<hr style="background-color: #ffc800; height:2px;">	
 			<div class="table-wrapper">
-			<%-- <div class="dropdown"  style="display: inline-block;">
-				<button id="cateselect" align="right" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown">전체</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="javascript:tutorClassNotice(1,${sessionMid})">전체</a>
-					<c:forEach var="classList" items="${tutorclassList}">
-						<a class="dropdown-item" href="javascript:catereview(${classList.class_no})">${classList.class_nm_s}</a>
-					</c:forEach>
-				</div>
-			</div>	 --%>
+		
 				<div class="container"></div>
 
 				<div id="tutorNotice" class="container table-info-container"></div>
@@ -389,7 +381,7 @@
 		/* 공지사항 */
 	
 		function tutorClassNotice(pageNo){
-			if(!pageNo){ //페이지수가 0이면 기본값으로 1로 줌
+			if(!pageNo){
 				pageNo =1;
 			}
 			$.ajax({
