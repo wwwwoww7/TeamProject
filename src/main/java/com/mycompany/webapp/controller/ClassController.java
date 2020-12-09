@@ -61,8 +61,6 @@ private static final Logger logger = LoggerFactory.getLogger(ClassController.cla
 	@GetMapping("/classdetail")
 	public String classDetail(@RequestParam(defaultValue = "1") int classNo, Model model, HttpSession session) {
 
-	
-		
 		ClassDto classOne = classService.getClass(classNo);
 		model.addAttribute("classOne", classOne);
 		
@@ -72,7 +70,6 @@ private static final Logger logger = LoggerFactory.getLogger(ClassController.cla
 		//진행중 강의 list
 		List<ClassDto> classList = classService.getTutoringClasses(classOne.getTutor_id());
 		model.addAttribute("classList", classList);
-		
 		
 		//후기 두개
 		List<ReviewDto> reviewList = communityService.getReviewList(classNo);
@@ -86,7 +83,6 @@ private static final Logger logger = LoggerFactory.getLogger(ClassController.cla
 			appl.setClass_no(classNo);
 			appl.setMid(mid);
 			int applyYN = classService.getBuyYn(appl);
-			logger.info("-------------->" + applyYN);
 			model.addAttribute("applyYN", applyYN);
 		}else {
 			model.addAttribute("applyYN", 0);
@@ -98,9 +94,9 @@ private static final Logger logger = LoggerFactory.getLogger(ClassController.cla
 	
 	
 	@RequestMapping("/profilephotoDownload")
-	public void profilephotoDownload(String mem,HttpServletRequest request, HttpServletResponse response) throws IOException{
+	public void profilephotoDownload(String mem, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
-		//tutor_id로 member 가져오기 
+		//member id로 member 가져오기 
 		MemberDto member = memberService.getMemberInfo(mem);
 		String fileName = member.getMpro_img();
 
@@ -109,21 +105,16 @@ private static final Logger logger = LoggerFactory.getLogger(ClassController.cla
 		InputStream is = new FileInputStream(saveFilePath);
 		
 		//응답 HTTP 헤더 구성
-		//1)Content-Type 헤더 구성(파일의 종류 지정)
 		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName); //fileName의 확장명을 알려줌.
+		String fileType = application.getMimeType(fileName); 
 		response.setContentType(fileType);
-		//2)Content-Disposition 헤더 구성(다운로드할 파일의 이름을 지정)
 		
-		//한글을 변환해서 넣어야함.한글을 아스키로 바꿔준다.브라우저마다 한글변환방식이다르지만 최신브라우저는 거의 다 이거. 
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\""); //실제 다운로드되는 파일의 이름이 들어간다. 파일이름에 한글이 포함되어있으면 한글이 꺠진다.
-		//3)Content-Length 헤더 구성(다운로드 할 파일의 크기를 지정)
-		int fileSize = (int)new File(saveFilePath).length(); //file size를 얻을 수 있음. long size임. 
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");  
+		int fileSize = (int)new File(saveFilePath).length(); 
 		response.setContentLength(fileSize);
 		
 		//응답 HTTP의 본문(바디) 구성
-		//본문은 철저하게 출력으로 처리한다. 
-		OutputStream os = response.getOutputStream();//파일이니까 outputstream
+		OutputStream os = response.getOutputStream(); 
 		FileCopyUtils.copy(is, os);
 		os.flush();
 		os.close();
@@ -144,13 +135,12 @@ private static final Logger logger = LoggerFactory.getLogger(ClassController.cla
 		InputStream is = new FileInputStream(saveFilePath);
 		
 		//응답 HTTP 헤더 구성
-		//1)Content-Type 헤더 구성(파일의 종류 지정)
 		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName); //fileName의 확장명을 알려줌.
+
+		String fileType = application.getMimeType(fileName);  
 		response.setContentType(fileType);
-		//2)Content-Disposition 헤더 구성(다운로드할 파일의 이름을 지정)
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");  
-		//3)Content-Length 헤더 구성(다운로드 할 파일의 크기를 지정)
+
 		int fileSize = (int)new File(saveFilePath).length(); 
 		response.setContentLength(fileSize);
 		
