@@ -107,6 +107,7 @@
 <style>
 	#profile {
 	  height: 50px;
+	  width: 50px;
 	  border: 2px solid #ffff;
 	}
 	
