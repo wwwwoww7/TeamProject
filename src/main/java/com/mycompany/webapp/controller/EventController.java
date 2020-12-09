@@ -96,32 +96,6 @@ public class EventController {
 		return "event/eventList2";
 	}
 	
-	@GetMapping("/eventList")
-	public String eventList(@RequestParam(defaultValue = "1") int pageNo, int eenable, Model model) {
-		
-		int totalRows = service.getTotalRows(eenable);
-		EventPagerDto pager = new EventPagerDto(5, 5, totalRows, pageNo,eenable);
-		
-		List<EventDto> all = service.getEventList(pager);
-		model.addAttribute("all", all);
-		model.addAttribute("pager", pager); 
-		return "event/eventList";
-		}
-	
-	/*	@Override
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException{
-			String query_ = request.getParameter("q");
-			
-			String query ="";
-			if(query_!= null && !query_.equals(""))
-				query = query_;
-			
-			NoticeService service = new NoticeService();
-			List<Notice> list = service.getNoticeList(query,1);
-			
-			request.setAttribute("list", list);
-			request.getRequestDispatcher("/WEB-")
-		}*/
 	
 
 	//이벤트 상세페이지 불러오기 (현재 진행중인 페이지)
@@ -142,9 +116,23 @@ public class EventController {
 	}
 	
 	
+	@GetMapping("/eventList")
+	public String eventList(@RequestParam(defaultValue = "1") int pageNo, int eenable, Model model) {
+		
+		int totalRows = service.getTotalRows(eenable);
+		EventPagerDto pager = new EventPagerDto(5, 5, totalRows, pageNo,eenable);
+		
+		List<EventDto> all = service.getEventList(pager);
+		model.addAttribute("all", all);
+		model.addAttribute("pager", pager); 
+		return "event/eventList";
+		}
+	
+
+	
 	
 	//admin이 들어왔을때만 이벤트 등록 버튼이 보이도록
-	
+	//이벤트 등록
 	@GetMapping("/eventWriteForm")
 	public String eventWriteForm() {
 		return "event/eventWriteForm";

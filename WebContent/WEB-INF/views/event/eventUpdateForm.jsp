@@ -53,7 +53,7 @@
 							<form onsubmit="return updateCheck();"action="eventUpdate" id="eventUpdate" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
 								<div class="dragArea row" style="margin: 5px">
 									<input type="hidden" id="event_no" name="event_no" value="${event.event_no}">
-									<div class="col-md-6 input-group">
+									<div class="col-md-8 input-group">
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">작 성 자 </span> 
 										<input type="text" id="mid" name="mid" class="form-control" value="${sessionMid}" readonly/>
 										<span class="input-group-text" style="width: 100px; background-color: #ffff;">번호 </span>
