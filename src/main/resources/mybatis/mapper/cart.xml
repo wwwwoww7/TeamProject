@@ -4,13 +4,13 @@
 
 	<!-- cart테이블 구입 목록저장 -->
 	<insert id="insert1" parameterType="cart">
-		insert into CART (Mid, class_no)
+		insert into CART (MID, CLASS_NO)
 		values (#{mid}, #{class_no})
 	</insert>
 	
 	<!-- 마이페이지 수강내역 목록저장 -->
 	<insert id="insert2" parameterType="cart" >
-		insert into CLASS_APPL (Mid, class_no, class_appl_date, CLASS_APPL_TOT_TIME )
+		insert into CLASS_APPL (MID, CLASS_NO, CLASS_APPL_DATE, CLASS_APPL_TOT_TIME )
 		values (#{mid}, #{class_no}, #{cart_date} , 0) 
 	</insert> 
 	
