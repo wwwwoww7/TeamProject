@@ -1,13 +1,17 @@
 # TeamProject
 
-On the project at 
-the Education in Korea Software Industry Association, 
+Our Web page and application is ..
+
+on the project in the Education in Korea Software Industry Association, 
 
 
+# About The Project
 
-# Built with
+img
+
+## Built with
 
 - Spring Framework
 - Bootstrap
 - JQuery
-- Laravel
+
