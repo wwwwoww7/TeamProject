@@ -2,7 +2,7 @@
 
 Our Web page and application is Online Lecture Platform.
 
-on the project in the Education in Korea Software Industry Association, 
+on the project in the Education in Korea Software Industry Association, ....
 
 </br>
 
