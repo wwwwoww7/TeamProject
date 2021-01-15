@@ -10,12 +10,12 @@ on the project in the Education in Korea Software Industry Association,
 img
 
 ## Member
-😄 [최지은](https://github.com/wwwwoww7){: target="_blank"}
-😆
-😍
-😁
-😎
-😇
+😄 [곽혜빈](https://github.com/wwwwoww7)
+😆 [권지영](https://github.com/wwwwoww7)
+😍 [박지연](https://github.com/)
+😁 [장주현](https://github.com/wwwwoww7)
+😎 [최지은](https://github.com/wwwwoww7)
+😇 [한아름](https://github.com/wwwwoww7)
 
 ## Built with
 
