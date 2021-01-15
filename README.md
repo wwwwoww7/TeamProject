@@ -46,6 +46,18 @@ img
 #### User page
 ![mypage](https://user-images.githubusercontent.com/74583344/104693849-ace94880-574d-11eb-8cd2-2d6e2725e955.png)
 
+#### Main
+![main](https://user-images.githubusercontent.com/74583344/104694087-05b8e100-574e-11eb-86db-03482b802dbb.png)
+
+#### Cart
+![cart](https://user-images.githubusercontent.com/74583344/104694127-12d5d000-574e-11eb-8ea2-d57df48d27ce.png)
+
+#### Community
+![커뮤니티](https://user-images.githubusercontent.com/74583344/104694182-25e8a000-574e-11eb-8add-b6c15211b545.png)
+
+#### Event
+![event](https://user-images.githubusercontent.com/74583344/104694207-326cf880-574e-11eb-8ab2-4a96b94e777a.png)
+
 
 
 ## Languages and Tools 💻
