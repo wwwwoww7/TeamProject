@@ -11,8 +11,8 @@ img
 
 ## Member
 😄 [곽혜빈](https://github.com/wwwwoww7)
-😆 [권지영](https://github.com/wwwwoww7)
-😍 [박지연](https://github.com/)
+😆 [권지영](https://github.com/JYoung-Kwn)
+😍 [박지연](https://github.com/jeeyani)
 😁 [장주현](https://github.com/wwwwoww7)
 😎 [최지은](https://github.com/wwwwoww7)
 😇 [한아름](https://github.com/wwwwoww7)
