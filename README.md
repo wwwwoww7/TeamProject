@@ -1,6 +1,6 @@
 # TeamProject
 
-Our Web page and application is Online Lecture Platform.
+Our Web page and application are Online Lecture Platform.
 
 on the project in the Education in Korea Software Industry Association, ....
 
